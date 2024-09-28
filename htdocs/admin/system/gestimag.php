@@ -48,7 +48,7 @@ $version = '0.0';
  */
 
 if ($action == 'getlastversion') {
-	$result = getURLContent('https://sourceforge.net/projects/gestimag/rss');
+	$result = getURLContent('https://github.com/adrienb39/gestimag/blob/main/rss');
 	//var_dump($result['content']);
 	if (function_exists('simplexml_load_string')) {
 		if (LIBXML_VERSION < 20900) {

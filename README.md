@@ -1,4 +1,4 @@
-# DOLIBARR ERP & CRM
+<!-- # DOLIBARR ERP & CRM
 
 ![Downloads per day](https://img.shields.io/sourceforge/dw/gestimag.svg)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.1-8892BF.svg?style=flat-square)](https://php.net/)
@@ -253,3 +253,4 @@ Follow Gestimag project on:
 ### Sponsors
 
 Support this project by becoming a sponsor. Your logo will show up here. 🙏 [[Become a sponsor/backer](https://opencollective.com/gestimag#backer)]
+-->
