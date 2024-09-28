@@ -85,13 +85,13 @@ foreach($core_fonts as $font) {
 	// set font for title
 	$pdf->SetFont('helvetica', 'B', 16);
 
-	// print font name
+	// echo font name
 	$pdf->Cell(0, 10, 'FONT: '.$font, 1, 1, 'C', true, '', 0, false, 'T', 'M');
 
 	// set font for chars
 	$pdf->SetFont($font, '', 16);
 
-	// print each character
+	// echo each character
 	for ($i = 0; $i < 256; ++$i) {
 		if (($i > 0) AND (($i % 16) == 0)) {
 			$pdf->Ln();
@@ -101,7 +101,7 @@ foreach($core_fonts as $font) {
 
 	$pdf->Ln(20);
 
-	// print a pangram
+	// echo a pangram
 	$pdf->Cell(0, 0, 'The quick brown fox jumps over the lazy dog', 0, 1, 'C', false, '', 0, false, 'T', 'M');
 }
 

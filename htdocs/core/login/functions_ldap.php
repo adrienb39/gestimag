@@ -81,7 +81,7 @@ function check_user_password_ldap($usertotest, $passwordtotest, $entitytotest)
 		$ldapdebug = ((empty($gestimag_main_auth_ldap_debug) || $gestimag_main_auth_ldap_debug == "false") ? false : true);
 
 		if ($ldapdebug) {
-			print "DEBUG: Logging LDAP steps<br>\n";
+			echo"DEBUG: Logging LDAP steps<br>\n";
 		}
 
 		require_once DOL_DOCUMENT_ROOT.'/core/class/ldap.class.php';
@@ -96,8 +96,8 @@ function check_user_password_ldap($usertotest, $passwordtotest, $entitytotest)
 		if ($ldapdebug) {
 			dol_syslog("functions_ldap::check_user_password_ldap Server:".implode(',', $ldap->server).", Port:".$ldap->serverPort.", Protocol:".$ldap->ldapProtocolVersion.", Type:".$ldap->serverType);
 			dol_syslog("functions_ldap::check_user_password_ldap uid/samaccountname=".$ldapuserattr.", dn=".$ldapdn.", Admin:".$ldap->searchUser.", Pass:".dol_trunc($ldap->searchPassword, 3));
-			print "DEBUG: Server:".implode(',', $ldap->server).", Port:".$ldap->serverPort.", Protocol:".$ldap->ldapProtocolVersion.", Type:".$ldap->serverType."<br>\n";
-			print "DEBUG: uid/samaccountname=".$ldapuserattr.", dn=".$ldapdn.", Admin:".$ldap->searchUser.", Pass:".dol_trunc($ldap->searchPassword, 3)."<br>\n";
+			echo"DEBUG: Server:".implode(',', $ldap->server).", Port:".$ldap->serverPort.", Protocol:".$ldap->ldapProtocolVersion.", Type:".$ldap->serverType."<br>\n";
+			echo"DEBUG: uid/samaccountname=".$ldapuserattr.", dn=".$ldapdn.", Admin:".$ldap->searchUser.", Pass:".dol_trunc($ldap->searchPassword, 3)."<br>\n";
 		}
 
 		$resultFetchLdapUser = 0;
@@ -121,7 +121,7 @@ function check_user_password_ldap($usertotest, $passwordtotest, $entitytotest)
 				if ($resultFetchLdapUser > 0 && $ldap->pwdlastset == 0) { // If ok but password need to be reset
 					dol_syslog('functions_ldap::check_user_password_ldap '.$usertotest.' must change password next logon');
 					if ($ldapdebug) {
-						print "DEBUG: User ".$usertotest." must change password<br>\n";
+						echo"DEBUG: User ".$usertotest." must change password<br>\n";
 					}
 					$ldap->unbind();
 					sleep(1); // Anti brut force protection. Must be same delay when user and password are not valid.
@@ -131,7 +131,7 @@ function check_user_password_ldap($usertotest, $passwordtotest, $entitytotest)
 				}
 			} else {
 				if ($ldapdebug) {
-					print "DEBUG: ".$ldap->error."<br>\n";
+					echo"DEBUG: ".$ldap->error."<br>\n";
 				}
 			}
 			$ldap->unbind();
@@ -149,7 +149,7 @@ function check_user_password_ldap($usertotest, $passwordtotest, $entitytotest)
 		$ldap->searchPassword = $passwordtotest;
 
 		// Test with this->seachUser and this->searchPassword
-		//print $resultFetchLdapUser."-".$ldap->ldapUserDN."-".$ldap->searchUser.'-'.$ldap->searchPassword;exit;
+		//echo$resultFetchLdapUser."-".$ldap->ldapUserDN."-".$ldap->searchUser.'-'.$ldap->searchPassword;exit;
 		$result = $ldap->connectBind();
 		if ($result > 0) {
 			if ($result == 2) {	// Connection is ok for user/pass into LDAP
@@ -172,18 +172,18 @@ function check_user_password_ldap($usertotest, $passwordtotest, $entitytotest)
 
 					// On charge les attributes du user ldap
 					if ($ldapdebug) {
-						print "DEBUG: login ldap = ".$login."<br>\n";
+						echo"DEBUG: login ldap = ".$login."<br>\n";
 					}
 					$resultFetchLdapUser = $ldap->fetch($login, $userSearchFilter);
 
 					if ($ldapdebug) {
-						print "DEBUG: UACF = ".implode(',', $ldap->uacf)."<br>\n";
+						echo"DEBUG: UACF = ".implode(',', $ldap->uacf)."<br>\n";
 					}
 					if ($ldapdebug) {
-						print "DEBUG: pwdLastSet = ".dol_print_date($ldap->pwdlastset, 'day')."<br>\n";
+						echo"DEBUG: pwdLastSet = ".dol_print_date($ldap->pwdlastset, 'day')."<br>\n";
 					}
 					if ($ldapdebug) {
-						print "DEBUG: badPasswordTime = ".dol_print_date($ldap->badpwdtime, 'day')."<br>\n";
+						echo"DEBUG: badPasswordTime = ".dol_print_date($ldap->badpwdtime, 'day')."<br>\n";
 					}
 
 					// On recherche le user gestimag en fonction de son SID ldap (only for Active Directory)
@@ -191,7 +191,7 @@ function check_user_password_ldap($usertotest, $passwordtotest, $entitytotest)
 					if (getDolGlobalString('LDAP_SERVER_TYPE') == "activedirectory") {
 						$sid = $ldap->getObjectSid($login);
 						if ($ldapdebug) {
-							print "DEBUG: sid = ".$sid."<br>\n";
+							echo"DEBUG: sid = ".$sid."<br>\n";
 						}
 					}
 

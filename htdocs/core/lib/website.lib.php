@@ -125,7 +125,7 @@ function dolWebsiteReplacementOfLinks($website, $content, $removephppart = 0, $c
 	$nbrep = 0;
 
 	dol_syslog('dolWebsiteReplacementOfLinks start (contenttype='.$contenttype." containerid=".$containerid." USEDOLIBARREDITOR=".(defined('USEDOLIBARREDITOR') ? '1' : '')." USEDOLIBARRSERVER=".(defined('USEDOLIBARRSERVER') ? '1' : '').')', LOG_DEBUG);
-	//if ($contenttype == 'html') { print $content;exit; }
+	//if ($contenttype == 'html') { echo $content;exit; }
 
 	// Replace php code. Note $content may come from database and does not contain body tags.
 	$replacewith = '...php...';
@@ -219,7 +219,7 @@ function dolWebsiteReplacementOfLinks($website, $content, $removephppart = 0, $c
 	$content = str_replace('!~!~!~', '', $content);
 
 	dol_syslog('dolWebsiteReplacementOfLinks end', LOG_DEBUG);
-	//if ($contenttype == 'html') { print $content;exit; }
+	//if ($contenttype == 'html') { echo $content;exit; }
 
 	return $content;
 }
@@ -292,7 +292,7 @@ function dolWebsiteOutput($content, $contenttype = 'html', $containerid = 0)
 
 	dol_syslog("dolWebsiteOutput start - contenttype=".$contenttype." containerid=".$containerid." USEDOLIBARREDITOR=".(defined('USEDOLIBARREDITOR') ? '1' : '')." USEDOLIBARRSERVER=".(defined('USEDOLIBARRSERVER') ? '1' : '').' includehtmlcontentopened='.$includehtmlcontentopened);
 
-	//print $containerid.' '.$content;
+	//echo $containerid.' '.$content;
 
 	// Define $urlwithroot
 	$urlwithouturlroot = preg_replace('/'.preg_quote(DOL_URL_ROOT, '/').'$/i', '', trim($gestimag_main_url_root));
@@ -374,7 +374,7 @@ function dolWebsiteOutput($content, $contenttype = 'html', $containerid = 0)
 		if ($website->virtualhost) {
 			$content = preg_replace('/^(<link[^>]*rel="canonical" href=")\//m', '\1'.$website->virtualhost.'/', $content, -1, $nbrep);
 		}
-		//print 'rrrrrrrrr'.$website->virtualhost.$content;
+		//echo 'rrrrrrrrr'.$website->virtualhost.$content;
 
 
 		// Make a change into HTML code to allow to include images from medias directory correct with direct link for virtual server
@@ -438,7 +438,7 @@ function dolWebsiteOutput($content, $contenttype = 'html', $containerid = 0)
 
 	dol_syslog("dolWebsiteOutput end");
 
-	print $content;
+	echo $content;
 }
 
 /**
@@ -531,15 +531,15 @@ function redirectToContainer($containerref, $containeraliasalt = '', $containeri
 		if ($result > 0) {
 			$containerref = $tmpwebsitepage->pageurl;
 		} else {
-			print "Error, page contains a redirect to the alternative alias '".$containeraliasalt."' that does not exists in web site (".$website->id." / ".$website->ref.")";
+			echo "Error, page contains a redirect to the alternative alias '".$containeraliasalt."' that does not exists in web site (".$website->id." / ".$website->ref.")";
 			exit;
 		}
 	}
 
 	if (defined('USEDOLIBARREDITOR')) {
-		/*print '<div class="margintoponly marginleftonly">';
-		print "This page contains dynamic code that make a redirect to '".$containerref."' in your current context. Redirect has been canceled as it is not supported in edition mode.";
-		print '</div>';*/
+		/*echo '<div class="margintoponly marginleftonly">';
+		echo "This page contains dynamic code that make a redirect to '".$containerref."' in your current context. Redirect has been canceled as it is not supported in edition mode.";
+		echo '</div>';*/
 		$text = "This page contains dynamic code that make a redirect to '".$containerref."' in your current context. Redirect has been canceled as it is not supported in edition mode.";
 		setEventMessages($text, null, 'warnings', 'WEBSITEREDIRECTDISABLED'.$containerref);
 		return;
@@ -559,7 +559,7 @@ function redirectToContainer($containerref, $containeraliasalt = '', $containeri
 			$regtmp = array();
 			if (preg_match('/&pageref=([^&]+)/', $currenturi, $regtmp)) {
 				if ($regtmp[0] == $containerref) {
-					print "Error, page with uri '.$currenturi.' try a redirect to the same alias page '".$containerref."' in web site '".$website->ref."'";
+					echo "Error, page with uri '.$currenturi.' try a redirect to the same alias page '".$containerref."' in web site '".$website->ref."'";
 					exit;
 				} else {
 					$newurl = preg_replace('/&pageref=([^&]+)/', '&pageref='.$containerref, $currenturi);
@@ -584,7 +584,7 @@ function redirectToContainer($containerref, $containeraliasalt = '', $containeri
 		header("Location: ".$newurl);
 		exit;
 	} else {
-		print "Error, page contains a redirect to the alias page '".$containerref."' that does not exists in web site (".$website->id." / ".$website->ref.")";
+		echo "Error, page contains a redirect to the alias page '".$containerref."' that does not exists in web site (".$website->id." / ".$website->ref.")";
 		exit;
 	}
 }
@@ -616,7 +616,7 @@ function includeContainer($containerref)
 	}
 	$includehtmlcontentopened++;
 	if ($includehtmlcontentopened > $MAXLEVEL) {
-		print 'ERROR: RECURSIVE CONTENT LEVEL. Depth of recursive call is more than the limit of '.((int) $MAXLEVEL).".\n";
+		echo 'ERROR: RECURSIVE CONTENT LEVEL. Depth of recursive call is more than the limit of '.((int) $MAXLEVEL).".\n";
 		return;
 	}
 
@@ -624,18 +624,18 @@ function includeContainer($containerref)
 
 	// file_get_contents is not possible. We must execute code with include
 	//$content = file_get_contents($fullpathfile);
-	//print preg_replace(array('/^.*<body[^>]*>/ims','/<\/body>.*$/ims'), array('', ''), $content);*/
+	//echo preg_replace(array('/^.*<body[^>]*>/ims','/<\/body>.*$/ims'), array('', ''), $content);*/
 
 	ob_start();
 	$res = @include $fullpathfile; // Include because we want to execute code content
 	$tmpoutput = ob_get_contents();
 	ob_end_clean();
 
-	print "\n".'<!-- include '.$websitekey.'/'.$containerref.(is_object($websitepage) ? ' parent id='.$websitepage->id : '').' level = '.$includehtmlcontentopened.' -->'."\n";
-	print preg_replace(array('/^.*<body[^>]*>/ims', '/<\/body>.*$/ims'), array('', ''), $tmpoutput);
+	echo "\n".'<!-- include '.$websitekey.'/'.$containerref.(is_object($websitepage) ? ' parent id='.$websitepage->id : '').' level = '.$includehtmlcontentopened.' -->'."\n";
+	echo preg_replace(array('/^.*<body[^>]*>/ims', '/<\/body>.*$/ims'), array('', ''), $tmpoutput);
 
 	if (!$res) {
-		print 'ERROR: FAILED TO INCLUDE PAGE '.$containerref.".\n";
+		echo 'ERROR: FAILED TO INCLUDE PAGE '.$containerref.".\n";
 	}
 
 	$includehtmlcontentopened--;
@@ -1237,7 +1237,7 @@ function getPagesFromSearchCriterias($type, $algo, $searchstring, $max = 25, $so
 		$sql .= ")";
 		$sql .= $db->order($sortfield, $sortorder);
 		$sql .= $db->plimit($max);
-		//print $sql;
+		//echo $sql;
 
 		$resql = $db->query($sql);
 

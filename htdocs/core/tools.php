@@ -46,10 +46,10 @@ llxHeader("", $langs->trans("Tools"), "");
 
 $text = $langs->trans("Tools");
 
-print load_fiche_titre($text, '', 'wrench');
+echo load_fiche_titre($text, '', 'wrench');
 
 // Show description of content
-print '<div class="justify opacitymedium">'.$langs->trans("ToolsDesc").'</div><br><br>';
+echo '<div class="justify opacitymedium">'.$langs->trans("ToolsDesc").'</div><br><br>';
 
 
 // Show logo

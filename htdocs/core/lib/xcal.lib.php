@@ -102,7 +102,7 @@ function build_calfile($format, $title, $desc, $events_array, $outputfile)
 			$created       = $event["created"];
 			$modified      = $event["modified"];
 			$assignedUsers = $event["assignedUsers"];
-			//print $fulldayevent.' '.dol_print_date($startdate, 'dayhour', 'gmt');
+			//echo$fulldayevent.' '.dol_print_date($startdate, 'dayhour', 'gmt');
 
 			// Format
 			$summary     = format_cal($format, $summary);

@@ -106,7 +106,7 @@ function versioncompare($versionarray1, $versionarray2)
 			$operande2 = -1;
 		}
 		$level++;
-		//print 'level '.$level.' '.$operande1.'-'.$operande2.'<br>';
+		//echo'level '.$level.' '.$operande1.'-'.$operande2.'<br>';
 		if ($operande1 < $operande2) {
 			$ret = -$level;
 			break;
@@ -116,7 +116,7 @@ function versioncompare($versionarray1, $versionarray2)
 			break;
 		}
 	}
-	//print join('.',$versionarray1).'('.count($versionarray1).') / '.join('.',$versionarray2).'('.count($versionarray2).') => '.$ret.'<br>'."\n";
+	//echojoin('.',$versionarray1).'('.count($versionarray1).') / '.join('.',$versionarray2).'('.count($versionarray2).') => '.$ret.'<br>'."\n";
 	return $ret;
 }
 
@@ -234,7 +234,7 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 				if ($qualified) {
 					// Version qualified, delete SQL comments
 					$buf = preg_replace('/^--\sV(MYSQL|PGSQL)([^\s]*)/i', '', $buf);
-					//print "Ligne $i qualifi?e par version: ".$buf.'<br>';
+					//echo"Ligne $i qualifi?e par version: ".$buf.'<br>';
 				}
 			}
 
@@ -249,7 +249,7 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 				$buffer .= trim($buf);
 			}
 
-			//print $buf.'<br>';exit;
+			//echo$buf.'<br>';exit;
 
 			if (preg_match('/;/', $buffer)) {	// If string contains ';', it's end of a request string, we save it in arraysql.
 				// Found new request
@@ -289,9 +289,9 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 					}
 				} else {
 					if (!$silent) {
-						print '<tr><td class="tdtop"'.($colspan ? ' colspan="'.$colspan.'"' : '').'>';
-						print '<div class="error">'.$langs->trans("Failed to get max rowid for ".$table)."</div>";
-						print '</td></tr>';
+						echo'<tr><td class="tdtop"'.($colspan ? ' colspan="'.$colspan.'"' : '').'>';
+						echo'<div class="error">'.$langs->trans("Failed to get max rowid for ".$table)."</div>";
+						echo'</td></tr>';
 					}
 					$error++;
 					break;
@@ -351,7 +351,7 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 					$is++;
 				}
 				$newsqlclean = str_replace(array("null"), '__000__', $newsqlclean);
-				//print $newsqlclean."<br>\n";
+				//echo$newsqlclean."<br>\n";
 
 				$qualified = 0;
 
@@ -381,8 +381,8 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 				$errorphpcheck = checkPHPCode($extractphpold, $extractphp);	// Contains the setEventMessages
 				if ($errorphpcheck) {
 					$error++;
-					//print 'Request '.($i + 1)." contains non allowed instructions.<br>\n";
-					//print "newsqlclean = ".$newsqlclean."<br>\n";
+					//echo'Request '.($i + 1)." contains non allowed instructions.<br>\n";
+					//echo"newsqlclean = ".$newsqlclean."<br>\n";
 					dol_syslog('Admin.lib::run_sql Request '.($i + 1)." contains PHP code and checking this code returns errorphpcheck='.$errorphpcheck.'", LOG_WARNING);
 					dol_syslog("sql=".$sql, LOG_DEBUG);
 					break;
@@ -391,8 +391,8 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 
 				if (!$qualified) {
 					$error++;
-					//print 'Request '.($i + 1)." contains non allowed instructions.<br>\n";
-					//print "newsqlclean = ".$newsqlclean."<br>\n";
+					//echo'Request '.($i + 1)." contains non allowed instructions.<br>\n";
+					//echo"newsqlclean = ".$newsqlclean."<br>\n";
 					dol_syslog('Admin.lib::run_sql Request '.($i + 1)." contains non allowed instructions.", LOG_WARNING);
 					dol_syslog('$newsqlclean='.$newsqlclean, LOG_DEBUG);
 					break;
@@ -416,7 +416,7 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 
 			// Add log of request
 			if (!$silent) {
-				print '<tr class="trforrunsql'.$keyforsql.'"><td class="tdtop opacitymedium"'.($colspan ? ' colspan="'.$colspan.'"' : '').'>'.$langs->trans("Request").' '.($i + 1)." sql='".dol_htmlentities($newsql, ENT_NOQUOTES)."'</td></tr>\n";
+				echo'<tr class="trforrunsql'.$keyforsql.'"><td class="tdtop opacitymedium"'.($colspan ? ' colspan="'.$colspan.'"' : '').'>'.$langs->trans("Request").' '.($i + 1)." sql='".dol_htmlentities($newsql, ENT_NOQUOTES)."'</td></tr>\n";
 			}
 			dol_syslog('Admin.lib::run_sql Request '.($i + 1), LOG_DEBUG);
 			$sqlmodified = 0;
@@ -450,9 +450,9 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 				$cursor = $reg[1];
 				if (empty($listofinsertedrowid[$cursor])) {
 					if (!$silent) {
-						print '<tr><td class="tdtop"'.($colspan ? ' colspan="'.$colspan.'"' : '').'>';
-						print '<div class="error">'.$langs->trans("FileIsNotCorrect")."</div>";
-						print '</td></tr>';
+						echo'<tr><td class="tdtop"'.($colspan ? ' colspan="'.$colspan.'"' : '').'>';
+						echo'<div class="error">'.$langs->trans("FileIsNotCorrect")."</div>";
+						echo'</td></tr>';
 					}
 					$error++;
 					break;
@@ -471,7 +471,7 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 			$result = $db->query($newsql, $usesavepoint);
 			if ($result) {
 				if (!$silent) {
-					print '<!-- Result = OK -->'."\n";
+					echo'<!-- Result = OK -->'."\n";
 				}
 
 				if (preg_replace('/insert into ([^\s]+)/i', $newsql, $reg)) {
@@ -483,11 +483,11 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 					$listofinsertedrowid[$cursorinsert] = $insertedrowid;
 					dol_syslog('Admin.lib::run_sql Insert nb '.$cursorinsert.', done in table '.$table.', rowid is '.$listofinsertedrowid[$cursorinsert], LOG_DEBUG);
 				}
-				// 	          print '<td class="right">OK</td>';
+				// 	          echo'<td class="right">OK</td>';
 			} else {
 				$errno = $db->errno();
 				if (!$silent) {
-					print '<!-- Result = '.$errno.' -->'."\n";
+					echo'<!-- Result = '.$errno.' -->'."\n";
 				}
 
 				// Define list of errors we accept (array $okerrors)
@@ -513,9 +513,9 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 				// Is it an error we accept
 				if (!in_array($errno, $okerrors)) {
 					if (!$silent) {
-						print '<tr><td class="tdtop"'.($colspan ? ' colspan="'.$colspan.'"' : '').'>';
-						print '<div class="error">'.$langs->trans("Error")." ".$db->errno()." (Req ".($i + 1)."): ".$newsql."<br>".$db->error()."</div>";
-						print '</td></tr>'."\n";
+						echo'<tr><td class="tdtop"'.($colspan ? ' colspan="'.$colspan.'"' : '').'>';
+						echo'<div class="error">'.$langs->trans("Error")." ".$db->errno()." (Req ".($i + 1)."): ".$newsql."<br>".$db->error()."</div>";
+						echo'</td></tr>'."\n";
 					}
 					dol_syslog('Admin.lib::run_sql Request '.($i + 1)." Error ".$db->errno()." ".$newsql."<br>".$db->error(), LOG_ERR);
 					$error++;
@@ -525,16 +525,16 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 	}
 
 	if (!$silent) {
-		print '<tr><td>'.$langs->trans("ProcessMigrateScript").'</td>';
-		print '<td class="right">';
+		echo'<tr><td>'.$langs->trans("ProcessMigrateScript").'</td>';
+		echo'<td class="right">';
 		if ($error == 0) {
-			print '<span class="ok">'.$langs->trans("OK").'</span>';
+			echo'<span class="ok">'.$langs->trans("OK").'</span>';
 		} else {
-			print '<span class="error">'.$langs->trans("Error").'</span>';
+			echo'<span class="error">'.$langs->trans("Error").'</span>';
 		}
 
 		//if (!empty($conf->use_javascript_ajax)) {		// use_javascript_ajax is not defined
-		print '<script type="text/javascript">
+		echo'<script type="text/javascript">
 		jQuery(document).ready(function() {
 			function init_trrunsql'.$keyforsql.'()
 			{
@@ -548,13 +548,13 @@ function run_sql($sqlfile, $silent = 1, $entity = 0, $usesavepoint = 1, $handler
 		});
 		</script>';
 		if (count($arraysql)) {
-			print ' - <a class="trforrunsqlshowhide'.$keyforsql.'" href="#" title="'.($langs->trans("ShowHideTheNRequests", count($arraysql))).'">'.$langs->trans("ShowHideDetails").'</a>';
+			echo' - <a class="trforrunsqlshowhide'.$keyforsql.'" href="#" title="'.($langs->trans("ShowHideTheNRequests", count($arraysql))).'">'.$langs->trans("ShowHideDetails").'</a>';
 		} else {
-			print ' - <span class="opacitymedium">'.$langs->trans("ScriptIsEmpty").'</span>';
+			echo' - <span class="opacitymedium">'.$langs->trans("ScriptIsEmpty").'</span>';
 		}
 		//}
 
-		print '</td></tr>'."\n";
+		echo'</td></tr>'."\n";
 	}
 
 	if ($error == 0) {
@@ -697,8 +697,8 @@ function gestimag_set_const($db, $name, $value, $type = 'chaine', $visible = 0, 
 		$sql .= ", ".$db->encrypt($newvalue);
 		$sql .= ", '".$db->escape($type)."', ".((int) $visible).", '".$db->escape($note)."', ".((int) $entity).")";
 
-		//print "sql".$value."-".pg_escape_string($value)."-".$sql;exit;
-		//print "xx".$db->escape($value);
+		//echo"sql".$value."-".pg_escape_string($value)."-".$sql;exit;
+		//echo"xx".$db->escape($value);
 		dol_syslog("admin.lib::gestimag_set_const", LOG_DEBUG);
 		$resql = $db->query($sql);
 	}
@@ -1165,7 +1165,7 @@ function activateModule($value, $withdeps = 1, $noconfverification = 0)
 	// Test if Gestimag version ok
 	$verdol = versiongestimagarray();
 	$vermin = isset($objMod->need_gestimag_version) ? $objMod->need_gestimag_version : 0;
-	//print 'version: '.versioncompare($verdol,$vermin).' - '.join(',',$verdol).' - '.join(',',$vermin);exit;
+	//echo'version: '.versioncompare($verdol,$vermin).' - '.join(',',$verdol).' - '.join(',',$vermin);exit;
 	if (is_array($vermin) && versioncompare($verdol, $vermin) < 0) {
 		$ret['errors'][] = $langs->trans("ErrorModuleRequireGestimagVersion", versiontostring($vermin));
 		return $ret;
@@ -1299,7 +1299,7 @@ function unActivateModule($value, $requiredby = 1)
 			$ret = $objMod->error;
 		}
 	} else { // We come here when we try to unactivate a module when module does not exists anymore in sources
-		//print $dir.$modFile;exit;
+		//echo$dir.$modFile;exit;
 		// TODO Replace this after GestimagModules is moved as abstract class with a try catch to show module we try to disable has not been found or could not be loaded
 		include_once DOL_DOCUMENT_ROOT.'/core/modules/GestimagModules.class.php';
 		$genericMod = new GestimagModules($db);
@@ -1354,12 +1354,12 @@ function complete_dictionary_with_modules(&$taborder, &$tabname, &$tablib, &$tab
 
 	foreach ($modulesdir as $dir) {
 		// Load modules attributes in arrays (name, numero, orders) from dir directory
-		//print $dir."\n<br>";
+		//echo$dir."\n<br>";
 		dol_syslog("Scan directory ".$dir." for modules");
 		$handle = @opendir(dol_osencode($dir));
 		if (is_resource($handle)) {
 			while (($file = readdir($handle)) !== false) {
-				//print "$i ".$file."\n<br>";
+				//echo"$i ".$file."\n<br>";
 				if (is_readable($dir.$file) && substr($file, 0, 3) == 'mod' && substr($file, dol_strlen($file) - 10) == '.class.php') {
 					$modName = substr($file, 0, dol_strlen($file) - 10);
 
@@ -1480,8 +1480,8 @@ function complete_dictionary_with_modules(&$taborder, &$tabname, &$tablib, &$tab
 								}
 
 								if ($nbtabname != $nbtablib || $nbtablib != $nbtabsql || $nbtabsql != $nbtabsqlsort) {
-									print 'Error in descriptor of module '.$const_name.'. Array ->dictionaries has not same number of record for key "tabname", "tablib", "tabsql" and "tabsqlsort"';
-									//print "$const_name: $nbtabname=$nbtablib=$nbtabsql=$nbtabsqlsort=$nbtabfield=$nbtabfieldvalue=$nbtabfieldinsert=$nbtabrowid=$nbtabcond=$nbtabfieldcheck=$nbtabhelp\n";
+									echo'Error in descriptor of module '.$const_name.'. Array ->dictionaries has not same number of record for key "tabname", "tablib", "tabsql" and "tabsqlsort"';
+									//echo"$const_name: $nbtabname=$nbtablib=$nbtabsql=$nbtabsqlsort=$nbtabfield=$nbtabfieldvalue=$nbtabfieldinsert=$nbtabrowid=$nbtabcond=$nbtabfieldcheck=$nbtabhelp\n";
 								} else {
 									$taborder[] = 0; // Add an empty line
 								}
@@ -1594,12 +1594,12 @@ function complete_elementList_with_modules(&$elementList)
 
 	foreach ($modulesdir as $dir) {
 		// Load modules attributes in arrays (name, numero, orders) from dir directory
-		//print $dir."\n<br>";
+		//echo$dir."\n<br>";
 		dol_syslog("Scan directory ".$dir." for modules");
 		$handle = @opendir(dol_osencode($dir));
 		if (is_resource($handle)) {
 			while (($file = readdir($handle)) !== false) {
-				//print "$i ".$file."\n<br>";
+				//echo"$i ".$file."\n<br>";
 				if (is_readable($dir.$file) && substr($file, 0, 3) == 'mod' && substr($file, dol_strlen($file) - 10) == '.class.php') {
 					$modName = substr($file, 0, dol_strlen($file) - 10);
 
@@ -1640,7 +1640,7 @@ function complete_elementList_with_modules(&$elementList)
 							$filename[$i] = $modName;
 							$orders[$i]  = $objMod->family."_".$j; // Sort on family then module number
 							$dirmod[$i] = $dir;
-							//print "x".$modName." ".$orders[$i]."\n<br>";
+							//echo"x".$modName." ".$orders[$i]."\n<br>";
 
 							if (!empty($objMod->module_parts['contactelement'])) {
 								if (is_array($objMod->module_parts['contactelement'])) {
@@ -1692,23 +1692,23 @@ function form_constantes($tableau, $strictw3c = 2, $helptext = '', $text = 'Valu
 		dol_syslog("Warning: Function 'form_constantes' was called with parameter strictw3c = 0, this is deprecated. Value must be 2 now.", LOG_DEBUG);
 	}
 	if (!empty($strictw3c) && $strictw3c == 1) {
-		print "\n".'<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-		print '<input type="hidden" name="token" value="'.newToken().'">';
-		print '<input type="hidden" name="action" value="updateall">';
+		echo"\n".'<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+		echo'<input type="hidden" name="token" value="'.newToken().'">';
+		echo'<input type="hidden" name="action" value="updateall">';
 	}
 
-	print '<div class="div-table-responsive-no-min">';
-	print '<table class="noborder centpercent">';
-	print '<tr class="liste_titre">';
-	print '<td class="">'.$langs->trans("Description").'</td>';
-	print '<td>';
+	echo'<div class="div-table-responsive-no-min">';
+	echo'<table class="noborder centpercent">';
+	echo'<tr class="liste_titre">';
+	echo'<td class="">'.$langs->trans("Description").'</td>';
+	echo'<td>';
 	$text = $langs->trans($text);
-	print $form->textwithpicto($text, $helptext, 1, 'help', '', 0, 2, 'idhelptext');
-	print '</td>';
+	echo$form->textwithpicto($text, $helptext, 1, 'help', '', 0, 2, 'idhelptext');
+	echo'</td>';
 	if (empty($strictw3c)) {
-		print '<td class="center" width="80">'.$langs->trans("Action").'</td>';
+		echo'<td class="center" width="80">'.$langs->trans("Action").'</td>';
 	}
-	print "</tr>\n";
+	echo"</tr>\n";
 
 	$label = '';
 	foreach ($tableau as $key => $const) {	// Loop on each param
@@ -1748,84 +1748,84 @@ function form_constantes($tableau, $strictw3c = 2, $helptext = '', $text = 'Valu
 			}
 
 			if (empty($strictw3c)) {
-				print "\n".'<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-				print '<input type="hidden" name="token" value="'.newToken().'">';
-				print '<input type="hidden" name="page_y" value="'.newToken().'">';
+				echo"\n".'<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+				echo'<input type="hidden" name="token" value="'.newToken().'">';
+				echo'<input type="hidden" name="page_y" value="'.newToken().'">';
 			}
 
-			print '<tr class="oddeven">';
+			echo'<tr class="oddeven">';
 
 			// Show label of parameter
-			print '<td>';
+			echo'<td>';
 			if (empty($strictw3c)) {
-				print '<input type="hidden" name="action" value="update">';
+				echo'<input type="hidden" name="action" value="update">';
 			}
-			print '<input type="hidden" name="rowid'.(empty($strictw3c) ? '' : '[]').'" value="'.$obj->rowid.'">';
-			print '<input type="hidden" name="constname'.(empty($strictw3c) ? '' : '[]').'" value="'.$const.'">';
-			print '<input type="hidden" name="constnote_'.$obj->name.'" value="'.nl2br(dol_escape_htmltag($obj->note)).'">';
-			print '<input type="hidden" name="consttype_'.$obj->name.'" value="'.($obj->type ? $obj->type : 'string').'">';
+			echo'<input type="hidden" name="rowid'.(empty($strictw3c) ? '' : '[]').'" value="'.$obj->rowid.'">';
+			echo'<input type="hidden" name="constname'.(empty($strictw3c) ? '' : '[]').'" value="'.$const.'">';
+			echo'<input type="hidden" name="constnote_'.$obj->name.'" value="'.nl2br(dol_escape_htmltag($obj->note)).'">';
+			echo'<input type="hidden" name="consttype_'.$obj->name.'" value="'.($obj->type ? $obj->type : 'string').'">';
 			if (!empty($tableau[$key]['tooltip'])) {
-				print $form->textwithpicto($label ? $label : $langs->trans('Desc'.$const), $tableau[$key]['tooltip']);
+				echo$form->textwithpicto($label ? $label : $langs->trans('Desc'.$const), $tableau[$key]['tooltip']);
 			} else {
 				print($label ? $label : $langs->trans('Desc'.$const));
 			}
 
 			if ($const == 'ADHERENT_MAILMAN_URL') {
-				print '. '.$langs->trans("Example").': <a href="#" id="exampleclick1">'.img_down().'</a><br>';
-				//print 'http://lists.example.com/cgi-bin/mailman/admin/%LISTE%/members?adminpw=%MAILMAN_ADMINPW%&subscribees=%EMAIL%&send_welcome_msg_to_this_batch=1';
-				print '<div id="example1" class="hidden">';
-				print 'http://lists.example.com/cgi-bin/mailman/admin/%LISTE%/members/add?subscribees_upload=%EMAIL%&amp;adminpw=%MAILMAN_ADMINPW%&amp;subscribe_or_invite=0&amp;send_welcome_msg_to_this_batch=0&amp;notification_to_list_owner=0';
-				print '</div>';
+				echo'. '.$langs->trans("Example").': <a href="#" id="exampleclick1">'.img_down().'</a><br>';
+				//echo'http://lists.example.com/cgi-bin/mailman/admin/%LISTE%/members?adminpw=%MAILMAN_ADMINPW%&subscribees=%EMAIL%&send_welcome_msg_to_this_batch=1';
+				echo'<div id="example1" class="hidden">';
+				echo'http://lists.example.com/cgi-bin/mailman/admin/%LISTE%/members/add?subscribees_upload=%EMAIL%&amp;adminpw=%MAILMAN_ADMINPW%&amp;subscribe_or_invite=0&amp;send_welcome_msg_to_this_batch=0&amp;notification_to_list_owner=0';
+				echo'</div>';
 			} elseif ($const == 'ADHERENT_MAILMAN_UNSUB_URL') {
-				print '. '.$langs->trans("Example").': <a href="#" id="exampleclick2">'.img_down().'</a><br>';
-				print '<div id="example2" class="hidden">';
-				print 'http://lists.example.com/cgi-bin/mailman/admin/%LISTE%/members/remove?unsubscribees_upload=%EMAIL%&amp;adminpw=%MAILMAN_ADMINPW%&amp;send_unsub_ack_to_this_batch=0&amp;send_unsub_notifications_to_list_owner=0';
-				print '</div>';
-				//print 'http://lists.example.com/cgi-bin/mailman/admin/%LISTE%/members/remove?adminpw=%MAILMAN_ADMINPW%&unsubscribees=%EMAIL%';
+				echo'. '.$langs->trans("Example").': <a href="#" id="exampleclick2">'.img_down().'</a><br>';
+				echo'<div id="example2" class="hidden">';
+				echo'http://lists.example.com/cgi-bin/mailman/admin/%LISTE%/members/remove?unsubscribees_upload=%EMAIL%&amp;adminpw=%MAILMAN_ADMINPW%&amp;send_unsub_ack_to_this_batch=0&amp;send_unsub_notifications_to_list_owner=0';
+				echo'</div>';
+				//echo'http://lists.example.com/cgi-bin/mailman/admin/%LISTE%/members/remove?adminpw=%MAILMAN_ADMINPW%&unsubscribees=%EMAIL%';
 			} elseif ($const == 'ADHERENT_MAILMAN_LISTS') {
-				print '. '.$langs->trans("Example").': <a href="#" id="exampleclick3">'.img_down().'</a><br>';
-				print '<div id="example3" class="hidden">';
-				print 'mymailmanlist<br>';
-				print 'mymailmanlist1,mymailmanlist2<br>';
-				print 'TYPE:Type1:mymailmanlist1,TYPE:Type2:mymailmanlist2<br>';
+				echo'. '.$langs->trans("Example").': <a href="#" id="exampleclick3">'.img_down().'</a><br>';
+				echo'<div id="example3" class="hidden">';
+				echo'mymailmanlist<br>';
+				echo'mymailmanlist1,mymailmanlist2<br>';
+				echo'TYPE:Type1:mymailmanlist1,TYPE:Type2:mymailmanlist2<br>';
 				if (isModEnabled('category')) {
-					print 'CATEG:Categ1:mymailmanlist1,CATEG:Categ2:mymailmanlist2<br>';
+					echo'CATEG:Categ1:mymailmanlist1,CATEG:Categ2:mymailmanlist2<br>';
 				}
-				print '</div>';
-				//print 'http://lists.example.com/cgi-bin/mailman/admin/%LISTE%/members/remove?adminpw=%MAILMAN_ADMINPW%&unsubscribees=%EMAIL%';
+				echo'</div>';
+				//echo'http://lists.example.com/cgi-bin/mailman/admin/%LISTE%/members/remove?adminpw=%MAILMAN_ADMINPW%&unsubscribees=%EMAIL%';
 			} elseif (in_array($const, ['ADHERENT_MAIL_FROM', 'ADHERENT_CC_MAIL_FROM'])) {
-				print ' '.img_help(1, $langs->trans("EMailHelpMsgSPFDKIM"));
+				echo' '.img_help(1, $langs->trans("EMailHelpMsgSPFDKIM"));
 			}
 
-			print "</td>\n";
+			echo"</td>\n";
 
 			// Value
 			if ($const == 'ADHERENT_CARD_TYPE' || $const == 'ADHERENT_ETIQUETTE_TYPE') {
-				print '<td>';
+				echo'<td>';
 				// List of possible labels (defined into $_Avery_Labels variable set into format_cards.lib.php)
 				require_once DOL_DOCUMENT_ROOT.'/core/lib/format_cards.lib.php';
 				$arrayoflabels = array();
 				foreach (array_keys($_Avery_Labels) as $codecards) {
 					$arrayoflabels[$codecards] = $_Avery_Labels[$codecards]['name'];
 				}
-				print $form->selectarray('constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')), $arrayoflabels, ($obj->value ? $obj->value : 'CARD'), 1, 0, 0);
-				print '<input type="hidden" name="consttype" value="yesno">';
-				print '<input type="hidden" name="constnote'.(empty($strictw3c) ? '' : '[]').'" value="'.nl2br(dol_escape_htmltag($obj->note)).'">';
-				print '</td>';
+				echo$form->selectarray('constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')), $arrayoflabels, ($obj->value ? $obj->value : 'CARD'), 1, 0, 0);
+				echo'<input type="hidden" name="consttype" value="yesno">';
+				echo'<input type="hidden" name="constnote'.(empty($strictw3c) ? '' : '[]').'" value="'.nl2br(dol_escape_htmltag($obj->note)).'">';
+				echo'</td>';
 			} else {
-				print '<td>';
-				print '<input type="hidden" name="consttype'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')).'" value="'.($obj->type ? $obj->type : 'string').'">';
-				print '<input type="hidden" name="constnote'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')).'" value="'.nl2br(dol_escape_htmltag($obj->note)).'">';
+				echo'<td>';
+				echo'<input type="hidden" name="consttype'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')).'" value="'.($obj->type ? $obj->type : 'string').'">';
+				echo'<input type="hidden" name="constnote'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')).'" value="'.nl2br(dol_escape_htmltag($obj->note)).'">';
 				if ($obj->type == 'textarea' || in_array($const, array('ADHERENT_CARD_TEXT', 'ADHERENT_CARD_TEXT_RIGHT', 'ADHERENT_ETIQUETTE_TEXT'))) {
-					print '<textarea class="flat" name="constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')).'" cols="50" rows="5" wrap="soft">'."\n";
-					print $obj->value;
-					print "</textarea>\n";
+					echo'<textarea class="flat" name="constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')).'" cols="50" rows="5" wrap="soft">'."\n";
+					echo$obj->value;
+					echo"</textarea>\n";
 				} elseif ($obj->type == 'html') {
 					require_once DOL_DOCUMENT_ROOT.'/core/class/doleditor.class.php';
 					$doleditor = new DolEditor('constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')), $obj->value, '', 160, 'gestimag_notes', '', false, false, isModEnabled('fckeditor'), ROWS_5, '90%');
 					$doleditor->Create();
 				} elseif ($obj->type == 'yesno') {
-					print $form->selectyesno('constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')), $obj->value, 1, false, 0, 1);
+					echo$form->selectyesno('constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')), $obj->value, 1, false, 0, 1);
 				} elseif (preg_match('/emailtemplate/', $obj->type)) {
 					include_once DOL_DOCUMENT_ROOT.'/core/class/html.formmail.class.php';
 					$formmail = new FormMail($db);
@@ -1848,35 +1848,35 @@ function form_constantes($tableau, $strictw3c = 2, $helptext = '', $text = 'Valu
 					}
 					//var_dump($arraydefaultmessage);
 					//var_dump($arrayofmessagename);
-					print $form->selectarray('constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')), $arrayofmessagename, $obj->value.':'.$tmp[1], 'None', 0, 0, '', 0, 0, 0, '', '', 1);
+					echo$form->selectarray('constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')), $arrayofmessagename, $obj->value.':'.$tmp[1], 'None', 0, 0, '', 0, 0, 0, '', '', 1);
 				} elseif (preg_match('/MAIL_FROM$/i', $const)) {
-					print img_picto('', 'email', 'class="pictofixedwidth"').'<input type="text" class="flat minwidth300" name="constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')).'" value="'.dol_escape_htmltag($obj->value).'">';
+					echoimg_picto('', 'email', 'class="pictofixedwidth"').'<input type="text" class="flat minwidth300" name="constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')).'" value="'.dol_escape_htmltag($obj->value).'">';
 				} else { // type = 'string' ou 'chaine'
-					print '<input type="text" class="flat minwidth300" name="constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')).'" value="'.dol_escape_htmltag($obj->value).'">';
+					echo'<input type="text" class="flat minwidth300" name="constvalue'.(empty($strictw3c) ? '' : ($strictw3c == 3 ? '_'.$const : '[]')).'" value="'.dol_escape_htmltag($obj->value).'">';
 				}
-				print '</td>';
+				echo'</td>';
 			}
 
 			// Submit
 			if (empty($strictw3c)) {
-				print '<td class="center">';
-				print '<input type="submit" class="button small reposition" value="'.$langs->trans("Update").'" name="update">';
-				print "</td>";
+				echo'<td class="center">';
+				echo'<input type="submit" class="button small reposition" value="'.$langs->trans("Update").'" name="update">';
+				echo"</td>";
 			}
 
-			print "</tr>\n";
+			echo"</tr>\n";
 
 			if (empty($strictw3c)) {
-				print "</form>\n";
+				echo"</form>\n";
 			}
 		}
 	}
-	print '</table>';
-	print '</div>';
+	echo'</table>';
+	echo'</div>';
 
 	if (!empty($strictw3c) && $strictw3c == 1) {
-		print '<div align="center"><input type="submit" class="button small reposition" value="'.$langs->trans("Update").'" name="update"></div>';
-		print "</form>\n";
+		echo'<div align="center"><input type="submit" class="button small reposition" value="'.$langs->trans("Update").'" name="update"></div>';
+		echo"</form>\n";
 	}
 }
 
@@ -1900,7 +1900,7 @@ function showModulesExludedForExternal($modules)
 		foreach ($tmpmodules as $module) {		// Loop on array of modules
 			$moduleconst = $module->const_name;
 			$modulename = strtolower($module->name);
-			//print 'modulename='.$modulename;
+			//echo'modulename='.$modulename;
 
 			//if (empty($conf->global->$moduleconst)) continue;
 			if (!in_array($modulename, $listofmodules)) {

@@ -166,38 +166,38 @@ if ($action == 'create') {
 
 	$total = $salary->amount;
 	if (!empty($conf->use_javascript_ajax)) {
-		print "\n".'<script type="text/javascript">';
+		echo "\n".'<script type="text/javascript">';
 
 		//Add js for AutoFill
-		print ' $(document).ready(function () {';
-		print ' 	$(".AutoFillAmount").on(\'click touchstart\', function(){
+		echo ' $(document).ready(function () {';
+		echo ' 	$(".AutoFillAmount").on(\'click touchstart\', function(){
                         var amount = $(this).data("value");
 						document.getElementById($(this).data(\'rowid\')).value = amount ;
 					});';
-		print '	});'."\n";
+		echo '	});'."\n";
 
-		print '	</script>'."\n";
+		echo '	</script>'."\n";
 	}
 
-	print load_fiche_titre($langs->trans("DoPayment"));
-	print "<br>\n";
+	echo load_fiche_titre($langs->trans("DoPayment"));
+	echo "<br>\n";
 
-	print '<form name="add_payment" action="'.$_SERVER['PHP_SELF'].'" method="post">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="id" value="'.$id.'">';
-	print '<input type="hidden" name="chid" value="'.$id.'">';
-	print '<input type="hidden" name="action" value="add_payment">';
+	echo '<form name="add_payment" action="'.$_SERVER['PHP_SELF'].'" method="post">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="id" value="'.$id.'">';
+	echo '<input type="hidden" name="chid" value="'.$id.'">';
+	echo '<input type="hidden" name="action" value="add_payment">';
 
-	print dol_get_fiche_head();
+	echo dol_get_fiche_head();
 
-	print '<table class="border centpercent">';
+	echo '<table class="border centpercent">';
 
-	print '<tr><td class="titlefieldcreate">'.$langs->trans("Ref").'</td><td><a href="'.DOL_URL_ROOT.'/salaries/card.php?id='.$id.'">'.$id.'</a></td></tr>';
-	print '<tr><td>'.$langs->trans("DateStart")."</td><td>".dol_print_date($salary->datesp, 'day')."</td></tr>\n";
-	print '<tr><td>'.$langs->trans("DateEnd")."</td><td>".dol_print_date($salary->dateep, 'day')."</td></tr>\n";
-	print '<tr><td>'.$langs->trans("Label").'</td><td>'.$salary->label."</td></tr>\n";
-	/*print '<tr><td>'.$langs->trans("DateDue")."</td><td>".dol_print_date($salary->date_ech,'day')."</td></tr>\n";
-	print '<tr><td>'.$langs->trans("Amount")."</td><td>".price($salary->amount,0,$outputlangs,1,-1,-1,$conf->currency).'</td></tr>';*/
+	echo '<tr><td class="titlefieldcreate">'.$langs->trans("Ref").'</td><td><a href="'.DOL_URL_ROOT.'/salaries/card.php?id='.$id.'">'.$id.'</a></td></tr>';
+	echo '<tr><td>'.$langs->trans("DateStart")."</td><td>".dol_print_date($salary->datesp, 'day')."</td></tr>\n";
+	echo '<tr><td>'.$langs->trans("DateEnd")."</td><td>".dol_print_date($salary->dateep, 'day')."</td></tr>\n";
+	echo '<tr><td>'.$langs->trans("Label").'</td><td>'.$salary->label."</td></tr>\n";
+	/*echo '<tr><td>'.$langs->trans("DateDue")."</td><td>".dol_print_date($salary->date_ech,'day')."</td></tr>\n";
+	echo '<tr><td>'.$langs->trans("Amount")."</td><td>".price($salary->amount,0,$outputlangs,1,-1,-1,$conf->currency).'</td></tr>';*/
 
 	$sql = "SELECT sum(p.amount) as total";
 	$sql .= " FROM ".MAIN_DB_PREFIX."payment_salary as p";
@@ -208,44 +208,44 @@ if ($action == 'create') {
 		$sumpaid = $obj->total;
 		$db->free($resql);
 	}
-	/*print '<tr><td>'.$langs->trans("AlreadyPaid").'</td><td>'.price($sumpaid,0,$outputlangs,1,-1,-1,$conf->currency).'</td></tr>';
-	print '<tr><td class="tdtop">'.$langs->trans("RemainderToPay").'</td><td>'.price($total-$sumpaid,0,$outputlangs,1,-1,-1,$conf->currency).'</td></tr>';*/
+	/*echo '<tr><td>'.$langs->trans("AlreadyPaid").'</td><td>'.price($sumpaid,0,$outputlangs,1,-1,-1,$conf->currency).'</td></tr>';
+	echo '<tr><td class="tdtop">'.$langs->trans("RemainderToPay").'</td><td>'.price($total-$sumpaid,0,$outputlangs,1,-1,-1,$conf->currency).'</td></tr>';*/
 
-	print '<tr><td class="fieldrequired">'.$langs->trans("Date").'</td><td>';
+	echo '<tr><td class="fieldrequired">'.$langs->trans("Date").'</td><td>';
 	$datepaye = dol_mktime(GETPOSTINT("rehour"), GETPOSTINT("remin"), GETPOSTINT("resec"), GETPOSTINT("remonth"), GETPOSTINT("reday"), GETPOSTINT("reyear"));
 	$datepayment = !getDolGlobalString('MAIN_AUTOFILL_DATE') ? (GETPOST("remonth") ? $datepaye : -1) : '';
-	print $form->selectDate($datepayment, '', 1, 1, 0, "add_payment", 1, 1, 0, '', '', $salary->dateep, '', 1, $langs->trans("DateEnd"));
-	print "</td>";
-	print '</tr>';
+	echo $form->selectDate($datepayment, '', 1, 1, 0, "add_payment", 1, 1, 0, '', '', $salary->dateep, '', 1, $langs->trans("DateEnd"));
+	echo "</td>";
+	echo '</tr>';
 
-	print '<tr><td class="fieldrequired">'.$langs->trans("PaymentMode").'</td><td>';
+	echo '<tr><td class="fieldrequired">'.$langs->trans("PaymentMode").'</td><td>';
 	$form->select_types_paiements(GETPOSTISSET("paiementtype") ? GETPOST("paiementtype") : $salary->type_payment, "paiementtype");
-	print "</td>\n";
-	print '</tr>';
+	echo "</td>\n";
+	echo '</tr>';
 
-	print '<tr>';
-	print '<td class="fieldrequired">'.$langs->trans('AccountToDebit').'</td>';
-	print '<td>';
-	print img_picto('', 'bank_account', 'class="pictofixedwidth"');
+	echo '<tr>';
+	echo '<td class="fieldrequired">'.$langs->trans('AccountToDebit').'</td>';
+	echo '<td>';
+	echo img_picto('', 'bank_account', 'class="pictofixedwidth"');
 	$form->select_comptes(GETPOSTISSET("accountid") ? GETPOSTINT("accountid") : $salary->accountid, "accountid", 0, '', 1); // Show opend bank account list
-	print '</td></tr>';
+	echo '</td></tr>';
 
 	// Number
-	print '<tr><td>'.$langs->trans('Numero');
-	print ' <em>('.$langs->trans("ChequeOrTransferNumber").')</em>';
-	print '</td>';
-	print '<td><input name="num_payment" type="text" value="'.GETPOST('num_payment', 'alphanohtml').'"></td></tr>'."\n";
+	echo '<tr><td>'.$langs->trans('Numero');
+	echo ' <em>('.$langs->trans("ChequeOrTransferNumber").')</em>';
+	echo '</td>';
+	echo '<td><input name="num_payment" type="text" value="'.GETPOST('num_payment', 'alphanohtml').'"></td></tr>'."\n";
 
-	print '<tr>';
-	print '<td class="tdtop">'.$langs->trans("Comments").'</td>';
-	print '<td class="tdtop"><textarea name="note" wrap="soft" cols="60" rows="'.ROWS_3.'">';
-	print GETPOST('note');
-	print '</textarea></td>';
-	print '</tr>';
+	echo '<tr>';
+	echo '<td class="tdtop">'.$langs->trans("Comments").'</td>';
+	echo '<td class="tdtop"><textarea name="note" wrap="soft" cols="60" rows="'.ROWS_3.'">';
+	echo GETPOST('note');
+	echo '</textarea></td>';
+	echo '</tr>';
 
-	print '</table>';
+	echo '</table>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
 	/*
 	 * Autres charges impayees
@@ -253,15 +253,15 @@ if ($action == 'create') {
 	$num = 1;
 	$i = 0;
 
-	print '<table class="noborder centpercent">';
-	print '<tr class="liste_titre">';
-	//print '<td>'.$langs->trans("SocialContribution").'</td>';
-	print '<td class="left">'.$langs->trans("DateEnd").'</td>';
-	print '<td class="right">'.$langs->trans("Amount").'</td>';
-	print '<td class="right">'.$langs->trans("AlreadyPaid").'</td>';
-	print '<td class="right">'.$langs->trans("RemainderToPay").'</td>';
-	print '<td class="center">'.$langs->trans("Amount").'</td>';
-	print "</tr>\n";
+	echo '<table class="noborder centpercent">';
+	echo '<tr class="liste_titre">';
+	//echo '<td>'.$langs->trans("SocialContribution").'</td>';
+	echo '<td class="left">'.$langs->trans("DateEnd").'</td>';
+	echo '<td class="right">'.$langs->trans("Amount").'</td>';
+	echo '<td class="right">'.$langs->trans("AlreadyPaid").'</td>';
+	echo '<td class="right">'.$langs->trans("RemainderToPay").'</td>';
+	echo '<td class="center">'.$langs->trans("Amount").'</td>';
+	echo "</tr>\n";
 
 	$total = 0;
 	$total_ttc = 0.;
@@ -270,38 +270,38 @@ if ($action == 'create') {
 	while ($i < $num) {
 		$objp = $salary;
 
-		print '<tr class="oddeven">';
+		echo '<tr class="oddeven">';
 
 		if ($objp->dateep > 0) {
-			print '<td class="left">'.dol_print_date($objp->dateep, 'day').'</td>'."\n";
+			echo '<td class="left">'.dol_print_date($objp->dateep, 'day').'</td>'."\n";
 		} else {
-			print '<td align="center"><b>!!!</b></td>'."\n";
+			echo '<td align="center"><b>!!!</b></td>'."\n";
 		}
 
-		print '<td class="right">'.price($objp->amount)."</td>";
+		echo '<td class="right">'.price($objp->amount)."</td>";
 
-		print '<td class="right">'.price($sumpaid)."</td>";
+		echo '<td class="right">'.price($sumpaid)."</td>";
 
-		print '<td class="right">'.price($objp->amount - $sumpaid)."</td>";
+		echo '<td class="right">'.price($objp->amount - $sumpaid)."</td>";
 
-		print '<td class="center">';
+		echo '<td class="center">';
 		if ($sumpaid < $objp->amount) {
 			$namef = "amount_".$objp->id;
 			$nameRemain = "remain_".$objp->id;
 			/* Disabled, we autofil the amount with remain to pay by default
 			if (!empty($conf->use_javascript_ajax)) {
-				print img_picto("Auto fill", 'rightarrow', "class='AutoFillAmount' data-rowid='".$namef."' data-value='".($objp->amount - $sumpaid)."'");
+				echo img_picto("Auto fill", 'rightarrow', "class='AutoFillAmount' data-rowid='".$namef."' data-value='".($objp->amount - $sumpaid)."'");
 			} */
 			$valuetoshow = GETPOSTISSET($namef) ? GETPOST($namef) : ($objp->amount - $sumpaid);
 
-			print '<input type=hidden class="sum_remain" name="'.$nameRemain.'" value="'.$valuetoshow.'">';
-			print '<input type="text" class="right width75" name="'.$namef.'" id="'.$namef.'" value="'.$valuetoshow.'">';
+			echo '<input type=hidden class="sum_remain" name="'.$nameRemain.'" value="'.$valuetoshow.'">';
+			echo '<input type="text" class="right width75" name="'.$namef.'" id="'.$namef.'" value="'.$valuetoshow.'">';
 		} else {
-			print '-';
+			echo '-';
 		}
-		print "</td>";
+		echo "</td>";
 
-		print "</tr>\n";
+		echo "</tr>\n";
 		$total += $objp->total;
 		$total_ttc += $objp->total_ttc;
 		$totalrecu += $objp->am;
@@ -309,27 +309,27 @@ if ($action == 'create') {
 	}
 	if ($i > 1) {
 		// Print total
-		print '<tr class="oddeven">';
-		print '<td colspan="2" class="left">'.$langs->trans("Total").':</td>';
-		print '<td class="right"><b>'.price($total_ttc).'</b></td>';
-		print '<td class="right"><b>'.price($totalrecu).'</b></td>';
-		print '<td class="right"><b>'.price($total_ttc - $totalrecu).'</b></td>';
-		print '<td align="center">&nbsp;</td>';
-		print "</tr>\n";
+		echo '<tr class="oddeven">';
+		echo '<td colspan="2" class="left">'.$langs->trans("Total").':</td>';
+		echo '<td class="right"><b>'.price($total_ttc).'</b></td>';
+		echo '<td class="right"><b>'.price($totalrecu).'</b></td>';
+		echo '<td class="right"><b>'.price($total_ttc - $totalrecu).'</b></td>';
+		echo '<td align="center">&nbsp;</td>';
+		echo "</tr>\n";
 	}
 
-	print "</table>";
+	echo "</table>";
 
-	print '<br>';
+	echo '<br>';
 
 	// Bouton Save payment
-	print '<div class="center">';
-	print '<div class="paddingbottom"><input type="checkbox" checked name="closepaidsalary" id="closepaidsalary"><label for="closepaidsalary">'.$langs->trans("ClosePaidSalaryAutomatically").'</label></div>';
-	print $form->buttonsSaveCancel("ToMakePayment", "Cancel", '', true);
-	print '</div>';
+	echo '<div class="center">';
+	echo '<div class="paddingbottom"><input type="checkbox" checked name="closepaidsalary" id="closepaidsalary"><label for="closepaidsalary">'.$langs->trans("ClosePaidSalaryAutomatically").'</label></div>';
+	echo $form->buttonsSaveCancel("ToMakePayment", "Cancel", '', true);
+	echo '</div>';
 
 
-	print "</form>\n";
+	echo "</form>\n";
 }
 
 llxFooter();

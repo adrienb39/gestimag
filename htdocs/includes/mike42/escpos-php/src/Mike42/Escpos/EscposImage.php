@@ -407,7 +407,7 @@ abstract class EscposImage
      * an EscposImage implementation which uses an available library.
      *
      * The sub-classes can be constructed directly if you know that you will
-     * have Imagick or GD on the print server.
+     * have Imagick or GD on the echo server.
      *
      * @param string $filename
      *  File to load from

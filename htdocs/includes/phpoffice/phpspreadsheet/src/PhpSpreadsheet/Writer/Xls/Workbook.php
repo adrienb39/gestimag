@@ -546,7 +546,7 @@ class Workbook extends BIFFwriter
 
     /**
      * Writes all the DEFINEDNAME records (BIFF8).
-     * So far this is only used for repeating rows/columns (print titles) and print areas.
+     * So far this is only used for repeating rows/columns (echo titles) and echo areas.
      */
     private function writeAllDefinedNamesBiff8(): string
     {
@@ -587,7 +587,7 @@ class Workbook extends BIFFwriter
         // total number of sheets
         $total_worksheets = $this->spreadsheet->getSheetCount();
 
-        // write the print titles (repeating rows, columns), if any
+        // write the echo titles (repeating rows, columns), if any
         for ($i = 0; $i < $total_worksheets; ++$i) {
             $sheetSetup = $this->spreadsheet->getSheet($i)->getPageSetup();
             // simultaneous repeatColumns repeatRows
@@ -637,7 +637,7 @@ class Workbook extends BIFFwriter
             }
         }
 
-        // write the print areas, if any
+        // write the echo areas, if any
         for ($i = 0; $i < $total_worksheets; ++$i) {
             $sheetSetup = $this->spreadsheet->getSheet($i)->getPageSetup();
             if ($sheetSetup->isPrintAreaSet()) {

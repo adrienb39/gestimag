@@ -91,9 +91,9 @@ $arrayofcss = array();
 top_htmlhead($head, $title, 0, 0, $arrayofjs, $arrayofcss);
 
 
-print '<body>'."\n";
-print '<div>';
-//print '<br>';
+echo '<body>'."\n";
+echo '<div>';
+//echo '<br>';
 
 // Define $multicompanyList
 $multicompanyList = '';
@@ -146,17 +146,17 @@ if (!isModEnabled('multicompany')) {
 	}
 }
 
-print "\n";
-print "<!-- Begin Multicompany list -->\n";
-print '<div class="center"><div class="center" style="padding: 6px;">';
-print '<style>.menu_titre { padding-top: 7px; }</style>';
-print '<div id="blockvmenusearch" class="tagtable center searchpage">'."\n";
-print $multicompanyList;
-print '</div>'."\n";
-print '</div></div>';
-print "\n<!-- End Multicompany list -->\n";
+echo "\n";
+echo "<!-- Begin Multicompany list -->\n";
+echo '<div class="center"><div class="center" style="padding: 6px;">';
+echo '<style>.menu_titre { padding-top: 7px; }</style>';
+echo '<div id="blockvmenusearch" class="tagtable center searchpage">'."\n";
+echo $multicompanyList;
+echo '</div>'."\n";
+echo '</div></div>';
+echo "\n<!-- End Multicompany list -->\n";
 
-print '</div>';
-print '</body></html>'."\n";
+echo '</div>';
+echo '</body></html>'."\n";
 
 $db->close();

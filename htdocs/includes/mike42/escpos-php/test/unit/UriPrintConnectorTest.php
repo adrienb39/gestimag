@@ -26,7 +26,7 @@ class UriPrintConnectorTest extends PHPUnit\Framework\TestCase
         $connector = UriPrintConnector::get("smb://windows/printer");
         $this -> assertEquals('Mike42\Escpos\PrintConnectors\WindowsPrintConnector', get_class($connector));
         // We expect that this will throw an exception, we can't
-        // realistically print to a real printer in this test though... :)
+        // realistically echo to a real printer in this test though... :)
         $connector -> __destruct();
     }
 
@@ -55,7 +55,7 @@ class UriPrintConnectorTest extends PHPUnit\Framework\TestCase
      */
     public function testUnsupportedUri()
     {
-        // Try to print to something silly
+        // Try to echo to something silly
         $connector = UriPrintConnector::get("ldap://host:1234/");
     }
 }

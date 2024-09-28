@@ -75,12 +75,12 @@ $securitykey = GETPOST('securitykey');
 dol_syslog("public/emailing/mailing-unsubscribe.php : tag=".$tag." securitykey=".$securitykey, LOG_DEBUG);
 
 if ($securitykey != dol_hash(getDolGlobalString('MAILING_EMAIL_UNSUBSCRIBE_KEY')."-".$tag."-".$email."-".$mtid, 'md5')) {
-	print 'Bad security key value.';
+	echo 'Bad security key value.';
 	exit;
 }
 
 if (empty($tag) || ($unsuscrib != '1')) {
-	print 'Bad parameters';
+	echo 'Bad parameters';
 	exit;
 }
 
@@ -108,18 +108,18 @@ if (!$resql) {
 $obj = $db->fetch_object($resql);
 
 if (empty($obj)) {
-	print 'Emailing tag '.$tag.' not found in database. Operation canceled.';
+	echo 'Emailing tag '.$tag.' not found in database. Operation canceled.';
 	llxFooter('', 'private');
 	exit;
 }
 if (empty($obj->email)) {
-	print 'Email for this tag is not valid. Operation canceled.';
+	echo 'Email for this tag is not valid. Operation canceled.';
 	llxFooter('', 'private');
 	exit;
 }
 
 if ($obj->statut == 3) {
-	print 'Email tag already set to unsubscribe. Operation canceled.';
+	echo 'Email tag already set to unsubscribe. Operation canceled.';
 	llxFooter('', 'private');
 	exit;
 }
@@ -127,7 +127,7 @@ if ($obj->statut == 3) {
 /*
 if ($obj->email != $email)
 {
-	print 'Email does not match tagnot found. No need to unsubscribe.';
+	echo 'Email does not match tagnot found. No need to unsubscribe.';
 	exit;
 }
 */
@@ -162,9 +162,9 @@ $resql = $db->query($sql);
 //if (! $resql) dol_print_error($db);	No test on errors, may fail if already unsubscribed
 
 
-print '<table><tr><td style="text_align:center;">';
-print $langs->trans("YourMailUnsubcribeOK", $obj->email)."<br>\n";
-print '</td></tr></table>';
+echo '<table><tr><td style="text_align:center;">';
+echo $langs->trans("YourMailUnsubcribeOK", $obj->email)."<br>\n";
+echo '</td></tr></table>';
 
 
 llxFooter('', 'public');

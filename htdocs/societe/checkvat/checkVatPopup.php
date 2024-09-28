@@ -43,24 +43,24 @@ $conf->dol_hide_leftmenu = 1;
 
 llxHeader('', $langs->trans("VATIntraCheckableOnEUSite"));
 
-print '<div class="vatcheckarea margintoponly marginbottomonly">';
+echo '<div class="vatcheckarea margintoponly marginbottomonly">';
 
-print load_fiche_titre($langs->trans("VATIntraCheckableOnEUSite"), '', 'title_setup');
+echo load_fiche_titre($langs->trans("VATIntraCheckableOnEUSite"), '', 'title_setup');
 
 $vatNumber = GETPOST("vatNumber", 'alpha');
 
 if (!$vatNumber) {
-	print '<br>';
-	print '<span class="error">'.$langs->transnoentities("ErrorFieldRequired", $langs->trans("VATIntraShort")).'</span><br>';
+	echo '<br>';
+	echo '<span class="error">'.$langs->transnoentities("ErrorFieldRequired", $langs->trans("VATIntraShort")).'</span><br>';
 } else {
 	$vatNumber = preg_replace('/\^\w/', '', $vatNumber);
 	$vatNumber = str_replace(array(' ', '.'), '', $vatNumber);
 	$countryCode = substr($vatNumber, 0, 2);
 	$vatNumber = substr($vatNumber, 2);
 
-	print '<b>'.$langs->trans("Country").'</b>: '.$countryCode.'<br>';
-	print '<b>'.$langs->trans("VATIntraShort").'</b>: '.$vatNumber.'<br>';
-	print '<br>';
+	echo '<b>'.$langs->trans("Country").'</b>: '.$countryCode.'<br>';
+	echo '<b>'.$langs->trans("VATIntraShort").'</b>: '.$vatNumber.'<br>';
+	echo '<br>';
 
 	// Set the parameters to send to the WebService
 	$parameters = array(
@@ -90,71 +90,71 @@ if (!$vatNumber) {
 	$result = $soapclient->call($WS_METHOD, $parameters);
 
 	$messagetoshow = '';
-	print '<b>'.$langs->trans("Response").'</b>:<br>';
+	echo '<b>'.$langs->trans("Response").'</b>:<br>';
 	$faultstring = $result['faultstring'] ?? '';
 	// Service indisponible
 	if (!is_array($result) || preg_match('/SERVICE_UNAVAILABLE/i', $faultstring)) {
-		print '<span class="error">'.$langs->trans("ErrorServiceUnavailableTryLater").'</span><br>';
+		echo '<span class="error">'.$langs->trans("ErrorServiceUnavailableTryLater").'</span><br>';
 		$messagetoshow = $soapclient->response;
 	} elseif (preg_match('/TIMEOUT/i', $faultstring)) {
-		print '<span class="error">'.$langs->trans("ErrorServiceUnavailableTryLater").'</span><br>';
+		echo '<span class="error">'.$langs->trans("ErrorServiceUnavailableTryLater").'</span><br>';
 		$messagetoshow = $soapclient->response;
 	} elseif (preg_match('/SERVER_BUSY/i', $faultstring)) {
-		print '<span class="error">'.$langs->trans("ErrorServiceUnavailableTryLater").'</span><br>';
+		echo '<span class="error">'.$langs->trans("ErrorServiceUnavailableTryLater").'</span><br>';
 		$messagetoshow = $soapclient->response;
 	} elseif ($faultstring) {
-		print '<span class="error">'.$langs->trans("Error").'</span><br>';
+		echo '<span class="error">'.$langs->trans("Error").'</span><br>';
 		$messagetoshow = $faultstring;
 	} elseif (preg_match('/INVALID_INPUT/i', $faultstring)
 	|| ($result['requestDate'] && !$result['valid'])) {
 		// Syntax ko
 		if ($result['requestDate']) {
-			print $langs->trans("Date").': '.$result['requestDate'].'<br>';
+			echo $langs->trans("Date").': '.$result['requestDate'].'<br>';
 		}
-		print $langs->trans("VATIntraSyntaxIsValid").': <span class="error">'.$langs->trans("No").'</span> (Might be a non europeen VAT)<br>';
-		print $langs->trans("ValueIsValid").': <span class="error">'.$langs->trans("No").'</span> (Might be a non europeen VAT)<br>';
+		echo $langs->trans("VATIntraSyntaxIsValid").': <span class="error">'.$langs->trans("No").'</span> (Might be a non europeen VAT)<br>';
+		echo $langs->trans("ValueIsValid").': <span class="error">'.$langs->trans("No").'</span> (Might be a non europeen VAT)<br>';
 		//$messagetoshow=$soapclient->response;
 	} else {
 		// Syntax ok
 		if ($result['requestDate']) {
-			print $langs->trans("Date").': '.$result['requestDate'].'<br>';
+			echo $langs->trans("Date").': '.$result['requestDate'].'<br>';
 		}
-		print $langs->trans("VATIntraSyntaxIsValid").': <span class="ok">'.$langs->trans("Yes").'</span><br>';
-		print $langs->trans("ValueIsValid").': ';
+		echo $langs->trans("VATIntraSyntaxIsValid").': <span class="ok">'.$langs->trans("Yes").'</span><br>';
+		echo $langs->trans("ValueIsValid").': ';
 		if (preg_match('/MS_UNAVAILABLE/i', $faultstring)) {
-			print '<span class="error">'.$langs->trans("ErrorVATCheckMS_UNAVAILABLE", $countryCode).'</span><br>';
+			echo '<span class="error">'.$langs->trans("ErrorVATCheckMS_UNAVAILABLE", $countryCode).'</span><br>';
 		} else {
 			if (!empty($result['valid']) && ($result['valid'] == 1 || $result['valid'] == 'true')) {
-				print '<span	 class="ok">'.$langs->trans("Yes").'</span>';
-				print '<br>';
-				print $langs->trans("Name").': '.$result['name'].'<br>';
-				print $langs->trans("Address").': '.$result['address'].'<br>';
+				echo '<span	 class="ok">'.$langs->trans("Yes").'</span>';
+				echo '<br>';
+				echo $langs->trans("Name").': '.$result['name'].'<br>';
+				echo $langs->trans("Address").': '.$result['address'].'<br>';
 			} else {
-				print '<span	 class="error">'.$langs->trans("No").'</span>';
-				print '<br>'."\n";
+				echo '<span	 class="error">'.$langs->trans("No").'</span>';
+				echo '<br>'."\n";
 			}
 		}
 	}
 
 	// Show log data into page
-	// print "\n";
-	// print '<!-- ';
+	// echo "\n";
+	// echo '<!-- ';
 	// var_dump($result);
-	// print '-->';
+	// echo '-->';
 }
 
-print '<br>';
-print $langs->trans("VATIntraManualCheck", $langs->trans("VATIntraCheckURL"), $langs->transnoentitiesnoconv("VATIntraCheckURL")).'<br>';
-print '<br>';
-print '<div class="center"><input type="button" class="button" value="'.$langs->trans("CloseWindow").'" onclick="window.close()"></div>';
+echo '<br>';
+echo $langs->trans("VATIntraManualCheck", $langs->trans("VATIntraCheckURL"), $langs->transnoentitiesnoconv("VATIntraCheckURL")).'<br>';
+echo '<br>';
+echo '<div class="center"><input type="button" class="button" value="'.$langs->trans("CloseWindow").'" onclick="window.close()"></div>';
 
 if ($messagetoshow) {
-	print '<br><br>';
-	print "\n".'Error returned:<br>';
-	print nl2br($messagetoshow);
+	echo '<br><br>';
+	echo "\n".'Error returned:<br>';
+	echo nl2br($messagetoshow);
 }
 
-print '</div>';
+echo '</div>';
 
 // End of page
 llxFooter();

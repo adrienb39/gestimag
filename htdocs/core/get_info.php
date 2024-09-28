@@ -64,9 +64,9 @@ top_htmlhead($head, $title, 0, 0, $arrayofjs, $arrayofcss);
 
 
 
-print '<body>'."\n";
-print '<div style="padding: 20px;">';
-//print '<br>';
+echo '<body>'."\n";
+echo '<div style="padding: 20px;">';
+//echo '<br>';
 
 // Define link to login card
 $appli = constant('DOL_APPLICATION_TITLE');
@@ -105,7 +105,7 @@ if (!getDolGlobalString('MAIN_OPTIMIZEFORTEXTBROWSER')) {
 	}
 }
 
-print '<div class="login_block_getinfo">'."\n";
+echo '<div class="login_block_getinfo">'."\n";
 
 // Add login user link
 $toprightmenu .= '<div class="login_block_user">';
@@ -155,11 +155,11 @@ if (GETPOSTINT('withlogout')) {
 
 $toprightmenu .= '</div>';
 
-print $toprightmenu;
+echo $toprightmenu;
 
-print "</div>\n"; // end div class="login_block"
+echo "</div>\n"; // end div class="login_block"
 
-print '</div>';
-print '</body></html>'."\n";
+echo '</div>';
+echo '</body></html>'."\n";
 
 $db->close();

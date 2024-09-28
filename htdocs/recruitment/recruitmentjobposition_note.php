@@ -94,7 +94,7 @@ if ($id > 0 || !empty($ref)) {
 
 	$head = recruitmentjobpositionPrepareHead($object);
 
-	print dol_get_fiche_head($head, 'note', $langs->trans("RecruitmentJobPosition"), -1, $object->picto);
+	echo dol_get_fiche_head($head, 'note', $langs->trans("RecruitmentJobPosition"), -1, $object->picto);
 
 	// Object card
 	$linkback = '<a href="'.dol_buildpath('/recruitment/recruitmentjobposition_list.php', 1).'?restore_lastsearch_values=1'.(!empty($socid) ? '&socid='.$socid : '').'">'.$langs->trans("BackToList").'</a>';
@@ -143,16 +143,16 @@ if ($id > 0 || !empty($ref)) {
 	dol_banner_tab($object, 'ref', $linkback, 1, 'ref', 'ref', $morehtmlref);
 
 
-	print '<div class="fichecenter">';
-	print '<div class="underbanner clearboth"></div>';
+	echo '<div class="fichecenter">';
+	echo '<div class="underbanner clearboth"></div>';
 
 
 	$cssclass = "titlefield";
 	include DOL_DOCUMENT_ROOT.'/core/tpl/notes.tpl.php';
 
-	print '</div>';
+	echo '</div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 }
 
 // End of page

@@ -46,7 +46,7 @@ require_once(dirname(__FILE__).'/tcpdf_barcodes_2d_include.php');
 $barcodeobj = new TCPDF2DBarcode('http://www.tcpdf.org', 'DATAMATRIX');
 
 // output the barcode as HTML object
-echo $barcodeobj->getBarcodeHTML(6, 6, 'black');
+echo  $barcodeobj->getBarcodeHTML(6, 6, 'black');
 
 //============================================================+
 // END OF FILE

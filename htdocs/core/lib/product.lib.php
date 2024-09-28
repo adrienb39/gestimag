@@ -431,12 +431,12 @@ function show_stats_for_company($product, $socid)
 
 	$nblines = 0;
 
-	print '<tr class="liste_titre">';
-	print '<td class="left" width="25%">'.$langs->trans("Referers").'</td>';
-	print '<td class="right" width="25%">'.$langs->trans("NbOfThirdParties").'</td>';
-	print '<td class="right" width="25%">'.$langs->trans("NbOfObjectReferers").'</td>';
-	print '<td class="right" width="25%">'.$langs->trans("TotalQuantity").'</td>';
-	print '</tr>';
+	echo'<tr class="liste_titre">';
+	echo'<td class="left" width="25%">'.$langs->trans("Referers").'</td>';
+	echo'<td class="right" width="25%">'.$langs->trans("NbOfThirdParties").'</td>';
+	echo'<td class="right" width="25%">'.$langs->trans("NbOfObjectReferers").'</td>';
+	echo'<td class="right" width="25%">'.$langs->trans("TotalQuantity").'</td>';
+	echo'</tr>';
 
 	// Customer proposals
 	if (isModEnabled("propal") && $user->hasRight('propal', 'lire')) {
@@ -446,16 +446,16 @@ function show_stats_for_company($product, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("propal");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/propal.php?id='.$product->id.'">'.img_object('', 'propal', 'class="pictofixedwidth"').$langs->trans("Proposals").'</a>';
-		print '</td><td class="right">';
-		print $product->stats_propale['customers'];
-		print '</td><td class="right">';
-		print $product->stats_propale['nb'];
-		print '</td><td class="right">';
-		print $product->stats_propale['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/propal.php?id='.$product->id.'">'.img_object('', 'propal', 'class="pictofixedwidth"').$langs->trans("Proposals").'</a>';
+		echo'</td><td class="right">';
+		echo$product->stats_propale['customers'];
+		echo'</td><td class="right">';
+		echo$product->stats_propale['nb'];
+		echo'</td><td class="right">';
+		echo$product->stats_propale['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 	// Supplier proposals
 	if (isModEnabled('supplier_proposal') && $user->hasRight('supplier_proposal', 'lire')) {
@@ -465,16 +465,16 @@ function show_stats_for_company($product, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("supplier_proposal");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/supplier_proposal.php?id='.$product->id.'">'.img_object('', 'supplier_proposal', 'class="pictofixedwidth"').$langs->trans("SupplierProposals").'</a>';
-		print '</td><td class="right">';
-		print $product->stats_proposal_supplier['suppliers'];
-		print '</td><td class="right">';
-		print $product->stats_proposal_supplier['nb'];
-		print '</td><td class="right">';
-		print $product->stats_proposal_supplier['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/supplier_proposal.php?id='.$product->id.'">'.img_object('', 'supplier_proposal', 'class="pictofixedwidth"').$langs->trans("SupplierProposals").'</a>';
+		echo'</td><td class="right">';
+		echo$product->stats_proposal_supplier['suppliers'];
+		echo'</td><td class="right">';
+		echo$product->stats_proposal_supplier['nb'];
+		echo'</td><td class="right">';
+		echo$product->stats_proposal_supplier['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 	// Sales orders
 	if (isModEnabled('order') && $user->hasRight('commande', 'lire')) {
@@ -484,16 +484,16 @@ function show_stats_for_company($product, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("orders");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/commande.php?id='.$product->id.'">'.img_object('', 'order', 'class="pictofixedwidth"').$langs->trans("CustomersOrders").'</a>';
-		print '</td><td class="right">';
-		print $product->stats_commande['customers'];
-		print '</td><td class="right">';
-		print $product->stats_commande['nb'];
-		print '</td><td class="right">';
-		print $product->stats_commande['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/commande.php?id='.$product->id.'">'.img_object('', 'order', 'class="pictofixedwidth"').$langs->trans("CustomersOrders").'</a>';
+		echo'</td><td class="right">';
+		echo$product->stats_commande['customers'];
+		echo'</td><td class="right">';
+		echo$product->stats_commande['nb'];
+		echo'</td><td class="right">';
+		echo$product->stats_commande['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 	// Supplier orders
 	if ((isModEnabled("fournisseur") && !getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD') && $user->hasRight('fournisseur', 'commande', 'lire')) || (isModEnabled("supplier_order") && $user->hasRight('supplier_order', 'lire'))) {
@@ -503,16 +503,16 @@ function show_stats_for_company($product, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("orders");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/commande_fournisseur.php?id='.$product->id.'">'.img_object('', 'supplier_order', 'class="pictofixedwidth"').$langs->trans("SuppliersOrders").'</a>';
-		print '</td><td class="right">';
-		print $product->stats_commande_fournisseur['suppliers'];
-		print '</td><td class="right">';
-		print $product->stats_commande_fournisseur['nb'];
-		print '</td><td class="right">';
-		print $product->stats_commande_fournisseur['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/commande_fournisseur.php?id='.$product->id.'">'.img_object('', 'supplier_order', 'class="pictofixedwidth"').$langs->trans("SuppliersOrders").'</a>';
+		echo'</td><td class="right">';
+		echo$product->stats_commande_fournisseur['suppliers'];
+		echo'</td><td class="right">';
+		echo$product->stats_commande_fournisseur['nb'];
+		echo'</td><td class="right">';
+		echo$product->stats_commande_fournisseur['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 	// Customer invoices
 	if (isModEnabled('invoice') && $user->hasRight('facture', 'lire')) {
@@ -522,16 +522,16 @@ function show_stats_for_company($product, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("bills");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/facture.php?id='.$product->id.'">'.img_object('', 'bill', 'class="pictofixedwidth"').$langs->trans("CustomersInvoices").'</a>';
-		print '</td><td class="right">';
-		print $product->stats_facture['customers'];
-		print '</td><td class="right">';
-		print $product->stats_facture['nb'];
-		print '</td><td class="right">';
-		print $product->stats_facture['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/facture.php?id='.$product->id.'">'.img_object('', 'bill', 'class="pictofixedwidth"').$langs->trans("CustomersInvoices").'</a>';
+		echo'</td><td class="right">';
+		echo$product->stats_facture['customers'];
+		echo'</td><td class="right">';
+		echo$product->stats_facture['nb'];
+		echo'</td><td class="right">';
+		echo$product->stats_facture['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 	// Customer template invoices
 	if (isModEnabled("invoice") && $user->hasRight('facture', 'lire')) {
@@ -541,16 +541,16 @@ function show_stats_for_company($product, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("bills");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/facturerec.php?id='.$product->id.'">'.img_object('', 'bill', 'class="pictofixedwidth"').$langs->trans("RecurringInvoiceTemplate").'</a>';
-		print '</td><td class="right">';
-		print $product->stats_facture['customers'];
-		print '</td><td class="right">';
-		print $product->stats_facturerec['nb'];
-		print '</td><td class="right">';
-		print $product->stats_facturerec['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/facturerec.php?id='.$product->id.'">'.img_object('', 'bill', 'class="pictofixedwidth"').$langs->trans("RecurringInvoiceTemplate").'</a>';
+		echo'</td><td class="right">';
+		echo$product->stats_facture['customers'];
+		echo'</td><td class="right">';
+		echo$product->stats_facturerec['nb'];
+		echo'</td><td class="right">';
+		echo$product->stats_facturerec['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 	// Supplier invoices
 	if ((isModEnabled("fournisseur") && !getDolGlobalString('MAIN_USE_NEW_SUPPLIERMOD') && $user->hasRight('fournisseur', 'facture', 'lire')) || (isModEnabled("supplier_invoice") && $user->hasRight('supplier_invoice', 'lire'))) {
@@ -560,16 +560,16 @@ function show_stats_for_company($product, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("bills");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/facture_fournisseur.php?id='.$product->id.'">'.img_object('', 'supplier_invoice', 'class="pictofixedwidth"').$langs->trans("SuppliersInvoices").'</a>';
-		print '</td><td class="right">';
-		print $product->stats_facture_fournisseur['suppliers'];
-		print '</td><td class="right">';
-		print $product->stats_facture_fournisseur['nb'];
-		print '</td><td class="right">';
-		print $product->stats_facture_fournisseur['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/facture_fournisseur.php?id='.$product->id.'">'.img_object('', 'supplier_invoice', 'class="pictofixedwidth"').$langs->trans("SuppliersInvoices").'</a>';
+		echo'</td><td class="right">';
+		echo$product->stats_facture_fournisseur['suppliers'];
+		echo'</td><td class="right">';
+		echo$product->stats_facture_fournisseur['nb'];
+		echo'</td><td class="right">';
+		echo$product->stats_facture_fournisseur['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 
 	// Shipments
@@ -580,16 +580,16 @@ function show_stats_for_company($product, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("sendings");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/expedition.php?id='.$product->id.'">'.img_object('', 'shipment', 'class="pictofixedwidth"').$langs->trans("Shipments").'</a>';
-		print '</td><td class="right">';
-		print $product->stats_expedition['customers'];
-		print '</td><td class="right">';
-		print $product->stats_expedition['nb'];
-		print '</td><td class="right">';
-		print $product->stats_expedition['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/expedition.php?id='.$product->id.'">'.img_object('', 'shipment', 'class="pictofixedwidth"').$langs->trans("Shipments").'</a>';
+		echo'</td><td class="right">';
+		echo$product->stats_expedition['customers'];
+		echo'</td><td class="right">';
+		echo$product->stats_expedition['nb'];
+		echo'</td><td class="right">';
+		echo$product->stats_expedition['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 
 	// Receptions
@@ -600,16 +600,16 @@ function show_stats_for_company($product, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("receptions");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/reception.php?id='.$product->id.'">'.img_object('', 'reception', 'class="pictofixedwidth"').$langs->trans("Receptions").'</a>';
-		print '</td><td class="right">';
-		print $product->stats_reception['suppliers'];
-		print '</td><td class="right">';
-		print $product->stats_reception['nb'];
-		print '</td><td class="right">';
-		print $product->stats_reception['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/reception.php?id='.$product->id.'">'.img_object('', 'reception', 'class="pictofixedwidth"').$langs->trans("Receptions").'</a>';
+		echo'</td><td class="right">';
+		echo$product->stats_reception['suppliers'];
+		echo'</td><td class="right">';
+		echo$product->stats_reception['nb'];
+		echo'</td><td class="right">';
+		echo$product->stats_reception['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 
 	// Contracts
@@ -620,16 +620,16 @@ function show_stats_for_company($product, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("contracts");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/contrat.php?id='.$product->id.'">'.img_object('', 'contract', 'class="pictofixedwidth"').$langs->trans("Contracts").'</a>';
-		print '</td><td class="right">';
-		print $product->stats_contrat['customers'];
-		print '</td><td class="right">';
-		print $product->stats_contrat['nb'];
-		print '</td><td class="right">';
-		print $product->stats_contrat['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/contrat.php?id='.$product->id.'">'.img_object('', 'contract', 'class="pictofixedwidth"').$langs->trans("Contracts").'</a>';
+		echo'</td><td class="right">';
+		echo$product->stats_contrat['customers'];
+		echo'</td><td class="right">';
+		echo$product->stats_contrat['nb'];
+		echo'</td><td class="right">';
+		echo$product->stats_contrat['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 
 	// BOM
@@ -641,20 +641,20 @@ function show_stats_for_company($product, $socid)
 		}
 		$langs->load("mrp");
 
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/bom.php?id='.$product->id.'">'.img_object('', 'bom', 'class="pictofixedwidth"').$langs->trans("BOM").'</a>';
-		print '</td><td class="right">';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/bom.php?id='.$product->id.'">'.img_object('', 'bom', 'class="pictofixedwidth"').$langs->trans("BOM").'</a>';
+		echo'</td><td class="right">';
 
-		print '</td><td class="right">';
-		print $form->textwithpicto($product->stats_bom['nb_toconsume'], $langs->trans("RowMaterial"));
-		print ' ';
-		print $form->textwithpicto($product->stats_bom['nb_toproduce'], $langs->trans("Finished"));
-		print '</td><td class="right">';
-		print $form->textwithpicto($product->stats_bom['qty_toconsume'], $langs->trans("RowMaterial"));
-		print ' ';
-		print $form->textwithpicto($product->stats_bom['qty_toproduce'], $langs->trans("Finished"));
-		print '</td>';
-		print '</tr>';
+		echo'</td><td class="right">';
+		echo$form->textwithpicto($product->stats_bom['nb_toconsume'], $langs->trans("RowMaterial"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_bom['nb_toproduce'], $langs->trans("Finished"));
+		echo'</td><td class="right">';
+		echo$form->textwithpicto($product->stats_bom['qty_toconsume'], $langs->trans("RowMaterial"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_bom['qty_toproduce'], $langs->trans("Finished"));
+		echo'</td>';
+		echo'</tr>';
 	}
 
 	// MO
@@ -665,34 +665,34 @@ function show_stats_for_company($product, $socid)
 			setEventMessages($product->error, $product->errors, 'errors');
 		}
 		$langs->load("mrp");
-		print '<tr><td>';
-		print '<a href="'.DOL_URL_ROOT.'/product/stats/mo.php?id='.$product->id.'">'.img_object('', 'mrp', 'class="pictofixedwidth"').$langs->trans("MO").'</a>';
-		print '</td><td class="right">';
-		print $form->textwithpicto($product->stats_mo['customers_toconsume'], $langs->trans("ToConsume"));
-		print ' ';
-		print $form->textwithpicto($product->stats_mo['customers_consumed'], $langs->trans("QtyAlreadyConsumed"));
-		print ' ';
-		print $form->textwithpicto($product->stats_mo['customers_toproduce'], $langs->trans("QtyToProduce"));
-		print ' ';
-		print $form->textwithpicto($product->stats_mo['customers_produced'], $langs->trans("QtyAlreadyProduced"));
-		print '</td><td class="right">';
-		print $form->textwithpicto($product->stats_mo['nb_toconsume'], $langs->trans("ToConsume"));
-		print ' ';
-		print $form->textwithpicto($product->stats_mo['nb_consumed'], $langs->trans("QtyAlreadyConsumed"));
-		print ' ';
-		print $form->textwithpicto($product->stats_mo['nb_toproduce'], $langs->trans("QtyToProduce"));
-		print ' ';
-		print $form->textwithpicto($product->stats_mo['nb_produced'], $langs->trans("QtyAlreadyProduced"));
-		print '</td><td class="right">';
-		print $form->textwithpicto($product->stats_mo['qty_toconsume'], $langs->trans("ToConsume"));
-		print ' ';
-		print $form->textwithpicto($product->stats_mo['qty_consumed'], $langs->trans("QtyAlreadyConsumed"));
-		print ' ';
-		print $form->textwithpicto($product->stats_mo['qty_toproduce'], $langs->trans("QtyToProduce"));
-		print ' ';
-		print $form->textwithpicto($product->stats_mo['qty_produced'], $langs->trans("QtyAlreadyProduced"));
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.DOL_URL_ROOT.'/product/stats/mo.php?id='.$product->id.'">'.img_object('', 'mrp', 'class="pictofixedwidth"').$langs->trans("MO").'</a>';
+		echo'</td><td class="right">';
+		echo$form->textwithpicto($product->stats_mo['customers_toconsume'], $langs->trans("ToConsume"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_mo['customers_consumed'], $langs->trans("QtyAlreadyConsumed"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_mo['customers_toproduce'], $langs->trans("QtyToProduce"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_mo['customers_produced'], $langs->trans("QtyAlreadyProduced"));
+		echo'</td><td class="right">';
+		echo$form->textwithpicto($product->stats_mo['nb_toconsume'], $langs->trans("ToConsume"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_mo['nb_consumed'], $langs->trans("QtyAlreadyConsumed"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_mo['nb_toproduce'], $langs->trans("QtyToProduce"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_mo['nb_produced'], $langs->trans("QtyAlreadyProduced"));
+		echo'</td><td class="right">';
+		echo$form->textwithpicto($product->stats_mo['qty_toconsume'], $langs->trans("ToConsume"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_mo['qty_consumed'], $langs->trans("QtyAlreadyConsumed"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_mo['qty_toproduce'], $langs->trans("QtyToProduce"));
+		echo' ';
+		echo$form->textwithpicto($product->stats_mo['qty_produced'], $langs->trans("QtyAlreadyProduced"));
+		echo'</td>';
+		echo'</tr>';
 	}
 	$parameters = array('socid'=>$socid);
 	$reshook = $hookmanager->executeHooks('addMoreProductStat', $parameters, $product, $nblines); // Note that $action and $object may have been modified by some hooks
@@ -700,7 +700,7 @@ function show_stats_for_company($product, $socid)
 		setEventMessages($hookmanager->error, $hookmanager->errors, 'errors');
 	}
 
-	print $hookmanager->resPrint;
+	echo$hookmanager->resPrint;
 
 
 	return $nblines++;
@@ -723,12 +723,12 @@ function show_stats_for_batch($batch, $socid)
 
 	$nblines = 0;
 
-	print '<tr class="liste_titre">';
-	print '<td class="left" width="25%">'.$langs->trans("Referers").'</td>';
-	print '<td class="right" width="25%">'.$langs->trans("NbOfThirdParties").'</td>';
-	print '<td class="right" width="25%">'.$langs->trans("NbOfObjectReferers").'</td>';
-	print '<td class="right" width="25%">'.$langs->trans("TotalQuantity").'</td>';
-	print '</tr>';
+	echo'<tr class="liste_titre">';
+	echo'<td class="left" width="25%">'.$langs->trans("Referers").'</td>';
+	echo'<td class="right" width="25%">'.$langs->trans("NbOfThirdParties").'</td>';
+	echo'<td class="right" width="25%">'.$langs->trans("NbOfObjectReferers").'</td>';
+	echo'<td class="right" width="25%">'.$langs->trans("TotalQuantity").'</td>';
+	echo'</tr>';
 
 	// Expeditions
 	if (isModEnabled('shipping') && $user->hasRight('expedition', 'lire')) {
@@ -738,16 +738,16 @@ function show_stats_for_batch($batch, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("bills");
-		print '<tr><td>';
-		print '<a href="'.dol_buildpath('/product/stock/stats/expedition.php', 1).'?id='.$batch->id.'">'.img_object('', 'bill', 'class="pictofixedwidth"').$langs->trans("Shipments").'</a>';
-		print '</td><td class="right">';
-		print $batch->stats_expedition['customers'];
-		print '</td><td class="right">';
-		print $batch->stats_expedition['nb'];
-		print '</td><td class="right">';
-		print $batch->stats_expedition['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.dol_buildpath('/product/stock/stats/expedition.php', 1).'?id='.$batch->id.'">'.img_object('', 'bill', 'class="pictofixedwidth"').$langs->trans("Shipments").'</a>';
+		echo'</td><td class="right">';
+		echo$batch->stats_expedition['customers'];
+		echo'</td><td class="right">';
+		echo$batch->stats_expedition['nb'];
+		echo'</td><td class="right">';
+		echo$batch->stats_expedition['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 
 	if (isModEnabled("reception") && $user->hasRight('reception', 'lire')) {
@@ -757,16 +757,16 @@ function show_stats_for_batch($batch, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("bills");
-		print '<tr><td>';
-		print '<a href="'.dol_buildpath('/product/stock/stats/reception.php', 1).'?id='.$batch->id.'">'.img_object('', 'bill', 'class="pictofixedwidth"').$langs->trans("Receptions").'</a>';
-		print '</td><td class="right">';
-		print $batch->stats_reception['customers'];
-		print '</td><td class="right">';
-		print $batch->stats_reception['nb'];
-		print '</td><td class="right">';
-		print $batch->stats_reception['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.dol_buildpath('/product/stock/stats/reception.php', 1).'?id='.$batch->id.'">'.img_object('', 'bill', 'class="pictofixedwidth"').$langs->trans("Receptions").'</a>';
+		echo'</td><td class="right">';
+		echo$batch->stats_reception['customers'];
+		echo'</td><td class="right">';
+		echo$batch->stats_reception['nb'];
+		echo'</td><td class="right">';
+		echo$batch->stats_reception['qty'];
+		echo'</td>';
+		echo'</tr>';
 	} elseif (isModEnabled('supplier_order') && $user->hasRight('fournisseur', 'commande', 'lire')) {
 		$nblines++;
 		$ret = $batch->loadStatsSupplierOrder($socid);
@@ -774,16 +774,16 @@ function show_stats_for_batch($batch, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("bills");
-		print '<tr><td>';
-		print '<a href="'.dol_buildpath('/product/stock/stats/commande_fournisseur.php', 1).'?id='.$batch->id.'">'.img_object('', 'bill', 'class="pictofixedwidth"').$langs->trans("SuppliersOrders").'</a>';
-		print '</td><td class="right">';
-		print $batch->stats_supplier_order['customers'];
-		print '</td><td class="right">';
-		print $batch->stats_supplier_order['nb'];
-		print '</td><td class="right">';
-		print $batch->stats_supplier_order['qty'];
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.dol_buildpath('/product/stock/stats/commande_fournisseur.php', 1).'?id='.$batch->id.'">'.img_object('', 'bill', 'class="pictofixedwidth"').$langs->trans("SuppliersOrders").'</a>';
+		echo'</td><td class="right">';
+		echo$batch->stats_supplier_order['customers'];
+		echo'</td><td class="right">';
+		echo$batch->stats_supplier_order['nb'];
+		echo'</td><td class="right">';
+		echo$batch->stats_supplier_order['qty'];
+		echo'</td>';
+		echo'</tr>';
 	}
 
 	if (isModEnabled('mrp') && $user->hasRight('mrp', 'read')) {
@@ -793,25 +793,25 @@ function show_stats_for_batch($batch, $socid)
 			dol_print_error($db);
 		}
 		$langs->load("mrp");
-		print '<tr><td>';
-		print '<a href="'.dol_buildpath('/product/stock/stats/mo.php', 1).'?id='.$batch->id.'">'.img_object('', 'mrp', 'class="pictofixedwidth"').$langs->trans("MO").'</a>';
-		print '</td><td class="right">';
-		//      print $form->textwithpicto($batch->stats_mo['customers_toconsume'], $langs->trans("ToConsume")); Makes no sense with batch, at this moment we don't know batch number
-		print $form->textwithpicto($batch->stats_mo['customers_consumed'], $langs->trans("QtyAlreadyConsumed"));
-		//      print $form->textwithpicto($batch->stats_mo['customers_toproduce'], $langs->trans("QtyToProduce")); Makes no sense with batch, at this moment we don't know batch number
-		print $form->textwithpicto($batch->stats_mo['customers_produced'], $langs->trans("QtyAlreadyProduced"));
-		print '</td><td class="right">';
-		//      print $form->textwithpicto($batch->stats_mo['nb_toconsume'], $langs->trans("ToConsume")); Makes no sense with batch, at this moment we don't know batch number
-		print $form->textwithpicto($batch->stats_mo['nb_consumed'], $langs->trans("QtyAlreadyConsumed"));
-		//      print $form->textwithpicto($batch->stats_mo['nb_toproduce'], $langs->trans("QtyToProduce")); Makes no sense with batch, at this moment we don't know batch number
-		print $form->textwithpicto($batch->stats_mo['nb_produced'], $langs->trans("QtyAlreadyProduced"));
-		print '</td><td class="right">';
-		//      print $form->textwithpicto($batch->stats_mo['qty_toconsume'], $langs->trans("ToConsume")); Makes no sense with batch, at this moment we don't know batch number
-		print $form->textwithpicto($batch->stats_mo['qty_consumed'], $langs->trans("QtyAlreadyConsumed"));
-		//      print $form->textwithpicto($batch->stats_mo['qty_toproduce'], $langs->trans("QtyToProduce")); Makes no sense with batch, at this moment we don't know batch number
-		print $form->textwithpicto($batch->stats_mo['qty_produced'], $langs->trans("QtyAlreadyProduced"));
-		print '</td>';
-		print '</tr>';
+		echo'<tr><td>';
+		echo'<a href="'.dol_buildpath('/product/stock/stats/mo.php', 1).'?id='.$batch->id.'">'.img_object('', 'mrp', 'class="pictofixedwidth"').$langs->trans("MO").'</a>';
+		echo'</td><td class="right">';
+		//      echo$form->textwithpicto($batch->stats_mo['customers_toconsume'], $langs->trans("ToConsume")); Makes no sense with batch, at this moment we don't know batch number
+		echo$form->textwithpicto($batch->stats_mo['customers_consumed'], $langs->trans("QtyAlreadyConsumed"));
+		//      echo$form->textwithpicto($batch->stats_mo['customers_toproduce'], $langs->trans("QtyToProduce")); Makes no sense with batch, at this moment we don't know batch number
+		echo$form->textwithpicto($batch->stats_mo['customers_produced'], $langs->trans("QtyAlreadyProduced"));
+		echo'</td><td class="right">';
+		//      echo$form->textwithpicto($batch->stats_mo['nb_toconsume'], $langs->trans("ToConsume")); Makes no sense with batch, at this moment we don't know batch number
+		echo$form->textwithpicto($batch->stats_mo['nb_consumed'], $langs->trans("QtyAlreadyConsumed"));
+		//      echo$form->textwithpicto($batch->stats_mo['nb_toproduce'], $langs->trans("QtyToProduce")); Makes no sense with batch, at this moment we don't know batch number
+		echo$form->textwithpicto($batch->stats_mo['nb_produced'], $langs->trans("QtyAlreadyProduced"));
+		echo'</td><td class="right">';
+		//      echo$form->textwithpicto($batch->stats_mo['qty_toconsume'], $langs->trans("ToConsume")); Makes no sense with batch, at this moment we don't know batch number
+		echo$form->textwithpicto($batch->stats_mo['qty_consumed'], $langs->trans("QtyAlreadyConsumed"));
+		//      echo$form->textwithpicto($batch->stats_mo['qty_toproduce'], $langs->trans("QtyToProduce")); Makes no sense with batch, at this moment we don't know batch number
+		echo$form->textwithpicto($batch->stats_mo['qty_produced'], $langs->trans("QtyAlreadyProduced"));
+		echo'</td>';
+		echo'</tr>';
 	}
 
 	$parameters = array('socid'=>$socid);
@@ -820,7 +820,7 @@ function show_stats_for_batch($batch, $socid)
 		setEventMessages($hookmanager->error, $hookmanager->errors, 'errors');
 	}
 
-	print $hookmanager->resPrint;
+	echo$hookmanager->resPrint;
 
 
 	return $nblines++;

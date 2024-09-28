@@ -101,7 +101,7 @@ pHeader($langs->trans("GestimagSetup").' - '.$langs->trans("ConfigurationFile"),
 
 // Test if we can run a first install process
 if (!is_writable($conffile)) {
-	print $langs->trans("ConfFileIsNotWritable", $conffiletoshow);
+	echo $langs->trans("ConfFileIsNotWritable", $conffiletoshow);
 	gestimag_install_syslog("fileconf: config file is not writable", LOG_WARNING);
 	gestimag_install_syslog("- fileconf: end");
 	pFooter(1, $setuplang, 'jscheckparam');
@@ -109,19 +109,19 @@ if (!is_writable($conffile)) {
 }
 
 if (!empty($force_install_message)) {
-	print '<div><br>'.$langs->trans($force_install_message).'</div>';
+	echo '<div><br>'.$langs->trans($force_install_message).'</div>';
 
-	/*print '<script type="text/javascript">';
-	print '	jQuery(document).ready(function() {
+	/*echo '<script type="text/javascript">';
+	echo '	jQuery(document).ready(function() {
 				jQuery("#linktoshowtechnicalparam").click(function() {
 					jQuery(".hidewhenedit").hide();
 					jQuery(".hidewhennoedit").show();
 				});';
-				if ($force_install_noedit) print 'jQuery(".hidewhennoedit").hide();';
-	print '});';
-	print '</script>';
+				if ($force_install_noedit) echo 'jQuery(".hidewhennoedit").hide();';
+	echo '});';
+	echo '</script>';
 
-	print '<br><a href="#" id="linktoshowtechnicalparam" class="hidewhenedit">'.$langs->trans("ShowEditTechnicalParameters").'</a><br>';
+	echo '<br><a href="#" id="linktoshowtechnicalparam" class="hidewhenedit">'.$langs->trans("ShowEditTechnicalParameters").'</a><br>';
 	*/
 }
 
@@ -130,18 +130,18 @@ if (!empty($force_install_message)) {
 
 
 <table class="nobordernopadding<?php if ($force_install_noedit) {
-	print ' hidewhennoedit';
+	echo ' hidewhennoedit';
 							   } ?>">
 
 	<tr>
 		<td colspan="3" class="label">
-		<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/globe.svg" width="20" alt="webserver"> <?php echo $langs->trans("WebServer"); ?></h3>
+		<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/globe.svg" width="20" alt="webserver"> <?php echo  $langs->trans("WebServer"); ?></h3>
 		</td>
 	</tr>
 
 	<!-- Documents root $gestimag_main_document_root -->
 	<tr>
-		<td class="label"><label for="main_dir"><b><?php print $langs->trans("WebPagesDirectory"); ?></b></label></td>
+		<td class="label"><label for="main_dir"><b><?php echo $langs->trans("WebPagesDirectory"); ?></b></label></td>
 <?php
 if (empty($gestimag_main_document_root)) {
 	$gestimag_main_document_root = GETPOSTISSET('main_dir') ? GETPOST('main_dir') : detect_gestimag_main_document_root();
@@ -152,17 +152,17 @@ if (empty($gestimag_main_document_root)) {
 				   class="minwidth300"
 				   id="main_dir"
 				   name="main_dir"
-				   value="<?php print $gestimag_main_document_root ?>"
+				   value="<?php echo $gestimag_main_document_root ?>"
 <?php
 if (!empty($force_install_noedit)) {
-	print ' disabled';
+	echo ' disabled';
 }
 ?>
 			>
 		</td>
 		<td class="comment"><?php
-		print '<span class="opacitymedium">'.$langs->trans("WithNoSlashAtTheEnd")."</span><br>";
-		print $langs->trans("Examples").":<br>";
+		echo '<span class="opacitymedium">'.$langs->trans("WithNoSlashAtTheEnd")."</span><br>";
+		echo $langs->trans("Examples").":<br>";
 		?>
 		<ul>
 			<li>/var/www/gestimag/htdocs</li>
@@ -173,7 +173,7 @@ if (!empty($force_install_noedit)) {
 
 	<!-- Documents URL $gestimag_main_data_root -->
 	<tr>
-		<td class="label"><label for="main_data_dir"><b><?php print $langs->trans("DocumentsDirectory"); ?></b></label></td>
+		<td class="label"><label for="main_data_dir"><b><?php echo $langs->trans("DocumentsDirectory"); ?></b></label></td>
 		<?php
 		if (!empty($force_install_main_data_root)) {
 			$gestimag_main_data_root = @$force_install_main_data_root;
@@ -187,16 +187,16 @@ if (!empty($force_install_noedit)) {
 				   class="minwidth300"
 				   id="main_data_dir"
 				   name="main_data_dir"
-				   value="<?php print $gestimag_main_data_root ?>"
+				   value="<?php echo $gestimag_main_data_root ?>"
 <?php if (!empty($force_install_noedit)) {
-	print ' disabled';
+	echo ' disabled';
 } ?>
 			>
 		</td>
 		<td class="comment"><?php
-		print '<span class="opacitymedium">'.$langs->trans("WithNoSlashAtTheEnd")."</span><br>";
-		print $langs->trans("DirectoryRecommendation")."<br>";
-		print $langs->trans("Examples").":<br>";
+		echo '<span class="opacitymedium">'.$langs->trans("WithNoSlashAtTheEnd")."</span><br>";
+		echo $langs->trans("DirectoryRecommendation")."<br>";
+		echo $langs->trans("Examples").":<br>";
 		?>
 		<ul>
 			<li>/var/lib/gestimag/documents</li>
@@ -212,21 +212,21 @@ if (!empty($force_install_noedit)) {
 	}
 	?>
 	<tr>
-		<td class="label"><label for="main_url"><b><?php echo $langs->trans("URLRoot"); ?></b></label>
+		<td class="label"><label for="main_url"><b><?php echo  $langs->trans("URLRoot"); ?></b></label>
 		</td>
 		<td class="label">
 			<input type="text"
 				   class="minwidth300"
 				   id="main_url"
 				   name="main_url"
-				   value="<?php print $gestimag_main_url_root; ?> "
+				   value="<?php echo $gestimag_main_url_root; ?> "
 <?php if (!empty($force_install_noedit)) {
-	print ' disabled';
+	echo ' disabled';
 }
 ?>
 			>
 		</td>
-		<td class="comment"><?php print $langs->trans("Examples").":<br>"; ?>
+		<td class="comment"><?php echo $langs->trans("Examples").":<br>"; ?>
 		<ul>
 			<li>http://localhost/</li>
 			<li>http://www.myserver.com:8180/gestimag</li>
@@ -239,20 +239,20 @@ if (!empty($force_install_noedit)) {
 	if (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == 'on') {   // Enabled if the installation process is "https://"
 		?>
 	<tr>
-					<td class="label"><label for="main_force_https"><?php echo $langs->trans("ForceHttps"); ?></label></td>
+					<td class="label"><label for="main_force_https"><?php echo  $langs->trans("ForceHttps"); ?></label></td>
 					<td class="label">
 						<input type="checkbox"
 							   id="main_force_https"
 							   name="main_force_https"
 				<?php if (!empty($force_install_mainforcehttps)) {
-					print ' checked';
+					echo ' checked';
 				} ?>
 				<?php if ($force_install_noedit == 2 && $force_install_mainforcehttps !== null) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
 		</td>
-		<td class="comment"><?php echo $langs->trans("CheckToForceHttps"); ?>
+		<td class="comment"><?php echo  $langs->trans("CheckToForceHttps"); ?>
 		</td>
 
 	</tr>
@@ -264,23 +264,23 @@ if (!empty($force_install_noedit)) {
 
 	<tr>
 		<td colspan="3" class="label"><br>
-		<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/database.svg" width="20" alt="webserver"> <?php echo $langs->trans("GestimagDatabase"); ?></h3>
+		<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/database.svg" width="20" alt="webserver"> <?php echo  $langs->trans("GestimagDatabase"); ?></h3>
 		</td>
 	</tr>
 
 	<tr>
-		<td class="label"><label for="db_name"><b><?php echo $langs->trans("DatabaseName"); ?></b></label></td>
+		<td class="label"><label for="db_name"><b><?php echo  $langs->trans("DatabaseName"); ?></b></label></td>
 		<td class="label">
 			<input type="text"
 				   id="db_name"
 				   name="db_name"
-				   value="<?php echo (!empty($gestimag_main_db_name)) ? $gestimag_main_db_name : ($force_install_database ? $force_install_database : 'gestimag'); ?>"
+				   value="<?php echo  (!empty($gestimag_main_db_name)) ? $gestimag_main_db_name : ($force_install_database ? $force_install_database : 'gestimag'); ?>"
 				<?php if ($force_install_noedit == 2 && $force_install_database !== null) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
 		</td>
-		<td class="comment"><?php echo $langs->trans("DatabaseName"); ?></td>
+		<td class="comment"><?php echo  $langs->trans("DatabaseName"); ?></td>
 	</tr>
 
 
@@ -291,7 +291,7 @@ if (!empty($force_install_noedit)) {
 	?>
 	<tr>
 		<!-- Driver type -->
-		<td class="label"><label for="db_type"><b><?php echo $langs->trans("DriverType"); ?></b></label></td>
+		<td class="label"><label for="db_type"><b><?php echo  $langs->trans("DriverType"); ?></b></label></td>
 
 		<td class="label">
 		<?php
@@ -388,68 +388,68 @@ if (!empty($force_install_noedit)) {
 			<select id="db_type"
 					name="db_type"
 				<?php if ($force_install_noedit == 2 && $force_install_type !== null) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
-				<?php print $option; ?>
+				<?php echo $option; ?>
 			</select>
 
 		</td>
-		<td class="comment"><?php echo $langs->trans("DatabaseType"); ?></td>
+		<td class="comment"><?php echo  $langs->trans("DatabaseType"); ?></td>
 
 	</tr>
 
 	<tr class="hidesqlite">
-		<td class="label"><label for="db_host"><b><?php echo $langs->trans("DatabaseServer"); ?></b></label></td>
+		<td class="label"><label for="db_host"><b><?php echo  $langs->trans("DatabaseServer"); ?></b></label></td>
 		<td class="label">
 			<input type="text"
 				   id="db_host"
 				   name="db_host"
 				   value="<?php print(!empty($force_install_dbserver) ? $force_install_dbserver : (!empty($gestimag_main_db_host) ? $gestimag_main_db_host : 'localhost')); ?>"
 				<?php if ($force_install_noedit == 2 && $force_install_dbserver !== null) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
 		</td>
-		<td class="comment"><?php echo $langs->trans("ServerAddressDescription"); ?>
+		<td class="comment"><?php echo  $langs->trans("ServerAddressDescription"); ?>
 		</td>
 
 	</tr>
 
 	<tr class="hidesqlite">
-		<td class="label"><label for="db_port"><?php echo $langs->trans("Port"); ?></label></td>
+		<td class="label"><label for="db_port"><?php echo  $langs->trans("Port"); ?></label></td>
 		<td class="label">
 			<input type="text"
 				   name="db_port"
 				   id="db_port"
-				   value="<?php print (!empty($force_install_port)) ? $force_install_port : $gestimag_main_db_port; ?>"
+				   value="<?php echo (!empty($force_install_port)) ? $force_install_port : $gestimag_main_db_port; ?>"
 				<?php if ($force_install_noedit == 2 && $force_install_port !== null) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
 		</td>
-		<td class="comment"><?php echo $langs->trans("ServerPortDescription"); ?>
+		<td class="comment"><?php echo  $langs->trans("ServerPortDescription"); ?>
 		</td>
 
 	</tr>
 
 	<tr class="hidesqlite">
-		<td class="label"><label for="db_prefix"><?php echo $langs->trans("DatabasePrefix"); ?></label></td>
+		<td class="label"><label for="db_prefix"><?php echo  $langs->trans("DatabasePrefix"); ?></label></td>
 		<td class="label">
 			<input type="text"
 				   id="db_prefix"
 				   name="db_prefix"
-				   value="<?php echo(!empty($force_install_prefix) ? $force_install_prefix : (!empty($gestimag_main_db_prefix) ? $gestimag_main_db_prefix : 'llx_')); ?>"
+				   value="<?php echo (!empty($force_install_prefix) ? $force_install_prefix : (!empty($gestimag_main_db_prefix) ? $gestimag_main_db_prefix : 'llx_')); ?>"
 				<?php if ($force_install_noedit == 2 && $force_install_prefix !== null) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
 		</td>
-		<td class="comment"><?php echo $langs->trans("DatabasePrefixDescription"); ?></td>
+		<td class="comment"><?php echo  $langs->trans("DatabasePrefixDescription"); ?></td>
 	</tr>
 
 	<tr class="hidesqlite">
-		<td class="label"><label for="db_create_database"><?php echo $langs->trans("CreateDatabase"); ?></label></td>
+		<td class="label"><label for="db_create_database"><?php echo  $langs->trans("CreateDatabase"); ?></label></td>
 		<td class="label">
 			<input type="checkbox"
 				   id="db_create_database"
@@ -459,35 +459,35 @@ if (!empty($force_install_noedit)) {
 				$checked = 0;
 				if ($force_install_createdatabase) {
 					$checked = 1;
-					print ' checked';
+					echo ' checked';
 				} ?>
 				<?php if ($force_install_noedit == 2 && $force_install_createdatabase !== null) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
 		</td>
 		<td class="comment">
-		<?php echo $langs->trans("CheckToCreateDatabase"); ?>
+		<?php echo  $langs->trans("CheckToCreateDatabase"); ?>
 		</td>
 	</tr>
 
 	<tr class="hidesqlite">
-		<td class="label"><label for="db_user"><b><?php echo $langs->trans("Login"); ?></b></label></td>
+		<td class="label"><label for="db_user"><b><?php echo  $langs->trans("Login"); ?></b></label></td>
 		<td class="label">
 			<input type="text"
 				   id="db_user"
 				   name="db_user"
-				   value="<?php print (!empty($force_install_databaselogin)) ? $force_install_databaselogin : $gestimag_main_db_user; ?>"
+				   value="<?php echo (!empty($force_install_databaselogin)) ? $force_install_databaselogin : $gestimag_main_db_user; ?>"
 				<?php if ($force_install_noedit == 2 && $force_install_databaselogin !== null) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
 		</td>
-		<td class="comment"><?php echo $langs->trans("AdminLogin"); ?></td>
+		<td class="comment"><?php echo  $langs->trans("AdminLogin"); ?></td>
 	</tr>
 
 	<tr class="hidesqlite">
-		<td class="label"><label for="db_pass"><b><?php echo $langs->trans("Password"); ?></b></label></td>
+		<td class="label"><label for="db_pass"><b><?php echo  $langs->trans("Password"); ?></b></label></td>
 		<td class="label">
 			<input type="password" class="text-security"
 				   id="db_pass" autocomplete="off"
@@ -499,18 +499,18 @@ if (!empty($force_install_noedit)) {
 					if (!empty($gestimag_main_prod) && empty($_SESSION['dol_save_pass'])) {    // So value can't be found if install page still accessible
 						$autofill = '';
 					}
-					print dol_escape_htmltag($autofill);
+					echo dol_escape_htmltag($autofill);
 					?>"
 				<?php if ($force_install_noedit == 2 && $force_install_databasepass !== null) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
 		</td>
-		<td class="comment"><?php echo $langs->trans("AdminPassword"); ?></td>
+		<td class="comment"><?php echo  $langs->trans("AdminPassword"); ?></td>
 	</tr>
 
 	<tr class="hidesqlite">
-		<td class="label"><label for="db_create_user"><?php echo $langs->trans("CreateUser"); ?></label></td>
+		<td class="label"><label for="db_create_user"><?php echo  $langs->trans("CreateUser"); ?></label></td>
 		<td class="label">
 			<input type="checkbox"
 				   id="db_create_user"
@@ -520,15 +520,15 @@ if (!empty($force_install_noedit)) {
 				$checked = 0;
 				if (!empty($force_install_createuser)) {
 					$checked = 1;
-					print ' checked';
+					echo ' checked';
 				} ?>
 				<?php if ($force_install_noedit == 2 && $force_install_createuser !== null) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
 		</td>
 		<td class="comment">
-		<?php echo $langs->trans("CheckToCreateUser"); ?>
+		<?php echo  $langs->trans("CheckToCreateUser"); ?>
 		</td>
 	</tr>
 
@@ -540,26 +540,26 @@ if (!empty($force_install_noedit)) {
 	?>
 	<tr class="hidesqlite hideroot">
 		<td colspan="3" class="label"><br>
-		<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/shield.svg" width="20" alt="webserver"> <?php echo $langs->trans("DatabaseSuperUserAccess"); ?></h3>
+		<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/shield.svg" width="20" alt="webserver"> <?php echo  $langs->trans("DatabaseSuperUserAccess"); ?></h3>
 		</td>
 	</tr>
 
 	<tr class="hidesqlite hideroot">
-		<td class="label"><label for="db_user_root"><b><?php echo $langs->trans("Login"); ?></b></label></td>
+		<td class="label"><label for="db_user_root"><b><?php echo  $langs->trans("Login"); ?></b></label></td>
 		<td class="label">
 			<input type="text"
 				   id="db_user_root"
 				   name="db_user_root"
 				   class="needroot"
-				   value="<?php print (!empty($force_install_databaserootlogin)) ? $force_install_databaserootlogin : (GETPOSTISSET('db_user_root') ? GETPOST('db_user_root') : (isset($db_user_root) ? $db_user_root : '')); ?>"
+				   value="<?php echo (!empty($force_install_databaserootlogin)) ? $force_install_databaserootlogin : (GETPOSTISSET('db_user_root') ? GETPOST('db_user_root') : (isset($db_user_root) ? $db_user_root : '')); ?>"
 				<?php if ($force_install_noedit > 0 && !empty($force_install_databaserootlogin)) {
-					print ' disabled';
+					echo ' disabled';
 				} ?>
 			>
 		</td>
-		<td class="comment"><?php echo $langs->trans("DatabaseRootLoginDescription"); ?>
+		<td class="comment"><?php echo  $langs->trans("DatabaseRootLoginDescription"); ?>
 		<!--
-		<?php echo '<br>'.$langs->trans("Examples").':<br>' ?>
+		<?php echo  '<br>'.$langs->trans("Examples").':<br>' ?>
 		<ul>
 			<li>root (Mysql)</li>
 			<li>postgres (PostgreSql)</li>
@@ -569,7 +569,7 @@ if (!empty($force_install_noedit)) {
 
 	</tr>
 	<tr class="hidesqlite hideroot">
-		<td class="label"><label for="db_pass_root"><b><?php echo $langs->trans("Password"); ?></b></label></td>
+		<td class="label"><label for="db_pass_root"><b><?php echo  $langs->trans("Password"); ?></b></label></td>
 		<td class="label">
 			<input type="password"
 				   autocomplete="off"
@@ -591,14 +591,14 @@ if (!empty($force_install_noedit)) {
 					) {
 						$autofill = '';
 					}    // Do not autofill password for remote access
-					print dol_escape_htmltag($autofill);
+					echo dol_escape_htmltag($autofill);
 					?>"
 				<?php if ($force_install_noedit > 0 && !empty($force_install_databaserootpass)) {
-					print ' disabled'; /* May be removed by javascript*/
+					echo ' disabled'; /* May be removed by javascript*/
 				} ?>
 			>
 		</td>
-		<td class="comment"><?php echo $langs->trans("KeepEmptyIfNoPassword"); ?>
+		<td class="comment"><?php echo  $langs->trans("KeepEmptyIfNoPassword"); ?>
 		</td>
 	</tr>
 
@@ -609,7 +609,7 @@ if (!empty($force_install_noedit)) {
 <script type="text/javascript">
 function init_needroot()
 {
-	console.log("init_needroot force_install_noedit=<?php echo $force_install_noedit?>");
+	console.log("init_needroot force_install_noedit=<?php echo  $force_install_noedit?>");
 	console.log(jQuery("#db_create_database").is(":checked"));
 	console.log(jQuery("#db_create_user").is(":checked"));
 
@@ -644,45 +644,45 @@ function jscheckparam()
 	if (document.forminstall.main_dir.value == '')
 	{
 		ok=false;
-		alert('<?php echo dol_escape_js($langs->transnoentities("ErrorFieldRequired", $langs->transnoentitiesnoconv("WebPagesDirectory"))); ?>');
+		alert('<?php echo  dol_escape_js($langs->transnoentities("ErrorFieldRequired", $langs->transnoentitiesnoconv("WebPagesDirectory"))); ?>');
 	}
 	else if (document.forminstall.main_data_dir.value == '')
 	{
 		ok=false;
-		alert('<?php echo dol_escape_js($langs->transnoentities("ErrorFieldRequired", $langs->transnoentitiesnoconv("DocumentsDirectory"))); ?>');
+		alert('<?php echo  dol_escape_js($langs->transnoentities("ErrorFieldRequired", $langs->transnoentitiesnoconv("DocumentsDirectory"))); ?>');
 	}
 	else if (document.forminstall.main_url.value == '')
 	{
 		ok=false;
-		alert('<?php echo dol_escape_js($langs->transnoentities("ErrorFieldRequired", $langs->transnoentitiesnoconv("URLRoot"))); ?>');
+		alert('<?php echo  dol_escape_js($langs->transnoentities("ErrorFieldRequired", $langs->transnoentitiesnoconv("URLRoot"))); ?>');
 	}
 	else if (document.forminstall.db_host.value == '')
 	{
 		ok=false;
-		alert('<?php echo dol_escape_js($langs->transnoentities("ErrorFieldRequired", $langs->transnoentitiesnoconv("Server"))); ?>');
+		alert('<?php echo  dol_escape_js($langs->transnoentities("ErrorFieldRequired", $langs->transnoentitiesnoconv("Server"))); ?>');
 	}
 	else if (document.forminstall.db_name.value == '')
 	{
 		ok=false;
-		alert('<?php echo dol_escape_js($langs->transnoentities("ErrorFieldRequired", $langs->transnoentitiesnoconv("DatabaseName"))); ?>');
+		alert('<?php echo  dol_escape_js($langs->transnoentities("ErrorFieldRequired", $langs->transnoentitiesnoconv("DatabaseName"))); ?>');
 	}
 	else if (! checkDatabaseName(document.forminstall.db_name.value))
 	{
 		ok=false;
-		alert('<?php echo dol_escape_js($langs->transnoentities("ErrorFieldCanNotContainSpecialCharacters", $langs->transnoentitiesnoconv("DatabaseName"))); ?>');
+		alert('<?php echo  dol_escape_js($langs->transnoentities("ErrorFieldCanNotContainSpecialCharacters", $langs->transnoentitiesnoconv("DatabaseName"))); ?>');
 	}
 	// If create database asked
 	else if (document.forminstall.db_create_database.checked == true && (document.forminstall.db_user_root.value == ''))
 	{
 		ok=false;
-		alert('<?php echo dol_escape_js($langs->transnoentities("YouAskToCreateDatabaseSoRootRequired")); ?>');
+		alert('<?php echo  dol_escape_js($langs->transnoentities("YouAskToCreateDatabaseSoRootRequired")); ?>');
 		init_needroot();
 	}
 	// If create user asked
 	else if (document.forminstall.db_create_user.checked == true && (document.forminstall.db_user_root.value == ''))
 	{
 		ok=false;
-		alert('<?php echo dol_escape_js($langs->transnoentities("YouAskToCreateDatabaseUserSoRootRequired")); ?>');
+		alert('<?php echo  dol_escape_js($langs->transnoentities("YouAskToCreateDatabaseUserSoRootRequired")); ?>');
 		init_needroot();
 	}
 

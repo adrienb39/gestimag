@@ -99,7 +99,7 @@ if ($id > 0 || !empty($ref)) {
 
 	$head = donation_prepare_head($object);
 
-	print dol_get_fiche_head($head, 'note', $langs->trans("Donation"), -1, 'donation');
+	echo dol_get_fiche_head($head, 'note', $langs->trans("Donation"), -1, 'donation');
 
 	$linkback = '<a href="'.DOL_URL_ROOT.'/don/list.php'.(!empty($socid) ? '?socid='.$socid : '').'">'.$langs->trans("BackToList").'</a>';
 
@@ -140,13 +140,13 @@ if ($id > 0 || !empty($ref)) {
 
 	dol_banner_tab($object, 'rowid', $linkback, 1, 'rowid', 'ref', $morehtmlref);
 
-	print '<div class="fichecenter">';
-	print '<div class="underbanner clearboth"></div>';
+	echo '<div class="fichecenter">';
+	echo '<div class="underbanner clearboth"></div>';
 
 	$cssclass = "titlefield";
 	include DOL_DOCUMENT_ROOT.'/core/tpl/notes.tpl.php';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 }
 
 llxFooter();

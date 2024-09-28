@@ -49,7 +49,7 @@ restrictedArea($user, 'facture', $invoice_id, '', '', 'fk_soc', 'rowid');
 
 top_httphead('application/json');
 
-//print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+//echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 $return = array();
 
@@ -63,4 +63,4 @@ if (!empty($invoice_id) && !empty($action) && !empty($htmlname)) {
 	//$return['error']	= $form->error;
 }
 
-echo json_encode($return);
+echo  json_encode($return);

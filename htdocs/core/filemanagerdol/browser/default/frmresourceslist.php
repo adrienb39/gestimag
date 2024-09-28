@@ -55,7 +55,7 @@ top_httphead();
 	<title>Resources</title>
 	<link href="browser.css" type="text/css" rel="stylesheet">
 <?php
-print '<!-- Includes CSS for Gestimag theme -->'."\n";
+echo '<!-- Includes CSS for Gestimag theme -->'."\n";
 // Output style sheets (optioncss='print' or ''). Note: $conf->css looks like '/theme/eldy/style.css.php'
 $themepath = dol_buildpath($conf->css, 1);
 $themesubdir = '';
@@ -69,8 +69,8 @@ if (!empty($conf->modules_parts['theme'])) {	// This slow down
 	}
 }
 
-//print 'themepath='.$themepath.' themeparam='.$themeparam;exit;
-print '<link rel="stylesheet" type="text/css" href="'.$themepath.'">'."\n";
+//echo 'themepath='.$themepath.' themeparam='.$themeparam;exit;
+echo '<link rel="stylesheet" type="text/css" href="'.$themepath.'">'."\n";
 ?>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script type="text/javascript" src="js/common.js"></script>

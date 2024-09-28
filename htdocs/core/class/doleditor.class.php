@@ -138,7 +138,7 @@ class DolEditor
 	 *	Output edit area inside the HTML stream.
 	 *	Output depends on this->tool (fckeditor, ckeditor, textarea, ...)
 	 *
-	 *  @param	int		$noprint             1=Return HTML string instead of printing it to output
+	 *  @param	int		$noecho             1=Return HTML string instead of printing it to output
 	 *  @param	string	$morejs		         Add more js. For example: ".on( \'saveSnapshot\', function(e) { alert(\'ee\'); });". Used by CKEditor only.
 	 *  @param  boolean $disallowAnyContent  Disallow to use any content. true=restrict to a predefined list of allowed elements. Used by CKEditor only.
 	 *  @param	string	$titlecontent		 Show title content before editor area. Used by ACE editor only.
@@ -147,7 +147,7 @@ class DolEditor
 	 *  @param	string	$morecss			 Add extra css to the textarea
 	 *  @return	void|string
 	 */
-	public function Create($noprint = 0, $morejs = '', $disallowAnyContent = true, $titlecontent = '', $option = '', $moreparam = '', $morecss = '')
+	public function Create($noecho = 0, $morejs = '', $disallowAnyContent = true, $titlecontent = '', $option = '', $moreparam = '', $morecss = '')
 	{
 		// phpcs:enable
 		global $conf, $langs;
@@ -164,7 +164,7 @@ class DolEditor
 			$found = 1;
 			//$out.= '<textarea id="'.$this->htmlname.'" name="'.$this->htmlname.'" '.($this->readonly?' disabled':'').' rows="'.$this->rows.'"'.(preg_match('/%/',$this->cols)?' style="margin-top: 5px; width: '.$this->cols.'"':' cols="'.$this->cols.'"').' class="flat">';
 			// TODO We do not put the 'disabled' tag because on a read form, it change style with grey.
-			//print $this->content;
+			//echo $this->content;
 			$out .= '<textarea id="'.$this->htmlname.'" name="'.$this->htmlname.'" rows="'.$this->rows.'"'.(preg_match('/%/', $this->cols) ? ' style="margin-top: 5px; width: '.$this->cols.'"' : ' cols="'.$this->cols.'"').' '.($moreparam ? $moreparam : '').' class="flat '.$morecss.'">';
 			$out .= htmlspecialchars($this->content);
 			$out .= '</textarea>';
@@ -394,7 +394,7 @@ class DolEditor
 		if ($noprint) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 	}
 }

@@ -59,7 +59,7 @@ $notfound = $langs->trans("Unknown");
 
 // Security check
 if (empty($conf->clicktodial->enabled)) {
-	print "Error: Module Click to dial is not enabled.\n";
+	echo "Error: Module Click to dial is not enabled.\n";
 	exit;
 }
 
@@ -69,17 +69,17 @@ if (empty($conf->clicktodial->enabled)) {
  */
 
 if (empty($securitykey)) {
-	echo 'Securitykey is required. Check setup of clicktodial module.';
+	echo  'Securitykey is required. Check setup of clicktodial module.';
 	exit;
 }
 if ($securitykey != getDolGlobalString('CLICKTODIAL_KEY_FOR_CIDLOOKUP')) {
-	echo 'Securitykey is wrong.';
+	echo  'Securitykey is wrong.';
 	exit;
 }
 
 // Check parameters
 if (empty($phone)) {
-	print "Error: Url must be called with parameter phone=phone to search\n";
+	echo "Error: Url must be called with parameter phone=phone to search\n";
 	exit;
 }
 
@@ -112,4 +112,4 @@ $greek = array('α', 'β', 'γ', 'δ', 'ε', 'ζ', 'η', 'θ', 'ι', 'κ', 'λ',
 
 $latin = array('a', 'b', 'g', 'd', 'e', 'z', 'h', 'th', 'i', 'k', 'l', 'm', 'n', 'ks', 'o', 'p', 'r', 's', 's', 't', 'u', 'f', 'ch', 'ps', 'w', 'A', 'B', 'G', 'D', 'E', 'Z', 'H', 'TH', 'I', 'K', 'L', 'M', 'N', 'KS', 'O', 'P', 'R', 'S', 'T', 'U', 'F', 'CH', 'PS', 'W', 'a', 'e', 'h', 'i', 'o', 'u', 'w', 'i', 'i', 'A', 'E', 'H', 'I', 'O', 'U', 'W', 'I');
 
-print str_replace($greek, $latin, $found);
+echo str_replace($greek, $latin, $found);

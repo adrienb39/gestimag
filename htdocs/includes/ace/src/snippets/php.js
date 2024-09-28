@@ -2,7 +2,7 @@ define("ace/snippets/php",["require","exports","module"], function(require, expo
 "use strict";
 
 exports.snippetText = "snippet ec\n\
-	echo ${1};\n\
+	echo  ${1};\n\
 snippet ns\n\
 	namespace ${1:Foo\\Bar\\Baz};\n\
 	${2}\n\
@@ -291,10 +291,10 @@ snippet lambda\n\
 	};\n\
 # pre_dump();\n\
 snippet pd\n\
-	echo '<pre>'; var_dump(${1}); echo '</pre>';\n\
+	echo  '<pre>'; var_dump(${1}); echo  '</pre>';\n\
 # pre_dump(); die();\n\
 snippet pdd\n\
-	echo '<pre>'; var_dump(${1}); echo '</pre>'; die(${2:});\n\
+	echo  '<pre>'; var_dump(${1}); echo  '</pre>'; die(${2:});\n\
 snippet vd\n\
 	var_dump(${1});\n\
 snippet vdd\n\
@@ -356,7 +356,7 @@ snippet <?\n\
 \n\
 	${1}\n\
 snippet <?e\n\
-	<?php echo ${1} ?>\n\
+	<?php echo  ${1} ?>\n\
 # this one is for php5.4\n\
 snippet <?=\n\
 	<?=${1}?>\n\

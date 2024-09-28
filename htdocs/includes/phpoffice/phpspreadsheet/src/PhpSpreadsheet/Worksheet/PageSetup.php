@@ -573,9 +573,9 @@ class PageSetup
     }
 
     /**
-     * Get print area.
+     * Get echo area.
      *
-     * @param int $index Identifier for a specific print area range if several ranges have been set
+     * @param int $index Identifier for a specific echo area range if several ranges have been set
      *                            Default behaviour, or a index value of 0, will return all ranges as a comma-separated string
      *                            Otherwise, the specific range identified by the value of $index will be returned
      *                            Print areas are numbered from 1
@@ -594,10 +594,10 @@ class PageSetup
     }
 
     /**
-     * Is print area set?
+     * Is echo area set?
      *
-     * @param int $index Identifier for a specific print area range if several ranges have been set
-     *                            Default behaviour, or an index value of 0, will identify whether any print range is set
+     * @param int $index Identifier for a specific echo area range if several ranges have been set
+     *                            Default behaviour, or an index value of 0, will identify whether any echo range is set
      *                            Otherwise, existence of the range identified by the value of $index will be returned
      *                            Print areas are numbered from 1
      */
@@ -612,10 +612,10 @@ class PageSetup
     }
 
     /**
-     * Clear a print area.
+     * Clear a echo area.
      *
-     * @param int $index Identifier for a specific print area range if several ranges have been set
-     *                            Default behaviour, or an index value of 0, will clear all print ranges that are set
+     * @param int $index Identifier for a specific echo area range if several ranges have been set
+     *                            Default behaviour, or an index value of 0, will clear all echo ranges that are set
      *                            Otherwise, the range identified by the value of $index will be removed from the series
      *                            Print areas are numbered from 1
      *
@@ -637,21 +637,21 @@ class PageSetup
     }
 
     /**
-     * Set print area. e.g. 'A1:D10' or 'A1:D10,G5:M20'.
+     * Set echo area. e.g. 'A1:D10' or 'A1:D10,G5:M20'.
      *
-     * @param int $index Identifier for a specific print area range allowing several ranges to be set
+     * @param int $index Identifier for a specific echo area range allowing several ranges to be set
      *                            When the method is "O"verwrite, then a positive integer index will overwrite that indexed
-     *                                entry in the print areas list; a negative index value will identify which entry to
-     *                                overwrite working bacward through the print area to the list, with the last entry as -1.
-     *                                Specifying an index value of 0, will overwrite <b>all</b> existing print ranges.
+     *                                entry in the echo areas list; a negative index value will identify which entry to
+     *                                overwrite working bacward through the echo area to the list, with the last entry as -1.
+     *                                Specifying an index value of 0, will overwrite <b>all</b> existing echo ranges.
      *                            When the method is "I"nsert, then a positive index will insert after that indexed entry in
-     *                                the print areas list, while a negative index will insert before the indexed entry.
-     *                                Specifying an index value of 0, will always append the new print range at the end of the
+     *                                the echo areas list, while a negative index will insert before the indexed entry.
+     *                                Specifying an index value of 0, will always append the new echo range at the end of the
      *                                list.
      *                            Print areas are numbered from 1
-     * @param string $method Determines the method used when setting multiple print areas
-     *                            Default behaviour, or the "O" method, overwrites existing print area
-     *                            The "I" method, inserts the new print area before any specified index, or at the end of the list
+     * @param string $method Determines the method used when setting multiple echo areas
+     *                            Default behaviour, or the "O" method, overwrites existing echo area
+     *                            The "I" method, inserts the new echo area before any specified index, or at the end of the list
      *
      * @return $this
      */
@@ -678,7 +678,7 @@ class PageSetup
                     $index = count($printAreas) - abs($index) + 1;
                 }
                 if (($index <= 0) || ($index > count($printAreas))) {
-                    throw new PhpSpreadsheetException('Invalid index for setting print range.');
+                    throw new PhpSpreadsheetException('Invalid index for setting echo range.');
                 }
                 $printAreas[$index - 1] = $value;
                 $this->printArea = implode(',', $printAreas);
@@ -692,25 +692,25 @@ class PageSetup
                     $index = (int) abs($index) - 1;
                 }
                 if ($index > count($printAreas)) {
-                    throw new PhpSpreadsheetException('Invalid index for setting print range.');
+                    throw new PhpSpreadsheetException('Invalid index for setting echo range.');
                 }
                 $printAreas = array_merge(array_slice($printAreas, 0, $index), [$value], array_slice($printAreas, $index));
                 $this->printArea = implode(',', $printAreas);
             }
         } else {
-            throw new PhpSpreadsheetException('Invalid method for setting print range.');
+            throw new PhpSpreadsheetException('Invalid method for setting echo range.');
         }
 
         return $this;
     }
 
     /**
-     * Add a new print area (e.g. 'A1:D10' or 'A1:D10,G5:M20') to the list of print areas.
+     * Add a new echo area (e.g. 'A1:D10' or 'A1:D10,G5:M20') to the list of echo areas.
      *
-     * @param int $index Identifier for a specific print area range allowing several ranges to be set
-     *                            A positive index will insert after that indexed entry in the print areas list, while a
+     * @param int $index Identifier for a specific echo area range allowing several ranges to be set
+     *                            A positive index will insert after that indexed entry in the echo areas list, while a
      *                                negative index will insert before the indexed entry.
-     *                                Specifying an index value of 0, will always append the new print range at the end of the
+     *                                Specifying an index value of 0, will always append the new echo range at the end of the
      *                                list.
      *                            Print areas are numbered from 1
      *
@@ -722,25 +722,25 @@ class PageSetup
     }
 
     /**
-     * Set print area.
+     * Set echo area.
      *
      * @param int $column1 Column 1
      * @param int $row1 Row 1
      * @param int $column2 Column 2
      * @param int $row2 Row 2
-     * @param int $index Identifier for a specific print area range allowing several ranges to be set
+     * @param int $index Identifier for a specific echo area range allowing several ranges to be set
      *                                When the method is "O"verwrite, then a positive integer index will overwrite that indexed
-     *                                    entry in the print areas list; a negative index value will identify which entry to
-     *                                    overwrite working backward through the print area to the list, with the last entry as -1.
-     *                                    Specifying an index value of 0, will overwrite <b>all</b> existing print ranges.
+     *                                    entry in the echo areas list; a negative index value will identify which entry to
+     *                                    overwrite working backward through the echo area to the list, with the last entry as -1.
+     *                                    Specifying an index value of 0, will overwrite <b>all</b> existing echo ranges.
      *                                When the method is "I"nsert, then a positive index will insert after that indexed entry in
-     *                                    the print areas list, while a negative index will insert before the indexed entry.
-     *                                    Specifying an index value of 0, will always append the new print range at the end of the
+     *                                    the echo areas list, while a negative index will insert before the indexed entry.
+     *                                    Specifying an index value of 0, will always append the new echo range at the end of the
      *                                    list.
      *                                Print areas are numbered from 1
-     * @param string $method Determines the method used when setting multiple print areas
-     *                                Default behaviour, or the "O" method, overwrites existing print area
-     *                                The "I" method, inserts the new print area before any specified index, or at the end of the list
+     * @param string $method Determines the method used when setting multiple echo areas
+     *                                Default behaviour, or the "O" method, overwrites existing echo area
+     *                                The "I" method, inserts the new echo area before any specified index, or at the end of the list
      *
      * @return $this
      */
@@ -754,16 +754,16 @@ class PageSetup
     }
 
     /**
-     * Add a new print area to the list of print areas.
+     * Add a new echo area to the list of echo areas.
      *
-     * @param int $column1 Start Column for the print area
-     * @param int $row1 Start Row for the print area
-     * @param int $column2 End Column for the print area
-     * @param int $row2 End Row for the print area
-     * @param int $index Identifier for a specific print area range allowing several ranges to be set
-     *                                A positive index will insert after that indexed entry in the print areas list, while a
+     * @param int $column1 Start Column for the echo area
+     * @param int $row1 Start Row for the echo area
+     * @param int $column2 End Column for the echo area
+     * @param int $row2 End Row for the echo area
+     * @param int $index Identifier for a specific echo area range allowing several ranges to be set
+     *                                A positive index will insert after that indexed entry in the echo areas list, while a
      *                                    negative index will insert before the indexed entry.
-     *                                    Specifying an index value of 0, will always append the new print range at the end of the
+     *                                    Specifying an index value of 0, will always append the new echo range at the end of the
      *                                    list.
      *                                Print areas are numbered from 1
      *

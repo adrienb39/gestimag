@@ -168,7 +168,7 @@ class FormContract
 				return $ret;
 			}
 
-			print $ret;
+			echo $ret;
 
 			return $num;
 		} else {
@@ -205,6 +205,6 @@ class FormContract
 			return $ret;
 		}
 
-		print $ret;
+		echo $ret;
 	}
 }

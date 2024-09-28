@@ -2,7 +2,7 @@
 <?php
 // Protection to avoid direct call of template
 if (empty($context) || !is_object($context)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -172,13 +172,13 @@ if (empty($reshook)) {
 		<li class="brand">
 		<?php
 		$brandTitle = getDolGlobalString('WEBPORTAL_TITLE') ? getDolGlobalString('WEBPORTAL_TITLE') : getDolGlobalString('MAIN_INFO_SOCIETE_NOM');
-		print '<a class="brand__logo-link"  href="'.$context->getControllerUrl().'" >';
+		echo '<a class="brand__logo-link"  href="'.$context->getControllerUrl().'" >';
 		if (!empty($context->theme->menuLogoUrl)) {
-			print '<img class="brand__logo-img" src="' . dol_escape_htmltag($context->theme->menuLogoUrl) . '" alt="' . dol_escape_htmltag($brandTitle) . '">';
+			echo '<img class="brand__logo-img" src="' . dol_escape_htmltag($context->theme->menuLogoUrl) . '" alt="' . dol_escape_htmltag($brandTitle) . '">';
 		} else {
-			print '<span class="brand__name">' . $brandTitle . '</span>';
+			echo '<span class="brand__name">' . $brandTitle . '</span>';
 		}
-		print '</a>';
+		echo '</a>';
 		?>
 		</li>
 	</ul>
@@ -186,14 +186,14 @@ if (empty($reshook)) {
 	<?php
 	if (empty($context->doNotDisplayMenu) && empty($reshook) && !empty($navMenu)) {
 		// show menu
-		print getNav($navMenu);
+		echo getNav($navMenu);
 	}
 	?>
 	</ul>
 	<ul class="menu-entries-alt">
 	<?php
 		// show menu
-	print '<li data-deep="0" class="--item-propal-list nav-item  "><a href="'.$context->getControllerUrl().'">'.$langs->trans("Menu").'...</a></li>';
+	echo '<li data-deep="0" class="--item-propal-list nav-item  "><a href="'.$context->getControllerUrl().'">'.$langs->trans("Menu").'...</a></li>';
 	?>
 	</ul>
 	<ul class="logout">
@@ -201,7 +201,7 @@ if (empty($reshook)) {
 	if (empty($context->doNotDisplayMenu) && empty($reshook) && !empty($navUserMenu)) {
 		// show menu
 		uasort($navUserMenu, 'menuSortInv');
-		print getNav($navUserMenu);
+		echo getNav($navUserMenu);
 	}
 	?>
 	</ul>

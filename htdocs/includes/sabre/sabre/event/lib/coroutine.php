@@ -24,7 +24,7 @@ use Throwable;
  *
  * })->error(function($reason) {
  *
- *   echo "Failed because: $reason\n";
+ *   echo  "Failed because: $reason\n";
  *
  * });
  *
@@ -37,7 +37,7 @@ use Throwable;
  *     yield $httpClient->request('DELETE', /foo');
  *     yield $httpClient->request('PUT', '/foo');
  *   } catch(\Throwable $reason) {
- *     echo "Failed because: $reason\n";
+ *     echo  "Failed because: $reason\n";
  *   }
  *
  * });

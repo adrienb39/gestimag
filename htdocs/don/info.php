@@ -80,7 +80,7 @@ $object->info($id);
 
 $head = donation_prepare_head($object);
 
-print dol_get_fiche_head($head, 'info', $langs->trans("Donation"), -1, 'donation');
+echo dol_get_fiche_head($head, 'info', $langs->trans("Donation"), -1, 'donation');
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/don/list.php'.(!empty($socid) ? '?socid='.$socid : '').'">'.$langs->trans("BackToList").'</a>';
 
@@ -121,18 +121,18 @@ $morehtmlref .= '</div>';
 
 dol_banner_tab($object, 'rowid', $linkback, 1, 'rowid', 'ref', $morehtmlref);
 
-print '<div class="fichecenter">';
-print '<div class="underbanner clearboth"></div>';
+echo '<div class="fichecenter">';
+echo '<div class="underbanner clearboth"></div>';
 
-print '<br>';
+echo '<br>';
 
-print '<table width="100%"><tr><td>';
+echo '<table width="100%"><tr><td>';
 dol_print_object_info($object);
-print '</td></tr></table>';
+echo '</td></tr></table>';
 
-print '</div>';
+echo '</div>';
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 llxFooter();
 $db->close();

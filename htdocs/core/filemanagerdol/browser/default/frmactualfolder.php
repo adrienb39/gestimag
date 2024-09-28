@@ -55,7 +55,7 @@ top_httphead();
 		<title>Folder path</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
-print '<!-- Includes CSS for Gestimag theme -->'."\n";
+echo '<!-- Includes CSS for Gestimag theme -->'."\n";
 // Output style sheets (optioncss='print' or ''). Note: $conf->css looks like '/theme/eldy/style.css.php'
 $themepath = dol_buildpath($conf->css, 1);
 $themesubdir = '';
@@ -69,8 +69,8 @@ if (!empty($conf->modules_parts['theme'])) {	// This slow down
 	}
 }
 
-//print 'themepath='.$themepath.' themeparam='.$themeparam;exit;
-print '<link rel="stylesheet" type="text/css" href="'.$themepath.'">'."\n";
+//echo 'themepath='.$themepath.' themeparam='.$themeparam;exit;
+echo '<link rel="stylesheet" type="text/css" href="'.$themepath.'">'."\n";
 ?>
 		<link href="browser.css" type="text/css" rel="stylesheet">
 		<script type="text/javascript">
@@ -126,7 +126,7 @@ window.onload = function()
 					<button style="WIDTH: 100%" type="button">
 						<table cellSpacing="0" cellPadding="0" width="100%" border="0">
 							<tr>
-								<td><?php echo img_picto_common('', 'treemenu/folder.gif', 'width="16" height="16"'); ?></td>
+								<td><?php echo  img_picto_common('', 'treemenu/folder.gif', 'width="16" height="16"'); ?></td>
 								<td>&nbsp;</td>
 								<td id="tdName" width="100%" class="ActualFolder nowrap">/</td>
 								<td>&nbsp;</td>

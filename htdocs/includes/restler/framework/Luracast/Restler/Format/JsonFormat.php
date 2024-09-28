@@ -162,7 +162,7 @@ class JsonFormat extends Format
     }
 
     /**
-     * Pretty print JSON string
+     * Pretty echo JSON string
      *
      * @param string $json
      *

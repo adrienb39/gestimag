@@ -93,7 +93,7 @@ $object = $confattendee;
 if ($type == 'conf') {
 	$resultconf = $conference->fetch($id);
 	if ($resultconf < 0) {
-		print 'Bad value for parameter id';
+		echo 'Bad value for parameter id';
 		exit;
 	}
 	$resultproject = $project->fetch($conference->fk_project);
@@ -134,7 +134,7 @@ $securekeytocompare = dol_hash(getDolGlobalString('EVENTORGANIZATION_SECUREKEY')
 
 // We check if the securekey collected is OK
 if ($securekeytocompare != $securekeyreceived) {
-	print $langs->trans('MissingOrBadSecureKey');
+	echo $langs->trans('MissingOrBadSecureKey');
 	exit;
 }
 
@@ -173,7 +173,7 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 
 	top_htmlhead($head, $title, $disablejs, $disablehead, $arrayofjs, $arrayofcss); // Show html headers
 
-	print '<body id="mainbody" class="publicnewmemberform">';
+	echo '<body id="mainbody" class="publicnewmemberform">';
 
 	// Define urllogo
 	$urllogo = DOL_URL_ROOT.'/theme/common/login_logo.png';
@@ -186,29 +186,29 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 		$urllogo = DOL_URL_ROOT.'/theme/gestimag_logo.svg';
 	}
 
-	print '<div class="center">';
+	echo '<div class="center">';
 	// Output html code for logo
 	if ($urllogo) {
-		print '<div class="backgreypublicpayment">';
-		print '<div class="logopublicpayment">';
-		print '<img id="dolpaymentlogo" src="'.$urllogo.'"';
-		print '>';
-		print '</div>';
+		echo '<div class="backgreypublicpayment">';
+		echo '<div class="logopublicpayment">';
+		echo '<img id="dolpaymentlogo" src="'.$urllogo.'"';
+		echo '>';
+		echo '</div>';
 		if (!getDolGlobalString('MAIN_HIDE_POWERED_BY')) {
-			print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+			echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 		}
-		print '</div>';
+		echo '</div>';
 	}
 
 	if (getDolGlobalString('EVENTORGANIZATION_IMAGE_PUBLIC_INTERFACE')) {
-		print '<div class="backimagepubliceventorganizationsubscription">';
-		print '<img id="idEVENTORGANIZATION_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('EVENTORGANIZATION_IMAGE_PUBLIC_INTERFACE').'">';
-		print '</div>';
+		echo '<div class="backimagepubliceventorganizationsubscription">';
+		echo '<img id="idEVENTORGANIZATION_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('EVENTORGANIZATION_IMAGE_PUBLIC_INTERFACE').'">';
+		echo '</div>';
 	}
 
-	print '</div>';
+	echo '</div>';
 
-	print '<div class="divmainbodylarge">';
+	echo '<div class="divmainbodylarge">';
 }
 
 /**
@@ -218,12 +218,12 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
  */
 function llxFooterVierge()
 {
-	print '</div>';
+	echo '</div>';
 
 	printCommonFooter('public');
 
-	print "</body>\n";
-	print "</html>\n";
+	echo "</body>\n";
+	echo "</html>\n";
 }
 
 
@@ -703,24 +703,24 @@ $formcompany = new FormCompany($db);
 llxHeaderVierge($langs->trans("NewRegistration"));
 
 
-print '<div align="center">';
-print '<div id="divsubscribe">';
+echo '<div align="center">';
+echo '<div id="divsubscribe">';
 
 // Sub banner
-print '<div class="center subscriptionformbanner subbanner justify margintoponly paddingtop marginbottomonly padingbottom">';
-print load_fiche_titre($langs->trans("NewRegistration"), '', '', 0, 0, 'center');
+echo '<div class="center subscriptionformbanner subbanner justify margintoponly paddingtop marginbottomonly padingbottom">';
+echo load_fiche_titre($langs->trans("NewRegistration"), '', '', 0, 0, 'center');
 // Welcome message
-print '<span class="opacitymedium">'.$langs->trans("EvntOrgWelcomeMessage").'</span>';
-print '<br>';
+echo '<span class="opacitymedium">'.$langs->trans("EvntOrgWelcomeMessage").'</span>';
+echo '<br>';
 // Title
-print '<span class="eventlabel large">'.dol_escape_htmltag($project->title . ' '. $conference->label).'</span><br>';
-print '</div>';
+echo '<span class="eventlabel large">'.dol_escape_htmltag($project->title . ' '. $conference->label).'</span><br>';
+echo '</div>';
 
 // Help text
-print '<div class="justify subscriptionformhelptext">';
+echo '<div class="justify subscriptionformhelptext">';
 
 if ($project->date_start_event || $project->date_end_event) {
-	print '<br><span class="fa fa-calendar pictofixedwidth opacitymedium"></span>';
+	echo '<br><span class="fa fa-calendar pictofixedwidth opacitymedium"></span>';
 }
 if ($project->date_start_event) {
 	$format = 'day';
@@ -728,10 +728,10 @@ if ($project->date_start_event) {
 	if ($tmparray['hours'] || $tmparray['minutes'] || $tmparray['minutes']) {
 		$format = 'dayhour';
 	}
-	print dol_print_date($project->date_start_event, $format);
+	echo dol_print_date($project->date_start_event, $format);
 }
 if ($project->date_start_event && $project->date_end_event) {
-	print ' - ';
+	echo ' - ';
 }
 if ($project->date_end_event) {
 	$format = 'day';
@@ -739,45 +739,45 @@ if ($project->date_end_event) {
 	if ($tmparray['hours'] || $tmparray['minutes'] || $tmparray['minutes']) {
 		$format = 'dayhour';
 	}
-	print dol_print_date($project->date_end_event, $format);
+	echo dol_print_date($project->date_end_event, $format);
 }
 if ($project->date_start_event || $project->date_end_event) {
-	print '<br>';
+	echo '<br>';
 }
 if ($project->location) {
-	print '<span class="fa fa-map-marked-alt pictofixedwidth opacitymedium"></span>'.dol_escape_htmltag($project->location).'<br>';
+	echo '<span class="fa fa-map-marked-alt pictofixedwidth opacitymedium"></span>'.dol_escape_htmltag($project->location).'<br>';
 }
 if ($project->note_public) {
-	print '<br><span class="opacitymedium">'.dol_htmlentitiesbr($project->note_public).'</span><br>';
+	echo '<br><span class="opacitymedium">'.dol_htmlentitiesbr($project->note_public).'</span><br>';
 }
 
-print '</div>';
+echo '</div>';
 
 
 $maxattendees = 0;
 if ($conference->id > 0) {
 	/* date of project is not  date of event so commented
-	 print $langs->trans("Date").': ';
-	 print dol_print_date($conference->datep);
+	 echo $langs->trans("Date").': ';
+	 echo dol_print_date($conference->datep);
 	 if ($conference->date_end) {
-	 print ' - ';
-	 print dol_print_date($conference->datef);
+	 echo ' - ';
+	 echo dol_print_date($conference->datef);
 	 }*/
 } else {
 	/* date of project is not  date of event so commented
-	 print $langs->trans("Date").': ';
-	 print dol_print_date($project->date_start);
+	 echo $langs->trans("Date").': ';
+	 echo dol_print_date($project->date_start);
 	 if ($project->date_end) {
-	 print ' - ';
-	 print dol_print_date($project->date_end);
+	 echo ' - ';
+	 echo dol_print_date($project->date_end);
 	 }*/
 	$maxattendees = $project->max_attendees;	// Max attendeed for the project/event
 }
 
 if ($maxattendees && $currentnbofattendees >= $maxattendees) {
-	print '<br>';
-	print '<div class="warning">'.$langs->trans("MaxNbOfAttendeesReached").'</div>';
-	print '<br>';
+	echo '<br>';
+	echo '<div class="warning">'.$langs->trans("MaxNbOfAttendeesReached").'</div>';
+	echo '<br>';
 }
 
 
@@ -787,23 +787,23 @@ dol_htmloutput_errors($errmsg, $errors);
 if ((!empty($conference->id) && $conference->status == ConferenceOrBooth::STATUS_CONFIRMED) || (!empty($project->id) && $project->status == Project::STATUS_VALIDATED)) {
 	if (empty($maxattendees) || $currentnbofattendees < $maxattendees) {
 		// Print form
-		print '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST" name="newmember">' . "\n";
-		print '<input type="hidden" name="token" value="' . newToken() . '" / >';
-		print '<input type="hidden" name="entity" value="' . $entity . '" />';
-		print '<input type="hidden" name="action" value="add" />';
-		print '<input type="hidden" name="type" value="' . $type . '" />';
-		print '<input type="hidden" name="id" value="' . $conference->id . '" />';
-		print '<input type="hidden" name="fk_project" value="' . $project->id . '" />';
-		print '<input type="hidden" name="securekey" value="' . $securekeyreceived . '" />';
+		echo '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST" name="newmember">' . "\n";
+		echo '<input type="hidden" name="token" value="' . newToken() . '" / >';
+		echo '<input type="hidden" name="entity" value="' . $entity . '" />';
+		echo '<input type="hidden" name="action" value="add" />';
+		echo '<input type="hidden" name="type" value="' . $type . '" />';
+		echo '<input type="hidden" name="id" value="' . $conference->id . '" />';
+		echo '<input type="hidden" name="fk_project" value="' . $project->id . '" />';
+		echo '<input type="hidden" name="securekey" value="' . $securekeyreceived . '" />';
 
-		print '<br>';
-		print '<br>';
-		//print '<span class="opacitymedium">' . $langs->trans("FieldsWithAreMandatory", '*') . '</span><br>';
-		//print $langs->trans("FieldsWithIsForPublic",'**').'<br>';
+		echo '<br>';
+		echo '<br>';
+		//echo '<span class="opacitymedium">' . $langs->trans("FieldsWithAreMandatory", '*') . '</span><br>';
+		//echo $langs->trans("FieldsWithIsForPublic",'**').'<br>';
 
-		print dol_get_fiche_head();
+		echo dol_get_fiche_head();
 
-		print '<script type="text/javascript">
+		echo '<script type="text/javascript">
 		jQuery(document).ready(function () {
 			jQuery(document).ready(function () {
 				jQuery("#selectcountry_id").change(function() {
@@ -814,93 +814,93 @@ if ((!empty($conference->id) && $conference->status == ConferenceOrBooth::STATUS
 		});
 		</script>';
 
-		print '<table class="border" summary="form to subscribe" id="tablesubscribe">' . "\n";
+		echo '<table class="border" summary="form to subscribe" id="tablesubscribe">' . "\n";
 
 		// Firstname
-		print '<tr><td><span class="fieldrequired">';
-		print $langs->trans("Firstname") . '</span></td><td>';
-		print img_picto('', 'user', 'class="pictofixedwidth"');
-		print '<input type="text" name="firstname" maxlength="255" class="minwidth200 maxwidth300" value="' . dol_escape_htmltag($firstname) . '" required autofocus></td></tr>' . "\n";
+		echo '<tr><td><span class="fieldrequired">';
+		echo $langs->trans("Firstname") . '</span></td><td>';
+		echo img_picto('', 'user', 'class="pictofixedwidth"');
+		echo '<input type="text" name="firstname" maxlength="255" class="minwidth200 maxwidth300" value="' . dol_escape_htmltag($firstname) . '" required autofocus></td></tr>' . "\n";
 
 		// Lastname
-		print '<tr><td><span class="fieldrequired">';
-		print $langs->trans("Lastname") . '</span></td><td>';
-		print img_picto('', 'user', 'class="pictofixedwidth"');
-		print '<input type="text" name="lastname" maxlength="255" class="minwidth200 maxwidth300" value="' . dol_escape_htmltag($lastname) . '" required></td></tr>' . "\n";
+		echo '<tr><td><span class="fieldrequired">';
+		echo $langs->trans("Lastname") . '</span></td><td>';
+		echo img_picto('', 'user', 'class="pictofixedwidth"');
+		echo '<input type="text" name="lastname" maxlength="255" class="minwidth200 maxwidth300" value="' . dol_escape_htmltag($lastname) . '" required></td></tr>' . "\n";
 
 		// Email
-		print '<tr><td><span class="fieldrequired">' . $langs->trans("EmailAttendee") . '</span></td><td>';
-		print img_picto('', 'email', 'class="pictofixedwidth"');
-		print '<input type="text" name="email" maxlength="255" class="minwidth200 widthcentpercentminusx maxwidth300" value="' . dol_escape_htmltag(GETPOST('email')) . '" required></td></tr>' . "\n";
+		echo '<tr><td><span class="fieldrequired">' . $langs->trans("EmailAttendee") . '</span></td><td>';
+		echo img_picto('', 'email', 'class="pictofixedwidth"');
+		echo '<input type="text" name="email" maxlength="255" class="minwidth200 widthcentpercentminusx maxwidth300" value="' . dol_escape_htmltag(GETPOST('email')) . '" required></td></tr>' . "\n";
 
 		// Company
-		print '<tr id="trcompany" class="trcompany"><td>';
+		echo '<tr id="trcompany" class="trcompany"><td>';
 		if (!empty((float) $project->price_registration)) {
-			print '<span class="fieldrequired">';
+			echo '<span class="fieldrequired">';
 		}
-		print $langs->trans("Company");
+		echo $langs->trans("Company");
 		if (!empty((float) $project->price_registration)) {
-			print '</span>';
+			echo '</span>';
 		}
-		print '</td><td>';
-		print img_picto('', 'company', 'class="pictofixedwidth"');
-		print '<input type="text" name="societe" class="minwidth200 widthcentpercentminusx maxwidth300" value="' . dol_escape_htmltag(GETPOST('societe')) . '"'.(empty((float) $project->price_registration) ? '' : ' required').'></td></tr>' . "\n";
+		echo '</td><td>';
+		echo img_picto('', 'company', 'class="pictofixedwidth"');
+		echo '<input type="text" name="societe" class="minwidth200 widthcentpercentminusx maxwidth300" value="' . dol_escape_htmltag(GETPOST('societe')) . '"'.(empty((float) $project->price_registration) ? '' : ' required').'></td></tr>' . "\n";
 
 		// Email company for invoice
 		if ($project->price_registration) {
-			print '<tr><td>' . $form->textwithpicto($langs->trans("EmailCompany"), $langs->trans("EmailCompanyForInvoice")) . '</td><td>';
-			print img_picto('', 'email', 'class="pictofixedwidth"');
-			print '<input type="text" name="emailcompany" maxlength="255" class="minwidth200 widthcentpercentminusx maxwidth300" value="' . dol_escape_htmltag(GETPOST('emailcompany')) . '"></td></tr>' . "\n";
+			echo '<tr><td>' . $form->textwithpicto($langs->trans("EmailCompany"), $langs->trans("EmailCompanyForInvoice")) . '</td><td>';
+			echo img_picto('', 'email', 'class="pictofixedwidth"');
+			echo '<input type="text" name="emailcompany" maxlength="255" class="minwidth200 widthcentpercentminusx maxwidth300" value="' . dol_escape_htmltag(GETPOST('emailcompany')) . '"></td></tr>' . "\n";
 		}
 
 		// Address
-		print '<tr><td>' . $langs->trans("Address") . '</td><td>' . "\n";
-		print '<textarea name="address" id="address" wrap="soft" class="centpercent" rows="' . ROWS_2 . '">' . dol_escape_htmltag(GETPOST('address', 'restricthtml'), 0, 1) . '</textarea></td></tr>' . "\n";
+		echo '<tr><td>' . $langs->trans("Address") . '</td><td>' . "\n";
+		echo '<textarea name="address" id="address" wrap="soft" class="centpercent" rows="' . ROWS_2 . '">' . dol_escape_htmltag(GETPOST('address', 'restricthtml'), 0, 1) . '</textarea></td></tr>' . "\n";
 
 		// Zip / Town
-		print '<tr><td>' . $langs->trans('Zip') . ' / ' . $langs->trans('Town') . '</td><td>';
-		print $formcompany->select_ziptown(GETPOST('zipcode'), 'zipcode', array('town', 'selectcountry_id', 'state_id'), 6, 1);
-		print ' / ';
-		print $formcompany->select_ziptown(GETPOST('town'), 'town', array('zipcode', 'selectcountry_id', 'state_id'), 0, 1);
-		print '</td></tr>';
+		echo '<tr><td>' . $langs->trans('Zip') . ' / ' . $langs->trans('Town') . '</td><td>';
+		echo $formcompany->select_ziptown(GETPOST('zipcode'), 'zipcode', array('town', 'selectcountry_id', 'state_id'), 6, 1);
+		echo ' / ';
+		echo $formcompany->select_ziptown(GETPOST('town'), 'town', array('zipcode', 'selectcountry_id', 'state_id'), 0, 1);
+		echo '</td></tr>';
 
 		// Country
-		print '<tr><td><span class="fieldrequired">'.$langs->trans('Country').'</span></td><td>';
-		print img_picto('', 'country', 'class="pictofixedwidth"');
+		echo '<tr><td><span class="fieldrequired">'.$langs->trans('Country').'</span></td><td>';
+		echo img_picto('', 'country', 'class="pictofixedwidth"');
 		$country_id = GETPOST('country_id');
 		if (!$country_id && getDolGlobalString('MEMBER_NEWFORM_FORCECOUNTRYCODE')) {
 			$country_id = getCountry($conf->global->MEMBER_NEWFORM_FORCECOUNTRYCODE, 2, $db, $langs);
 		}
 		if (!$country_id && !empty($conf->geoipmaxmind->enabled)) {
 			$country_code = dol_user_country();
-			//print $country_code;
+			//echo $country_code;
 			if ($country_code) {
 				$new_country_id = getCountry($country_code, 3, $db, $langs);
-				//print 'xxx'.$country_code.' - '.$new_country_id;
+				//echo 'xxx'.$country_code.' - '.$new_country_id;
 				if ($new_country_id) {
 					$country_id = $new_country_id;
 				}
 			}
 		}
 		$country_code = getCountry($country_id, 2, $db, $langs);
-		print $form->select_country($country_id, 'country_id', '', 0, 'minwidth200 widthcentpercentminusx maxwidth300');
-		print '</td></tr>';
+		echo $form->select_country($country_id, 'country_id', '', 0, 'minwidth200 widthcentpercentminusx maxwidth300');
+		echo '</td></tr>';
 		// State
 		if (!getDolGlobalString('SOCIETE_DISABLE_STATE')) {
-			print '<tr><td>' . $langs->trans('State') . '</td><td>';
+			echo '<tr><td>' . $langs->trans('State') . '</td><td>';
 			if ($country_code) {
-				print img_picto('', 'state', 'class="pictofixedwidth"');
-				print $formcompany->select_state(GETPOST("state_id"), $country_code);
+				echo img_picto('', 'state', 'class="pictofixedwidth"');
+				echo $formcompany->select_state(GETPOST("state_id"), $country_code);
 			} else {
-				print '';
+				echo '';
 			}
-			print '</td></tr>';
+			echo '</td></tr>';
 		}
 
 		if ($project->price_registration) {
-			print '<tr><td>' . $langs->trans('Price') . '</td><td>';
-			print '<span class="amount price-registration">'.price($project->price_registration, 1, $langs, 1, -1, -1, $conf->currency).'</span>';
-			print '</td></tr>';
+			echo '<tr><td>' . $langs->trans('Price') . '</td><td>';
+			echo '<span class="amount price-registration">'.price($project->price_registration, 1, $langs, 1, -1, -1, $conf->currency).'</span>';
+			echo '</td></tr>';
 		}
 
 		// Other attributes
@@ -908,42 +908,42 @@ if ((!empty($conference->id) && $conference->status == ConferenceOrBooth::STATUS
 		include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_add.tpl.php';
 
 		$notetoshow = $note_public;
-		print '<tr><td>' . $langs->trans('Note') . '</td><td>';
+		echo '<tr><td>' . $langs->trans('Note') . '</td><td>';
 		if (getDolGlobalString('EVENTORGANIZATION_DEFAULT_NOTE_ON_REGISTRATION')) {
 			$notetoshow = str_replace('\n', "\n", getDolGlobalString('EVENTORGANIZATION_DEFAULT_NOTE_ON_REGISTRATION'));
 		}
-		print '<textarea name="note_public" class="centpercent" rows="'.ROWS_9.'">'.dol_escape_htmltag($notetoshow, 0, 1).'</textarea>';
-		print '</td></tr>';
+		echo '<textarea name="note_public" class="centpercent" rows="'.ROWS_9.'">'.dol_escape_htmltag($notetoshow, 0, 1).'</textarea>';
+		echo '</td></tr>';
 
 
 
-		print "</table>\n";
+		echo "</table>\n";
 
-		print dol_get_fiche_end();
+		echo dol_get_fiche_end();
 
 		// Save
-		print '<div class="center">';
-		print '<input type="submit" value="' . $langs->trans("Submit") . '" id="submitsave" class="button">';
+		echo '<div class="center">';
+		echo '<input type="submit" value="' . $langs->trans("Submit") . '" id="submitsave" class="button">';
 		if (!empty($backtopage)) {
-			print ' &nbsp; &nbsp; <input type="submit" value="' . $langs->trans("Cancel") . '" id="submitcancel" class="button button-cancel">';
+			echo ' &nbsp; &nbsp; <input type="submit" value="' . $langs->trans("Cancel") . '" id="submitcancel" class="button button-cancel">';
 		}
-		print '</div>';
+		echo '</div>';
 
-		print "</form>\n";
+		echo "</form>\n";
 
-		print "<br>";
+		echo "<br>";
 	}
 } else {
-	print '<br><br>';
+	echo '<br><br>';
 	if ($project->status == $project::STATUS_DRAFT) {
-		print $langs->trans("ConferenceIsNotConfirmed");
+		echo $langs->trans("ConferenceIsNotConfirmed");
 	} else {
-		print $langs->trans("EventRegistrationAreClosed");
+		echo $langs->trans("EventRegistrationAreClosed");
 	}
-	print '<br><br>';
+	echo '<br><br>';
 }
 
-print '</div></div>';
+echo '</div></div>';
 
 llxFooterVierge();
 

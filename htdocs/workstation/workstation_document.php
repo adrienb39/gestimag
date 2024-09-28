@@ -111,7 +111,7 @@ if ($object->id) {
 	 */
 	$head = workstationPrepareHead($object);
 
-	print dol_get_fiche_head($head, 'document', $langs->trans("Workstation"), -1, $object->picto);
+	echo dol_get_fiche_head($head, 'document', $langs->trans("Workstation"), -1, $object->picto);
 
 
 	// Build file list
@@ -167,22 +167,22 @@ if ($object->id) {
 
 	dol_banner_tab($object, 'ref', $linkback, 1, 'ref', 'ref', $morehtmlref);
 
-	print '<div class="fichecenter">';
+	echo '<div class="fichecenter">';
 
-	print '<div class="underbanner clearboth"></div>';
-	print '<table class="border centpercent tableforfield">';
+	echo '<div class="underbanner clearboth"></div>';
+	echo '<table class="border centpercent tableforfield">';
 
 	// Number of files
-	print '<tr><td class="titlefield">'.$langs->trans("NbOfAttachedFiles").'</td><td colspan="3">'.count($filearray).'</td></tr>';
+	echo '<tr><td class="titlefield">'.$langs->trans("NbOfAttachedFiles").'</td><td colspan="3">'.count($filearray).'</td></tr>';
 
 	// Total size
-	print '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td colspan="3">'.$totalsize.' '.$langs->trans("bytes").'</td></tr>';
+	echo '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td colspan="3">'.$totalsize.' '.$langs->trans("bytes").'</td></tr>';
 
-	print '</table>';
+	echo '</table>';
 
-	print '</div>';
+	echo '</div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
 	$modulepart = 'workstation';
 	$param = '&id='.$object->id;

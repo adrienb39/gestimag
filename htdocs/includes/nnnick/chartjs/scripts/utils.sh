@@ -19,5 +19,5 @@ function tag_from_version {
     else
         tag=next
     fi
-    echo $tag
+    echo  $tag
 }

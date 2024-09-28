@@ -71,7 +71,7 @@ $form = new Form($db);
 $title = $langs->trans("SubscriptionsStatistics");
 llxHeader('', $title);
 
-print load_fiche_titre($title, '', $memberstatic->picto);
+echo load_fiche_titre($title, '', $memberstatic->picto);
 
 $dir = $conf->adherent->dir_temp;
 
@@ -147,95 +147,95 @@ if (!$mesg) {
 
 $head = member_stats_prepare_head($memberstatic);
 
-print dol_get_fiche_head($head, 'statssubscription', '', -1, '');
+echo dol_get_fiche_head($head, 'statssubscription', '', -1, '');
 
 
-print '<div class="fichecenter"><div class="fichethirdleft">';
+echo '<div class="fichecenter"><div class="fichethirdleft">';
 
 // Show filter box
-/*print '<form name="stats" method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
+/*echo '<form name="stats" method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
 
-print '<table class="border centpercent">';
-print '<tr class="liste_titre"><td class="liste_titre" colspan="2">'.$langs->trans("Filter").'</td></tr>';
-print '<tr><td>'.$langs->trans("Member").'</td><td>';
-print img_picto('', 'company', 'class="pictofixedwidth"');
-print $form->select_company($id,'memberid','',1);
-print '</td></tr>';
-print '<tr><td>'.$langs->trans("User").'</td><td>';
-print img_picto('', 'user', 'class="pictofixedwidth"');
-print $form->select_dolusers($userid, 'userid', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'widthcentpercentminusx maxwidth300');
-print '</td></tr>';
-print '<tr><td class="center" colspan="2"><input type="submit" name="submit" class="button small" value="'.$langs->trans("Refresh").'"></td></tr>';
-print '</table>';
-print '</form>';
-print '<br><br>';
+echo '<table class="border centpercent">';
+echo '<tr class="liste_titre"><td class="liste_titre" colspan="2">'.$langs->trans("Filter").'</td></tr>';
+echo '<tr><td>'.$langs->trans("Member").'</td><td>';
+echo img_picto('', 'company', 'class="pictofixedwidth"');
+echo $form->select_company($id,'memberid','',1);
+echo '</td></tr>';
+echo '<tr><td>'.$langs->trans("User").'</td><td>';
+echo img_picto('', 'user', 'class="pictofixedwidth"');
+echo $form->select_dolusers($userid, 'userid', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'widthcentpercentminusx maxwidth300');
+echo '</td></tr>';
+echo '<tr><td class="center" colspan="2"><input type="submit" name="submit" class="button small" value="'.$langs->trans("Refresh").'"></td></tr>';
+echo '</table>';
+echo '</form>';
+echo '<br><br>';
 */
 
 // Show array
 $data = $stats->getAllByYear();
 
 
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder">';
-print '<tr class="liste_titre" height="24">';
-print '<td class="center">'.$langs->trans("Year").'</td>';
-print '<td class="right">'.$langs->trans("NbOfSubscriptions").'</td>';
-print '<td class="right">'.$langs->trans("AmountTotal").'</td>';
-print '<td class="right">'.$langs->trans("AmountAverage").'</td>';
-print '</tr>';
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder">';
+echo '<tr class="liste_titre" height="24">';
+echo '<td class="center">'.$langs->trans("Year").'</td>';
+echo '<td class="right">'.$langs->trans("NbOfSubscriptions").'</td>';
+echo '<td class="right">'.$langs->trans("AmountTotal").'</td>';
+echo '<td class="right">'.$langs->trans("AmountAverage").'</td>';
+echo '</tr>';
 
 $oldyear = 0;
 foreach ($data as $val) {
 	$year = $val['year'];
 	while ($oldyear > $year + 1) {	// If we have empty year
 		$oldyear--;
-		print '<tr class="oddeven" height="24">';
-		print '<td class="center">';
-		//print '<a href="month.php?year='.$oldyear.'&mode='.$mode.'">';
-		print $oldyear;
-		//print '</a>';
-		print '</td>';
-		print '<td class="right">0</td>';
-		print '<td class="right amount nowraponall">0</td>';
-		print '<td class="right amount nowraponall">0</td>';
-		print '</tr>';
+		echo '<tr class="oddeven" height="24">';
+		echo '<td class="center">';
+		//echo '<a href="month.php?year='.$oldyear.'&mode='.$mode.'">';
+		echo $oldyear;
+		//echo '</a>';
+		echo '</td>';
+		echo '<td class="right">0</td>';
+		echo '<td class="right amount nowraponall">0</td>';
+		echo '<td class="right amount nowraponall">0</td>';
+		echo '</tr>';
 	}
-	print '<tr class="oddeven" height="24">';
-	print '<td class="center">';
-	print '<a href="'.DOL_URL_ROOT.'/adherents/subscription/list.php?date_select='.((int) $year).'">'.$year.'</a>';
-	print '</td>';
-	print '<td class="right">'.$val['nb'].'</td>';
-	print '<td class="right amount nowraponall"><span class="amount">'.price(price2num($val['total'], 'MT'), 1).'</span></td>';
-	print '<td class="right amount nowraponall"><span class="amount">'.price(price2num($val['avg'], 'MT'), 1).'</span></td>';
-	print '</tr>';
+	echo '<tr class="oddeven" height="24">';
+	echo '<td class="center">';
+	echo '<a href="'.DOL_URL_ROOT.'/adherents/subscription/list.php?date_select='.((int) $year).'">'.$year.'</a>';
+	echo '</td>';
+	echo '<td class="right">'.$val['nb'].'</td>';
+	echo '<td class="right amount nowraponall"><span class="amount">'.price(price2num($val['total'], 'MT'), 1).'</span></td>';
+	echo '<td class="right amount nowraponall"><span class="amount">'.price(price2num($val['avg'], 'MT'), 1).'</span></td>';
+	echo '</tr>';
 	$oldyear = $year;
 }
 
-print '</table>';
-print '</div>';
+echo '</table>';
+echo '</div>';
 
 
-print '</div><div class="fichetwothirdright">';
+echo '</div><div class="fichetwothirdright">';
 
 
 // Show graphs
-print '<table class="border centpercent"><tr class="pair nohover"><td class="center">';
+echo '<table class="border centpercent"><tr class="pair nohover"><td class="center">';
 if ($mesg) {
-	print $mesg;
+	echo $mesg;
 } else {
-	print $px1->show();
-	print "<br>\n";
-	print $px2->show();
+	echo $px1->show();
+	echo "<br>\n";
+	echo $px2->show();
 }
-print '</td></tr></table>';
+echo '</td></tr></table>';
 
 
-print '</div></div>';
-print '<div class="clearboth"></div>';
+echo '</div></div>';
+echo '<div class="clearboth"></div>';
 
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 // End of page
 llxFooter();

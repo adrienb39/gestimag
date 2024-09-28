@@ -31,10 +31,10 @@ top_httphead();
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
 <html>
 	<head>
-		<title><?php echo $langs->trans("MediaBrowser").' - '.$Config['UserFilesAbsolutePathRelative']; ?></title>
+		<title><?php echo  $langs->trans("MediaBrowser").' - '.$Config['UserFilesAbsolutePathRelative']; ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
-print '<!-- Includes CSS for Gestimag theme -->'."\n";
+echo '<!-- Includes CSS for Gestimag theme -->'."\n";
 // Output style sheets (optioncss='print' or ''). Note: $conf->css looks like '/theme/eldy/style.css.php'
 $themepath = dol_buildpath($conf->css, 1);
 $themesubdir = '';
@@ -48,9 +48,9 @@ if (!empty($conf->modules_parts['theme'])) {	// This slow down
 	}
 }
 
-//print 'themepath='.$themepath.' themeparam='.$themeparam;exit;
+//echo 'themepath='.$themepath.' themeparam='.$themeparam;exit;
 $themeparam = '';
-print '<link rel="stylesheet" type="text/css" href="'.$themepath.$themeparam.'">'."\n";
+echo '<link rel="stylesheet" type="text/css" href="'.$themepath.$themeparam.'">'."\n";
 ?>
 		<script type="text/javascript" src="js/fckxml.js"></script>
 		<script type="text/javascript">
@@ -114,7 +114,7 @@ if ( sServerPath.length > 0 )
 	oConnector.ConnectorUrl += 'ServerPath=' + encodeURIComponent( sServerPath ) + '&' ;
 
 /* @CHANGE LDR Overwrite value coming from parameters for security purpose */
-oConnector.ConnectorUrl = '<?php echo DOL_URL_ROOT.'/core/filemanagerdol/connectors/php/connector.php?'; ?>';
+oConnector.ConnectorUrl = '<?php echo  DOL_URL_ROOT.'/core/filemanagerdol/connectors/php/connector.php?'; ?>';
 console.log('ConnectorUrl='+oConnector.ConnectorUrl);
 
 oConnector.ResourceType		= GetUrlParam( 'Type' );

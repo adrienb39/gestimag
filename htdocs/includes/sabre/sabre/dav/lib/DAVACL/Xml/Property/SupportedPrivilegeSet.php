@@ -87,28 +87,28 @@ class SupportedPrivilegeSet implements XmlSerializable, HtmlOutput
     public function toHtml(HtmlOutputHelper $html)
     {
         $traverse = function ($privName, $priv) use (&$traverse, $html) {
-            echo '<li>';
-            echo $html->xmlName($privName);
+            echo  '<li>';
+            echo  $html->xmlName($privName);
             if (isset($priv['abstract']) && $priv['abstract']) {
-                echo ' <i>(abstract)</i>';
+                echo  ' <i>(abstract)</i>';
             }
             if (isset($priv['description'])) {
-                echo ' '.$html->h($priv['description']);
+                echo  ' '.$html->h($priv['description']);
             }
             if (isset($priv['aggregates'])) {
-                echo "\n<ul>\n";
+                echo  "\n<ul>\n";
                 foreach ($priv['aggregates'] as $subPrivName => $subPriv) {
                     $traverse($subPrivName, $subPriv);
                 }
-                echo '</ul>';
+                echo  '</ul>';
             }
-            echo "</li>\n";
+            echo  "</li>\n";
         };
 
         ob_start();
-        echo '<ul class="tree">';
+        echo  '<ul class="tree">';
         $traverse('{DAV:}all', ['aggregates' => $this->getValue()]);
-        echo "</ul>\n";
+        echo  "</ul>\n";
 
         return ob_get_clean();
     }

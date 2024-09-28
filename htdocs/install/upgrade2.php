@@ -43,7 +43,7 @@
 define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
 include_once 'inc.php';
 if (!file_exists($conffile)) {
-	print 'Error: Gestimag config file was not found. This may means that Gestimag is not installed yet. Please call the page "/install/index.php" instead of "/install/upgrade.php").';
+	echo 'Error: Gestimag config file was not found. This may means that Gestimag is not installed yet. Please call the page "/install/index.php" instead of "/install/upgrade.php").';
 }
 require_once $conffile;
 require_once $gestimag_main_document_root.'/compta/facture/class/facture.class.php';
@@ -104,14 +104,14 @@ if (!is_object($conf)) {
  */
 
 if ((!$versionfrom || preg_match('/version/', $versionfrom)) && (!$versionto || preg_match('/version/', $versionto))) {
-	print 'Error: Parameter versionfrom or versionto missing or having a bad format.'."\n";
-	print 'Upgrade must be ran from command line with parameters or called from page install/index.php (like a first install)'."\n";
+	echo 'Error: Parameter versionfrom or versionto missing or having a bad format.'."\n";
+	echo 'Upgrade must be ran from command line with parameters or called from page install/index.php (like a first install)'."\n";
 	// Test if batch mode
 	$sapi_type = php_sapi_name();
 	$script_file = basename(__FILE__);
 	$path = __DIR__.'/';
 	if (substr($sapi_type, 0, 3) == 'cli') {
-		print 'Syntax from command line: '.$script_file." x.y.z a.b.c [MAIN_MODULE_NAME1_TO_ENABLE,MAIN_MODULE_NAME2_TO_ENABLE...]\n";
+		echo 'Syntax from command line: '.$script_file." x.y.z a.b.c [MAIN_MODULE_NAME1_TO_ENABLE,MAIN_MODULE_NAME2_TO_ENABLE...]\n";
 	}
 	exit;
 }
@@ -120,10 +120,10 @@ pHeader('', 'step5', GETPOST('action', 'aZ09') ? GETPOST('action', 'aZ09') : 'up
 
 
 if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ09'))) {
-	print '<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/database.svg" width="20" alt="Database"> ';
-	print '<span class="inline-block">'.$langs->trans('DataMigration').'</span></h3>';
+	echo '<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/database.svg" width="20" alt="Database"> ';
+	echo '<span class="inline-block">'.$langs->trans('DataMigration').'</span></h3>';
 
-	print '<table border="0" width="100%">';
+	echo '<table border="0" width="100%">';
 
 	// If password is encoded, we decode it
 	if ((!empty($gestimag_main_db_pass) && preg_match('/crypted:/i', $gestimag_main_db_pass)) || !empty($gestimag_main_db_encrypted_pass)) {
@@ -148,7 +148,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 	$db = getDoliDBInstance($conf->db->type, $conf->db->host, $conf->db->user, $conf->db->pass, $conf->db->name, (int) $conf->db->port);
 
 	if (!$db->connected) {
-		print '<tr><td colspan="4">'.$langs->trans("ErrorFailedToConnectToDatabase", $conf->db->name).'</td><td class="right">'.$langs->trans('Error').'</td></tr>';
+		echo '<tr><td colspan="4">'.$langs->trans("ErrorFailedToConnectToDatabase", $conf->db->name).'</td><td class="right">'.$langs->trans('Error').'</td></tr>';
 		gestimag_install_syslog('upgrade2: failed to connect to database :'.$conf->db->name.' on '.$conf->db->host.' for user '.$conf->db->user, LOG_ERR);
 		$error++;
 	}
@@ -235,7 +235,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 
 		if (!$error) {
 			if (count($listofentities) > 1) {
-				print '<tr><td colspan="4">*** '.$langs->trans("Entity").' '.$entity.'</td></tr>'."\n";
+				echo '<tr><td colspan="4">*** '.$langs->trans("Entity").' '.$entity.'</td></tr>'."\n";
 			}
 
 			// Current version is $conf->global->MAIN_VERSION_LAST_UPGRADE
@@ -314,7 +314,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 			// Script for 2.8
 			$afterversionarray = explode('.', '2.7.9');
 			$beforeversionarray = explode('.', '2.8.9');
-			//print $versionto.' '.versioncompare($versiontoarray,$afterversionarray).' '.versioncompare($versiontoarray,$beforeversionarray);
+			//echo $versionto.' '.versioncompare($versiontoarray,$afterversionarray).' '.versioncompare($versiontoarray,$beforeversionarray);
 			if (versioncompare($versiontoarray, $afterversionarray) >= 0 && versioncompare($versiontoarray, $beforeversionarray) <= 0) {
 				migrate_price_facture($db, $langs, $conf); // Code of this function works for 2.8+ because need a field tva_tx
 
@@ -591,29 +591,29 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 			$reshook = $hookmanager->executeHooks('doUpgradeAfterDB', $parameters, $object, $action); // Note that $action and $object may have been modified by some hooks
 			if ($hookmanager->resNbOfHooks > 0) {
 				if ($reshook < 0) {
-					print '<tr><td colspan="4">';
-					print '<b>'.$langs->trans('UpgradeExternalModule').'</b>: ';
-					print $hookmanager->error;
-					print "<!-- (".$reshook.") -->";
-					print '</td></tr>';
+					echo '<tr><td colspan="4">';
+					echo '<b>'.$langs->trans('UpgradeExternalModule').'</b>: ';
+					echo $hookmanager->error;
+					echo "<!-- (".$reshook.") -->";
+					echo '</td></tr>';
 				} else {
-					print '<tr class="trforrunsql"><td colspan="4">';
-					print '<b>'.$langs->trans('UpgradeExternalModule').' (DB)</b>: <span class="ok">OK</span>';
-					print "<!-- (".$reshook.") -->";
-					print '</td></tr>';
+					echo '<tr class="trforrunsql"><td colspan="4">';
+					echo '<b>'.$langs->trans('UpgradeExternalModule').' (DB)</b>: <span class="ok">OK</span>';
+					echo "<!-- (".$reshook.") -->";
+					echo '</td></tr>';
 				}
 			} else {
 				//if (!empty($conf->modules))
 				if (!empty($conf->modules_parts['hooks'])) {     // If there is at least one module with one hook, we show message to say nothing was done
-					print '<tr class="trforrunsql"><td colspan="4">';
-					print '<b>'.$langs->trans('UpgradeExternalModule').'</b>: '.$langs->trans("NodoUpgradeAfterDB");
-					print '</td></tr>';
+					echo '<tr class="trforrunsql"><td colspan="4">';
+					echo '<b>'.$langs->trans('UpgradeExternalModule').'</b>: '.$langs->trans("NodoUpgradeAfterDB");
+					echo '</td></tr>';
 				}
 			}
 		}
 	}
 
-	print '</table>';
+	echo '</table>';
 
 	if (!$error) {
 		// Set constant to ask to remake a new ping to inform about upgrade (if first ping was done and OK)
@@ -663,23 +663,23 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 		$reshook = $hookmanager->executeHooks('doUpgradeAfterFiles', $parameters, $object, $action); // Note that $action and $object may have been modified by some hooks
 		if ($hookmanager->resNbOfHooks > 0) {
 			if ($reshook < 0) {
-				print '<tr><td colspan="4">';
-				print '<b>'.$langs->trans('UpgradeExternalModule').'</b>: ';
-				print $hookmanager->error;
-				print "<!-- (".$reshook.") -->";
-				print '</td></tr>';
+				echo '<tr><td colspan="4">';
+				echo '<b>'.$langs->trans('UpgradeExternalModule').'</b>: ';
+				echo $hookmanager->error;
+				echo "<!-- (".$reshook.") -->";
+				echo '</td></tr>';
 			} else {
-				print '<tr class="trforrunsql"><td colspan="4">';
-				print '<b>'.$langs->trans('UpgradeExternalModule').' (Files)</b>: <span class="ok">OK</span>';
-				print "<!-- (".$reshook.") -->";
-				print '</td></tr>';
+				echo '<tr class="trforrunsql"><td colspan="4">';
+				echo '<b>'.$langs->trans('UpgradeExternalModule').' (Files)</b>: <span class="ok">OK</span>';
+				echo "<!-- (".$reshook.") -->";
+				echo '</td></tr>';
 			}
 		} else {
 			//if (!empty($conf->modules))
 			if (!empty($conf->modules_parts['hooks'])) {     // If there is at least one module with one hook, we show message to say nothing was done
-				print '<tr class="trforrunsql"><td colspan="4">';
-				print '<b>'.$langs->trans('UpgradeExternalModule').'</b>: '.$langs->trans("NodoUpgradeAfterFiles");
-				print '</td></tr>';
+				echo '<tr class="trforrunsql"><td colspan="4">';
+				echo '<b>'.$langs->trans('UpgradeExternalModule').'</b>: '.$langs->trans("NodoUpgradeAfterFiles");
+				echo '</td></tr>';
 			}
 		}
 	}
@@ -688,17 +688,17 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 
 	$silent = 0;
 	if (!$silent) {
-		print '<table width="100%">';
-		print '<tr><td style="width: 30%">'.$langs->trans("MigrationFinished").'</td>';
-		print '<td class="right">';
+		echo '<table width="100%">';
+		echo '<tr><td style="width: 30%">'.$langs->trans("MigrationFinished").'</td>';
+		echo '<td class="right">';
 		if ($error == 0) {
-			//print '<span class="ok">'.$langs->trans("OK").'</span> - ';		// $error = 0 does not mean there is no error (error are not always trapped)
+			//echo '<span class="ok">'.$langs->trans("OK").'</span> - ';		// $error = 0 does not mean there is no error (error are not always trapped)
 		} else {
-			print '<span class="error">'.$langs->trans("Error").'</span> - ';
+			echo '<span class="error">'.$langs->trans("Error").'</span> - ';
 		}
 
 		//if (!empty($conf->use_javascript_ajax)) {		// use_javascript_ajax is not defined
-		print '<script type="text/javascript">
+		echo '<script type="text/javascript">
 		jQuery(document).ready(function() {
 			function init_trrunsql()
 			{
@@ -711,16 +711,16 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 			});
 		});
 		</script>';
-		print '<a class="trforrunsqlshowhide" href="#">'.$langs->trans("ShowHideDetails").'</a>';
+		echo '<a class="trforrunsqlshowhide" href="#">'.$langs->trans("ShowHideDetails").'</a>';
 		//}
 
-		print '</td></tr>'."\n";
-		print '</table>';
+		echo '</td></tr>'."\n";
+		echo '</table>';
 	}
 
-	//print '<div><br>'.$langs->trans("MigrationFinished").'</div>';
+	//echo '<div><br>'.$langs->trans("MigrationFinished").'</div>';
 } else {
-	print '<div class="error">'.$langs->trans('ErrorWrongParameters').'</div>';
+	echo '<div class="error">'.$langs->trans('ErrorWrongParameters').'</div>';
 	$error++;
 }
 
@@ -754,10 +754,10 @@ if ($ret) {
  */
 function migrate_paiements($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationPaymentsUpdate')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationPaymentsUpdate')."</b><br>\n";
 
 	$result = $db->DDLDescTable(MAIN_DB_PREFIX."paiement", "fk_facture");
 	$obj = $db->fetch_object($result);
@@ -786,7 +786,7 @@ function migrate_paiements($db, $langs, $conf)
 		}
 
 		if ($num) {
-			print $langs->trans('MigrationPaymentsNumberToUpdate', $num)."<br>\n";
+			echo $langs->trans('MigrationPaymentsNumberToUpdate', $num)."<br>\n";
 			if ($db->begin()) {
 				$res = 0;
 				$num = count($row);
@@ -800,25 +800,25 @@ function migrate_paiements($db, $langs, $conf)
 
 					$res += $db->query($sql);
 
-					print $langs->trans('MigrationProcessPaymentUpdate', $row[$i][0])."<br>\n";
+					echo $langs->trans('MigrationProcessPaymentUpdate', $row[$i][0])."<br>\n";
 				}
 			}
 
 			if ($res == (2 * count($row))) {
 				$db->commit();
-				print $langs->trans('MigrationSuccessfullUpdate')."<br>";
+				echo $langs->trans('MigrationSuccessfullUpdate')."<br>";
 			} else {
 				$db->rollback();
-				print $langs->trans('MigrationUpdateFailed').'<br>';
+				echo $langs->trans('MigrationUpdateFailed').'<br>';
 			}
 		} else {
-			print $langs->trans('MigrationPaymentsNothingToUpdate')."<br>\n";
+			echo $langs->trans('MigrationPaymentsNothingToUpdate')."<br>\n";
 		}
 	} else {
-		print $langs->trans('MigrationPaymentsNothingToUpdate')."<br>\n";
+		echo $langs->trans('MigrationPaymentsNothingToUpdate')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -833,10 +833,10 @@ function migrate_paiements($db, $langs, $conf)
  */
 function migrate_paiements_orphelins_1($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationPaymentsUpdate')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationPaymentsUpdate')."</b><br>\n";
 
 	$result = $db->DDLDescTable(MAIN_DB_PREFIX."paiement", "fk_facture");
 	$obj = $db->fetch_object($result);
@@ -877,14 +877,14 @@ function migrate_paiements_orphelins_1($db, $langs, $conf)
 		}
 
 		if (count($row)) {
-			print $langs->trans('OrphelinsPaymentsDetectedByMethod', 1).': '.count($row)."<br>\n";
+			echo $langs->trans('OrphelinsPaymentsDetectedByMethod', 1).': '.count($row)."<br>\n";
 			$db->begin();
 
 			$res = 0;
 			$num = count($row);
 			for ($i = 0; $i < $num; $i++) {
 				if (getDolGlobalInt('MAIN_FEATURES_LEVEL') == 2) {
-					print '* '.$row[$i]['datec'].' paymentid='.$row[$i]['paymentid'].' pamount='.$row[$i]['pamount'].' fk_bank='.$row[$i]['fk_bank'].' bamount='.$row[$i]['bamount'].' socid='.$row[$i]['socid'].'<br>';
+					echo '* '.$row[$i]['datec'].' paymentid='.$row[$i]['paymentid'].' pamount='.$row[$i]['pamount'].' fk_bank='.$row[$i]['fk_bank'].' bamount='.$row[$i]['bamount'].' socid='.$row[$i]['socid'].'<br>';
 				}
 
 				// On cherche facture sans lien paiement et du meme montant et pour meme societe.
@@ -893,11 +893,11 @@ function migrate_paiements_orphelins_1($db, $langs, $conf)
 				$sql .= " WHERE f.fk_statut in (2,3) AND fk_soc = ".((int) $row[$i]['socid'])." AND total_ttc = ".((float) $row[$i]['pamount']);
 				$sql .= " AND pf.fk_facture IS NULL";
 				$sql .= " ORDER BY f.fk_statut";
-				//print $sql.'<br>';
+				//echo $sql.'<br>';
 				$resql = $db->query($sql);
 				if ($resql) {
 					$num = $db->num_rows($resql);
-					//print 'Nb of invoice found for this amount and company :'.$num.'<br>';
+					//echo 'Nb of invoice found for this amount and company :'.$num.'<br>';
 					if ($num >= 1) {
 						$obj = $db->fetch_object($resql);
 						$facid = $obj->rowid;
@@ -907,28 +907,28 @@ function migrate_paiements_orphelins_1($db, $langs, $conf)
 
 						$res += $db->query($sql);
 
-						print $langs->trans('MigrationProcessPaymentUpdate', 'facid='.$facid.'-paymentid='.$row[$i]['paymentid'].'-amount='.$row[$i]['pamount'])."<br>\n";
+						echo $langs->trans('MigrationProcessPaymentUpdate', 'facid='.$facid.'-paymentid='.$row[$i]['paymentid'].'-amount='.$row[$i]['pamount'])."<br>\n";
 					}
 				} else {
-					print 'ERROR';
+					echo 'ERROR';
 				}
 			}
 
 			if ($res > 0) {
-				print $langs->trans('MigrationSuccessfullUpdate')."<br>";
+				echo $langs->trans('MigrationSuccessfullUpdate')."<br>";
 			} else {
-				print $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
+				echo $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
 			}
 
 			$db->commit();
 		} else {
-			print $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
+			echo $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
 		}
 	} else {
-		print $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
+		echo $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -943,10 +943,10 @@ function migrate_paiements_orphelins_1($db, $langs, $conf)
  */
 function migrate_paiements_orphelins_2($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationPaymentsUpdate')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationPaymentsUpdate')."</b><br>\n";
 
 	$result = $db->DDLDescTable(MAIN_DB_PREFIX."paiement", "fk_facture");
 	$obj = $db->fetch_object($result);
@@ -989,13 +989,13 @@ function migrate_paiements_orphelins_2($db, $langs, $conf)
 
 		$num = count($row);
 		if ($num) {
-			print $langs->trans('OrphelinsPaymentsDetectedByMethod', 2).': '.count($row)."<br>\n";
+			echo $langs->trans('OrphelinsPaymentsDetectedByMethod', 2).': '.count($row)."<br>\n";
 			$db->begin();
 
 			$res = 0;
 			for ($i = 0; $i < $num; $i++) {
 				if (getDolGlobalInt('MAIN_FEATURES_LEVEL') == 2) {
-					print '* '.$row[$i]['datec'].' paymentid='.$row[$i]['paymentid'].' pamount='.$row[$i]['pamount'].' fk_bank='.$row[$i]['fk_bank'].' '.$row[$i]['bamount'].' socid='.$row[$i]['socid'].'<br>';
+					echo '* '.$row[$i]['datec'].' paymentid='.$row[$i]['paymentid'].' pamount='.$row[$i]['pamount'].' fk_bank='.$row[$i]['fk_bank'].' '.$row[$i]['bamount'].' socid='.$row[$i]['socid'].'<br>';
 				}
 
 				// On cherche facture sans lien paiement et du meme montant et pour meme societe.
@@ -1004,11 +1004,11 @@ function migrate_paiements_orphelins_2($db, $langs, $conf)
 				$sql .= " WHERE f.fk_statut in (2,3) AND fk_soc = ".((int) $row[$i]['socid'])." AND total_ttc = ".((float) $row[$i]['pamount']);
 				$sql .= " AND pf.fk_facture IS NULL";
 				$sql .= " ORDER BY f.fk_statut";
-				//print $sql.'<br>';
+				//echo $sql.'<br>';
 				$resql = $db->query($sql);
 				if ($resql) {
 					$num = $db->num_rows($resql);
-					//print 'Nb of invoice found for this amount and company :'.$num.'<br>';
+					//echo 'Nb of invoice found for this amount and company :'.$num.'<br>';
 					if ($num >= 1) {
 						$obj = $db->fetch_object($resql);
 						$facid = $obj->rowid;
@@ -1018,23 +1018,23 @@ function migrate_paiements_orphelins_2($db, $langs, $conf)
 
 						$res += $db->query($sql);
 
-						print $langs->trans('MigrationProcessPaymentUpdate', 'facid='.$facid.'-paymentid='.$row[$i]['paymentid'].'-amount='.$row[$i]['pamount'])."<br>\n";
+						echo $langs->trans('MigrationProcessPaymentUpdate', 'facid='.$facid.'-paymentid='.$row[$i]['paymentid'].'-amount='.$row[$i]['pamount'])."<br>\n";
 					}
 				} else {
-					print 'ERROR';
+					echo 'ERROR';
 					$nberr++;
 				}
 			}
 
 			if ($res > 0) {
-				print $langs->trans('MigrationSuccessfullUpdate')."<br>";
+				echo $langs->trans('MigrationSuccessfullUpdate')."<br>";
 			} else {
-				print $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
+				echo $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
 			}
 
 			$db->commit();
 		} else {
-			print $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
+			echo $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
 		}
 
 		// Delete obsolete fields fk_facture
@@ -1046,14 +1046,14 @@ function migrate_paiements_orphelins_2($db, $langs, $conf)
 		if (!$nberr) {
 			$db->commit();
 		} else {
-			print 'ERROR';
+			echo 'ERROR';
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
+		echo $langs->trans('MigrationPaymentsNothingUpdatable')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 
@@ -1067,12 +1067,12 @@ function migrate_paiements_orphelins_2($db, $langs, $conf)
  */
 function migrate_contracts_det($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
 	$nberr = 0;
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationContractsUpdate')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationContractsUpdate')."</b><br>\n";
 
 	$sql = "SELECT c.rowid as cref, c.date_contrat, c.statut, c.fk_product, c.fk_facture, c.fk_user_author,";
 	$sql .= " p.ref, p.label, p.description, p.price, p.tva_tx, p.duration, cd.rowid";
@@ -1091,7 +1091,7 @@ function migrate_contracts_det($db, $langs, $conf)
 		$num = $db->num_rows($resql);
 
 		if ($num) {
-			print $langs->trans('MigrationContractsNumberToUpdate', $num)."<br>\n";
+			echo $langs->trans('MigrationContractsNumberToUpdate', $num)."<br>\n";
 			$db->begin();
 
 			while ($i < $num) {
@@ -1114,7 +1114,7 @@ function migrate_contracts_det($db, $langs, $conf)
 				$sql .= ")";
 
 				if ($db->query($sql)) {
-					print $langs->trans('MigrationContractsLineCreation', $obj->cref)."<br>\n";
+					echo $langs->trans('MigrationContractsLineCreation', $obj->cref)."<br>\n";
 				} else {
 					dol_print_error($db);
 					$nberr++;
@@ -1126,20 +1126,20 @@ function migrate_contracts_det($db, $langs, $conf)
 			if (!$nberr) {
 				//      $db->rollback();
 				$db->commit();
-				print $langs->trans('MigrationSuccessfullUpdate')."<br>";
+				echo $langs->trans('MigrationSuccessfullUpdate')."<br>";
 			} else {
 				$db->rollback();
-				print $langs->trans('MigrationUpdateFailed').'<br>';
+				echo $langs->trans('MigrationUpdateFailed').'<br>';
 			}
 		} else {
-			print $langs->trans('MigrationContractsNothingToUpdate')."<br>\n";
+			echo $langs->trans('MigrationContractsNothingToUpdate')."<br>\n";
 		}
 	} else {
-		print $langs->trans('MigrationContractsFieldDontExist')."<br>\n";
+		echo $langs->trans('MigrationContractsFieldDontExist')."<br>\n";
 		//    dol_print_error($db);
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1152,12 +1152,12 @@ function migrate_contracts_det($db, $langs, $conf)
  */
 function migrate_links_transfert($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
 	$nberr = 0;
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationBankTransfertsUpdate')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationBankTransfertsUpdate')."</b><br>\n";
 
 	$sql = "SELECT ba.rowid as barowid, bb.rowid as bbrowid";
 	$sql .= " FROM ".MAIN_DB_PREFIX."bank as bb, ".MAIN_DB_PREFIX."bank as ba";
@@ -1174,7 +1174,7 @@ function migrate_links_transfert($db, $langs, $conf)
 		$num = $db->num_rows($resql);
 
 		if ($num) {
-			print $langs->trans('MigrationBankTransfertsToUpdate', $num)."<br>\n";
+			echo $langs->trans('MigrationBankTransfertsToUpdate', $num)."<br>\n";
 			$db->begin();
 
 			while ($i < $num) {
@@ -1187,7 +1187,7 @@ function migrate_links_transfert($db, $langs, $conf)
 				$sql .= $obj->barowid.",".$obj->bbrowid.", '/compta/bank/line.php?rowid=', '(banktransfert)', 'banktransfert'";
 				$sql .= ")";
 
-				//print $sql.'<br>';
+				//echo $sql.'<br>';
 				gestimag_install_syslog("migrate_links_transfert");
 
 				if (!$db->query($sql)) {
@@ -1201,19 +1201,19 @@ function migrate_links_transfert($db, $langs, $conf)
 			if (!$nberr) {
 				//      $db->rollback();
 				$db->commit();
-				print $langs->trans('MigrationSuccessfullUpdate')."<br>";
+				echo $langs->trans('MigrationSuccessfullUpdate')."<br>";
 			} else {
 				$db->rollback();
-				print $langs->trans('MigrationUpdateFailed').'<br>';
+				echo $langs->trans('MigrationUpdateFailed').'<br>';
 			}
 		} else {
-			print $langs->trans('MigrationBankTransfertsNothingToUpdate')."<br>\n";
+			echo $langs->trans('MigrationBankTransfertsNothingToUpdate')."<br>\n";
 		}
 	} else {
 		dol_print_error($db);
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1226,10 +1226,10 @@ function migrate_links_transfert($db, $langs, $conf)
  */
 function migrate_contracts_date1($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationContractsEmptyDatesUpdate')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationContractsEmptyDatesUpdate')."</b><br>\n";
 
 	$sql = "update ".MAIN_DB_PREFIX."contrat set date_contrat=tms where date_contrat is null";
 	gestimag_install_syslog("upgrade2::migrate_contracts_date1");
@@ -1238,9 +1238,9 @@ function migrate_contracts_date1($db, $langs, $conf)
 		dol_print_error($db);
 	}
 	if ($db->affected_rows($resql) > 0) {
-		print $langs->trans('MigrationContractsEmptyDatesUpdateSuccess')."<br>\n";
+		echo $langs->trans('MigrationContractsEmptyDatesUpdateSuccess')."<br>\n";
 	} else {
-		print $langs->trans('MigrationContractsEmptyDatesNothingToUpdate')."<br>\n";
+		echo $langs->trans('MigrationContractsEmptyDatesNothingToUpdate')."<br>\n";
 	}
 
 	$sql = "update ".MAIN_DB_PREFIX."contrat set datec=tms where datec is null";
@@ -1250,12 +1250,12 @@ function migrate_contracts_date1($db, $langs, $conf)
 		dol_print_error($db);
 	}
 	if ($db->affected_rows($resql) > 0) {
-		print $langs->trans('MigrationContractsEmptyCreationDatesUpdateSuccess')."<br>\n";
+		echo $langs->trans('MigrationContractsEmptyCreationDatesUpdateSuccess')."<br>\n";
 	} else {
-		print $langs->trans('MigrationContractsEmptyCreationDatesNothingToUpdate')."<br>\n";
+		echo $langs->trans('MigrationContractsEmptyCreationDatesNothingToUpdate')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1268,12 +1268,12 @@ function migrate_contracts_date1($db, $langs, $conf)
  */
 function migrate_contracts_date2($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
 	$nberr = 0;
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationContractsInvalidDatesUpdate')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationContractsInvalidDatesUpdate')."</b><br>\n";
 
 	$sql = "SELECT c.rowid as cref, c.datec, c.date_contrat, MIN(cd.date_ouverture) as datemin";
 	$sql .= " FROM ".MAIN_DB_PREFIX."contrat as c,";
@@ -1297,7 +1297,7 @@ function migrate_contracts_date2($db, $langs, $conf)
 				if ($obj->date_contrat > $obj->datemin) {
 					$datemin = $db->jdate($obj->datemin);
 
-					print $langs->trans('MigrationContractsInvalidDateFix', $obj->cref, $obj->date_contrat, $obj->datemin)."<br>\n";
+					echo $langs->trans('MigrationContractsInvalidDateFix', $obj->cref, $obj->date_contrat, $obj->datemin)."<br>\n";
 					$sql = "UPDATE ".MAIN_DB_PREFIX."contrat";
 					$sql .= " SET date_contrat='".$db->idate($datemin)."'";
 					$sql .= " WHERE rowid = ".((int) $obj->cref);
@@ -1314,16 +1314,16 @@ function migrate_contracts_date2($db, $langs, $conf)
 			$db->commit();
 
 			if ($nbcontratsmodifie) {
-				print $langs->trans('MigrationContractsInvalidDatesNumber', $nbcontratsmodifie)."<br>\n";
+				echo $langs->trans('MigrationContractsInvalidDatesNumber', $nbcontratsmodifie)."<br>\n";
 			} else {
-				print  $langs->trans('MigrationContractsInvalidDatesNothingToUpdate')."<br>\n";
+				echo  $langs->trans('MigrationContractsInvalidDatesNothingToUpdate')."<br>\n";
 			}
 		}
 	} else {
 		dol_print_error($db);
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1336,10 +1336,10 @@ function migrate_contracts_date2($db, $langs, $conf)
  */
 function migrate_contracts_date3($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationContractsIncoherentCreationDateUpdate')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationContractsIncoherentCreationDateUpdate')."</b><br>\n";
 
 	$sql = "update ".MAIN_DB_PREFIX."contrat set datec=date_contrat where datec is null or datec > date_contrat";
 	gestimag_install_syslog("upgrade2::migrate_contracts_date3");
@@ -1348,12 +1348,12 @@ function migrate_contracts_date3($db, $langs, $conf)
 		dol_print_error($db);
 	}
 	if ($db->affected_rows($resql) > 0) {
-		print $langs->trans('MigrationContractsIncoherentCreationDateUpdateSuccess')."<br>\n";
+		echo $langs->trans('MigrationContractsIncoherentCreationDateUpdateSuccess')."<br>\n";
 	} else {
-		print $langs->trans('MigrationContractsIncoherentCreationDateNothingToUpdate')."<br>\n";
+		echo $langs->trans('MigrationContractsIncoherentCreationDateNothingToUpdate')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1366,10 +1366,10 @@ function migrate_contracts_date3($db, $langs, $conf)
  */
 function migrate_contracts_open($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationReopeningContracts')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationReopeningContracts')."</b><br>\n";
 
 	$sql = "SELECT c.rowid as cref FROM ".MAIN_DB_PREFIX."contrat as c, ".MAIN_DB_PREFIX."contratdet as cd";
 	$sql .= " WHERE cd.statut = 4 AND c.statut=2 AND c.rowid=cd.fk_contrat";
@@ -1390,7 +1390,7 @@ function migrate_contracts_open($db, $langs, $conf)
 			while ($i < $num) {
 				$obj = $db->fetch_object($resql);
 
-				print $langs->trans('MigrationReopenThisContract', $obj->cref)."<br>\n";
+				echo $langs->trans('MigrationReopenThisContract', $obj->cref)."<br>\n";
 				$sql = "UPDATE ".MAIN_DB_PREFIX."contrat";
 				$sql .= " SET statut = 1";
 				$sql .= " WHERE rowid = ".((int) $obj->cref);
@@ -1407,16 +1407,16 @@ function migrate_contracts_open($db, $langs, $conf)
 			$db->commit();
 
 			if ($nbcontratsmodifie) {
-				print $langs->trans('MigrationReopenedContractsNumber', $nbcontratsmodifie)."<br>\n";
+				echo $langs->trans('MigrationReopenedContractsNumber', $nbcontratsmodifie)."<br>\n";
 			} else {
-				print $langs->trans('MigrationReopeningContractsNothingToUpdate')."<br>\n";
+				echo $langs->trans('MigrationReopeningContractsNothingToUpdate')."<br>\n";
 			}
 		}
 	} else {
-		print $langs->trans('MigrationReopeningContractsNothingToUpdate')."<br>\n";
+		echo $langs->trans('MigrationReopeningContractsNothingToUpdate')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1431,10 +1431,10 @@ function migrate_paiementfourn_facturefourn($db, $langs, $conf)
 {
 	global $bc;
 
-	print '<tr><td colspan="4">';
-	print '<br>';
-	print '<b>'.$langs->trans('SuppliersInvoices')."</b><br>\n";
-	print '</td></tr>';
+	echo '<tr><td colspan="4">';
+	echo '<br>';
+	echo '<b>'.$langs->trans('SuppliersInvoices')."</b><br>\n";
+	echo '</td></tr>';
 
 	$result = $db->DDLDescTable(MAIN_DB_PREFIX."paiementfourn", "fk_facture_fourn");
 	$obj = $db->fetch_object($result);
@@ -1467,12 +1467,12 @@ function migrate_paiementfourn_facturefourn($db, $langs, $conf)
 						$db->begin();
 
 						if ($nb == 0) {
-							print '<tr><td colspan="4" class="nowrap"><b>'.$langs->trans('SuppliersInvoices').'</b></td></tr>';
-							print '<tr><td>fk_paiementfourn</td><td>fk_facturefourn</td><td>'.$langs->trans('Amount').'</td><td>&nbsp;</td></tr>';
+							echo '<tr><td colspan="4" class="nowrap"><b>'.$langs->trans('SuppliersInvoices').'</b></td></tr>';
+							echo '<tr><td>fk_paiementfourn</td><td>fk_facturefourn</td><td>'.$langs->trans('Amount').'</td><td>&nbsp;</td></tr>';
 						}
 
-						print '<tr class="oddeven">';
-						print '<td>'.$select_obj->rowid.'</td><td>'.$select_obj->fk_facture_fourn.'</td><td>'.$select_obj->amount.'</td>';
+						echo '<tr class="oddeven">';
+						echo '<td>'.$select_obj->rowid.'</td><td>'.$select_obj->fk_facture_fourn.'</td><td>'.$select_obj->amount.'</td>';
 
 						$insert_sql = 'INSERT INTO '.MAIN_DB_PREFIX.'paiementfourn_facturefourn SET ';
 						$insert_sql .= ' fk_paiementfourn = \''.$select_obj->rowid.'\',';
@@ -1482,12 +1482,12 @@ function migrate_paiementfourn_facturefourn($db, $langs, $conf)
 
 						if ($insert_resql) {
 							$nb++;
-							print '<td><span class="ok">'.$langs->trans("OK").'</span></td>';
+							echo '<td><span class="ok">'.$langs->trans("OK").'</span></td>';
 						} else {
-							print '<td><span class="error">Error on insert</span></td>';
+							echo '<td><span class="error">Error on insert</span></td>';
 							$error++;
 						}
-						print '</tr>';
+						echo '</tr>';
 					}
 				} else {
 					$error++;
@@ -1500,18 +1500,18 @@ function migrate_paiementfourn_facturefourn($db, $langs, $conf)
 
 		if (!$error) {
 			if (!$nb) {
-				print '<tr><td>'.$langs->trans("AlreadyDone").'</td></tr>';
+				echo '<tr><td>'.$langs->trans("AlreadyDone").'</td></tr>';
 			}
 			$db->commit();
 
 			$sql = "ALTER TABLE ".MAIN_DB_PREFIX."paiementfourn DROP COLUMN fk_facture_fourn";
 			$db->query($sql);
 		} else {
-			print '<tr><td>'.$langs->trans("Error").'</td></tr>';
+			echo '<tr><td>'.$langs->trans("Error").'</td></tr>';
 			$db->rollback();
 		}
 	} else {
-		print '<tr><td>'.$langs->trans("AlreadyDone").'</td></tr>';
+		echo '<tr><td>'.$langs->trans("AlreadyDone").'</td></tr>';
 	}
 }
 
@@ -1532,10 +1532,10 @@ function migrate_price_facture($db, $langs, $conf)
 
 	$db->begin();
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationInvoice')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationInvoice')."</b><br>\n";
 
 	// List of invoice lines not up to date
 	$sql = "SELECT fd.rowid, fd.qty, fd.subprice, fd.remise_percent, fd.tva_tx as vatrate, fd.total_ttc, fd.info_bits,";
@@ -1543,7 +1543,7 @@ function migrate_price_facture($db, $langs, $conf)
 	$sql .= " FROM ".MAIN_DB_PREFIX."facturedet as fd, ".MAIN_DB_PREFIX."facture as f";
 	$sql .= " WHERE fd.fk_facture = f.rowid";
 	$sql .= " AND (((fd.total_ttc = 0 AND fd.remise_percent != 100) or fd.total_ttc IS NULL) or f.total_ttc IS NULL)";
-	//print $sql;
+	//echo $sql;
 
 	gestimag_install_syslog("upgrade2::migrate_price_facture");
 	$resql = $db->query($sql);
@@ -1577,7 +1577,7 @@ function migrate_price_facture($db, $langs, $conf)
 				$facligne->total_ttc = $total_ttc;
 
 				gestimag_install_syslog("upgrade2: line ".$rowid.": facid=".$obj->facid." pu=".$pu." qty=".$qty." vatrate=".$vatrate." remise_percent=".$remise_percent." remise_global=".$remise_percent_global." -> ".$total_ht.", ".$total_tva.", ".$total_ttc);
-				print '. ';
+				echo '. ';
 				$facligne->update_total();
 
 
@@ -1588,36 +1588,36 @@ function migrate_price_facture($db, $langs, $conf)
 
 					if ($facture->fetch($facture->id) >= 0) {
 						if ($facture->update_price() > 0) {
-							//print $facture->id;
+							//echo $facture->id;
 						} else {
-							print "Error id=".$facture->id;
+							echo "Error id=".$facture->id;
 							$err++;
 						}
 					} else {
-						print "Error #3";
+						echo "Error #3";
 						$err++;
 					}
 				}
-				print " ";
+				echo " ";
 
 				$i++;
 			}
 		} else {
-			print $langs->trans("AlreadyDone");
+			echo $langs->trans("AlreadyDone");
 		}
 		$db->free($resql);
 
 		$db->commit();
 	} else {
-		print "Error #1 ".$db->error();
+		echo "Error #1 ".$db->error();
 		$err++;
 
 		$db->rollback();
 	}
 
-	print '<br>';
+	echo '<br>';
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1635,10 +1635,10 @@ function migrate_price_propal($db, $langs, $conf)
 
 	$db->begin();
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationProposal')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationProposal')."</b><br>\n";
 
 	// List of proposal lines not up to date
 	$sql = "SELECT pd.rowid, pd.qty, pd.subprice, pd.remise_percent, pd.tva_tx as vatrate, pd.info_bits,";
@@ -1678,27 +1678,27 @@ function migrate_price_propal($db, $langs, $conf)
 				$propalligne->total_ttc = $total_ttc;
 
 				gestimag_install_syslog("upgrade2: Line ".$rowid.": propalid=".$obj->rowid." pu=".$pu." qty=".$qty." vatrate=".$vatrate." remise_percent=".$remise_percent." remise_global=".$remise_percent_global." -> ".$total_ht.", ".$total_tva.", ".$total_ttc);
-				print '. ';
+				echo '. ';
 				$propalligne->update_total();
 
 				$i++;
 			}
 		} else {
-			print $langs->trans("AlreadyDone");
+			echo $langs->trans("AlreadyDone");
 		}
 
 		$db->free($resql);
 
 		$db->commit();
 	} else {
-		print "Error #1 ".$db->error();
+		echo "Error #1 ".$db->error();
 
 		$db->rollback();
 	}
 
-	print '<br>';
+	echo '<br>';
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1719,10 +1719,10 @@ function migrate_price_contrat($db, $langs, $conf)
 		$tmpmysoc->country_id = 0; // Ti not have this set to '' or will make sql syntax error.
 	}
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationContract')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationContract')."</b><br>\n";
 
 	// List of contract lines not up to date
 	$sql = "SELECT cd.rowid, cd.qty, cd.subprice, cd.remise_percent, cd.tva_tx as vatrate, cd.info_bits,";
@@ -1762,27 +1762,27 @@ function migrate_price_contrat($db, $langs, $conf)
 				$contratligne->total_ttc = $total_ttc;
 
 				gestimag_install_syslog("upgrade2: Line ".$rowid.": contratdetid=".$obj->rowid." pu=".$pu." qty=".$qty." vatrate=".$vatrate." remise_percent=".$remise_percent."  -> ".$total_ht.", ".$total_tva." , ".$total_ttc);
-				print '. ';
+				echo '. ';
 				$contratligne->update_total();
 
 				$i++;
 			}
 		} else {
-			print $langs->trans("AlreadyDone");
+			echo $langs->trans("AlreadyDone");
 		}
 
 		$db->free($resql);
 
 		$db->commit();
 	} else {
-		print "Error #1 ".$db->error();
+		echo "Error #1 ".$db->error();
 
 		$db->rollback();
 	}
 
-	print '<br>';
+	echo '<br>';
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1800,10 +1800,10 @@ function migrate_price_commande($db, $langs, $conf)
 	$tmpmysoc = new Societe($db);
 	$tmpmysoc->setMysoc($conf);
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationOrder')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationOrder')."</b><br>\n";
 
 	// List of sales orders lines not up to date
 	$sql = "SELECT cd.rowid, cd.qty, cd.subprice, cd.remise_percent, cd.tva_tx as vatrate, cd.info_bits,";
@@ -1843,13 +1843,13 @@ function migrate_price_commande($db, $langs, $conf)
 				$commandeligne->total_ttc = $total_ttc;
 
 				gestimag_install_syslog("upgrade2: Line ".$rowid." : commandeid=".$obj->rowid." pu=".$pu." qty=".$qty." vatrate=".$vatrate." remise_percent=".$remise_percent." remise_global=".$remise_percent_global."  -> ".$total_ht.", ".$total_tva.", ".$total_ttc);
-				print '. ';
+				echo '. ';
 				$commandeligne->update_total();
 
 				$i++;
 			}
 		} else {
-			print $langs->trans("AlreadyDone");
+			echo $langs->trans("AlreadyDone");
 		}
 
 		$db->free($resql);
@@ -1866,14 +1866,14 @@ function migrate_price_commande($db, $langs, $conf)
 
 		$db->commit();
 	} else {
-		print "Error #1 ".$db->error();
+		echo "Error #1 ".$db->error();
 
 		$db->rollback();
 	}
 
-	print '<br>';
+	echo '<br>';
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1893,10 +1893,10 @@ function migrate_price_commande_fournisseur($db, $langs, $conf)
 	$tmpmysoc = new Societe($db);
 	$tmpmysoc->setMysoc($conf);
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationSupplierOrder')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationSupplierOrder')."</b><br>\n";
 
 	// List of purchase order lines not up to date
 	$sql = "SELECT cd.rowid, cd.qty, cd.subprice, cd.remise_percent, cd.tva_tx as vatrate, cd.info_bits,";
@@ -1936,13 +1936,13 @@ function migrate_price_commande_fournisseur($db, $langs, $conf)
 				$commandeligne->total_ttc = $total_ttc;
 
 				gestimag_install_syslog("upgrade2: Line ".$rowid.": commandeid=".$obj->rowid." pu=".$pu."  qty=".$qty." vatrate=".$vatrate." remise_percent=".$remise_percent." remise_global=".$remise_percent_global." -> ".$total_ht.", ".$total_tva.", ".$total_ttc);
-				print '. ';
+				echo '. ';
 				$commandeligne->update_total();
 
 				$i++;
 			}
 		} else {
-			print $langs->trans("AlreadyDone");
+			echo $langs->trans("AlreadyDone");
 		}
 
 		$db->free($resql);
@@ -1959,14 +1959,14 @@ function migrate_price_commande_fournisseur($db, $langs, $conf)
 
 		$db->commit();
 	} else {
-		print "Error #1 ".$db->error();
+		echo "Error #1 ".$db->error();
 
 		$db->rollback();
 	}
 
-	print '<br>';
+	echo '<br>';
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -1979,8 +1979,8 @@ function migrate_price_commande_fournisseur($db, $langs, $conf)
  */
 function migrate_modeles($db, $langs, $conf)
 {
-	//print '<br>';
-	//print '<b>'.$langs->trans('UpdateModelsTable')."</b><br>\n";
+	//echo '<br>';
+	//echo '<b>'.$langs->trans('UpdateModelsTable')."</b><br>\n";
 
 	gestimag_install_syslog("upgrade2::migrate_modeles");
 
@@ -2023,7 +2023,7 @@ function migrate_modeles($db, $langs, $conf)
 		}
 	}
 
-	//print $langs->trans("AlreadyDone");
+	//echo $langs->trans("AlreadyDone");
 }
 
 
@@ -2039,10 +2039,10 @@ function migrate_commande_expedition($db, $langs, $conf)
 {
 	gestimag_install_syslog("upgrade2::migrate_commande_expedition");
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationShipmentOrderMatching')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationShipmentOrderMatching')."</b><br>\n";
 
 	$result = $db->DDLDescTable(MAIN_DB_PREFIX."expedition", "fk_commande");
 	$obj = $db->fetch_object($result);
@@ -2069,7 +2069,7 @@ function migrate_commande_expedition($db, $langs, $conf)
 						$error++;
 						dol_print_error($db);
 					}
-					print '. ';
+					echo '. ';
 					$i++;
 				}
 			}
@@ -2077,7 +2077,7 @@ function migrate_commande_expedition($db, $langs, $conf)
 			if ($error == 0) {
 				$db->commit();
 				$sql = "ALTER TABLE ".MAIN_DB_PREFIX."expedition DROP COLUMN fk_commande";
-				print $langs->trans('FieldRenamed')."<br>\n";
+				echo $langs->trans('FieldRenamed')."<br>\n";
 				$db->query($sql);
 			} else {
 				$db->rollback();
@@ -2087,9 +2087,9 @@ function migrate_commande_expedition($db, $langs, $conf)
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -2104,10 +2104,10 @@ function migrate_commande_livraison($db, $langs, $conf)
 {
 	gestimag_install_syslog("upgrade2::migrate_commande_livraison");
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationDeliveryOrderMatching')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationDeliveryOrderMatching')."</b><br>\n";
 
 	$result = $db->DDLDescTable(MAIN_DB_PREFIX."livraison", "fk_commande");
 	$obj = $db->fetch_object($result);
@@ -2149,7 +2149,7 @@ function migrate_commande_livraison($db, $langs, $conf)
 						$error++;
 						dol_print_error($db);
 					}
-					print '. ';
+					echo '. ';
 					$i++;
 				}
 			}
@@ -2157,7 +2157,7 @@ function migrate_commande_livraison($db, $langs, $conf)
 			if ($error == 0) {
 				$db->commit();
 				$sql = "ALTER TABLE ".MAIN_DB_PREFIX."livraison DROP COLUMN fk_commande";
-				print $langs->trans('FieldRenamed')."<br>\n";
+				echo $langs->trans('FieldRenamed')."<br>\n";
 				$db->query($sql);
 			} else {
 				$db->rollback();
@@ -2167,9 +2167,9 @@ function migrate_commande_livraison($db, $langs, $conf)
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -2184,10 +2184,10 @@ function migrate_detail_livraison($db, $langs, $conf)
 {
 	gestimag_install_syslog("upgrade2::migrate_detail_livraison");
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationDeliveryDetail')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationDeliveryDetail')."</b><br>\n";
 
 	// This is done if field fk_commande_ligne exists.
 	// If not this means migration was already done.
@@ -2245,7 +2245,7 @@ function migrate_detail_livraison($db, $langs, $conf)
 						$error++;
 						dol_print_error($db);
 					}
-					print '. ';
+					echo '. ';
 					$i++;
 				}
 			}
@@ -2253,7 +2253,7 @@ function migrate_detail_livraison($db, $langs, $conf)
 			if ($error == 0) {
 				$db->commit();
 				$sql = "ALTER TABLE ".MAIN_DB_PREFIX."livraisondet CHANGE fk_commande_ligne fk_origin_line integer";
-				print $langs->trans('FieldRenamed')."<br>\n";
+				echo $langs->trans('FieldRenamed')."<br>\n";
 				$db->query($sql);
 			} else {
 				$db->rollback();
@@ -2269,9 +2269,9 @@ function migrate_detail_livraison($db, $langs, $conf)
 			$sql = "ALTER TABLE ".MAIN_DB_PREFIX."livraisondet ADD COLUMN fk_origin_line integer after fk_livraison";
 			$db->query($sql);
 		}
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -2286,10 +2286,10 @@ function migrate_stocks($db, $langs, $conf)
 {
 	gestimag_install_syslog("upgrade2::migrate_stocks");
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationStockDetail')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationStockDetail')."</b><br>\n";
 
 	$error = 0;
 
@@ -2317,7 +2317,7 @@ function migrate_stocks($db, $langs, $conf)
 					$error++;
 					dol_print_error($db);
 				}
-				print '. ';
+				echo '. ';
 				$i++;
 			}
 		}
@@ -2332,7 +2332,7 @@ function migrate_stocks($db, $langs, $conf)
 		$db->rollback();
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -2348,10 +2348,10 @@ function migrate_menus($db, $langs, $conf)
 {
 	gestimag_install_syslog("upgrade2::migrate_menus");
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationMenusDetail')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationMenusDetail')."</b><br>\n";
 
 	$error = 0;
 
@@ -2381,7 +2381,7 @@ function migrate_menus($db, $langs, $conf)
 						$error++;
 						dol_print_error($db);
 					}
-					print '. ';
+					echo '. ';
 					$i++;
 				}
 			}
@@ -2396,10 +2396,10 @@ function migrate_menus($db, $langs, $conf)
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -2415,10 +2415,10 @@ function migrate_commande_deliveryaddress($db, $langs, $conf)
 {
 	gestimag_install_syslog("upgrade2::migrate_commande_deliveryaddress");
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationDeliveryAddress')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationDeliveryAddress')."</b><br>\n";
 
 	$error = 0;
 
@@ -2449,11 +2449,11 @@ function migrate_commande_deliveryaddress($db, $langs, $conf)
 						$error++;
 						dol_print_error($db);
 					}
-					print '. ';
+					echo '. ';
 					$i++;
 				}
 			} else {
-				print $langs->trans('AlreadyDone')."<br>\n";
+				echo $langs->trans('AlreadyDone')."<br>\n";
 			}
 
 			if ($error == 0) {
@@ -2466,10 +2466,10 @@ function migrate_commande_deliveryaddress($db, $langs, $conf)
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -2491,10 +2491,10 @@ function migrate_restore_missing_links($db, $langs, $conf)
 			return 0;
 		}
 	}
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationFixData')."</b> (1)<br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationFixData')."</b> (1)<br>\n";
 
 	$error = 0;
 
@@ -2523,7 +2523,7 @@ function migrate_restore_missing_links($db, $langs, $conf)
 			while ($i < $num) {
 				$obj = $db->fetch_object($resql);
 
-				print 'Line '.$obj->rowid.' in '.$table1.' is linked to record '.$obj->field.' in '.$table2.' that has no link to '.$table1.'. We fix this.<br>';
+				echo 'Line '.$obj->rowid.' in '.$table1.' is linked to record '.$obj->field.' in '.$table2.' that has no link to '.$table1.'. We fix this.<br>';
 				$sql = "UPDATE ".MAIN_DB_PREFIX.$table2." SET";
 				$sql .= " ".$field2." = '".$db->escape($obj->rowid)."'";
 				$sql .= " WHERE rowid = ".((int) $obj->field);
@@ -2533,11 +2533,11 @@ function migrate_restore_missing_links($db, $langs, $conf)
 					$error++;
 					dol_print_error($db);
 				}
-				//print '. ';
+				//echo '. ';
 				$i++;
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 
 		if ($error == 0) {
@@ -2550,13 +2550,13 @@ function migrate_restore_missing_links($db, $langs, $conf)
 		$db->rollback();
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationFixData')."</b> (2)<br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationFixData')."</b> (2)<br>\n";
 
 	// Restore missing link for this cross foreign key (link 1 <=> 1). Direction 2.
 	$table2 = 'facturedet';
@@ -2582,7 +2582,7 @@ function migrate_restore_missing_links($db, $langs, $conf)
 			while ($i < $num) {
 				$obj = $db->fetch_object($resql);
 
-				print 'Line '.$obj->rowid.' in '.$table1.' is linked to record '.$obj->field.' in '.$table2.' that has no link to '.$table1.'. We fix this.<br>';
+				echo 'Line '.$obj->rowid.' in '.$table1.' is linked to record '.$obj->field.' in '.$table2.' that has no link to '.$table1.'. We fix this.<br>';
 				$sql = "UPDATE ".MAIN_DB_PREFIX.$table2." SET";
 				$sql .= " ".$field2." = '".$db->escape($obj->rowid)."'";
 				$sql .= " WHERE rowid = ".((int) $obj->field);
@@ -2592,11 +2592,11 @@ function migrate_restore_missing_links($db, $langs, $conf)
 					$error++;
 					dol_print_error($db);
 				}
-				//print '. ';
+				//echo '. ';
 				$i++;
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 
 		if ($error == 0) {
@@ -2609,7 +2609,7 @@ function migrate_restore_missing_links($db, $langs, $conf)
 		$db->rollback();
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 
 	return ($error ? -1 : 1);
 }
@@ -2626,10 +2626,10 @@ function migrate_project_user_resp($db, $langs, $conf)
 {
 	gestimag_install_syslog("upgrade2::migrate_project_user_resp");
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationProjectUserResp')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationProjectUserResp')."</b><br>\n";
 
 	$result = $db->DDLDescTable(MAIN_DB_PREFIX."projet", "fk_user_resp");
 	$obj = $db->fetch_object($result);
@@ -2669,7 +2669,7 @@ function migrate_project_user_resp($db, $langs, $conf)
 							dol_print_error($db);
 						}
 					}
-					print '. ';
+					echo '. ';
 
 					$i++;
 				}
@@ -2690,9 +2690,9 @@ function migrate_project_user_resp($db, $langs, $conf)
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -2707,10 +2707,10 @@ function migrate_project_task_actors($db, $langs, $conf)
 {
 	gestimag_install_syslog("upgrade2::migrate_project_task_actors");
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationProjectTaskActors')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationProjectTaskActors')."</b><br>\n";
 
 	if ($db->DDLInfoTable(MAIN_DB_PREFIX."projet_task_actors")) {
 		$error = 0;
@@ -2747,7 +2747,7 @@ function migrate_project_task_actors($db, $langs, $conf)
 						$error++;
 						dol_print_error($db);
 					}
-					print '. ';
+					echo '. ';
 					$i++;
 				}
 			}
@@ -2767,9 +2767,9 @@ function migrate_project_task_actors($db, $langs, $conf)
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -2787,10 +2787,10 @@ function migrate_project_task_actors($db, $langs, $conf)
  */
 function migrate_relationship_tables($db, $langs, $conf, $table, $fk_source, $sourcetype, $fk_target, $targettype)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationRelationshipTables', MAIN_DB_PREFIX.$table)."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationRelationshipTables', MAIN_DB_PREFIX.$table)."</b><br>\n";
 
 	$error = 0;
 
@@ -2828,11 +2828,11 @@ function migrate_relationship_tables($db, $langs, $conf, $table, $fk_source, $so
 						$error++;
 						dol_print_error($db);
 					}
-					print '. ';
+					echo '. ';
 					$i++;
 				}
 			} else {
-				print $langs->trans('AlreadyDone')."<br>\n";
+				echo $langs->trans('AlreadyDone')."<br>\n";
 			}
 
 			if ($error == 0) {
@@ -2850,10 +2850,10 @@ function migrate_relationship_tables($db, $langs, $conf, $table, $fk_source, $so
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -2868,10 +2868,10 @@ function migrate_element_time($db, $langs, $conf)
 {
 	gestimag_install_syslog("upgrade2::migrate_element_time");
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationProjectTaskTime')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationProjectTaskTime')."</b><br>\n";
 
 	$error = 0;
 
@@ -2908,7 +2908,7 @@ function migrate_element_time($db, $langs, $conf)
 						$error++;
 						dol_print_error($db);
 					}
-					print '. ';
+					echo '. ';
 					$oldtime++;
 					if (!empty($totaltime[$obj->fk_element])) {
 						$totaltime[$obj->fk_element] += $newtime;
@@ -2940,13 +2940,13 @@ function migrate_element_time($db, $langs, $conf)
 						}
 					}
 				} else {
-					print $langs->trans('AlreadyDone')."<br>\n";
+					echo $langs->trans('AlreadyDone')."<br>\n";
 				}
 			} else {
 				dol_print_error($db);
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 	} else {
 		dol_print_error($db);
@@ -2958,7 +2958,7 @@ function migrate_element_time($db, $langs, $conf)
 		$db->rollback();
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -2971,10 +2971,10 @@ function migrate_element_time($db, $langs, $conf)
  */
 function migrate_customerorder_shipping($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationCustomerOrderShipping')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationCustomerOrderShipping')."</b><br>\n";
 
 	$error = 0;
 
@@ -3017,11 +3017,11 @@ function migrate_customerorder_shipping($db, $langs, $conf)
 							$error++;
 							dol_print_error($db);
 						}
-						print '. ';
+						echo '. ';
 						$i++;
 					}
 				} else {
-					print $langs->trans('AlreadyDone')."<br>\n";
+					echo $langs->trans('AlreadyDone')."<br>\n";
 				}
 
 				if ($error == 0) {
@@ -3039,10 +3039,10 @@ function migrate_customerorder_shipping($db, $langs, $conf)
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -3055,10 +3055,10 @@ function migrate_customerorder_shipping($db, $langs, $conf)
  */
 function migrate_shipping_delivery($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationShippingDelivery')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationShippingDelivery')."</b><br>\n";
 
 	$error = 0;
 
@@ -3104,7 +3104,7 @@ function migrate_shipping_delivery($db, $langs, $conf)
 							$error++;
 							dol_print_error($db);
 						}
-						print '. ';
+						echo '. ';
 					} else {
 						$error++;
 						dol_print_error($db);
@@ -3112,7 +3112,7 @@ function migrate_shipping_delivery($db, $langs, $conf)
 					$i++;
 				}
 			} else {
-				print $langs->trans('AlreadyDone')."<br>\n";
+				echo $langs->trans('AlreadyDone')."<br>\n";
 			}
 
 			if ($error == 0) {
@@ -3133,10 +3133,10 @@ function migrate_shipping_delivery($db, $langs, $conf)
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -3150,10 +3150,10 @@ function migrate_shipping_delivery($db, $langs, $conf)
  */
 function migrate_shipping_delivery2($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationShippingDelivery2')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationShippingDelivery2')."</b><br>\n";
 
 	$error = 0;
 
@@ -3192,11 +3192,11 @@ function migrate_shipping_delivery2($db, $langs, $conf)
 					$error++;
 					dol_print_error($db);
 				}
-				print '. ';
+				echo '. ';
 				$i++;
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 
 		if ($error == 0) {
@@ -3210,7 +3210,7 @@ function migrate_shipping_delivery2($db, $langs, $conf)
 		$db->rollback();
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -3223,10 +3223,10 @@ function migrate_shipping_delivery2($db, $langs, $conf)
  */
 function migrate_actioncomm_element($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationActioncommElement')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationActioncommElement')."</b><br>\n";
 
 	$elements = array(
 		'propal' => 'propalrowid',
@@ -3259,17 +3259,17 @@ function migrate_actioncomm_element($db, $langs, $conf)
 				// We will drop at next version because a migrate should be runnable several times if it fails.
 				//$sqlDrop = "ALTER TABLE ".MAIN_DB_PREFIX."actioncomm DROP COLUMN ".$field;
 				//$db->query($sqlDrop);
-				//print '. ';
+				//echo '. ';
 			} else {
 				dol_print_error($db);
 				$db->rollback();
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -3282,10 +3282,10 @@ function migrate_actioncomm_element($db, $langs, $conf)
  */
 function migrate_mode_reglement($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationPaymentMode')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationPaymentMode')."</b><br>\n";
 
 	$elements = array(
 		'old_id' => array(5, 8, 9, 10, 11),
@@ -3336,7 +3336,7 @@ function migrate_mode_reglement($db, $langs, $conf)
 							dol_print_error($db);
 							$error++;
 						}
-						print '. ';
+						echo '. ';
 					}
 
 					if (!$error) {
@@ -3354,11 +3354,11 @@ function migrate_mode_reglement($db, $langs, $conf)
 	}
 
 	if ($count == 0) {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
 
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 
@@ -3419,18 +3419,18 @@ function migrate_clean_association($db, $langs, $conf)
 					}
 
 					if (!$error) {
-						print '<tr><td>'.$langs->trans("MigrationCategorieAssociation").'</td>';
-						print '<td class="right">'.$langs->trans("RemoveDuplicates").' '.$langs->trans("Success").' ('.$num.'=>'.count($couples).')</td></tr>';
+						echo '<tr><td>'.$langs->trans("MigrationCategorieAssociation").'</td>';
+						echo '<td class="right">'.$langs->trans("RemoveDuplicates").' '.$langs->trans("Success").' ('.$num.'=>'.count($couples).')</td></tr>';
 						$db->commit();
 					} else {
-						print '<tr><td>'.$langs->trans("MigrationCategorieAssociation").'</td>';
-						print '<td class="right">'.$langs->trans("RemoveDuplicates").' '.$langs->trans("Failed").'</td></tr>';
+						echo '<tr><td>'.$langs->trans("MigrationCategorieAssociation").'</td>';
+						echo '<td class="right">'.$langs->trans("RemoveDuplicates").' '.$langs->trans("Failed").'</td></tr>';
 						$db->rollback();
 					}
 				}
 			} else {
-				print '<tr><td>'.$langs->trans("Error").'</td>';
-				print '<td class="right"><div class="error">'.$db->lasterror().'</div></td></tr>';
+				echo '<tr><td>'.$langs->trans("Error").'</td>';
+				echo '<td class="right"><div class="error">'.$db->lasterror().'</div></td></tr>';
 			}
 		}
 	}
@@ -3447,10 +3447,10 @@ function migrate_clean_association($db, $langs, $conf)
  */
 function migrate_categorie_association($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationCategorieAssociation')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationCategorieAssociation')."</b><br>\n";
 
 	$error = 0;
 
@@ -3480,11 +3480,11 @@ function migrate_categorie_association($db, $langs, $conf)
 						$error++;
 						dol_print_error($db);
 					}
-					print '. ';
+					echo '. ';
 					$i++;
 				}
 			} else {
-				print $langs->trans('AlreadyDone')."<br>\n";
+				echo $langs->trans('AlreadyDone')."<br>\n";
 			}
 
 			if (!$error) {
@@ -3497,10 +3497,10 @@ function migrate_categorie_association($db, $langs, $conf)
 			$db->rollback();
 		}
 	} else {
-		print $langs->trans('AlreadyDone')."<br>\n";
+		echo $langs->trans('AlreadyDone')."<br>\n";
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -3513,10 +3513,10 @@ function migrate_categorie_association($db, $langs, $conf)
  */
 function migrate_event_assignement($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationEvents')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationEvents')."</b><br>\n";
 
 	$error = 0;
 
@@ -3529,7 +3529,7 @@ function migrate_event_assignement($db, $langs, $conf)
 	$sqlSelect .= " LEFT JOIN ".MAIN_DB_PREFIX."actioncomm_resources as ar ON ar.fk_actioncomm = a.id AND ar.element_type = 'user' AND ar.fk_element = a.fk_user_action";
 	$sqlSelect .= " WHERE fk_user_action > 0 AND fk_user_action NOT IN (SELECT fk_element FROM ".MAIN_DB_PREFIX."actioncomm_resources as ar WHERE ar.fk_actioncomm = a.id AND ar.element_type = 'user')";
 	$sqlSelect .= " ORDER BY a.id";
-	//print $sqlSelect;
+	//echo $sqlSelect;
 
 	$resql = $db->query($sqlSelect);
 	if ($resql) {
@@ -3548,11 +3548,11 @@ function migrate_event_assignement($db, $langs, $conf)
 					$error++;
 					dol_print_error($db);
 				}
-				print '. ';
+				echo '. ';
 				$i++;
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 
 		if (!$error) {
@@ -3566,7 +3566,7 @@ function migrate_event_assignement($db, $langs, $conf)
 	}
 
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -3579,10 +3579,10 @@ function migrate_event_assignement($db, $langs, $conf)
  */
 function migrate_event_assignement_contact($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationEventsContact')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationEventsContact')."</b><br>\n";
 
 	$error = 0;
 
@@ -3595,7 +3595,7 @@ function migrate_event_assignement_contact($db, $langs, $conf)
 	$sqlSelect .= " LEFT JOIN ".MAIN_DB_PREFIX."actioncomm_resources as ar ON ar.fk_actioncomm = a.id AND ar.element_type = 'socpeople' AND ar.fk_element = a.fk_contact";
 	$sqlSelect .= " WHERE fk_contact > 0 AND fk_contact NOT IN (SELECT fk_element FROM ".MAIN_DB_PREFIX."actioncomm_resources as ar WHERE ar.fk_actioncomm = a.id AND ar.element_type = 'socpeople')";
 	$sqlSelect .= " ORDER BY a.id";
-	//print $sqlSelect;
+	//echo $sqlSelect;
 
 	$resql = $db->query($sqlSelect);
 	if ($resql) {
@@ -3614,11 +3614,11 @@ function migrate_event_assignement_contact($db, $langs, $conf)
 					$error++;
 					dol_print_error($db);
 				}
-				print '. ';
+				echo '. ';
 				$i++;
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 
 		if (!$error) {
@@ -3632,7 +3632,7 @@ function migrate_event_assignement_contact($db, $langs, $conf)
 	}
 
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 
@@ -3650,10 +3650,10 @@ function migrate_reset_blocked_log($db, $langs, $conf)
 
 	require_once DOL_DOCUMENT_ROOT.'/blockedlog/class/blockedlog.class.php';
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationResetBlockedLog')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationResetBlockedLog')."</b><br>\n";
 
 	$error = 0;
 
@@ -3664,7 +3664,7 @@ function migrate_reset_blocked_log($db, $langs, $conf)
 	$sqlSelect = "SELECT DISTINCT entity";
 	$sqlSelect .= " FROM ".MAIN_DB_PREFIX."blockedlog";
 
-	//print $sqlSelect;
+	//echo $sqlSelect;
 
 	$resql = $db->query($sqlSelect);
 	if ($resql) {
@@ -3675,7 +3675,7 @@ function migrate_reset_blocked_log($db, $langs, $conf)
 			while ($i < $num) {
 				$obj = $db->fetch_object($resql);
 
-				print 'Process entity '.$obj->entity;
+				echo 'Process entity '.$obj->entity;
 
 				$sqlSearch = "SELECT count(rowid) as nb FROM ".MAIN_DB_PREFIX."blockedlog WHERE action = 'MODULE_SET' and entity = ".((int) $obj->entity);
 				$resqlSearch = $db->query($sqlSearch);
@@ -3683,7 +3683,7 @@ function migrate_reset_blocked_log($db, $langs, $conf)
 					$objSearch = $db->fetch_object($resqlSearch);
 					//var_dump($objSearch);
 					if ($objSearch && $objSearch->nb == 0) {
-						print ' - Record for entity must be reset...';
+						echo ' - Record for entity must be reset...';
 
 						$sqlUpdate = "DELETE FROM ".MAIN_DB_PREFIX."blockedlog";
 						$sqlUpdate .= " WHERE entity = ".((int) $obj->entity);
@@ -3709,7 +3709,7 @@ function migrate_reset_blocked_log($db, $langs, $conf)
 							}
 						}
 					} else {
-						print ' - '.$langs->trans('AlreadyInV7').'<br>';
+						echo ' - '.$langs->trans('AlreadyInV7').'<br>';
 					}
 				} else {
 					dol_print_error($db);
@@ -3718,7 +3718,7 @@ function migrate_reset_blocked_log($db, $langs, $conf)
 				$i++;
 			}
 		} else {
-			print $langs->trans('NothingToDo')."<br>\n";
+			echo $langs->trans('NothingToDo')."<br>\n";
 		}
 
 		if (!$error) {
@@ -3731,7 +3731,7 @@ function migrate_reset_blocked_log($db, $langs, $conf)
 		$db->rollback();
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 
@@ -3745,10 +3745,10 @@ function migrate_reset_blocked_log($db, $langs, $conf)
  */
 function migrate_remise_entity($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationRemiseEntity')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationRemiseEntity')."</b><br>\n";
 
 	$error = 0;
 
@@ -3760,7 +3760,7 @@ function migrate_remise_entity($db, $langs, $conf)
 	$sqlSelect .= " FROM ".MAIN_DB_PREFIX."societe_remise as sr, ".MAIN_DB_PREFIX."societe as s";
 	$sqlSelect .= " WHERE sr.fk_soc = s.rowid and sr.entity != s.entity";
 
-	//print $sqlSelect;
+	//echo $sqlSelect;
 
 	$resql = $db->query($sqlSelect);
 	if ($resql) {
@@ -3781,11 +3781,11 @@ function migrate_remise_entity($db, $langs, $conf)
 					dol_print_error($db);
 				}
 
-				print '. ';
+				echo '. ';
 				$i++;
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 
 		if (!$error) {
@@ -3798,7 +3798,7 @@ function migrate_remise_entity($db, $langs, $conf)
 		$db->rollback();
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -3811,10 +3811,10 @@ function migrate_remise_entity($db, $langs, $conf)
  */
 function migrate_remise_except_entity($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<br>';
-	print '<b>'.$langs->trans('MigrationRemiseExceptEntity')."</b><br>\n";
+	echo '<br>';
+	echo '<b>'.$langs->trans('MigrationRemiseExceptEntity')."</b><br>\n";
 
 	$error = 0;
 
@@ -3824,7 +3824,7 @@ function migrate_remise_except_entity($db, $langs, $conf)
 
 	$sqlSelect = "SELECT sr.rowid, sr.fk_soc, sr.fk_facture_source, sr.fk_facture, sr.fk_facture_line";
 	$sqlSelect .= " FROM ".MAIN_DB_PREFIX."societe_remise_except as sr";
-	//print $sqlSelect;
+	//echo $sqlSelect;
 
 	$resql = $db->query($sqlSelect);
 	if ($resql) {
@@ -3872,11 +3872,11 @@ function migrate_remise_except_entity($db, $langs, $conf)
 					dol_print_error($db);
 				}
 
-				print '. ';
+				echo '. ';
 				$i++;
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 
 		if (!$error) {
@@ -3890,7 +3890,7 @@ function migrate_remise_except_entity($db, $langs, $conf)
 	}
 
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -3903,9 +3903,9 @@ function migrate_remise_except_entity($db, $langs, $conf)
  */
 function migrate_user_rights_entity($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<b>'.$langs->trans('MigrationUserRightsEntity')."</b><br>\n";
+	echo '<b>'.$langs->trans('MigrationUserRightsEntity')."</b><br>\n";
 
 	$error = 0;
 
@@ -3916,7 +3916,7 @@ function migrate_user_rights_entity($db, $langs, $conf)
 	$sqlSelect = "SELECT u.rowid, u.entity";
 	$sqlSelect .= " FROM ".MAIN_DB_PREFIX."user as u";
 	$sqlSelect .= " WHERE u.entity > 1";
-	//print $sqlSelect;
+	//echo $sqlSelect;
 
 	$resql = $db->query($sqlSelect);
 	if ($resql) {
@@ -3937,11 +3937,11 @@ function migrate_user_rights_entity($db, $langs, $conf)
 					dol_print_error($db);
 				}
 
-				print '. ';
+				echo '. ';
 				$i++;
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 
 		if (!$error) {
@@ -3955,7 +3955,7 @@ function migrate_user_rights_entity($db, $langs, $conf)
 	}
 
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -3968,9 +3968,9 @@ function migrate_user_rights_entity($db, $langs, $conf)
  */
 function migrate_usergroup_rights_entity($db, $langs, $conf)
 {
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<b>'.$langs->trans('MigrationUserGroupRightsEntity')."</b><br>\n";
+	echo '<b>'.$langs->trans('MigrationUserGroupRightsEntity')."</b><br>\n";
 
 	$error = 0;
 
@@ -3981,7 +3981,7 @@ function migrate_usergroup_rights_entity($db, $langs, $conf)
 	$sqlSelect = "SELECT u.rowid, u.entity";
 	$sqlSelect .= " FROM ".MAIN_DB_PREFIX."usergroup as u";
 	$sqlSelect .= " WHERE u.entity > 1";
-	//print $sqlSelect;
+	//echo $sqlSelect;
 
 	$resql = $db->query($sqlSelect);
 	if ($resql) {
@@ -4002,11 +4002,11 @@ function migrate_usergroup_rights_entity($db, $langs, $conf)
 					dol_print_error($db);
 				}
 
-				print '. ';
+				echo '. ';
 				$i++;
 			}
 		} else {
-			print $langs->trans('AlreadyDone')."<br>\n";
+			echo $langs->trans('AlreadyDone')."<br>\n";
 		}
 
 		if (!$error) {
@@ -4020,7 +4020,7 @@ function migrate_usergroup_rights_entity($db, $langs, $conf)
 	}
 
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -4126,22 +4126,22 @@ function migrate_delete_old_files($db, $langs, $conf)
 	);
 
 	/*
-	print '<tr><td colspan="4">';
-	print '<b>'.$langs->trans('DeleteOldFiles')."</b><br>\n";
-	print '</td></tr>';
+	echo '<tr><td colspan="4">';
+	echo '<b>'.$langs->trans('DeleteOldFiles')."</b><br>\n";
+	echo '</td></tr>';
 	*/
 
 	foreach ($filetodeletearray as $filetodelete) {
-		//print '<b>'DOL_DOCUMENT_ROOT.$filetodelete."</b><br>\n";
+		//echo '<b>'DOL_DOCUMENT_ROOT.$filetodelete."</b><br>\n";
 		if (file_exists(DOL_DOCUMENT_ROOT.$filetodelete) || preg_match('/\*/', $filetodelete)) {
-			//print "Process file ".$filetodelete."\n";
+			//echo "Process file ".$filetodelete."\n";
 			$result = dol_delete_file(DOL_DOCUMENT_ROOT.$filetodelete, 0, 0, 0, null, true, false);
 			if (!$result) {
 				$langs->load("errors");
-				print '<div class="error">'.$langs->trans("Error").': '.$langs->trans("ErrorFailToDeleteFile", DOL_DOCUMENT_ROOT.$filetodelete);
-				print ' '.$langs->trans("RemoveItManuallyAndPressF5ToContinue").'</div>';
+				echo '<div class="error">'.$langs->trans("Error").': '.$langs->trans("ErrorFailToDeleteFile", DOL_DOCUMENT_ROOT.$filetodelete);
+				echo ' '.$langs->trans("RemoveItManuallyAndPressF5ToContinue").'</div>';
 			} else {
-				//print $langs->trans("FileWasRemoved", $filetodelete).'<br>';
+				//echo $langs->trans("FileWasRemoved", $filetodelete).'<br>';
 			}
 		}
 	}
@@ -4181,8 +4181,8 @@ function migrate_delete_old_dir($db, $langs, $conf)
 		}
 		if (!$result) {
 			$langs->load("errors");
-			print '<div class="error">'.$langs->trans("Error").': '.$langs->trans("ErrorFailToDeleteDir", $filetodelete);
-			print ' '.$langs->trans("RemoveItManuallyAndPressF5ToContinue").'</div>';
+			echo '<div class="error">'.$langs->trans("Error").': '.$langs->trans("ErrorFailToDeleteDir", $filetodelete);
+			echo ' '.$langs->trans("RemoveItManuallyAndPressF5ToContinue").'</div>';
 		}
 	}
 
@@ -4305,24 +4305,24 @@ function migrate_reload_modules($db, $langs, $conf, $listofmodule = array(), $fo
 						$mod->init($reloadmode);
 					} else {
 						gestimag_install_syslog('Failed to include '.strtolower($moduletoreloadshort).'/core/modules/mod'.$moduletoreloadshort.'.class.php', LOG_ERR);
-						print "Error, can't find module with name ".$moduletoreload."\n";
+						echo "Error, can't find module with name ".$moduletoreload."\n";
 						return -1;
 					}
 				}
 			} else {
 				gestimag_install_syslog("Error, can't find module with name ".$moduletoreload, LOG_ERR);
-				print "Error, can't find module with name ".$moduletoreload."\n";
+				echo "Error, can't find module with name ".$moduletoreload."\n";
 				return -1;
 			}
 		}
 
 		if (!empty($mod) && is_object($mod)) {
-			print '<tr class="trforrunsql"><td colspan="4">';
-			print '<b>'.$langs->trans('Upgrade').'</b>: ';
-			print $langs->trans('MigrationReloadModule').' '.$mod->getName(); // We keep getName outside of trans because getName is already encoded/translated
-			print "<!-- (".$reloadmode.") -->";
-			print "<br>\n";
-			print '</td></tr>';
+			echo '<tr class="trforrunsql"><td colspan="4">';
+			echo '<b>'.$langs->trans('Upgrade').'</b>: ';
+			echo $langs->trans('MigrationReloadModule').' '.$mod->getName(); // We keep getName outside of trans because getName is already encoded/translated
+			echo "<!-- (".$reloadmode.") -->";
+			echo "<br>\n";
+			echo '</td></tr>';
 		}
 	}
 
@@ -4352,11 +4352,11 @@ function migrate_reload_menu($db, $langs, $conf)
 	}
 
 	foreach ($listofmenuhandler as $key => $val) {
-		print '<tr class="trforrunsql"><td colspan="4">';
+		echo '<tr class="trforrunsql"><td colspan="4">';
 
-		//print "x".$key;
-		print '<br>';
-		print '<b>'.$langs->trans('Upgrade').'</b>: '.$langs->trans('MenuHandler')." ".$key."<br>\n";
+		//echo "x".$key;
+		echo '<br>';
+		echo '<b>'.$langs->trans('Upgrade').'</b>: '.$langs->trans('MenuHandler')." ".$key."<br>\n";
 
 		// Load sql ini_menu_handler.sql file
 		$dir = DOL_DOCUMENT_ROOT."/core/menus/";
@@ -4365,7 +4365,7 @@ function migrate_reload_menu($db, $langs, $conf)
 			$result = run_sql($dir.$file, 1, '', 1, $key);
 		}
 
-		print '</td></tr>';
+		echo '</td></tr>';
 	}
 
 	return 1;
@@ -4380,9 +4380,9 @@ function migrate_user_photospath()
 {
 	global $conf, $db, $langs, $user;
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<b>'.$langs->trans('MigrationUserPhotoPath')."</b><br>\n";
+	echo '<b>'.$langs->trans('MigrationUserPhotoPath')."</b><br>\n";
 
 	include_once DOL_DOCUMENT_ROOT.'/user/class/user.class.php';
 	$fuser = new User($db);
@@ -4398,7 +4398,7 @@ function migrate_user_photospath()
 			$fuser->id = $obj->uid;
 			$fuser->entity = $obj->entity;
 
-			//echo '<hr>'.$fuser->id.' -> '.$fuser->entity;
+			//echo  '<hr>'.$fuser->id.' -> '.$fuser->entity;
 			$entity = (empty($fuser->entity) ? 1 : $fuser->entity);
 			if ($entity > 1) {
 				$dir = DOL_DATA_ROOT.'/'.$entity.'/users';
@@ -4407,7 +4407,7 @@ function migrate_user_photospath()
 			}
 
 			if ($dir) {
-				//print "Process user id ".$fuser->id."<br>\n";
+				//echo "Process user id ".$fuser->id."<br>\n";
 				$origin = $dir.'/'.get_exdir($fuser->id, 2, 0, 1, $fuser, 'user'); // Use old behaviour to get x/y path
 				$destin = $dir.'/'.$fuser->id;
 
@@ -4415,7 +4415,7 @@ function migrate_user_photospath()
 
 				dol_mkdir($destin);
 
-				//echo '<hr>'.$origin.' -> '.$destin;
+				//echo  '<hr>'.$origin.' -> '.$destin;
 				if (dol_is_dir($origin)) {
 					$handle = opendir($origin_osencoded);
 					if (is_resource($handle)) {
@@ -4434,8 +4434,8 @@ function migrate_user_photospath()
 												continue;
 											}
 
-											//print $origin.'/'.$file.'/'.$thumb.' -> '.$destin.'/'.$file.'/'.$thumb.'<br>'."\n";
-											print '.';
+											//echo $origin.'/'.$file.'/'.$thumb.' -> '.$destin.'/'.$file.'/'.$thumb.'<br>'."\n";
+											echo '.';
 											dol_copy($origin.'/'.$file.'/'.$thumb, $destin.'/'.$file.'/'.$thumb, 0, 0);
 											//var_dump('aaa');exit;
 										}
@@ -4444,8 +4444,8 @@ function migrate_user_photospath()
 								}
 							} else { // it is a file
 								if (!dol_is_file($destin.'/'.$file)) {
-									//print $origin.'/'.$file.' -> '.$destin.'/'.$file.'<br>'."\n";
-									print '.';
+									//echo $origin.'/'.$file.' -> '.$destin.'/'.$file.'<br>'."\n";
+									echo '.';
 									dol_copy($origin.'/'.$file, $destin.'/'.$file, 0, 0);
 									//var_dump('eee');exit;
 								}
@@ -4457,7 +4457,7 @@ function migrate_user_photospath()
 		}
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 /**
@@ -4469,9 +4469,9 @@ function migrate_user_photospath2()
 {
 	global $db, $langs, $user;
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 
-	print '<b>'.$langs->trans('MigrationUserPhotoPath')."</b><br>\n";
+	echo '<b>'.$langs->trans('MigrationUserPhotoPath')."</b><br>\n";
 
 	include_once DOL_DOCUMENT_ROOT.'/user/class/user.class.php';
 	$fuser = new User($db);
@@ -4488,7 +4488,7 @@ function migrate_user_photospath2()
 			$fuser->entity = $obj->entity;
 			$fuser->photo = $obj->photo;
 
-			//echo '<hr>'.$fuser->id.' -> '.$fuser->entity;
+			//echo  '<hr>'.$fuser->id.' -> '.$fuser->entity;
 			$entity = (empty($fuser->entity) ? 1 : $fuser->entity);
 			if ($entity > 1) {
 				$dir = DOL_DATA_ROOT.'/'.$entity.'/users';
@@ -4497,7 +4497,7 @@ function migrate_user_photospath2()
 			}
 
 			if ($dir) {
-				//print "Process user id ".$fuser->id."<br>\n";
+				//echo "Process user id ".$fuser->id."<br>\n";
 				$origin = $dir.'/'.$fuser->id;
 				$destin = $dir.'/'.$fuser->id.'/photos';
 
@@ -4505,7 +4505,7 @@ function migrate_user_photospath2()
 
 				dol_mkdir($destin);
 
-				//echo '<hr>'.$origin.' -> '.$destin;
+				//echo  '<hr>'.$origin.' -> '.$destin;
 				if (dol_is_dir($origin)) {
 					$handle = opendir($origin_osencoded);
 					if (is_resource($handle)) {
@@ -4527,8 +4527,8 @@ function migrate_user_photospath2()
 												continue;
 											}
 
-											//print $origin.'/'.$file.'/'.$thumb.' -> '.$destin.'/'.$file.'/'.$thumb.'<br>'."\n";
-											print '.';
+											//echo $origin.'/'.$file.'/'.$thumb.' -> '.$destin.'/'.$file.'/'.$thumb.'<br>'."\n";
+											echo '.';
 											dol_copy($origin.'/'.$file.'/'.$thumb, $destin.'/'.$file.'/'.$thumb, 0, 0);
 										}
 									}
@@ -4536,8 +4536,8 @@ function migrate_user_photospath2()
 								}
 							} else { // it is a file
 								if (!dol_is_file($destin.'/'.$file)) {
-									//print $origin.'/'.$file.' -> '.$destin.'/'.$file.'<br>'."\n";
-									print '.';
+									//echo $origin.'/'.$file.' -> '.$destin.'/'.$file.'<br>'."\n";
+									echo '.';
 									dol_copy($origin.'/'.$file, $destin.'/'.$file, 0, 0);
 								}
 							}
@@ -4548,7 +4548,7 @@ function migrate_user_photospath2()
 		}
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 
@@ -4575,7 +4575,7 @@ function migrate_users_socialnetworks()
 	// skype,twitter,facebook,linkedin,instagram,snapchat,googleplus,youtube,whatsapp
 	$error = 0;
 	$db->begin();
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 	$sql = 'SELECT rowid, socialnetworks';
 	$sql .= ', skype, twitter, facebook, linkedin, instagram, snapchat, googleplus, youtube, whatsapp FROM '.MAIN_DB_PREFIX.'user WHERE';
 	$sql .= " skype IS NOT NULL OR skype <> ''";
@@ -4587,7 +4587,7 @@ function migrate_users_socialnetworks()
 	$sql .= " OR googleplus IS NOT NULL OR googleplus <> ''";
 	$sql .= " OR youtube IS NOT NULL OR youtube <> ''";
 	$sql .= " OR whatsapp IS NOT NULL OR whatsapp <> ''";
-	//print $sql;
+	//echo $sql;
 	$resql = $db->query($sql);
 	if ($resql) {
 		while ($obj = $db->fetch_object($resql)) {
@@ -4634,7 +4634,7 @@ function migrate_users_socialnetworks()
 			$sqlupd .= ', youtube=null';
 			$sqlupd .= ', whatsapp=null';
 			$sqlupd .= ' WHERE rowid = '.((int) $obj->rowid);
-			//print $sqlupd."<br>";
+			//echo $sqlupd."<br>";
 			$resqlupd = $db->query($sqlupd);
 			if (!$resqlupd) {
 				dol_print_error($db);
@@ -4650,8 +4650,8 @@ function migrate_users_socialnetworks()
 		dol_print_error($db);
 		$db->rollback();
 	}
-	print '<b>'.$langs->trans('MigrationFieldsSocialNetworks', 'Users')."</b><br>\n";
-	print '</td></tr>';
+	echo '<b>'.$langs->trans('MigrationFieldsSocialNetworks', 'Users')."</b><br>\n";
+	echo '</td></tr>';
 }
 
 /**
@@ -4664,10 +4664,10 @@ function migrate_members_socialnetworks()
 {
 	global $db, $langs;
 
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 	$error = 0;
 	$db->begin();
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 	$sql = 'SELECT rowid, socialnetworks';
 	$sql .= ', skype, twitter, facebook, linkedin, instagram, snapchat, googleplus, youtube, whatsapp FROM '.MAIN_DB_PREFIX.'adherent WHERE ';
 	$sql .= " skype IS NOT NULL OR skype <> ''";
@@ -4679,7 +4679,7 @@ function migrate_members_socialnetworks()
 	$sql .= " OR googleplus IS NOT NULL OR googleplus <> ''";
 	$sql .= " OR youtube IS NOT NULL OR youtube <> ''";
 	$sql .= " OR whatsapp IS NOT NULL OR whatsapp <> ''";
-	//print $sql;
+	//echo $sql;
 	$resql = $db->query($sql);
 	if ($resql) {
 		while ($obj = $db->fetch_object($resql)) {
@@ -4726,7 +4726,7 @@ function migrate_members_socialnetworks()
 			$sqlupd .= ', youtube=null';
 			$sqlupd .= ', whatsapp=null';
 			$sqlupd .= ' WHERE rowid = '.((int) $obj->rowid);
-			//print $sqlupd."<br>";
+			//echo $sqlupd."<br>";
 			$resqlupd = $db->query($sqlupd);
 			if (!$resqlupd) {
 				dol_print_error($db);
@@ -4742,8 +4742,8 @@ function migrate_members_socialnetworks()
 		dol_print_error($db);
 		$db->rollback();
 	}
-	print '<b>'.$langs->trans('MigrationFieldsSocialNetworks', 'Members')."</b><br>\n";
-	print '</td></tr>';
+	echo '<b>'.$langs->trans('MigrationFieldsSocialNetworks', 'Members')."</b><br>\n";
+	echo '</td></tr>';
 }
 
 /**
@@ -4758,7 +4758,7 @@ function migrate_contacts_socialnetworks()
 	// jabberid,skype,twitter,facebook,linkedin,instagram,snapchat,googleplus,youtube,whatsapp
 	$error = 0;
 	$db->begin();
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 	$sql = 'SELECT rowid, socialnetworks';
 	$sql .= ', jabberid, skype, twitter, facebook, linkedin, instagram, snapchat, googleplus, youtube, whatsapp FROM '.MAIN_DB_PREFIX.'socpeople WHERE';
 	$sql .= " jabberid IS NOT NULL OR jabberid <> ''";
@@ -4771,7 +4771,7 @@ function migrate_contacts_socialnetworks()
 	$sql .= " OR googleplus IS NOT NULL OR googleplus <> ''";
 	$sql .= " OR youtube IS NOT NULL OR youtube <> ''";
 	$sql .= " OR whatsapp IS NOT NULL OR whatsapp <> ''";
-	//print $sql;
+	//echo $sql;
 	$resql = $db->query($sql);
 	if ($resql) {
 		while ($obj = $db->fetch_object($resql)) {
@@ -4822,7 +4822,7 @@ function migrate_contacts_socialnetworks()
 			$sqlupd .= ', youtube=null';
 			$sqlupd .= ', whatsapp=null';
 			$sqlupd .= ' WHERE rowid = '.((int) $obj->rowid);
-			//print $sqlupd."<br>";
+			//echo $sqlupd."<br>";
 			$resqlupd = $db->query($sqlupd);
 			if (!$resqlupd) {
 				dol_print_error($db);
@@ -4838,8 +4838,8 @@ function migrate_contacts_socialnetworks()
 		dol_print_error($db);
 		$db->rollback();
 	}
-	print '<b>'.$langs->trans('MigrationFieldsSocialNetworks', 'Contacts')."</b><br>\n";
-	print '</td></tr>';
+	echo '<b>'.$langs->trans('MigrationFieldsSocialNetworks', 'Contacts')."</b><br>\n";
+	echo '</td></tr>';
 }
 
 /**
@@ -4854,7 +4854,7 @@ function migrate_thirdparties_socialnetworks()
 	// skype,twitter,facebook,linkedin,instagram,snapchat,googleplus,youtube,whatsapp
 	$error = 0;
 	$db->begin();
-	print '<tr><td colspan="4">';
+	echo '<tr><td colspan="4">';
 	$sql = 'SELECT rowid, socialnetworks';
 	$sql .= ', skype, twitter, facebook, linkedin, instagram, snapchat, googleplus, youtube, whatsapp FROM '.MAIN_DB_PREFIX.'societe WHERE ';
 	$sql .= " skype IS NOT NULL OR skype <> ''";
@@ -4866,7 +4866,7 @@ function migrate_thirdparties_socialnetworks()
 	$sql .= " OR googleplus IS NOT NULL OR googleplus <> ''";
 	$sql .= " OR youtube IS NOT NULL OR youtube <> ''";
 	$sql .= " OR whatsapp IS NOT NULL OR whatsapp <> ''";
-	//print $sql;
+	//echo $sql;
 	$resql = $db->query($sql);
 	if ($resql) {
 		while ($obj = $db->fetch_object($resql)) {
@@ -4913,7 +4913,7 @@ function migrate_thirdparties_socialnetworks()
 			$sqlupd .= ', youtube=null';
 			$sqlupd .= ', whatsapp=null';
 			$sqlupd .= ' WHERE rowid = '.((int) $obj->rowid);
-			//print $sqlupd."<br>";
+			//echo $sqlupd."<br>";
 			$resqlupd = $db->query($sqlupd);
 			if (!$resqlupd) {
 				dol_print_error($db);
@@ -4929,8 +4929,8 @@ function migrate_thirdparties_socialnetworks()
 		dol_print_error($db);
 		$db->rollback();
 	}
-	print '<b>'.$langs->trans('MigrationFieldsSocialNetworks', 'Thirdparties')."</b><br>\n";
-	print '</td></tr>';
+	echo '<b>'.$langs->trans('MigrationFieldsSocialNetworks', 'Thirdparties')."</b><br>\n";
+	echo '</td></tr>';
 }
 
 
@@ -4949,14 +4949,14 @@ function migrate_export_import_profiles($mode = 'export')
 
 	$db->begin();
 
-	print '<tr class="trforrunsql"><td colspan="4">';
+	echo '<tr class="trforrunsql"><td colspan="4">';
 	$sql = 'SELECT rowid, field';
 	if ($mode == 'export') {
 		$sql .= ', filter';
 	}
 	$sql .= ' FROM '.MAIN_DB_PREFIX.$mode.'_model WHERE';
 	$sql .= " type LIKE 'propale_%' OR type LIKE 'commande_%' OR type LIKE 'facture_%'";
-	//print $sql;
+	//echo $sql;
 	$resql = $db->query($sql);
 	if ($resql) {
 		while ($obj = $db->fetch_object($resql)) {
@@ -4994,13 +4994,13 @@ function migrate_export_import_profiles($mode = 'export')
 		dol_print_error($db);
 		$db->rollback();
 	}
-	print '<b>'.$langs->trans('MigrationImportOrExportProfiles', $mode)."</b><br>\n";
-	print '</td></tr>';
+	echo '<b>'.$langs->trans('MigrationImportOrExportProfiles', $mode)."</b><br>\n";
+	echo '</td></tr>';
 
 	if ($resultstring) {
-		print $resultstring;
+		echo $resultstring;
 	} else {
-		print '<tr class="trforrunsql" style=""><td class="wordbreak" colspan="4">'.$langs->trans("NothingToDo")."</td></tr>\n";
+		echo '<tr class="trforrunsql" style=""><td class="wordbreak" colspan="4">'.$langs->trans("NothingToDo")."</td></tr>\n";
 	}
 }
 
@@ -5017,8 +5017,8 @@ function migrate_contractdet_rank()
 	$resultstring = '';
 
 	$db->begin();
-	print '<tr class="trforrunsql"><td colspan="4">';
-	print '<b>'.$langs->trans('MigrationContractLineRank')."</b><br>\n";
+	echo '<tr class="trforrunsql"><td colspan="4">';
+	echo '<b>'.$langs->trans('MigrationContractLineRank')."</b><br>\n";
 
 	$sql = "SELECT c.rowid as cid ,cd.rowid as cdid,cd.rang FROM ".$db->prefix()."contratdet as cd INNER JOIN ".$db->prefix()."contrat as c ON c.rowid=cd.fk_contrat AND cd.rang=0";
 	$sql .= " ORDER BY c.rowid,cd.rowid";
@@ -5036,7 +5036,7 @@ function migrate_contractdet_rank()
 
 			$sqlUpd = "UPDATE ".$db->prefix()."contratdet SET rang=".(int) $currentRank." WHERE rowid=".(int) $obj->cdid;
 			$resultstring = '.';
-			print $resultstring;
+			echo $resultstring;
 			$resqlUpd = $db->query($sqlUpd);
 			if (!$resqlUpd) {
 				dol_print_error($db);
@@ -5054,9 +5054,9 @@ function migrate_contractdet_rank()
 		$db->rollback();
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 
 	if (!$resultstring) {
-		print '<tr class="trforrunsql" style=""><td class="wordbreak" colspan="4">'.$langs->trans("NothingToDo")."</td></tr>\n";
+		echo '<tr class="trforrunsql" style=""><td class="wordbreak" colspan="4">'.$langs->trans("NothingToDo")."</td></tr>\n";
 	}
 }

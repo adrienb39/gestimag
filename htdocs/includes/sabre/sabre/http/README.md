@@ -18,7 +18,7 @@ For Input:
 
 For output:
 
-* `php://output` or `echo`,
+* `php://output` or `echo `,
 * `header()`.
 
 What this library provides, is a `Request` object, and a `Response` object.
@@ -197,7 +197,7 @@ $request->setHeader('X-Foo', 'Bar');
 $client = new HTTP\Client();
 $response = $client->send($request);
 
-echo $response->getBodyAsString();
+echo  $response->getBodyAsString();
 ```
 
 The client emits 3 event using [`sabre/event`][5]. `beforeRequest`,

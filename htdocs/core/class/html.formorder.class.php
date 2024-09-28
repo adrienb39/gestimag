@@ -69,7 +69,7 @@ class FormOrder extends Form
 			$selectedarray = explode(',', $selected);
 		}
 
-		print Form::multiselectarray($hmlname, $options, $selectedarray, 0, 0, $morecss, 0, 150);
+		echo Form::multiselectarray($hmlname, $options, $selectedarray, 0, 0, $morecss, 0, 150);
 	}
 
 	/**
@@ -105,7 +105,7 @@ class FormOrder extends Form
 			$selectedarray = explode(',', $selected);
 		}
 
-		print Form::multiselectarray($hmlname, $options, $selectedarray, 0, 0, '', 0, 150);
+		echo Form::multiselectarray($hmlname, $options, $selectedarray, 0, 0, '', 0, 150);
 	}
 
 	/**
@@ -139,7 +139,7 @@ class FormOrder extends Form
 			$listofmethods[$obj->rowid] = $langs->trans($obj->code) != $obj->code ? $langs->trans($obj->code) : $obj->label;
 		}
 
-		print Form::selectarray($htmlname, $listofmethods, $selected, $addempty);
+		echo Form::selectarray($htmlname, $listofmethods, $selected, $addempty);
 
 		return 1;
 	}

@@ -400,12 +400,12 @@ $modNameLoaded = array();
 
 foreach ($modulesdir as $dir) {
 	// Load modules attributes in arrays (name, numero, orders) from dir directory
-	//print $dir."\n<br>";
+	//echo $dir."\n<br>";
 	dol_syslog("Scan directory ".$dir." for module descriptor files (modXXX.class.php)");
 	$handle = @opendir($dir);
 	if (is_resource($handle)) {
 		while (($file = readdir($handle)) !== false) {
-			//print "$i ".$file."\n<br>";
+			//echo "$i ".$file."\n<br>";
 			if (is_readable($dir.$file) && substr($file, 0, 3) == 'mod' && substr($file, dol_strlen($file) - 10) == '.class.php') {
 				$modName = substr($file, 0, dol_strlen($file) - 10);
 
@@ -520,7 +520,7 @@ foreach ($modulesdir as $dir) {
 								dol_syslog("Module ".get_class($objMod)." not qualified");
 							}
 						} else {
-							print info_admin("admin/modules.php Warning bad descriptor file : ".$dir.$file." (Class ".$modName." not found into file)", 0, 0, '1', 'warning');
+							echo info_admin("admin/modules.php Warning bad descriptor file : ".$dir.$file." (Class ".$modName." not found into file)", 0, 0, '1', 'warning');
 						}
 					} catch (Exception $e) {
 						dol_syslog("Failed to load ".$dir.$file." ".$e->getMessage(), LOG_ERR);
@@ -560,7 +560,7 @@ if ($action == 'reload_confirm' && $user->admin) {
 	}
 }
 
-print $formconfirm;
+echo $formconfirm;
 
 asort($orders);
 //var_dump($orders);
@@ -578,7 +578,7 @@ foreach ($listofmodulesautoenabled as $moduleautoenable) {
 	}
 }
 
-print load_fiche_titre($langs->trans("ModulesSetup"), '', 'title_setup');
+echo load_fiche_titre($langs->trans("ModulesSetup"), '', 'title_setup');
 
 // Start to show page
 $deschelp  = '';
@@ -613,25 +613,25 @@ $head = modules_prepare_head($nbofactivatedmodules, count($modules), $nbmodulesn
 if ($mode == 'common' || $mode == 'commonkanban') {
 	dol_set_focus('#search_keyword');
 
-	print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
 	if (isset($optioncss) && $optioncss != '') {
-		print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
+		echo '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 	}
 	if (isset($sortfield) && $sortfield != '') {
-		print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+		echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
 	}
 	if (isset($sortorder) && $sortorder != '') {
-		print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+		echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
 	}
 	if (isset($page) && $page != '') {
-		print '<input type="hidden" name="page" value="'.$page.'">';
+		echo '<input type="hidden" name="page" value="'.$page.'">';
 	}
-	print '<input type="hidden" name="mode" value="'.$mode.'">';
+	echo '<input type="hidden" name="mode" value="'.$mode.'">';
 
-	print dol_get_fiche_head($head, 'modules', '', -1);
+	echo dol_get_fiche_head($head, 'modules', '', -1);
 
-	print $deschelp;
+	echo $deschelp;
 
 	$moreforfilter = '<div class="valignmiddle">';
 
@@ -682,15 +682,15 @@ if ($mode == 'common' || $mode == 'commonkanban') {
 	$moreforfilter .= '</div>';
 
 	if (!empty($moreforfilter)) {
-		print $moreforfilter;
+		echo $moreforfilter;
 		$parameters = array();
 		$reshook = $hookmanager->executeHooks('printFieldPreListTitle', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
-		print $hookmanager->resPrint;
+		echo $hookmanager->resPrint;
 	}
 
 	$moreforfilter = '';
 
-	print '<div class="clearboth"></div><br>';
+	echo '<div class="clearboth"></div><br>';
 
 	$object = new stdClass();
 	$parameters = array();
@@ -722,7 +722,7 @@ if ($mode == 'common' || $mode == 'commonkanban') {
 		/** @var GestimagModules $objMod */
 		$objMod = $modules[$modName];
 
-		//print $objMod->name." - ".$key." - ".$objMod->version."<br>";
+		//echo $objMod->name." - ".$key." - ".$objMod->version."<br>";
 		if ($mode == 'expdev' && $objMod->version != 'development' && $objMod->version != 'experimental') {
 			continue; // Discard if not for current tab
 		}
@@ -771,7 +771,7 @@ if ($mode == 'common' || $mode == 'commonkanban') {
 			}
 			$reg = array();
 			if (preg_match('/^external_(.*)$/', $search_nature, $reg)) {
-				//print $reg[1].'-'.dol_escape_htmltag($objMod->getPublisher());
+				//echo $reg[1].'-'.dol_escape_htmltag($objMod->getPublisher());
 				$publisher = dol_escape_htmltag($objMod->getPublisher());
 				if ($reg[1] && dol_escape_htmltag($reg[1]) != $publisher) {
 					continue;
@@ -811,18 +811,18 @@ if ($mode == 'common' || $mode == 'commonkanban') {
 		// Print a separator if we change family
 		if ($familykey != $oldfamily) {
 			if ($oldfamily) {
-				print '</table></div><br>';
+				echo '</table></div><br>';
 			}
 
 			$familytext = empty($familyinfo[$familykey]['label']) ? $familykey : $familyinfo[$familykey]['label'];
 
-			print load_fiche_titre($familytext, '', '', 0, '', 'modulefamilygroup');
+			echo load_fiche_titre($familytext, '', '', 0, '', 'modulefamilygroup');
 
 			if ($mode == 'commonkanban') {
-				print '<div class="box-flex-container kanban">';
+				echo '<div class="box-flex-container kanban">';
 			} else {
-				print '<div class="div-table-responsive">';
-				print '<table class="tagtable liste" summary="list_of_modules">'."\n";
+				echo '<div class="div-table-responsive">';
+				echo '<table class="tagtable liste" summary="list_of_modules">'."\n";
 			}
 
 			$atleastoneforfamily = 0;
@@ -899,7 +899,7 @@ if ($mode == 'common' || $mode == 'commonkanban') {
 					$codeenabledisable .= $langs->trans("Used");
 				} else {
 					$codeenabledisable .= img_picto($langs->trans("Required"), 'switch_on', '', false, 0, 0, '', 'opacitymedium valignmiddle');
-					//print $langs->trans("Required");
+					//echo $langs->trans("Required");
 				}
 				if (isModEnabled('multicompany') && $user->entity) {
 					$disableSetup++;
@@ -953,7 +953,7 @@ if ($mode == 'common' || $mode == 'commonkanban') {
 						$urlpage = $page;
 						if ($i++) {
 							$codetoconfig .= '<a href="'.$urlpage.'" title="'.$langs->trans($page).'">'.img_picto(ucfirst($page), "setup").'</a>';
-							//    print '<a href="'.$page.'">'.ucfirst($page).'</a>&nbsp;';
+							//    echo '<a href="'.$page.'">'.ucfirst($page).'</a>&nbsp;';
 						} else {
 							if (preg_match('/^([^@]+)@([^@]+)$/i', $urlpage, $regs)) {
 								$urltouse = dol_buildpath('/'.$regs[2].'/admin/'.$regs[1], 1);
@@ -1030,62 +1030,62 @@ if ($mode == 'common' || $mode == 'commonkanban') {
 
 		if ($mode == 'commonkanban') {
 			// Output Kanban
-			print $objMod->getKanbanView($codeenabledisable, $codetoconfig);
+			echo $objMod->getKanbanView($codeenabledisable, $codetoconfig);
 		} else {
-			print '<tr class="oddeven'.($warningstring ? ' info-box-content-warning' : '').'">'."\n";
+			echo '<tr class="oddeven'.($warningstring ? ' info-box-content-warning' : '').'">'."\n";
 			if (getDolGlobalString('MAIN_MODULES_SHOW_LINENUMBERS')) {
-				print '<td class="width50">'.$linenum.'</td>';
+				echo '<td class="width50">'.$linenum.'</td>';
 			}
 
 			// Picto + Name of module
-			print '  <td class="tdoverflowmax200 minwidth200imp" title="'.dol_escape_htmltag($objMod->getName()).'">';
+			echo '  <td class="tdoverflowmax200 minwidth200imp" title="'.dol_escape_htmltag($objMod->getName()).'">';
 			$alttext = '';
 			//if (is_array($objMod->need_gestimag_version)) $alttext.=($alttext?' - ':'').'Gestimag >= '.join('.',$objMod->need_gestimag_version);
 			//if (is_array($objMod->phpmin)) $alttext.=($alttext?' - ':'').'PHP >= '.join('.',$objMod->phpmin);
 			if (!empty($objMod->picto)) {
 				if (preg_match('/^\//i', $objMod->picto)) {
-					print img_picto($alttext, $objMod->picto, 'class="valignmiddle pictomodule paddingrightonly"', 1);
+					echo img_picto($alttext, $objMod->picto, 'class="valignmiddle pictomodule paddingrightonly"', 1);
 				} else {
-					print img_object($alttext, $objMod->picto, 'class="valignmiddle pictomodule paddingrightonly"');
+					echo img_object($alttext, $objMod->picto, 'class="valignmiddle pictomodule paddingrightonly"');
 				}
 			} else {
-				print img_object($alttext, 'generic', 'class="valignmiddle paddingrightonly"');
+				echo img_object($alttext, 'generic', 'class="valignmiddle paddingrightonly"');
 			}
-			print ' <span class="valignmiddle">'.$objMod->getName().'</span>';
-			print "</td>\n";
+			echo ' <span class="valignmiddle">'.$objMod->getName().'</span>';
+			echo "</td>\n";
 
 			// Desc
-			print '<td class="valignmiddle tdoverflowmax300 minwidth200imp">';
-			print nl2br($objMod->getDesc());
-			print "</td>\n";
+			echo '<td class="valignmiddle tdoverflowmax300 minwidth200imp">';
+			echo nl2br($objMod->getDesc());
+			echo "</td>\n";
 
 			// Help
-			print '<td class="center nowrap" style="width: 82px;">';
-			//print $form->textwithpicto('', $text, 1, $imginfo, 'minheight20', 0, 2, 1);
-			print '<a href="javascript:document_preview(\''.DOL_URL_ROOT.'/admin/modulehelp.php?id='.((int) $objMod->numero).'\',\'text/html\',\''.dol_escape_js($langs->trans("Module")).'\')">'.img_picto(($objMod->isCoreOrExternalModule() == 'external' ? $langs->trans("ExternalModule").' - ' : '').$langs->trans("ClickToShowDescription"), $imginfo).'</a>';
-			print '</td>';
+			echo '<td class="center nowrap" style="width: 82px;">';
+			//echo $form->textwithpicto('', $text, 1, $imginfo, 'minheight20', 0, 2, 1);
+			echo '<a href="javascript:document_preview(\''.DOL_URL_ROOT.'/admin/modulehelp.php?id='.((int) $objMod->numero).'\',\'text/html\',\''.dol_escape_js($langs->trans("Module")).'\')">'.img_picto(($objMod->isCoreOrExternalModule() == 'external' ? $langs->trans("ExternalModule").' - ' : '').$langs->trans("ClickToShowDescription"), $imginfo).'</a>';
+			echo '</td>';
 
 			// Version
-			print '<td class="center nowrap width150" title="'.dol_escape_htmltag(dol_string_nohtmltag($versiontrans)).'">';
+			echo '<td class="center nowrap width150" title="'.dol_escape_htmltag(dol_string_nohtmltag($versiontrans)).'">';
 			if ($objMod->needUpdate) {
 				$versionTitle = $langs->trans('ModuleUpdateAvailable').' : '.$objMod->lastVersion;
-				print '<span class="badge badge-warning classfortooltip" title="'.dol_escape_htmltag($versionTitle).'">'.$versiontrans.'</span>';
+				echo '<span class="badge badge-warning classfortooltip" title="'.dol_escape_htmltag($versionTitle).'">'.$versiontrans.'</span>';
 			} else {
-				print $versiontrans;
+				echo $versiontrans;
 			}
-			print "</td>\n";
+			echo "</td>\n";
 
 			// Link enable/disable
-			print '<td class="center valignmiddle left nowraponall" width="60px">';
-			print $codeenabledisable;
-			print "</td>\n";
+			echo '<td class="center valignmiddle left nowraponall" width="60px">';
+			echo $codeenabledisable;
+			echo "</td>\n";
 
 			// Link config
-			print '<td class="tdsetuppicto right valignmiddle" width="60px">';
-			print $codetoconfig;
-			print '</td>';
+			echo '<td class="tdsetuppicto right valignmiddle" width="60px">';
+			echo $codetoconfig;
+			echo '</td>';
 
-			print "</tr>\n";
+			echo "</tr>\n";
 		}
 		if ($objMod->needUpdate) {
 			$foundoneexternalmodulewithupdate++;
@@ -1102,56 +1102,56 @@ if ($mode == 'common' || $mode == 'commonkanban') {
 
 	if ($oldfamily) {
 		if ($mode == 'commonkanban') {
-			print '</div>';
+			echo '</div>';
 		} else {
-			print "</table>\n";
-			print '</div>';
+			echo "</table>\n";
+			echo '</div>';
 		}
 	}
 
 	if (!$atleastonequalified) {
-		print '<br><span class="opacitymedium">'.$langs->trans("NoDeployedModulesFoundWithThisSearchCriteria").'</span><br><br>';
+		echo '<br><span class="opacitymedium">'.$langs->trans("NoDeployedModulesFoundWithThisSearchCriteria").'</span><br><br>';
 	}
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print '<br>';
+	echo '<br>';
 
 	// Show warning about external users
-	print info_admin(showModulesExludedForExternal($modules))."\n";
+	echo info_admin(showModulesExludedForExternal($modules))."\n";
 
-	print '</form>';
+	echo '</form>';
 }
 
 if ($mode == 'marketplace') {
-	print dol_get_fiche_head($head, $mode, '', -1);
+	echo dol_get_fiche_head($head, $mode, '', -1);
 
-	print $deschelp;
+	echo $deschelp;
 
-	print '<br>';
+	echo '<br>';
 
 	// Marketplace
-	print '<div class="div-table-responsive-no-min">';
-	print '<table summary="list_of_modules" class="noborder centpercent">'."\n";
-	print '<tr class="liste_titre">'."\n";
-	print '<td class="hideonsmartphone">'.$form->textwithpicto($langs->trans("Provider"), $langs->trans("WebSiteDesc")).'</td>';
-	print '<td></td>';
-	print '<td>'.$langs->trans("URL").'</td>';
-	print '</tr>';
+	echo '<div class="div-table-responsive-no-min">';
+	echo '<table summary="list_of_modules" class="noborder centpercent">'."\n";
+	echo '<tr class="liste_titre">'."\n";
+	echo '<td class="hideonsmartphone">'.$form->textwithpicto($langs->trans("Provider"), $langs->trans("WebSiteDesc")).'</td>';
+	echo '<td></td>';
+	echo '<td>'.$langs->trans("URL").'</td>';
+	echo '</tr>';
 
-	print '<tr class="oddeven">'."\n";
+	echo '<tr class="oddeven">'."\n";
 	$url = 'https://www.dolistore.com';
-	print '<td class="hideonsmartphone"><a href="'.$url.'" target="_blank" rel="noopener noreferrer external"><img border="0" class="imgautosize imgmaxwidth180" src="'.DOL_URL_ROOT.'/theme/dolistore_logo.png"></a></td>';
-	print '<td><span class="opacitymedium">'.$langs->trans("DoliStoreDesc").'</span></td>';
-	print '<td><a href="'.$url.'" target="_blank" rel="noopener noreferrer external">'.$url.'</a></td>';
-	print '</tr>';
+	echo '<td class="hideonsmartphone"><a href="'.$url.'" target="_blank" rel="noopener noreferrer external"><img border="0" class="imgautosize imgmaxwidth180" src="'.DOL_URL_ROOT.'/theme/dolistore_logo.png"></a></td>';
+	echo '<td><span class="opacitymedium">'.$langs->trans("DoliStoreDesc").'</span></td>';
+	echo '<td><a href="'.$url.'" target="_blank" rel="noopener noreferrer external">'.$url.'</a></td>';
+	echo '</tr>';
 
-	print "</table>\n";
-	print '</div>';
+	echo "</table>\n";
+	echo '</div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print '<br>';
+	echo '<br>';
 
 	if (!getDolGlobalString('MAIN_DISABLE_DOLISTORE_SEARCH') && getDolGlobalInt('MAIN_FEATURES_LEVEL') >= 1) {
 		// $options is array with filter criteria
@@ -1159,44 +1159,44 @@ if ($mode == 'marketplace') {
 		$dolistore->getRemoteCategories();
 		$dolistore->getRemoteProducts($options);
 
-		print '<span class="opacitymedium">'.$langs->trans('DOLISTOREdescriptionLong').'</span><br><br>';
+		echo '<span class="opacitymedium">'.$langs->trans('DOLISTOREdescriptionLong').'</span><br><br>';
 
 		$previouslink = $dolistore->get_previous_link();
 		$nextlink = $dolistore->get_next_link();
 
-		print '<div class="liste_titre liste_titre_bydiv centpercent"><div class="divsearchfield">';
+		echo '<div class="liste_titre liste_titre_bydiv centpercent"><div class="divsearchfield">';
 
-		print '<form method="POST" class="centpercent" id="searchFormList" action="'.$dolistore->url.'">'; ?>
-					<input type="hidden" name="token" value="<?php echo newToken(); ?>">
+		echo '<form method="POST" class="centpercent" id="searchFormList" action="'.$dolistore->url.'">'; ?>
+					<input type="hidden" name="token" value="<?php echo  newToken(); ?>">
 					<input type="hidden" name="mode" value="marketplace">
 					<div class="divsearchfield">
-						<input name="search_keyword" placeholder="<?php echo $langs->trans('Keyword') ?>" id="search_keyword" type="text" class="minwidth200" value="<?php echo dol_escape_htmltag($options['search']) ?>"><br>
+						<input name="search_keyword" placeholder="<?php echo  $langs->trans('Keyword') ?>" id="search_keyword" type="text" class="minwidth200" value="<?php echo  dol_escape_htmltag($options['search']) ?>"><br>
 					</div>
 					<div class="divsearchfield">
-						<input class="button buttongen" value="<?php echo $langs->trans('Rechercher') ?>" type="submit">
-						<a class="buttonreset" href="<?php echo urlencode($dolistore->url) ?>"><?php echo $langs->trans('Reset') ?></a>
+						<input class="button buttongen" value="<?php echo  $langs->trans('Rechercher') ?>" type="submit">
+						<a class="buttonreset" href="<?php echo  urlencode($dolistore->url) ?>"><?php echo  $langs->trans('Reset') ?></a>
 
 						&nbsp;
 					</div>
 		<?php
-		print $previouslink;
-		print $nextlink;
-		print '</form>';
+		echo $previouslink;
+		echo $nextlink;
+		echo '</form>';
 
-		print '</div></div>';
-		print '<div class="clearboth"></div>';
+		echo '</div></div>';
+		echo '<div class="clearboth"></div>';
 		?>
 
 			<div id="category-tree-left">
 				<ul class="tree">
 					<?php
-					echo $dolistore->get_categories();	// Do not use dol_escape_htmltag here, it is already a structured content?>
+					echo  $dolistore->get_categories();	// Do not use dol_escape_htmltag here, it is already a structured content?>
 				</ul>
 			</div>
 			<div id="listing-content">
 				<table summary="list_of_modules" id="list_of_modules" class="productlist centpercent">
 					<tbody id="listOfModules">
-						<?php echo $dolistore->get_products(); ?>
+						<?php echo  $dolistore->get_products(); ?>
 					</tbody>
 				</table>
 			</div>
@@ -1208,7 +1208,7 @@ if ($mode == 'marketplace') {
 // Install external module
 
 if ($mode == 'deploy') {
-	print dol_get_fiche_head($head, $mode, '', -1);
+	echo dol_get_fiche_head($head, $mode, '', -1);
 
 	$fullurl = '<a href="'.$urlgestimagmodules.'" target="_blank" rel="noopener noreferrer">'.$urlgestimagmodules.'</a>';
 	$message = '';
@@ -1243,37 +1243,37 @@ if ($mode == 'deploy') {
 		$allowfromweb = 0;
 	}
 
-	print $deschelp;
+	echo $deschelp;
 
 	if ($allowfromweb < 1) {
-		print $langs->trans("SomethingMakeInstallFromWebNotPossible");
-		print $message;
-		//print $langs->trans("SomethingMakeInstallFromWebNotPossible2");
-		print '<br>';
+		echo $langs->trans("SomethingMakeInstallFromWebNotPossible");
+		echo $message;
+		//echo $langs->trans("SomethingMakeInstallFromWebNotPossible2");
+		echo '<br>';
 	}
 
-	print '<br>';
+	echo '<br>';
 
 	// $allowfromweb = -1 if installation or setup not correct, 0 if not allowed, 1 if allowed
 	if ($allowfromweb >= 0) {
 		if ($allowfromweb == 1) {
-			//print $langs->trans("ThisIsProcessToFollow").'<br>';
+			//echo $langs->trans("ThisIsProcessToFollow").'<br>';
 		} else {
-			print $langs->trans("ThisIsAlternativeProcessToFollow").'<br>';
-			print '<b>'.$langs->trans("StepNb", 1).'</b>: ';
-			print str_replace('{s1}', $fullurl, $langs->trans("FindPackageFromWebSite", '{s1}')).'<br>';
-			print '<b>'.$langs->trans("StepNb", 2).'</b>: ';
-			print str_replace('{s1}', $fullurl, $langs->trans("DownloadPackageFromWebSite", '{s1}')).'<br>';
-			print '<b>'.$langs->trans("StepNb", 3).'</b>: ';
+			echo $langs->trans("ThisIsAlternativeProcessToFollow").'<br>';
+			echo '<b>'.$langs->trans("StepNb", 1).'</b>: ';
+			echo str_replace('{s1}', $fullurl, $langs->trans("FindPackageFromWebSite", '{s1}')).'<br>';
+			echo '<b>'.$langs->trans("StepNb", 2).'</b>: ';
+			echo str_replace('{s1}', $fullurl, $langs->trans("DownloadPackageFromWebSite", '{s1}')).'<br>';
+			echo '<b>'.$langs->trans("StepNb", 3).'</b>: ';
 		}
 
 		if ($allowfromweb == 1) {
-			print '<form enctype="multipart/form-data" method="POST" class="noborder" action="'.$_SERVER["PHP_SELF"].'" name="forminstall">';
-			print '<input type="hidden" name="token" value="'.newToken().'">';
-			print '<input type="hidden" name="action" value="install">';
-			print '<input type="hidden" name="mode" value="deploy">';
+			echo '<form enctype="multipart/form-data" method="POST" class="noborder" action="'.$_SERVER["PHP_SELF"].'" name="forminstall">';
+			echo '<input type="hidden" name="token" value="'.newToken().'">';
+			echo '<input type="hidden" name="action" value="install">';
+			echo '<input type="hidden" name="mode" value="deploy">';
 
-			print $langs->trans("YouCanSubmitFile").'<br><br>';
+			echo $langs->trans("YouCanSubmitFile").'<br><br>';
 
 			$max = getDolGlobalString('MAIN_UPLOAD_DOC'); // In Kb
 			$maxphp = @ini_get('upload_max_filesize'); // In unknown
@@ -1327,7 +1327,7 @@ if ($mode == 'deploy') {
 			}
 
 			if ($maxmin > 0) {
-				print '<script type="text/javascript">
+				echo '<script type="text/javascript">
 				$(document).ready(function() {
 					jQuery("#fileinstall").on("change", function() {
 						if(this.files[0].size > '.($maxmin * 1024).') {
@@ -1338,88 +1338,88 @@ if ($mode == 'deploy') {
 				});
 				</script>'."\n";
 				// MAX_FILE_SIZE doit précéder le champ input de type file
-				print '<input type="hidden" name="MAX_FILE_SIZE" value="'.($maxmin * 1024).'">';
+				echo '<input type="hidden" name="MAX_FILE_SIZE" value="'.($maxmin * 1024).'">';
 			}
 
-			print '<input class="flat minwidth400" type="file" name="fileinstall" id="fileinstall"> ';
+			echo '<input class="flat minwidth400" type="file" name="fileinstall" id="fileinstall"> ';
 
-			print '<input type="submit" name="send" value="'.dol_escape_htmltag($langs->trans("Upload")).'" class="button small">';
+			echo '<input type="submit" name="send" value="'.dol_escape_htmltag($langs->trans("Upload")).'" class="button small">';
 
 			if (getDolGlobalString('MAIN_UPLOAD_DOC')) {
 				if ($user->admin) {
 					$langs->load('other');
-					print ' ';
-					print info_admin($langs->trans("ThisLimitIsDefinedInSetup", $max, $maxphptoshow, $maxphptoshowparam), 1);
+					echo ' ';
+					echo info_admin($langs->trans("ThisLimitIsDefinedInSetup", $max, $maxphptoshow, $maxphptoshowparam), 1);
 				}
 			} else {
-				print ' ('.$langs->trans("UploadDisabled").')';
+				echo ' ('.$langs->trans("UploadDisabled").')';
 			}
 
-			print '</form>';
+			echo '</form>';
 
-			print '<br>';
-			print '<br>';
+			echo '<br>';
+			echo '<br>';
 
 		} else {
-			print $langs->trans("UnpackPackageInModulesRoot", $dirins).'<br>';
-			print '<b>'.$langs->trans("StepNb", 4).'</b>: ';
-			print $langs->trans("SetupIsReadyForUse", DOL_URL_ROOT.'/admin/modules.php?mainmenu=home', $langs->transnoentitiesnoconv("Home").' - '.$langs->transnoentitiesnoconv("Setup").' - '.$langs->transnoentitiesnoconv("Modules")).'<br>';
+			echo $langs->trans("UnpackPackageInModulesRoot", $dirins).'<br>';
+			echo '<b>'.$langs->trans("StepNb", 4).'</b>: ';
+			echo $langs->trans("SetupIsReadyForUse", DOL_URL_ROOT.'/admin/modules.php?mainmenu=home', $langs->transnoentitiesnoconv("Home").' - '.$langs->transnoentitiesnoconv("Setup").' - '.$langs->transnoentitiesnoconv("Modules")).'<br>';
 		}
 	}
 
 	if (!empty($result['return'])) {
-		print '<br>';
+		echo '<br>';
 
 		foreach ($result['return'] as $value) {
-			echo $value.'<br>';
+			echo  $value.'<br>';
 		}
 	}
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 }
 
 if ($mode == 'develop') {
-	print dol_get_fiche_head($head, $mode, '', -1);
+	echo dol_get_fiche_head($head, $mode, '', -1);
 
-	print $deschelp;
+	echo $deschelp;
 
-	print '<br>';
+	echo '<br>';
 
 	// Marketplace
-	print '<table summary="list_of_modules" class="noborder centpercent">'."\n";
-	print '<tr class="liste_titre">'."\n";
-	//print '<td>'.$langs->trans("Logo").'</td>';
-	print '<td colspan="2">'.$langs->trans("DevelopYourModuleDesc").'</td>';
-	print '<td>'.$langs->trans("URL").'</td>';
-	print '</tr>';
+	echo '<table summary="list_of_modules" class="noborder centpercent">'."\n";
+	echo '<tr class="liste_titre">'."\n";
+	//echo '<td>'.$langs->trans("Logo").'</td>';
+	echo '<td colspan="2">'.$langs->trans("DevelopYourModuleDesc").'</td>';
+	echo '<td>'.$langs->trans("URL").'</td>';
+	echo '</tr>';
 
-	print '<tr class="oddeven" height="80">'."\n";
-	print '<td class="center">';
-	print '</td>';
-	print '<td>'.$langs->trans("TryToUseTheModuleBuilder", $langs->transnoentitiesnoconv("ModuleBuilder")).'</td>';
-	print '<td class="maxwidth300">';
+	echo '<tr class="oddeven" height="80">'."\n";
+	echo '<td class="center">';
+	echo '</td>';
+	echo '<td>'.$langs->trans("TryToUseTheModuleBuilder", $langs->transnoentitiesnoconv("ModuleBuilder")).'</td>';
+	echo '<td class="maxwidth300">';
 	if (isModEnabled('modulebuilder')) {
-		print $langs->trans("SeeTopRightMenu");
+		echo $langs->trans("SeeTopRightMenu");
 	} else {
-		print '<span class="opacitymedium">'.$langs->trans("ModuleMustBeEnabledFirst", $langs->transnoentitiesnoconv("ModuleBuilder")).'</span>';
+		echo '<span class="opacitymedium">'.$langs->trans("ModuleMustBeEnabledFirst", $langs->transnoentitiesnoconv("ModuleBuilder")).'</span>';
 	}
-	print '</td>';
-	print '</tr>';
+	echo '</td>';
+	echo '</tr>';
 
-	print '<tr class="oddeven" height="80">'."\n";
+	echo '<tr class="oddeven" height="80">'."\n";
 	$url = 'https://partners.gestimag.org';
-	print '<td class="center">';
+	echo '<td class="center">';
 	print'<a href="'.$url.'" target="_blank" rel="noopener noreferrer external"><img border="0" class="imgautosize imgmaxwidth180" src="'.DOL_URL_ROOT.'/theme/gestimag_preferred_partner.png"></a>';
-	print '</td>';
-	print '<td>'.$langs->trans("DoliPartnersDesc").'</td>';
-	print '<td><a href="'.$url.'" target="_blank" rel="noopener noreferrer external">';
-	print img_picto('', 'url', 'class="pictofixedwidth"');
-	print $url.'</a></td>';
-	print '</tr>';
+	echo '</td>';
+	echo '<td>'.$langs->trans("DoliPartnersDesc").'</td>';
+	echo '<td><a href="'.$url.'" target="_blank" rel="noopener noreferrer external">';
+	echo img_picto('', 'url', 'class="pictofixedwidth"');
+	echo $url.'</a></td>';
+	echo '</tr>';
 
-	print "</table>\n";
+	echo "</table>\n";
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 }
 
 // End of page

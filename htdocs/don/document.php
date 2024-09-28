@@ -119,7 +119,7 @@ if ($object->id) {
 
 	$head = donation_prepare_head($object);
 
-	print dol_get_fiche_head($head, 'documents', $langs->trans("Donation"), -1, 'donation');
+	echo dol_get_fiche_head($head, 'documents', $langs->trans("Donation"), -1, 'donation');
 
 
 	// Build file list
@@ -169,30 +169,30 @@ if ($object->id) {
 
 	dol_banner_tab($object, 'rowid', $linkback, 1, 'rowid', 'ref', $morehtmlref);
 
-	print '<div class="fichecenter">';
-	print '<div class="underbanner clearboth"></div>';
+	echo '<div class="fichecenter">';
+	echo '<div class="underbanner clearboth"></div>';
 
-	print '<table class="border tableforfield centpercent">';
+	echo '<table class="border tableforfield centpercent">';
 
 	// Ref
 	/*
-	print '<tr><td class="titlefield">'.$langs->trans("Ref").'</td><td>';
-	print $form->showrefnav($object, 'id', $linkback, 1, 'rowid', 'ref', '');
-	print '</td></tr>';
+	echo '<tr><td class="titlefield">'.$langs->trans("Ref").'</td><td>';
+	echo $form->showrefnav($object, 'id', $linkback, 1, 'rowid', 'ref', '');
+	echo '</td></tr>';
 	*/
 
 	// Societe
-	//print "<tr><td>".$langs->trans("Company")."</td><td>".$object->client->getNomUrl(1)."</td></tr>";
+	//echo "<tr><td>".$langs->trans("Company")."</td><td>".$object->client->getNomUrl(1)."</td></tr>";
 
-	print '<tr><td class="titlefield">'.$langs->trans("NbOfAttachedFiles").'</td><td colspan="3">'.count($filearray).'</td></tr>';
-	print '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td colspan="3">'.dol_print_size($totalsize, 1, 1).'</td></tr>';
-	print '</table>';
+	echo '<tr><td class="titlefield">'.$langs->trans("NbOfAttachedFiles").'</td><td colspan="3">'.count($filearray).'</td></tr>';
+	echo '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td colspan="3">'.dol_print_size($totalsize, 1, 1).'</td></tr>';
+	echo '</table>';
 
-	print '</div>';
+	echo '</div>';
 
-	print '<div class="clearboth"></div>';
+	echo '<div class="clearboth"></div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
 	$modulepart = 'don';
 	$permissiontoadd = $user->hasRight('don', 'creer');
@@ -200,7 +200,7 @@ if ($object->id) {
 	$param = '&id='.$object->id;
 	include DOL_DOCUMENT_ROOT.'/core/tpl/document_actions_post_headers.tpl.php';
 } else {
-	print $langs->trans("ErrorUnknown");
+	echo $langs->trans("ErrorUnknown");
 }
 
 llxFooter();

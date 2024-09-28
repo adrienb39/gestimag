@@ -12388,7 +12388,7 @@ header('Content-type: text/css');
 	}
 }
 
-@media print {
+@media echo {
 	.bodywebsite .d-print-inline {
 		display: inline !important;
 	}

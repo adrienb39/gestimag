@@ -31,7 +31,7 @@ $printer -> cut();
 $printer -> close();
 
 /*
- Option 3: If the printer is configured to print in a specific code
+ Option 3: If the printer is configured to echo in a specific code
  page, you can set up a CapabilityProfile which either references its
  iconv encoding name, or includes all of the available characters.
 
@@ -44,7 +44,7 @@ class CustomCapabilityProfile extends CapabilityProfile
     function getCustomCodePages()
     {
         /*
-		 * Example to print in a specific, user-defined character set
+		 * Example to echo in a specific, user-defined character set
 		 * on a printer which has been configured to use i
 		 */
         return array(

@@ -83,7 +83,7 @@ Check the page numbers on the page footer.
 This is the first page of group 1.
 EOD;
 
-// print a block of text using Write()
+// echo a block of text using Write()
 $pdf->Write(0, $txt, '', 0, 'L', true, 0, false, false, 0);
 
 // add second page

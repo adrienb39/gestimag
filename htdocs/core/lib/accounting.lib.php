@@ -185,7 +185,7 @@ function journalHead($nom, $variant, $period, $periodlink, $description, $buildd
 {
 	global $langs;
 
-	print "\n\n<!-- start banner journal -->\n";
+	echo"\n\n<!-- start banner journal -->\n";
 
 	if (!is_empty($varlink)) {
 		$varlink = '?'.$varlink;
@@ -197,82 +197,82 @@ function journalHead($nom, $variant, $period, $periodlink, $description, $buildd
 	$head[$h][1] = $langs->trans("Journalization");
 	$head[$h][2] = 'journal';
 
-	print '<form method="POST" action="'.$_SERVER["PHP_SELF"].$varlink.'">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
+	echo'<form method="POST" action="'.$_SERVER["PHP_SELF"].$varlink.'">';
+	echo'<input type="hidden" name="token" value="'.newToken().'">';
 
-	print dol_get_fiche_head($head, 'journal');
+	echodol_get_fiche_head($head, 'journal');
 
 	foreach ($moreparam as $key => $value) {
-		print '<input type="hidden" name="'.$key.'" value="'.$value.'">';
+		echo'<input type="hidden" name="'.$key.'" value="'.$value.'">';
 	}
-	print '<table class="border centpercent tableforfield">';
+	echo'<table class="border centpercent tableforfield">';
 
 	// Ligne de titre
-	print '<tr>';
-	print '<td class="titlefieldcreate">'.$langs->trans("Name").'</td>';
-	print '<td colspan="3">';
-	print $nom;
-	print '</td>';
-	print '</tr>';
+	echo'<tr>';
+	echo'<td class="titlefieldcreate">'.$langs->trans("Name").'</td>';
+	echo'<td colspan="3">';
+	echo$nom;
+	echo'</td>';
+	echo'</tr>';
 
 	// Calculation mode
 	if ($calcmode) {
-		print '<tr>';
-		print '<td>'.$langs->trans("CalculationMode").'</td>';
+		echo'<tr>';
+		echo'<td>'.$langs->trans("CalculationMode").'</td>';
 		if (!$variant) {
-			print '<td colspan="3">';
+			echo'<td colspan="3">';
 		} else {
-			print '<td>';
+			echo'<td>';
 		}
-		print $calcmode;
+		echo$calcmode;
 		if ($variant) {
-			print '</td><td colspan="2">'.$variant;
+			echo'</td><td colspan="2">'.$variant;
 		}
-		print '</td>';
-		print '</tr>';
+		echo'</td>';
+		echo'</tr>';
 	}
 
 	// Ligne de la periode d'analyse du rapport
-	print '<tr>';
-	print '<td>'.$langs->trans("ReportPeriod").'</td>';
+	echo'<tr>';
+	echo'<td>'.$langs->trans("ReportPeriod").'</td>';
 	if (!$periodlink) {
-		print '<td colspan="3">';
+		echo'<td colspan="3">';
 	} else {
-		print '<td>';
+		echo'<td>';
 	}
 	if ($period) {
-		print $period;
+		echo$period;
 	}
 	if ($periodlink) {
-		print '</td><td colspan="2">'.$periodlink;
+		echo'</td><td colspan="2">'.$periodlink;
 	}
-	print '</td>';
-	print '</tr>';
+	echo'</td>';
+	echo'</tr>';
 
 	// Ligne de description
-	print '<tr>';
-	print '<td>'.$langs->trans("ReportDescription").'</td>';
-	print '<td colspan="3">'.$description.'</td>';
-	print '</tr>';
+	echo'<tr>';
+	echo'<td>'.$langs->trans("ReportDescription").'</td>';
+	echo'<td colspan="3">'.$description.'</td>';
+	echo'</tr>';
 
 
 	// more options
 	foreach ($moreoptions as $key => $value) {
-		print '<tr>';
-		print '<td>'.$langs->trans($key).'</td>';
-		print '<td colspan="3">'.$value.'</td>';
-		print '</tr>';
+		echo'<tr>';
+		echo'<td>'.$langs->trans($key).'</td>';
+		echo'<td colspan="3">'.$value.'</td>';
+		echo'</tr>';
 	}
 
-	print '</table>';
+	echo'</table>';
 
-	print dol_get_fiche_end();
+	echodol_get_fiche_end();
 
-	print '<div class="center"><input type="submit" class="button" name="submit" value="'.$langs->trans("Refresh").'"></div>';
+	echo'<div class="center"><input type="submit" class="button" name="submit" value="'.$langs->trans("Refresh").'"></div>';
 
-	print '</form>';
+	echo'</form>';
 
-	print "\n<!-- end banner journal -->\n\n";
+	echo"\n<!-- end banner journal -->\n\n";
 }
 
 /**

@@ -69,7 +69,7 @@ $action = GETPOST('action', 'aZ09');
 $langs->loadLangs(array("members", "companies", "install", "other", "projects"));
 
 if (!getDolGlobalString('PROJECT_ENABLE_PUBLIC')) {
-	print $langs->trans("Form for public lead registration has not been enabled");
+	echo $langs->trans("Form for public lead registration has not been enabled");
 	exit;
 }
 
@@ -105,7 +105,7 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 
 	top_htmlhead($head, $title, $disablejs, $disablehead, $arrayofjs, $arrayofcss); // Show html headers
 
-	print '<body id="mainbody" class="publicnewmemberform">';
+	echo '<body id="mainbody" class="publicnewmemberform">';
 
 	// Define urllogo
 	$urllogo = DOL_URL_ROOT.'/theme/common/login_logo.png';
@@ -118,30 +118,30 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 		$urllogo = DOL_URL_ROOT.'/theme/gestimag_logo.svg';
 	}
 
-	print '<div class="center">';
+	echo '<div class="center">';
 
 	// Output html code for logo
 	if ($urllogo) {
-		print '<div class="backgreypublicpayment">';
-		print '<div class="logopublicpayment">';
-		print '<img id="dolpaymentlogo" src="'.$urllogo.'"';
-		print '>';
-		print '</div>';
+		echo '<div class="backgreypublicpayment">';
+		echo '<div class="logopublicpayment">';
+		echo '<img id="dolpaymentlogo" src="'.$urllogo.'"';
+		echo '>';
+		echo '</div>';
 		if (!getDolGlobalString('MAIN_HIDE_POWERED_BY')) {
-			print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+			echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 		}
-		print '</div>';
+		echo '</div>';
 	}
 
 	if (getDolGlobalString('PROJECT_IMAGE_PUBLIC_NEWLEAD')) {
-		print '<div class="backimagepublicnewlead">';
-		print '<img id="idPROJECT_IMAGE_PUBLIC_NEWLEAD" src="' . getDolGlobalString('PROJECT_IMAGE_PUBLIC_NEWLEAD').'">';
-		print '</div>';
+		echo '<div class="backimagepublicnewlead">';
+		echo '<img id="idPROJECT_IMAGE_PUBLIC_NEWLEAD" src="' . getDolGlobalString('PROJECT_IMAGE_PUBLIC_NEWLEAD').'">';
+		echo '</div>';
 	}
 
-	print '</div>';
+	echo '</div>';
 
-	print '<div class="divmainbodylarge">';
+	echo '<div class="divmainbodylarge">';
 }
 
 /**
@@ -151,12 +151,12 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
  */
 function llxFooterVierge()
 {
-	print '</div>';
+	echo '</div>';
 
 	printCommonFooter('public');
 
-	print "</body>\n";
-	print "</html>\n";
+	echo "</body>\n";
+	echo "</html>\n";
 }
 
 
@@ -434,10 +434,10 @@ if (empty($reshook) && $action == 'added') {
 	llxHeaderVierge($langs->trans("NewLeadForm"));
 
 	// Si on a pas ete redirige
-	print '<br><br>';
-	print '<div class="center">';
-	print $langs->trans("NewLeadbyWeb");
-	print '</div>';
+	echo '<br><br>';
+	echo '<div class="center">';
+	echo $langs->trans("NewLeadbyWeb");
+	echo '</div>';
 
 	llxFooterVierge();
 	exit;
@@ -457,36 +457,36 @@ $extrafields->fetch_name_optionals_label($object->table_element); // fetch optio
 llxHeaderVierge($langs->trans("NewContact"));
 
 
-print load_fiche_titre($langs->trans("NewContact"), '', '', 0, 0, 'center');
+echo load_fiche_titre($langs->trans("NewContact"), '', '', 0, 0, 'center');
 
 
-print '<div align="center">';
-print '<div id="divsubscribe">';
+echo '<div align="center">';
+echo '<div id="divsubscribe">';
 
-print '<div class="center subscriptionformhelptext opacitymedium justify">';
+echo '<div class="center subscriptionformhelptext opacitymedium justify">';
 if (getDolGlobalString('PROJECT_NEWFORM_TEXT')) {
-	print $langs->trans(getDolGlobalString('PROJECT_NEWFORM_TEXT'))."<br>\n";
+	echo $langs->trans(getDolGlobalString('PROJECT_NEWFORM_TEXT'))."<br>\n";
 } else {
-	print $langs->trans("FormForNewLeadDesc", getDolGlobalString("MAIN_INFO_SOCIETE_MAIL"))."<br>\n";
+	echo $langs->trans("FormForNewLeadDesc", getDolGlobalString("MAIN_INFO_SOCIETE_MAIL"))."<br>\n";
 }
-print '</div>';
+echo '</div>';
 
 dol_htmloutput_errors($errmsg);
 
 // Print form
-print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST" name="newlead">'."\n";
-print '<input type="hidden" name="token" value="'.newToken().'" / >';
-print '<input type="hidden" name="entity" value="'.$entity.'" />';
-print '<input type="hidden" name="action" value="add" />';
+echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST" name="newlead">'."\n";
+echo '<input type="hidden" name="token" value="'.newToken().'" / >';
+echo '<input type="hidden" name="entity" value="'.$entity.'" />';
+echo '<input type="hidden" name="action" value="add" />';
 
-print '<br>';
+echo '<br>';
 
-print '<br><span class="opacitymedium">'.$langs->trans("FieldsWithAreMandatory", '*').'</span><br>';
-//print $langs->trans("FieldsWithIsForPublic",'**').'<br>';
+echo '<br><span class="opacitymedium">'.$langs->trans("FieldsWithAreMandatory", '*').'</span><br>';
+//echo $langs->trans("FieldsWithIsForPublic",'**').'<br>';
 
-print dol_get_fiche_head();
+echo dol_get_fiche_head();
 
-print '<script type="text/javascript">
+echo '<script type="text/javascript">
 jQuery(document).ready(function () {
     jQuery(document).ready(function () {
         jQuery("#selectcountry_id").change(function() {
@@ -498,81 +498,81 @@ jQuery(document).ready(function () {
 </script>';
 
 
-print '<table class="border" summary="form to subscribe" id="tablesubscribe">'."\n";
+echo '<table class="border" summary="form to subscribe" id="tablesubscribe">'."\n";
 
 // Lastname
-print '<tr><td>'.$langs->trans("Lastname").' <span class="star">*</span></td><td><input type="text" name="lastname" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('lastname')).'" required></td></tr>'."\n";
+echo '<tr><td>'.$langs->trans("Lastname").' <span class="star">*</span></td><td><input type="text" name="lastname" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('lastname')).'" required></td></tr>'."\n";
 // Firstname
-print '<tr><td>'.$langs->trans("Firstname").' <span class="star">*</span></td><td><input type="text" name="firstname" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('firstname')).'" required></td></tr>'."\n";
+echo '<tr><td>'.$langs->trans("Firstname").' <span class="star">*</span></td><td><input type="text" name="firstname" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('firstname')).'" required></td></tr>'."\n";
 // EMail
-print '<tr><td>'.$langs->trans("Email").' <span class="star">*</span></td><td><input type="text" name="email" maxlength="255" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('email')).'" required></td></tr>'."\n";
+echo '<tr><td>'.$langs->trans("Email").' <span class="star">*</span></td><td><input type="text" name="email" maxlength="255" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('email')).'" required></td></tr>'."\n";
 // Company
-print '<tr id="trcompany" class="trcompany"><td>'.$langs->trans("Company").'</td><td><input type="text" name="societe" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('societe')).'"></td></tr>'."\n";
+echo '<tr id="trcompany" class="trcompany"><td>'.$langs->trans("Company").'</td><td><input type="text" name="societe" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('societe')).'"></td></tr>'."\n";
 // Address
-print '<tr><td>'.$langs->trans("Address").'</td><td>'."\n";
-print '<textarea name="address" id="address" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_2.'">'.dol_escape_htmltag(GETPOST('address', 'restricthtml'), 0, 1).'</textarea></td></tr>'."\n";
+echo '<tr><td>'.$langs->trans("Address").'</td><td>'."\n";
+echo '<textarea name="address" id="address" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_2.'">'.dol_escape_htmltag(GETPOST('address', 'restricthtml'), 0, 1).'</textarea></td></tr>'."\n";
 // Zip / Town
-print '<tr><td>'.$langs->trans('Zip').' / '.$langs->trans('Town').'</td><td>';
-print $formcompany->select_ziptown(GETPOST('zipcode'), 'zipcode', array('town', 'selectcountry_id', 'state_id'), 6, 1);
-print ' / ';
-print $formcompany->select_ziptown(GETPOST('town'), 'town', array('zipcode', 'selectcountry_id', 'state_id'), 0, 1);
-print '</td></tr>';
+echo '<tr><td>'.$langs->trans('Zip').' / '.$langs->trans('Town').'</td><td>';
+echo $formcompany->select_ziptown(GETPOST('zipcode'), 'zipcode', array('town', 'selectcountry_id', 'state_id'), 6, 1);
+echo ' / ';
+echo $formcompany->select_ziptown(GETPOST('town'), 'town', array('zipcode', 'selectcountry_id', 'state_id'), 0, 1);
+echo '</td></tr>';
 // Country
-print '<tr><td>'.$langs->trans('Country').'</td><td>';
+echo '<tr><td>'.$langs->trans('Country').'</td><td>';
 $country_id = GETPOST('country_id');
 if (!$country_id && getDolGlobalString('PROJECT_NEWFORM_FORCECOUNTRYCODE')) {
 	$country_id = getCountry($conf->global->PROJECT_NEWFORM_FORCECOUNTRYCODE, 2, $db, $langs);
 }
 if (!$country_id && !empty($conf->geoipmaxmind->enabled)) {
 	$country_code = dol_user_country();
-	//print $country_code;
+	//echo $country_code;
 	if ($country_code) {
 		$new_country_id = getCountry($country_code, 3, $db, $langs);
-		//print 'xxx'.$country_code.' - '.$new_country_id;
+		//echo 'xxx'.$country_code.' - '.$new_country_id;
 		if ($new_country_id) {
 			$country_id = $new_country_id;
 		}
 	}
 }
 $country_code = getCountry($country_id, 2, $db, $langs);
-print $form->select_country($country_id, 'country_id');
-print '</td></tr>';
+echo $form->select_country($country_id, 'country_id');
+echo '</td></tr>';
 // State
 if (!getDolGlobalString('SOCIETE_DISABLE_STATE')) {
-	print '<tr><td>'.$langs->trans('State').'</td><td>';
+	echo '<tr><td>'.$langs->trans('State').'</td><td>';
 	if ($country_code) {
-		print $formcompany->select_state(GETPOSTINT("state_id"), $country_code);
+		echo $formcompany->select_state(GETPOSTINT("state_id"), $country_code);
 	} else {
-		print '';
+		echo '';
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 // Other attributes
 $parameters['tpl_context'] = 'public';	// define template context to public
 include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_add.tpl.php';
 // Comments
-print '<tr>';
-print '<td class="tdtop">'.$langs->trans("Message").' <span class="star">*</span></td>';
-print '<td class="tdtop"><textarea name="description" id="description" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_5.'" required>'.dol_escape_htmltag(GETPOST('description', 'restricthtml'), 0, 1).'</textarea></td>';
-print '</tr>'."\n";
+echo '<tr>';
+echo '<td class="tdtop">'.$langs->trans("Message").' <span class="star">*</span></td>';
+echo '<td class="tdtop"><textarea name="description" id="description" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_5.'" required>'.dol_escape_htmltag(GETPOST('description', 'restricthtml'), 0, 1).'</textarea></td>';
+echo '</tr>'."\n";
 
-print "</table>\n";
+echo "</table>\n";
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 // Save
-print '<div class="center">';
-print '<input type="submit" value="'.$langs->trans("Submit").'" id="submitsave" class="button">';
+echo '<div class="center">';
+echo '<input type="submit" value="'.$langs->trans("Submit").'" id="submitsave" class="button">';
 if (!empty($backtopage)) {
-	print ' &nbsp; &nbsp; <input type="submit" value="'.$langs->trans("Cancel").'" id="submitcancel" class="button button-cancel">';
+	echo ' &nbsp; &nbsp; <input type="submit" value="'.$langs->trans("Cancel").'" id="submitcancel" class="button button-cancel">';
 }
-print '</div>';
+echo '</div>';
 
 
-print "</form>\n";
-print "<br>";
-print '</div></div>';
+echo "</form>\n";
+echo "<br>";
+echo '</div></div>';
 
 
 llxFooterVierge();

@@ -417,7 +417,7 @@ class mailing_contacts1 extends MailingTargets
 		// Filter on nature
 		$key = $filter;
 
-		//print "xx".$key;
+		//echo "xx".$key;
 		if ($key == 'prospects') {
 			$sql .= " AND s.client = 2";
 		}
@@ -440,7 +440,7 @@ class mailing_contacts1 extends MailingTargets
 		}
 
 		$sql .= " ORDER BY sp.email";
-		//print "wwwwwwx".$sql;
+		//echo "wwwwwwx".$sql;
 
 		// Store recipients in target tables
 		$result = $this->db->query($sql);

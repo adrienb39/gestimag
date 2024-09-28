@@ -1007,7 +1007,7 @@ if(!iban_verify_checksum($iban)) {
 # Suggest what the user really meant in the case of transcription errors
 $suggestions = iban_mistranscription_suggestions($bad_iban);
 if(count($suggestions) == 1) {
- print "You really meant " . $suggestions[0] . ", right?\n";
+ echo "You really meant " . $suggestions[0] . ", right?\n";
 }
 
 # Find the correct checksum for an IBAN
@@ -1021,13 +1021,13 @@ $fixed_iban = iban_set_checksum($iban);
 # (Returns '' if unimplemented, true or false)
 $result = iban_verify_nationalchecksum($iban);
 if($result == '') {
- print "National checksum system does not exist or remains unimplemented for the country of IBAN '$iban'.\n";
+ echo "National checksum system does not exist or remains unimplemented for the country of IBAN '$iban'.\n";
 }
 elseif($result == true) {
- print "IBAN '$iban' passes the national checksum algorithm for its country.\n";
+ echo "IBAN '$iban' passes the national checksum algorithm for its country.\n";
 }
 else {
- print "IBAN '$iban' FAILS the national checksum algorithm for its country.\n";
+ echo "IBAN '$iban' FAILS the national checksum algorithm for its country.\n";
 }
 
 # Set the pre-IBAN era, BBAN-level national checksum for those countries that
@@ -1134,19 +1134,19 @@ $country_iso3166 = iban_country_get_iso3166($iban_country);
 # (Returns '' in the normal case that the country is independently registered)
 $registrar_country = iban_country_get_parent_registrar($iban_country);
 if($registrar_country=='') {
- print "The mighty nation of '$iban_country' stands strong and proud...\n";
- print " ... with its own heirarchy of bureaucrats!\n";
+ echo "The mighty nation of '$iban_country' stands strong and proud...\n";
+ echo " ... with its own heirarchy of bureaucrats!\n";
 }
 else {
- print "It has been foretold that the downtrodden natives of '$iban_country' will one day\n";
- print "rise up and throw off the shackles of the evil '$registrar_country' oppressors!\n";
+ echo "It has been foretold that the downtrodden natives of '$iban_country' will one day\n";
+ echo "rise up and throw off the shackles of the evil '$registrar_country' oppressors!\n";
 }
 
 # Get the official currency of an IBAN country as an ISO4217 alpha code
 # (Returns '' in the Internet (IIBAN) case, ie. no official currency)
 $official_currency = iban_country_get_currency_iso4217($iban_country);
 if($official_currency == '') {
- print "There is no official currency for the IBAN country '$iban_country'.\n";
+ echo "There is no official currency for the IBAN country '$iban_country'.\n";
 }
 
 # Get the URL of an IBAN country's central bank
@@ -1241,7 +1241,7 @@ if(!$myIban->VerifyChecksum()) {
 # Suggest what the user really meant in the case of mistranscription errors
 $suggestions = $badIban->MistranscriptionSuggestions();
 if(count($suggestions)==1) {
- print "You really meant " . $suggestions[0] . ", right?\n";
+ echo "You really meant " . $suggestions[0] . ", right?\n";
 }
 
 # Find the correct checksum for an IBAN
@@ -1255,13 +1255,13 @@ $fixed_iban = $myIban->SetChecksum()
 # (Returns '' if unimplemented, true or false)
 $result = $myIban->VerifyNationalChecksum();
 if($result == '') {
- print "National checksum system does not exist or remains unimplemented for this IBAN's country.\n";
+ echo "National checksum system does not exist or remains unimplemented for this IBAN's country.\n";
 }
 elseif($result == true) {
- print "IBAN passes the national checksum algorithm for its country.\n";
+ echo "IBAN passes the national checksum algorithm for its country.\n";
 }
 else {
- print "IBAN FAILS the national checksum algorithm for its country.\n";
+ echo "IBAN FAILS the national checksum algorithm for its country.\n";
 }
 
 # Set the pre-IBAN era, BBAN-level national checksum for those countries that
@@ -1385,19 +1385,19 @@ $country_iso3166 = $myCountry->ISO3166();
 # (Returns '' in the normal case that the country is independently registered)
 $registrar_country = $myCountry->ParentRegistrar();
 if($registrar_country=='') {
- print "The mighty nation of '$iban_country' stands strong and proud...\n";
- print " ... with its own heirarchy of bureaucrats!\n";
+ echo "The mighty nation of '$iban_country' stands strong and proud...\n";
+ echo " ... with its own heirarchy of bureaucrats!\n";
 }
 else {
- print "It has been foretold that the downtrodden natives of '$iban_country' will one day\n";
- print "rise up and throw off the shackles of the evil '$registrar_country' oppressors!\n";
+ echo "It has been foretold that the downtrodden natives of '$iban_country' will one day\n";
+ echo "rise up and throw off the shackles of the evil '$registrar_country' oppressors!\n";
 }
 
 # Get the official currency of an IBAN country as an ISO4217 alpha code
 # (Returns '' in the Internet (IIBAN) case, ie. no official currency)
 $official_currency = $myCountry->CurrencyISO4217();
 if($official_currency == '') {
- print "There is no official currency for the IBAN country '$iban_country'.\n";
+ echo "There is no official currency for the IBAN country '$iban_country'.\n";
 }
 
 # Get the URL of an IBAN country's central bank

@@ -82,20 +82,20 @@ llxHeader('', $langs->trans("RecruitmentSetup"), $help_url);
 
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?restore_lastsearch_values=1">'.$langs->trans("BackToModuleList").'</a>';
-print load_fiche_titre($langs->trans("RecruitmentSetup"), $linkback, 'title_setup');
+echo load_fiche_titre($langs->trans("RecruitmentSetup"), $linkback, 'title_setup');
 
 $head = recruitmentAdminPrepareHead();
 
 
 
-print '<form action="'.$_SERVER["PHP_SELF"].'" method="post">';
-print '<input type="hidden" name="action" value="update">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<form action="'.$_SERVER["PHP_SELF"].'" method="post">';
+echo '<input type="hidden" name="action" value="update">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
 
-print dol_get_fiche_head($head, 'publicurl', '', -1, '');
+echo dol_get_fiche_head($head, 'publicurl', '', -1, '');
 
 
-print '<span class="opacitymedium">'.$langs->trans("PublicInterfaceRecruitmentDesc").'</span><br><br>';
+echo '<span class="opacitymedium">'.$langs->trans("PublicInterfaceRecruitmentDesc").'</span><br><br>';
 
 $param = '';
 
@@ -111,40 +111,40 @@ if (!getDolGlobalString('RECRUITMENT_ENABLE_PUBLIC_INTERFACE')) {
 	$enabledisablehtml .= img_picto($langs->trans("Activated"), 'switch_on');
 	$enabledisablehtml .= '</a>';
 }
-print $enabledisablehtml;
-print '<input type="hidden" id="RECRUITMENT_ENABLE_PUBLIC_INTERFACE" name="RECRUITMENT_ENABLE_PUBLIC_INTERFACE" value="'.(!getDolGlobalString('RECRUITMENT_ENABLE_PUBLIC_INTERFACE') ? 0 : 1).'">';
+echo $enabledisablehtml;
+echo '<input type="hidden" id="RECRUITMENT_ENABLE_PUBLIC_INTERFACE" name="RECRUITMENT_ENABLE_PUBLIC_INTERFACE" value="'.(!getDolGlobalString('RECRUITMENT_ENABLE_PUBLIC_INTERFACE') ? 0 : 1).'">';
 
 
-print '<br>';
+echo '<br>';
 
 /*
 if (!empty($conf->global->RECRUITMENT_ENABLE_PUBLIC_INTERFACE)) {
-	print '<br>';
+	echo '<br>';
 
-	print '<table class="noborder centpercent">';
+	echo '<table class="noborder centpercent">';
 
-	print '<tr class="liste_titre">';
-	print '<td>'.$langs->trans("Parameter").'</td>';
-	print '<td class="right">'.$langs->trans("Value").'</td>';
-	print "</tr>\n";
+	echo '<tr class="liste_titre">';
+	echo '<td>'.$langs->trans("Parameter").'</td>';
+	echo '<td class="right">'.$langs->trans("Value").'</td>';
+	echo "</tr>\n";
 
-	print '</table>';
+	echo '</table>';
 
-	print '<div class="center">';
-	print '<input type="submit" class="button button-edit" value="'.$langs->trans("Modify").'">';
-	print '</div>';
+	echo '<div class="center">';
+	echo '<input type="submit" class="button button-edit" value="'.$langs->trans("Modify").'">';
+	echo '</div>';
 }
 */
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
-print '</form>';
+echo '</form>';
 
 
 if (getDolGlobalString('RECRUITMENT_ENABLE_PUBLIC_INTERFACE')) {
-	print '<br>';
-	//print $langs->trans('FollowingLinksArePublic').'<br>';
-	print img_picto('', 'globe').' <span class="opacitymedium">'.$langs->trans('BlankSubscriptionForm').'</span><br>';
+	echo '<br>';
+	//echo $langs->trans('FollowingLinksArePublic').'<br>';
+	echo img_picto('', 'globe').' <span class="opacitymedium">'.$langs->trans('BlankSubscriptionForm').'</span><br>';
 	if (isModEnabled('multicompany')) {
 		$entity_qr = '?entity='.$conf->entity;
 	} else {
@@ -156,11 +156,11 @@ if (getDolGlobalString('RECRUITMENT_ENABLE_PUBLIC_INTERFACE')) {
 	$urlwithroot = $urlwithouturlroot.DOL_URL_ROOT; // This is to use external domain name found into config file
 	//$urlwithroot=DOL_MAIN_URL_ROOT;					// This is to use same domain name than current
 
-	print '<div class="urllink">';
-	print '<input type="text" id="publicurlmember" class="quatrevingtpercentminusx" value="'.$urlwithroot.'/public/recruitment/index.php'.$entity_qr.'">';
-	print '<a target="_blank" rel="noopener noreferrer" href="'.$urlwithroot.'/public/recruitment/index.php'.$entity_qr.'">'.img_picto('', 'globe', 'class="paddingleft"').'</a>';
-	print '</div>';
-	print ajax_autoselect('publicurlmember');
+	echo '<div class="urllink">';
+	echo '<input type="text" id="publicurlmember" class="quatrevingtpercentminusx" value="'.$urlwithroot.'/public/recruitment/index.php'.$entity_qr.'">';
+	echo '<a target="_blank" rel="noopener noreferrer" href="'.$urlwithroot.'/public/recruitment/index.php'.$entity_qr.'">'.img_picto('', 'globe', 'class="paddingleft"').'</a>';
+	echo '</div>';
+	echo ajax_autoselect('publicurlmember');
 }
 
 // End of page

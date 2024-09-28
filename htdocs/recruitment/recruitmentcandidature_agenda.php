@@ -137,7 +137,7 @@ if ($object->id > 0) {
 	$head = recruitmentCandidaturePrepareHead($object);
 
 
-	print dol_get_fiche_head($head, 'agenda', $langs->trans("RecruitmentCandidature"), -1, $object->picto);
+	echo dol_get_fiche_head($head, 'agenda', $langs->trans("RecruitmentCandidature"), -1, $object->picto);
 
 	// Object card
 	// ------------------------------------------------------------
@@ -188,15 +188,15 @@ if ($object->id > 0) {
 
 	dol_banner_tab($object, 'ref', $linkback, 1, 'ref', 'ref', $morehtmlref);
 
-	print '<div class="fichecenter">';
-	print '<div class="underbanner clearboth"></div>';
+	echo '<div class="fichecenter">';
+	echo '<div class="underbanner clearboth"></div>';
 
 	$object->info($object->id);
 	dol_print_object_info($object, 1);
 
-	print '</div>';
+	echo '</div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
 
 
@@ -220,17 +220,17 @@ if ($object->id > 0) {
 	}
 
 
-	print '<div class="tabsAction">';
+	echo '<div class="tabsAction">';
 
 	if (isModEnabled('agenda')) {
 		if ($user->hasRight('agenda', 'myactions', 'create') || $user->hasRight('agenda', 'allactions', 'create')) {
-			print '<a class="butAction" href="'.DOL_URL_ROOT.'/comm/action/card.php?action=create'.$out.'">'.$langs->trans("AddAction").'</a>';
+			echo '<a class="butAction" href="'.DOL_URL_ROOT.'/comm/action/card.php?action=create'.$out.'">'.$langs->trans("AddAction").'</a>';
 		} else {
-			print '<a class="butActionRefused classfortooltip" href="#">'.$langs->trans("AddAction").'</a>';
+			echo '<a class="butActionRefused classfortooltip" href="#">'.$langs->trans("AddAction").'</a>';
 		}
 	}
 
-	print '</div>';
+	echo '</div>';
 
 	if (isModEnabled('agenda') && ($user->hasRight('agenda', 'myactions', 'read') || $user->hasRight('agenda', 'allactions', 'read'))) {
 		$param = '&id='.$object->id.'&socid='.$socid;
@@ -242,7 +242,7 @@ if ($object->id > 0) {
 		}
 
 
-		//print load_fiche_titre($langs->trans("ActionsOnRecruitmentJobPosition"), '', '');
+		//echo load_fiche_titre($langs->trans("ActionsOnRecruitmentJobPosition"), '', '');
 
 		// List of all actions
 		$filters = array();

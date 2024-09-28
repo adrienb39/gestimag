@@ -2,7 +2,7 @@
 '@phan-var-force GestimagModules $this';
 
 if (empty($keyforclass) || empty($keyforclassfile) || empty($keyforelement)) {
-	//print $keyforclass.' - '.$keyforclassfile.' - '.$keyforelement;
+	//echo $keyforclass.' - '.$keyforclassfile.' - '.$keyforelement;
 	dol_print_error(null, 'include of file commonfieldsinexport.inc.php was done but var $keyforclass or $keyforclassfile or $keyforelement was not set');
 	exit;
 }

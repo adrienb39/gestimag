@@ -224,7 +224,7 @@ class Routes
                 $accessLevel = 2;
             }
             /*
-            echo " access level $accessLevel for $className::"
+            echo  " access level $accessLevel for $className::"
             .$method->getName().$method->isProtected().PHP_EOL;
             */
 
@@ -800,7 +800,7 @@ class Routes
                 $namespace = '';
                 $alias = '';
             } elseif ($reading) {
-                //echo token_name($token[0]) . ' ' . $token[1] . PHP_EOL;
+                //echo  token_name($token[0]) . ' ' . $token[1] . PHP_EOL;
                 switch ($token[0]) {
                     case T_WHITESPACE:
                         continue 2;

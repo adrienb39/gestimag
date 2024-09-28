@@ -75,7 +75,7 @@ $pdf->SetFont('helvetica', '', 11);
 // add a page
 $pdf->AddPage();
 
-// print a message
+// echo a message
 $txt = "You can also export 1D barcodes in other formats (PNG, SVG, HTML). Check the examples inside the barcodes directory.\n";
 $pdf->MultiCell(70, 50, $txt, 0, 'J', false, 1, 125, 30, true, 0, false, true, 0, 'T', false);
 $pdf->SetY(30);

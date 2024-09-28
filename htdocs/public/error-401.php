@@ -26,7 +26,7 @@
 	No esta autorizado para acceder a este recurso.
 
 	<br>
-	<?php print isset($_SERVER["HTTP_REFERER"]) ? 'You arrived from '.htmlentities($_SERVER["HTTP_REFERER"], ENT_COMPAT, 'UTF-8').'.' : ''; ?>
+	<?php echo isset($_SERVER["HTTP_REFERER"]) ? 'You arrived from '.htmlentities($_SERVER["HTTP_REFERER"], ENT_COMPAT, 'UTF-8').'.' : ''; ?>
 
 	<hr>
 

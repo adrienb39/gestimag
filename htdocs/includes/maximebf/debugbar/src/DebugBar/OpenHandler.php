@@ -33,12 +33,12 @@ class OpenHandler
      * Handles the current request
      *
      * @param array $request Request data
-     * @param bool $echo
+     * @param bool $echo 
      * @param bool $sendHeader
      * @return string
      * @throws DebugBarException
      */
-    public function handle($request = null, $echo = true, $sendHeader = true)
+    public function handle($request = null, $echo  = true, $sendHeader = true)
     {
         if ($request === null) {
             $request = $_REQUEST;
@@ -59,8 +59,8 @@ class OpenHandler
         }
 
         $response = json_encode(call_user_func(array($this, $op), $request));
-        if ($echo) {
-            echo $response;
+        if ($echo ) {
+            echo  $response;
         }
         return $response;
     }

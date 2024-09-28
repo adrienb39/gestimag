@@ -79,66 +79,66 @@ function print_actions_filter(
 	$formactions = new FormActions($db);
 
 	// Filters
-	//print '<form name="listactionsfilter" class="listactionsfilter" action="' . $_SERVER["PHP_SELF"] . '" method="get">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="year" value="'.((int) $year).'">';
-	print '<input type="hidden" name="month" value="'.((int) $month).'">';
-	print '<input type="hidden" name="day" value="'.((int) $day).'">';
+	//echo '<form name="listactionsfilter" class="listactionsfilter" action="' . $_SERVER["PHP_SELF"] . '" method="get">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="year" value="'.((int) $year).'">';
+	echo '<input type="hidden" name="month" value="'.((int) $month).'">';
+	echo '<input type="hidden" name="day" value="'.((int) $day).'">';
 	if ($massaction != 'predelete' && $massaction != 'preaffecttag') {		// When $massaction == 'predelete', action may be already output to 'delete' by the mass action system.
-		print '<input type="hidden" name="action" value="'.$action.'">';
+		echo '<input type="hidden" name="action" value="'.$action.'">';
 	}
-	print '<input type="hidden" name="search_showbirthday" value="'.((int) $showbirthday).'">';
+	echo '<input type="hidden" name="search_showbirthday" value="'.((int) $showbirthday).'">';
 
-	print '<div class="divsearchfield">';
+	echo '<div class="divsearchfield">';
 	// Type
 	$multiselect = 0;
 	if (getDolGlobalString('MAIN_ENABLE_MULTISELECT_TYPE')) {     // We use an option here because it adds bugs when used on agenda page "peruser" and "list"
 		$multiselect = (getDolGlobalString('AGENDA_USE_EVENT_TYPE'));
 	}
-	print img_picto($langs->trans("ActionType"), 'square', 'class="pictofixedwidth inline-block" style="color: #ddd;"');
-	print $formactions->select_type_actions($actioncode, "search_actioncode", $excludetype, (!getDolGlobalString('AGENDA_USE_EVENT_TYPE') ? 1 : -1), 0, $multiselect, 0, 'minwidth200 maxwidth250 widthcentpercentminusx');
-	print '</div>';
+	echo img_picto($langs->trans("ActionType"), 'square', 'class="pictofixedwidth inline-block" style="color: #ddd;"');
+	echo $formactions->select_type_actions($actioncode, "search_actioncode", $excludetype, (!getDolGlobalString('AGENDA_USE_EVENT_TYPE') ? 1 : -1), 0, $multiselect, 0, 'minwidth200 maxwidth250 widthcentpercentminusx');
+	echo '</div>';
 
 	if ($canedit) {
 		// Assigned to user
-		print '<div class="divsearchfield">';
-		print img_picto($langs->trans("ActionsToDoBy"), 'user', 'class="pictofixedwidth inline-block"');
-		print $form->select_dolusers($filtert, 'search_filtert', 1, '', !$canedit, '', '', 0, 0, 0, '', 0, '', 'minwidth100 maxwidth250 widthcentpercentminusx');
-		print '</div>';
+		echo '<div class="divsearchfield">';
+		echo img_picto($langs->trans("ActionsToDoBy"), 'user', 'class="pictofixedwidth inline-block"');
+		echo $form->select_dolusers($filtert, 'search_filtert', 1, '', !$canedit, '', '', 0, 0, 0, '', 0, '', 'minwidth100 maxwidth250 widthcentpercentminusx');
+		echo '</div>';
 
 		// Assigned to user group
-		print '<div class="divsearchfield">';
-		print img_picto($langs->trans("ToUserOfGroup"), 'object_group', 'class="pictofixedwidth inline-block"');
-		print $form->select_dolgroups($usergroupid, 'usergroup', 1, '', !$canedit, '', '', '0', false, 'minwidth100 maxwidth250 widthcentpercentminusx');
-		print '</div>';
+		echo '<div class="divsearchfield">';
+		echo img_picto($langs->trans("ToUserOfGroup"), 'object_group', 'class="pictofixedwidth inline-block"');
+		echo $form->select_dolgroups($usergroupid, 'usergroup', 1, '', !$canedit, '', '', '0', false, 'minwidth100 maxwidth250 widthcentpercentminusx');
+		echo '</div>';
 
 		if (isModEnabled('resource')) {
 			include_once DOL_DOCUMENT_ROOT.'/resource/class/html.formresource.class.php';
 			$formresource = new FormResource($db);
 
 			// Resource
-			print '<div class="divsearchfield">';
-			print img_picto($langs->trans("Resource"), 'object_resource', 'class="pictofixedwidth inline-block"');
-			print $formresource->select_resource_list($resourceid, "search_resourceid", [], 1, 0, 0, [], [], 2, 0, 'minwidth100 maxwidth250 widthcentpercentminusx');
-			print '</div>';
+			echo '<div class="divsearchfield">';
+			echo img_picto($langs->trans("Resource"), 'object_resource', 'class="pictofixedwidth inline-block"');
+			echo $formresource->select_resource_list($resourceid, "search_resourceid", [], 1, 0, 0, [], [], 2, 0, 'minwidth100 maxwidth250 widthcentpercentminusx');
+			echo '</div>';
 		}
 	}
 
 	if (isModEnabled('societe') && $user->hasRight('societe', 'lire')) {
-		print '<div class="divsearchfield">';
-		print img_picto($langs->trans("ThirdParty"), 'company', 'class="pictofixedwidth inline-block"');
-		print $form->select_company($socid, 'search_socid', '', '&nbsp;', 0, 0, null, 0, 'minwidth100 maxwidth250 widthcentpercentminusx');
-		print '</div>';
+		echo '<div class="divsearchfield">';
+		echo img_picto($langs->trans("ThirdParty"), 'company', 'class="pictofixedwidth inline-block"');
+		echo $form->select_company($socid, 'search_socid', '', '&nbsp;', 0, 0, null, 0, 'minwidth100 maxwidth250 widthcentpercentminusx');
+		echo '</div>';
 	}
 
 	if (isModEnabled('project') && $user->hasRight('projet', 'lire')) {
 		require_once DOL_DOCUMENT_ROOT.'/core/class/html.formprojet.class.php';
 		$formproject = new FormProjets($db);
 
-		print '<div class="divsearchfield">';
-		print img_picto($langs->trans("Project"), 'project', 'class="pictofixedwidth inline-block"');
-		print $formproject->select_projects($socid ? $socid : -1, $pid, 'search_projectid', 0, 0, 1, 0, 0, 0, 0, '', 1, 0, 'minwidth100 maxwidth250 widthcentpercentminusx');
-		print '</div>';
+		echo '<div class="divsearchfield">';
+		echo img_picto($langs->trans("Project"), 'project', 'class="pictofixedwidth inline-block"');
+		echo $formproject->select_projects($socid ? $socid : -1, $pid, 'search_projectid', 0, 0, 1, 0, 0, 0, 0, '', 1, 0, 'minwidth100 maxwidth250 widthcentpercentminusx');
+		echo '</div>';
 	}
 
 	if (isModEnabled('category') && $user->hasRight('categorie', 'lire')) {
@@ -147,18 +147,18 @@ function print_actions_filter(
 		$formother = new FormOther($db);
 		$langs->load('categories');
 
-		print '<div class="divsearchfield">';
-		print img_picto($langs->trans('Categories'), 'category', 'class="pictofixedwidth"');
-		print $formother->select_categories('actioncomm', $search_categ_cus, 'search_categ_cus', 1, $langs->trans('ActionCommCategoriesArea'), 'minwidth100 maxwidth250 widthcentpercentminusx');
-		print '</div>';
+		echo '<div class="divsearchfield">';
+		echo img_picto($langs->trans('Categories'), 'category', 'class="pictofixedwidth"');
+		echo $formother->select_categories('actioncomm', $search_categ_cus, 'search_categ_cus', 1, $langs->trans('ActionCommCategoriesArea'), 'minwidth100 maxwidth250 widthcentpercentminusx');
+		echo '</div>';
 	}
 
 	if ($canedit && !preg_match('/list/', $_SERVER["PHP_SELF"])) {
 		// Status
-		print '<div class="divsearchfield">';
-		print img_picto($langs->trans("Status"), 'status', 'class="pictofixedwidth inline-block"');
+		echo '<div class="divsearchfield">';
+		echo img_picto($langs->trans("Status"), 'status', 'class="pictofixedwidth inline-block"');
 		$formactions->form_select_status_action('formaction', $status, 1, 'search_status', 1, 2, 'minwidth100');
-		print '</div>';
+		echo '</div>';
 	}
 
 	// Hooks
@@ -166,7 +166,7 @@ function print_actions_filter(
 	$object = null;
 	$reshook = $hookmanager->executeHooks('searchAgendaFrom', $parameters, $object, $action); // Note that $action and $object may have been
 
-	print '<div class="clearboth"></div>';
+	echo '<div class="clearboth"></div>';
 }
 
 
@@ -211,11 +211,11 @@ function show_array_actions_to_do($max = 5)
 	if ($resql) {
 		$num = $db->num_rows($resql);
 
-		print '<div class="div-table-responsive-no-min">';
-		print '<table class="noborder centpercent">';
-		print '<tr class="liste_titre"><th colspan="2">'.$langs->trans("LastActionsToDo", $max).'</th>';
-		print '<th colspan="2" class="right"><a class="commonlink" href="'.DOL_URL_ROOT.'/comm/action/list.php?mode=show_list&status=todo">'.$langs->trans("FullList").'</a></th>';
-		print '</tr>';
+		echo '<div class="div-table-responsive-no-min">';
+		echo '<table class="noborder centpercent">';
+		echo '<tr class="liste_titre"><th colspan="2">'.$langs->trans("LastActionsToDo", $max).'</th>';
+		echo '<th colspan="2" class="right"><a class="commonlink" href="'.DOL_URL_ROOT.'/comm/action/list.php?mode=show_list&status=todo">'.$langs->trans("FullList").'</a></th>';
+		echo '</tr>';
 
 		$i = 0;
 
@@ -226,16 +226,16 @@ function show_array_actions_to_do($max = 5)
 			$obj = $db->fetch_object($resql);
 
 
-			print '<tr class="oddeven">';
+			echo '<tr class="oddeven">';
 
 			$staticaction->type_code = $obj->code;
 			$staticaction->label = ($obj->label ? $obj->label : $obj->type_label);
 			$staticaction->id = $obj->id;
-			print '<td>'.$staticaction->getNomUrl(1, 34).'</td>';
+			echo '<td>'.$staticaction->getNomUrl(1, 34).'</td>';
 
-			// print '<td>'.dol_trunc($obj->label,22).'</td>';
+			// echo '<td>'.dol_trunc($obj->label,22).'</td>';
 
-			print '<td>';
+			echo '<td>';
 			if ($obj->socid > 0) {
 				$customerstatic->id = $obj->socid;
 				$customerstatic->name = $obj->name;
@@ -246,15 +246,15 @@ function show_array_actions_to_do($max = 5)
 				$customerstatic->logo = $obj->logo;
 				$customerstatic->email = $obj->email;
 				$customerstatic->entity = $obj->entity;
-				print $customerstatic->getNomUrl(1, '', 40);
+				echo $customerstatic->getNomUrl(1, '', 40);
 			}
-			print '</td>';
+			echo '</td>';
 
 			$datep = $db->jdate($obj->dp);
 			$datep2 = $db->jdate($obj->dp2);
 
 			// Date
-			print '<td width="100" class="right tddate">'.dol_print_date($datep, 'day').'&nbsp;';
+			echo '<td width="100" class="right tddate">'.dol_print_date($datep, 'day').'&nbsp;';
 			$late = 0;
 			if ($obj->percent == 0 && $datep && $datep < time()) {
 				$late = 1;
@@ -269,18 +269,18 @@ function show_array_actions_to_do($max = 5)
 				$late = 1;
 			}
 			if ($late) {
-				print img_warning($langs->trans("Late"));
+				echo img_warning($langs->trans("Late"));
 			}
-			print "</td>";
+			echo "</td>";
 
 			// Statut
-			print '<td class="right" width="14">'.$staticaction->LibStatut($obj->percent, 3)."</td>\n";
+			echo '<td class="right" width="14">'.$staticaction->LibStatut($obj->percent, 3)."</td>\n";
 
-			print "</tr>\n";
+			echo "</tr>\n";
 
 			$i++;
 		}
-		print "</table></div><br>";
+		echo "</table></div><br>";
 
 		$db->free($resql);
 	} else {
@@ -327,11 +327,11 @@ function show_array_last_actions_done($max = 5)
 	if ($resql) {
 		$num = $db->num_rows($resql);
 
-		print '<div class="div-table-responsive-no-min">';
-		print '<table class="noborder centpercent">';
-		print '<tr class="liste_titre"><th colspan="2">'.$langs->trans("LastDoneTasks", $max).'</th>';
-		print '<th colspan="2" class="right"><a class="commonlink" href="'.DOL_URL_ROOT.'/comm/action/list.php?mode=show_list&status=done">'.$langs->trans("FullList").'</a></th>';
-		print '</tr>';
+		echo '<div class="div-table-responsive-no-min">';
+		echo'<table class="noborder centpercent">';
+		echo'<tr class="liste_titre"><th colspan="2">'.$langs->trans("LastDoneTasks", $max).'</th>';
+		echo'<th colspan="2" class="right"><a class="commonlink" href="'.DOL_URL_ROOT.'/comm/action/list.php?mode=show_list&status=done">'.$langs->trans("FullList").'</a></th>';
+		echo'</tr>';
 
 		$i = 0;
 
@@ -342,16 +342,16 @@ function show_array_last_actions_done($max = 5)
 			$obj = $db->fetch_object($resql);
 
 
-			print '<tr class="oddeven">';
+			echo'<tr class="oddeven">';
 
 			$staticaction->type_code = $obj->code;
 			$staticaction->label = $obj->label;
 			$staticaction->id = $obj->id;
-			print '<td>'.$staticaction->getNomUrl(1, 34).'</td>';
+			echo'<td>'.$staticaction->getNomUrl(1, 34).'</td>';
 
-			//print '<td>'.dol_trunc($obj->label,24).'</td>';
+			//echo'<td>'.dol_trunc($obj->label,24).'</td>';
 
-			print '<td>';
+			echo'<td>';
 			if ($obj->socid > 0) {
 				$customerstatic->id = $obj->socid;
 				$customerstatic->name = $obj->name;
@@ -362,23 +362,23 @@ function show_array_last_actions_done($max = 5)
 				$customerstatic->logo = $obj->logo;
 				$customerstatic->email = $obj->email;
 				$customerstatic->entity = $obj->entity;
-				print $customerstatic->getNomUrl(1, '', 30);
+				echo$customerstatic->getNomUrl(1, '', 30);
 			}
-			print '</td>';
+			echo'</td>';
 
 			// Date
-			print '<td width="100" class="right tddate">'.dol_print_date($db->jdate($obj->da2), 'day');
-			print "</td>";
+			echo'<td width="100" class="right tddate">'.dol_print_date($db->jdate($obj->da2), 'day');
+			echo"</td>";
 
 			// Status
-			print '<td class="right" width="14">'.$staticaction->LibStatut($obj->percent, 3)."</td>\n";
+			echo'<td class="right" width="14">'.$staticaction->LibStatut($obj->percent, 3)."</td>\n";
 
-			print "</tr>\n";
+			echo"</tr>\n";
 			$i++;
 		}
 		// TODO Ajouter rappel pour "il y a des contrats a mettre en service"
 		// TODO Ajouter rappel pour "il y a des contrats qui arrivent a expiration"
-		print "</table></div><br>";
+		echo"</table></div><br>";
 
 		$db->free($resql);
 	} else {

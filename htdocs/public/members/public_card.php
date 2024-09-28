@@ -98,38 +98,38 @@ if ($id > 0) {
 	}
 	$res = $object->fetch_optionals();
 
-	print load_fiche_titre($langs->trans("MemberCard"), '', '');
+	echo load_fiche_titre($langs->trans("MemberCard"), '', '');
 
 	if (empty($object->public)) {
-		print $langs->trans("ErrorThisMemberIsNotPublic");
+		echo $langs->trans("ErrorThisMemberIsNotPublic");
 	} else {
-		print '<table class="public_border" width="100%" cellpadding="3">';
+		echo '<table class="public_border" width="100%" cellpadding="3">';
 
-		print '<tr><td width="15%">'.$langs->trans("Type").'</td><td class="valeur">'.$object->type."</td></tr>\n";
-		print '<tr><td>'.$langs->trans("Person").'</td><td class="valeur">'.$object->morphy.'</td></tr>';
-		print '<tr><td>'.$langs->trans("Firstname").'</td><td class="valeur" width="35%">'.$object->firstname.'&nbsp;</td></tr>';
-		print '<tr><td>'.$langs->trans("Lastname").'</td><td class="valeur">'.$object->lastname.'&nbsp;</td></tr>';
-		print '<tr><td>'.$langs->trans("Gender").'</td><td class="valeur">'.$object->gender.'&nbsp;</td></tr>';
-		print '<tr><td>'.$langs->trans("Company").'</td><td class="valeur">'.$object->company.'&nbsp;</td></tr>';
-		print '<tr><td>'.$langs->trans("Address").'</td><td class="valeur">'.nl2br($object->address).'&nbsp;</td></tr>';
-		print '<tr><td>'.$langs->trans("Zip").' / '.$langs->trans("Town").'</td><td class="valeur">'.$object->zip.' '.$object->town.'&nbsp;</td></tr>';
-		print '<tr><td>'.$langs->trans("Country").'</td><td class="valeur">'.$object->country.'&nbsp;</td></tr>';
-		print '<tr><td>'.$langs->trans("EMail").'</td><td class="valeur">'.$object->email.'&nbsp;</td></tr>';
-		print '<tr><td>'.$langs->trans("Birthday").'</td><td class="valeur">'.dol_print_date($object->birth, 'day').'</td></tr>';
+		echo '<tr><td width="15%">'.$langs->trans("Type").'</td><td class="valeur">'.$object->type."</td></tr>\n";
+		echo '<tr><td>'.$langs->trans("Person").'</td><td class="valeur">'.$object->morphy.'</td></tr>';
+		echo '<tr><td>'.$langs->trans("Firstname").'</td><td class="valeur" width="35%">'.$object->firstname.'&nbsp;</td></tr>';
+		echo '<tr><td>'.$langs->trans("Lastname").'</td><td class="valeur">'.$object->lastname.'&nbsp;</td></tr>';
+		echo '<tr><td>'.$langs->trans("Gender").'</td><td class="valeur">'.$object->gender.'&nbsp;</td></tr>';
+		echo '<tr><td>'.$langs->trans("Company").'</td><td class="valeur">'.$object->company.'&nbsp;</td></tr>';
+		echo '<tr><td>'.$langs->trans("Address").'</td><td class="valeur">'.nl2br($object->address).'&nbsp;</td></tr>';
+		echo '<tr><td>'.$langs->trans("Zip").' / '.$langs->trans("Town").'</td><td class="valeur">'.$object->zip.' '.$object->town.'&nbsp;</td></tr>';
+		echo '<tr><td>'.$langs->trans("Country").'</td><td class="valeur">'.$object->country.'&nbsp;</td></tr>';
+		echo '<tr><td>'.$langs->trans("EMail").'</td><td class="valeur">'.$object->email.'&nbsp;</td></tr>';
+		echo '<tr><td>'.$langs->trans("Birthday").'</td><td class="valeur">'.dol_print_date($object->birth, 'day').'</td></tr>';
 
 		if (isset($object->photo) && $object->photo != '') {
 			$form = new Form($db);
-			print '<tr><td>URL Photo</td><td class="valeur">';
-			print $form->showphoto('memberphoto', $object, 64);
-			print '</td></tr>'."\n";
+			echo '<tr><td>URL Photo</td><td class="valeur">';
+			echo $form->showphoto('memberphoto', $object, 64);
+			echo '</td></tr>'."\n";
 		}
 		//  foreach($extrafields->attributes[$object->table_element]['label'] as $key=>$value){
-		//    print "<tr><td>$value</td><td>".$object->array_options["options_$key"]."&nbsp;</td></tr>\n";
+		//    echo "<tr><td>$value</td><td>".$object->array_options["options_$key"]."&nbsp;</td></tr>\n";
 		//  }
 
-		print '<tr><td class="tdtop">'.$langs->trans("Comments").'</td><td class="valeur sensiblehtmlcontent">'.dol_string_onlythesehtmltags(dol_htmlcleanlastbr($object->note_public)).'</td></tr>';
+		echo '<tr><td class="tdtop">'.$langs->trans("Comments").'</td><td class="valeur sensiblehtmlcontent">'.dol_string_onlythesehtmltags(dol_htmlcleanlastbr($object->note_public)).'</td></tr>';
 
-		print '</table>';
+		echo '</table>';
 	}
 }
 
@@ -151,7 +151,7 @@ function llxHeaderVierge($title, $head = "")
 {
 	top_htmlhead($head, $title);
 
-	print '<body class="public_body">'."\n";
+	echo '<body class="public_body">'."\n";
 }
 
 /**
@@ -163,6 +163,6 @@ function llxFooterVierge()
 {
 	printCommonFooter('public');
 
-	print "</body>\n";
-	print "</html>\n";
+	echo "</body>\n";
+	echo "</html>\n";
 }

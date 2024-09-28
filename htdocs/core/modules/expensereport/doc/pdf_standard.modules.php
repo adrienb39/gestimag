@@ -351,7 +351,7 @@ class pdf_standard extends ModeleExpenseReport
 						$pdf->rollbackTransaction(true);
 
 						$pageposafter = $pageposbefore;
-						//print $pageposafter.'-'.$pageposbefore;exit;
+						//echo $pageposafter.'-'.$pageposbefore;exit;
 						if (empty($showpricebeforepagebreak)) {
 							$pdf->AddPage('', '', true);
 							if (!empty($tplidx)) {

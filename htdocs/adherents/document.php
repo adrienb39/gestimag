@@ -135,7 +135,7 @@ if ($id > 0) {
 
 		$head = member_prepare_head($object);
 
-		print dol_get_fiche_head($head, 'document', $langs->trans("Member"), -1, 'user');
+		echo dol_get_fiche_head($head, 'document', $langs->trans("Member"), -1, 'user');
 
 		$linkback = '<a href="'.DOL_URL_ROOT.'/adherents/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
@@ -145,58 +145,58 @@ if ($id > 0) {
 
 		dol_banner_tab($object, 'rowid', $linkback, 1, 'rowid', 'ref', $morehtmlref);
 
-		print '<div class="fichecenter">';
+		echo '<div class="fichecenter">';
 
-		print '<div class="underbanner clearboth"></div>';
-		print '<table class="border tableforfield centpercent">';
+		echo '<div class="underbanner clearboth"></div>';
+		echo '<table class="border tableforfield centpercent">';
 
 		$linkback = '<a href="'.DOL_URL_ROOT.'/adherents/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
 		// Login
 		if (!getDolGlobalString('ADHERENT_LOGIN_NOT_REQUIRED')) {
-			print '<tr><td class="titlefield">'.$langs->trans("Login").' / '.$langs->trans("Id").'</td><td class="valeur">'.dol_escape_htmltag($object->login).'</td></tr>';
+			echo '<tr><td class="titlefield">'.$langs->trans("Login").' / '.$langs->trans("Id").'</td><td class="valeur">'.dol_escape_htmltag($object->login).'</td></tr>';
 		}
 
 		// Type
-		print '<tr><td>'.$langs->trans("Type").'</td>';
-		print '<td class="valeur">'.$membert->getNomUrl(1)."</td></tr>\n";
+		echo '<tr><td>'.$langs->trans("Type").'</td>';
+		echo '<td class="valeur">'.$membert->getNomUrl(1)."</td></tr>\n";
 
 		// Morphy
-		print '<tr><td class="titlefield">'.$langs->trans("MemberNature").'</td>';
-		print '<td class="valeur" >'.$object->getmorphylib('', 1).'</td>';
-		print '</tr>';
+		echo '<tr><td class="titlefield">'.$langs->trans("MemberNature").'</td>';
+		echo '<td class="valeur" >'.$object->getmorphylib('', 1).'</td>';
+		echo '</tr>';
 
 		// Company
-		print '<tr><td>'.$langs->trans("Company").'</td><td class="valeur">'.dol_escape_htmltag($object->company).'</td></tr>';
+		echo '<tr><td>'.$langs->trans("Company").'</td><td class="valeur">'.dol_escape_htmltag($object->company).'</td></tr>';
 
 		// Civility
-		print '<tr><td>'.$langs->trans("UserTitle").'</td><td class="valeur">'.$object->getCivilityLabel().'&nbsp;</td>';
-		print '</tr>';
+		echo '<tr><td>'.$langs->trans("UserTitle").'</td><td class="valeur">'.$object->getCivilityLabel().'&nbsp;</td>';
+		echo '</tr>';
 
 		// Number of Attached Files
-		print '<tr><td>'.$langs->trans("NbOfAttachedFiles").'</td><td colspan="3">'.count($filearray).'</td></tr>';
+		echo '<tr><td>'.$langs->trans("NbOfAttachedFiles").'</td><td colspan="3">'.count($filearray).'</td></tr>';
 
 		//Total Size Of Attached Files
-		print '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td colspan="3">'.dol_print_size($totalsize, 1, 1).'</td></tr>';
+		echo '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td colspan="3">'.dol_print_size($totalsize, 1, 1).'</td></tr>';
 
-		print '</table>';
+		echo '</table>';
 
-		print '</div>';
+		echo '</div>';
 
-		print dol_get_fiche_end();
+		echo dol_get_fiche_end();
 
 		$modulepart = 'member';
 		$permissiontoadd = $user->hasRight('adherent', 'creer');
 		$permtoedit = $user->hasRight('adherent', 'creer');
 		$param = '&id='.$object->id;
 		include DOL_DOCUMENT_ROOT.'/core/tpl/document_actions_post_headers.tpl.php';
-		print "<br><br>";
+		echo "<br><br>";
 	} else {
 		dol_print_error($db);
 	}
 } else {
 	$langs->load("errors");
-	print $langs->trans("ErrorRecordNotFound");
+	echo $langs->trans("ErrorRecordNotFound");
 }
 
 // End of page

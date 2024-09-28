@@ -118,9 +118,9 @@ class FormCategory extends Form
 		dol_syslog(get_class($this)."::selectProductCategory", LOG_DEBUG);
 		$resql = $this->db->query($sql);
 		if ($resql) {
-			print '<select class="flat minwidth100" id="select_'.$htmlname.'" name="'.$htmlname.'">';
+			echo '<select class="flat minwidth100" id="select_'.$htmlname.'" name="'.$htmlname.'">';
 			if ($showempty) {
-				print '<option value="0">&nbsp;</option>';
+				echo '<option value="0">&nbsp;</option>';
 			}
 
 			$i = 0;
@@ -128,9 +128,9 @@ class FormCategory extends Form
 			while ($i < $num_rows) {
 				$category = $this->db->fetch_object($resql);
 				if ($selected && $selected == $category->rowid) {
-					print '<option value="'.$category->rowid.'" selected>'.$category->label.'</option>';
+					echo '<option value="'.$category->rowid.'" selected>'.$category->label.'</option>';
 				} else {
-					print '<option value="'.$category->rowid.'">'.$category->label.'</option>';
+					echo '<option value="'.$category->rowid.'">'.$category->label.'</option>';
 				}
 				$i++;
 			}

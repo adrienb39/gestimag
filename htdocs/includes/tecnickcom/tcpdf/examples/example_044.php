@@ -69,14 +69,14 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // set font
 $pdf->SetFont('helvetica', 'B', 40);
 
-// print a line using Cell()
+// echo a line using Cell()
 $pdf->AddPage();
 $pdf->Cell(0, 10, 'PAGE: A', 0, 1, 'L');
 
 // add some vertical space
 $pdf->Ln(10);
 
-// print some text
+// echo some text
 $pdf->SetFont('times', 'I', 16);
 $txt = 'TCPDF allows you to Copy, Move and Delete pages.';
 $pdf->Write(0, $txt, '', 0, 'L', true, 0, false, false, 0);

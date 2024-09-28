@@ -27,7 +27,7 @@
 
 // Protection to avoid direct call of template
 if (empty($conf) || !is_object($conf)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -49,7 +49,7 @@ if (!isset($parameters)) {
 
 $reshook = $hookmanager->executeHooks('formObjectOptions', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
 
-print $hookmanager->resPrint;
+echo $hookmanager->resPrint;
 if (empty($reshook)) {
 	$params = array();
 	$params['cols'] = array_key_exists('colspanvalue', $parameters) ? $parameters['colspanvalue'] : '';
@@ -60,7 +60,7 @@ if (empty($reshook)) {
 		$params['tpl_context'] = $parameters['tpl_context'];
 	}
 
-	print $object->showOptionals($extrafields, 'create', $params);
+	echo $object->showOptionals($extrafields, 'create', $params);
 }
 
 ?>

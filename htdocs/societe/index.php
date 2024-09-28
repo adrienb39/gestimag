@@ -86,7 +86,7 @@ $helpurl = 'EN:Module_Third_Parties|FR:Module_Tiers|ES:M&oacute;dulo_Terceros';
 
 llxHeader("", $langs->trans("ThirdParties"), $helpurl);
 
-print load_fiche_titre($transAreaType, $resultboxes['selectboxlist'], 'companies');
+echo load_fiche_titre($transAreaType, $resultboxes['selectboxlist'], 'companies');
 
 
 // Statistics area
@@ -120,7 +120,7 @@ if (empty($reshook)) {
 	}
 }
 $sql .= $hookmanager->resPrint;
-//print $sql;
+//echo $sql;
 $result = $db->query($sql);
 if ($result) {
 	while ($objp = $db->fetch_object($result)) {
@@ -318,7 +318,7 @@ $sql .= $hookmanager->resPrint;
 $sql .= $db->order("s.tms", "DESC");
 $sql .= $db->plimit($max, 0);
 
-//print $sql;
+//echo $sql;
 $lastmodified="";
 $result = $db->query($sql);
 if ($result) {
@@ -441,7 +441,7 @@ $sql .= $hookmanager->resPrint;
 $sql .= $db->order("s.tms", "DESC");
 $sql .= $db->plimit($max, 0);
 
-//print $sql;
+//echo $sql;
 $lastmodifiedcontact = '';
 $result = $db->query($sql);
 if ($result) {
@@ -528,8 +528,8 @@ if ($result) {
 
 
 // boxes
-print '<div class="clearboth"></div>';
-print '<div class="fichecenter fichecenterbis">';
+echo '<div class="clearboth"></div>';
+echo '<div class="fichecenter fichecenterbis">';
 
 $boxlist = '<div class="twocolumns">';
 
@@ -551,9 +551,9 @@ $boxlist .= '</div>'."\n";
 
 $boxlist .= '</div>';
 
-print $boxlist;
+echo $boxlist;
 
-print '</div>';
+echo '</div>';
 
 $parameters = array('user' => $user);
 $reshook = $hookmanager->executeHooks('dashboardThirdparties', $parameters, $thirdparty_static); // Note that $action and $object may have been modified by hook

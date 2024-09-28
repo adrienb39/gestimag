@@ -112,7 +112,7 @@ $pdf->AddPage();
 // set a bookmark for the current position
 $pdf->Bookmark('Chapter 1', 0, 0, '', 'B', array(0,64,128));
 
-// print a line using Cell()
+// echo a line using Cell()
 $pdf->Cell(0, 10, 'Chapter 1', 0, 1, 'L');
 
 $pdf->AddPage();

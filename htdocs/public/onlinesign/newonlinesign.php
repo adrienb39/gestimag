@@ -233,7 +233,7 @@ $replacemainarea = (empty($conf->dol_hide_leftmenu) ? '<div>' : '').'<div>';
 llxHeader($head, $langs->trans("OnlineSignature"), '', '', 0, 0, '', '', '', 'onlinepaymentbody', $replacemainarea, 1);
 
 if ($action == 'refusepropal') {
-	print $form->formconfirm($_SERVER["PHP_SELF"].'?ref='.urlencode($ref).'&securekey='.urlencode($SECUREKEY).(isModEnabled('multicompany') ? '&entity='.$entity : ''), $langs->trans('RefusePropal'), $langs->trans('ConfirmRefusePropal', $object->ref), 'confirm_refusepropal', '', '', 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"].'?ref='.urlencode($ref).'&securekey='.urlencode($SECUREKEY).(isModEnabled('multicompany') ? '&entity='.$entity : ''), $langs->trans('RefusePropal'), $langs->trans('ConfirmRefusePropal', $object->ref), 'confirm_refusepropal', '', '', 1);
 }
 
 // Check link validity for param 'source' to avoid use of the examples as value
@@ -246,22 +246,22 @@ if (!empty($source) && in_array($ref, array('member_ref', 'contractline_ref', 'i
 	exit;
 }
 
-print '<span id="dolpaymentspan"></span>'."\n";
-print '<div class="center">'."\n";
-print '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-print '<input type="hidden" name="token" value="'.newToken().'">'."\n";
-print '<input type="hidden" name="action" value="dosign">'."\n";
-print '<input type="hidden" name="tag" value="'.GETPOST("tag", 'alpha').'">'."\n";
-print '<input type="hidden" name="suffix" value="'.GETPOST("suffix", 'alpha').'">'."\n";
-print '<input type="hidden" name="securekey" value="'.$SECUREKEY.'">'."\n";
-print '<input type="hidden" name="entity" value="'.$entity.'" />';
-print '<input type="hidden" name="page_y" value="" />';
-print '<input type="hidden" name="source" value="'.$source.'" />';
-print '<input type="hidden" name="ref" value="'.$ref.'" />';
-print "\n";
-print '<!-- Form to sign -->'."\n";
+echo '<span id="dolpaymentspan"></span>'."\n";
+echo '<div class="center">'."\n";
+echo '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
+echo '<input type="hidden" name="token" value="'.newToken().'">'."\n";
+echo '<input type="hidden" name="action" value="dosign">'."\n";
+echo '<input type="hidden" name="tag" value="'.GETPOST("tag", 'alpha').'">'."\n";
+echo '<input type="hidden" name="suffix" value="'.GETPOST("suffix", 'alpha').'">'."\n";
+echo '<input type="hidden" name="securekey" value="'.$SECUREKEY.'">'."\n";
+echo '<input type="hidden" name="entity" value="'.$entity.'" />';
+echo '<input type="hidden" name="page_y" value="" />';
+echo '<input type="hidden" name="source" value="'.$source.'" />';
+echo '<input type="hidden" name="ref" value="'.$ref.'" />';
+echo "\n";
+echo '<!-- Form to sign -->'."\n";
 
-print '<table id="dolpublictable" summary="Payment form" class="center">'."\n";
+echo '<table id="dolpublictable" summary="Payment form" class="center">'."\n";
 
 // Show logo (search order: logo defined by ONLINE_SIGN_LOGO_suffix, then ONLINE_SIGN_LOGO_, then small company logo, large company logo, theme logo, common logo)
 // Define logo and logosmall
@@ -273,7 +273,7 @@ if (!empty($conf->global->$paramlogo)) {
 } elseif (getDolGlobalString('ONLINE_SIGN_LOGO')) {
 	$logosmall = getDolGlobalString('ONLINE_SIGN_LOGO');
 }
-//print '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
+//echo '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
 // Define urllogo
 $urllogo = '';
 $urllogofull = '';
@@ -286,20 +286,20 @@ if (!empty($logosmall) && is_readable($conf->mycompany->dir_output.'/logos/thumb
 }
 // Output html code for logo
 if ($urllogo) {
-	print '<div class="backgreypublicpayment">';
-	print '<div class="logopublicpayment">';
-	print '<img id="dolpaymentlogo" src="'.$urllogo.'"';
-	print '>';
-	print '</div>';
+	echo '<div class="backgreypublicpayment">';
+	echo '<div class="logopublicpayment">';
+	echo '<img id="dolpaymentlogo" src="'.$urllogo.'"';
+	echo '>';
+	echo '</div>';
 	if (!getDolGlobalString('MAIN_HIDE_POWERED_BY')) {
-		print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+		echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 	}
-	print '</div>';
+	echo '</div>';
 }
 if ($source == 'proposal' && getDolGlobalString('PROPOSAL_IMAGE_PUBLIC_SIGN')) {
-	print '<div class="backimagepublicproposalsign">';
-	print '<img id="idPROPOSAL_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('PROPOSAL_IMAGE_PUBLIC_SIGN').'">';
-	print '</div>';
+	echo '<div class="backimagepublicproposalsign">';
+	echo '<img id="idPROPOSAL_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('PROPOSAL_IMAGE_PUBLIC_SIGN').'">';
+	echo '</div>';
 }
 
 // Output introduction text
@@ -331,21 +331,21 @@ if (empty($text)) {
 		$text .= '<tr><td class="textpublicpayment opacitymedium">'.$langs->trans("ThisScreenAllowsYouToSignDocFrom".dol_ucfirst($source), $creditor).'<br><br></td></tr>'."\n";
 	}
 }
-print $text;
+echo $text;
 
 // Output payment summary form
-print '<tr><td align="center">';
-print '<table with="100%" id="tablepublicpayment">';
+echo '<tr><td align="center">';
+echo '<table with="100%" id="tablepublicpayment">';
 if ($source == 'proposal') {
-	print '<tr><td align="left" colspan="2" class="opacitymedium">'.$langs->trans("ThisIsInformationOnDocumentToSignProposal").' :</td></tr>'."\n";
+	echo '<tr><td align="left" colspan="2" class="opacitymedium">'.$langs->trans("ThisIsInformationOnDocumentToSignProposal").' :</td></tr>'."\n";
 } elseif ($source == 'contract') {
-	print '<tr><td align="left" colspan="2" class="opacitymedium">'.$langs->trans("ThisIsInformationOnDocumentToSignContract").' :</td></tr>'."\n";
+	echo '<tr><td align="left" colspan="2" class="opacitymedium">'.$langs->trans("ThisIsInformationOnDocumentToSignContract").' :</td></tr>'."\n";
 } elseif ($source == 'fichinter') {
-	print '<tr><td align="left" colspan="2" class="opacitymedium">'.$langs->trans("ThisIsInformationOnDocumentToSignFichinter").' :</td></tr>'."\n";
+	echo '<tr><td align="left" colspan="2" class="opacitymedium">'.$langs->trans("ThisIsInformationOnDocumentToSignFichinter").' :</td></tr>'."\n";
 } elseif ($source == 'expedition') {
-	print '<tr><td align="left" colspan="2" class="opacitymedium">'.$langs->trans("ThisIsInformationOnDocumentToSignExpedition").' :</td></tr>'."\n";
+	echo '<tr><td align="left" colspan="2" class="opacitymedium">'.$langs->trans("ThisIsInformationOnDocumentToSignExpedition").' :</td></tr>'."\n";
 } else {
-	print '<tr><td align="left" colspan="2" class="opacitymedium">'.$langs->trans("ThisIsInformationOnDocumentToSign".dol_ucfirst($source)).' :</td></tr>'."\n";
+	echo '<tr><td align="left" colspan="2" class="opacitymedium">'.$langs->trans("ThisIsInformationOnDocumentToSign".dol_ucfirst($source)).' :</td></tr>'."\n";
 }
 $found = false;
 $error = 0;
@@ -358,19 +358,19 @@ if ($source == 'proposal') {
 	$result = $object->fetch_thirdparty($object->socid);
 
 	// Creditor
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Creditor");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>'.$creditor.'</b>';
-	print '<input type="hidden" name="creditor" value="'.$creditor.'">';
-	print '</td></tr>'."\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Creditor");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>'.$creditor.'</b>';
+	echo '<input type="hidden" name="creditor" value="'.$creditor.'">';
+	echo '</td></tr>'."\n";
 
 	// Debitor
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("ThirdParty");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>'.$object->thirdparty->name.'</b>';
-	print '</td></tr>'."\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("ThirdParty");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>'.$object->thirdparty->name.'</b>';
+	echo '</td></tr>'."\n";
 
 	// Amount
 
@@ -391,12 +391,12 @@ if ($source == 'proposal') {
 		$amount = $hookmanager->resPrint;
 	}
 
-	print $amount;
+	echo $amount;
 
 	// Object
 	$text = '<b>'.$langs->trans("SignatureProposalRef", $object->ref).'</b>';
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Designation");
-	print '</td><td class="CTableRow2">'.$text;
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Designation");
+	echo '</td><td class="CTableRow2">'.$text;
 
 	$last_main_doc_file = $object->last_main_doc;
 
@@ -410,17 +410,17 @@ if ($source == 'proposal') {
 
 		$directdownloadlink = $object->getLastMainDocLink('proposal');
 		if ($directdownloadlink) {
-			print '<br><a href="'.$directdownloadlink.'">';
-			print img_mime($object->last_main_doc, '');
-			print $langs->trans("DownloadDocument").'</a>';
+			echo '<br><a href="'.$directdownloadlink.'">';
+			echo img_mime($object->last_main_doc, '');
+			echo $langs->trans("DownloadDocument").'</a>';
 		}
 	} else {
 		if ($object->status == $object::STATUS_NOTSIGNED) {
 			$directdownloadlink = $object->getLastMainDocLink('proposal');
 			if ($directdownloadlink) {
-				print '<br><a href="'.$directdownloadlink.'">';
-				print img_mime($last_main_doc_file, '');
-				print $langs->trans("DownloadDocument").'</a>';
+				echo '<br><a href="'.$directdownloadlink.'">';
+				echo img_mime($last_main_doc_file, '');
+				echo $langs->trans("DownloadDocument").'</a>';
 			}
 		} elseif ($object->status == $object::STATUS_SIGNED || $object->status == $object::STATUS_BILLED) {
 			if (preg_match('/_signed-(\d+)/', $last_main_doc_file)) {	// If the last main doc has been signed
@@ -432,18 +432,18 @@ if ($source == 'proposal') {
 				if (empty($datefilenotsigned) || $datefilesigned > $datefilenotsigned) {
 					$directdownloadlink = $object->getLastMainDocLink('proposal');
 					if ($directdownloadlink) {
-						print '<br><a href="'.$directdownloadlink.'">';
-						print img_mime($object->last_main_doc, '');
-						print $langs->trans("DownloadDocument").'</a>';
+						echo '<br><a href="'.$directdownloadlink.'">';
+						echo img_mime($object->last_main_doc, '');
+						echo $langs->trans("DownloadDocument").'</a>';
 					}
 				}
 			}
 		}
 	}
 
-	print '<input type="hidden" name="source" value="'.GETPOST("source", 'alpha').'">';
-	print '<input type="hidden" name="ref" value="'.$object->ref.'">';
-	print '</td></tr>'."\n";
+	echo '<input type="hidden" name="source" value="'.GETPOST("source", 'alpha').'">';
+	echo '<input type="hidden" name="ref" value="'.$object->ref.'">';
+	echo '</td></tr>'."\n";
 } elseif ($source == 'contract') { // Signature on contract
 	$found = true;
 	$langs->load("contract");
@@ -451,24 +451,24 @@ if ($source == 'proposal') {
 	$result = $object->fetch_thirdparty($object->socid);
 
 	// Proposer
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Proposer");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>'.$creditor.'</b>';
-	print '<input type="hidden" name="creditor" value="'.$creditor.'">';
-	print '</td></tr>'."\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Proposer");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>'.$creditor.'</b>';
+	echo '<input type="hidden" name="creditor" value="'.$creditor.'">';
+	echo '</td></tr>'."\n";
 
 	// Target
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("ThirdParty");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>'.$object->thirdparty->name.'</b>';
-	print '</td></tr>'."\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("ThirdParty");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>'.$object->thirdparty->name.'</b>';
+	echo '</td></tr>'."\n";
 
 	// Object
 	$text = '<b>'.$langs->trans("SignatureContractRef", $object->ref).'</b>';
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Designation");
-	print '</td><td class="CTableRow2">'.$text;
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Designation");
+	echo '</td><td class="CTableRow2">'.$text;
 
 	$last_main_doc_file = $object->last_main_doc;
 
@@ -481,19 +481,19 @@ if ($source == 'proposal') {
 
 	$directdownloadlink = $object->getLastMainDocLink('contract');
 	if ($directdownloadlink) {
-		print '<br><a href="'.$directdownloadlink.'">';
-		print img_mime($object->last_main_doc, '');
+		echo '<br><a href="'.$directdownloadlink.'">';
+		echo img_mime($object->last_main_doc, '');
 		if ($message == "signed") {
-			print $langs->trans("DownloadSignedDocument").'</a>';
+			echo $langs->trans("DownloadSignedDocument").'</a>';
 		} else {
-			print $langs->trans("DownloadDocument").'</a>';
+			echo $langs->trans("DownloadDocument").'</a>';
 		}
 	}
 
 
-	print '<input type="hidden" name="source" value="'.GETPOST("source", 'alpha').'">';
-	print '<input type="hidden" name="ref" value="'.$object->ref.'">';
-	print '</td></tr>'."\n";
+	echo '<input type="hidden" name="source" value="'.GETPOST("source", 'alpha').'">';
+	echo '<input type="hidden" name="ref" value="'.$object->ref.'">';
+	echo '</td></tr>'."\n";
 } elseif ($source == 'fichinter') {
 	// Signature on fichinter
 	$found = true;
@@ -502,24 +502,24 @@ if ($source == 'proposal') {
 	$result = $object->fetch_thirdparty($object->socid);
 
 	// Proposer
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Proposer");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>'.$creditor.'</b>';
-	print '<input type="hidden" name="creditor" value="'.$creditor.'">';
-	print '</td></tr>'."\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Proposer");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>'.$creditor.'</b>';
+	echo '<input type="hidden" name="creditor" value="'.$creditor.'">';
+	echo '</td></tr>'."\n";
 
 	// Target
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("ThirdParty");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>'.$object->thirdparty->name.'</b>';
-	print '</td></tr>'."\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("ThirdParty");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>'.$object->thirdparty->name.'</b>';
+	echo '</td></tr>'."\n";
 
 	// Object
 	$text = '<b>'.$langs->trans("SignatureFichinterRef", $object->ref).'</b>';
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Designation");
-	print '</td><td class="CTableRow2">'.$text;
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Designation");
+	echo '</td><td class="CTableRow2">'.$text;
 
 	$last_main_doc_file = $object->last_main_doc;
 
@@ -532,17 +532,17 @@ if ($source == 'proposal') {
 
 	$directdownloadlink = $object->getLastMainDocLink('fichinter');
 	if ($directdownloadlink) {
-		print '<br><a href="'.$directdownloadlink.'">';
-		print img_mime($object->last_main_doc, '');
+		echo '<br><a href="'.$directdownloadlink.'">';
+		echo img_mime($object->last_main_doc, '');
 		if ($message == "signed") {
-			print $langs->trans("DownloadSignedDocument").'</a>';
+			echo $langs->trans("DownloadSignedDocument").'</a>';
 		} else {
-			print $langs->trans("DownloadDocument").'</a>';
+			echo $langs->trans("DownloadDocument").'</a>';
 		}
 	}
-	print '<input type="hidden" name="source" value="'.GETPOST("source", 'alpha').'">';
-	print '<input type="hidden" name="ref" value="'.$object->ref.'">';
-	print '</td></tr>'."\n";
+	echo '<input type="hidden" name="source" value="'.GETPOST("source", 'alpha').'">';
+	echo '<input type="hidden" name="ref" value="'.$object->ref.'">';
+	echo '</td></tr>'."\n";
 } elseif ($source == 'societe_rib') {
 	$found = true;
 	$langs->loadLangs(array("companies", "commercial", "withdrawals"));
@@ -550,24 +550,24 @@ if ($source == 'proposal') {
 	$result = $object->fetch_thirdparty();
 
 	// Proposer
-	print '<tr class="CTableRow2"><td class="CTableRow2">' . $langs->trans("Proposer");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>' . $creditor . '</b>';
-	print '<input type="hidden" name="creditor" value="' . $creditor . '">';
-	print '</td></tr>' . "\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">' . $langs->trans("Proposer");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>' . $creditor . '</b>';
+	echo '<input type="hidden" name="creditor" value="' . $creditor . '">';
+	echo '</td></tr>' . "\n";
 
 	// Target
-	print '<tr class="CTableRow2"><td class="CTableRow2">' . $langs->trans("ThirdParty");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>' . $object->thirdparty->name . '</b>';
-	print '</td></tr>' . "\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">' . $langs->trans("ThirdParty");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>' . $object->thirdparty->name . '</b>';
+	echo '</td></tr>' . "\n";
 
 	// Object
 	$text = '<b>' . $langs->trans("Signature" . dol_ucfirst($source) . "Ref", $object->ref) . '</b>';
-	print '<tr class="CTableRow2"><td class="CTableRow2">' . $langs->trans("Designation");
-	print '</td><td class="CTableRow2">' . $text;
+	echo '<tr class="CTableRow2"><td class="CTableRow2">' . $langs->trans("Designation");
+	echo '</td><td class="CTableRow2">' . $text;
 
 	$last_main_doc_file = $object->last_main_doc;
 	$diroutput = $conf->societe->multidir_output[$object->thirdparty->entity].'/'
@@ -591,12 +591,12 @@ if ($source == 'proposal') {
 	}
 	$directdownloadlink = $object->getLastMainDocLink('company');
 	if ($directdownloadlink) {
-		print '<br><a href="'.$directdownloadlink.'">';
-		print img_mime($object->last_main_doc, '');
+		echo '<br><a href="'.$directdownloadlink.'">';
+		echo img_mime($object->last_main_doc, '');
 		if ($message == "signed") {
-			print $langs->trans("DownloadSignedDocument").'</a>';
+			echo $langs->trans("DownloadSignedDocument").'</a>';
 		} else {
-			print $langs->trans("DownloadDocument").'</a>';
+			echo $langs->trans("DownloadDocument").'</a>';
 		}
 	}
 } elseif ($source == 'expedition') {
@@ -607,24 +607,24 @@ if ($source == 'proposal') {
 	$result = $object->fetch_thirdparty($object->socid);
 
 	// Proposer
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Proposer");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>'.$creditor.'</b>';
-	print '<input type="hidden" name="creditor" value="'.$creditor.'">';
-	print '</td></tr>'."\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Proposer");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>'.$creditor.'</b>';
+	echo '<input type="hidden" name="creditor" value="'.$creditor.'">';
+	echo '</td></tr>'."\n";
 
 	// Target
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("ThirdParty");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>'.$object->thirdparty->name.'</b>';
-	print '</td></tr>'."\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("ThirdParty");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>'.$object->thirdparty->name.'</b>';
+	echo '</td></tr>'."\n";
 
 	// Object
 	$text = '<b>'.$langs->trans("SignatureFichinterRef", $object->ref).'</b>';
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Designation");
-	print '</td><td class="CTableRow2">'.$text;
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Designation");
+	echo '</td><td class="CTableRow2">'.$text;
 
 	$last_main_doc_file = $object->last_main_doc;
 	if (empty($last_main_doc_file) || !dol_is_file(DOL_DATA_ROOT.'/'.$object->last_main_doc)) {
@@ -635,17 +635,17 @@ if ($source == 'proposal') {
 	}
 	$directdownloadlink = $object->getLastMainDocLink('', 0, 0);
 	if ($directdownloadlink) {
-		print '<br><a href="'.$directdownloadlink.'">';
-		print img_mime($object->last_main_doc, '');
+		echo '<br><a href="'.$directdownloadlink.'">';
+		echo img_mime($object->last_main_doc, '');
 		if ($message == "signed") {
-			print $langs->trans("DownloadSignedDocument").'</a>';
+			echo $langs->trans("DownloadSignedDocument").'</a>';
 		} else {
-			print $langs->trans("DownloadDocument").'</a>';
+			echo $langs->trans("DownloadDocument").'</a>';
 		}
 	}
-	print '<input type="hidden" name="source" value="'.GETPOST("source", 'alpha').'">';
-	print '<input type="hidden" name="ref" value="'.$object->ref.'">';
-	print '</td></tr>'."\n";
+	echo '<input type="hidden" name="source" value="'.GETPOST("source", 'alpha').'">';
+	echo '<input type="hidden" name="ref" value="'.$object->ref.'">';
+	echo '</td></tr>'."\n";
 } else {
 	$found = true;
 	$langs->load('companies');
@@ -655,24 +655,24 @@ if ($source == 'proposal') {
 	}
 
 	// Proposer
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Proposer");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>'.$creditor.'</b>';
-	print '<input type="hidden" name="creditor" value="'.$creditor.'">';
-	print '</td></tr>'."\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Proposer");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>'.$creditor.'</b>';
+	echo '<input type="hidden" name="creditor" value="'.$creditor.'">';
+	echo '</td></tr>'."\n";
 
 	// Target
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("ThirdParty");
-	print '</td><td class="CTableRow2">';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print '<b>'.$object->thirdparty->name.'</b>';
-	print '</td></tr>'."\n";
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("ThirdParty");
+	echo '</td><td class="CTableRow2">';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo '<b>'.$object->thirdparty->name.'</b>';
+	echo '</td></tr>'."\n";
 
 	// Object
 	$text = '<b>'.$langs->trans("Signature".dol_ucfirst($source)."Ref", $object->ref).'</b>';
-	print '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Designation");
-	print '</td><td class="CTableRow2">'.$text;
+	echo '<tr class="CTableRow2"><td class="CTableRow2">'.$langs->trans("Designation");
+	echo '</td><td class="CTableRow2">'.$text;
 
 	$last_main_doc_file = $object->last_main_doc;
 
@@ -685,12 +685,12 @@ if ($source == 'proposal') {
 
 	$directdownloadlink = $object->getLastMainDocLink($source);
 	if ($directdownloadlink) {
-		print '<br><a href="'.$directdownloadlink.'">';
-		print img_mime($object->last_main_doc, '');
+		echo '<br><a href="'.$directdownloadlink.'">';
+		echo img_mime($object->last_main_doc, '');
 		if ($message == "signed") {
-			print $langs->trans("DownloadSignedDocument").'</a>';
+			echo $langs->trans("DownloadSignedDocument").'</a>';
 		} else {
-			print $langs->trans("DownloadDocument").'</a>';
+			echo $langs->trans("DownloadDocument").'</a>';
 		}
 	}
 }
@@ -704,11 +704,11 @@ if (!$found && !$mesg) {
 }
 
 if ($mesg) {
-	print '<tr><td class="center" colspan="2"><br><div class="warning">'.dol_escape_htmltag($mesg).'</div></td></tr>'."\n";
+	echo '<tr><td class="center" colspan="2"><br><div class="warning">'.dol_escape_htmltag($mesg).'</div></td></tr>'."\n";
 }
 
-print '</table>'."\n";
-print "\n";
+echo '</table>'."\n";
+echo "\n";
 
 if ($action != 'dosign') {
 	if ($found && !$error) {
@@ -720,26 +720,26 @@ if ($action != 'dosign') {
 	// Print
 }
 
-print '</td></tr>'."\n";
-print '<tr><td class="center">';
+echo '</td></tr>'."\n";
+echo '<tr><td class="center">';
 
 
 if ($action == "dosign" && empty($cancel)) {
 	// Show the field to sign
-	print '<div class="tablepublicpayment">';
-	print '<input type="text" class="paddingleftonly marginleftonly paddingrightonly marginrightonly marginbottomonly borderbottom" id="name"  placeholder="'.$langs->trans("Lastname").'" autofocus>';
-	print '<div id="signature" style="border:solid;"></div>';
-	print '</div>';
-	print '<input type="button" class="small noborderbottom cursorpointer buttonreset" id="clearsignature" value="'.$langs->trans("ClearSignature").'">';
+	echo '<div class="tablepublicpayment">';
+	echo '<input type="text" class="paddingleftonly marginleftonly paddingrightonly marginrightonly marginbottomonly borderbottom" id="name"  placeholder="'.$langs->trans("Lastname").'" autofocus>';
+	echo '<div id="signature" style="border:solid;"></div>';
+	echo '</div>';
+	echo '<input type="button" class="small noborderbottom cursorpointer buttonreset" id="clearsignature" value="'.$langs->trans("ClearSignature").'">';
 
 	// Do not use class="reposition" here: It breaks the submit and there is a message on top to say it's ok, so going back top is better.
-	print '<div>';
-	print '<input type="button" class="button marginleftonly marginrightonly" id="signbutton" value="'.$langs->trans("Sign").'">';
-	print '<input type="submit" class="button butActionDelete marginleftonly marginrightonly" name="cancel" value="'.$langs->trans("Cancel").'">';
-	print '</div>';
+	echo '<div>';
+	echo '<input type="button" class="button marginleftonly marginrightonly" id="signbutton" value="'.$langs->trans("Sign").'">';
+	echo '<input type="submit" class="button butActionDelete marginleftonly marginrightonly" name="cancel" value="'.$langs->trans("Cancel").'">';
+	echo '</div>';
 
 	// Add js code managed into the div #signature
-	print '<script language="JavaScript" type="text/javascript" src="'.DOL_URL_ROOT.'/includes/jquery/plugins/jSignature/jSignature.js"></script>
+	echo '<script language="JavaScript" type="text/javascript" src="'.DOL_URL_ROOT.'/includes/jquery/plugins/jSignature/jSignature.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
 	  $("#signature").jSignature({ color:"#000", lineWidth:0, '.(empty($conf->dol_optimize_smallscreen) ? '' : 'width: 280, ').'height: 180});
@@ -800,58 +800,58 @@ if ($action == "dosign" && empty($cancel)) {
 } else {
 	if ($source == 'proposal') {
 		if ($object->status == $object::STATUS_SIGNED) {
-			print '<br>';
+			echo '<br>';
 			if ($message == 'signed') {
-				print img_picto('', 'check', '', false, 0, 0, '', 'size2x').'<br>';
-				print '<span class="ok">'.$langs->trans("PropalSigned").'</span>';
+				echo img_picto('', 'check', '', false, 0, 0, '', 'size2x').'<br>';
+				echo '<span class="ok">'.$langs->trans("PropalSigned").'</span>';
 			} else {
-				print img_picto('', 'check', '', false, 0, 0, '', 'size2x').'<br>';
-				print '<span class="ok">'.$langs->trans("PropalAlreadySigned").'</span>';
+				echo img_picto('', 'check', '', false, 0, 0, '', 'size2x').'<br>';
+				echo '<span class="ok">'.$langs->trans("PropalAlreadySigned").'</span>';
 			}
 		} elseif ($object->status == $object::STATUS_NOTSIGNED) {
-			print '<br>';
+			echo '<br>';
 			if ($message == 'refused') {
-				print img_picto('', 'cross', '', false, 0, 0, '', 'size2x').'<br>';
-				print '<span class="ok">'.$langs->trans("PropalRefused").'</span>';
+				echo img_picto('', 'cross', '', false, 0, 0, '', 'size2x').'<br>';
+				echo '<span class="ok">'.$langs->trans("PropalRefused").'</span>';
 			} else {
-				print img_picto('', 'cross', '', false, 0, 0, '', 'size2x').'<br>';
-				print '<span class="warning">'.$langs->trans("PropalAlreadyRefused").'</span>';
+				echo img_picto('', 'cross', '', false, 0, 0, '', 'size2x').'<br>';
+				echo '<span class="warning">'.$langs->trans("PropalAlreadyRefused").'</span>';
 			}
 		} else {
-			print '<input type="submit" class="butAction small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("SignPropal").'">';
-			print '<input name="refusepropal" type="submit" class="butActionDelete small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("RefusePropal").'">';
+			echo '<input type="submit" class="butAction small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("SignPropal").'">';
+			echo '<input name="refusepropal" type="submit" class="butActionDelete small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("RefusePropal").'">';
 		}
 	} elseif ($source == 'contract') {
 		if ($message == 'signed') {
-			print '<span class="ok">'.$langs->trans("ContractSigned").'</span>';
+			echo '<span class="ok">'.$langs->trans("ContractSigned").'</span>';
 		} else {
-			print '<input type="submit" class="butAction small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("SignContract").'">';
+			echo '<input type="submit" class="butAction small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("SignContract").'">';
 		}
 	} elseif ($source == 'fichinter') {
 		if ($message == 'signed') {
-			print '<span class="ok">'.$langs->trans("FichinterSigned").'</span>';
+			echo '<span class="ok">'.$langs->trans("FichinterSigned").'</span>';
 		} else {
-			print '<input type="submit" class="butAction small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("SignFichinter").'">';
+			echo '<input type="submit" class="butAction small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("SignFichinter").'">';
 		}
 	} elseif ($source == 'expedition') {
 		if ($message == 'signed' || $object->signed_status == Expedition::STATUS_SIGNED) {
-			print '<span class="ok">'.$langs->trans("ExpeditionSigned").'</span>';
+			echo '<span class="ok">'.$langs->trans("ExpeditionSigned").'</span>';
 		} else {
-			print '<input type="submit" class="butAction small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("SignExpedition").'">';
+			echo '<input type="submit" class="butAction small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("SignExpedition").'">';
 		}
 	} else {
 		if ($message == 'signed') {
-			print '<span class="ok">'.$langs->trans(dol_ucfirst($source)."Signed").'</span>';
+			echo '<span class="ok">'.$langs->trans(dol_ucfirst($source)."Signed").'</span>';
 		} else {
-			print '<input type="submit" class="butAction small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("Sign".dol_ucfirst($source)).'">';
+			echo '<input type="submit" class="butAction small wraponsmartphone marginbottomonly marginleftonly marginrightonly reposition" value="'.$langs->trans("Sign".dol_ucfirst($source)).'">';
 		}
 	}
 }
-print '</td></tr>'."\n";
-print '</table>'."\n";
-print '</form>'."\n";
-print '</div>'."\n";
-print '<br>';
+echo '</td></tr>'."\n";
+echo '</table>'."\n";
+echo '</form>'."\n";
+echo '</div>'."\n";
+echo '<br>';
 
 
 htmlPrintOnlineFooter($mysoc, $langs);

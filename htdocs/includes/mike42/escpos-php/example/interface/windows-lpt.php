@@ -10,7 +10,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
  *
  * When troubleshooting, make sure you can send it
  * data from the command-line first:
- *  echo "Hello World" > LPT1
+ *  echo  "Hello World" > LPT1
  */
 try {
     $connector = new WindowsPrintConnector("LPT1");
@@ -27,5 +27,5 @@ try {
     /* Close printer */
     $printer -> close();
 } catch (Exception $e) {
-    echo "Couldn't print to this printer: " . $e -> getMessage() . "\n";
+    echo  "Couldn't echo to this printer: " . $e -> getMessage() . "\n";
 }

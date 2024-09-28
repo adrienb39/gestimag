@@ -152,12 +152,12 @@ $form = new Form($db);
 
 top_httphead($outjson ? 'application/json' : 'text/html');
 
-//print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+//echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 $arrayresult = $form->selectForFormsList($objecttmp, $htmlname, '', 0, $searchkey, '', '', '', 0, 1, 0, '', $filter);
 
 $db->close();
 
 if ($outjson) {
-	print json_encode($arrayresult);
+	echo json_encode($arrayresult);
 }

@@ -334,7 +334,7 @@ class Printer
 
     /**
      * @var PrintConnector $connector
-     *  Connector showing how to print to this printer
+     *  Connector showing how to echo to this printer
      */
     protected $connector;
 
@@ -351,7 +351,7 @@ class Printer
     protected $characterTable;
 
     /**
-     * Construct a new print object
+     * Construct a new echo object
      *
      * @param PrintConnector $connector The PrintConnector to send data to. If not set, output is sent to standard output.
      * @param CapabilityProfile|null $profile Supported features of this printer. If not set, the "default" CapabilityProfile will be used, which is suitable for Epson printers.
@@ -727,7 +727,7 @@ class Printer
 
     /**
      * Switch character table (code page) manually. Used in conjunction with textRaw() to
-     * print special characters which can't be encoded automatically.
+     * echo special characters which can't be encoded automatically.
      *
      * @param int $table The table to select. Available code tables are model-specific.
      */
@@ -748,7 +748,7 @@ class Printer
     }
 
     /**
-     * Select print mode(s).
+     * Select echo mode(s).
      *
      * Several MODE_* constants can be OR'd together passed to this function's `$mode` argument. The valid modes are:
      *  - Printer::MODE_FONT_A
@@ -828,7 +828,7 @@ class Printer
     }
 
     /**
-     * Select print color on printers that support multiple colors.
+     * Select echo color on printers that support multiple colors.
      *
      * @param int $color Color to use. Must be either Printer::COLOR_1 (default), or Printer::COLOR_2.
      */
@@ -891,9 +891,9 @@ class Printer
     }
 
     /**
-     * Set print area left margin. Reset to default with Printer::initialize()
+     * Set echo area left margin. Reset to default with Printer::initialize()
      *
-     * @param int $margin The left margin to set on to the print area, in dots.
+     * @param int $margin The left margin to set on to the echo area, in dots.
      */
     public function setPrintLeftMargin(int $margin = 0)
     {
@@ -902,10 +902,10 @@ class Printer
     }
 
     /**
-     * Set print area width. This can be used to add a right margin to the print area.
+     * Set echo area width. This can be used to add a right margin to the echo area.
      * Reset to default with Printer::initialize()
      *
-     * @param int $width The width of the page print area, in dots.
+     * @param int $width The width of the page echo area, in dots.
      */
     public function setPrintWidth(int $width = 512)
     {
@@ -914,7 +914,7 @@ class Printer
     }
 
     /**
-     * Attach a different print buffer to the printer. Buffers are responsible for handling text output to the printer.
+     * Attach a different echo buffer to the printer. Buffers are responsible for handling text output to the printer.
      *
      * @param PrintBuffer $buffer The buffer to use.
      * @throws InvalidArgumentException Where the buffer is already attached to a different printer.
@@ -985,7 +985,7 @@ class Printer
      * Add text to the buffer.
      *
      * Text should either be followed by a line-break, or feed() should be called
-     * after this to clear the print buffer.
+     * after this to clear the echo buffer.
      *
      * @param string $str Text to print, as UTF-8
      */
@@ -998,7 +998,7 @@ class Printer
      * Add Chinese text to the buffer. This is a specific workaround for Zijang printers-
      * The printer will be switched to a two-byte mode and sent GBK-encoded text.
      *
-     * Support for this will be merged into a print buffer.
+     * Support for this will be merged into a echo buffer.
      *
      * @param string $str Text to print, as UTF-8
      */
@@ -1014,7 +1014,7 @@ class Printer
      * Add text to the buffer without attempting to interpret chararacter codes.
      *
      * Text should either be followed by a line-break, or feed() should be called
-     * after this to clear the print buffer.
+     * after this to clear the echo buffer.
      *
      * @param string $str Text to print
      */

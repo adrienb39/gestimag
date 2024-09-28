@@ -184,16 +184,16 @@ llxHeader('', $langs->trans($title), $help_url);
 // Subheader
 $linkback = '<a href="'.($backtopage ? $backtopage : DOL_URL_ROOT.'/admin/modules.php?restore_lastsearch_values=1').'">'.$langs->trans("BackToModuleList").'</a>';
 
-print load_fiche_titre($langs->trans($title), $linkback, 'title_setup');
+echo load_fiche_titre($langs->trans($title), $linkback, 'title_setup');
 
 // Configuration header
 $head = aiAdminPrepareHead();
-print dol_get_fiche_head($head, 'custom', $langs->trans($title), -1, "fa-microchip");
+echo dol_get_fiche_head($head, 'custom', $langs->trans($title), -1, "fa-microchip");
 
 //$newbutton = '<a href="'.$_SERVER["PHP_SELF"].'?action=create">'.$langs->trans("New").'</a>';
 $newbutton = '';
 
-print load_fiche_titre($langs->trans("AIPromptForFeatures"), $newbutton, '');
+echo load_fiche_titre($langs->trans("AIPromptForFeatures"), $newbutton, '');
 
 if ($action == 'deleteproperty') {
 	$formconfirm = $form->formconfirm(
@@ -205,7 +205,7 @@ if ($action == 'deleteproperty') {
 		0,
 		1
 	);
-	print $formconfirm;
+	echo $formconfirm;
 }
 
 if ($action == 'edit' || $action == 'deleteproperty') {
@@ -276,7 +276,7 @@ if ($action == 'edit' || $action == 'deleteproperty') {
 	$out .= '</form>';
 	$out .= '<br><br><br>';
 
-	print $out;
+	echo $out;
 }
 
 
@@ -372,18 +372,18 @@ if ($action == 'edit' || $action == 'create' || $action == 'deleteproperty') {
 
     </script>";
 
-	print $out;
+	echo $out;
 
-	print '<br>';
+	echo '<br>';
 }
 
 if (empty($setupnotempty)) {
-	print '<br>'.$langs->trans("NothingToSetup");
+	echo '<br>'.$langs->trans("NothingToSetup");
 }
 
 
 // Page end
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 llxFooter();
 $db->close();

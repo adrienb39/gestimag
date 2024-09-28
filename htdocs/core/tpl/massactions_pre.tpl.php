@@ -36,15 +36,15 @@
 if (!empty($sall) || !empty($search_all)) {
 	$search_all = empty($sall) ? $search_all : $sall;
 
-	print '<input type="hidden" name="search_all" value="'.$search_all.'">';
+	echo '<input type="hidden" name="search_all" value="'.$search_all.'">';
 }
 
 if ($massaction == 'predeletedraft') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassDraftDeletion"), $langs->trans("ConfirmMassDeletionQuestion", count($toselect)), "delete", null, '', 0, 200, 500, 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassDraftDeletion"), $langs->trans("ConfirmMassDeletionQuestion", count($toselect)), "delete", null, '', 0, 200, 500, 1);
 }
 
 if ($massaction == 'predelete') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassDeletion"), $langs->trans("ConfirmMassDeletionQuestion", count($toselect)), "delete", null, '', 0, 200, 500, 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassDeletion"), $langs->trans("ConfirmMassDeletionQuestion", count($toselect)), "delete", null, '', 0, 200, 500, 1);
 }
 
 if ($massaction == 'preclonetasks') {
@@ -58,7 +58,7 @@ if ($massaction == 'preclonetasks') {
 		// Solution: Allow only sameproject for cloning tasks ?
 		array('type' => 'other', 'name' => 'projectid', 'label' => $langs->trans('Project') .': ', 'value' => $form->selectProjects($object->id, 'projectid', '', 0, 1, '', 0, array(), $object->socid, '1', 1, '', null, 1)),
 	);
-	print $form->formconfirm($_SERVER['PHP_SELF'] . '?id=' . $object->id . $selected, $langs->trans('ConfirmMassClone'), '', 'clonetasks', $formquestion, '', 1, 300, 590);
+	echo $form->formconfirm($_SERVER['PHP_SELF'] . '?id=' . $object->id . $selected, $langs->trans('ConfirmMassClone'), '', 'clonetasks', $formquestion, '', 1, 300, 590);
 }
 
 if ($massaction == 'preaffecttag' && isModEnabled('category')) {
@@ -97,7 +97,7 @@ if ($massaction == 'preaffecttag' && isModEnabled('category')) {
 			'label' => '',
 			'value' => '<input type="hidden" name="affecttag_type"  id="affecttag_type" value="'.implode(",", array_keys($categ_types)).'"/>'
 		);
-		print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmAffectTag"), $langs->trans("ConfirmAffectTagQuestion", count($toselect)), "affecttag", $formquestion, 1, 0, 200, 500, 1);
+		echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmAffectTag"), $langs->trans("ConfirmAffectTagQuestion", count($toselect)), "affecttag", $formquestion, 1, 0, 200, 500, 1);
 	} else {
 		setEventMessage('CategTypeNotFound');
 	}
@@ -117,7 +117,7 @@ if ($massaction == 'preupdateprice') {
 				'value' => $valuefield
 			);
 
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmUpdatePrice"), $langs->trans("ConfirmUpdatePriceQuestion", count($toselect)), "updateprice", $formquestion, 1, 0, 200, 500, 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmUpdatePrice"), $langs->trans("ConfirmUpdatePriceQuestion", count($toselect)), "updateprice", $formquestion, 1, 0, 200, 500, 1);
 }
 
 if ($massaction == 'presetsupervisor') {
@@ -135,7 +135,7 @@ if ($massaction == 'presetsupervisor') {
 				'value' => $valuefield
 			);
 
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmSetSupervisor"), $langs->trans("ConfirmSetSupervisorQuestion", count($toselect)), "setsupervisor", $formquestion, 1, 0, 200, 500, 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmSetSupervisor"), $langs->trans("ConfirmSetSupervisorQuestion", count($toselect)), "setsupervisor", $formquestion, 1, 0, 200, 500, 1);
 }
 
 if ($massaction == 'preaffectuser') {
@@ -174,7 +174,7 @@ if ($massaction == 'preaffectuser') {
 		'value' => $valuefieldtasksrole
 	);
 
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmAffectUser"), $langs->trans("ConfirmAffectUserQuestion", count($toselect)), "affectuser", $formquestion, 1, 0, 200, 500, 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmAffectUser"), $langs->trans("ConfirmAffectUserQuestion", count($toselect)), "affectuser", $formquestion, 1, 0, 200, 500, 1);
 }
 
 if ($massaction == 'presend') {
@@ -208,9 +208,9 @@ if ($massaction == 'presend') {
 		}
 	}
 
-	print '<input type="hidden" name="massaction" value="confirm_presend">';
+	echo '<input type="hidden" name="massaction" value="confirm_presend">';
 
-	print dol_get_fiche_head(null, '', '');
+	echo dol_get_fiche_head(null, '', '');
 
 	// Create mail form
 	include_once DOL_DOCUMENT_ROOT.'/core/class/html.formmail.class.php';
@@ -314,14 +314,14 @@ if ($massaction == 'presend') {
 	if (getDolGlobalString('MAILING_LIMIT_SENDBYWEB') && count($listofselectedrecipientobjid) > $conf->global->MAILING_LIMIT_SENDBYWEB) {
 		// Note: MAILING_LIMIT_SENDBYWEB may be forced by conf.php file and variable $gestimag_mailing_limit_sendbyweb
 		$langs->load("errors");
-		print img_warning().' '.$langs->trans('WarningNumberOfRecipientIsRestrictedInMassAction', getDolGlobalString('MAILING_LIMIT_SENDBYWEB'));
-		print ' - <a href="javascript: window.history.go(-1)">'.$langs->trans("GoBack").'</a>';
+		echo img_warning().' '.$langs->trans('WarningNumberOfRecipientIsRestrictedInMassAction', getDolGlobalString('MAILING_LIMIT_SENDBYWEB'));
+		echo ' - <a href="javascript: window.history.go(-1)">'.$langs->trans("GoBack").'</a>';
 		$arrayofmassactions = array();
 	} else {
-		print $formmail->get_form();
+		echo $formmail->get_form();
 	}
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 }
 
 if ($massaction == 'edit_extrafields') {
@@ -375,17 +375,17 @@ if ($massaction == 'edit_extrafields') {
 			'value' => $outputShowOutputFields
 			);
 
-		print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmEditExtrafield"), $langs->trans("ConfirmEditExtrafieldQuestion", count($toselect)), "confirm_edit_value_extrafields", $formquestion, 1, 0, 200, 500, 1);
+		echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmEditExtrafield"), $langs->trans("ConfirmEditExtrafieldQuestion", count($toselect)), "confirm_edit_value_extrafields", $formquestion, 1, 0, 200, 500, 1);
 	} else {
 		setEventMessage($langs->trans("noExtrafields"));
 	}
 }
 
 if ($massaction == 'preenable') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassEnabling"), $langs->trans("ConfirmMassEnablingQuestion", count($toselect)), "enable", null, 'yes', 0, 200, 500, 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassEnabling"), $langs->trans("ConfirmMassEnablingQuestion", count($toselect)), "enable", null, 'yes', 0, 200, 500, 1);
 }
 if ($massaction == 'predisable') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassDisabling"), $langs->trans("ConfirmMassDisablingQuestion", count($toselect)), "disable", null, '', 0, 200, 500, 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassDisabling"), $langs->trans("ConfirmMassDisablingQuestion", count($toselect)), "disable", null, '', 0, 200, 500, 1);
 }
 if ($massaction == 'presetcommercial') {
 	$formquestion = array();
@@ -394,7 +394,7 @@ if ($massaction == 'presetcommercial') {
 			'name' => 'affectedcommercial',
 			'label' => $form->editfieldkey('AllocateCommercial', 'commercial_id', '', $object, 0),
 			'value' => $form->multiselectarray('commercial', $userlist, null, 0, 0, 'quatrevingtpercent widthcentpercentminusx', 0, 0, '', '', '', 1));
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmAllocateCommercial"), $langs->trans("ConfirmAllocateCommercialQuestion", count($toselect)), "affectcommercial", $formquestion, 1, 0, 200, 500, 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmAllocateCommercial"), $langs->trans("ConfirmAllocateCommercialQuestion", count($toselect)), "affectcommercial", $formquestion, 1, 0, 200, 500, 1);
 }
 if ($massaction == 'unsetcommercial') {
 	$formquestion = array();
@@ -403,11 +403,11 @@ if ($massaction == 'unsetcommercial') {
 		'name' => 'unassigncommercial',
 		'label' => $form->editfieldkey('UnallocateCommercial', 'commercial_id', '', $object, 0),
 		'value' => $form->multiselectarray('commercial', $userlist, null, 0, 0, 'quatrevingtpercent widthcentpercentminusx', 0, 0, '', '', '', 1));
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmUnallocateCommercial"), $langs->trans("ConfirmUnallocateCommercialQuestion", count($toselect)), "unassigncommercial", $formquestion, 1, 0, 200, 500, 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmUnallocateCommercial"), $langs->trans("ConfirmUnallocateCommercialQuestion", count($toselect)), "unassigncommercial", $formquestion, 1, 0, 200, 500, 1);
 }
 
 if ($massaction == 'preapproveleave') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassLeaveApproval"), $langs->trans("ConfirmMassLeaveApprovalQuestion", count($toselect)), "approveleave", null, 'yes', 0, 200, 500, 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassLeaveApproval"), $langs->trans("ConfirmMassLeaveApprovalQuestion", count($toselect)), "approveleave", null, 'yes', 0, 200, 500, 1);
 }
 
 // Allow Pre-Mass-Action hook (eg for confirmation dialog)
@@ -421,5 +421,5 @@ $reshook = $hookmanager->executeHooks('doPreMassActions', $parameters, $object, 
 if ($reshook < 0) {
 	setEventMessages($hookmanager->error, $hookmanager->errors, 'errors');
 } else {
-	print $hookmanager->resPrint;
+	echo $hookmanager->resPrint;
 }

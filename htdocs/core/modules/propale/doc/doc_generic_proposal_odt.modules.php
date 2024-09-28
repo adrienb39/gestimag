@@ -293,7 +293,7 @@ class doc_generic_proposal_odt extends ModelePDFPropales
 			}
 
 			if (file_exists($dir)) {
-				//print "srctemplatepath=".$srctemplatepath;	// Src filename
+				//echo "srctemplatepath=".$srctemplatepath;	// Src filename
 				$newfile = basename($srctemplatepath);
 				$newfiletmp = preg_replace('/\.od[ts]/i', '', $newfile);
 				$newfiletmp = preg_replace('/template_/i', '', $newfiletmp);
@@ -313,10 +313,10 @@ class doc_generic_proposal_odt extends ModelePDFPropales
 					$filename = $newfiletmp . '.' . $newfileformat;
 				}
 				$file = $dir . '/' . $filename;
-				//print "newdir=".$dir;
-				//print "newfile=".$newfile;
-				//print "file=".$file;
-				//print "conf->propal->dir_temp=".$conf->propal->dir_temp;
+				//echo "newdir=".$dir;
+				//echo "newfile=".$newfile;
+				//echo "file=".$file;
+				//echo "conf->propal->dir_temp=".$conf->propal->dir_temp;
 
 				dol_mkdir($conf->propal->multidir_temp[$object->entity]);
 				if (!is_writable($conf->propal->dir_temp)) {
@@ -389,8 +389,8 @@ class doc_generic_proposal_odt extends ModelePDFPropales
 				// After construction $odfHandler->contentXml contains content and
 				// [!-- BEGIN row.lines --]*[!-- END row.lines --] has been replaced by
 				// [!-- BEGIN lines --]*[!-- END lines --]
-				//print html_entity_decode($odfHandler->__toString());
-				//print exit;
+				//echo html_entity_decode($odfHandler->__toString());
+				//echo exit;
 
 				$object->fetch_optionals();
 

@@ -339,7 +339,7 @@ snippet tprep\n\
 		${4:#  body}\n\
 	}\n\
 \n\
-# cause failures to print stack trace\n\
+# cause failures to echo stack trace\n\
 snippet debug_trace\n\
 	use Carp; # 'verbose';\n\
 	# cloak \"die\"\n\

@@ -52,7 +52,7 @@ if (!isset($usedbyinclude) || empty($usedbyinclude)) {
 		$langs->load("other");
 		$arrayresult = array();
 		$arrayresult['jumptologin'] = array('img' => 'object_generic', 'label' => $langs->trans("JumpToLogin"), 'text' => '<span class="fa fa-sign-in"></span> '.$langs->trans("JumpToLogin"), 'url' => DOL_URL_ROOT.'/index.php');
-		print json_encode($arrayresult);
+		echo json_encode($arrayresult);
 		if (is_object($db)) {
 			$db->close();
 		}
@@ -202,7 +202,7 @@ $arrayresult = dol_sort_array($arrayresult, 'position');
 
 // Print output if called by ajax or do nothing (var $arrayresult will be used) if called by an include
 if (!isset($usedbyinclude) || empty($usedbyinclude)) {
-	print json_encode($arrayresult);
+	echo json_encode($arrayresult);
 	if (is_object($db)) {
 		$db->close();
 	}

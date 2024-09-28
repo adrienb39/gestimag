@@ -21,7 +21,7 @@ $inputsOk = array(
         );
 
 /*
- * These strings are not expected to print correctly, if at all, even on an Epson printer. This is due to a mix of
+ * These strings are not expected to echo correctly, if at all, even on an Epson printer. This is due to a mix of
  * escpos driver, printer, and PHP language support issues.
  * 
  * They are included here as a collection of things not yet implemented.

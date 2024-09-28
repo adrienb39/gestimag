@@ -121,7 +121,7 @@ class Microsoft extends AbstractService
         } elseif (isset($data['error'])) {
             throw new TokenResponseException('Error in retrieving token: "' . $data['error'] . '"');
         }
-        //print $data['access_token'];exit;
+        //echo $data['access_token'];exit;
 
         $token = new StdOAuth2Token();
         $token->setAccessToken($data['access_token']);

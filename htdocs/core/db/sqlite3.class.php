@@ -84,7 +84,7 @@ class DoliDBSqlite3 extends DoliDB
 
 		$this->transaction_opened = 0;
 
-		//print "Name DB: $host,$user,$pass,$name<br>";
+		//echo"Name DB: $host,$user,$pass,$name<br>";
 
 		/*if (! function_exists("sqlite_query"))
 		{
@@ -279,17 +279,17 @@ class DoliDBSqlite3 extends DoliDB
 
 			// Remove () in the tables in FROM if one table
 			$line = preg_replace('/FROM\s*\((([a-z_]+)\s+as\s+([a-z_]+)\s*)\)/i', 'FROM \\1', $line);
-			//print $line."\n";
+			//echo$line."\n";
 
 			// Remove () in the tables in FROM if two table
 			$line = preg_replace('/FROM\s*\(([a-z_]+\s+as\s+[a-z_]+)\s*,\s*([a-z_]+\s+as\s+[a-z_]+\s*)\)/i', 'FROM \\1, \\2', $line);
-			//print $line."\n";
+			//echo$line."\n";
 
 			// Remove () in the tables in FROM if two table
 			$line = preg_replace('/FROM\s*\(([a-z_]+\s+as\s+[a-z_]+)\s*,\s*([a-z_]+\s+as\s+[a-z_]+\s*),\s*([a-z_]+\s+as\s+[a-z_]+\s*)\)/i', 'FROM \\1, \\2, \\3', $line);
-			//print $line."\n";
+			//echo$line."\n";
 
-			//print "type=".$type." newline=".$line."<br>\n";
+			//echo"type=".$type." newline=".$line."<br>\n";
 		}
 
 		return $line;
@@ -346,7 +346,7 @@ class DoliDBSqlite3 extends DoliDB
 			return false;
 		}
 
-		//print "Resultat fonction connect: ".$this->db;
+		//echo"Resultat fonction connect: ".$this->db;
 		return $this->db;
 	}
 
@@ -454,7 +454,7 @@ class DoliDBSqlite3 extends DoliDB
 		} else {
 			$query = $this->convertSQLFromMysql($query, $type);
 		}
-		//print "After convertSQLFromMysql:\n".$query."<br>\n";
+		//echo"After convertSQLFromMysql:\n".$query."<br>\n";
 
 		if (!in_array($query, array('BEGIN', 'COMMIT', 'ROLLBACK'))) {
 			$SYSLOG_SQL_LIMIT = 10000; // limit log to 10kb per line to limit DOS attacks
@@ -888,7 +888,7 @@ class DoliDBSqlite3 extends DoliDB
 		$tmpdatabase = preg_replace('/[^a-z0-9\.\-\_]/i', '', $database);
 
 		$sql = "SHOW TABLES FROM ".$tmpdatabase." ".$like.";";
-		//print $sql;
+		//echo$sql;
 		$result = $this->query($sql);
 		if ($result) {
 			while ($row = $this->fetch_row($result)) {
@@ -920,7 +920,7 @@ class DoliDBSqlite3 extends DoliDB
 		$tmpdatabase = preg_replace('/[^a-z0-9\.\-\_]/i', '', $database);
 
 		$sql = "SHOW FULL TABLES FROM ".$tmpdatabase." ".$like.";";
-		//print $sql;
+		//echo$sql;
 		$result = $this->query($sql);
 		if ($result) {
 			while ($row = $this->fetch_row($result)) {

@@ -48,7 +48,7 @@ $wikihelp = 'EN:First_setup|FR:Premiers_paramétrages|ES:Primeras_configuracione
 llxHeader('', $langs->trans("Setup"), $wikihelp, '', 0, 0, '', '', '', 'mod-admin page-index');
 
 
-print load_fiche_titre($langs->trans("SetupArea"), '', 'tools');
+echo load_fiche_titre($langs->trans("SetupArea"), '', 'tools');
 
 
 if (getDolGlobalString('MAIN_MOTD_SETUPPAGE')) {
@@ -65,45 +65,45 @@ if (getDolGlobalString('MAIN_MOTD_SETUPPAGE')) {
 			$i++;
 		}
 
-		print "\n<!-- Start of welcome text for setup page -->\n";
-		print '<table width="100%" class="notopnoleftnoright"><tr><td>';
-		print dol_htmlentitiesbr($conf->global->MAIN_MOTD_SETUPPAGE);
-		print '</td></tr></table><br>';
-		print "\n<!-- End of welcome text for setup page -->\n";
+		echo "\n<!-- Start of welcome text for setup page -->\n";
+		echo '<table width="100%" class="notopnoleftnoright"><tr><td>';
+		echo dol_htmlentitiesbr($conf->global->MAIN_MOTD_SETUPPAGE);
+		echo '</td></tr></table><br>';
+		echo "\n<!-- End of welcome text for setup page -->\n";
 	}
 }
 
-print '<span class="opacitymedium hideonsmartphone">';
-print $langs->trans("SetupDescription1").' ';
-print $langs->trans("AreaForAdminOnly").' ';
-print $langs->trans("SetupDescription2", $langs->transnoentities("MenuCompanySetup"), $langs->transnoentities("Modules"));
-print "<br><br>";
-print '</span>';
+echo '<span class="opacitymedium hideonsmartphone">';
+echo $langs->trans("SetupDescription1").' ';
+echo $langs->trans("AreaForAdminOnly").' ';
+echo $langs->trans("SetupDescription2", $langs->transnoentities("MenuCompanySetup"), $langs->transnoentities("Modules"));
+echo "<br><br>";
+echo '</span>';
 
-print '<br>';
+echo '<br>';
 
 // Show info setup company
 if (!getDolGlobalString('MAIN_INFO_SOCIETE_NOM') || !getDolGlobalString('MAIN_INFO_SOCIETE_COUNTRY') || getDolGlobalString('MAIN_INFO_SOCIETE_SETUP_TODO_WARNING')) {
 	$setupcompanynotcomplete = 1;
 }
 
-print '<section class="setupsection">';
+echo '<section class="setupsection">';
 
-print img_picto('', 'company', 'class="paddingright valignmiddle double"').' '.$langs->trans("SetupDescriptionLink", DOL_URL_ROOT.'/admin/company.php?mainmenu=home'.(empty($setupcompanynotcomplete) ? '' : '&action=edit&token='.newToken()), $langs->transnoentities("Setup"), $langs->transnoentities("MenuCompanySetup"));
-print '<br><br>';
-print $langs->trans("SetupDescription3b");
+echo img_picto('', 'company', 'class="paddingright valignmiddle double"').' '.$langs->trans("SetupDescriptionLink", DOL_URL_ROOT.'/admin/company.php?mainmenu=home'.(empty($setupcompanynotcomplete) ? '' : '&action=edit&token='.newToken()), $langs->transnoentities("Setup"), $langs->transnoentities("MenuCompanySetup"));
+echo '<br><br>';
+echo $langs->trans("SetupDescription3b");
 if (!empty($setupcompanynotcomplete)) {
 	$langs->load("errors");
 	$warnpicto = img_warning($langs->trans("WarningMandatorySetupNotComplete"), 'style="padding-right: 6px;"');
-	print '<br><div class="warning"><a href="'.DOL_URL_ROOT.'/admin/company.php?mainmenu=home'.(empty($setupcompanynotcomplete) ? '' : '&action=edit').'">'.$warnpicto.$langs->trans("WarningMandatorySetupNotComplete").'</a></div>';
+	echo '<br><div class="warning"><a href="'.DOL_URL_ROOT.'/admin/company.php?mainmenu=home'.(empty($setupcompanynotcomplete) ? '' : '&action=edit').'">'.$warnpicto.$langs->trans("WarningMandatorySetupNotComplete").'</a></div>';
 }
 
-print '</section>';
+echo '</section>';
 
-print '<br>';
-print '<br>';
+echo '<br>';
+echo '<br>';
 
-print '<section class="setupsection">';
+echo '<section class="setupsection">';
 
 // Define $nbmodulesnotautoenabled - TODO This code is at different places
 $nbmodulesnotautoenabled = count($conf->modules);
@@ -115,29 +115,29 @@ foreach ($listofmodulesautoenabled as $moduleautoenable) {
 }
 
 // Show info setup module
-print img_picto('', 'cog', 'class="paddingright valignmiddle double"').' '.$langs->trans("SetupDescriptionLink", DOL_URL_ROOT.'/admin/modules.php?mainmenu=home', $langs->transnoentities("Setup"), $langs->transnoentities("Modules"));
-print '<br><br>'.$langs->trans("SetupDescription4b");
+echo img_picto('', 'cog', 'class="paddingright valignmiddle double"').' '.$langs->trans("SetupDescriptionLink", DOL_URL_ROOT.'/admin/modules.php?mainmenu=home', $langs->transnoentities("Setup"), $langs->transnoentities("Modules"));
+echo '<br><br>'.$langs->trans("SetupDescription4b");
 if ($nbmodulesnotautoenabled <= getDolGlobalInt('MAIN_MIN_NB_ENABLED_MODULE_FOR_WARNING', 1)) {	// If only minimal initial modules enabled
 	$langs->load("errors");
 	$warnpicto = img_warning($langs->trans("WarningEnableYourModulesApplications"), 'style="padding-right: 6px;"');
-	print '<br><div class="warning"><a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$warnpicto.$langs->trans("WarningEnableYourModulesApplications").'</a></div>';
+	echo '<br><div class="warning"><a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$warnpicto.$langs->trans("WarningEnableYourModulesApplications").'</a></div>';
 }
 
-print '</section>';
+echo '</section>';
 
-print '<br>';
-print '<br>';
-print '<br>';
+echo '<br>';
+echo '<br>';
+echo '<br>';
 
 // Add hook to add information
 $parameters = array();
 $object = new stdClass();
 $reshook = $hookmanager->executeHooks('addHomeSetup', $parameters, $object, $action); // Note that $action and $object may have been modified by some hooks
-print $hookmanager->resPrint;
+echo $hookmanager->resPrint;
 if (empty($reshook)) {
 	// Show into other
-	//print '<span class="opacitymedium hideonsmartphone">'.$langs->trans("SetupDescription5")."</span><br>";
-	print '<br class="hideonsmartphone">';
+	//echo '<span class="opacitymedium hideonsmartphone">'.$langs->trans("SetupDescription5")."</span><br>";
+	echo '<br class="hideonsmartphone">';
 
 	// Show logo
 }

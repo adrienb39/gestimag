@@ -1,6 +1,6 @@
 <?php
 /**
- * This is a demo script for the functions of the PHP ESC/POS print driver,
+ * This is a demo script for the functions of the PHP ESC/POS echo driver,
  * Escpos.php.
  *
  * Most printers implement only a subset of the functionality of the driver, so

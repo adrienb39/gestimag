@@ -12694,7 +12694,7 @@ exports.browser = {
   origin               : false, // WindowOrWorkerGlobalScope
   parent               : false,
   performance          : false,
-  print                : false,
+  echo                : false,
   queueMicrotask       : false, // WindowOrWorkerGlobalScope
   Range                : false,
   requestAnimationFrame : false,
@@ -13023,7 +13023,7 @@ exports.rhino = {
   load         : false,
   loadClass    : false,
   Packages     : false,
-  print        : false,
+  echo        : false,
   quit         : false,
   readFile     : false,
   readUrl      : false,
@@ -13038,7 +13038,7 @@ exports.rhino = {
 
 exports.shelljs = {
   target       : false,
-  echo         : false,
+  echo          : false,
   exit         : false,
   cd           : false,
   pwd          : false,

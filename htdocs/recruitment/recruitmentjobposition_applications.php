@@ -161,7 +161,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	$res = $object->fetch_optionals();
 
 	$head = recruitmentjobpositionPrepareHead($object);
-	print dol_get_fiche_head($head, 'candidatures', $langs->trans("RecruitmentCandidatures"), -1, $object->picto);
+	echo dol_get_fiche_head($head, 'candidatures', $langs->trans("RecruitmentCandidatures"), -1, $object->picto);
 
 	$formconfirm = '';
 
@@ -206,7 +206,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	}
 
 	// Print form confirm
-	print $formconfirm;
+	echo $formconfirm;
 
 
 	// Object card
@@ -257,10 +257,10 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	dol_banner_tab($object, 'ref', $linkback, 1, 'ref', 'ref', $morehtmlref);
 
 
-	print '<div class="fichecenter">';
-	print '<div class="fichehalfleft">';
-	print '<div class="underbanner clearboth"></div>';
-	print '<table class="border centpercent tableforfield">'."\n";
+	echo '<div class="fichecenter">';
+	echo '<div class="fichehalfleft">';
+	echo '<div class="underbanner clearboth"></div>';
+	echo '<table class="border centpercent tableforfield">'."\n";
 
 	// Common attributes
 	$keyforbreak = 'description'; // We change column just after this field
@@ -271,15 +271,15 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	// Other attributes. Fields from hook formObjectOptions and Extrafields.
 	include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_view.tpl.php';
 
-	print '</table>';
-	print '</div>';
-	print '</div>';
+	echo '</table>';
+	echo '</div>';
+	echo '</div>';
 
-	print '<div class="clearboth"></div>';
+	echo '<div class="clearboth"></div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print '<br>'.$langs->trans("FeatureNotYetAvailable");
+	echo '<br>'.$langs->trans("FeatureNotYetAvailable");
 }
 
 // End of page

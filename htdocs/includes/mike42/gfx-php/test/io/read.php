@@ -8,8 +8,8 @@ if(!isset($argv[1])) {
 }
 $filename = $argv[1];
 $outp = basename($filename, '.png');
-echo "Opening file $filename\n";
+echo  "Opening file $filename\n";
 $img = Image::fromFile($filename);
 $img -> write('out/' . $outp . ".ppm");
-echo $img -> toBlackAndWhite() -> toString() . "\n";
+echo  $img -> toBlackAndWhite() -> toString() . "\n";
 

@@ -72,7 +72,7 @@ trait CommonPeople
 	 */
 	public function getFullName($langs, $option = 0, $nameorder = -1, $maxlen = 0)
 	{
-		//print "lastname=".$this->lastname." name=".$this->name." nom=".$this->nom."<br>\n";
+		//echo "lastname=".$this->lastname." name=".$this->name." nom=".$this->nom."<br>\n";
 		$lastname = $this->lastname;
 		$firstname = $this->firstname;
 		if (empty($lastname)) {

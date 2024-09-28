@@ -46,7 +46,7 @@ require_once(dirname(__FILE__).'/tcpdf_barcodes_2d_include.php');
 $barcodeobj = new TCPDF2DBarcode('http://www.tcpdf.org', 'QRCODE,H');
 
 // output the barcode as SVG inline code
-echo $barcodeobj->getBarcodeSVGcode(6, 6, 'black');
+echo  $barcodeobj->getBarcodeSVGcode(6, 6, 'black');
 
 //============================================================+
 // END OF FILE

@@ -504,7 +504,7 @@ $form = new Form($db);
 $formticket = new FormTicket($db);
 
 if (!getDolGlobalInt('TICKET_ENABLE_PUBLIC_INTERFACE')) {
-	print '<div class="error">'.$langs->trans('TicketPublicInterfaceForbidden').'</div>';
+	echo '<div class="error">'.$langs->trans('TicketPublicInterfaceForbidden').'</div>';
 	$db->close();
 	exit();
 }
@@ -516,7 +516,7 @@ $arrayofcss = array('/opensurvey/css/style.css', getDolGlobalString('TICKET_URL_
 llxHeaderTicket($langs->trans("CreateTicket"), "", 0, 0, $arrayofjs, $arrayofcss);
 
 
-print '<div class="ticketpublicarea ticketlargemargin centpercent">';
+echo '<div class="ticketpublicarea ticketlargemargin centpercent">';
 
 if ($action != "infos_success") {
 	$formticket->withfromsocid = isset($socid) ? $socid : $user->socid;
@@ -532,23 +532,23 @@ if ($action != "infos_success") {
 
 	$formticket->param = array('returnurl' => $_SERVER['PHP_SELF'].($conf->entity > 1 ? '?entity='.$conf->entity : ''));
 
-	print load_fiche_titre($langs->trans('NewTicket'), '', '', 0, 0, 'marginleftonly');
+	echo load_fiche_titre($langs->trans('NewTicket'), '', '', 0, 0, 'marginleftonly');
 
 	if (!getDolGlobalString('TICKET_NOTIFICATION_EMAIL_FROM')) {
 		$langs->load("errors");
-		print '<div class="error">';
-		print $langs->trans("ErrorFieldRequired", $langs->transnoentities("TicketEmailNotificationFrom")).'<br>';
-		print $langs->trans("ErrorModuleSetupNotComplete", $langs->transnoentities("Ticket"));
-		print '</div>';
+		echo '<div class="error">';
+		echo $langs->trans("ErrorFieldRequired", $langs->transnoentities("TicketEmailNotificationFrom")).'<br>';
+		echo $langs->trans("ErrorModuleSetupNotComplete", $langs->transnoentities("Ticket"));
+		echo '</div>';
 	} else {
-		//print '<div class="info marginleftonly marginrightonly">'.$langs->trans('TicketPublicInfoCreateTicket').'</div>';
+		//echo '<div class="info marginleftonly marginrightonly">'.$langs->trans('TicketPublicInfoCreateTicket').'</div>';
 		$formticket->showForm(0, ($action ? $action : 'create'), 1, $with_contact, '', $object);
 	}
 }
 
-print '</div>';
+echo '</div>';
 
-print '<br>';
+echo '<br>';
 
 if (getDolGlobalInt('TICKET_SHOW_COMPANY_FOOTER')) {
 	// End of page

@@ -129,7 +129,7 @@ class Sample
             $this->logWrite($writer, $path, $callStartTime);
             if ($this->isCli() === false) {
                 // @codeCoverageIgnoreStart
-                echo '<a href="/download.php?type=' . pathinfo($path, PATHINFO_EXTENSION) . '&name=' . basename($path) . '">Download ' . basename($path) . '</a><br />';
+                echo  '<a href="/download.php?type=' . pathinfo($path, PATHINFO_EXTENSION) . '&name=' . basename($path) . '">Download ' . basename($path) . '</a><br />';
                 // @codeCoverageIgnoreEnd
             }
         }
@@ -184,7 +184,7 @@ class Sample
     public function log(string $message): void
     {
         $eol = $this->isCli() ? PHP_EOL : '<br />';
-        echo ($this->isCli() ? date('H:i:s ') : '') . $message . $eol;
+        echo  ($this->isCli() ? date('H:i:s ') : '') . $message . $eol;
     }
 
     /**
@@ -216,7 +216,7 @@ class Sample
             $this->log('Rendered image: ' . $fileName);
             $imageData = @file_get_contents($fileName);
             if ($imageData !== false) {
-                echo '<div><img src="data:image/gif;base64,' . base64_encode($imageData) . '" /></div>';
+                echo  '<div><img src="data:image/gif;base64,' . base64_encode($imageData) . '" /></div>';
             } else {
                 $this->log('Unable to open chart' . PHP_EOL);
             }
@@ -240,7 +240,7 @@ class Sample
     public function displayGrid(array $matrix): void
     {
         $renderer = new TextGrid($matrix, $this->isCli());
-        echo $renderer->render();
+        echo  $renderer->render();
     }
 
     public function logCalculationResult(

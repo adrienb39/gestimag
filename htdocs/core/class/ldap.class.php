@@ -326,7 +326,7 @@ class Ldap
 
 		if ($ldapdebug) {
 			dol_syslog(get_class($this)."::connectBind");
-			print "DEBUG: connectBind<br>\n";
+			echo "DEBUG: connectBind<br>\n";
 		}
 
 		// Check parameters
@@ -1227,14 +1227,14 @@ class Ldap
 		for ($i = 0; $i < $info["count"]; $i++) {
 			$recordid = $this->convToOutputCharset($info[$i][strtolower($useridentifier)][0], $this->ldapcharset);
 			if ($recordid) {
-				//print "Found record with key $useridentifier=".$recordid."<br>\n";
+				//echo "Found record with key $useridentifier=".$recordid."<br>\n";
 				$fulllist[$recordid][$useridentifier] = $recordid;
 
 				// Add to the array for each attribute in my list
 				$num = count($attributeArray);
 				for ($j = 0; $j < $num; $j++) {
 					$keyattributelower = strtolower($attributeArray[$j]);
-					//print " Param ".$attributeArray[$j]."=".$info[$i][$keyattributelower][0]."<br>\n";
+					//echo " Param ".$attributeArray[$j]."=".$info[$i][$keyattributelower][0]."<br>\n";
 
 					//permet de recuperer le SID avec Active Directory
 					if ($this->serverType == "activedirectory" && $keyattributelower == "objectsid") {

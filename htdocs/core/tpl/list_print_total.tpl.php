@@ -11,8 +11,8 @@ if (!empty($totalarray['totalizable']) && is_array($totalarray['totalizable'])) 
 }
 // Show total line
 if (isset($totalarray['pos'])) {
-	print '<tfoot>';
-	print '<tr class="liste_total">';
+	echo '<tfoot>';
+	echo '<tr class="liste_total">';
 	$i = 0;
 	while ($i < $totalarray['nbfield']) {
 		$i++;
@@ -21,22 +21,22 @@ if (isset($totalarray['pos'])) {
 		} else {
 			if ($i == 1) {
 				if ((is_null($limit) || $num < $limit) && empty($offset)) {
-					print '<td>'.$langs->trans("Total").'</td>';
+					echo '<td>'.$langs->trans("Total").'</td>';
 				} else {
-					print '<td>';
+					echo '<td>';
 					if (is_object($form)) {
-						print $form->textwithpicto($langs->trans("Total"), $langs->transnoentitiesnoconv("Totalforthispage"));
+						echo $form->textwithpicto($langs->trans("Total"), $langs->transnoentitiesnoconv("Totalforthispage"));
 					} else {
-						print $langs->trans("Totalforthispage");
+						echo $langs->trans("Totalforthispage");
 					}
-					print '</td>';
+					echo '</td>';
 				}
 			} else {
-				print '<td></td>';
+				echo '<td></td>';
 			}
 		}
 	}
-	print '</tr>';
+	echo '</tr>';
 	// Add grand total if necessary ie only if different of page total already printed above
 	if (getDolGlobalString('MAIN_GRANDTOTAL_LIST_SHOW') && (!(is_null($limit) || $num < $limit))) {
 		if (isset($totalarray['pos']) && is_array($totalarray['pos']) && count($totalarray['pos']) > 0) {
@@ -56,10 +56,10 @@ if (isset($totalarray['pos'])) {
 			if ($resql) {
 				$sumsarray = $db->fetch_array($resql);
 			} else {
-				//dol_print_error($db); // as we're not sure it's ok for ALL lists, we don't print sq errors, they'll be in logs
+				//dol_print_error($db); // as we're not sure it's ok for ALL lists, we don't echo sq errors, they'll be in logs
 			}
 			if (is_array($sumsarray) && count($sumsarray) > 0) {
-				print '<tr class="liste_grandtotal">';
+				echo '<tr class="liste_grandtotal">';
 				$i = 0;
 				while ($i < $totalarray['nbfield']) {
 					$i++;
@@ -67,26 +67,26 @@ if (isset($totalarray['pos'])) {
 						printTotalValCell($totalarray['type'][$i], $sumsarray[$totalarray['pos'][$i]]);
 					} else {
 						if ($i == 1) {
-							print '<td>';
+							echo '<td>';
 							if (is_object($form)) {
-								print $form->textwithpicto($langs->trans("GrandTotal"), $langs->transnoentitiesnoconv("TotalforAllPages"));
+								echo $form->textwithpicto($langs->trans("GrandTotal"), $langs->transnoentitiesnoconv("TotalforAllPages"));
 							} else {
-								print $langs->trans("GrandTotal");
+								echo $langs->trans("GrandTotal");
 							}
-							print '</td>';
+							echo '</td>';
 						} else {
-							print '<td></td>';
+							echo '<td></td>';
 						}
 					}
 				}
-				print '</tr>';
+				echo '</tr>';
 			}
 		}
 	}
-	print '</tfoot>';
+	echo '</tfoot>';
 }
 
-/** print a total cell value according to its type
+/** echo a total cell value according to its type
  *
  * @param string $type of field (duration, string..)
  * @param string $val the value to display
@@ -101,24 +101,24 @@ function printTotalValCell($type, $val)
 	}
 	switch ($type) {
 		case 'duration':
-			print '<td class="right">';
+			echo '<td class="right">';
 			print(!empty($val) ? convertSecondToTime($val, 'allhourmin') : 0);
-			print '</td>';
+			echo '</td>';
 			break;
 		case 'string':	// This type is no more used. type is now varchar(x)
-			print '<td class="left">';
+			echo '<td class="left">';
 			print(!empty($val) ? $val : '');
-			print '</td>';
+			echo '</td>';
 			break;
 		case 'stock':
-			print '<td class="right">';
-			print price2num(!empty($val) ? $val : 0, 'MS');
-			print '</td>';
+			echo '<td class="right">';
+			echo price2num(!empty($val) ? $val : 0, 'MS');
+			echo '</td>';
 			break;
 		default:
-			print '<td class="right">';
-			print price(!empty($val) ? $val : 0);
-			print '</td>';
+			echo '<td class="right">';
+			echo price(!empty($val) ? $val : 0);
+			echo '</td>';
 			break;
 	}
 }

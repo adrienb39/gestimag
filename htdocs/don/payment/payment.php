@@ -161,62 +161,62 @@ if ($action == 'create') {
 
 	$total = $object->amount;
 
-	print load_fiche_titre($langs->trans("DoPayment"));
+	echo load_fiche_titre($langs->trans("DoPayment"));
 
 	if (!empty($conf->use_javascript_ajax)) {
-		print "\n".'<script type="text/javascript">';
+		echo "\n".'<script type="text/javascript">';
 		//Add js for AutoFill
-		print ' $(document).ready(function () {';
-		print ' 	$(".AutoFillAmount").on(\'click touchstart\', function(){
+		echo ' $(document).ready(function () {';
+		echo ' 	$(".AutoFillAmount").on(\'click touchstart\', function(){
 							$("input[name="+$(this).data(\'rowname\')+"]").val($(this).data("value")).trigger("change");
 						});';
-		print '	});'."\n";
+		echo '	});'."\n";
 
-		print '	</script>'."\n";
+		echo '	</script>'."\n";
 	}
 
-	print '<form name="add_payment" action="'.$_SERVER['PHP_SELF'].'" method="post">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="rowid" value="'.$chid.'">';
-	print '<input type="hidden" name="chid" value="'.$chid.'">';
-	print '<input type="hidden" name="action" value="add_payment">';
+	echo '<form name="add_payment" action="'.$_SERVER['PHP_SELF'].'" method="post">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="rowid" value="'.$chid.'">';
+	echo '<input type="hidden" name="chid" value="'.$chid.'">';
+	echo '<input type="hidden" name="action" value="add_payment">';
 
-	print dol_get_fiche_head();
+	echo dol_get_fiche_head();
 
-	print '<table class="border centpercent tableforfieldcreate">';
+	echo '<table class="border centpercent tableforfieldcreate">';
 
-	print '<tr><td class="fieldrequired">'.$langs->trans("Date").'</td><td colspan="2">';
+	echo '<tr><td class="fieldrequired">'.$langs->trans("Date").'</td><td colspan="2">';
 	$datepaid = dol_mktime(12, 0, 0, GETPOST("remonth"), GETPOST("reday"), GETPOST("reyear"));
 	$datepayment = !getDolGlobalString('MAIN_AUTOFILL_DATE') ? (GETPOST("remonth") ? $datepaid : -1) : 0;
-	print $form->selectDate($datepayment, '', 0, 0, 0, "add_payment", 1, 1, 0, '', '', $object->date, '', 1, $langs->trans("DonationDate"));
-	print "</td>";
-	print '</tr>';
+	echo $form->selectDate($datepayment, '', 0, 0, 0, "add_payment", 1, 1, 0, '', '', $object->date, '', 1, $langs->trans("DonationDate"));
+	echo "</td>";
+	echo '</tr>';
 
-	print '<tr><td class="fieldrequired">'.$langs->trans("PaymentMode").'</td><td colspan="2">';
+	echo '<tr><td class="fieldrequired">'.$langs->trans("PaymentMode").'</td><td colspan="2">';
 	$form->select_types_paiements(GETPOSTISSET("paymenttype") ? GETPOST("paymenttype") : $object->fk_typepayment, "paymenttype");
-	print "</td>\n";
-	print '</tr>';
+	echo "</td>\n";
+	echo '</tr>';
 
-	print '<tr>';
-	print '<td class="fieldrequired">'.$langs->trans('AccountToCredit').'</td>';
-	print '<td colspan="2">';
+	echo '<tr>';
+	echo '<td class="fieldrequired">'.$langs->trans('AccountToCredit').'</td>';
+	echo '<td colspan="2">';
 	$form->select_comptes(GETPOSTISSET("accountid") ? GETPOST("accountid") : "0", "accountid", 0, '', 2); // Show open bank account list
-	print '</td></tr>';
+	echo '</td></tr>';
 
 	// Number
-	print '<tr><td>'.$langs->trans('Numero');
-	print ' <em>('.$langs->trans("ChequeOrTransferNumber").')</em>';
-	print '</td>';
-	print '<td colspan="2"><input name="num_payment" type="text" value="'.GETPOST('num_payment').'"></td></tr>'."\n";
+	echo '<tr><td>'.$langs->trans('Numero');
+	echo ' <em>('.$langs->trans("ChequeOrTransferNumber").')</em>';
+	echo '</td>';
+	echo '<td colspan="2"><input name="num_payment" type="text" value="'.GETPOST('num_payment').'"></td></tr>'."\n";
 
-	print '<tr>';
-	print '<td class="tdtop">'.$langs->trans("Comments").'</td>';
-	print '<td class="tdtop" colspan="2"><textarea name="note_public" wrap="soft" cols="60" rows="'.ROWS_3.'"></textarea></td>';
-	print '</tr>';
+	echo '<tr>';
+	echo '<td class="tdtop">'.$langs->trans("Comments").'</td>';
+	echo '<td class="tdtop" colspan="2"><textarea name="note_public" wrap="soft" cols="60" rows="'.ROWS_3.'"></textarea></td>';
+	echo '</tr>';
 
-	print '</table>';
+	echo '</table>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
 	/*
 	  * List of payments on donation
@@ -225,14 +225,14 @@ if ($action == 'create') {
 	$num = 1;
 	$i = 0;
 
-	print '<table class="noborder centpercent">';
-	print '<tr class="liste_titre">';
-	print '<td>'.$langs->trans("Donation").'</td>';
-	print '<td class="right">'.$langs->trans("Amount").'</td>';
-	print '<td class="right">'.$langs->trans("AlreadyPaid").'</td>';
-	print '<td class="right">'.$langs->trans("RemainderToPay").'</td>';
-	print '<td class="center">'.$langs->trans("Amount").'</td>';
-	print "</tr>\n";
+	echo '<table class="noborder centpercent">';
+	echo '<tr class="liste_titre">';
+	echo '<td>'.$langs->trans("Donation").'</td>';
+	echo '<td class="right">'.$langs->trans("Amount").'</td>';
+	echo '<td class="right">'.$langs->trans("AlreadyPaid").'</td>';
+	echo '<td class="right">'.$langs->trans("RemainderToPay").'</td>';
+	echo '<td class="center">'.$langs->trans("Amount").'</td>';
+	echo "</tr>\n";
 
 	$total = 0;
 	$totalrecu = 0;
@@ -240,29 +240,29 @@ if ($action == 'create') {
 	while ($i < $num) {
 		$objp = $object;
 
-		print '<tr class="oddeven">';
+		echo '<tr class="oddeven">';
 
-		print '<td>'.$object->getNomUrl(1)."</td>";
+		echo '<td>'.$object->getNomUrl(1)."</td>";
 
-		print '<td class="right">'.price($objp->amount)."</td>";
+		echo '<td class="right">'.price($objp->amount)."</td>";
 
-		print '<td class="right">'.price($sumpaid)."</td>";
+		echo '<td class="right">'.price($sumpaid)."</td>";
 
-		print '<td class="right">'.price($objp->amount - $sumpaid)."</td>";
+		echo '<td class="right">'.price($objp->amount - $sumpaid)."</td>";
 
-		print '<td class="center">';
+		echo '<td class="center">';
 		if ($sumpaid < $objp->amount) {
 			$namef = "amount_".$objp->id;
 			if (!empty($conf->use_javascript_ajax)) {
-				print img_picto("Auto fill", 'rightarrow', "class='AutoFillAmount' data-rowname='".$namef."' data-value='".price($objp->amount - $sumpaid)."'");
+				echo img_picto("Auto fill", 'rightarrow', "class='AutoFillAmount' data-rowname='".$namef."' data-value='".price($objp->amount - $sumpaid)."'");
 			}
-			print '<input type="text" size="8" name="'.$namef.'">';
+			echo '<input type="text" size="8" name="'.$namef.'">';
 		} else {
-			print '-';
+			echo '-';
 		}
-		print "</td>";
+		echo "</td>";
 
-		print "</tr>\n";
+		echo "</tr>\n";
 		/*$total+=$objp->total;
 		$total_ttc+=$objp->total_ttc;
 		$totalrecu+=$objp->am;*/	//Useless code ?
@@ -271,20 +271,20 @@ if ($action == 'create') {
 	/*if ($i > 1)
 	{
 		// Print total
-		print '<tr class="oddeven">';
-		print '<td colspan="2" class="left">'.$langs->trans("Total").':</td>';
-		print "<td class=\"right\"><b>".price($total_ttc)."</b></td>";
-		print "<td class=\"right\"><b>".price($totalrecu)."</b></td>";
-		print "<td class=\"right\"><b>".price($total_ttc - $totalrecu)."</b></td>";
-		print '<td class="center">&nbsp;</td>';
-		print "</tr>\n";
+		echo '<tr class="oddeven">';
+		echo '<td colspan="2" class="left">'.$langs->trans("Total").':</td>';
+		echo "<td class=\"right\"><b>".price($total_ttc)."</b></td>";
+		echo "<td class=\"right\"><b>".price($totalrecu)."</b></td>";
+		echo "<td class=\"right\"><b>".price($total_ttc - $totalrecu)."</b></td>";
+		echo '<td class="center">&nbsp;</td>';
+		echo "</tr>\n";
 	}*/	//Useless code ?
 
-	print "</table>";
+	echo "</table>";
 
-	print $form->buttonsSaveCancel();
+	echo $form->buttonsSaveCancel();
 
-	print "</form>\n";
+	echo "</form>\n";
 }
 
 llxFooter();

@@ -107,7 +107,7 @@ class Interfaces
 		foreach ($dirtriggers as $reldir) {
 			$dir = dol_buildpath($reldir, 0);
 			$newdir = dol_osencode($dir);
-			//print "xx".$dir;exit;
+			//echo "xx".$dir;exit;
 
 			// Check if directory exists (we do not use dol_is_dir to avoir loading files.lib.php at each call)
 			if (!is_dir($newdir)) {
@@ -145,7 +145,7 @@ class Interfaces
 						}
 
 						$modName = "Interface".ucfirst($reg[3]);
-						//print "file=$file - modName=$modName\n";
+						//echo "file=$file - modName=$modName\n";
 						if (in_array($modName, $modules)) {    // $modules = list of modName already loaded
 							$langs->load("errors");
 							dol_syslog(get_class($this)."::run_triggers action=".$action." ".$langs->trans("ErrorDuplicateTrigger", $newdir."/".$file, $fullpathfiles[$modName]), LOG_WARNING);
@@ -153,9 +153,9 @@ class Interfaces
 						}
 
 						try {
-							//print 'Todo for '.$modName." : ".$newdir.'/'.$file."\n";
+							//echo 'Todo for '.$modName." : ".$newdir.'/'.$file."\n";
 							include_once $newdir.'/'.$file;
-							//print 'Done for '.$modName."\n";
+							//echo 'Done for '.$modName."\n";
 						} catch (Exception $e) {
 							dol_syslog('ko for '.$modName." ".$e->getMessage()."\n", LOG_ERR);
 						}
@@ -290,10 +290,10 @@ class Interfaces
 						$part3 = $reg[3];
 
 						$modName = 'Interface'.ucfirst($reg[3]);
-						//print "file=$file"; print "modName=$modName"; exit;
+						//echo "file=$file"; echo "modName=$modName"; exit;
 						if (in_array($modName, $modules)) {
 							$langs->load("errors");
-							print '<div class="error">'.$langs->trans("Error").' : '.$langs->trans("ErrorDuplicateTrigger", $modName, "/htdocs/core/triggers/").'</div>';
+							echo '<div class="error">'.$langs->trans("Error").' : '.$langs->trans("ErrorDuplicateTrigger", $modName, "/htdocs/core/triggers/").'</div>';
 						} else {
 							include_once $newdir.'/'.$file;
 						}
@@ -325,7 +325,7 @@ class Interfaces
 			}
 
 			if (!class_exists($modName)) {
-				print 'Error: A trigger file was found but its class "'.$modName.'" was not found.'."<br>\n";
+				echo 'Error: A trigger file was found but its class "'.$modName.'" was not found.'."<br>\n";
 				continue;
 			}
 
@@ -393,11 +393,11 @@ class Interfaces
 					$triggers[$j]['relpath'] = $relpath[$key];
 					$triggers[$j]['status'] = img_picto('Error: Trigger '.$modName.' does not extends GestimagTriggers', 'warning');
 
-					//print 'Error: Trigger '.$modName.' does not extends GestimagTriggers<br>';
+					//echo 'Error: Trigger '.$modName.' does not extends GestimagTriggers<br>';
 					$text = 'Error: Trigger '.$modName.' does not extends GestimagTriggers';
 				}
 			} catch (Exception $e) {
-				print $e->getMessage();
+				echo $e->getMessage();
 			}
 
 			$triggers[$j]['info'] = $text;

@@ -8,7 +8,7 @@ $connector = new FilePrintConnector("php://stdout"); // Add connector for your p
 $printer = new Printer($connector);
 
 /*
- * Due to its complxity, escpos-php does not support HTML input. To print HTML,
+ * Due to its complxity, escpos-php does not support HTML input. To echo HTML,
  * either convert it to calls on the Printer() object, or rasterise the page with
  * wkhtmltopdf, an external package which is designed to handle HTML efficiently.
  *
@@ -80,7 +80,7 @@ try {
     $printer -> bitImage($img); // bitImage() seems to allow larger images than graphics() on the TM-T20. bitImageColumnFormat() is another option.
     $printer -> cut();
 } catch (Exception $e) {
-    echo $e -> getMessage();
+    echo  $e -> getMessage();
 } finally {
     $printer -> close();
 }

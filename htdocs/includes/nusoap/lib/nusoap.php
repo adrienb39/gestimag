@@ -1799,10 +1799,10 @@ class nusoap_xmlschema extends nusoap_base
     function getPHPType($type, $ns)
     {
         if (isset($this->typemap[$ns][$type])) {
-            //print "found type '$type' and ns $ns in typemap<br>";
+            //echo "found type '$type' and ns $ns in typemap<br>";
             return $this->typemap[$ns][$type];
         } elseif (isset($this->complexTypes[$type])) {
-            //print "getting type '$type' and ns $ns from complexTypes array<br>";
+            //echo "getting type '$type' and ns $ns from complexTypes array<br>";
             return $this->complexTypes[$type]['phpType'];
         }
         return false;
@@ -1911,7 +1911,7 @@ class nusoap_xmlschema extends nusoap_base
     function serializeTypeDef($type)
     {
         $str = '';
-        //print "in sTD() for type $type<br>";
+        //echo "in sTD() for type $type<br>";
         if ($typeDef = $this->getTypeDef($type)) {
             $str .= '<' . $type;
             if (is_array($typeDef['attrs'])) {
@@ -3170,7 +3170,7 @@ class soap_transport_http extends nusoap_base
 //				$this->setError('Decoding of chunked data failed');
 //				return false;
 //			}
-            //print "<pre>\nde-chunked:\n---------------\n$data\n\n---------------\n</pre>";
+            //echo "<pre>\nde-chunked:\n---------------\n$data\n\n---------------\n</pre>";
             // set decoded payload
 //			$this->incoming_payload = $header_data.$lb.$lb.$data;
 //		}
@@ -3356,7 +3356,7 @@ class soap_transport_http extends nusoap_base
                         }
                     }
                     //$timer->setMarker('finished decoding of gzip/deflated content');
-                    //print "<xmp>\nde-inflated:\n---------------\n$data\n-------------\n</xmp>";
+                    //echo "<xmp>\nde-inflated:\n---------------\n$data\n-------------\n</xmp>";
                     // set decoded payload
                     $this->incoming_payload = $header_data . (isset ($lb) ? $lb : "") . (isset ($lb) ? $lb : "") . $data;
                 } else {
@@ -3845,24 +3845,24 @@ class nusoap_server extends nusoap_base
             } elseif ($this->wsdl) {
                 $this->debug("In service, serialize WSDL");
                 header("Content-Type: text/xml; charset=ISO-8859-1\r\n");
-                print $this->wsdl->serialize($this->debug_flag);
+                echo $this->wsdl->serialize($this->debug_flag);
                 if ($this->debug_flag) {
                     $this->debug('wsdl:');
                     $this->appendDebug($this->varDump($this->wsdl));
-                    print $this->getDebugAsXMLComment();
+                    echo $this->getDebugAsXMLComment();
                 }
             } else {
                 $this->debug("In service, there is no WSDL");
                 header("Content-Type: text/html; charset=ISO-8859-1\r\n");
-                print "This service does not provide WSDL";
+                echo "This service does not provide WSDL";
             }
         } elseif ($this->wsdl) {
             $this->debug("In service, return Web description");
-            print $this->wsdl->webDescription();
+            echo $this->wsdl->webDescription();
         } else {
             $this->debug("In service, no Web description");
             header("Content-Type: text/html; charset=ISO-8859-1\r\n");
-            print "This service does not provide a Web description";
+            echo "This service does not provide a Web description";
         }
     }
 
@@ -4392,7 +4392,7 @@ class nusoap_server extends nusoap_base
         foreach ($this->outgoing_headers as $hdr) {
             header($hdr, false);
         }
-        print $payload;
+        echo $payload;
         $this->response = join("\r\n", $this->outgoing_headers) . "\r\n\r\n" . $payload;
     }
 
@@ -5686,11 +5686,11 @@ class wsdl extends nusoap_base
                 $xml .= "\n<message name=\"" . $msgName . '">';
                 if (is_array($msgParts)) {
                     foreach ($msgParts as $partName => $partType) {
-                        // print 'serializing '.$partType.', sv: '.$this->XMLSchemaVersion.'<br>';
+                        // echo 'serializing '.$partType.', sv: '.$this->XMLSchemaVersion.'<br>';
                         if (strpos($partType, ':')) {
                             $typePrefix = $this->getPrefixFromNamespace($this->getPrefix($partType));
                         } elseif (isset($this->typemap[$this->namespaces['xsd']][$partType])) {
-                            // print 'checking typemap: '.$this->XMLSchemaVersion.'<br>';
+                            // echo 'checking typemap: '.$this->XMLSchemaVersion.'<br>';
                             $typePrefix = 'xsd';
                         } else {
                             foreach ($this->typemap as $ns => $types) {
@@ -7452,7 +7452,7 @@ class soap_parser extends nusoap_parser
  * $soapclient = new nusoap_client( string path [ ,mixed wsdl] );
  *
  * // call method, get results
- * echo $soapclient->call( string methodname [ ,array parameters] );
+ * echo  $soapclient->call( string methodname [ ,array parameters] );
  *
  * // bye bye client
  * unset($soapclient);
@@ -7807,7 +7807,7 @@ class nusoap_client extends nusoap_base
                     $this->debug('return shifted value: ');
                     $this->appendDebug($this->varDump($return));
                     return $return;
-                    // nothing returned (ie, echoVoid)
+                    // nothing returned (ie, echo Void)
                 } else {
                     return "";
                 }
@@ -8259,12 +8259,12 @@ class nusoap_client extends nusoap_base
             $evalStr = 'A proxy can only be created for a WSDL client';
             $this->setError($evalStr);
 
-          return "echo \"$evalStr\";";
+          return "echo  \"$evalStr\";";
         }
         if (is_null($this->wsdl)) {
             $this->loadWSDL();
             if ($this->getError()) {
-                return "echo \"" . $this->getError() . "\";";
+                return "echo  \"" . $this->getError() . "\";";
             }
         }
         $evalStr = '';

@@ -303,37 +303,37 @@ if (!empty($conf->bookmark->enabled)) {
 }
 
 
-print '/*'."\n";
-print 'colorbackbody='.$colorbackbody."\n";
-print 'colorbackvmenu1='.$colorbackvmenu1."\n";
-print 'colorbackhmenu1='.$colorbackhmenu1."\n";
-print 'colorbacktitle1='.$colorbacktitle1."\n";
-print 'colorbacklineimpair1='.$colorbacklineimpair1."\n";
-print 'colorbacklineimpair2='.$colorbacklineimpair2."\n";
-print 'colorbacklinepair1='.$colorbacklinepair1."\n";
-print 'colorbacklinepair2='.$colorbacklinepair2."\n";
-print 'colorbacklinepairhover='.$colorbacklinepairhover."\n";
-print 'colorbacklinepairchecked='.$colorbacklinepairchecked."\n";
-print '$colortexttitlenotab='.$colortexttitlenotab."\n";
-print '$colortexttitle='.$colortexttitle."\n";
-print '$colortext='.$colortext."\n";
-print '$colortextlink='.$colortextlink."\n";
-print '$colortextbackhmenu='.$colortextbackhmenu."\n";
-print '$colortextbackvmenu='.$colortextbackvmenu."\n";
-print 'dol_hide_topmenu='.$dol_hide_topmenu."\n";
-print 'dol_hide_leftmenu='.$dol_hide_leftmenu."\n";
-print 'dol_optimize_smallscreen='.$dol_optimize_smallscreen."\n";
-print 'dol_no_mouse_hover='.$dol_no_mouse_hover."\n";
-print 'dol_screenwidth='.(empty($_SESSION['dol_screenwidth']) ? '' : $_SESSION['dol_screenwidth'])."\n";
-print 'dol_screenheight='.(empty($_SESSION['dol_screenheight']) ? '' : $_SESSION['dol_screenheight'])."\n";
-print 'fontsize='.$fontsize."\n";
-print 'nbtopmenuentries='.$nbtopmenuentries."\n";
-print 'fontsizesmaller='.$fontsizesmaller."\n";
-print 'topMenuFontSize='.$topMenuFontSize."\n";
-print 'toolTipBgColor='.$toolTipBgColor."\n";
-print 'toolTipFontColor='.$toolTipFontColor."\n";
-print 'conf->global->THEME_SATURATE_RATIO='.(!getDolGlobalString('THEME_SATURATE_RATIO') ? '' : $conf->global->THEME_SATURATE_RATIO)." (must be between 0 and 1)\n";
-print '*/'."\n";
+echo '/*'."\n";
+echo 'colorbackbody='.$colorbackbody."\n";
+echo 'colorbackvmenu1='.$colorbackvmenu1."\n";
+echo 'colorbackhmenu1='.$colorbackhmenu1."\n";
+echo 'colorbacktitle1='.$colorbacktitle1."\n";
+echo 'colorbacklineimpair1='.$colorbacklineimpair1."\n";
+echo 'colorbacklineimpair2='.$colorbacklineimpair2."\n";
+echo 'colorbacklinepair1='.$colorbacklinepair1."\n";
+echo 'colorbacklinepair2='.$colorbacklinepair2."\n";
+echo 'colorbacklinepairhover='.$colorbacklinepairhover."\n";
+echo 'colorbacklinepairchecked='.$colorbacklinepairchecked."\n";
+echo '$colortexttitlenotab='.$colortexttitlenotab."\n";
+echo '$colortexttitle='.$colortexttitle."\n";
+echo '$colortext='.$colortext."\n";
+echo '$colortextlink='.$colortextlink."\n";
+echo '$colortextbackhmenu='.$colortextbackhmenu."\n";
+echo '$colortextbackvmenu='.$colortextbackvmenu."\n";
+echo 'dol_hide_topmenu='.$dol_hide_topmenu."\n";
+echo 'dol_hide_leftmenu='.$dol_hide_leftmenu."\n";
+echo 'dol_optimize_smallscreen='.$dol_optimize_smallscreen."\n";
+echo 'dol_no_mouse_hover='.$dol_no_mouse_hover."\n";
+echo 'dol_screenwidth='.(empty($_SESSION['dol_screenwidth']) ? '' : $_SESSION['dol_screenwidth'])."\n";
+echo 'dol_screenheight='.(empty($_SESSION['dol_screenheight']) ? '' : $_SESSION['dol_screenheight'])."\n";
+echo 'fontsize='.$fontsize."\n";
+echo 'nbtopmenuentries='.$nbtopmenuentries."\n";
+echo 'fontsizesmaller='.$fontsizesmaller."\n";
+echo 'topMenuFontSize='.$topMenuFontSize."\n";
+echo 'toolTipBgColor='.$toolTipBgColor."\n";
+echo 'toolTipFontColor='.$toolTipFontColor."\n";
+echo 'conf->global->THEME_SATURATE_RATIO='.(!getDolGlobalString('THEME_SATURATE_RATIO') ? '' : $conf->global->THEME_SATURATE_RATIO)." (must be between 0 and 1)\n";
+echo '*/'."\n";
 
 
 // Include the global.inc.php that include the badges, btn, info-box, dropdown, progress...

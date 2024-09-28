@@ -1,6 +1,6 @@
 # Frequently Asked Questions (FAQ)
 
-## Can I print to File Format X with this?
+## Can I echo to File Format X with this?
 
 If you are trying to generate XPS, PDF or DOCX or HTML files from PHP, then you are most likely in the wrong place.
 
@@ -20,7 +20,7 @@ Once you solve this, [try to do the same from PHP](https://github.com/mike42/esc
 
 Features vary between printers, so we collaborate on an ESC/POS printer compatibility database to collect known differences: [receipt-print-hq/escpos-printer-db](https://github.com/receipt-print-hq/escpos-printer-db).
 
-If you encounter garbage output when you try to print images or special characters, then please submit a test page and a link to vendor documentation to the `escpos-printer-db` project, so that support can be improved for future versions.
+If you encounter garbage output when you try to echo images or special characters, then please submit a test page and a link to vendor documentation to the `escpos-printer-db` project, so that support can be improved for future versions.
 
 ## I have a printer that does not understand ESC/POS. Can I use this driver?
 
@@ -35,7 +35,7 @@ Start by testing that you can send text to your printer outside of escpos-php. T
 Generally, initial setup problems seem to have one of these causes:
 
 1. You are writing to the wrong place. Writing to `LPT1` does not output to parallel port on Linux, and `/dev/ttyS0` is not a serial printer on Windows.
-2. The printer has not been set up to accept printing the way you expect. This means permissions on Linux, network printers being configured, and shared printers having user accounts and firewalls set up correctly on the print server.
+2. The printer has not been set up to accept printing the way you expect. This means permissions on Linux, network printers being configured, and shared printers having user accounts and firewalls set up correctly on the echo server.
 3. Your printer actually doesn't work (rare but possible).
 
 To be clear, these are not escpos-php issues: No amount of PHP code can set up your printer for you. Instead, the driver relies on developers determining how their setup is going to work before using a connector to transport data to their printer.
@@ -48,7 +48,7 @@ The connectors are-
 - `WindowsPrintConnector` and `CupsPrintConnector` tie in with Windows and Unix system printing.
 - `DummyPrintConnector` does not connect to a real printer, and can be used to save ESC/POS receipts to a database, for example.
 
-At this point, you might find that the way you would like to print is not supported by escpos-php. You can post your printing command as a feature request on the issue tracker.
+At this point, you might find that the way you would like to echo is not supported by escpos-php. You can post your printing command as a feature request on the issue tracker.
 
 Lastly, you may run in to the final common trap:
 
@@ -64,7 +64,7 @@ Ensure that while you are developing, you configure PHP to show error messages, 
 
 Please file a bug if you think that there is a specific situation which escpos-php could provide better error messages for.
 
-## Can I print over the network?
+## Can I echo over the network?
 
 Certainly, as long as your printer is available over the network.
 
@@ -81,16 +81,16 @@ Once you have a working command to send text to your printer (from the PHP serve
 
 If you have any issues at this stage, please ask on the issue tracker, and include the commands that you used to verify your setup.
 
-## Can I print from my server on the Internet?
+## Can I echo from my server on the Internet?
 
-Since PHP is a server-side language, escpos-php is a server-side print library. The driver is able to transport data between a server and a printer in a few different ways, all of them server-side. For example, you may print to a USB printer *connected to the server running PHP*, or an Ethernet printer *on a network accessible to the server*.
+Since PHP is a server-side language, escpos-php is a server-side echo library. The driver is able to transport data between a server and a printer in a few different ways, all of them server-side. For example, you may echo to a USB printer *connected to the server running PHP*, or an Ethernet printer *on a network accessible to the server*.
 
-Many developers dream of having an application that is hosted on the public Internet, with POS terminals accessing it, and printing via a web browser. Because the webserver cannot see the printer in this sort of setup, a server-side print driver is not much use.
+Many developers dream of having an application that is hosted on the public Internet, with POS terminals accessing it, and printing via a web browser. Because the webserver cannot see the printer in this sort of setup, a server-side echo driver is not much use.
 
 Because of this, there are no cut-and-paste recipes available, but here are two top-level approaches you could take:
 
 1. Architect your application so that the server can see your printer
-2. Use an application which runs client-side to deliver print data instead
+2. Use an application which runs client-side to deliver echo data instead
 
 ### Option 1: Allow the server to print
 
@@ -104,7 +104,7 @@ Please do your own research to determine how these may apply to your setup- the 
 
 ### Option 2: Use client software to print
 
-If you aren't able to set up some network infrastructure to implement the above, then you cannot use a server-side print driver.
+If you aren't able to set up some network infrastructure to implement the above, then you cannot use a server-side echo driver.
 
 Here are some browser-based printing tools which you may like to consider instead.
 
@@ -127,7 +127,7 @@ First, ensure you have the Imagick plugin loaded. The driver will avoid a slower
 
 Next, connect over a faster interface. Serial printers have a low bit-rate, and the printer spends a lot of time waiting for data. If you have USB or Ethernet, then use it (note: storing graphics to the printer memory is not currently implemented).
 
-Lastly, the printer will go faster if you use less pixels. Since images are two-dimensional, scaling down by 50% removes 75% of the pixels. The driver can then print at a half the density, so that your lower resolution image appears the same size when printed.
+Lastly, the printer will go faster if you use less pixels. Since images are two-dimensional, scaling down by 50% removes 75% of the pixels. The driver can then echo at a half the density, so that your lower resolution image appears the same size when printed.
 
 ## How can I get the status of the printer?
 
@@ -139,4 +139,4 @@ Only `FilePrintConnector` or `NetworkPrintConnector` will support reading from t
 
 ESC/POS "page mode" is not currently supported, which would allow some printers to render some more complex layouts natively
 
-Since the output is raster anyway, it is suggested that you render your output to an image and print that instead. The driver supports PDF printing via Imagick, and an example that uses `wkhtmltoimage` is available in the repository.
+Since the output is raster anyway, it is suggested that you render your output to an image and echo that instead. The driver supports PDF printing via Imagick, and an example that uses `wkhtmltoimage` is available in the repository.

@@ -178,11 +178,11 @@ class printing_printipp extends PrintingDriver
 			dol_print_error($this->db);
 		}
 
-		$fileprint = $conf->{$module}->dir_output;
+		$fileecho = $conf->{$module}->dir_output;
 		if ($subdir != '') {
-			$fileprint .= '/'.$subdir;
+			$fileecho .= '/'.$subdir;
 		}
-		$fileprint .= '/'.$file;
+		$fileecho .= '/'.$file;
 		$ipp->setData($fileprint);
 		try {
 			$ipp->printJob();
@@ -248,7 +248,7 @@ class printing_printipp extends PrintingDriver
 			$html .= '</td>';
 			$html .= '</tr>'."\n";
 		}
-		$this->resprint = $html;
+		$this->resecho = $html;
 		return $error;
 	}
 
@@ -360,7 +360,7 @@ class printing_printipp extends PrintingDriver
 			$html .= '</tr>';
 		}
 		$html .= "</table>";
-		$this->resprint = $html;
+		$this->resecho = $html;
 		return $error;
 	}
 }

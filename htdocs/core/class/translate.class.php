@@ -154,7 +154,7 @@ class Translate
 
 		// We redefine $srclang
 		$langpart = explode("_", $codetouse);
-		//print "Short code before _ : ".$langpart[0].' / Short code after _ : '.$langpart[1].'<br>';
+		//echo "Short code before _ : ".$langpart[0].' / Short code after _ : '.$langpart[1].'<br>';
 		if (!empty($langpart[1])) {	// If it's for a codetouse that is a long code xx_YY
 			// Array force long code from first part, even if long code is defined
 			$longforshort = array('ar' => 'ar_SA');
@@ -189,7 +189,7 @@ class Translate
 
 		$this->defaultlang = $srclang;
 		$this->shortlang = substr($srclang, 0, 2);
-		//print 'this->defaultlang='.$this->defaultlang;
+		//echo 'this->defaultlang='.$this->defaultlang;
 	}
 
 
@@ -322,7 +322,7 @@ class Translate
 			$filelangexists = @is_file($file_lang_osencoded);	// avoid [php:warn]
 
 			//dol_syslog(get_class($this).'::Load Try to read for alt='.$alt.' langofdir='.$langofdir.' domain='.$domain.' newdomain='.$newdomain.' modulename='.$modulename.' file_lang='.$file_lang." => filelangexists=".$filelangexists);
-			//print 'Try to read for alt='.$alt.' langofdir='.$langofdir.' domain='.$domain.' newdomain='.$newdomain.' modulename='.$modulename.' this->_tab_loaded[newdomain]='.$this->_tab_loaded[$newdomain].' file_lang='.$file_lang." => filelangexists=".$filelangexists."\n";
+			//echo 'Try to read for alt='.$alt.' langofdir='.$langofdir.' domain='.$domain.' newdomain='.$newdomain.' modulename='.$modulename.' this->_tab_loaded[newdomain]='.$this->_tab_loaded[$newdomain].' file_lang='.$file_lang." => filelangexists=".$filelangexists."\n";
 
 			if ($filelangexists) {
 				// TODO Move cache read out of loop on dirs or at least filelangexists
@@ -365,8 +365,8 @@ class Translate
 						while ($line = fscanf($fp, "%[^= ]%*[ =]%[^\n\r]")) {
 							if (isset($line[1])) {
 								list($key, $value) = $line;
-								//if ($domain == 'orders') print "Domain=$domain, found a string for $tab[0] with value $tab[1]. Currently in cache ".$this->tab_translate[$key]."<br>";
-								//if ($key == 'Order') print "Domain=$domain, found a string for key=$key=$tab[0] with value $tab[1]. Currently in cache ".$this->tab_translate[$key]."<br>";
+								//if ($domain == 'orders') echo "Domain=$domain, found a string for $tab[0] with value $tab[1]. Currently in cache ".$this->tab_translate[$key]."<br>";
+								//if ($key == 'Order') echo "Domain=$domain, found a string for key=$key=$tab[0] with value $tab[1]. Currently in cache ".$this->tab_translate[$key]."<br>";
 								if (empty($this->tab_translate[$key])) { // If translation was already found, we must not continue, even if MAIN_FORCELANGDIR is set (MAIN_FORCELANGDIR is to replace lang dir, not to overwrite entries)
 									if ($key == 'DIRECTION') { // This is to declare direction of language
 										if ($alt < 2 || empty($this->tab_translate[$key])) { // We load direction only for primary files or if not yet loaded
@@ -528,12 +528,12 @@ class Translate
 		if ($usecachekey) {
 			//dol_syslog('Translate::Load we will cache result into usecachekey '.$usecachekey);
 			//global $aaa; $aaa+=1;
-			//print $aaa." ".$usecachekey."\n";
+			//echo $aaa." ".$usecachekey."\n";
 			require_once DOL_DOCUMENT_ROOT . '/core/lib/memory.lib.php';
 			$tmparray = dol_getcache($usecachekey);
 			if (is_array($tmparray) && count($tmparray)) {
 				$this->tab_translate += $tmparray; // Faster than array_merge($tmparray,$this->tab_translate). Note: If a value already exists into tab_translate, value into tmparaay is not added.
-				//print $newdomain."\n";
+				//echo $newdomain."\n";
 				//var_dump($this->tab_translate);
 				$fileread = 1;
 				$found = true; // Found in gestimag PHP cache
@@ -562,7 +562,7 @@ class Translate
 						$key = $obj->transkey;
 						$value = $obj->transvalue;
 
-						//print "Domain=$domain, found a string for $tab[0] with value $tab[1]<br>";
+						//echo "Domain=$domain, found a string for $tab[0] with value $tab[1]<br>";
 						if (empty($this->tab_translate[$key])) {    // If translation was already found, we must not continue, even if MAIN_FORCELANGDIR is set (MAIN_FORCELANGDIR is to replace lang dir, not to overwrite entries)
 							// Convert some strings: Parse and render carriage returns. Also, change '\\s' int '\s' because transifex sync pull the string '\s' into string '\\s'
 							$this->tab_translate[$key] = str_replace(array('\\n', '\\\\s'), array("\n", '\s'), $value);
@@ -786,7 +786,7 @@ class Translate
 			}
 
 			if (!preg_match('/^Format/', $key)) {
-				//print $str;
+				//echo $str;
 				// @phan-suppress-next-line PhanPluginPrintfVariableFormatString
 				$str = sprintf($str, $param1, $param2, $param3, $param4, $param5); // Replace %s and %d except for FormatXXX strings.
 			}
@@ -1042,7 +1042,7 @@ class Translate
 			return -1;
 		}
 
-		//print 'param: '.$key.'-'.$keydatabase.'-'.$this->trans($key); exit;
+		//echo 'param: '.$key.'-'.$keydatabase.'-'.$this->trans($key); exit;
 
 		// Check if a translation is available (Note: this can call getTradFromKey that can call getLabelFromKey)
 		$tmp = $this->transnoentitiesnoconv($key);
@@ -1177,7 +1177,7 @@ class Translate
 			if (empty($currency_code)) {
 				$this->cache_currencies_all_loaded = true;
 			}
-			//print count($label).' '.count($this->cache_currencies);
+			//echo count($label).' '.count($this->cache_currencies);
 
 			// Resort cache
 			array_multisort($label, SORT_ASC, $this->cache_currencies);

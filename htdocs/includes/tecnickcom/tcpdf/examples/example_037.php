@@ -103,7 +103,7 @@ $pdf->SetDrawSpotColor('My TCPDF Black', 100);
 
 $starty = 100;
 
-// print some spot colors
+// echo some spot colors
 
 $pdf->SetFillSpotColor('My TCPDF Dark Green', 100);
 $pdf->Rect(30, $starty, 40, 20, 'DF');

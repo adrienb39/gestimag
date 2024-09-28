@@ -15,7 +15,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
  * shared as "Receipt Printer"), the following commands work.
  *
  * Windows: (use an appropriate "net use" command if you need authentication)
- *  echo "Hello World" > testfile
+ *  echo  "Hello World" > testfile
  *  ## If you need authentication, use "net use" to hook up the printer:
  *  # net use "\\computername\Receipt Printer" /user:Guest
  *  # net use "\\computername\Receipt Printer" /user:Bob secret
@@ -25,13 +25,13 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
  *
  * GNU/Linux:
  *  # No authentication
- *  echo "Hello World" | smbclient "//computername/Receipt Printer" -c "print -" -N
+ *  echo  "Hello World" | smbclient "//computername/Receipt Printer" -c "echo -" -N
  *  # Guest login
- *  echo "Hello World" | smbclient "//computername/Receipt Printer" -U Guest -c "print -" -N
+ *  echo  "Hello World" | smbclient "//computername/Receipt Printer" -U Guest -c "echo -" -N
  *  # Basic username/password
- *  echo "Hello World" | smbclient "//computername/Receipt Printer" secret -U "Bob" -c "print -"
+ *  echo  "Hello World" | smbclient "//computername/Receipt Printer" secret -U "Bob" -c "echo -"
  *  # Including domain name
- *  echo "Hello World" | smbclient "//computername/Receipt Printer" secret -U "workgroup\\Bob" -c "print -"
+ *  echo  "Hello World" | smbclient "//computername/Receipt Printer" secret -U "workgroup\\Bob" -c "echo -"
  */
 try {
     // Enter the share name for your printer here, as a smb:// url format
@@ -48,5 +48,5 @@ try {
     /* Close printer */
     $printer -> close();
 } catch (Exception $e) {
-    echo "Couldn't print to this printer: " . $e -> getMessage() . "\n";
+    echo  "Couldn't echo to this printer: " . $e -> getMessage() . "\n";
 }

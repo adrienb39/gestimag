@@ -161,4 +161,4 @@ if (empty($manifest->icons)) {
 }
 
 
-print json_encode($manifest);
+echo json_encode($manifest);

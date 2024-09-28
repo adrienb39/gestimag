@@ -117,10 +117,10 @@ function html_print_stripe_footer($fromcompany, $langs)
 		$line2 .= ($line2 ? " - " : "").$langs->transnoentities("VATIntraShort").": ".$fromcompany->tva_intra;
 	}
 
-	print '<br><br><hr>'."\n";
-	print '<div class="center"><span style="font-size: 10px;">'."\n";
-	print $fromcompany->name.'<br>';
-	print $line1.'<br>';
-	print $line2;
-	print '</span></div>'."\n";
+	echo '<br><br><hr>'."\n";
+	echo '<div class="center"><span style="font-size: 10px;">'."\n";
+	echo $fromcompany->name.'<br>';
+	echo $line1.'<br>';
+	echo $line2;
+	echo '</span></div>'."\n";
 }

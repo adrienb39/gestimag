@@ -95,7 +95,7 @@ class modPhpbarcode extends ModeleBarCode
 	public function encodingIsSupported($encoding)
 	{
 		global $genbarcode_loc;
-		//print 'genbarcode_loc='.$genbarcode_loc.' encoding='.$encoding;exit;
+		//echo 'genbarcode_loc='.$genbarcode_loc.' encoding='.$encoding;exit;
 
 		$supported = 0;
 		if ($encoding == 'EAN13') {
@@ -166,7 +166,7 @@ class modPhpbarcode extends ModeleBarCode
 		if (!is_array($result)) {
 			$this->error = $result;
 			if (empty($nooutputiferror)) {
-				print dol_escape_htmltag($this->error);
+				echo dol_escape_htmltag($this->error);
 			}
 			return -1;
 		}

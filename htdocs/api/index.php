@@ -121,8 +121,8 @@ if (getDolGlobalString('MAIN_NGINX_FIX')) {
 if (!isModEnabled('api')) {
 	$langs->load("admin");
 	dol_syslog("Call of Gestimag API interfaces with module API REST are disabled");
-	print $langs->trans("WarningModuleNotActive", 'Api').'.<br><br>';
-	print $langs->trans("ToActivateModule");
+	echo $langs->trans("WarningModuleNotActive", 'Api').'.<br><br>';
+	echo $langs->trans("ToActivateModule");
 	//session_destroy();
 	exit(0);
 }
@@ -131,7 +131,7 @@ if (!isModEnabled('api')) {
 if (preg_match('/api\/index\.php\/explorer/', $url) && getDolGlobalString('API_EXPLORER_DISABLED')) {
 	$langs->load("admin");
 	dol_syslog("Call Gestimag API interfaces with module API REST disabled");
-	print $langs->trans("WarningAPIExplorerDisabled").'.<br><br>';
+	echo $langs->trans("WarningAPIExplorerDisabled").'.<br><br>';
 	//session_destroy();
 	exit(0);
 }
@@ -166,7 +166,7 @@ $refreshcache = (getDolGlobalString('API_PRODUCTION_DO_NOT_ALWAYS_REFRESH_CACHE'
 if (!empty($reg[1]) && $reg[1] == 'explorer' && ($reg[2] == '/swagger.json' || $reg[2] == '/swagger.json/root' || $reg[2] == '/resources.json' || $reg[2] == '/resources.json/root')) {
 	$refreshcache = true;
 	if (!is_writable($conf->api->dir_temp)) {
-		print 'Erreur temp dir api/temp not writable';
+		echo 'Erreur temp dir api/temp not writable';
 		header('HTTP/1.1 500 temp dir api/temp not writable');
 		exit(0);
 	}
@@ -211,7 +211,7 @@ if (getDolGlobalString('API_RESTRICT_ON_IP')) {
 	$ipremote = getUserRemoteIP();
 	if (!in_array($ipremote, $allowedip)) {
 		dol_syslog('Remote ip is '.$ipremote.', not into list ' . getDolGlobalString('API_RESTRICT_ON_IP'));
-		print 'APIs are not allowed from the IP '.$ipremote;
+		echo 'APIs are not allowed from the IP '.$ipremote;
 		header('HTTP/1.1 503 API not allowed from your IP '.$ipremote);
 		//session_destroy();
 		exit(0);
@@ -363,7 +363,7 @@ if (!empty($reg[1]) && ($reg[1] != 'explorer' || ($reg[2] != '/swagger.json' && 
 
 		if (! $endpointisallowed) {
 			dol_syslog('The API with endpoint /'.$classfile.' is forbidden by config API_ENDPOINT_RULES', LOG_WARNING);
-			print 'The API with endpoint /'.$classfile.' is forbidden by config API_ENDPOINT_RULES';
+			echo 'The API with endpoint /'.$classfile.' is forbidden by config API_ENDPOINT_RULES';
 			header('HTTP/1.1 501 API is forbidden by API_ENDPOINT_RULES');
 			//session_destroy();
 			exit(0);
@@ -378,7 +378,7 @@ if (!empty($reg[1]) && ($reg[1] != 'explorer' || ($reg[2] != '/swagger.json' && 
 	}
 	if (!$res) {
 		dol_syslog('Failed to make include_once '.$dir_part_file, LOG_WARNING);
-		print 'API not found (failed to include API file)';
+		echo 'API not found (failed to include API file)';
 		header('HTTP/1.1 501 API not found (failed to include API file)');
 		//session_destroy();
 		exit(0);
@@ -433,12 +433,12 @@ if (Luracast\Restler\Defaults::$returnResponse) {
 		$result = gzencode($responsedata, 9);
 	} else {
 		header('Content-Encoding: text/html');
-		print "No compression method found. Try to disable compression by adding API_DISABLE_COMPRESSION=1";
+		echo "No compression method found. Try to disable compression by adding API_DISABLE_COMPRESSION=1";
 		exit(0);
 	}
 
 	// Restler did not output data yet, we return it now
-	echo $result;
+	echo  $result;
 }
 
 if (getDolGlobalInt("API_ENABLE_COUNT_CALLS") && $api->r->responseCode == 200) {

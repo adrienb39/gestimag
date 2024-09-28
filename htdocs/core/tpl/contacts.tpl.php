@@ -26,7 +26,7 @@
 
 // Protection to avoid direct call of template
 if (empty($object) || !is_object($object)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -86,14 +86,14 @@ $userstatic = new User($db);
 <!-- BEGIN PHP TEMPLATE CONTACTS -->
 <?php
 if ($permission) {
-	print '<div class="underbanner clearboth"></div>'."\n";
+	echo '<div class="underbanner clearboth"></div>'."\n";
 
-	print '<div class="div-table-responsive-no-min">'."\n";
-	print '<div class="tagtable tableforcontact centpercent noborder nobordertop allwidth">'."\n"; ?>
+	echo '<div class="div-table-responsive-no-min">'."\n";
+	echo '<div class="tagtable tableforcontact centpercent noborder nobordertop allwidth">'."\n"; ?>
 	<form class="tagtr liste_titre">
-		<div class="tagtd liste_titre"><?php echo img_object('', 'company', 'class="optiongrey paddingright"').$langs->trans("ThirdParty"); ?></div>
-		<div class="tagtd liste_titre"><?php echo img_picto($langs->trans("Users"), 'user', 'class="optiongrey paddingright"').$langs->trans("Users").' | '.img_picto($langs->trans("Contacts"), 'contact', 'class="optiongrey paddingright"').$langs->trans("Contacts"); ?></div>
-		<div class="tagtd liste_titre"><?php echo $langs->trans("ContactType"); ?></div>
+		<div class="tagtd liste_titre"><?php echo  img_object('', 'company', 'class="optiongrey paddingright"').$langs->trans("ThirdParty"); ?></div>
+		<div class="tagtd liste_titre"><?php echo  img_picto($langs->trans("Users"), 'user', 'class="optiongrey paddingright"').$langs->trans("Users").' | '.img_picto($langs->trans("Contacts"), 'contact', 'class="optiongrey paddingright"').$langs->trans("Contacts"); ?></div>
+		<div class="tagtd liste_titre"><?php echo  $langs->trans("ContactType"); ?></div>
 		<div class="tagtd liste_titre">&nbsp;</div>
 		<div class="tagtd liste_titre">&nbsp;</div>
 	</form>
@@ -102,22 +102,22 @@ if ($permission) {
 
 	if (empty($hideaddcontactforuser)) {
 		?>
-	<form class="tagtr impair nohover" action="<?php echo $_SERVER["PHP_SELF"].'?id='.$object->id; ?>" method="POST">
-		<input type="hidden" name="token" value="<?php echo newToken(); ?>" />
-		<input type="hidden" name="id" value="<?php echo $object->id; ?>" />
+	<form class="tagtr impair nohover" action="<?php echo  $_SERVER["PHP_SELF"].'?id='.$object->id; ?>" method="POST">
+		<input type="hidden" name="token" value="<?php echo  newToken(); ?>" />
+		<input type="hidden" name="id" value="<?php echo  $object->id; ?>" />
 		<input type="hidden" name="action" value="addcontact" />
 		<input type="hidden" name="source" value="internal" />
 		<?php if (!empty($withproject)) {
-			print '<input type="hidden" name="withproject" value="'.$withproject.'">';
+			echo '<input type="hidden" name="withproject" value="'.$withproject.'">';
 		} ?>
 
-		<div class="tagtd"><span class="paddingleft"><?php echo getDolGlobalString('MAIN_INFO_SOCIETE_NOM'); ?></span></div>
-		<!--  <div class="nowrap tagtd"><?php echo img_object('', 'user').' '.$langs->trans("Users"); ?></div> -->
+		<div class="tagtd"><span class="paddingleft"><?php echo  getDolGlobalString('MAIN_INFO_SOCIETE_NOM'); ?></span></div>
+		<!--  <div class="nowrap tagtd"><?php echo  img_object('', 'user').' '.$langs->trans("Users"); ?></div> -->
 		<div class="tagtd maxwidthonsmartphone">
-		<?php echo img_object('', 'user', 'class="pictofixedwidth"').$form->select_dolusers($user->id, 'userid', 1, (!empty($userAlreadySelected) ? $userAlreadySelected : null), 0, null, null, 0, 56, 0, '', 0, '', 'minwidth100imp widthcentpercentminusxx maxwidth400 userselectcontact');
+		<?php echo  img_object('', 'user', 'class="pictofixedwidth"').$form->select_dolusers($user->id, 'userid', 1, (!empty($userAlreadySelected) ? $userAlreadySelected : null), 0, null, null, 0, 56, 0, '', 0, '', 'minwidth100imp widthcentpercentminusxx maxwidth400 userselectcontact');
 		if (empty($hideaddcontactforgroups) && $module == 'project') {
-			print '<span> '.$langs->trans("or").' </span>';
-			echo img_object('', 'group', 'class="pictofixedwidth"').$form->select_dolgroups(0, 'groupid', 1, '', 0, '', array(), '0', false, 'minwidth100imp widthcentpercentminusxx maxwidth400 groupselectcontact');
+			echo '<span> '.$langs->trans("or").' </span>';
+			echo  img_object('', 'group', 'class="pictofixedwidth"').$form->select_dolgroups(0, 'groupid', 1, '', 0, '', array(), '0', false, 'minwidth100imp widthcentpercentminusxx maxwidth400 groupselectcontact');
 		}
 		?>
 		<script>
@@ -143,7 +143,7 @@ if ($permission) {
 		}
 		$formcompany->selectTypeContact($tmpobject, '', 'type', 'internal', 'position', 0, 'minwidth150imp widthcentpercentminusx maxwidth200'); ?></div>
 		<div class="tagtd">&nbsp;</div>
-		<div class="tagtd center"><input type="submit" class="button small" value="<?php echo $langs->trans("Add"); ?>"></div>
+		<div class="tagtd center"><input type="submit" class="button small" value="<?php echo  $langs->trans("Add"); ?>"></div>
 	</form>
 		<?php
 	}
@@ -151,26 +151,26 @@ if ($permission) {
 	if (empty($hideaddcontactforthirdparty)) {
 		?>
 
-	<form class="tagtr pair nohover" action="<?php echo $_SERVER["PHP_SELF"].'?id='.$object->id; ?>" method="POST">
-		<input type="hidden" name="token" value="<?php echo newToken(); ?>" />
-		<input type="hidden" name="id" value="<?php echo $object->id; ?>" />
+	<form class="tagtr pair nohover" action="<?php echo  $_SERVER["PHP_SELF"].'?id='.$object->id; ?>" method="POST">
+		<input type="hidden" name="token" value="<?php echo  newToken(); ?>" />
+		<input type="hidden" name="id" value="<?php echo  $object->id; ?>" />
 		<input type="hidden" name="action" value="addcontact" />
 		<input type="hidden" name="source" value="external" />
 		<input type="hidden" name="page_y" value="" />
 		<?php if (!empty($withproject)) {
-			print '<input type="hidden" name="withproject" value="'.$withproject.'">';
+			echo '<input type="hidden" name="withproject" value="'.$withproject.'">';
 		} ?>
 
 		<div class="tagtd nowrap noborderbottom">
 			<?php
 			$selectedCompany = GETPOSTISSET("newcompany") ? GETPOSTINT("newcompany") : (empty($object->socid) ? 0 : $object->socid);
-			$selectedCompany = $formcompany->selectCompaniesForNewContact($object, 'id', $selectedCompany, 'newcompany', '', 0, '', 'minwidth300imp maxwidth400 widthcentpercentminusx');	// This also print the select component?>
+			$selectedCompany = $formcompany->selectCompaniesForNewContact($object, 'id', $selectedCompany, 'newcompany', '', 0, '', 'minwidth300imp maxwidth400 widthcentpercentminusx');	// This also echo the select component?>
 		</div>
 		<div class="tagtd noborderbottom minwidth500imp">
 			<?php
-			print img_object('', 'contact', 'class="pictofixedwidth"');
-			//print $form->selectcontacts(($selectedCompany > 0 ? $selectedCompany : -1), '', 'contactid', 3, '', '', 1, 'minwidth100imp widthcentpercentminusxx maxwidth400');
-			print $form->select_contact(($selectedCompany > 0 ? $selectedCompany : -1), '', 'contactid', 3, '', '', 1, 'minwidth100imp maxwidth400 widthcentpercentminusx', true);
+			echo img_object('', 'contact', 'class="pictofixedwidth"');
+			//echo $form->selectcontacts(($selectedCompany > 0 ? $selectedCompany : -1), '', 'contactid', 3, '', '', 1, 'minwidth100imp widthcentpercentminusxx maxwidth400');
+			echo $form->select_contact(($selectedCompany > 0 ? $selectedCompany : -1), '', 'contactid', 3, '', '', 1, 'minwidth100imp maxwidth400 widthcentpercentminusx', true);
 
 			$nbofcontacts = $form->num;
 
@@ -178,7 +178,7 @@ if ($permission) {
 			if (!empty($object->socid) && $object->socid > 1 && $user->hasRight('societe', 'creer')) {
 				$newcardbutton .= '<a href="'.DOL_URL_ROOT.'/contact/card.php?socid='.$selectedCompany.'&action=create&backtopage='.urlencode($_SERVER["PHP_SELF"].'?id='.$object->id).'" title="'.$langs->trans('NewContact').'"><span class="fa fa-plus-circle valignmiddle paddingleft"></span></a>';
 			}
-			print $newcardbutton; ?>
+			echo $newcardbutton; ?>
 		</div>
 		<div class="tagtd noborderbottom">
 			<?php
@@ -190,8 +190,8 @@ if ($permission) {
 		</div>
 		<div class="tagtd noborderbottom">&nbsp;</div>
 		<div class="tagtd center noborderbottom">
-			<input type="submit" id="add-customer-contact" class="button small" value="<?php echo $langs->trans("Add"); ?>"<?php if (!$nbofcontacts) {
-				echo ' disabled';
+			<input type="submit" id="add-customer-contact" class="button small" value="<?php echo  $langs->trans("Add"); ?>"<?php if (!$nbofcontacts) {
+				echo  ' disabled';
 																					   } ?>>
 		</div>
 	</form>
@@ -199,10 +199,10 @@ if ($permission) {
 		<?php
 	}
 
-	print "</div>";
-	print "</div>";
+	echo "</div>";
+	echo "</div>";
 
-	print '<br>';
+	echo '<br>';
 }
 
 
@@ -303,17 +303,17 @@ $param = 'id='.$object->id.'&mainmenu=home';
 
 // Show list of contact links
 
-print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-print '<input type="hidden" name="action" value="list">';
-print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+echo '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+echo '<input type="hidden" name="action" value="list">';
+echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
 
-print '<div class="div-table-responsive-no-min">'."\n";
-print '<table class="tagtable nobottomiftotal liste noborder">';
+echo '<div class="div-table-responsive-no-min">'."\n";
+echo '<table class="tagtable nobottomiftotal liste noborder">';
 
-print '<tr class="liste_titre">';
+echo '<tr class="liste_titre">';
 print_liste_field_titre($arrayfields['thirdparty']['label'], $_SERVER["PHP_SELF"], "thirdparty_name", "", $param, "", $sortfield, $sortorder);
 print_liste_field_titre($arrayfields['contact']['label'], $_SERVER["PHP_SELF"], "contact_name", "", $param, "", $sortfield, $sortorder);
 print_liste_field_titre($arrayfields['nature']['label'], $_SERVER["PHP_SELF"], "nature", "", $param, "", $sortfield, $sortorder);
@@ -322,16 +322,16 @@ print_liste_field_titre($arrayfields['status']['label'], $_SERVER["PHP_SELF"], "
 if ($permission) {
 	print_liste_field_titre('', $_SERVER["PHP_SELF"], "", "", "", "", $sortfield, $sortorder, 'center maxwidthsearch ');
 }
-print "</tr>";
+echo "</tr>";
 
 foreach ($list as $entry) {
-	print '<tr class="oddeven" data-rowid="' . $entry->id . '">';
+	echo '<tr class="oddeven" data-rowid="' . $entry->id . '">';
 
-	print '<td class="tdoverflowmax200" data-thirdparty_id="' . ((int) $entry->thirdparty_id) . '" data-thirdparty_name="' . dol_escape_htmltag($entry->thirdparty_name) . '">'.$entry->thirdparty_html.'</td>';
-	print '<td class="tdoverflowmax200" data-contact_id="' . ((int) $entry->contact_id) . '">'.$entry->contact_html.'</td>';
-	print '<td class="nowrap" data-nature="' . dol_escape_htmltag($entry->nature) . '"><span class="opacitymedium">'.dol_escape_htmltag($entry->nature_html).'</span></td>';
-	print '<td class="tdoverflowmax200" data-type_id="' . ((int) $entry->type_id) . '" data-type="' . dol_escape_htmltag($entry->type) . '">'.dol_escape_htmltag($entry->type).'</td>';
-	print '<td class="tdoverflowmax200 center" data-status_id="' . ((int) $entry->status) . '">'.$entry->status_html.'</td>';
+	echo '<td class="tdoverflowmax200" data-thirdparty_id="' . ((int) $entry->thirdparty_id) . '" data-thirdparty_name="' . dol_escape_htmltag($entry->thirdparty_name) . '">'.$entry->thirdparty_html.'</td>';
+	echo '<td class="tdoverflowmax200" data-contact_id="' . ((int) $entry->contact_id) . '">'.$entry->contact_html.'</td>';
+	echo '<td class="nowrap" data-nature="' . dol_escape_htmltag($entry->nature) . '"><span class="opacitymedium">'.dol_escape_htmltag($entry->nature_html).'</span></td>';
+	echo '<td class="tdoverflowmax200" data-type_id="' . ((int) $entry->type_id) . '" data-type="' . dol_escape_htmltag($entry->type) . '">'.dol_escape_htmltag($entry->type).'</td>';
+	echo '<td class="tdoverflowmax200 center" data-status_id="' . ((int) $entry->status) . '">'.$entry->status_html.'</td>';
 
 	if ($permission) {
 		$href = $_SERVER["PHP_SELF"];
@@ -339,35 +339,35 @@ foreach ($list as $entry) {
 		$href .= '&action=deletecontact&token='.newToken();
 		$href .= '&lineid='.((int) $entry->id);
 
-		print '<td class="center">';
-		print '<a href="'.$href.'">';
-		print img_picto($langs->trans("Unlink"), "unlink");
-		print "</a>";
-		print "</td>";
+		echo '<td class="center">';
+		echo '<a href="'.$href.'">';
+		echo img_picto($langs->trans("Unlink"), "unlink");
+		echo "</a>";
+		echo "</td>";
 	}
 
-	print "</tr>";
+	echo "</tr>";
 }
 if (empty($list)) {
 	$colspan = 5 + ($permission ? 1 : 0);
-	print '<tr><td colspan="'.$colspan.'"><span class="opacitymedium">';
+	echo '<tr><td colspan="'.$colspan.'"><span class="opacitymedium">';
 	if (is_object($object) && !empty($object->thirdparty)) {
-		print $form->textwithpicto($langs->trans("NoSpecificContactAddress"), $langs->trans("NoSpecificContactAddressBis"));
+		echo $form->textwithpicto($langs->trans("NoSpecificContactAddress"), $langs->trans("NoSpecificContactAddressBis"));
 	} else {
-		print $langs->trans("NoSpecificContactAddress");
+		echo $langs->trans("NoSpecificContactAddress");
 	}
-	print '</span>';
-	print '</td></tr>';
+	echo '</span>';
+	echo '</td></tr>';
 }
-print "</table>";
-print '</div>';
+echo "</table>";
+echo '</div>';
 
-print "</form>";
+echo "</form>";
 
-print "<!-- TEMPLATE CONTACTS HOOK BEGIN HERE -->\n";
+echo "<!-- TEMPLATE CONTACTS HOOK BEGIN HERE -->\n";
 if (is_object($hookmanager)) {
 	$hookmanager->initHooks(array('contacttpl'));
 	$parameters = array();
 	$reshook = $hookmanager->executeHooks('formContactTpl', $parameters, $object, $action);
 }
-print "<!-- END PHP TEMPLATE CONTACTS -->\n";
+echo "<!-- END PHP TEMPLATE CONTACTS -->\n";

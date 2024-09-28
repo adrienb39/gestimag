@@ -63,47 +63,47 @@ pHeader($langs->trans("GestimagSetup").' - '.$langs->trans("AdminAccountCreation
 
 // Test if we can run a first install process
 if (!is_writable($conffile)) {
-	print $langs->trans("ConfFileIsNotWritable", $conffiletoshow);
+	echo $langs->trans("ConfFileIsNotWritable", $conffiletoshow);
 	pFooter(1, $setuplang, 'jscheckparam');
 	exit;
 }
 
 
-print '<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/key.svg" width="20" alt="Database"> '.$langs->trans("GestimagAdminLogin").'</h3>';
+echo '<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/key.svg" width="20" alt="Database"> '.$langs->trans("GestimagAdminLogin").'</h3>';
 
-print $langs->trans("LastStepDesc").'<br><br>';
+echo $langs->trans("LastStepDesc").'<br><br>';
 
 
-print '<table cellspacing="0" cellpadding="2">';
+echo '<table cellspacing="0" cellpadding="2">';
 
 $db = getDoliDBInstance($conf->db->type, $conf->db->host, $conf->db->user, $conf->db->pass, $conf->db->name, (int) $conf->db->port);
 
 if ($db->ok) {
-	print '<tr><td><label for="login">'.$langs->trans("Login").' :</label></td><td>';
-	print '<input id="login" name="login" type="text" value="'.(GETPOSTISSET("login") ? GETPOST("login", 'alpha') : (isset($force_install_gestimaglogin) ? $force_install_gestimaglogin : '')).'"'.(@$force_install_noedit == 2 && $force_install_gestimaglogin !== null ? ' disabled' : '').' autofocus></td></tr>';
-	print '<tr><td><label for="pass">'.$langs->trans("Password").' :</label></td><td>';
-	print '<input type="password" id="pass" name="pass" autocomplete="new-password" minlength="8"></td></tr>';
-	print '<tr><td><label for="pass_verif">'.$langs->trans("PasswordRetype").' :</label></td><td>';
-	print '<input type="password" id="pass_verif" name="pass_verif" autocomplete="new-password" minlength="8"></td></tr>';
-	print '</table>';
+	echo '<tr><td><label for="login">'.$langs->trans("Login").' :</label></td><td>';
+	echo '<input id="login" name="login" type="text" value="'.(GETPOSTISSET("login") ? GETPOST("login", 'alpha') : (isset($force_install_gestimaglogin) ? $force_install_gestimaglogin : '')).'"'.(@$force_install_noedit == 2 && $force_install_gestimaglogin !== null ? ' disabled' : '').' autofocus></td></tr>';
+	echo '<tr><td><label for="pass">'.$langs->trans("Password").' :</label></td><td>';
+	echo '<input type="password" id="pass" name="pass" autocomplete="new-password" minlength="8"></td></tr>';
+	echo '<tr><td><label for="pass_verif">'.$langs->trans("PasswordRetype").' :</label></td><td>';
+	echo '<input type="password" id="pass_verif" name="pass_verif" autocomplete="new-password" minlength="8"></td></tr>';
+	echo '</table>';
 
 	if (GETPOSTINT("error") == 1) {
-		print '<br>';
-		print '<div class="error">'.$langs->trans("PasswordsMismatch").'</div>';
+		echo '<br>';
+		echo '<div class="error">'.$langs->trans("PasswordsMismatch").'</div>';
 		$error = 0; // We show button
 	}
 
 	if (GETPOSTINT("error") == 2) {
-		print '<br>';
-		print '<div class="error">';
-		print $langs->trans("PleaseTypePassword");
-		print '</div>';
+		echo '<br>';
+		echo '<div class="error">';
+		echo $langs->trans("PleaseTypePassword");
+		echo '</div>';
 		$error = 0; // We show button
 	}
 
 	if (GETPOSTINT("error") == 3) {
-		print '<br>';
-		print '<div class="error">'.$langs->trans("PleaseTypeALogin").'</div>';
+		echo '<br>';
+		echo '<div class="error">'.$langs->trans("PleaseTypeALogin").'</div>';
 		$error = 0; // We show button
 	}
 }

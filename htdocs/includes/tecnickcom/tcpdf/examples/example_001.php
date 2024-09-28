@@ -72,7 +72,7 @@ $pdf->setFontSubsetting(true);
 
 // Set font
 // dejavusans is a UTF-8 Unicode font, if you only need to
-// print standard ASCII chars, you can use core fonts like
+// echo standard ASCII chars, you can use core fonts like
 // helvetica or times to reduce file size.
 $pdf->SetFont('dejavusans', '', 14, '', true);
 

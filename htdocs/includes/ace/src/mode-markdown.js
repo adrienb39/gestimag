@@ -2846,7 +2846,7 @@ var reservedKeywords = exports.reservedKeywords = (
 var languageConstructs = exports.languageConstructs = (
     '[|]|alias|bg|bind|break|builtin|'+
      'cd|command|compgen|complete|continue|'+
-     'dirs|disown|echo|enable|eval|exec|'+
+     'dirs|disown|echo |enable|eval|exec|'+
      'exit|fc|fg|getopts|hash|help|history|'+
      'jobs|kill|let|logout|popd|printf|pushd|'+
      'pwd|return|set|shift|shopt|source|'+

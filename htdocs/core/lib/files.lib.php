@@ -80,7 +80,7 @@ function dol_dir_list($utf8_path, $types = "all", $recursive = 0, $filter = "", 
 			}
 		}
 		dol_syslog("files.lib.php::dol_dir_list path=".$utf8_path." types=".$types." recursive=".$recursive." filter=".$filter." excludefilter=".json_encode($excludefilter).$error_info);
-		// print 'xxx'."files.lib.php::dol_dir_list path=".$utf8_path." types=".$types." recursive=".$recursive." filter=".$filter." excludefilter=".json_encode($exclude_array);
+		// echo 'xxx'."files.lib.php::dol_dir_list path=".$utf8_path." types=".$types." recursive=".$recursive." filter=".$filter." excludefilter=".json_encode($exclude_array);
 		if (!$filters_ok) {
 			// Return empty array when filters are invalid
 			return array();
@@ -158,7 +158,7 @@ function dol_dir_list($utf8_path, $types = "all", $recursive = 0, $filter = "", 
 						break;
 					}
 				}
-				//print $utf8_fullpathfile.' '.$utf8_file.' '.$qualified.'<br>';
+				//echo $utf8_fullpathfile.' '.$utf8_file.' '.$qualified.'<br>';
 
 				if ($qualified) {
 					$isdir = is_dir($os_fullpathfile);
@@ -604,7 +604,7 @@ function dol_count_nb_of_line($file)
 	$nb = 0;
 
 	$newfile = dol_osencode($file);
-	//print 'x'.$file;
+	//echo 'x'.$file;
 	$fp = fopen($newfile, 'r');
 	if ($fp) {
 		while (!feof($fp)) {
@@ -950,7 +950,7 @@ function dolCopyDir($srcfile, $destfile, $newmask, $overwriteifexists, $arrayrep
 					if (is_array($excludefileext)) {
 						$extension = pathinfo($file, PATHINFO_EXTENSION);
 						if (in_array($extension, $excludefileext)) {
-							//print "We exclude the file ".$file." because its extension is inside list ".join(', ', $excludefileext); exit;
+							//echo "We exclude the file ".$file." because its extension is inside list ".join(', ', $excludefileext); exit;
 							continue;
 						}
 					}
@@ -1639,7 +1639,7 @@ function dol_delete_dir_recursive($dir, $count = 0, $nophperrors = 0, $onlysub =
 						if ($result) {
 							$countdeleted++;
 						}
-						//else print 'Error on '.$item."\n";
+						//else echo 'Error on '.$item."\n";
 					}
 				}
 			}
@@ -1652,7 +1652,7 @@ function dol_delete_dir_recursive($dir, $count = 0, $nophperrors = 0, $onlysub =
 				if ($result) {
 					$countdeleted++;
 				}
-				//else print 'Error on '.$dir."\n";
+				//else echo 'Error on '.$dir."\n";
 			}
 		}
 	}
@@ -2765,7 +2765,7 @@ function dol_check_secure_access_document($modulepart, $original_file, $entity, 
 		$modulepart = 'delivery';
 	}
 
-	//print 'dol_check_secure_access_document modulepart='.$modulepart.' original_file='.$original_file.' entity='.$entity;
+	//echo 'dol_check_secure_access_document modulepart='.$modulepart.' original_file='.$original_file.' entity='.$entity;
 	dol_syslog('dol_check_secure_access_document modulepart='.$modulepart.' original_file='.$original_file.' entity='.$entity);
 
 	// We define $accessallowed and $sqlprotectagainstexternals

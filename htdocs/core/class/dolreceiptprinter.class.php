@@ -403,7 +403,7 @@ class dolReceiptPrinter extends Printer
 			5 => $langs->trans('CONNECTOR_CUPS_PRINT'),
 		);
 
-		$this->resprint = Form::selectarray($htmlname, $options, $selected);
+		$this->resecho = Form::selectarray($htmlname, $options, $selected);
 
 		return 0;
 	}
@@ -428,7 +428,7 @@ class dolReceiptPrinter extends Printer
 			4 => $langs->trans('PROFILE_STAR'),
 		);
 
-		$this->profileresprint = Form::selectarray($htmlname, $options, $selected);
+		$this->profileresecho = Form::selectarray($htmlname, $options, $selected);
 		return 0;
 	}
 
@@ -716,9 +716,9 @@ class dolReceiptPrinter extends Printer
 		xml_parse_into_struct($p, $this->template, $vals, $index);
 		xml_parser_free($p);
 
-		//print '<pre>'.print_r($index, true).'</pre>';
-		//print '<pre>'.print_r($vals, true).'</pre>';
-		// print ticket
+		//echo '<pre>'.print_r($index, true).'</pre>';
+		//echo '<pre>'.print_r($vals, true).'</pre>';
+		// echo ticket
 		$nbcharactbyline = getDolGlobalInt('RECEIPT_PRINTER_NB_CHARACT_BY_LINE', 48);
 		$ret = $this->initPrinter($printerid);
 
@@ -966,7 +966,7 @@ class dolReceiptPrinter extends Printer
 			if ($this->printer->connector instanceof DummyPrintConnector || getDolGlobalString('TAKEPOS_PRINT_METHOD') == "takeposconnector") {
 				$data = $this->printer->connector->getData();
 				if (getDolGlobalString('TAKEPOS_PRINT_METHOD') == "takeposconnector") {
-					echo rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+					echo  rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
 				}
 				dol_syslog($data);
 			}

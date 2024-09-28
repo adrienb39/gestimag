@@ -574,11 +574,11 @@ class Worksheet extends BIFFwriter
     }
 
     /**
-     * Set the option to print the row and column headers on the printed page.
+     * Set the option to echo the row and column headers on the printed page.
      *
-     * @param int $print Whether to print the headers or not. Defaults to 1 (print).
+     * @param int $echo Whether to echo the headers or not. Defaults to 1 (print).
      */
-    public function printRowColHeaders(int $print = 1): void
+    public function printRowColHeaders(int $echo = 1): void
     {
         $this->printHeaders = $print;
     }
@@ -1605,7 +1605,7 @@ class Worksheet extends BIFFwriter
         $iFitWidth = (int) $this->phpSheet->getPageSetup()->getFitToWidth(); // Fit to number of pages wide
         $iFitHeight = (int) $this->phpSheet->getPageSetup()->getFitToHeight(); // Fit to number of pages high
         $iRes = 0x0258; // Print resolution
-        $iVRes = 0x0258; // Vertical print resolution
+        $iVRes = 0x0258; // Vertical echo resolution
 
         $numHdr = $this->phpSheet->getPageMargins()->getHeader(); // Header Margin
 

@@ -2310,7 +2310,7 @@ $values             = [44, 46, 47, 49, 63, 64, 66, 68, 68, 72, 72, 75, 76, 81, 8
 $stem_and_leaf_plot = Distribution::stemAndLeafPlot($values);
 // [4 => [4, 6, 7, 9], 5 => [], 6 => [3, 4, 6, 8, 8], 7 => [2, 2, 5, 6], 8 => [1, 4, 8], 9 => [], 10 => [6]]
 
-// Optional second parameter will print stem and leaf plot to STDOUT
+// Optional second parameter will echo stem and leaf plot to STDOUT
 Distribution::stemAndLeafPlot($values, Distribution::PRINT);
 /*
  4 | 4 6 7 9

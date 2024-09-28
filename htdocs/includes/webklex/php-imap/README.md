@@ -37,7 +37,7 @@ Laravel wrapper: [webklex/laravel-imap](https://github.com/Webklex/laravel-imap)
 
 
 ## Basic usage example
-This is a basic example, which will echo out all Mails within all imap folders
+This is a basic example, which will echo  out all Mails within all imap folders
 and will move every message into INBOX.read. Please be aware that this should not be
 tested in real life and is only meant to gives an impression on how things work.
 
@@ -66,15 +66,15 @@ foreach($folders as $folder){
     
     /** @var \Webklex\PHPIMAP\Message $message */
     foreach($messages as $message){
-        echo $message->getSubject().'<br />';
-        echo 'Attachments: '.$message->getAttachments()->count().'<br />';
-        echo $message->getHTMLBody();
+        echo  $message->getSubject().'<br />';
+        echo  'Attachments: '.$message->getAttachments()->count().'<br />';
+        echo  $message->getHTMLBody();
         
         //Move the current Message to 'INBOX.read'
         if($message->move('INBOX.read') == true){
-            echo 'Message has ben moved';
+            echo  'Message has ben moved';
         }else{
-            echo 'Message could not be moved';
+            echo  'Message could not be moved';
         }
     }
 }
@@ -101,13 +101,13 @@ and people are more likely to comment and help :)
  
 &#96;&#96;&#96;php 
 
-echo 'your php code...'; 
+echo  'your php code...'; 
  
 &#96;&#96;&#96; 
  
 will turn into: 
 ```php 
-echo 'your php code...'; 
+echo  'your php code...'; 
 ``` 
  
   

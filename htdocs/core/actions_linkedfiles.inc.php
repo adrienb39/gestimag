@@ -31,8 +31,8 @@
 if (GETPOSTINT('uploadform') && empty($_POST) && empty($_FILES)) {
 	dol_syslog("The PHP parameter 'post_max_size' is too low. All POST parameters and FILES were set to empty.");
 	$langs->loadLangs(array("errors", "install"));
-	print $langs->trans("ErrorFileSizeTooLarge").' ';
-	print $langs->trans("ErrorGoBackAndCorrectParameters");
+	echo $langs->trans("ErrorFileSizeTooLarge").' ';
+	echo $langs->trans("ErrorGoBackAndCorrectParameters");
 	die;
 }
 
@@ -42,7 +42,7 @@ if ((GETPOST('sendit', 'alpha')
 	|| ($action == 'confirm_updateline' && GETPOST('save', 'alpha') && GETPOST('link', 'alpha'))
 	|| ($action == 'renamefile' && GETPOST('renamefilesave', 'alpha'))) && empty($permissiontoadd)) {
 	dol_syslog('The file actions_linkedfiles.inc.php was included but parameter $permissiontoadd was not set before.');
-	print 'The file actions_linkedfiles.inc.php was included but parameter $permissiontoadd was not set before.';
+	echo 'The file actions_linkedfiles.inc.php was included but parameter $permissiontoadd was not set before.';
 	die;
 }
 

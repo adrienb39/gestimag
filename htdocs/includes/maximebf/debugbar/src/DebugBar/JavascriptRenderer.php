@@ -918,7 +918,7 @@ class JavascriptRenderer
         if ($targetFilename !== null) {
             file_put_contents($targetFilename, $dumpedContent);
         } else {
-            echo $dumpedContent;
+            echo  $dumpedContent;
         }
     }
 
@@ -1011,10 +1011,10 @@ class JavascriptRenderer
 
         $current = ($here && ob_get_level() > 0) ? ob_get_clean() : self::REPLACEABLE_TAG;
 
-        echo str_replace(self::REPLACEABLE_TAG, $render, $current, $count);
+        echo  str_replace(self::REPLACEABLE_TAG, $render, $current, $count);
 
         if ($count === 0) {
-            echo $render;
+            echo  $render;
         }
     }
 

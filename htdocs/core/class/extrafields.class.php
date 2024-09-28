@@ -1466,7 +1466,7 @@ class ExtraFields
 						$sqlwhere .= ' AND entity = '.((int) $conf->entity);
 					}
 					$sql .= $sqlwhere;
-					//print $sql;
+					//echo $sql;
 
 					$sql .= ' ORDER BY '.implode(', ', $fields_label);
 
@@ -1523,7 +1523,7 @@ class ExtraFields
 						}
 						$this->db->free($resql);
 					} else {
-						print 'Error in request '.$sql.' '.$this->db->lasterror().'. Check setup of extra parameters.<br>';
+						echo 'Error in request '.$sql.' '.$this->db->lasterror().'. Check setup of extra parameters.<br>';
 					}
 				} else {
 					require_once DOL_DOCUMENT_ROOT.'/categories/class/categorie.class.php';
@@ -1739,7 +1739,7 @@ class ExtraFields
 						$sqlwhere .= " AND entity = ".((int) $conf->entity);
 					}
 					// $sql.=preg_replace('/^ AND /','',$sqlwhere);
-					// print $sql;
+					// echo $sql;
 
 					$sql .= $sqlwhere;
 					$sql .= ' ORDER BY '.implode(', ', $fields_label);
@@ -1810,7 +1810,7 @@ class ExtraFields
 
 						$out = $form->multiselectarray($keyprefix.$key.$keysuffix, $data, $value_arr, '', 0, '', 0, '100%');
 					} else {
-						print 'Error in request '.$sql.' '.$this->db->lasterror().'. Check setup of extra parameters.<br>';
+						echo 'Error in request '.$sql.' '.$this->db->lasterror().'. Check setup of extra parameters.<br>';
 					}
 				} else {
 					require_once DOL_DOCUMENT_ROOT.'/categories/class/categorie.class.php';
@@ -2073,7 +2073,7 @@ class ExtraFields
 						}
 					}
 				} else {
-					$toprint = array();
+					$toecho = array();
 					$obj = $this->db->fetch_object($resql);
 					if ($obj->rowid) {
 						require_once DOL_DOCUMENT_ROOT . '/categories/class/categorie.class.php';
@@ -2101,7 +2101,7 @@ class ExtraFields
 		} elseif ($type == 'checkbox') {
 			$value_arr = explode(',', $value);
 			$value = '';
-			$toprint = array();
+			$toecho = array();
 			if (is_array($value_arr)) {
 				foreach ($value_arr as $keyval => $valueval) {
 					if (!empty($valueval)) {
@@ -2150,7 +2150,7 @@ class ExtraFields
 			if ($resql) {
 				if ($filter_categorie === false) {
 					$value = ''; // value was used, so now we reste it to use it to build final output
-					$toprint = array();
+					$toecho = array();
 					while ($obj = $this->db->fetch_object($resql)) {
 						// Several field into label (eq table:code|label:rowid)
 						$fields_label = explode('|', $InfoFieldList[1]);
@@ -2186,7 +2186,7 @@ class ExtraFields
 				} else {
 					require_once DOL_DOCUMENT_ROOT.'/categories/class/categorie.class.php';
 
-					$toprint = array();
+					$toecho = array();
 					while ($obj = $this->db->fetch_object($resql)) {
 						if (is_array($value_arr) && in_array($obj->rowid, $value_arr)) {
 							$c = new Categorie($this->db);
@@ -2255,7 +2255,7 @@ class ExtraFields
 			}
 		}
 
-		//print $type.'-'.$size;
+		//echo $type.'-'.$size;
 		$out = $value;
 
 		return $out;
@@ -2297,7 +2297,7 @@ class ExtraFields
 	}
 
 	/**
-	 * Return HTML string to print separator extrafield
+	 * Return HTML string to echo separator extrafield
 	 *
 	 * @param   string	$key            Key of attribute
 	 * @param	object	$object			Object
@@ -2474,7 +2474,7 @@ class ExtraFields
 						$v = $_POST["options_".$key] ?? null;
 						$type = $this->attributes[$object->table_element]['type'][$key];
 					if (self::isEmptyValue($v, $type)) {
-						//print 'ccc'.$value.'-'.$this->attributes[$object->table_element]['required'][$key];
+						//echo 'ccc'.$value.'-'.$this->attributes[$object->table_element]['required'][$key];
 
 						// Field is not defined. We mark this as an error. We may fix it later if there is a default value and $todefaultifmissing is set.
 

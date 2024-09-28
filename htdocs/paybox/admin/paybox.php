@@ -136,7 +136,7 @@ if (!getDolGlobalString('PAYBOX_IBS_DEVISE')) {
 llxHeader();
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?restore_lastsearch_values=1">'.$langs->trans("BackToModuleList").'</a>';
-print load_fiche_titre($langs->trans("PayBoxSetup"), $linkback, 'title_setup');
+echoload_fiche_titre($langs->trans("PayBoxSetup"), $linkback, 'title_setup');
 
 $h = 0;
 $head = array();
@@ -146,151 +146,151 @@ $head[$h][1] = $langs->trans("PayBox");
 $head[$h][2] = 'payboxaccount';
 $h++;
 
-print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="action" value="setvalue">';
+echo'<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+echo'<input type="hidden" name="token" value="'.newToken().'">';
+echo'<input type="hidden" name="action" value="setvalue">';
 
-print dol_get_fiche_head($head, 'payboxaccount', '', -1);
+echodol_get_fiche_head($head, 'payboxaccount', '', -1);
 
-print $langs->trans("PayBoxDesc")."<br>\n";
-print '<br>';
+echo$langs->trans("PayBoxDesc")."<br>\n";
+echo'<br>';
 
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("AccountParameter").'</td>';
-print '<td>'.$langs->trans("Value").'</td>';
-print "</tr>\n";
-
-
-print '<tr class="oddeven"><td>';
-print '<span class="fieldrequired">'.$langs->trans("PAYBOX_PBX_SITE").'</span></td><td>';
-print '<input size="32" type="text" name="PAYBOX_IBS_SITE" value="' . getDolGlobalString('PAYBOX_IBS_SITE').'">';
-print '<span class="opacitymedium"><br>'.$langs->trans("Example").': 1999888 ('.$langs->trans("Test").')</span>';
-print '</td></tr>';
+echo'<table class="noborder centpercent">';
+echo'<tr class="liste_titre">';
+echo'<td>'.$langs->trans("AccountParameter").'</td>';
+echo'<td>'.$langs->trans("Value").'</td>';
+echo"</tr>\n";
 
 
-print '<tr class="oddeven"><td>';
-print '<span class="fieldrequired">'.$langs->trans("PAYBOX_PBX_RANG").'</span></td><td>';
-print '<input size="32" type="text" name="PAYBOX_IBS_RANG" value="' . getDolGlobalString('PAYBOX_IBS_RANG').'">';
-print '<span class="opacitymedium"><br>'.$langs->trans("Example").': 99 ('.$langs->trans("Test").')</span>';
-print '</td></tr>';
+echo'<tr class="oddeven"><td>';
+echo'<span class="fieldrequired">'.$langs->trans("PAYBOX_PBX_SITE").'</span></td><td>';
+echo'<input size="32" type="text" name="PAYBOX_IBS_SITE" value="' . getDolGlobalString('PAYBOX_IBS_SITE').'">';
+echo'<span class="opacitymedium"><br>'.$langs->trans("Example").': 1999888 ('.$langs->trans("Test").')</span>';
+echo'</td></tr>';
 
 
-print '<tr class="oddeven"><td>';
-print '<span class="fieldrequired">'.$langs->trans("PAYBOX_PBX_IDENTIFIANT").'</span></td><td>';
-print '<input size="32" type="text" name="PAYBOX_PBX_IDENTIFIANT" value="' . getDolGlobalString('PAYBOX_PBX_IDENTIFIANT').'">';
-print '<span class="opacitymedium"><br>'.$langs->trans("Example").': 2 ('.$langs->trans("Test").')</span>';
-print '</td></tr>';
+echo'<tr class="oddeven"><td>';
+echo'<span class="fieldrequired">'.$langs->trans("PAYBOX_PBX_RANG").'</span></td><td>';
+echo'<input size="32" type="text" name="PAYBOX_IBS_RANG" value="' . getDolGlobalString('PAYBOX_IBS_RANG').'">';
+echo'<span class="opacitymedium"><br>'.$langs->trans("Example").': 99 ('.$langs->trans("Test").')</span>';
+echo'</td></tr>';
 
-print '<tr class="oddeven"><td>';
-print '<span class="fieldrequired">'.$langs->trans("PAYBOX_HMAC_KEY").'</span></td><td>';
-print '<input size="100" type="text" name="PAYBOX_HMAC_KEY" value="'.dol_decode($conf->global->PAYBOX_HMAC_KEY).'">';
-print '<span class="opacitymedium"><br>'.$langs->trans("Example").': 1A2B3C4D5E6F</span>';
-print '</td></tr>';
 
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("UsageParameter").'</td>';
-print '<td>'.$langs->trans("Value").'</td>';
-print "</tr>\n";
+echo'<tr class="oddeven"><td>';
+echo'<span class="fieldrequired">'.$langs->trans("PAYBOX_PBX_IDENTIFIANT").'</span></td><td>';
+echo'<input size="32" type="text" name="PAYBOX_PBX_IDENTIFIANT" value="' . getDolGlobalString('PAYBOX_PBX_IDENTIFIANT').'">';
+echo'<span class="opacitymedium"><br>'.$langs->trans("Example").': 2 ('.$langs->trans("Test").')</span>';
+echo'</td></tr>';
+
+echo'<tr class="oddeven"><td>';
+echo'<span class="fieldrequired">'.$langs->trans("PAYBOX_HMAC_KEY").'</span></td><td>';
+echo'<input size="100" type="text" name="PAYBOX_HMAC_KEY" value="'.dol_decode($conf->global->PAYBOX_HMAC_KEY).'">';
+echo'<span class="opacitymedium"><br>'.$langs->trans("Example").': 1A2B3C4D5E6F</span>';
+echo'</td></tr>';
+
+echo'<tr class="liste_titre">';
+echo'<td>'.$langs->trans("UsageParameter").'</td>';
+echo'<td>'.$langs->trans("Value").'</td>';
+echo"</tr>\n";
 
 /*
 
-print '<tr class="oddeven"><td>';
-print $langs->trans("PAYBOX_IBS_DEVISE").'</td><td>';
-print '<input size="32" type="text" name="PAYBOX_IBS_DEVISE" value="'.$conf->global->PAYBOX_IBS_DEVISE.'">';
-print '<br>'.$langs->trans("Example").': 978 (EUR)';
-print '</td></tr>';
+echo'<tr class="oddeven"><td>';
+echo$langs->trans("PAYBOX_IBS_DEVISE").'</td><td>';
+echo'<input size="32" type="text" name="PAYBOX_IBS_DEVISE" value="'.$conf->global->PAYBOX_IBS_DEVISE.'">';
+echo'<br>'.$langs->trans("Example").': 978 (EUR)';
+echo'</td></tr>';
 */
 
 /*
 
-print '<tr class="oddeven"><td>';
-print $langs->trans("PAYBOX_CGI_URL_V1").'</td><td>';
-print '<input size="64" type="text" name="PAYBOX_CGI_URL_V1" value="'.$conf->global->PAYBOX_CGI_URL_V1.'">';
-print '<br>'.$langs->trans("Example").': http://mysite/cgi-bin/module_linux.cgi';
-print '</td></tr>';
+echo'<tr class="oddeven"><td>';
+echo$langs->trans("PAYBOX_CGI_URL_V1").'</td><td>';
+echo'<input size="64" type="text" name="PAYBOX_CGI_URL_V1" value="'.$conf->global->PAYBOX_CGI_URL_V1.'">';
+echo'<br>'.$langs->trans("Example").': http://mysite/cgi-bin/module_linux.cgi';
+echo'</td></tr>';
 */
 
 
-print '<tr class="oddeven"><td>';
-print '<span class="fieldrequired">'.$langs->trans("PAYBOX_CGI_URL_V2").'</span></td><td>';
-print '<input size="64" type="text" name="PAYBOX_CGI_URL_V2" value="' . getDolGlobalString('PAYBOX_CGI_URL_V2').'">';
-print '<span class="opacitymedium"><br>'.$langs->trans("Example").' (preprod): https://preprod-tpeweb.paybox.com/php/';
-print '<br>'.$langs->trans("Example").' (prod): https://tpeweb.paybox.com/php/</span>';
-print '</td></tr>';
+echo'<tr class="oddeven"><td>';
+echo'<span class="fieldrequired">'.$langs->trans("PAYBOX_CGI_URL_V2").'</span></td><td>';
+echo'<input size="64" type="text" name="PAYBOX_CGI_URL_V2" value="' . getDolGlobalString('PAYBOX_CGI_URL_V2').'">';
+echo'<span class="opacitymedium"><br>'.$langs->trans("Example").' (preprod): https://preprod-tpeweb.paybox.com/php/';
+echo'<br>'.$langs->trans("Example").' (prod): https://tpeweb.paybox.com/php/</span>';
+echo'</td></tr>';
 
 
-print '<tr class="oddeven"><td>';
-print $langs->trans("PublicVendorName").'</td><td>';
-print '<input type="text" class="minwidth300" name="ONLINE_PAYMENT_CREDITOR" value="' . getDolGlobalString('ONLINE_PAYMENT_CREDITOR').'">';
-print '<br><span class="opacitymedium">'.$langs->trans("Example").': '.$mysoc->name.'</span>';
-print '</td></tr>';
+echo'<tr class="oddeven"><td>';
+echo$langs->trans("PublicVendorName").'</td><td>';
+echo'<input type="text" class="minwidth300" name="ONLINE_PAYMENT_CREDITOR" value="' . getDolGlobalString('ONLINE_PAYMENT_CREDITOR').'">';
+echo'<br><span class="opacitymedium">'.$langs->trans("Example").': '.$mysoc->name.'</span>';
+echo'</td></tr>';
 
 
 if (isModEnabled("bank")) {
-	print '<tr class="oddeven"><td>';
-	print $langs->trans("BankAccount").'</td><td>';
+	echo'<tr class="oddeven"><td>';
+	echo$langs->trans("BankAccount").'</td><td>';
 	$form->select_comptes($conf->global->PAYBOX_BANK_ACCOUNT_FOR_PAYMENTS, 'PAYBOX_BANK_ACCOUNT_FOR_PAYMENTS', 0, '', 1);
-	print '</td></tr>';
+	echo'</td></tr>';
 }
 
 
-print '<tr class="oddeven"><td>';
-print $langs->trans("CSSUrlForPaymentForm").'</td><td>';
-print '<input size="64" type="text" name="ONLINE_PAYMENT_CSS_URL" value="' . getDolGlobalString('ONLINE_PAYMENT_CSS_URL').'">';
-print '<span class="opacitymedium"><br>'.$langs->trans("Example").': http://mysite/mycss.css</span>';
-print '</td></tr>';
+echo'<tr class="oddeven"><td>';
+echo$langs->trans("CSSUrlForPaymentForm").'</td><td>';
+echo'<input size="64" type="text" name="ONLINE_PAYMENT_CSS_URL" value="' . getDolGlobalString('ONLINE_PAYMENT_CSS_URL').'">';
+echo'<span class="opacitymedium"><br>'.$langs->trans("Example").': http://mysite/mycss.css</span>';
+echo'</td></tr>';
 
 
-print '<tr class="oddeven"><td>';
-print $langs->trans("MessageForm").'</td><td>';
+echo'<tr class="oddeven"><td>';
+echo$langs->trans("MessageForm").'</td><td>';
 $doleditor = new DolEditor('ONLINE_PAYMENT_MESSAGE_FORM', $conf->global->ONLINE_PAYMENT_MESSAGE_FORM, '', 100, 'gestimag_details', 'In', false, true, true, ROWS_2, '90%');
 $doleditor->Create();
-print '</td></tr>';
+echo'</td></tr>';
 
-print '<tr class="oddeven"><td>';
-print $langs->trans("MessageOK").'</td><td>';
+echo'<tr class="oddeven"><td>';
+echo$langs->trans("MessageOK").'</td><td>';
 $doleditor = new DolEditor('ONLINE_PAYMENT_MESSAGE_OK', $conf->global->ONLINE_PAYMENT_MESSAGE_OK, '', 100, 'gestimag_details', 'In', false, true, true, ROWS_2, '90%');
 $doleditor->Create();
-print '</td></tr>';
+echo'</td></tr>';
 
 
-print '<tr class="oddeven"><td>';
-print $langs->trans("MessageKO").'</td><td>';
+echo'<tr class="oddeven"><td>';
+echo$langs->trans("MessageKO").'</td><td>';
 $doleditor = new DolEditor('ONLINE_PAYMENT_MESSAGE_KO', $conf->global->ONLINE_PAYMENT_MESSAGE_KO, '', 100, 'gestimag_details', 'In', false, true, true, ROWS_2, '90%');
 $doleditor->Create();
-print '</td></tr>';
+echo'</td></tr>';
 
 
-print '<tr class="oddeven"><td class="fieldrequired">';
-print $langs->trans("ONLINE_PAYMENT_SENDEMAIL").'</td><td>';
-print '<input size="32" type="text" name="ONLINE_PAYMENT_SENDEMAIL" value="' . getDolGlobalString('ONLINE_PAYMENT_SENDEMAIL').'">';
-print ' &nbsp; <span class="opacitymedium">'.$langs->trans("Example").': myemail@myserver.com, Payment service &lt;myemail2@myserver2.com&gt;</span>';
-print '</td></tr>';
+echo'<tr class="oddeven"><td class="fieldrequired">';
+echo$langs->trans("ONLINE_PAYMENT_SENDEMAIL").'</td><td>';
+echo'<input size="32" type="text" name="ONLINE_PAYMENT_SENDEMAIL" value="' . getDolGlobalString('ONLINE_PAYMENT_SENDEMAIL').'">';
+echo' &nbsp; <span class="opacitymedium">'.$langs->trans("Example").': myemail@myserver.com, Payment service &lt;myemail2@myserver2.com&gt;</span>';
+echo'</td></tr>';
 
 // Payment token for URL
-print '<tr class="oddeven"><td>';
-print $langs->trans("SecurityToken").'</td><td>';
-print '<input size="48" type="text" id="PAYMENT_SECURITY_TOKEN" name="PAYMENT_SECURITY_TOKEN" value="' . getDolGlobalString('PAYMENT_SECURITY_TOKEN').'">';
+echo'<tr class="oddeven"><td>';
+echo$langs->trans("SecurityToken").'</td><td>';
+echo'<input size="48" type="text" id="PAYMENT_SECURITY_TOKEN" name="PAYMENT_SECURITY_TOKEN" value="' . getDolGlobalString('PAYMENT_SECURITY_TOKEN').'">';
 if (!empty($conf->use_javascript_ajax)) {
-	print '&nbsp;'.img_picto($langs->trans('Generate'), 'refresh', 'id="generate_token" class="linkobject"');
+	echo'&nbsp;'.img_picto($langs->trans('Generate'), 'refresh', 'id="generate_token" class="linkobject"');
 }
-print '</td></tr>';
+echo'</td></tr>';
 
-print '<tr class="oddeven"><td>';
-print $langs->trans("SecurityTokenIsUnique").'</td><td>';
-print $form->selectyesno("PAYMENT_SECURITY_TOKEN_UNIQUE", (!getDolGlobalString('PAYMENT_SECURITY_TOKEN') ? 0 : $conf->global->PAYMENT_SECURITY_TOKEN_UNIQUE), 1);
-print '</td></tr>';
+echo'<tr class="oddeven"><td>';
+echo$langs->trans("SecurityTokenIsUnique").'</td><td>';
+echo$form->selectyesno("PAYMENT_SECURITY_TOKEN_UNIQUE", (!getDolGlobalString('PAYMENT_SECURITY_TOKEN') ? 0 : $conf->global->PAYMENT_SECURITY_TOKEN_UNIQUE), 1);
+echo'</td></tr>';
 
-print '</table>';
+echo'</table>';
 
-print dol_get_fiche_end();
+echodol_get_fiche_end();
 
-print $form->buttonsSaveCancel("Modify", '');
+echo$form->buttonsSaveCancel("Modify", '');
 
-print '</form>';
+echo'</form>';
 
-print '<br><br>';
+echo'<br><br>';
 
 include DOL_DOCUMENT_ROOT.'/core/tpl/onlinepaymentlinks.tpl.php';
 

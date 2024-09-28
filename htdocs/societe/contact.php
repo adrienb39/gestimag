@@ -193,15 +193,15 @@ if (!empty($object->id)) {
 
 $head = societe_prepare_head($object);
 
-print dol_get_fiche_head($head, 'contact', $langs->trans("ThirdParty"), 0, 'company');
+echo dol_get_fiche_head($head, 'contact', $langs->trans("ThirdParty"), 0, 'company');
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/societe/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
 dol_banner_tab($object, 'socid', $linkback, ($user->socid ? 0 : 1), 'rowid', 'nom', '', '', 0, '', '', 'arearefnobottom');
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
-print '<br>';
+echo '<br>';
 
 if ($action != 'presend') {
 	// Contacts list
@@ -219,7 +219,7 @@ if ($action == 'delete') {
 		0,
 		1
 	);
-	print $formconfirm;
+	echo $formconfirm;
 }
 
 // End of page

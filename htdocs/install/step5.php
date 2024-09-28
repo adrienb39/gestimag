@@ -127,11 +127,11 @@ if ($action == "set") {
 $morehtml = '';
 
 pHeader($langs->trans("GestimagSetup").' - '.$langs->trans("SetupEnd"), "step5", 'set', '', '', 'main-inside main-inside-borderbottom');
-print '<br>';
+echo '<br>';
 
 // Test if we can run a first install process
 if (empty($versionfrom) && empty($versionto) && !is_writable($conffile)) {
-	print $langs->trans("ConfFileIsNotWritable", $conffiletoshow);
+	echo $langs->trans("ConfFileIsNotWritable", $conffiletoshow);
 	pFooter(1, $setuplang, 'jscheckparam');
 	exit;
 }
@@ -183,7 +183,7 @@ if ($action == "set" || empty($action) || preg_match('/upgrade/i', $action)) {
 		$objMod = new $modName($db);
 		$result = $objMod->init();
 		if (!$result) {
-			print "ERROR: failed to init module file = ".$file;
+			echo "ERROR: failed to init module file = ".$file;
 		}
 
 		if ($db->connected) {
@@ -236,19 +236,19 @@ if ($action == "set" || empty($action) || preg_match('/upgrade/i', $action)) {
 
 			$result = $newuser->create($createuser, 1);
 			if ($result > 0) {
-				print $langs->trans("AdminLoginCreatedSuccessfuly", $login)."<br>";
+				echo $langs->trans("AdminLoginCreatedSuccessfuly", $login)."<br>";
 				$success = 1;
 			} else {
 				if ($result == -6) {	//login or email already exists
 					gestimag_install_syslog('step5: AdminLoginAlreadyExists', LOG_WARNING);
-					print '<br><div class="warning">'.$newuser->error."</div><br>";
+					echo '<br><div class="warning">'.$newuser->error."</div><br>";
 					$success = 1;
 				} else {
 					gestimag_install_syslog('step5: FailedToCreateAdminLogin '.$newuser->error, LOG_ERR);
 					setEventMessages($langs->trans("FailedToCreateAdminLogin").' '.$newuser->error, null, 'errors');
 					//header("Location: step4.php?error=3&selectlang=$setuplang".(isset($login) ? '&login='.$login : ''));
-					print '<br><div class="error">'.$langs->trans("FailedToCreateAdminLogin").': '.$newuser->error.'</div><br><br>';
-					print $langs->trans("ErrorGoBackAndCorrectParameters").'<br><br>';
+					echo '<br><div class="error">'.$langs->trans("FailedToCreateAdminLogin").': '.$newuser->error.'</div><br><br>';
+					echo $langs->trans("ErrorGoBackAndCorrectParameters").'<br><br>';
 				}
 			}
 
@@ -313,7 +313,7 @@ if ($action == "set" || empty($action) || preg_match('/upgrade/i', $action)) {
 
 				foreach ($modulesdir as $dir) {
 					// Load modules attributes in arrays (name, numero, orders) from dir directory
-					//print $dir."\n<br>";
+					//echo $dir."\n<br>";
 					dol_syslog("Scan directory ".$dir." for module descriptor files (modXXX.class.php)");
 					$handle = @opendir($dir);
 					if (is_resource($handle)) {
@@ -350,7 +350,7 @@ if ($action == "set" || empty($action) || preg_match('/upgrade/i', $action)) {
 				if (!empty($tmparray)) {
 					foreach ($tmparray as $modtoactivate) {
 						$modtoactivatenew = preg_replace('/\.class\.php$/i', '', $modtoactivate);
-						//print $langs->trans("ActivateModule", $modtoactivatenew).'<br>';
+						//echo $langs->trans("ActivateModule", $modtoactivatenew).'<br>';
 
 						$file = $modtoactivatenew.'.class.php';
 						gestimag_install_syslog('step5: activate module file='.$file);
@@ -358,10 +358,10 @@ if ($action == "set" || empty($action) || preg_match('/upgrade/i', $action)) {
 
 						$res = activateModule($modtoactivatenew, 1);
 						if (!empty($res['errors'])) {
-							print 'ERROR: failed to activateModule() file='.$file;
+							echo 'ERROR: failed to activateModule() file='.$file;
 						}
 					}
-					//print '<br>';
+					//echo '<br>';
 				}
 
 				// Now delete the flag that say installation is not complete
@@ -379,7 +379,7 @@ if ($action == "set" || empty($action) || preg_match('/upgrade/i', $action)) {
 				$db->commit();
 			}
 		} else {
-			print $langs->trans("ErrorFailedToConnect")."<br>";
+			echo $langs->trans("ErrorFailedToConnect")."<br>";
 		}
 	} elseif (empty($action) || preg_match('/upgrade/i', $action)) {
 		// If upgrade
@@ -425,7 +425,7 @@ if ($action == "set" || empty($action) || preg_match('/upgrade/i', $action)) {
 				}
 			}
 		} else {
-			print $langs->trans("ErrorFailedToConnect")."<br>";
+			echo $langs->trans("ErrorFailedToConnect")."<br>";
 		}
 	} else {
 		dol_print_error(null, 'step5.php: unknown choice of action');
@@ -443,7 +443,7 @@ if ($action == "set") {
 	if ($success) {
 		if (!getDolGlobalString('MAIN_VERSION_LAST_UPGRADE') || ($conf->global->MAIN_VERSION_LAST_UPGRADE == DOL_VERSION)) {
 			// Install is finished (database is on same version than files)
-			print '<br>'.$langs->trans("SystemIsInstalled")."<br>";
+			echo '<br>'.$langs->trans("SystemIsInstalled")."<br>";
 
 			// Create install.lock file
 			// No need for the moment to create it automatically, creation by web assistant means permissions are given
@@ -466,34 +466,34 @@ if ($action == "set") {
 				}
 			}
 			if (empty($createlock)) {
-				print '<div class="warning">'.$langs->trans("WarningRemoveInstallDir")."</div>";
+				echo '<div class="warning">'.$langs->trans("WarningRemoveInstallDir")."</div>";
 			}
 
-			print "<br>";
+			echo "<br>";
 
-			print $langs->trans("YouNeedToPersonalizeSetup")."<br><br><br>";
+			echo $langs->trans("YouNeedToPersonalizeSetup")."<br><br><br>";
 
-			print '<div class="center">&gt; <a href="../admin/index.php?mainmenu=home&leftmenu=setup'.(isset($login) ? '&username='.urlencode($login) : '').'">';
-			print '<span class="fas fa-external-link-alt"></span> '.$langs->trans("GoToSetupArea");
-			print '</a></div><br>';
+			echo '<div class="center">&gt; <a href="../admin/index.php?mainmenu=home&leftmenu=setup'.(isset($login) ? '&username='.urlencode($login) : '').'">';
+			echo '<span class="fas fa-external-link-alt"></span> '.$langs->trans("GoToSetupArea");
+			echo '</a></div><br>';
 		} else {
 			// If here MAIN_VERSION_LAST_UPGRADE is not empty
-			print $langs->trans("VersionLastUpgrade").': <b><span class="ok">' . getDolGlobalString('MAIN_VERSION_LAST_UPGRADE').'</span></b><br>';
-			print $langs->trans("VersionProgram").': <b><span class="ok">'.DOL_VERSION.'</span></b><br>';
-			print $langs->trans("MigrationNotFinished").'<br>';
-			print "<br>";
+			echo $langs->trans("VersionLastUpgrade").': <b><span class="ok">' . getDolGlobalString('MAIN_VERSION_LAST_UPGRADE').'</span></b><br>';
+			echo $langs->trans("VersionProgram").': <b><span class="ok">'.DOL_VERSION.'</span></b><br>';
+			echo $langs->trans("MigrationNotFinished").'<br>';
+			echo "<br>";
 
-			print '<div class="center"><a href="'.$gestimag_main_url_root.'/install/index.php">';
-			print '<span class="fas fa-link-alt"></span> '.$langs->trans("GoToUpgradePage");
-			print '</a></div>';
+			echo '<div class="center"><a href="'.$gestimag_main_url_root.'/install/index.php">';
+			echo '<span class="fas fa-link-alt"></span> '.$langs->trans("GoToUpgradePage");
+			echo '</a></div>';
 		}
 	}
 } elseif (empty($action) || preg_match('/upgrade/i', $action)) {
 	// If upgrade
 	if (!getDolGlobalString('MAIN_VERSION_LAST_UPGRADE') || ($conf->global->MAIN_VERSION_LAST_UPGRADE == DOL_VERSION)) {
 		// Upgrade is finished (database is on the same version than files)
-		print '<img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/checklist.svg" width="20" alt="Configuration">';
-		print ' <span class="valignmiddle">'.$langs->trans("SystemIsUpgraded")."</span><br>";
+		echo '<img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/checklist.svg" width="20" alt="Configuration">';
+		echo ' <span class="valignmiddle">'.$langs->trans("SystemIsUpgraded")."</span><br>";
 
 		// Create install.lock file if it does not exists.
 		// Note: it should always exists. A better solution to allow upgrade will be to add an upgrade.unlock file
@@ -514,24 +514,24 @@ if ($action == "set") {
 			}
 		}
 		if (empty($createlock)) {
-			print '<br><div class="warning">'.$langs->trans("WarningRemoveInstallDir")."</div>";
+			echo '<br><div class="warning">'.$langs->trans("WarningRemoveInstallDir")."</div>";
 		}
 
 		// Delete the upgrade.unlock file it it exists
 		$unlockupgradefile = DOL_DATA_ROOT.'/upgrade.unlock';
 		dol_delete_file($unlockupgradefile, 0, 0, 0, null, false, 0);
 
-		print "<br>";
+		echo "<br>";
 
 		$morehtml = '<br><div class="center"><a class="buttonGoToupgrade" href="../index.php?mainmenu=home'.(isset($login) ? '&username='.urlencode($login) : '').'">';
 		$morehtml .= '<span class="fas fa-link-alt"></span> '.$langs->trans("GoToGestimag").'...';
 		$morehtml .= '</a></div><br>';
 	} else {
 		// If here MAIN_VERSION_LAST_UPGRADE is not empty
-		print $langs->trans("VersionLastUpgrade").': <b><span class="ok">' . getDolGlobalString('MAIN_VERSION_LAST_UPGRADE').'</span></b><br>';
-		print $langs->trans("VersionProgram").': <b><span class="ok">'.DOL_VERSION.'</span></b>';
+		echo $langs->trans("VersionLastUpgrade").': <b><span class="ok">' . getDolGlobalString('MAIN_VERSION_LAST_UPGRADE').'</span></b><br>';
+		echo $langs->trans("VersionProgram").': <b><span class="ok">'.DOL_VERSION.'</span></b>';
 
-		print "<br>";
+		echo "<br>";
 
 		$morehtml = '<br><div class="center"><a class="buttonGoToupgrade" href="../install/index.php">';
 		$morehtml .= '<span class="fas fa-link-alt"></span> '.$langs->trans("GoToUpgradePage");

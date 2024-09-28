@@ -2,7 +2,7 @@
 
 // Protection to avoid direct call of template
 if (empty($conf) || !is_object($conf)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -52,12 +52,12 @@ if (!empty($extrafieldsobjectkey) && !empty($extrafields->attributes[$extrafield
 				$valuetoshow = $extrafields->showOutputField($key, $value, '', $extrafieldsobjectkey);
 				$title = dol_string_nohtmltag($valuetoshow);
 
-				print '<td'.($cssclass ? ' class="'.$cssclass.'"' : '');	// TODO Add 'css' and 'cssview' and 'csslist' for extrafields and use here 'csslist'
-				print ' data-key="'.$extrafieldsobjectkey.'.'.$key.'"';
+				echo '<td'.($cssclass ? ' class="'.$cssclass.'"' : '');	// TODO Add 'css' and 'cssview' and 'csslist' for extrafields and use here 'csslist'
+				echo ' data-key="'.$extrafieldsobjectkey.'.'.$key.'"';
 				print($title ? ' title="'.dol_escape_htmltag($title).'"' : '');
-				print '>';
-				print $valuetoshow;
-				print '</td>';
+				echo '>';
+				echo $valuetoshow;
+				echo '</td>';
 
 				if (!$i) {
 					if (empty($totalarray)) {

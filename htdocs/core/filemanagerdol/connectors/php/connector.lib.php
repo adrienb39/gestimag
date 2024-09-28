@@ -60,13 +60,13 @@ function CreateXmlHeader($command, $resourceType, $currentFolder)
 	SetXmlHeaders();
 
 	// Create the XML document header.
-	echo '<?xml version="1.0" encoding="utf-8" ?>';
+	echo  '<?xml version="1.0" encoding="utf-8" ?>';
 
 	// Create the main "Connector" node.
-	echo '<Connector command="'.$command.'" resourceType="'.$resourceType.'">';
+	echo  '<Connector command="'.$command.'" resourceType="'.$resourceType.'">';
 
 	// Add the current folder node.
-	echo '<CurrentFolder path="'.ConvertToXmlAttribute($currentFolder).'" url="'.ConvertToXmlAttribute(GetUrlFromPath($resourceType, $currentFolder, $command)).'" />';
+	echo  '<CurrentFolder path="'.ConvertToXmlAttribute($currentFolder).'" url="'.ConvertToXmlAttribute(GetUrlFromPath($resourceType, $currentFolder, $command)).'" />';
 
 	$GLOBALS['HeaderSent'] = true;
 }
@@ -78,7 +78,7 @@ function CreateXmlHeader($command, $resourceType, $currentFolder)
  */
 function CreateXmlFooter()
 {
-	echo '</Connector>';
+	echo  '</Connector>';
 }
 
 /**
@@ -103,13 +103,13 @@ function SendError($number, $text)
 		dol_syslog('Error: '.$number.' '.$text, LOG_ERR);
 
 		// Create the XML document header
-		echo '<?xml version="1.0" encoding="utf-8" ?>';
+		echo  '<?xml version="1.0" encoding="utf-8" ?>';
 
-		echo '<Connector>';
+		echo  '<Connector>';
 
 		SendErrorNode($number, $text);
 
-		echo '</Connector>';
+		echo  '</Connector>';
 	}
 	exit;
 }
@@ -124,9 +124,9 @@ function SendError($number, $text)
 function SendErrorNode($number, $text)
 {
 	if ($text) {
-		echo '<Error number="'.$number.'" text="'.htmlspecialchars($text).'" />';
+		echo  '<Error number="'.$number.'" text="'.htmlspecialchars($text).'" />';
 	} else {
-		echo '<Error number="'.$number.'" />';
+		echo  '<Error number="'.$number.'" />';
 	}
 	return '';
 }
@@ -160,15 +160,15 @@ function GetFolders($resourceType, $currentFolder)
 	}
 
 	// Open the "Folders" node.
-	echo "<Folders>";
+	echo  "<Folders>";
 
 	natcasesort($aFolders);
 	foreach ($aFolders as $sFolder) {
-		echo $sFolder;
+		echo  $sFolder;
 	}
 
 	// Close the "Folders" node.
-	echo "</Folders>";
+	echo  "</Folders>";
 }
 
 /**
@@ -215,23 +215,23 @@ function GetFoldersAndFiles($resourceType, $currentFolder)
 
 	// Send the folders
 	natcasesort($aFolders);
-	echo '<Folders>';
+	echo  '<Folders>';
 
 	foreach ($aFolders as $sFolder) {
-		echo $sFolder;
+		echo  $sFolder;
 	}
 
-	echo '</Folders>';
+	echo  '</Folders>';
 
 	// Send the files
 	natcasesort($aFiles);
-	echo '<Files>';
+	echo  '<Files>';
 
 	foreach ($aFiles as $sFiles) {
-		echo $sFiles;
+		echo  $sFiles;
 	}
 
-	echo '</Files>';
+	echo  '</Files>';
 }
 
 /**
@@ -282,7 +282,7 @@ function CreateFolder($resourceType, $currentFolder)
 	}
 
 	// Create the "Error" node.
-	echo '<Error number="'.$sErrorNumber.'" />';
+	echo  '<Error number="'.$sErrorNumber.'" />';
 }
 
 /**
@@ -817,7 +817,7 @@ function SendUploadResults($errorNumber, $fileUrl = '', $fileName = '', $customM
 {
 	// Minified version of the document.domain automatic fix script (#1919).
 	// The original script can be found at _dev/domain_fix_template.js
-	echo <<<EOF
+	echo  <<<EOF
 <script type="text/javascript">
 (function(){var d=document.domain;while (true){try{var A=window.parent.document.domain;break;}catch(e) {};d=d.replace(/.*?(?:\.|$)/,'');if (d.length==0) break;try{document.domain=d;}catch (e){break;}}})();
 EOF;
@@ -828,9 +828,9 @@ EOF;
 	}
 
 	$rpl = array('\\' => '\\\\', '"' => '\\"');
-	echo 'console.log('.$errorNumber.');';
-	echo 'window.parent.OnUploadCompleted('.$errorNumber.', "'.strtr($fileUrl, $rpl).'", "'.strtr($fileName, $rpl).'", "'.strtr($customMsg, $rpl).'");';
-	echo '</script>';
+	echo  'console.log('.$errorNumber.');';
+	echo  'window.parent.OnUploadCompleted('.$errorNumber.', "'.strtr($fileUrl, $rpl).'", "'.strtr($fileName, $rpl).'", "'.strtr($customMsg, $rpl).'");';
+	echo  '</script>';
 	exit;
 }
 
@@ -848,13 +848,13 @@ EOF;
  */
 function SendCKEditorResults($callback, $sFileUrl, $customMsg = '')
 {
-	echo '<script type="text/javascript">';
+	echo  '<script type="text/javascript">';
 
 	$rpl = array('\\' => '\\\\', '"' => '\\"');
 
-	echo 'window.parent.CKEDITOR.tools.callFunction("'.$callback.'","'.strtr($sFileUrl, $rpl).'", "'.strtr($customMsg, $rpl).'");';
+	echo  'window.parent.CKEDITOR.tools.callFunction("'.$callback.'","'.strtr($sFileUrl, $rpl).'", "'.strtr($customMsg, $rpl).'");';
 
-	echo '</script>';
+	echo  '</script>';
 }
 
 

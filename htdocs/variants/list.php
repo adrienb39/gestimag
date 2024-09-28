@@ -861,7 +861,7 @@ $tagidfortablednd = (empty($tagidfortablednd) ? 'tableattributes' : $tagidfortab
 			$(".imgupforline, .imgdownforline").hide();
 			$(".lineupdown").removeAttr('href');
 			$(".tdlineupdown")
-				.css("background-image", 'url(<?php echo DOL_URL_ROOT.'/theme/'.$conf->theme.'/img/grip.png'; ?>)')
+				.css("background-image", 'url(<?php echo  DOL_URL_ROOT.'/theme/'.$conf->theme.'/img/grip.png'; ?>)')
 				.css("background-repeat", "no-repeat")
 				.css("background-position", "center center")
 				.hover(
@@ -872,21 +872,21 @@ $tagidfortablednd = (empty($tagidfortablednd) ? 'tableattributes' : $tagidfortab
 					}
 				);
 
-			$("#<?php echo $tagidfortablednd; ?>").tableDnD({
+			$("#<?php echo  $tagidfortablednd; ?>").tableDnD({
 				onDrop: function(table, row) {
 					console.log('drop');
-					$('#<?php echo $tagidfortablednd; ?> tr[data-element=extrafield]').attr('id', '');	// Set extrafields id to empty value in order to ignore them in tableDnDSerialize function
-					$('#<?php echo $tagidfortablednd; ?> tr[data-ignoreidfordnd=1]').attr('id', '');	// Set id to empty value in order to ignore them in tableDnDSerialize function
-					var reloadpage = "<?php echo $forcereloadpage; ?>";
-					var roworder = cleanSerialize(decodeURI($("#<?php echo $tagidfortablednd; ?>").tableDnDSerialize()));
-					$.post("<?php echo DOL_URL_ROOT; ?>/variants/ajax/orderAttribute.php",
+					$('#<?php echo  $tagidfortablednd; ?> tr[data-element=extrafield]').attr('id', '');	// Set extrafields id to empty value in order to ignore them in tableDnDSerialize function
+					$('#<?php echo  $tagidfortablednd; ?> tr[data-ignoreidfordnd=1]').attr('id', '');	// Set id to empty value in order to ignore them in tableDnDSerialize function
+					var reloadpage = "<?php echo  $forcereloadpage; ?>";
+					var roworder = cleanSerialize(decodeURI($("#<?php echo  $tagidfortablednd; ?>").tableDnDSerialize()));
+					$.post("<?php echo  DOL_URL_ROOT; ?>/variants/ajax/orderAttribute.php",
 						{
 							roworder: roworder,
-							token: "<?php echo currentToken(); ?>"
+							token: "<?php echo  currentToken(); ?>"
 						},
 						function() {
 							if (reloadpage == 1) {
-								location.href = '<?php echo dol_escape_htmltag($_SERVER['PHP_SELF']).'?'.dol_escape_htmltag($_SERVER['QUERY_STRING']); ?>';
+								location.href = '<?php echo  dol_escape_htmltag($_SERVER['PHP_SELF']).'?'.dol_escape_htmltag($_SERVER['QUERY_STRING']); ?>';
 							}
 						});
 				},

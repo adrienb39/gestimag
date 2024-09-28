@@ -20,23 +20,23 @@
 
 /**
  *  \file           htdocs/core/actions_printing.inc.php
- *  \brief          Code for actions print_file to print file with calling trigger
+ *  \brief          Code for actions print_file to echo file with calling trigger
  */
 
 
 // $action must be defined
 // $db, $user, $conf, $langs must be defined
-// Filename to print must be provided into 'file' parameter
+// Filename to echo must be provided into 'file' parameter
 
 // Print file
 if ($action == 'print_file' && $user->hasRight('printing', 'read')) {
 	$langs->load("printing");
 	require_once DOL_DOCUMENT_ROOT.'/core/modules/printing/modules_printing.php';
-	$objectprint = new PrintingDriver($db);
+	$objectecho = new PrintingDriver($db);
 	$list = $objectprint->listDrivers($db, 10);
 	$dirmodels = array_merge(array('/core/modules/printing/'), (array) $conf->modules_parts['printing']);
 	if (!empty($list)) {
-		$errorprint = 0;
+		$errorecho = 0;
 		$printerfound = 0;
 		foreach ($list as $driver) {
 			foreach ($dirmodels as $dir) {
@@ -50,7 +50,7 @@ if ($action == 'print_file' && $user->hasRight('printing', 'read')) {
 			$printer = new $classname($db);
 			'@phan-var-force PrintingDriver $printer';
 			$langs->load('printing');
-			//print '<pre>'.print_r($printer, true).'</pre>';
+			//echo '<pre>'.print_r($printer, true).'</pre>';
 
 			if (getDolGlobalString($printer->active)) {
 				$printerfound++;
@@ -73,11 +73,11 @@ if ($action == 'print_file' && $user->hasRight('printing', 'read')) {
 				try {
 					$ret = $printer->printFile(GETPOST('file', 'alpha'), $module, $subdir);
 					if ($ret > 0) {
-						//print '<pre>'.print_r($printer->errors, true).'</pre>';
+						//echo '<pre>'.print_r($printer->errors, true).'</pre>';
 						setEventMessages($printer->error, $printer->errors, 'errors');
 					}
 					if ($ret == 0) {
-						//print '<pre>'.print_r($printer->errors, true).'</pre>';
+						//echo '<pre>'.print_r($printer->errors, true).'</pre>';
 						setEventMessages($printer->error, $printer->errors);
 						setEventMessages($langs->transnoentitiesnoconv("FileWasSentToPrinter", basename(GETPOST('file', 'alpha'))).' '.$langs->transnoentitiesnoconv("ViaModule").' '.$printer->name, null);
 					}

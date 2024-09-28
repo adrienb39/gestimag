@@ -106,7 +106,7 @@ $conf->dol_hide_leftmenu = 1;
 
 if (!getDolGlobalString('OPENSURVEY_ENABLE_PUBLIC_INTERFACE')) {
 	$langs->load("errors");
-	print '<div class="error">'.$langs->trans('ErrorPublicInterfaceNotEnabled').'</div>';
+	echo '<div class="error">'.$langs->trans('ErrorPublicInterfaceNotEnabled').'</div>';
 	$db->close();
 	exit();
 }
@@ -118,17 +118,17 @@ $replacemainarea = (empty($conf->dol_hide_leftmenu) ? '<div>' : '').'<div>';
 llxHeader($head, $langs->trans("Surveys"), '', '', 0, 0, '', '', '', 'onlinepaymentbody', $replacemainarea, 1, 1);
 
 
-print '<span id="dolpaymentspan"></span>'."\n";
-print '<div class="center">'."\n";
-print '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-print '<input type="hidden" name="token" value="'.newToken().'">'."\n";
-print '<input type="hidden" name="action" value="dosign">'."\n";
-print '<input type="hidden" name="tag" value="'.GETPOST("tag", 'alpha').'">'."\n";
-print '<input type="hidden" name="suffix" value="'.GETPOST("suffix", 'alpha').'">'."\n";
-print '<input type="hidden" name="securekey" value="'.$SECUREKEY.'">'."\n";
-print '<input type="hidden" name="entity" value="'.$entity.'" />';
-print "\n";
-print '<!-- Form to view jobs -->'."\n";
+echo '<span id="dolpaymentspan"></span>'."\n";
+echo '<div class="center">'."\n";
+echo '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
+echo '<input type="hidden" name="token" value="'.newToken().'">'."\n";
+echo '<input type="hidden" name="action" value="dosign">'."\n";
+echo '<input type="hidden" name="tag" value="'.GETPOST("tag", 'alpha').'">'."\n";
+echo '<input type="hidden" name="suffix" value="'.GETPOST("suffix", 'alpha').'">'."\n";
+echo '<input type="hidden" name="securekey" value="'.$SECUREKEY.'">'."\n";
+echo '<input type="hidden" name="entity" value="'.$entity.'" />';
+echo "\n";
+echo '<!-- Form to view jobs -->'."\n";
 
 // Show logo (search order: logo defined by ONLINE_SIGN_LOGO_suffix, then ONLINE_SIGN_LOGO_, then small company logo, large company logo, theme logo, common logo)
 // Define logo and logosmall
@@ -140,7 +140,7 @@ if (!empty($conf->global->$paramlogo)) {
 } elseif (getDolGlobalString('ONLINE_OPENSURVEY_LOGO')) {
 	$logosmall = getDolGlobalString('ONLINE_OPENSURVEY_LOGO_');
 }
-//print '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
+//echo '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
 // Define urllogo
 $urllogo = '';
 $urllogofull = '';
@@ -153,20 +153,20 @@ if (!empty($logosmall) && is_readable($conf->mycompany->dir_output.'/logos/thumb
 }
 // Output html code for logo
 if ($urllogo) {
-	print '<div class="backgreypublicpayment">';
-	print '<div class="logopublicpayment">';
-	print '<img id="dolpaymentlogo" src="'.$urllogo.'">';
-	print '</div>';
+	echo '<div class="backgreypublicpayment">';
+	echo '<div class="logopublicpayment">';
+	echo '<img id="dolpaymentlogo" src="'.$urllogo.'">';
+	echo '</div>';
 	if (!getDolGlobalString('MAIN_HIDE_POWERED_BY')) {
-		print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+		echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 	}
-	print '</div>';
+	echo '</div>';
 }
 
 if (getDolGlobalString('OPENSURVEY_IMAGE_PUBLIC_INTERFACE')) {
-	print '<div class="backimagepublicrecruitment">';
-	print '<img id="idOPENSURVEY_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('OPENSURVEY_IMAGE_PUBLIC_INTERFACE').'">';
-	print '</div>';
+	echo '<div class="backimagepublicrecruitment">';
+	echo '<img id="idOPENSURVEY_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('OPENSURVEY_IMAGE_PUBLIC_INTERFACE').'">';
+	echo '</div>';
 }
 
 
@@ -175,52 +175,52 @@ $now = dol_now();
 
 if (is_array($results)) {
 	if (empty($results)) {
-		print '<br>';
-		print $langs->trans("NoSurvey");
+		echo '<br>';
+		echo $langs->trans("NoSurvey");
 	} else {
-		print '<br><br><br>';
-		print '<span class="opacitymedium">'.$langs->trans("ListOfOpenSurveys").'</span>';
-		print '<br><br><br>';
-		print '<br class="hideonsmartphone">';
+		echo '<br><br><br>';
+		echo '<span class="opacitymedium">'.$langs->trans("ListOfOpenSurveys").'</span>';
+		echo '<br><br><br>';
+		echo '<br class="hideonsmartphone">';
 
 		foreach ($results as $survey) {
 			$object = $survey;
 
-			print '<table id="dolpaymenttable" summary="Job position offer" class="center centpercent">'."\n";
+			echo '<table id="dolpaymenttable" summary="Job position offer" class="center centpercent">'."\n";
 
 			// Output payment summary form
-			print '<tr><td class="left">';
+			echo '<tr><td class="left">';
 
-			print '<div class="centpercent" id="tablepublicpayment">';
+			echo '<div class="centpercent" id="tablepublicpayment">';
 
 			$error = 0;
 			$found = true;
 
 			// Label
-			print $langs->trans("Label").' : ';
-			print '<b>'.dol_escape_htmltag($object->title).'</b><br>';
+			echo $langs->trans("Label").' : ';
+			echo '<b>'.dol_escape_htmltag($object->title).'</b><br>';
 
 			// Date
-			print  $langs->trans("DateExpected").' : ';
-			print '<b>';
+			echo  $langs->trans("DateExpected").' : ';
+			echo '<b>';
 			if ($object->date_fin > $now) {
-				print dol_print_date($object->date_fin, 'day');
+				echo dol_print_date($object->date_fin, 'day');
 			} else {
-				print $langs->trans("ASAP");
+				echo $langs->trans("ASAP");
 			}
-			print '</b><br>';
+			echo '</b><br>';
 
 			// Description
-			//print  $langs->trans("Description").' : ';
-			print '<br>';
-			print '<div class="opensurveydescription centpercent">';
-			print dol_htmlwithnojs(dol_string_onlythesehtmltags(dol_htmlentitiesbr($object->commentaires), 1, 1, 1));
-			//print dol_escape_htmltag($object->commentaires);
-			print '</div>';
-			print '<br>';
+			//echo  $langs->trans("Description").' : ';
+			echo '<br>';
+			echo '<div class="opensurveydescription centpercent">';
+			echo dol_htmlwithnojs(dol_string_onlythesehtmltags(dol_htmlentitiesbr($object->commentaires), 1, 1, 1));
+			//echo dol_escape_htmltag($object->commentaires);
+			echo '</div>';
+			echo '<br>';
 
-			print '</div>'."\n";
-			print "\n";
+			echo '</div>'."\n";
+			echo "\n";
 
 
 			if ($action != 'dosubmit') {
@@ -233,20 +233,20 @@ if (is_array($results)) {
 				// Print
 			}
 
-			print '</td></tr>'."\n";
+			echo '</td></tr>'."\n";
 
-			print '</table>'."\n";
+			echo '</table>'."\n";
 
-			print '<br><br class="hideonsmartphone"><br class="hideonsmartphone"><br class="hideonsmartphone">'."\n";
+			echo '<br><br class="hideonsmartphone"><br class="hideonsmartphone"><br class="hideonsmartphone">'."\n";
 		}
 	}
 } else {
 	dol_print_error($db, $object->error, $object->errors);
 }
 
-print '</form>'."\n";
-print '</div>'."\n";
-print '<br>';
+echo '</form>'."\n";
+echo '</div>'."\n";
+echo '<br>';
 
 
 htmlPrintOnlineFooter($mysoc, $langs);

@@ -52,26 +52,26 @@ pHeader("", "install/check"); // Next step = check
 
 
 if (!is_readable($conffile)) {
-	print '<br>';
-	print '<span class="opacitymedium">'.$langs->trans("NoReadableConfFileSoStartInstall").'</span>';
+	echo '<br>';
+	echo '<span class="opacitymedium">'.$langs->trans("NoReadableConfFileSoStartInstall").'</span>';
 }
 
 
 // Ask installation language
-print '<br><br><div class="center">';
-print '<table>';
+echo '<br><br><div class="center">';
+echo '<table>';
 
-print '<tr>';
-print '<td>'.$langs->trans("DefaultLanguage").' : </td><td>';
-print $formadmin->select_language('auto', 'selectlang', 1, 0, 0, 1);
-print '</td>';
-print '</tr>';
+echo '<tr>';
+echo '<td>'.$langs->trans("DefaultLanguage").' : </td><td>';
+echo $formadmin->select_language('auto', 'selectlang', 1, 0, 0, 1);
+echo '</td>';
+echo '</tr>';
 
-print '</table></div>';
+echo '</table></div>';
 
 
 
-//print '<br><br><span class="opacitymedium">'.$langs->trans("SomeTranslationAreUncomplete").'</span>';
+//echo '<br><br><span class="opacitymedium">'.$langs->trans("SomeTranslationAreUncomplete").'</span>';
 
 // If there's no error, we display the next step button
 if ($err == 0) {

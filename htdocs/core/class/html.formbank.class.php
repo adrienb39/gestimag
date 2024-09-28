@@ -63,7 +63,7 @@ class FormBank
 	{
 		$account = new Account($this->db);
 
-		print Form::selectarray($htmlname, $account->type_lib, $selected);
+		echo Form::selectarray($htmlname, $account->type_lib, $selected);
 	}
 
 	/**

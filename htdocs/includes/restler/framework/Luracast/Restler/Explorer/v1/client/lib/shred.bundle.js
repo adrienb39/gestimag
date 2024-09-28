@@ -1349,7 +1349,7 @@ var isArray = typeof Array.isArray === 'function'
     }
 ;
 
-// By default EventEmitters will print a warning if more than
+// By default EventEmitters will echo a warning if more than
 // 10 listeners are added to it. This is a useful default which
 // helps finding memory leaks.
 //

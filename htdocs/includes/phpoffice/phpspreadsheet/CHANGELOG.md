@@ -575,7 +575,7 @@ Note that this will be the last 1.x branch release before the 2.x release. We wi
 
 - Xls Reader resolving absolute named ranges to relative ranges [Issue #2826](https://github.com/PHPOffice/PhpSpreadsheet/issues/2826) [PR #2827](https://github.com/PHPOffice/PhpSpreadsheet/pull/2827)
 - Null value handling in the Excel Math/Trig PRODUCT() function [Issue #2833](https://github.com/PHPOffice/PhpSpreadsheet/issues/2833) [PR #2834](https://github.com/PHPOffice/PhpSpreadsheet/pull/2834)
-- Invalid Print Area defined in Xlsx corrupts internal storage of print area [Issue #2848](https://github.com/PHPOffice/PhpSpreadsheet/issues/2848) [PR #2849](https://github.com/PHPOffice/PhpSpreadsheet/pull/2849)
+- Invalid Print Area defined in Xlsx corrupts internal storage of echo area [Issue #2848](https://github.com/PHPOffice/PhpSpreadsheet/issues/2848) [PR #2849](https://github.com/PHPOffice/PhpSpreadsheet/pull/2849)
 - Time interval formatting [Issue #2768](https://github.com/PHPOffice/PhpSpreadsheet/issues/2768) [PR #2772](https://github.com/PHPOffice/PhpSpreadsheet/pull/2772)
 - Copy from Xls(x) to Html/Pdf loses drawings [PR #2788](https://github.com/PHPOffice/PhpSpreadsheet/pull/2788)
 - Html Reader converting cell containing 0 to null string [Issue #2810](https://github.com/PHPOffice/PhpSpreadsheet/issues/2810) [PR #2813](https://github.com/PHPOffice/PhpSpreadsheet/pull/2813)
@@ -974,7 +974,7 @@ Note that this will be the last 1.x branch release before the 2.x release. We wi
 
   The logic for these Functions is now being moved out of the categorised `Database`, `DateTime`, `Engineering`, `Financial`, `Logical`, `LookupRef`, `MathTrig`, `Statistical`, `TextData` and `Web` classes into small, dedicated classes for individual functions or related groups of functions.
 
-  This makes the logic in these classes easier to maintain; and will reduce the memory footprint required to execute formulae when calling these functions.
+  This makes the logic in these classes easier to maintain; and will reduce the memory footecho required to execute formulae when calling these functions.
 
 ### Removed
 
@@ -1352,7 +1352,7 @@ Note that this will be the last 1.x branch release before the 2.x release. We wi
 - Support numeric condition in SUMIF, SUMIFS, AVERAGEIF, COUNTIF, MAXIF and MINIF [#683](https://github.com/PHPOffice/PhpSpreadsheet/issues/683)
 - SUMIFS containing multiple conditions [#704](https://github.com/PHPOffice/PhpSpreadsheet/issues/704)
 - Csv reader avoid notice when the file is empty [#743](https://github.com/PHPOffice/PhpSpreadsheet/pull/743)
-- Fix print area parser for XLSX reader [#734](https://github.com/PHPOffice/PhpSpreadsheet/pull/734)
+- Fix echo area parser for XLSX reader [#734](https://github.com/PHPOffice/PhpSpreadsheet/pull/734)
 - Support overriding `DefaultValueBinder::dataTypeForValue()` without overriding `DefaultValueBinder::bindValue()` [#735](https://github.com/PHPOffice/PhpSpreadsheet/pull/735)
 - Mpdf export can exceed pcre.backtrack_limit [#637](https://github.com/PHPOffice/PhpSpreadsheet/issues/637)
 - Fix index overflow on data values array [#748](https://github.com/PHPOffice/PhpSpreadsheet/pull/748)

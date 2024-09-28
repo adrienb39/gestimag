@@ -34,7 +34,7 @@ if (!defined('NOTOKENRENEWAL')) {
  */
 function llxHeader()
 {
-	print '<html><title>Build an import example file</title><body>';
+	echo '<html><title>Build an import example file</title><body>';
 }
 
 /**
@@ -45,7 +45,7 @@ function llxHeader()
  */
 function llxFooter()
 {
-	print '</body></html>';
+	echo '</body></html>';
 }
 
 // Load Gestimag environment
@@ -65,7 +65,7 @@ if (empty($datatoimport)) {
 	$user->getrights();
 
 	llxHeader();
-	print '<div class="error">Bad value for datatoimport.</div>';
+	echo '<div class="error">Bad value for datatoimport.</div>';
 	llxFooter();
 	exit;
 }
@@ -111,4 +111,4 @@ foreach ($fieldstarget as $code => $label) {
 //var_dump($headerlinefields);
 //var_dump($contentlinevalues);
 
-print $objimport->build_example_file($format, $headerlinefields, $contentlinevalues, $datatoimport);
+echo $objimport->build_example_file($format, $headerlinefields, $contentlinevalues, $datatoimport);

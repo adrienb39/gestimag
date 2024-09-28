@@ -56,8 +56,8 @@ try {
     }
 } catch (Exception $e) {
     // Print out any errors: Eg. printer connection, image loading & external image manipulation.
-    echo $e -> getMessage() . "\n";
-    echo $e -> getTraceAsString();
+    echo  $e -> getMessage() . "\n";
+    echo  $e -> getTraceAsString();
 } finally {
     unlink($imgCombined_path);
     unlink($tmpf_path);

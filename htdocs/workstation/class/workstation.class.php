@@ -902,11 +902,11 @@ class Workstation extends CommonObject
 					return "";
 				}
 			} else {
-				print $langs->trans("Error")." ".$langs->trans("ClassNotFound").' '.$classname;
+				echo $langs->trans("Error")." ".$langs->trans("ClassNotFound").' '.$classname;
 				return "";
 			}
 		} else {
-			print $langs->trans("ErrorNumberingModuleNotSetup", $this->element);
+			echo $langs->trans("ErrorNumberingModuleNotSetup", $this->element);
 			return "";
 		}
 	}

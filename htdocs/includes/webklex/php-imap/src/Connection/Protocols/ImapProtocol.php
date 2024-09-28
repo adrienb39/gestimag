@@ -237,7 +237,7 @@ class ImapProtocol extends Protocol {
         } else {
             $tokens = $line;
         }
-        if ($this->debug) echo "<< ".$line."\n";
+        if ($this->debug) echo  "<< ".$line."\n";
 
         // if tag is wanted tag we might be at the end of a multiline response
         return $tag == $wantedTag;
@@ -303,7 +303,7 @@ class ImapProtocol extends Protocol {
                 $line .= ' ' . $token;
             }
         }
-        if ($this->debug) echo ">> ".$line."\n";
+        if ($this->debug) echo  ">> ".$line."\n";
 
         if (fwrite($this->stream, $line . "\r\n") === false) {
             throw new RuntimeException('failed to write - connection closed?');

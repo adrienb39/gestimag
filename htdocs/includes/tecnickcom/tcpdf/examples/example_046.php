@@ -110,7 +110,7 @@ $pdf->SetFont('times', '', 10);
 $pdf->SetDrawColor(255,0,0);
 $pdf->SetTextColor(0,63,127);
 
-// print a cell
+// echo a cell
 $pdf->writeHTMLCell(50, 0, '', '', $html, 1, 1, 0, true, 'J');
 
 // ---------------------------------------------------------

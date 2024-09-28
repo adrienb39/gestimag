@@ -97,7 +97,7 @@ $pdf->SetFont('times', '', 14);
 // add a page
 $pdf->AddPage();
 
-// print a line
+// echo a line
 $pdf->Cell(0, 12, 'DISPLAY PREFERENCES - PAGE 1', 1, 1, 'C');
 
 $pdf->Ln(5);
@@ -106,12 +106,12 @@ $pdf->Write(0, 'You can use the setViewerPreferences() method to change viewer p
 
 // add a page
 $pdf->AddPage();
-// print a line
+// echo a line
 $pdf->Cell(0, 12, 'DISPLAY PREFERENCES - PAGE 2', 0, 0, 'C');
 
 // add a page
 $pdf->AddPage();
-// print a line
+// echo a line
 $pdf->Cell(0, 12, 'DISPLAY PREFERENCES - PAGE 3', 0, 0, 'C');
 
 // ---------------------------------------------------------

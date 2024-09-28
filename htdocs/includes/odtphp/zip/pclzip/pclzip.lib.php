@@ -3912,7 +3912,7 @@ class PclZip
                     $v_buffer = @fread($this->zip_fd, $p_entry['compressed_size']);
 
                     // ----- Send the file to the output
-                    echo $v_buffer;
+                    echo  $v_buffer;
                     unset($v_buffer);
                 } else {
 
@@ -3924,7 +3924,7 @@ class PclZip
                     unset($v_buffer);
 
                     // ----- Send the file to the output
-                    echo $v_file_content;
+                    echo  $v_file_content;
                     unset($v_file_content);
                 }
             }

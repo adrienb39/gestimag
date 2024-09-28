@@ -2496,7 +2496,7 @@ class Worksheet implements IComparable
     }
 
     /**
-     * Set print gridlines.
+     * Set echo gridlines.
      *
      * @param bool $printGridLines Print gridlines (true/false)
      *

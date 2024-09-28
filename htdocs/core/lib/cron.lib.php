@@ -97,31 +97,31 @@ function dol_print_cron_urls()
 	//$urlwithroot=DOL_MAIN_URL_ROOT;					// This is to use same domain name than current
 
 	// Cron launch
-	print '<div class="div-table-responsive-no-min">';
-	print $langs->trans("URLToLaunchCronJobs").':<br>';
+	echo '<div class="div-table-responsive-no-min">';
+	echo $langs->trans("URLToLaunchCronJobs").':<br>';
 	$url = $urlwithroot.'/public/cron/cron_run_jobs_by_url.php?'.(!getDolGlobalString('CRON_KEY') ? '' : 'securitykey=' . getDolGlobalString('CRON_KEY').'&').'userlogin='.$user->login;
-	print '<div class="urllink">';
-	print '<input type="text" id="publicurlmember" class="quatrevingtpercentminusx" value="'.$url.'">';
-	print ' <a href="'.$url.'" target="_blank" rel="noopener noreferrer">'.img_picto('', 'globe')."</a>\n";
-	print '</div>';
-	print '<br> '.$langs->trans("OrToLaunchASpecificJob").'<br>';
+	echo '<div class="urllink">';
+	echo '<input type="text" id="publicurlmember" class="quatrevingtpercentminusx" value="'.$url.'">';
+	echo ' <a href="'.$url.'" target="_blank" rel="noopener noreferrer">'.img_picto('', 'globe')."</a>\n";
+	echo '</div>';
+	echo '<br> '.$langs->trans("OrToLaunchASpecificJob").'<br>';
 	$url = $urlwithroot.'/public/cron/cron_run_jobs_by_url.php?'.(!getDolGlobalString('CRON_KEY') ? '' : 'securitykey=' . getDolGlobalString('CRON_KEY').'&').'userlogin='.$user->login.'&id=cronjobid';
-	print '<div class="urllink">';
-	print '<input type="text" id="publicurlmemberall" class="quatrevingtpercentminusx" value="'.$url.'">';
-	print ' <a href="'.$url.'" target="_blank" rel="noopener noreferrer">'.img_picto('', 'globe')."</a>\n";
-	print '</div>';
-	print '</div>';
-	print '<br>';
+	echo '<div class="urllink">';
+	echo '<input type="text" id="publicurlmemberall" class="quatrevingtpercentminusx" value="'.$url.'">';
+	echo ' <a href="'.$url.'" target="_blank" rel="noopener noreferrer">'.img_picto('', 'globe')."</a>\n";
+	echo '</div>';
+	echo '</div>';
+	echo '<br>';
 
-	print ajax_autoselect("publicurlmember");
-	print ajax_autoselect("publicurlmemberall");
+	echo ajax_autoselect("publicurlmember");
+	echo ajax_autoselect("publicurlmemberall");
 
 	$logintouse = 'firstadmin';
 	if ($user->admin) {
 		$logintouse = $user->login;
 	}
 
-	print '<u>'.$langs->trans("FileToLaunchCronJobs").':</u><br>';
+	echo '<u>'.$langs->trans("FileToLaunchCronJobs").':</u><br>';
 
 	$pathtoscript = '/pathtoscript';
 	if (getDolGlobalString('MAIN_DOL_SCRIPTS_ROOT')) {
@@ -129,8 +129,8 @@ function dol_print_cron_urls()
 	}
 
 	$file = $pathtoscript.'/scripts/cron/cron_run_jobs.php '.(!getDolGlobalString('CRON_KEY') ? 'securitykey' : '' . getDolGlobalString('CRON_KEY')).' '.$logintouse.' [cronjobid]';
-	print '<textarea class="quatrevingtpercent">'.$file."</textarea><br>\n";
-	print '<br>';
+	echo '<textarea class="quatrevingtpercent">'.$file."</textarea><br>\n";
+	echo '<br>';
 
 	// Add note
 	if (!getDolGlobalString('CRON_DISABLE_TUTORIAL_CRON')) {
@@ -141,13 +141,13 @@ function dol_print_cron_urls()
 		if (preg_match('/^mac/i', PHP_OS)) {
 			$linuxlike = 0;
 		}
-		print $langs->trans("Note").': ';
+		echo $langs->trans("Note").': ';
 		if ($linuxlike) {
-			print $langs->trans("CronExplainHowToRunUnix");
-			print '<br>';
-			print '<textarea class="quatrevingtpercent">*/5 * * * * '.$pathtoscript.'/scripts/cron/cron_run_jobs.php '.(!getDolGlobalString('CRON_KEY') ? 'securitykey' : '' . getDolGlobalString('CRON_KEY')).' '.$logintouse.' &gt; '.DOL_DATA_ROOT.'/cron_run_jobs.php.log</textarea><br>';
+			echo $langs->trans("CronExplainHowToRunUnix");
+			echo '<br>';
+			echo '<textarea class="quatrevingtpercent">*/5 * * * * '.$pathtoscript.'/scripts/cron/cron_run_jobs.php '.(!getDolGlobalString('CRON_KEY') ? 'securitykey' : '' . getDolGlobalString('CRON_KEY')).' '.$logintouse.' &gt; '.DOL_DATA_ROOT.'/cron_run_jobs.php.log</textarea><br>';
 		} else {
-			print $langs->trans("CronExplainHowToRunWin");
+			echo $langs->trans("CronExplainHowToRunWin");
 		}
 	}
 

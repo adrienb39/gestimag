@@ -96,7 +96,7 @@ llxHeader('', $title);
 $resultboxes = FormOther::getBoxesArea($user, "0"); // Load $resultboxes (selectboxlist + boxactivated + boxlista + boxlistb)
 
 
-print load_fiche_titre('&nbsp;', $resultboxes['selectboxlist'], '', 0, '', 'titleforhome');
+echo load_fiche_titre('&nbsp;', $resultboxes['selectboxlist'], '', 0, '', 'titleforhome');
 
 if (getDolGlobalString('MAIN_MOTD')) {
 	$conf->global->MAIN_MOTD = preg_replace('/<br(\s[\sa-zA-Z_="]*)?\/?>/i', '<br>', getDolGlobalString('MAIN_MOTD'));
@@ -105,11 +105,11 @@ if (getDolGlobalString('MAIN_MOTD')) {
 		complete_substitutions_array($substitutionarray, $langs);
 		$texttoshow = make_substitutions(getDolGlobalString('MAIN_MOTD'), $substitutionarray, $langs);
 
-		print "\n<!-- Start of welcome text -->\n";
-		print '<table class="centpercent notopnoleftnoright"><tr><td>';
-		print dol_htmlentitiesbr($texttoshow);
-		print '</td></tr></table><br>';
-		print "\n<!-- End of welcome text -->\n";
+		echo "\n<!-- Start of welcome text -->\n";
+		echo '<table class="centpercent notopnoleftnoright"><tr><td>';
+		echo dol_htmlentitiesbr($texttoshow);
+		echo '</td></tr></table><br>';
+		echo "\n<!-- End of welcome text -->\n";
 	}
 }
 
@@ -120,8 +120,8 @@ if (getDolGlobalString('MAIN_MOTD')) {
 // Specific warning to propose to upgrade invoice situation to progressive mode
 if (getDolGlobalInt('INVOICE_USE_SITUATION') == 1) {
 	$langs->loadLangs(array("admin"));
-	print info_admin($langs->trans("WarningExperimentalFeatureInvoiceSituationNeedToUpgradeToProgressiveMode", 'https://partners.gestimag.org'));
-	//print "<br>";
+	echo info_admin($langs->trans("WarningExperimentalFeatureInvoiceSituationNeedToUpgradeToProgressiveMode", 'https://partners.gestimag.org'));
+	//echo "<br>";
 }
 
 /*
@@ -155,9 +155,9 @@ if (!getDolGlobalString('MAIN_REMOVE_INSTALL_WARNING')) {
 		$message .= $hookmanager->resPrint;
 	}
 	if ($message) {	// $message is an HTML string.
-		print dol_string_onlythesehtmltags($message, 1, 0, 0, 0, array('div', 'span', 'b'));
-		print '<br>';
-		//print info_admin($langs->trans("WarningUntilDirRemoved",DOL_DOCUMENT_ROOT."/install"));
+		echo dol_string_onlythesehtmltags($message, 1, 0, 0, 0, array('div', 'span', 'b'));
+		echo '<br>';
+		//echo info_admin($langs->trans("WarningUntilDirRemoved",DOL_DOCUMENT_ROOT."/install"));
 	}
 }
 
@@ -761,16 +761,16 @@ if (!getDolGlobalString('MAIN_DISABLE_GLOBAL_WORKBOARD') && getDolGlobalInt('MAI
 	$boxwork .= '</div>';
 
 	if (!empty($isIntopOpenedDashBoard)) {
-		print '<div class="fichecenter">';
-		print '<div class="opened-dash-board-wrap"><div class="box-flex-container">'.$openedDashBoard.'</div></div>';
-		print '</div>';
+		echo '<div class="fichecenter">';
+		echo '<div class="opened-dash-board-wrap"><div class="box-flex-container">'.$openedDashBoard.'</div></div>';
+		echo '</div>';
 	}
 }
 
 
-print '<div class="clearboth"></div>';
+echo '<div class="clearboth"></div>';
 
-print '<div class="fichecenter fichecenterbis">';
+echo '<div class="fichecenter fichecenterbis">';
 
 
 /*
@@ -798,11 +798,11 @@ $boxlist .= "\n";
 $boxlist .= '</div>';
 
 
-print $boxlist;
+echo $boxlist;
 
-print '</div>';
+echo '</div>';
 
-//print 'mem='.memory_get_usage().' - '.memory_get_peak_usage();
+//echo 'mem='.memory_get_usage().' - '.memory_get_peak_usage();
 
 // End of page
 llxFooter();

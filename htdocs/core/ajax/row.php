@@ -72,7 +72,7 @@ top_httphead();
 
 dol_syslog("AjaxRow roworder=".$roworder." table_element_line=".$table_element_line." fk_element=".$fk_element." element_id=".$element_id, LOG_DEBUG);
 
-print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 // Registering the location of boxes
 if (GETPOST('roworder', 'alpha', 3) && GETPOST('table_element_line', 'aZ09', 3)
@@ -145,7 +145,7 @@ if (GETPOST('roworder', 'alpha', 3) && GETPOST('table_element_line', 'aZ09', 3)
 	if (! $perm) {
 		// We should not be here. If we are not allowed to reorder rows, feature should not be visible on script.
 		// If we are here, it is a hack attempt, so we report a warning.
-		print 'Bad permission to modify position of lines for object in table '.$table_element_line;
+		echo 'Bad permission to modify position of lines for object in table '.$table_element_line;
 		dol_syslog('Bad permission to modify position of lines for object in table='.$table_element_line.', fk_element='.$fk_element, LOG_WARNING);
 		//accessforbidden('Bad permission to modify position of lines for object in table '.$table_element_line);
 		httponly_accessforbidden('Bad permission to modify position of lines for object in table '.$table_element_line);
@@ -169,5 +169,5 @@ if (GETPOST('roworder', 'alpha', 3) && GETPOST('table_element_line', 'aZ09', 3)
 		$result = $row->line_order(true);
 	}
 } else {
-	print 'Bad parameters for row.php';
+	echo 'Bad parameters for row.php';
 }

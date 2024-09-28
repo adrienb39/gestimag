@@ -7,7 +7,7 @@
  *
  * These are then loaded into a capability profile, which maps code page
  * numbers to iconv encoding names on your particular printer. This script
- * will print all configured code pages, so that you can check that the chosen
+ * will echo all configured code pages, so that you can check that the chosen
  * iconv encoding name matches the actual code page contents.
  *
  * If this is correctly set up for your printer, then the driver will try its
@@ -22,7 +22,7 @@ use Mike42\Escpos\CapabilityProfile;
 // Enter connector and capability profile (to match your printer)
 $connector = new FilePrintConnector("php://stdout");
 $profile = CapabilityProfile::load("default");
-$verbose = false; // Skip tables which iconv wont convert to (ie, only print characters available with UTF-8 input)
+$verbose = false; // Skip tables which iconv wont convert to (ie, only echo characters available with UTF-8 input)
 
 /* Print a series of receipts containing i18n example strings - Code below shouldn't need changing */
 $printer = new Mike42\Escpos\Printer($connector, $profile);
@@ -32,7 +32,7 @@ foreach ($codePages as $table => $page) {
     /* Change printer code page */
     $printer -> selectCharacterTable(255);
     $printer -> selectCharacterTable($table);
-    /* Select & print a label for it */
+    /* Select & echo a label for it */
     $label = $page -> getId();
     if (!$page -> isEncodable()) {
         $label= " (not supported)";

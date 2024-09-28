@@ -59,5 +59,5 @@ try {
     /* Close printer */
     $printer -> close();
 } catch (Exception $e) {
-    echo "Couldn't print to this printer: " . $e -> getMessage() . "\n";
+    echo  "Couldn't echo to this printer: " . $e -> getMessage() . "\n";
 }

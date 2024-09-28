@@ -63,16 +63,16 @@ $help_url = '';
 llxHeader('', $langs->trans("DonationsSetup"), $help_url, '', 0, 0, '', '', '', 'mod-donation page-admin_extrafields');
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?restore_lastsearch_values=1">'.$langs->trans("BackToModuleList").'</a>';
-print load_fiche_titre($langs->trans("DonationsSetup"), $linkback, 'title_setup');
+echo load_fiche_titre($langs->trans("DonationsSetup"), $linkback, 'title_setup');
 
 
 $head = donation_admin_prepare_head();
 
-print dol_get_fiche_head($head, 'attributes', $langs->trans("Donations"), -1, 'payment');
+echo dol_get_fiche_head($head, 'attributes', $langs->trans("Donations"), -1, 'payment');
 
 require DOL_DOCUMENT_ROOT.'/core/tpl/admin_extrafields_view.tpl.php';
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 
 
@@ -83,8 +83,8 @@ print dol_get_fiche_end();
 /* ************************************************************************** */
 
 if ($action == 'create') {
-	print "<br>";
-	print load_fiche_titre($langs->trans('NewAttribute'));
+	echo "<br>";
+	echo load_fiche_titre($langs->trans('NewAttribute'));
 
 	require DOL_DOCUMENT_ROOT.'/core/tpl/admin_extrafields_add.tpl.php';
 }
@@ -95,8 +95,8 @@ if ($action == 'create') {
 /*                                                                            */
 /* ************************************************************************** */
 if ($action == 'edit' && !empty($attrname)) {
-	print "<br>";
-	print load_fiche_titre($langs->trans("FieldEdition", $attrname));
+	echo "<br>";
+	echo load_fiche_titre($langs->trans("FieldEdition", $attrname));
 
 	require DOL_DOCUMENT_ROOT.'/core/tpl/admin_extrafields_edit.tpl.php';
 }

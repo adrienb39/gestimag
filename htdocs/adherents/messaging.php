@@ -128,7 +128,7 @@ llxHeader('', $title, $help_url);
 $head = member_prepare_head($object);
 
 $title = $langs->trans("User");
-print dol_get_fiche_head($head, 'agenda', $langs->trans("Member"), -1, 'user');
+echo dol_get_fiche_head($head, 'agenda', $langs->trans("Member"), -1, 'user');
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/adherents/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
@@ -138,19 +138,19 @@ $morehtmlref .= '</a>';
 
 dol_banner_tab($object, 'rowid', $linkback, 1, 'rowid', 'ref', $morehtmlref);
 
-print '<div class="fichecenter">';
+echo '<div class="fichecenter">';
 
-print '<div class="underbanner clearboth"></div>';
+echo '<div class="underbanner clearboth"></div>';
 
 $linkback = '';
 
 $object->info($id);
 dol_print_object_info($object, 1);
 
-print '</div>';
+echo '</div>';
 
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 $objUser = $object;
 $objcon = new stdClass();
@@ -179,7 +179,7 @@ if (isModEnabled('agenda')) {
 }
 
 if (isModEnabled('agenda') && ($user->hasRight('agenda', 'myactions', 'read') || $user->hasRight('agenda', 'allaactions', 'read'))) {
-	print '<br>';
+	echo '<br>';
 	$param = '&userid='.urlencode((string) ($id));
 	if (!empty($contextpage) && $contextpage != $_SERVER["PHP_SELF"]) {
 		$param .= '&contextpage='.urlencode($contextpage);

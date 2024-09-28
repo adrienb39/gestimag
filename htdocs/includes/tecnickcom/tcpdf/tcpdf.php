@@ -616,7 +616,7 @@ class TCPDF {
 	protected $l;
 
 	/**
-	 * Barcode to print on page footer (only if set).
+	 * Barcode to echo on page footer (only if set).
 	 * @protected
 	 */
 	protected $barcode = false;
@@ -1796,12 +1796,12 @@ class TCPDF {
 	protected $custom_xmp_rdf = '';
 
 	/**
-	 * Overprint mode array.
+	 * Overecho mode array.
 	 * (Check the "Entries in a Graphics State Parameter Dictionary" on PDF 32000-1:2008).
 	 * @protected
 	 * @since 5.9.152 (2012-03-23)
 	 */
-	protected $overprint = array('OP' => false, 'op' => false, 'OPM' => 0);
+	protected $overecho = array('OP' => false, 'op' => false, 'OPM' => 0);
 
 	/**
 	 * Alpha mode array.
@@ -1819,7 +1819,7 @@ class TCPDF {
 	protected $page_boxes = array('MediaBox', 'CropBox', 'BleedBox', 'TrimBox', 'ArtBox');
 
 	/**
-	 * If true print TCPDF meta link.
+	 * If true echo TCPDF meta link.
 	 * @protected
 	 * @since 5.9.152 (2012-03-23)
 	 */
@@ -2936,7 +2936,7 @@ class TCPDF {
 	}
 
 	/**
-	 * Throw an exception or print an error message and die if the K_TCPDF_PARSER_THROW_EXCEPTION_ERROR constant is set to true.
+	 * Throw an exception or echo an error message and die if the K_TCPDF_PARSER_THROW_EXCEPTION_ERROR constant is set to true.
 	 * @param $msg (string) The error message
 	 * @public
 	 * @since 1.0
@@ -3151,7 +3151,7 @@ class TCPDF {
 		if (($this->page == 0) OR ($this->numpages > $this->page) OR (!$this->pageopen[$this->page])) {
 			return;
 		}
-		// print page footer
+		// echo page footer
 		$this->setFooter();
 		// close page
 		$this->_endpage();
@@ -3223,13 +3223,13 @@ class TCPDF {
 		$this->setGraphicVars($gvars);
 		// mark this point
 		$this->setPageMark();
-		// print page header
+		// echo page header
 		$this->setHeader();
 		// restore graphic settings
 		$this->setGraphicVars($gvars);
 		// mark this point
 		$this->setPageMark();
-		// print table header (if any)
+		// echo table header (if any)
 		$this->setTableHeader();
 		// set mark for empty page check
 		$this->emptypagemrk[$this->page]= $this->pagelen[$this->page];
@@ -3271,8 +3271,8 @@ class TCPDF {
 	 * Set header data.
 	 * @param $ln (string) header image logo
 	 * @param $lw (string) header image logo width in mm
-	 * @param $ht (string) string to print as title on document header
-	 * @param $hs (string) string to print on document header
+	 * @param $ht (string) string to echo as title on document header
+	 * @param $hs (string) string to echo on document header
 	 * @param $tc (array) RGB array color for text.
 	 * @param $lc (array) RGB array color for line.
 	 * @public
@@ -3355,8 +3355,8 @@ class TCPDF {
 		return $this->footer_margin;
 	}
 	/**
-	 * Set a flag to print page header.
-	 * @param $val (boolean) set to true to print the page header (default), false otherwise.
+	 * Set a flag to echo page header.
+	 * @param $val (boolean) set to true to echo the page header (default), false otherwise.
 	 * @public
 	 */
 	public function setPrintHeader($val=true) {
@@ -3364,8 +3364,8 @@ class TCPDF {
 	}
 
 	/**
-	 * Set a flag to print page footer.
-	 * @param $val (boolean) set to true to print the page footer (default), false otherwise.
+	 * Set a flag to echo page footer.
+	 * @param $val (boolean) set to true to echo the page footer (default), false otherwise.
 	 * @public
 	 */
 	public function setPrintFooter($val=true) {
@@ -3454,7 +3454,7 @@ class TCPDF {
 			$this->SetFont($headerfont[0], $headerfont[1], $headerfont[2]);
 			$this->SetX($header_x);
 			$this->MultiCell($cw, $cell_height, $headerdata['string'], 0, '', 0, 1, '', '', true, 0, false, true, 0, 'T', false);
-			// print an ending header line
+			// echo an ending header line
 			$this->SetLineStyle(array('width' => 0.85 / $this->k, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => $headerdata['line_color']));
 			$this->SetY((2.835 / $this->k) + max($imgy, $this->y));
 			if ($this->rtl) {
@@ -3465,7 +3465,7 @@ class TCPDF {
 			$this->Cell(($this->w - $this->original_lMargin - $this->original_rMargin), 0, '', 'T', 0, 'C');
 			$this->endTemplate();
 		}
-		// print header template
+		// echo header template
 		$x = 0;
 		$dx = 0;
 		if (!$this->header_xobj_autoreset AND $this->booklet AND (($this->page % 2) == 0)) {
@@ -3495,7 +3495,7 @@ class TCPDF {
 		//set style for cell border
 		$line_width = (0.85 / $this->k);
 		$this->SetLineStyle(array('width' => $line_width, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => $this->footer_line_color));
-		//print document barcode
+		//echo document barcode
 		$barcode = $this->getBarcode();
 		if (!empty($barcode)) {
 			$this->Ln($line_width);
@@ -3681,7 +3681,7 @@ class TCPDF {
 				$this->rMargin = $gvars['rMargin'];
 				$this->lMargin = $gvars['lMargin'];
 			}
-			// print table header
+			// echo table header
 			$this->writeHTML($this->thead, false, false, false, false, '');
 			$this->setGraphicVars($gvars);
 			// set new top margin to skip the table headers
@@ -4431,7 +4431,7 @@ class TCPDF {
 	}
 
 	/**
-	 * Sets the font used to print character strings.
+	 * Sets the font used to echo character strings.
 	 * The font can be either a standard one or a font added via the AddFont() method. Standard fonts use Windows encoding cp1252 (Western Europe).
 	 * The method can be called before the first page is created and the font is retained from page to page.
 	 * If you just wish to change the current font size, it is simpler to call SetFontSize().
@@ -5043,7 +5043,7 @@ class TCPDF {
 			$fc = $this->fgcolor;
 			$sc = $this->strokecolor;
 			$alpha = $this->alpha;
-			// print shadow
+			// echo shadow
 			$this->x += $this->txtshadow['depth_w'];
 			$this->y += $this->txtshadow['depth_h'];
 			$this->SetFillColorArray($this->txtshadow['color']);
@@ -5073,7 +5073,7 @@ class TCPDF {
 	}
 
 	/**
-	 * Returns the PDF string code to print a cell (rectangular area) with optional borders, background color and character string. The upper-left corner of the cell corresponds to the current position. The text can be aligned or centered. After the call, the current position moves to the right or to the next line. It is possible to put a link on the text.<br />
+	 * Returns the PDF string code to echo a cell (rectangular area) with optional borders, background color and character string. The upper-left corner of the cell corresponds to the current position. The text can be aligned or centered. After the call, the current position moves to the right or to the next line. It is possible to put a link on the text.<br />
 	 * If automatic page breaking is enabled and the cell goes beyond the limit, a page break is done before outputting.
 	 * @param $w (float) Cell width. If 0, the cell extends up to the right margin.
 	 * @param $h (float) Cell height. Default value: 0.
@@ -5467,10 +5467,10 @@ class TCPDF {
 				$xdx = $x + $dx;
 			}
 			$xdk = $xdx * $k;
-			// print text
+			// echo text
 			$s .= sprintf('BT %F %F Td [(%s)] TJ ET', $xdk, (($this->h - $basefonty) * $k), $txt2);
 			if (isset($uniblock)) {
-				// print overlapping characters as separate string
+				// echo overlapping characters as separate string
 				$xshift = 0; // horizontal shift
 				$ty = (($this->h - $basefonty + (0.2 * $this->FontSize)) * $k);
 				$spw = (($w - $txwidth - $this->cell_padding['L'] - $this->cell_padding['R']) / ($ns?$ns:1));
@@ -6142,7 +6142,7 @@ class TCPDF {
 	}
 
 	/**
-	 * This method return the estimated number of lines for print a simple text string using Multicell() method.
+	 * This method return the estimated number of lines for echo a simple text string using Multicell() method.
 	 * @param $txt (string) String for calculating his height
 	 * @param $w (float) Width of cells. If 0, they extend up to the right margin of the page.
 	 * @param $reseth (boolean) if true reset the last cell height (default false).
@@ -6501,7 +6501,7 @@ class TCPDF {
 						// check if the line was already started
 						if (($this->rtl AND ($this->x <= ($this->w - $this->rMargin - $this->cell_padding['R'] - $margin['R'] - $chrwidth)))
 							OR ((!$this->rtl) AND ($this->x >= ($this->lMargin + $this->cell_padding['L'] + $margin['L'] + $chrwidth)))) {
-							// print a void cell and go to next line
+							// echo a void cell and go to next line
 							$this->Cell($w, $h, '', 0, 1);
 							$linebreak = true;
 							if ($firstline) {
@@ -6621,7 +6621,7 @@ class TCPDF {
 									$this->SetCellPadding(0);
 								}
 							}
-							// print the line
+							// echo the line
 							if ($firstblock AND $this->isRTLTextDir()) {
 								$tmpstr = $this->stringRightTrim($tmpstr);
 							}
@@ -6666,7 +6666,7 @@ class TCPDF {
 			$pc = $c;
 			++$i;
 		} // end while i < nb
-		// print last substring (if any)
+		// echo last substring (if any)
 		if ($l > 0) {
 			switch ($align) {
 				case 'J':
@@ -7666,7 +7666,7 @@ class TCPDF {
 					header('Content-Disposition: inline; filename="'.basename($name).'"');
 					TCPDF_STATIC::sendOutputData($this->getBuffer(), $this->bufferlen);
 				} else {
-					echo $this->getBuffer();
+					echo  $this->getBuffer();
 				}
 				break;
 			}
@@ -8158,7 +8158,7 @@ class TCPDF {
 							$annots .= ' /F 68';
 							$annots .= ' /Ff 49153';
 						} else {
-							$annots .= ' /F 4'; // default print for PDF/A
+							$annots .= ' /F 4'; // default echo for PDF/A
 							$annots .= ' /Ff 49152';
 						}
 						$annots .= ' /T '.$this->_datastring($pl['txt'], $radio_button_obj_id);
@@ -8265,7 +8265,7 @@ class TCPDF {
 						$fval = 4;
 					}
 					if ($this->pdfa_mode) {
-						// force print flag for PDF/A mode
+						// force echo flag for PDF/A mode
 						$fval |= 4;
 					}
 					$annots .= ' /F '.intval($fval);
@@ -10882,7 +10882,7 @@ class TCPDF {
 	 * Remark: the protection against modification is for people who have the full Acrobat product.
 	 * If you don't set any password, the document will open as usual. If you set a user password, the PDF viewer will ask for it before displaying the document. The master password, if different from the user one, can be used to get full access.
 	 * Note: protecting a document requires to encrypt it, which increases the processing time a lot. This can cause a PHP time-out in some cases, especially if the document contains images or fonts.
-	 * @param $permissions (Array) the set of permissions (specify the ones you want to block):<ul><li>print : Print the document;</li><li>modify : Modify the contents of the document by operations other than those controlled by 'fill-forms', 'extract' and 'assemble';</li><li>copy : Copy or otherwise extract text and graphics from the document;</li><li>annot-forms : Add or modify text annotations, fill in interactive form fields, and, if 'modify' is also set, create or modify interactive form fields (including signature fields);</li><li>fill-forms : Fill in existing interactive form fields (including signature fields), even if 'annot-forms' is not specified;</li><li>extract : Extract text and graphics (in support of accessibility to users with disabilities or for other purposes);</li><li>assemble : Assemble the document (insert, rotate, or delete pages and create bookmarks or thumbnail images), even if 'modify' is not set;</li><li>print-high : Print the document to a representation from which a faithful digital copy of the PDF content could be generated. When this is not set, printing is limited to a low-level representation of the appearance, possibly of degraded quality.</li><li>owner : (inverted logic - only for public-key) when set permits change of encryption and enables all other permissions.</li></ul>
+	 * @param $permissions (Array) the set of permissions (specify the ones you want to block):<ul><li>echo : Print the document;</li><li>modify : Modify the contents of the document by operations other than those controlled by 'fill-forms', 'extract' and 'assemble';</li><li>copy : Copy or otherwise extract text and graphics from the document;</li><li>annot-forms : Add or modify text annotations, fill in interactive form fields, and, if 'modify' is also set, create or modify interactive form fields (including signature fields);</li><li>fill-forms : Fill in existing interactive form fields (including signature fields), even if 'annot-forms' is not specified;</li><li>extract : Extract text and graphics (in support of accessibility to users with disabilities or for other purposes);</li><li>assemble : Assemble the document (insert, rotate, or delete pages and create bookmarks or thumbnail images), even if 'modify' is not set;</li><li>print-high : Print the document to a representation from which a faithful digital copy of the PDF content could be generated. When this is not set, printing is limited to a low-level representation of the appearance, possibly of degraded quality.</li><li>owner : (inverted logic - only for public-key) when set permits change of encryption and enables all other permissions.</li></ul>
 	 * @param $user_pass (String) user password. Empty by default.
 	 * @param $owner_pass (String) owner password. If not specified, a random value is used.
 	 * @param $mode (int) encryption strength: 0 = RC4 40 bit; 1 = RC4 128 bit; 2 = AES 128 bit; 3 = AES 256 bit.
@@ -13771,7 +13771,7 @@ class TCPDF {
 	/**
 	 * Start a new pdf layer.
 	 * @param $name (string) Layer name (only a-z letters and numbers). Leave empty for automatic name.
-	 * @param $print (boolean|null) Set to TRUE to print this layer, FALSE to not print and NULL to not set this option
+	 * @param $echo (boolean|null) Set to TRUE to echo this layer, FALSE to not echo and NULL to not set this option
 	 * @param $view (boolean) Set to true to view this layer.
 	 * @param $lock (boolean) If true lock the layer
 	 * @public
@@ -13914,11 +13914,11 @@ class TCPDF {
 	}
 
 	/**
-	 * Set overprint mode for stroking (OP) and non-stroking (op) painting operations.
+	 * Set overecho mode for stroking (OP) and non-stroking (op) painting operations.
 	 * (Check the "Entries in a Graphics State Parameter Dictionary" on PDF 32000-1:2008).
-	 * @param $stroking (boolean) If true apply overprint for stroking operations.
-	 * @param $nonstroking (boolean) If true apply overprint for painting operations other than stroking.
-	 * @param $mode (integer) Overprint mode: (0 = each source colour component value replaces the value previously painted for the corresponding device colorant; 1 = a tint value of 0.0 for a source colour component shall leave the corresponding component of the previously painted colour unchanged).
+	 * @param $stroking (boolean) If true apply overecho for stroking operations.
+	 * @param $nonstroking (boolean) If true apply overecho for painting operations other than stroking.
+	 * @param $mode (integer) Overecho mode: (0 = each source colour component value replaces the value previously painted for the corresponding device colorant; 1 = a tint value of 0.0 for a source colour component shall leave the corresponding component of the previously painted colour unchanged).
 	 * @public
 	 * @since 5.9.152 (2012-03-23)
 	 */
@@ -13936,13 +13936,13 @@ class TCPDF {
 		if (($mode != 0) AND ($mode != 1)) {
 			$mode = 0;
 		}
-		$this->overprint = array('OP' => $stroking, 'op' => $nonstroking, 'OPM' => $mode);
+		$this->overecho = array('OP' => $stroking, 'op' => $nonstroking, 'OPM' => $mode);
 		$gs = $this->addExtGState($this->overprint);
 		$this->setExtGState($gs);
 	}
 
 	/**
-	 * Get the overprint mode array (OP, op, OPM).
+	 * Get the overecho mode array (OP, op, OPM).
 	 * (Check the "Entries in a Graphics State Parameter Dictionary" on PDF 32000-1:2008).
 	 * @return array.
 	 * @public
@@ -14057,7 +14057,7 @@ class TCPDF {
 	/**
 	 * Set the viewer preferences dictionary controlling the way the document is to be presented on the screen or in print.
 	 * (see Section 8.1 of PDF reference, "Viewer Preferences").
-	 * <ul><li>HideToolbar boolean (Optional) A flag specifying whether to hide the viewer application's tool bars when the document is active. Default value: false.</li><li>HideMenubar boolean (Optional) A flag specifying whether to hide the viewer application's menu bar when the document is active. Default value: false.</li><li>HideWindowUI boolean (Optional) A flag specifying whether to hide user interface elements in the document's window (such as scroll bars and navigation controls), leaving only the document's contents displayed. Default value: false.</li><li>FitWindow boolean (Optional) A flag specifying whether to resize the document's window to fit the size of the first displayed page. Default value: false.</li><li>CenterWindow boolean (Optional) A flag specifying whether to position the document's window in the center of the screen. Default value: false.</li><li>DisplayDocTitle boolean (Optional; PDF 1.4) A flag specifying whether the window's title bar should display the document title taken from the Title entry of the document information dictionary (see Section 10.2.1, "Document Information Dictionary"). If false, the title bar should instead display the name of the PDF file containing the document. Default value: false.</li><li>NonFullScreenPageMode name (Optional) The document's page mode, specifying how to display the document on exiting full-screen mode:<ul><li>UseNone Neither document outline nor thumbnail images visible</li><li>UseOutlines Document outline visible</li><li>UseThumbs Thumbnail images visible</li><li>UseOC Optional content group panel visible</li></ul>This entry is meaningful only if the value of the PageMode entry in the catalog dictionary (see Section 3.6.1, "Document Catalog") is FullScreen; it is ignored otherwise. Default value: UseNone.</li><li>ViewArea name (Optional; PDF 1.4) The name of the page boundary representing the area of a page to be displayed when viewing the document on the screen. Valid values are (see Section 10.10.1, "Page Boundaries").:<ul><li>MediaBox</li><li>CropBox (default)</li><li>BleedBox</li><li>TrimBox</li><li>ArtBox</li></ul></li><li>ViewClip name (Optional; PDF 1.4) The name of the page boundary to which the contents of a page are to be clipped when viewing the document on the screen. Valid values are (see Section 10.10.1, "Page Boundaries").:<ul><li>MediaBox</li><li>CropBox (default)</li><li>BleedBox</li><li>TrimBox</li><li>ArtBox</li></ul></li><li>PrintArea name (Optional; PDF 1.4) The name of the page boundary representing the area of a page to be rendered when printing the document. Valid values are (see Section 10.10.1, "Page Boundaries").:<ul><li>MediaBox</li><li>CropBox (default)</li><li>BleedBox</li><li>TrimBox</li><li>ArtBox</li></ul></li><li>PrintClip name (Optional; PDF 1.4) The name of the page boundary to which the contents of a page are to be clipped when printing the document. Valid values are (see Section 10.10.1, "Page Boundaries").:<ul><li>MediaBox</li><li>CropBox (default)</li><li>BleedBox</li><li>TrimBox</li><li>ArtBox</li></ul></li><li>PrintScaling name (Optional; PDF 1.6) The page scaling option to be selected when a print dialog is displayed for this document. Valid values are: <ul><li>None, which indicates that the print dialog should reflect no page scaling</li><li>AppDefault (default), which indicates that applications should use the current print scaling</li></ul></li><li>Duplex name (Optional; PDF 1.7) The paper handling option to use when printing the file from the print dialog. The following values are valid:<ul><li>Simplex - Print single-sided</li><li>DuplexFlipShortEdge - Duplex and flip on the short edge of the sheet</li><li>DuplexFlipLongEdge - Duplex and flip on the long edge of the sheet</li></ul>Default value: none</li><li>PickTrayByPDFSize boolean (Optional; PDF 1.7) A flag specifying whether the PDF page size is used to select the input paper tray. This setting influences only the preset values used to populate the print dialog presented by a PDF viewer application. If PickTrayByPDFSize is true, the check box in the print dialog associated with input paper tray is checked. Note: This setting has no effect on Mac OS systems, which do not provide the ability to pick the input tray by size.</li><li>PrintPageRange array (Optional; PDF 1.7) The page numbers used to initialize the print dialog box when the file is printed. The first page of the PDF file is denoted by 1. Each pair consists of the first and last pages in the sub-range. An odd number of integers causes this entry to be ignored. Negative numbers cause the entire array to be ignored. Default value: as defined by PDF viewer application</li><li>NumCopies integer (Optional; PDF 1.7) The number of copies to be printed when the print dialog is opened for this file. Supported values are the integers 2 through 5. Values outside this range are ignored. Default value: as defined by PDF viewer application, but typically 1</li></ul>
+	 * <ul><li>HideToolbar boolean (Optional) A flag specifying whether to hide the viewer application's tool bars when the document is active. Default value: false.</li><li>HideMenubar boolean (Optional) A flag specifying whether to hide the viewer application's menu bar when the document is active. Default value: false.</li><li>HideWindowUI boolean (Optional) A flag specifying whether to hide user interface elements in the document's window (such as scroll bars and navigation controls), leaving only the document's contents displayed. Default value: false.</li><li>FitWindow boolean (Optional) A flag specifying whether to resize the document's window to fit the size of the first displayed page. Default value: false.</li><li>CenterWindow boolean (Optional) A flag specifying whether to position the document's window in the center of the screen. Default value: false.</li><li>DisplayDocTitle boolean (Optional; PDF 1.4) A flag specifying whether the window's title bar should display the document title taken from the Title entry of the document information dictionary (see Section 10.2.1, "Document Information Dictionary"). If false, the title bar should instead display the name of the PDF file containing the document. Default value: false.</li><li>NonFullScreenPageMode name (Optional) The document's page mode, specifying how to display the document on exiting full-screen mode:<ul><li>UseNone Neither document outline nor thumbnail images visible</li><li>UseOutlines Document outline visible</li><li>UseThumbs Thumbnail images visible</li><li>UseOC Optional content group panel visible</li></ul>This entry is meaningful only if the value of the PageMode entry in the catalog dictionary (see Section 3.6.1, "Document Catalog") is FullScreen; it is ignored otherwise. Default value: UseNone.</li><li>ViewArea name (Optional; PDF 1.4) The name of the page boundary representing the area of a page to be displayed when viewing the document on the screen. Valid values are (see Section 10.10.1, "Page Boundaries").:<ul><li>MediaBox</li><li>CropBox (default)</li><li>BleedBox</li><li>TrimBox</li><li>ArtBox</li></ul></li><li>ViewClip name (Optional; PDF 1.4) The name of the page boundary to which the contents of a page are to be clipped when viewing the document on the screen. Valid values are (see Section 10.10.1, "Page Boundaries").:<ul><li>MediaBox</li><li>CropBox (default)</li><li>BleedBox</li><li>TrimBox</li><li>ArtBox</li></ul></li><li>PrintArea name (Optional; PDF 1.4) The name of the page boundary representing the area of a page to be rendered when printing the document. Valid values are (see Section 10.10.1, "Page Boundaries").:<ul><li>MediaBox</li><li>CropBox (default)</li><li>BleedBox</li><li>TrimBox</li><li>ArtBox</li></ul></li><li>PrintClip name (Optional; PDF 1.4) The name of the page boundary to which the contents of a page are to be clipped when printing the document. Valid values are (see Section 10.10.1, "Page Boundaries").:<ul><li>MediaBox</li><li>CropBox (default)</li><li>BleedBox</li><li>TrimBox</li><li>ArtBox</li></ul></li><li>PrintScaling name (Optional; PDF 1.6) The page scaling option to be selected when a echo dialog is displayed for this document. Valid values are: <ul><li>None, which indicates that the echo dialog should reflect no page scaling</li><li>AppDefault (default), which indicates that applications should use the current echo scaling</li></ul></li><li>Duplex name (Optional; PDF 1.7) The paper handling option to use when printing the file from the echo dialog. The following values are valid:<ul><li>Simplex - Print single-sided</li><li>DuplexFlipShortEdge - Duplex and flip on the short edge of the sheet</li><li>DuplexFlipLongEdge - Duplex and flip on the long edge of the sheet</li></ul>Default value: none</li><li>PickTrayByPDFSize boolean (Optional; PDF 1.7) A flag specifying whether the PDF page size is used to select the input paper tray. This setting influences only the preset values used to populate the echo dialog presented by a PDF viewer application. If PickTrayByPDFSize is true, the check box in the echo dialog associated with input paper tray is checked. Note: This setting has no effect on Mac OS systems, which do not provide the ability to pick the input tray by size.</li><li>PrintPageRange array (Optional; PDF 1.7) The page numbers used to initialize the echo dialog box when the file is printed. The first page of the PDF file is denoted by 1. Each pair consists of the first and last pages in the sub-range. An odd number of integers causes this entry to be ignored. Negative numbers cause the entire array to be ignored. Default value: as defined by PDF viewer application</li><li>NumCopies integer (Optional; PDF 1.7) The number of copies to be printed when the echo dialog is opened for this file. Supported values are the integers 2 through 5. Values outside this range are ignored. Default value: as defined by PDF viewer application, but typically 1</li></ul>
 	 * @param $preferences (array) array of options.
 	 * @author Nicola Asuni
 	 * @public
@@ -14075,7 +14075,7 @@ class TCPDF {
 	 * @param $h (float) height of the rectangle.
 	 * @param $transition (boolean) if true prints tcolor transitions to white.
 	 * @param $vertical (boolean) if true prints bar vertically.
-	 * @param $colors (string) colors to print separated by comma. Valid values are: A,W,R,G,B,C,M,Y,K,RGB,CMYK,ALL,ALLSPOT,<SPOT_COLOR_NAME>. Where: A = grayscale black, W = grayscale white, R = RGB red, G RGB green, B RGB blue, C = CMYK cyan, M = CMYK magenta, Y = CMYK yellow, K = CMYK key/black, RGB = RGB registration color, CMYK = CMYK registration color, ALL = Spot registration color, ALLSPOT = print all defined spot colors, <SPOT_COLOR_NAME> = name of the spot color to print.
+	 * @param $colors (string) colors to echo separated by comma. Valid values are: A,W,R,G,B,C,M,Y,K,RGB,CMYK,ALL,ALLSPOT,<SPOT_COLOR_NAME>. Where: A = grayscale black, W = grayscale white, R = RGB red, G RGB green, B RGB blue, C = CMYK cyan, M = CMYK magenta, Y = CMYK yellow, K = CMYK key/black, RGB = RGB registration color, CMYK = CMYK registration color, ALL = Spot registration color, ALLSPOT = echo all defined spot colors, <SPOT_COLOR_NAME> = name of the spot color to print.
 	 * @author Nicola Asuni
 	 * @since 4.9.000 (2010-03-26)
 	 * @public
@@ -14284,7 +14284,7 @@ class TCPDF {
 	 * @param $x (float) abscissa of the registration mark center.
 	 * @param $y (float) ordinate of the registration mark center.
 	 * @param $r (float) radius of the crop mark.
-	 * @param $double (boolean) if true print two concentric crop marks.
+	 * @param $double (boolean) if true echo two concentric crop marks.
 	 * @param $cola (array) crop mark color (default spot registration color 'All').
 	 * @param $colb (array) second crop mark color (default spot registration color 'None').
 	 * @author Nicola Asuni
@@ -15473,7 +15473,7 @@ class TCPDF {
 		// barcode is always printed in LTR direction
 		$tempRTL = $this->rtl;
 		$this->rtl = false;
-		// print background color
+		// echo background color
 		if ($style['bgcolor']) {
 			$this->Rect($xpos_rect, $y, $w, $h, $style['border'] ? 'DF' : 'F', '', $style['bgcolor']);
 		} elseif ($style['border']) {
@@ -15482,7 +15482,7 @@ class TCPDF {
 		// set foreground color
 		$this->SetDrawColorArray($style['fgcolor']);
 		$this->SetTextColorArray($style['fgcolor']);
-		// print bars
+		// echo bars
 		foreach ($arrcode['bcode'] as $k => $v) {
 			$bw = ($v['w'] * $xres);
 			if ($v['t']) {
@@ -15492,7 +15492,7 @@ class TCPDF {
 			}
 			$xpos += $bw;
 		}
-		// print text
+		// echo text
 		if ($style['text']) {
 			if (isset($style['label']) AND !TCPDF_STATIC::empty_string($style['label'])) {
 				$label = $style['label'];
@@ -15503,7 +15503,7 @@ class TCPDF {
 			if ($this->GetStringWidth($label) > $txtwidth) {
 				$style['stretchtext'] = 2;
 			}
-			// print text
+			// echo text
 			$this->x = $xpos_text;
 			$this->y = $y + $vpadding + $barh;
 			$cellpadding = $this->cell_padding;
@@ -15723,7 +15723,7 @@ class TCPDF {
 		// barcode is always printed in LTR direction
 		$tempRTL = $this->rtl;
 		$this->rtl = false;
-		// print background color
+		// echo background color
 		if ($style['bgcolor']) {
 			$this->Rect($xpos, $y, $w, $h, $style['border'] ? 'DF' : 'F', '', $style['bgcolor']);
 		} elseif ($style['border']) {
@@ -15731,7 +15731,7 @@ class TCPDF {
 		}
 		// set foreground color
 		$this->SetDrawColorArray($style['fgcolor']);
-		// print barcode cells
+		// echo barcode cells
 		// for each row
 		for ($r = 0; $r < $rows; ++$r) {
 			$xr = $xstart;
@@ -17343,11 +17343,11 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 					$this_method_vars['dom'] = $dom;
 				}
 			}
-			// print THEAD block
+			// echo THEAD block
 			if (($dom[$key]['value'] == 'tr') AND isset($dom[$key]['thead']) AND $dom[$key]['thead']) {
 				if (isset($dom[$key]['parent']) AND isset($dom[$dom[$key]['parent']]['thead']) AND !TCPDF_STATIC::empty_string($dom[$dom[$key]['parent']]['thead'])) {
 					$this->inthead = true;
-					// print table header (thead)
+					// echo table header (thead)
 					$this->writeHTML($this->thead, false, false, false, false, '');
 					// check if we are on a new page or on a new column
 					if (($this->y < $this->start_transaction_y) OR ($this->checkPageBreak($this->lasth, '', false))) {
@@ -17385,7 +17385,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 						$xoffset = ($this->x - $dom[$dom[$key]['parent']]['borderposition']['x']);
 						$dom[$dom[$key]['parent']]['borderposition']['x'] += $xoffset;
 						$dom[$dom[$key]['parent']]['borderposition']['xmax'] += $xoffset;
-						// print table header (thead)
+						// echo table header (thead)
 						$this->writeHTML($this->thead, false, false, false, false, '');
 					}
 				}
@@ -18353,7 +18353,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 					}
 				}
 			} elseif (strlen($dom[$key]['value']) > 0) {
-				// print list-item
+				// echo list-item
 				if (!TCPDF_STATIC::empty_string($this->lispacer) AND ($this->lispacer != '^')) {
 					$this->SetFont($pfontname, $pfontstyle, $pfontsize);
 					$this->resetLastH();
@@ -20579,7 +20579,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 			if ($this->checkPageBreak($h) OR ($this->y < $prev_y)) {
 				$tmpx = $this->x;
 			}
-			// print ordered item
+			// echo ordered item
 			if ($this->rtl) {
 				$textitem = '.'.$textitem;
 			} else {
@@ -21855,10 +21855,10 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 		$this->current_column = $col;
 		// fix for HTML mode
 		$this->newline = true;
-		// print HTML table header (if any)
+		// echo HTML table header (if any)
 		if ((!TCPDF_STATIC::empty_string($this->thead)) AND (!$this->inthead)) {
 			if ($enable_thead) {
-				// print table header
+				// echo table header
 				$this->writeHTML($this->thead, false, false, false, false, '');
 				$this->y += $xshift['s']['V'];
 				// store end of header position
@@ -22380,7 +22380,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 
 	/**
 	 * Print an XObject Template.
-	 * You can print an XObject Template inside the currently opened Template.
+	 * You can echo an XObject Template inside the currently opened Template.
 	 * An XObject Template is a PDF block that is a self-contained description of any sequence of graphics objects (including path objects, text objects, and sampled images).
 	 * An XObject Template may be painted multiple times, either on several pages or at several locations on the same page and produces the same results each time, subject only to the graphics state at the time it is invoked.
 	 * @param $id (string) The ID of XObject Template to print.
@@ -22466,7 +22466,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 			}
 			$rb_x = $xt + $w;
 		}
-		// print XObject Template + Transformation matrix
+		// echo XObject Template + Transformation matrix
 		$this->StartTransform();
 		// translate and scale
 		$sx = ($w / $ow);
@@ -22638,7 +22638,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 	 * Check page for no-write regions and adapt current coordinates and page margins if necessary.
 	 * A no-write region is a portion of the page with a rectangular or trapezium shape that will not be covered when writing text or html code.
 	 * A region is always aligned on the left or right side of the page ad is defined using a vertical segment.
-	 * @param $h (float) height of the text/image/object to print in user units
+	 * @param $h (float) height of the text/image/object to echo in user units
 	 * @param $x (float) current X coordinate in user units
 	 * @param $y (float) current Y coordinate in user units
 	 * @return array($x, $y)
@@ -23428,7 +23428,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 		$ymax = 0;
 		$relcoord = false;
 		$minlen = (0.01 / $this->k); // minimum acceptable length (3 point)
-		$firstcmd = true; // used to print first point
+		$firstcmd = true; // used to echo first point
 		// draw curve pieces
 		foreach ($paths as $key => $val) {
 			// get curve type
@@ -24497,7 +24497,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 					// If the 'visibility' property is set to hidden on a 'tspan', 'tref' or 'altGlyph' element, then the text is invisible but still takes up space in text layout calculations.
 					break;
 				}
-				// print text
+				// echo text
 				$text = $this->svgtext;
 				//$text = $this->stringTrim($text);
 				$textlen = $this->GetStringWidth($text);
@@ -24525,7 +24525,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 					$tmpx = $this->x;
 					$tmpy = $this->y;
 				}
-				// print the text
+				// echo the text
 				$this->Cell($textlen, 0, $text, 0, 0, '', false, '', 0, false, 'L', 'T');
 				if ($name == 'text') {
 					// restore coordinates

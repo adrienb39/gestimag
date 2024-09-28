@@ -82,37 +82,37 @@ if (isModEnabled('stripe') && (!getDolGlobalString('STRIPE_LIVE') || GETPOST('fo
 $stripeacc = $stripe->getStripeAccount($service);
 /*if (empty($stripeaccount))
 {
-	print $langs->trans('ErrorStripeAccountNotDefined');
+	echo $langs->trans('ErrorStripeAccountNotDefined');
 }*/
 
 if (!$rowid) {
-	print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+	echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
 	if ($optioncss != '') {
-		print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
+		echo '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 	}
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-	print '<input type="hidden" name="action" value="list">';
-	print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-	print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-	print '<input type="hidden" name="page" value="'.$page.'">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+	echo '<input type="hidden" name="action" value="list">';
+	echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+	echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+	echo '<input type="hidden" name="page" value="'.$page.'">';
 
 	$title = $langs->trans("StripeTransactionList");
 	$title .= (!empty($stripeacc) ? ' (Stripe connection with Stripe OAuth Connect account '.$stripeacc.')' : ' (Stripe connection with keys from Stripe module setup)');
 
 	print_barre_liste($title, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, $totalnboflines, 'title_accountancy.png', 0, '', '', $limit);
 
-	print '<div class="div-table-responsive">';
-	print '<table class="tagtable liste'.(!empty($moreforfilter) ? " listwithfilterbefore" : "").'">'."\n";
+	echo '<div class="div-table-responsive">';
+	echo '<table class="tagtable liste'.(!empty($moreforfilter) ? " listwithfilterbefore" : "").'">'."\n";
 
-	print '<tr class="liste_titre">';
+	echo '<tr class="liste_titre">';
 	print_liste_field_titre("Ref", $_SERVER["PHP_SELF"], "", "", "", "", $sortfield, $sortorder);
 	print_liste_field_titre("DatePayment", $_SERVER["PHP_SELF"], "", "", "", '', $sortfield, $sortorder, 'center ');
 	print_liste_field_titre("Type", $_SERVER["PHP_SELF"], "", "", "", '', $sortfield, $sortorder, 'left ');
 	print_liste_field_titre("Paid", $_SERVER["PHP_SELF"], "", "", "", '', $sortfield, $sortorder, 'right ');
 	print_liste_field_titre("Fee", $_SERVER["PHP_SELF"], "", "", "", '', $sortfield, $sortorder, 'right ');
 	print_liste_field_titre("Status", $_SERVER["PHP_SELF"], "", "", "", '', '', '', 'right ');
-	print "</tr>\n";
+	echo "</tr>\n";
 	$connect = "";
 
 	try {
@@ -158,7 +158,7 @@ if (!$rowid) {
 			$societestatic->email = $obj->email;
 			$societestatic->societe_id = $obj->fk_soc;*/
 
-			print '<tr class="oddeven">';
+			echo '<tr class="oddeven">';
 
 			// Ref
 			if (!empty($stripeacc)) {
@@ -179,59 +179,59 @@ if (!$rowid) {
 				$url = 'https://dashboard.stripe.com/'.$connect.$origin.'/'.$txn->source;
 			}
 			if ($txn->type == 'stripe_fee' || $txn->type == 'reserve_transaction') {
-				print "<td>".$txn->type."</td>";
+				echo "<td>".$txn->type."</td>";
 			} else {
-				print "<td><a href='".$url."' target='_stripe'>".img_picto($langs->trans('ShowInStripe'), 'globe')." ".$txn->source."</a></td>\n";
+				echo "<td><a href='".$url."' target='_stripe'>".img_picto($langs->trans('ShowInStripe'), 'globe')." ".$txn->source."</a></td>\n";
 			}
 
 			// Stripe customer
-			//print "<td>".$charge->customer."</td>\n";
+			//echo "<td>".$charge->customer."</td>\n";
 			// Link
-			/*print "<td>";
+			/*echo "<td>";
 			if ($societestatic->id > 0) {
-				print $societestatic->getNomUrl(1);
+				echo $societestatic->getNomUrl(1);
 			}
 			if ($memberstatic->id > 0) {
-				print $memberstatic->getNomUrl(1);
+				echo $memberstatic->getNomUrl(1);
 			}
-			print "</td>\n";*/
+			echo "</td>\n";*/
 			// Origine
-			//print "<td>";
+			//echo "<td>";
 			////if ($charge->metadata->dol_type=="order"){
 			//	$object = new Commande($db);
 			//	$object->fetch($charge->metadata->dol_id);
-			//	print "<a href='".DOL_URL_ROOT."/commande/card.php?id=".$charge->metadata->dol_id."'>".img_picto('', 'object_order')." ".$object->ref."</a>";
+			//	echo "<a href='".DOL_URL_ROOT."/commande/card.php?id=".$charge->metadata->dol_id."'>".img_picto('', 'object_order')." ".$object->ref."</a>";
 			//} elseif ($charge->metadata->dol_type=="invoice"){
 			//	$object = new Facture($db);
 			//	$object->fetch($charge->metadata->dol_id);
-			//	print "<a href='".DOL_URL_ROOT."/compta/facture/card.php?facid=".$charge->metadata->dol_id."'>".img_picto('', 'object_invoice')." ".$object->ref."</a>";
+			//	echo "<a href='".DOL_URL_ROOT."/compta/facture/card.php?facid=".$charge->metadata->dol_id."'>".img_picto('', 'object_invoice')." ".$object->ref."</a>";
 			//}
-			//print "</td>\n";
+			//echo "</td>\n";
 			// Date payment
-			print '<td class="center">'.dol_print_date($txn->created, 'dayhour')."</td>\n";
+			echo '<td class="center">'.dol_print_date($txn->created, 'dayhour')."</td>\n";
 			// Type
-			print '<td>'.$txn->type.'</td>';
+			echo '<td>'.$txn->type.'</td>';
 			// Amount
-			print '<td class="right"><span class="amount">'.price(($txn->amount) / 100, 0, '', 1, - 1, - 1, strtoupper($txn->currency))."</span></td>";
-			print '<td class="right"><span class="amount">'.price(($txn->fee) / 100, 0, '', 1, - 1, - 1, strtoupper($txn->currency))."</span></td>";
+			echo '<td class="right"><span class="amount">'.price(($txn->amount) / 100, 0, '', 1, - 1, - 1, strtoupper($txn->currency))."</span></td>";
+			echo '<td class="right"><span class="amount">'.price(($txn->fee) / 100, 0, '', 1, - 1, - 1, strtoupper($txn->currency))."</span></td>";
 			// Status
-			print "<td class='right'>";
+			echo "<td class='right'>";
 			if ($txn->status == 'available') {
-				print img_picto($langs->trans($txn->status), 'statut4');
+				echo img_picto($langs->trans($txn->status), 'statut4');
 			} elseif ($txn->status == 'pending') {
-				print img_picto($langs->trans($txn->status), 'statut7');
+				echo img_picto($langs->trans($txn->status), 'statut7');
 			} elseif ($txn->status == 'failed') {
-				print img_picto($langs->trans($txn->status), 'statut8');
+				echo img_picto($langs->trans($txn->status), 'statut8');
 			}
-			print '</td>';
-			print "</tr>\n";
+			echo '</td>';
+			echo "</tr>\n";
 		}
 	} catch (Exception $e) {
-		print '<tr><td colspan="6">'.$e->getMessage().'</td></td>';
+		echo '<tr><td colspan="6">'.$e->getMessage().'</td></td>';
 	}
-	print "</table>";
-	print '</div>';
-	print '</form>';
+	echo "</table>";
+	echo '</div>';
+	echo '</form>';
 }
 
 // End of page

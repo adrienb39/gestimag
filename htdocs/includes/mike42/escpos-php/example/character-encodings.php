@@ -12,7 +12,7 @@ use Mike42\Escpos\CapabilityProfile;
  *
  * If you run into trouble, please file an issue on GitHub, including at a minimum:
  * - A UTF-8 test string in the language you're working in, and
- * - A test print or link to a technical document which lists the available
+ * - A test echo or link to a technical document which lists the available
  *      code pages ('character code tables') for your printer.
  *
  * The DefaultCapabilityProfile works for Espson-branded printers. For other models, you
@@ -56,5 +56,5 @@ try {
     /* Close printer */
     $printer -> close();
 } catch (Exception $e) {
-    echo "Couldn't print to this printer: " . $e -> getMessage() . "\n";
+    echo  "Couldn't echo to this printer: " . $e -> getMessage() . "\n";
 }

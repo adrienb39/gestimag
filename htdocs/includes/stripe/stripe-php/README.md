@@ -59,7 +59,7 @@ $customer = $stripe->customers->create([
     'email' => 'email@example.com',
     'payment_method' => 'pm_card_visa',
 ]);
-echo $customer;
+echo  $customer;
 ```
 
 ### Client/service patterns vs legacy patterns
@@ -97,8 +97,8 @@ $curl = new \Stripe\HttpClient\CurlClient();
 $curl->setTimeout(10); // default is \Stripe\HttpClient\CurlClient::DEFAULT_TIMEOUT
 $curl->setConnectTimeout(5); // default is \Stripe\HttpClient\CurlClient::DEFAULT_CONNECT_TIMEOUT
 
-echo $curl->getTimeout(); // 10
-echo $curl->getConnectTimeout(); // 5
+echo  $curl->getTimeout(); // 10
+echo  $curl->getConnectTimeout(); // 5
 
 // tell Stripe to use the tweaked client
 \Stripe\ApiRequestor::setHttpClient($curl);
@@ -137,7 +137,7 @@ You can access the data from the last API response on any object via `getLastRes
 $customer = $stripe->customers->create([
     'description' => 'example customer',
 ]);
-echo $customer->getLastResponse()->headers['Request-Id'];
+echo  $customer->getLastResponse()->headers['Request-Id'];
 ```
 
 ### SSL / TLS compatibility issues

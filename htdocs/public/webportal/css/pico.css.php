@@ -272,7 +272,7 @@ kbd {
 
 :where(:root) {
 	--background-color: #fff;
-	--color: hsl(<?php echo $webPortalTheme->primaryColorHsl['h']; ?>, <?php echo $webPortalTheme->primaryColorHsl['s']; ?>%, <?php echo $webPortalTheme->primaryColorHsl['l']; ?>%);
+	--color: hsl(<?php echo  $webPortalTheme->primaryColorHsl['h']; ?>, <?php echo  $webPortalTheme->primaryColorHsl['s']; ?>%, <?php echo  $webPortalTheme->primaryColorHsl['l']; ?>%);
 	--h1-color: hsl(205, 30%, 15%);
 	--h2-color: #24333e;
 	--h3-color: hsl(205, 25%, 23%);
@@ -283,9 +283,9 @@ kbd {
 	--muted-border-color: hsl(205, 20%, 94%);
 
 	--banner-background : #ededed;
-	--primary-color-hue : <?php echo $webPortalTheme->primaryColorHsl['h']; ?>;
-	--primary-color-saturation : <?php echo $webPortalTheme->primaryColorHsl['s']; ?>%;
-	--primary-color-lightness : <?php echo $webPortalTheme->primaryColorHsl['l']; ?>%;
+	--primary-color-hue : <?php echo  $webPortalTheme->primaryColorHsl['h']; ?>;
+	--primary-color-saturation : <?php echo  $webPortalTheme->primaryColorHsl['s']; ?>%;
+	--primary-color-lightness : <?php echo  $webPortalTheme->primaryColorHsl['l']; ?>%;
 	--primary : hsl(var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness));
 	--primary-hover: hsl(var(--primary-color-hue), 90%, 32%);
 	--primary-focus:  hsl(var(--primary-color-hue), var(--primary-color-saturation), var(--primary-color-lightness), 0.125);

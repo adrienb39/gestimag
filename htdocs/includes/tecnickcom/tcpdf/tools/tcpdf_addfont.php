@@ -42,7 +42,7 @@
  */
 
 if (php_sapi_name() != 'cli') {
-  echo 'You need to run this command from console.';
+  echo  'You need to run this command from console.';
   exit(1);
 }
 
@@ -121,7 +121,7 @@ Options:
 	-h
 	--help      Display this help and exit.
 EOD;
-	echo $help."\n\n";
+	echo  $help."\n\n";
 	exit(0);
 }
 
@@ -228,19 +228,19 @@ foreach ($inopt as $opt => $val) {
 } // end of while loop
 
 if (empty($options['fonts'])) {
-	echo "ERROR: missing input fonts (try --help for usage)\n\n";
+	echo  "ERROR: missing input fonts (try --help for usage)\n\n";
 	exit(2);
 }
 
 // check the output path
 if (!is_dir($options['outpath']) OR !is_writable($options['outpath'])) {
-	echo "ERROR: Can't write to ".$options['outpath']."\n\n";
+	echo  "ERROR: Can't write to ".$options['outpath']."\n\n";
 	exit(3);
 }
 
-echo "\n>>> Converting fonts for TCPDF:\n";
+echo  "\n>>> Converting fonts for TCPDF:\n";
 
-echo '*** Output dir set to '.$options['outpath']."\n";
+echo  '*** Output dir set to '.$options['outpath']."\n";
 
 // check if there are conversion errors
 $errors = false;
@@ -250,18 +250,18 @@ foreach ($options['fonts'] as $font) {
 	$fontname = TCPDF_FONTS::addTTFfont($fontfile, $options['type'], $options['enc'], $options['flags'], $options['outpath'], $options['platid'], $options['encid'], $options['addcbbox'], $options['link']);
 	if ($fontname === false) {
 		$errors = true;
-		echo "--- ERROR: can't add ".$font."\n";
+		echo  "--- ERROR: can't add ".$font."\n";
 	} else {
-		echo "+++ OK   : ".$fontfile.' added as '.$fontname."\n";
+		echo  "+++ OK   : ".$fontfile.' added as '.$fontname."\n";
 	}
 }
 
 if ($errors) {
-	echo "--- Process completed with ERRORS!\n\n";
+	echo  "--- Process completed with ERRORS!\n\n";
 	exit(4);
 }
 
-echo ">>> Process successfully completed!\n\n";
+echo  ">>> Process successfully completed!\n\n";
 exit(0);
 
 //============================================================+

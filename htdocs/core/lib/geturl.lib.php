@@ -54,9 +54,9 @@ function getURLContent($url, $postorget = 'GET', $param = '', $followlocation = 
 	//setting the curl parameters.
 	$ch = curl_init();
 
-	/*print $API_Endpoint."-".$API_version."-".$PAYPAL_API_USER."-".$PAYPAL_API_PASSWORD."-".$PAYPAL_API_SIGNATURE."<br>";
-	 print $USE_PROXY."-".$gv_ApiErrorURL."<br>";
-	 print $nvpStr;
+	/*echo$API_Endpoint."-".$API_version."-".$PAYPAL_API_USER."-".$PAYPAL_API_PASSWORD."-".$PAYPAL_API_SIGNATURE."<br>";
+	 echo$USE_PROXY."-".$gv_ApiErrorURL."<br>";
+	 echo$nvpStr;
 	 exit;*/
 	curl_setopt($ch, CURLOPT_VERBOSE, 1);
 	curl_setopt($ch, CURLOPT_USERAGENT, 'Gestimag geturl function');

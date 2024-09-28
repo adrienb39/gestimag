@@ -59,7 +59,7 @@ class FormSocialContrib
 	 * 	@param	int		$maxlen			Max length of text in combo box
 	 * 	@param	int		$help			Add or not the admin help picto
 	 *  @param	string	$morecss		Add more CSS on select
-	 *  @param	int		$noerrorifempty	No print error if list is empty for the country
+	 *  @param	int		$noerrorifempty	No echo error if list is empty for the country
 	 * 	@return	void
 	 */
 	public function select_type_socialcontrib($selected = '', $htmlname = 'actioncode', $useempty = 0, $maxlen = 40, $help = 1, $morecss = 'minwidth300', $noerrorifempty = 0)
@@ -68,7 +68,7 @@ class FormSocialContrib
 		global $conf, $db, $langs, $user, $mysoc;
 
 		if (empty($mysoc->country_id) && empty($mysoc->country_code)) {
-			print $langs->trans("ErrorSetupOfCountryMustBeDone");
+			echo $langs->trans("ErrorSetupOfCountryMustBeDone");
 			return;
 		}
 
@@ -91,31 +91,31 @@ class FormSocialContrib
 		if ($resql) {
 			$num = $this->db->num_rows($resql);
 			if ($num) {
-				print '<select class="'.($morecss ? $morecss : '').'" id="'.$htmlname.'" name="'.$htmlname.'">';
+				echo '<select class="'.($morecss ? $morecss : '').'" id="'.$htmlname.'" name="'.$htmlname.'">';
 				$i = 0;
 
 				if ($useempty) {
-					print '<option value="0">&nbsp;</option>';
+					echo '<option value="0">&nbsp;</option>';
 				}
 				while ($i < $num) {
 					$obj = $this->db->fetch_object($resql);
-					print '<option value="'.$obj->id.'"';
+					echo '<option value="'.$obj->id.'"';
 					if ($obj->id == $selected) {
-						print ' selected';
+						echo ' selected';
 					}
-					print '>'.dol_trunc($obj->type, $maxlen);
+					echo '>'.dol_trunc($obj->type, $maxlen);
 					$i++;
 				}
-				print '</select>';
+				echo '</select>';
 				if ($user->admin && $help) {
-					print info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
+					echo info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
 				}
 				if (!empty($conf->use_javascript_ajax)) {
-					print ajax_combobox($htmlname);
+					echo ajax_combobox($htmlname);
 				}
 			} else {
 				if (empty($noerrorifempty)) {
-					print $langs->trans("ErrorNoSocialContributionForSellerCountry", $mysoc->country_code);
+					echo $langs->trans("ErrorNoSocialContributionForSellerCountry", $mysoc->country_code);
 				}
 			}
 		} else {

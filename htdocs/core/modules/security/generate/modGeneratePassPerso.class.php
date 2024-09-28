@@ -256,12 +256,12 @@ class modGeneratePassPerso extends ModeleGenPassword
 			if ($c != $last) {
 				$last = $c;
 				$count = 1;
-				//print "Char $c - count = $count\n";
+				//echo "Char $c - count = $count\n";
 				continue;
 			}
 
 			$count++;
-			//print "Char $c - count = $count\n";
+			//echo "Char $c - count = $count\n";
 
 			if ($count > $this->NbRepeat) {
 				return false;

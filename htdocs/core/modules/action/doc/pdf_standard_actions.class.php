@@ -289,11 +289,11 @@ class pdf_standard_actions
 					}
 				}
 
-				//print 'd'.$text; exit;
+				//echo 'd'.$text; exit;
 				$nboflines = dol_nboflines($text);
 
 				$heightlinemax = max(2 * $height, $nboflines * $height);
-				// Check if there is enough space to print record
+				// Check if there is enough space to echo record
 				if ((1 + $y + $heightlinemax) >= ($this->page_hauteur - $this->marge_haute)) {
 					// We need to break page
 					$pagenb++;

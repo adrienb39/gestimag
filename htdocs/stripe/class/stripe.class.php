@@ -1110,7 +1110,7 @@ class Stripe extends CommonObject
 							} else {
 								dol_syslog("Update the payment mode of the customer");
 
-								// print json_encode($sepa);
+								// echo json_encode($sepa);
 
 								// Save the Stripe payment mode ID into the Gestimag database
 								$sql = "UPDATE ".MAIN_DB_PREFIX."societe_rib";

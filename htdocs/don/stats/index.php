@@ -69,7 +69,7 @@ llxHeader();
 
 $dir = $conf->don->dir_temp;
 
-print load_fiche_titre($langs->trans("DonationsStatistics"), '', 'donation');
+echo load_fiche_titre($langs->trans("DonationsStatistics"), '', 'donation');
 
 dol_mkdir($dir);
 
@@ -190,140 +190,140 @@ $type = 'donation_stats';
 
 complete_head_from_modules($conf, $langs, null, $head, $h, $type);
 
-print dol_get_fiche_head($head, 'byyear', '', -1);
+echo dol_get_fiche_head($head, 'byyear', '', -1);
 
 
-print '<div class="fichecenter"><div class="fichethirdleft">';
+echo '<div class="fichecenter"><div class="fichethirdleft">';
 
 // Show filter box
-print '<form name="stats" method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<form name="stats" method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
 
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre"><td class="liste_titre" colspan="2">'.$langs->trans("Filter").'</td></tr>';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre"><td class="liste_titre" colspan="2">'.$langs->trans("Filter").'</td></tr>';
 
 // Company
 if (empty(!$conf->global->DONATION_USE_THIRDPARTIES)) {
-	print '<tr><td>'.$langs->trans("ThirdParty").'</td><td>';
-	print img_picto('', 'company', 'class="pictofixedwidth"');
-	print $form->select_company($socid, 'socid', '', 1, 0, 0, array(), 0, 'widthcentpercentminusx maxwidth300', '');
-	print '</td></tr>';
+	echo '<tr><td>'.$langs->trans("ThirdParty").'</td><td>';
+	echo img_picto('', 'company', 'class="pictofixedwidth"');
+	echo $form->select_company($socid, 'socid', '', 1, 0, 0, array(), 0, 'widthcentpercentminusx maxwidth300', '');
+	echo '</td></tr>';
 }
 
 // ThirdParty Type
-print '<tr><td>'.$langs->trans("ThirdPartyType").'</td><td>';
+echo '<tr><td>'.$langs->trans("ThirdPartyType").'</td><td>';
 $sortparam_typent = (empty($conf->global->SOCIETE_SORT_ON_TYPEENT) ? 'ASC' : $conf->global->SOCIETE_SORT_ON_TYPEENT);
-print $form->selectarray("typent_id", $formcompany->typent_array(0), $typent_id, 1, 0, 0, '', 0, 0, 0, $sortparam_typent, '', 1);
+echo $form->selectarray("typent_id", $formcompany->typent_array(0), $typent_id, 1, 0, 0, '', 0, 0, 0, $sortparam_typent, '', 1);
 if ($user->admin) {
-	print ' '.info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
+	echo ' '.info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
 }
-print '</td></tr>';
+echo '</td></tr>';
 
 // Category
 if (isModEnabled('category')) {
 	$cat_type = Categorie::TYPE_CUSTOMER;
 	$cat_label = $langs->trans("Category").' '.lcfirst($langs->trans("Customer"));
-	print '<tr><td>'.$cat_label.'</td><td>';
+	echo '<tr><td>'.$cat_label.'</td><td>';
 	$cate_arbo = $form->select_all_categories($cat_type, null, 'parent', null, null, 1);
-	print img_picto('', 'category', 'class="pictofixedwidth"');
-	print $form->multiselectarray('custcats', $cate_arbo, GETPOST('custcats', 'array'), 0, 0, 'widthcentpercentminusx maxwidth300');
-	print '</td></tr>';
+	echo img_picto('', 'category', 'class="pictofixedwidth"');
+	echo $form->multiselectarray('custcats', $cate_arbo, GETPOST('custcats', 'array'), 0, 0, 'widthcentpercentminusx maxwidth300');
+	echo '</td></tr>';
 }
 
 // User
-print '<tr><td>'.$langs->trans("CreatedBy").'</td><td>';
-print img_picto('', 'user', 'class="pictofixedwidth"');
-print $form->select_dolusers($userid, 'userid', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'widthcentpercentminusx maxwidth300');
-print '</td></tr>';
+echo '<tr><td>'.$langs->trans("CreatedBy").'</td><td>';
+echo img_picto('', 'user', 'class="pictofixedwidth"');
+echo $form->select_dolusers($userid, 'userid', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'widthcentpercentminusx maxwidth300');
+echo '</td></tr>';
 
 // Status
-print '<tr><td>'.$langs->trans("Status").'</td><td>';
+echo '<tr><td>'.$langs->trans("Status").'</td><td>';
 $liststatus = array(
 	'2' => $langs->trans("DonationStatusPaid"),
 	'0' => $langs->trans("DonationStatusPromiseNotValidated"),
 	'1' => $langs->trans("DonationStatusPromiseValidated"),
 	'3' => $langs->trans("Canceled")
 );
-print $form->selectarray('status', $liststatus, 4, 1);
+echo $form->selectarray('status', $liststatus, 4, 1);
 
 // Year
-print '<tr><td>'.$langs->trans("Year").'</td><td>';
+echo '<tr><td>'.$langs->trans("Year").'</td><td>';
 arsort($arrayyears);
-print $form->selectarray('year', $arrayyears, $year, 0, 0, 0, '', 0, 0, 0, '', 'width75');
+echo $form->selectarray('year', $arrayyears, $year, 0, 0, 0, '', 0, 0, 0, '', 'width75');
 
-print '</td></tr>';
-print '<tr><td class="center" colspan="2"><input type="submit" name="submit" class="button small" value="'.$langs->trans("Refresh").'"></td></tr>';
-print '</table>';
-print '</form>';
-print '<br><br>';
+echo '</td></tr>';
+echo '<tr><td class="center" colspan="2"><input type="submit" name="submit" class="button small" value="'.$langs->trans("Refresh").'"></td></tr>';
+echo '</table>';
+echo '</form>';
+echo '<br><br>';
 
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre" height="24">';
-print '<td class="center">'.$langs->trans("Year").'</td>';
-print '<td class="right">'.$langs->trans("NbOfDonations").'</td>';
-print '<td class="right">%</td>';
-print '<td class="right">'.$langs->trans("AmountTotal").'</td>';
-print '<td class="right">%</td>';
-print '<td class="right">'.$langs->trans("AmountAverage").'</td>';
-print '<td class="right">%</td>';
-print '</tr>';
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre" height="24">';
+echo '<td class="center">'.$langs->trans("Year").'</td>';
+echo '<td class="right">'.$langs->trans("NbOfDonations").'</td>';
+echo '<td class="right">%</td>';
+echo '<td class="right">'.$langs->trans("AmountTotal").'</td>';
+echo '<td class="right">%</td>';
+echo '<td class="right">'.$langs->trans("AmountAverage").'</td>';
+echo '<td class="right">%</td>';
+echo '</tr>';
 
 $oldyear = 0;
 foreach ($data as $val) {
 	$year = $val['year'];
 	while (!empty($year) && $oldyear > $year + 1) {
 		$oldyear--;
-		print '<tr class="oddeven" height="24">';
-		print '<td class="center"><a href="'.$_SERVER["PHP_SELF"].'?year='.$oldyear.'">'.$oldyear.'</a></td>';
+		echo '<tr class="oddeven" height="24">';
+		echo '<td class="center"><a href="'.$_SERVER["PHP_SELF"].'?year='.$oldyear.'">'.$oldyear.'</a></td>';
 
-		print '<td class="right">0</td>';
-		print '<td class="right"></td>';
-		print '<td class="right amount">0</td>';
-		print '<td class="right"></td>';
-		print '<td class="right amount">0</td>';
-		print '<td class="right"></td>';
-		print '</tr>';
+		echo '<td class="right">0</td>';
+		echo '<td class="right"></td>';
+		echo '<td class="right amount">0</td>';
+		echo '<td class="right"></td>';
+		echo '<td class="right amount">0</td>';
+		echo '<td class="right"></td>';
+		echo '</tr>';
 	}
 
 	$greennb = (empty($val['nb_diff']) || $val['nb_diff'] >= 0);
 	$greentotal = (empty($val['total_diff']) || $val['total_diff'] >= 0);
 	$greenavg = (empty($val['avg_diff']) || $val['avg_diff'] >= 0);
 
-	print '<tr class="oddeven" height="24">';
-	print '<td align="center"><a href="'.$_SERVER["PHP_SELF"].'?year='.$year.'&amp;mode='.$mode.($socid > 0 ? '&socid='.$socid : '').($userid > 0 ? '&userid='.$userid : '').'">'.$year.'</a></td>';
-	print '<td class="right">'.$val['nb'].'</td>';
-	print '<td class="right opacitylow" style="'.($greennb ? 'color: green;' : 'color: red;').'">'.(!empty($val['nb_diff']) && $val['nb_diff'] < 0 ? '' : '+').round(!empty($val['nb_diff']) ? $val['nb_diff'] : 0).'%</td>';
-	print '<td class="right"><span class="amount">'.price(price2num($val['total'], 'MT'), 1).'</span></td>';
-	print '<td class="right opacitylow" style="'.($greentotal ? 'color: green;' : 'color: red;').'">'.( !empty($val['total_diff']) && $val['total_diff'] < 0 ? '' : '+').round(!empty($val['total_diff']) ? $val['total_diff'] : 0).'%</td>';
-	print '<td class="right"><span class="amount">'.price(price2num($val['avg'], 'MT'), 1).'</span></td>';
-	print '<td class="right opacitylow" style="'.($greenavg ? 'color: green;' : 'color: red;').'">'.(!empty($val['avg_diff']) && $val['avg_diff'] < 0 ? '' : '+').round(!empty($val['avg_diff']) ? $val['avg_diff'] : 0).'%</td>';
-	print '</tr>';
+	echo '<tr class="oddeven" height="24">';
+	echo '<td align="center"><a href="'.$_SERVER["PHP_SELF"].'?year='.$year.'&amp;mode='.$mode.($socid > 0 ? '&socid='.$socid : '').($userid > 0 ? '&userid='.$userid : '').'">'.$year.'</a></td>';
+	echo '<td class="right">'.$val['nb'].'</td>';
+	echo '<td class="right opacitylow" style="'.($greennb ? 'color: green;' : 'color: red;').'">'.(!empty($val['nb_diff']) && $val['nb_diff'] < 0 ? '' : '+').round(!empty($val['nb_diff']) ? $val['nb_diff'] : 0).'%</td>';
+	echo '<td class="right"><span class="amount">'.price(price2num($val['total'], 'MT'), 1).'</span></td>';
+	echo '<td class="right opacitylow" style="'.($greentotal ? 'color: green;' : 'color: red;').'">'.( !empty($val['total_diff']) && $val['total_diff'] < 0 ? '' : '+').round(!empty($val['total_diff']) ? $val['total_diff'] : 0).'%</td>';
+	echo '<td class="right"><span class="amount">'.price(price2num($val['avg'], 'MT'), 1).'</span></td>';
+	echo '<td class="right opacitylow" style="'.($greenavg ? 'color: green;' : 'color: red;').'">'.(!empty($val['avg_diff']) && $val['avg_diff'] < 0 ? '' : '+').round(!empty($val['avg_diff']) ? $val['avg_diff'] : 0).'%</td>';
+	echo '</tr>';
 	$oldyear = $year;
 }
 
-print '</table>';
-print '</div>';
+echo '</table>';
+echo '</div>';
 
-print '</div><div class="fichetwothirdright">';
+echo '</div><div class="fichetwothirdright">';
 
 // Show graphs
-print '<table class="border centpercent"><tr class="pair nohover"><td class="center">';
+echo '<table class="border centpercent"><tr class="pair nohover"><td class="center">';
 if ($mesg) {
-	print $mesg;
+	echo $mesg;
 } else {
-	print $px1->show();
-	print "<br>\n";
-	print $px2->show();
-	print "<br>\n";
-	print $px3->show();
+	echo $px1->show();
+	echo "<br>\n";
+	echo $px2->show();
+	echo "<br>\n";
+	echo $px3->show();
 }
-print '</td></tr></table>';
+echo '</td></tr></table>';
 
-print '</div></div>';
-print '<div class="clearboth"></div>';
+echo '</div></div>';
+echo '<div class="clearboth"></div>';
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 llxFooter();
 $db->close();

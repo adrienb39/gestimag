@@ -507,7 +507,7 @@ class doc_generic_task_odt extends ModelePDFTask
 
 
 			if (file_exists($dir)) {
-				//print "srctemplatepath=".$srctemplatepath;	// Src filename
+				//echo "srctemplatepath=".$srctemplatepath;	// Src filename
 				$newfile = basename($srctemplatepath);
 				$newfiletmp = preg_replace('/\.(ods|odt)/i', '', $newfile);
 				$newfiletmp = preg_replace('/template_/i', '', $newfiletmp);
@@ -515,10 +515,10 @@ class doc_generic_task_odt extends ModelePDFTask
 				$newfiletmp = $objectref . '_' . $newfiletmp;
 				//$file=$dir.'/'.$newfiletmp.'.'.dol_print_date(dol_now(),'%Y%m%d%H%M%S').'.odt';
 				$file = $dir . '/' . $newfiletmp . '.odt';
-				//print "newdir=".$dir;
-				//print "newfile=".$newfile;
-				//print "file=".$file;
-				//print "conf->societe->dir_temp=".$conf->societe->dir_temp;
+				//echo "newdir=".$dir;
+				//echo "newfile=".$newfile;
+				//echo "file=".$file;
+				//echo "conf->societe->dir_temp=".$conf->societe->dir_temp;
 
 				dol_mkdir($conf->project->dir_temp);
 				if (!is_writable($conf->project->dir_temp)) {
@@ -560,8 +560,8 @@ class doc_generic_task_odt extends ModelePDFTask
 				// After construction $odfHandler->contentXml contains content and
 				// [!-- BEGIN row.lines --]*[!-- END row.lines --] has been replaced by
 				// [!-- BEGIN lines --]*[!-- END lines --]
-				//print html_entity_decode($odfHandler->__toString());
-				//print exit;
+				//echo html_entity_decode($odfHandler->__toString());
+				//echo exit;
 
 
 				// Define substitution array

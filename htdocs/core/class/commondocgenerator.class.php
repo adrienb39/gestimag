@@ -1259,7 +1259,7 @@ abstract class CommonDocGenerator
 
 
 	/**
-	 *  print standard column content
+	 *  echo standard column content
 	 *
 	 *	@param	TCPDI|TCPDF	$pdf            Pdf object
 	 *  @param	float		$curY    		current Y position
@@ -1302,7 +1302,7 @@ abstract class CommonDocGenerator
 
 
 	/**
-	 *  print description column content
+	 *  echo description column content
 	 *
 	 *	@param	TCPDI|TCPDF	$pdf            Pdf object
 	 *  @param	float		$curY    		current Y position

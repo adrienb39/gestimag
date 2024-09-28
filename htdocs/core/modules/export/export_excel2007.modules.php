@@ -269,7 +269,7 @@ class ExportExcel2007 extends ModeleExports
 
 		foreach ($array_selected_sorted as $code => $value) {
 			$alias = $array_export_fields_label[$code];
-			//print "dd".$alias;
+			//echo "dd".$alias;
 			if (empty($alias)) {
 				dol_print_error(null, 'Bad value for field with code='.$code.'. Try to redefine export.');
 			}

@@ -21,7 +21,7 @@ use InvalidArgumentException;
  * * $_POST
  * * $_FILES
  * * php://input
- * * echo()
+ * * echo ()
  * * header()
  * * php://output
  *

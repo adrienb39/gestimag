@@ -255,7 +255,7 @@ class doc_generic_bom_odt extends ModelePDFBom
 			}
 
 			if (file_exists($dir)) {
-				//print "srctemplatepath=".$srctemplatepath;	// Src filename
+				//echo "srctemplatepath=".$srctemplatepath;	// Src filename
 				$newfile = basename($srctemplatepath);
 				$newfiletmp = preg_replace('/\.od[ts]/i', '', $newfile);
 				$newfiletmp = preg_replace('/template_/i', '', $newfiletmp);
@@ -274,10 +274,10 @@ class doc_generic_bom_odt extends ModelePDFBom
 					$filename = $newfiletmp . '.' . $newfileformat;
 				}
 				$file = $dir . '/' . $filename;
-				//print "newdir=".$dir;
-				//print "newfile=".$newfile;
-				//print "file=".$file;
-				//print "conf->societe->dir_temp=".$conf->societe->dir_temp;
+				//echo "newdir=".$dir;
+				//echo "newfile=".$newfile;
+				//echo "file=".$file;
+				//echo "conf->societe->dir_temp=".$conf->societe->dir_temp;
 
 				dol_mkdir($conf->bom->dir_temp);
 				if (!is_writable($conf->bom->dir_temp)) {

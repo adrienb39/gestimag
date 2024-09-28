@@ -175,8 +175,8 @@ if (!dol_is_dir($upload_dir)) {
 	exit;*/
 }
 
-print '<!-- ajaxdirpreview type='.$type.' module='.$module.' modulepart='.$modulepart.'-->'."\n";
-//print '<!-- Page called with mode='.dol_escape_htmltag(isset($mode)?$mode:'').' type='.dol_escape_htmltag($type).' module='.dol_escape_htmltag($module).' url='.dol_escape_htmltag($url).' '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+echo '<!-- ajaxdirpreview type='.$type.' module='.$module.' modulepart='.$modulepart.'-->'."\n";
+//echo '<!-- Page called with mode='.dol_escape_htmltag(isset($mode)?$mode:'').' type='.dol_escape_htmltag($type).' module='.dol_escape_htmltag($module).' url='.dol_escape_htmltag($url).' '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 $param = ($sortfield ? '&sortfield='.urlencode($sortfield) : '').($sortorder ? '&sortorder='.urlencode($sortorder) : '');
 if (!empty($websitekey)) {
@@ -440,19 +440,19 @@ if ($useajax || $action == 'deletefile') {
 		$formquestion['pageid'] = array('type' => 'hidden', 'value' => $pageid, 'name' => 'pageid');
 	}
 
-	print $form->formconfirm($url, $langs->trans("DeleteFile"), $langs->trans("ConfirmDeleteFile"), 'confirm_deletefile', $formquestion, "no", ($useajax ? 'deletefile' : 0));
+	echo $form->formconfirm($url, $langs->trans("DeleteFile"), $langs->trans("ConfirmDeleteFile"), 'confirm_deletefile', $formquestion, "no", ($useajax ? 'deletefile' : 0));
 }
 
 if ($useajax) {
-	print '<!-- ajaxdirpreview.php: js to manage preview of doc -->'."\n";
-	print '<script nonce="'.getNonce().'" type="text/javascript">';
+	echo '<!-- ajaxdirpreview.php: js to manage preview of doc -->'."\n";
+	echo '<script nonce="'.getNonce().'" type="text/javascript">';
 
 	// Enable jquery handlers on new generated HTML objects (same code than into lib_footer.js.php)
 	// Because the content is reloaded by ajax call, we must also reenable some jquery hooks
 	// Wrapper to manage document_preview
 	if ($conf->browser->layout != 'phone') {
-		print "\n/* JS CODE TO ENABLE document_preview */\n";
-		print '
+		echo "\n/* JS CODE TO ENABLE document_preview */\n";
+		echo '
                 jQuery(document).ready(function () {
 			        jQuery(".documentpreview").click(function () {
             		    console.log("We click on preview for element with href="+$(this).attr(\'href\')+" mime="+$(this).attr(\'mime\'));
@@ -464,16 +464,16 @@ if ($useajax) {
 	}
 
 	// Enable jquery handlers button to delete files
-	print 'jQuery(document).ready(function() {'."\n";
-	print '  jQuery(".deletefilelink").click(function(e) { '."\n";
-	print '    console.log("We click on button with class deletefilelink, param='.$param.', we set urlfile to "+jQuery(this).attr("rel"));'."\n";
-	print '    jQuery("#urlfile").val(jQuery(this).attr("rel"));'."\n";
-	//print '    jQuery("#section_dir").val(\'aaa\');'."\n";
-	print '    jQuery("#dialog-confirm-deletefile").dialog("open");'."\n";
-	print '    return false;'."\n";
-	print '  });'."\n";
-	print '});'."\n";
-	print '</script>'."\n";
+	echo 'jQuery(document).ready(function() {'."\n";
+	echo '  jQuery(".deletefilelink").click(function(e) { '."\n";
+	echo '    console.log("We click on button with class deletefilelink, param='.$param.', we set urlfile to "+jQuery(this).attr("rel"));'."\n";
+	echo '    jQuery("#urlfile").val(jQuery(this).attr("rel"));'."\n";
+	//echo '    jQuery("#section_dir").val(\'aaa\');'."\n";
+	echo '    jQuery("#dialog-confirm-deletefile").dialog("open");'."\n";
+	echo '    return false;'."\n";
+	echo '  });'."\n";
+	echo '});'."\n";
+	echo '</script>'."\n";
 }
 
 // Close db if mode is not noajax

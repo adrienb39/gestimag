@@ -174,31 +174,31 @@ if (!empty($object->multilangs)) {
 }
 
 
-print dol_get_fiche_head($head, 'translation', $titre, 0, 'group');
+echo dol_get_fiche_head($head, 'translation', $titre, 0, 'group');
 
 $linkback = '<a href="'.dol_buildpath('/adherents/type.php', 1).'">'.$langs->trans("BackToList").'</a>';
 
 dol_banner_tab($object, 'rowid', $linkback);
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 
 
 /*
  * Action bar
  */
-print "\n<div class=\"tabsAction\">\n";
+echo "\n<div class=\"tabsAction\">\n";
 
 if ($action == '') {
 	if ($user->hasRight('produit', 'creer') || $user->hasRight('service', 'creer')) {
-		print '<a class="butAction" href="'.DOL_URL_ROOT.'/adherents/type_translation.php?action=create&token='.newToken().'&rowid='.$object->id.'">'.$langs->trans("Add").'</a>';
+		echo '<a class="butAction" href="'.DOL_URL_ROOT.'/adherents/type_translation.php?action=create&token='.newToken().'&rowid='.$object->id.'">'.$langs->trans("Add").'</a>';
 		if ($cnt_trans > 0) {
-			print '<a class="butAction" href="'.DOL_URL_ROOT.'/adherents/type_translation.php?action=edit&token='.newToken().'&rowid='.$object->id.'">'.$langs->trans("Update").'</a>';
+			echo '<a class="butAction" href="'.DOL_URL_ROOT.'/adherents/type_translation.php?action=edit&token='.newToken().'&rowid='.$object->id.'">'.$langs->trans("Update").'</a>';
 		}
 	}
 }
 
-print "\n</div>\n";
+echo "\n</div>\n";
 
 
 
@@ -206,62 +206,62 @@ if ($action == 'edit') {
 	//WYSIWYG Editor
 	require_once DOL_DOCUMENT_ROOT.'/core/class/doleditor.class.php';
 
-	print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="vedit">';
-	print '<input type="hidden" name="rowid" value="'.$object->id.'">';
+	echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="vedit">';
+	echo '<input type="hidden" name="rowid" value="'.$object->id.'">';
 
 	if (!empty($object->multilangs)) {
 		foreach ($object->multilangs as $key => $value) {
 			$s = picto_from_langcode($key);
-			print '<br>';
-			print '<div class="inline-block marginbottomonly">';
+			echo '<br>';
+			echo '<div class="inline-block marginbottomonly">';
 			print($s ? $s.' ' : '').'<b>'.$langs->trans('Language_'.$key).':</b>';
-			print '</div>';
-			print '<div class="inline-block marginbottomonly floatright">';
-			print '<a href="'.$_SERVER["PHP_SELF"].'?rowid='.$object->id.'&action=delete&token='.newToken().'&langtodelete='.$key.'">'.img_delete('', 'class="valigntextbottom"')."</a><br>";
-			print '</div>';
+			echo '</div>';
+			echo '<div class="inline-block marginbottomonly floatright">';
+			echo '<a href="'.$_SERVER["PHP_SELF"].'?rowid='.$object->id.'&action=delete&token='.newToken().'&langtodelete='.$key.'">'.img_delete('', 'class="valigntextbottom"')."</a><br>";
+			echo '</div>';
 
-			print '<div class="underbanner clearboth"></div>';
-			print '<table class="border centpercent">';
-			print '<tr><td class="tdtop titlefieldcreate fieldrequired">'.$langs->trans('Label').'</td><td><input name="libelle-'.$key.'" class="minwidth300" value="'.dol_escape_htmltag($object->multilangs[$key]["label"]).'"></td></tr>';
-			print '<tr><td class="tdtop">'.$langs->trans('Description').'</td><td>';
+			echo '<div class="underbanner clearboth"></div>';
+			echo '<table class="border centpercent">';
+			echo '<tr><td class="tdtop titlefieldcreate fieldrequired">'.$langs->trans('Label').'</td><td><input name="libelle-'.$key.'" class="minwidth300" value="'.dol_escape_htmltag($object->multilangs[$key]["label"]).'"></td></tr>';
+			echo '<tr><td class="tdtop">'.$langs->trans('Description').'</td><td>';
 			$doleditor = new DolEditor("desc-$key", $object->multilangs[$key]["description"], '', 160, 'gestimag_notes', '', false, true, isModEnabled('fckeditor') && getDolGlobalInt('FCKEDITOR_ENABLE_SOCIETE'), ROWS_3, '90%');
 			$doleditor->Create();
-			print '</td></tr>';
-			print '</td></tr>';
-			print '</table>';
+			echo '</td></tr>';
+			echo '</td></tr>';
+			echo '</table>';
 		}
 	}
 
-	print $form->buttonsSaveCancel();
+	echo $form->buttonsSaveCancel();
 
-	print '</form>';
+	echo '</form>';
 } elseif ($action != 'create') {
 	if (!empty($object->multilangs)) {
 		foreach ($object->multilangs as $key => $value) {
 			$s = picto_from_langcode($key);
-			print '<div class="inline-block marginbottomonly">';
+			echo '<div class="inline-block marginbottomonly">';
 			print($s ? $s.' ' : '').'<b>'.$langs->trans('Language_'.$key).':</b>';
-			print '</div>';
-			print '<div class="inline-block marginbottomonly floatright">';
-			print '<a href="'.$_SERVER["PHP_SELF"].'?rowid='.$object->id.'&action=delete&token='.newToken().'&langtodelete='.$key.'">'.img_delete('', 'class="valigntextbottom"').'</a>';
-			print '</div>';
+			echo '</div>';
+			echo '<div class="inline-block marginbottomonly floatright">';
+			echo '<a href="'.$_SERVER["PHP_SELF"].'?rowid='.$object->id.'&action=delete&token='.newToken().'&langtodelete='.$key.'">'.img_delete('', 'class="valigntextbottom"').'</a>';
+			echo '</div>';
 
 
-			print '<div class="fichecenter">';
-			print '<div class="underbanner clearboth"></div>';
-			print '<table class="border centpercent">';
-			print '<tr><td class="titlefieldcreate">'.$langs->trans('Label').'</td><td>'.$object->multilangs[$key]["label"].'</td></tr>';
-			print '<tr><td class="tdtop">'.$langs->trans('Description').'</td><td>'.$object->multilangs[$key]["description"].'</td></tr>';
-			print '</table>';
-			print '</div>';
+			echo '<div class="fichecenter">';
+			echo '<div class="underbanner clearboth"></div>';
+			echo '<table class="border centpercent">';
+			echo '<tr><td class="titlefieldcreate">'.$langs->trans('Label').'</td><td>'.$object->multilangs[$key]["label"].'</td></tr>';
+			echo '<tr><td class="tdtop">'.$langs->trans('Description').'</td><td>'.$object->multilangs[$key]["description"].'</td></tr>';
+			echo '</table>';
+			echo '</div>';
 
-			print '<br>';
+			echo '<br>';
 		}
 	}
 	if (!$cnt_trans && $action != 'create') {
-		print '<div class="opacitymedium">'.$langs->trans('NoTranslation').'</div>';
+		echo '<div class="opacitymedium">'.$langs->trans('NoTranslation').'</div>';
 	}
 }
 
@@ -275,33 +275,33 @@ if ($action == 'create' && $user->hasRight('adherent', 'configurer')) {
 	//WYSIWYG Editor
 	require_once DOL_DOCUMENT_ROOT.'/core/class/doleditor.class.php';
 
-	print '<br>';
-	print '<form action="'.$_SERVER["PHP_SELF"].'" method="post">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="vadd">';
-	print '<input type="hidden" name="rowid" value="'.GETPOSTINT("rowid").'">';
+	echo '<br>';
+	echo '<form action="'.$_SERVER["PHP_SELF"].'" method="post">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="vadd">';
+	echo '<input type="hidden" name="rowid" value="'.GETPOSTINT("rowid").'">';
 
-	print dol_get_fiche_head();
+	echo dol_get_fiche_head();
 
-	print '<table class="border centpercent">';
-	print '<tr><td class="tdtop titlefieldcreate fieldrequired">'.$langs->trans('Language').'</td><td>';
-	print $formadmin->select_language('', 'forcelangprod', 0, $object->multilangs, 1);
-	print '</td></tr>';
-	print '<tr><td class="tdtop fieldrequired">'.$langs->trans('Label').'</td><td><input name="libelle" class="minwidth300" value="'.dol_escape_htmltag(GETPOST("libelle", 'alphanohtml')).'"></td></tr>';
-	print '<tr><td class="tdtop">'.$langs->trans('Description').'</td><td>';
+	echo '<table class="border centpercent">';
+	echo '<tr><td class="tdtop titlefieldcreate fieldrequired">'.$langs->trans('Language').'</td><td>';
+	echo $formadmin->select_language('', 'forcelangprod', 0, $object->multilangs, 1);
+	echo '</td></tr>';
+	echo '<tr><td class="tdtop fieldrequired">'.$langs->trans('Label').'</td><td><input name="libelle" class="minwidth300" value="'.dol_escape_htmltag(GETPOST("libelle", 'alphanohtml')).'"></td></tr>';
+	echo '<tr><td class="tdtop">'.$langs->trans('Description').'</td><td>';
 	$doleditor = new DolEditor('desc', '', '', 160, 'gestimag_notes', '', false, true, isModEnabled('fckeditor'), ROWS_3, '90%');
 	$doleditor->Create();
-	print '</td></tr>';
+	echo '</td></tr>';
 
-	print '</table>';
+	echo '</table>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print $form->buttonsSaveCancel();
+	echo $form->buttonsSaveCancel();
 
-	print '</form>';
+	echo '</form>';
 
-	print '<br>';
+	echo '<br>';
 }
 
 // End of page

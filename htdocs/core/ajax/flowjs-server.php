@@ -84,7 +84,7 @@ if (!empty($upload_dir)) {
 }
 
 if ($module != "test" && !isModEnabled($module)) {
-	echo json_encode("The module ".$module." is not enabled");
+	echo  json_encode("The module ".$module." is not enabled");
 	header("HTTP/1.0 400");
 	die();
 }
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } else {
 	// loop through files and move the chunks to a temporarily created directory
 	if (file_exists($upload_dir.'/'.$flowFilename)) {
-		echo json_encode('File '.$flowIdentifier.' was already uploaded');
+		echo  json_encode('File '.$flowIdentifier.' was already uploaded');
 		header("HTTP/1.0 200 Ok");
 		die();
 	} elseif (!empty($_FILES)) {
@@ -130,9 +130,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	}
 }
 if ($result) {
-	echo json_encode('File '.$flowIdentifier.' uploaded');
+	echo  json_encode('File '.$flowIdentifier.' uploaded');
 } else {
-	echo json_encode('Error while uploading file '.$flowIdentifier);
+	echo  json_encode('Error while uploading file '.$flowIdentifier);
 }
 
 

@@ -608,7 +608,7 @@ class FormAccounting extends Form
 	 *  @param  int		$option					option (0: aggregate by general account or 1: aggregate by subaccount)
 	 *  @param  int		$useempty				Show empty value in list
 	 *  @param  string	$filter         		optional filters criteria
-	 *  @param  int		$nooutput       		No print output. Return it only.
+	 *  @param  int		$nooutput       		No echo output. Return it only.
 	 *  @return	void|string
 	 */
 	public function formAccountingAccount($page, $selected = '', $htmlname = 'none', $option = 0, $useempty = 1, $filter = '', $nooutput = 0)
@@ -635,7 +635,7 @@ class FormAccounting extends Form
 		if ($nooutput) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 	}
 }

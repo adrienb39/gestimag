@@ -30,7 +30,7 @@ namespace Stripe;
  * @property string $currency Three-letter <a href="https://stripe.com/docs/payouts">ISO code for the currency</a> paid out to the bank account.
  * @property null|string|\Stripe\Customer $customer The ID of the customer that the bank account is associated with.
  * @property null|bool $default_for_currency Whether this bank account is the default external account for its currency.
- * @property null|string $fingerprint Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
+ * @property null|string $fingerecho Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
  * @property string $last4 The last four digits of the bank account number.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $routing_number The routing transit number for the bank account.

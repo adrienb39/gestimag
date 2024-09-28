@@ -99,6 +99,6 @@ if ($action == 'getContacts') {
 		}
 	}
 
-	echo json_encode($return);
+	echo  json_encode($return);
 	exit();
 }

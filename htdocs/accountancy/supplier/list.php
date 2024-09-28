@@ -237,7 +237,7 @@ $help_url = 'EN:Module_Double_Entry_Accounting|FR:Module_Comptabilit&eacute;_en_
 llxHeader('', $langs->trans("SuppliersVentilation"), $help_url, '', 0, 0, '', '', '', 'bodyforlist mod-accountancy accountancy-supplier page-list');
 
 if (empty($chartaccountcode)) {
-	print $langs->trans("ErrorChartOfAccountSystemNotSelected");
+	echo$langs->trans("ErrorChartOfAccountSystemNotSelected");
 	// End of page
 	llxFooter();
 	$db->close();
@@ -464,16 +464,16 @@ if ($result) {
 		$massactionbutton = $form->selectMassAction('ventil', $arrayofmassactions, 1);
 	}
 
-	print '<form action="'.$_SERVER["PHP_SELF"].'" method="post">'."\n";
-	print '<input type="hidden" name="action" value="ventil">';
+	echo'<form action="'.$_SERVER["PHP_SELF"].'" method="post">'."\n";
+	echo'<input type="hidden" name="action" value="ventil">';
 	if ($optioncss != '') {
-		print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
+		echo'<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 	}
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-	print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-	print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-	print '<input type="hidden" name="page" value="'.$page.'">';
+	echo'<input type="hidden" name="token" value="'.newToken().'">';
+	echo'<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+	echo'<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+	echo'<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+	echo'<input type="hidden" name="page" value="'.$page.'">';
 
 	// @phan-suppress-next-line PhanPluginSuspiciousParamOrder
 	print_barre_liste($langs->trans("InvoiceLines"), $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, $massactionbutton, $num_lines, $nbtotalofrecords, 'title_accountancy', 0, '', '', $limit);
@@ -484,53 +484,53 @@ if ($result) {
 				'name' => 'set_default_account',
 				'label' => $langs->trans("AccountancyCode"),
 				'value' => $formaccounting->select_account('', 'default_account', 1, array(), 0, 0, 'maxwidth200 maxwidthonsmartphone', 'cachewithshowemptyone'));
-		print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmPreselectAccount"), $langs->trans("ConfirmPreselectAccountQuestion", count($toselect)), "confirm_set_default_account", $formquestion, 1, 0, 200, 500, 1);
+		echo$form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmPreselectAccount"), $langs->trans("ConfirmPreselectAccountQuestion", count($toselect)), "confirm_set_default_account", $formquestion, 1, 0, 200, 500, 1);
 	}
 
-	print '<span class="opacitymedium">'.$langs->trans("DescVentilTodoCustomer").'</span></br><br>';
+	echo'<span class="opacitymedium">'.$langs->trans("DescVentilTodoCustomer").'</span></br><br>';
 
 	if (!empty($msg)) {
-		print $msg.'<br>';
+		echo$msg.'<br>';
 	}
 
 	$moreforfilter = '';
 
-	print '<div class="div-table-responsive">';
-	print '<table class="tagtable liste'.($moreforfilter ? " listwithfilterbefore" : "").'">'."\n";
+	echo'<div class="div-table-responsive">';
+	echo'<table class="tagtable liste'.($moreforfilter ? " listwithfilterbefore" : "").'">'."\n";
 
 	// We add search filter
-	print '<tr class="liste_titre_filter">';
-	print '<td class="liste_titre"><input type="text" class="flat maxwidth25" name="search_lineid" value="'.dol_escape_htmltag($search_lineid).'"></td>';
-	print '<td class="liste_titre"><input type="text" class="flat maxwidth50" name="search_invoice" value="'.dol_escape_htmltag($search_invoice).'"></td>';
-	//print '<td class="liste_titre"><input type="text" class="flat maxwidth50" name="search_ref_supplier" value="'.dol_escape_htmltag($search_ref_supplier).'"></td>';
-	print '<td class="liste_titre"><input type="text" class="flat maxwidth50" name="search_label" value="'.dol_escape_htmltag($search_label).'"></td>';
-	print '<td class="liste_titre center">';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_start ? $search_date_start : -1, 'search_date_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('From'));
-	print '</div>';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_end ? $search_date_end : -1, 'search_date_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('to'));
-	print '</div>';
-	print '</td>';
-	print '<td class="liste_titre"><input type="text" class="flat maxwidth50" name="search_ref" value="'.dol_escape_htmltag($search_ref).'"></td>';
-	print '<td class="liste_titre"><input type="text" class="flat maxwidth100" name="search_desc" value="'.dol_escape_htmltag($search_desc).'"></td>';
-	print '<td class="liste_titre right"><input type="text" class="flat maxwidth50 right" name="search_amount" value="'.dol_escape_htmltag($search_amount).'"></td>';
-	print '<td class="liste_titre right"><input type="text" class="flat maxwidth50 right" name="search_vat" placeholder="%" size="1" value="'.dol_escape_htmltag($search_vat).'"></td>';
-	print '<td class="liste_titre"><input type="text" class="flat maxwidth75imp" name="search_societe" value="'.dol_escape_htmltag($search_societe).'"></td>';
-	print '<td class="liste_titre">';
-	print $form->select_country($search_country, 'search_country', '', 0, 'maxwidth100', 'code2', 1, 0, 1);
-	//print '<input type="text" class="flat maxwidth50" name="search_country" value="' . dol_escape_htmltag($search_country) . '">';
-	print '</td>';
-	print '<td class="liste_titre"><input type="text" class="flat maxwidth50" name="search_tvaintra" value="'.dol_escape_htmltag($search_tvaintra).'"></td>';
-	print '<td class="liste_titre"></td>';
-	print '<td class="liste_titre"></td>';
-	print '<td class="center liste_titre">';
+	echo'<tr class="liste_titre_filter">';
+	echo'<td class="liste_titre"><input type="text" class="flat maxwidth25" name="search_lineid" value="'.dol_escape_htmltag($search_lineid).'"></td>';
+	echo'<td class="liste_titre"><input type="text" class="flat maxwidth50" name="search_invoice" value="'.dol_escape_htmltag($search_invoice).'"></td>';
+	//echo'<td class="liste_titre"><input type="text" class="flat maxwidth50" name="search_ref_supplier" value="'.dol_escape_htmltag($search_ref_supplier).'"></td>';
+	echo'<td class="liste_titre"><input type="text" class="flat maxwidth50" name="search_label" value="'.dol_escape_htmltag($search_label).'"></td>';
+	echo'<td class="liste_titre center">';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_start ? $search_date_start : -1, 'search_date_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('From'));
+	echo'</div>';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_end ? $search_date_end : -1, 'search_date_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('to'));
+	echo'</div>';
+	echo'</td>';
+	echo'<td class="liste_titre"><input type="text" class="flat maxwidth50" name="search_ref" value="'.dol_escape_htmltag($search_ref).'"></td>';
+	echo'<td class="liste_titre"><input type="text" class="flat maxwidth100" name="search_desc" value="'.dol_escape_htmltag($search_desc).'"></td>';
+	echo'<td class="liste_titre right"><input type="text" class="flat maxwidth50 right" name="search_amount" value="'.dol_escape_htmltag($search_amount).'"></td>';
+	echo'<td class="liste_titre right"><input type="text" class="flat maxwidth50 right" name="search_vat" placeholder="%" size="1" value="'.dol_escape_htmltag($search_vat).'"></td>';
+	echo'<td class="liste_titre"><input type="text" class="flat maxwidth75imp" name="search_societe" value="'.dol_escape_htmltag($search_societe).'"></td>';
+	echo'<td class="liste_titre">';
+	echo$form->select_country($search_country, 'search_country', '', 0, 'maxwidth100', 'code2', 1, 0, 1);
+	//echo'<input type="text" class="flat maxwidth50" name="search_country" value="' . dol_escape_htmltag($search_country) . '">';
+	echo'</td>';
+	echo'<td class="liste_titre"><input type="text" class="flat maxwidth50" name="search_tvaintra" value="'.dol_escape_htmltag($search_tvaintra).'"></td>';
+	echo'<td class="liste_titre"></td>';
+	echo'<td class="liste_titre"></td>';
+	echo'<td class="center liste_titre">';
 	$searchpicto = $form->showFilterButtons();
-	print $searchpicto;
-	print '</td>';
-	print "</tr>\n";
+	echo$searchpicto;
+	echo'</td>';
+	echo"</tr>\n";
 
-	print '<tr class="liste_titre">';
+	echo'<tr class="liste_titre">';
 	print_liste_field_titre("LineId", $_SERVER["PHP_SELF"], "l.rowid", "", $param, '', $sortfield, $sortorder);
 	print_liste_field_titre("Invoice", $_SERVER["PHP_SELF"], "f.ref", "", $param, '', $sortfield, $sortorder);
 	//print_liste_field_titre("RefSupplier", $_SERVER["PHP_SELF"], "f.ref_supplier", "", $param, '', $sortfield, $sortorder);
@@ -551,7 +551,7 @@ if ($result) {
 		$checkpicto = $form->showCheckAddButtons('checkforselect', 1);
 	}
 	print_liste_field_titre($checkpicto, '', '', '', '', '', '', '', 'center ');
-	print "</tr>\n";
+	echo"</tr>\n";
 
 	$thirdpartystatic = new Societe($db);
 	$facturefourn_static = new FactureFournisseur($db);
@@ -654,75 +654,75 @@ if ($result) {
 		// $code_buy_t is now code of thirdparty
 		//var_dump($code_buy_l.' - '.$code_buy_p.' - '.$code_buy_t.' -> '.$suggestedid.' ('.$suggestedaccountingaccountbydefaultfor.' '.$suggestedaccountingaccountfor.')');
 
-		print '<tr class="oddeven">';
+		echo'<tr class="oddeven">';
 
 		// Line id
-		print '<td>'.$facturefourn_static_det->id.'</td>';
+		echo'<td>'.$facturefourn_static_det->id.'</td>';
 
 		// Ref Invoice
-		print '<td class="nowraponall">'.$facturefourn_static->getNomUrl(1);
+		echo'<td class="nowraponall">'.$facturefourn_static->getNomUrl(1);
 		if ($objp->ref_supplier) {
-			print '<br><span class="opacitymedium small">'.dol_escape_htmltag($objp->ref_supplier).'</span>';
+			echo'<br><span class="opacitymedium small">'.dol_escape_htmltag($objp->ref_supplier).'</span>';
 		}
-		print '</td>';
+		echo'</td>';
 
 		// Ref supplier invoice
-		/*print '<td class="tdoverflowmax100" title="'.dol_escape_htmltag($objp->ref_supplier).'">';
-		print $objp->ref_supplier;
-		print '</td>';*/
+		/*echo'<td class="tdoverflowmax100" title="'.dol_escape_htmltag($objp->ref_supplier).'">';
+		echo$objp->ref_supplier;
+		echo'</td>';*/
 
 		// Supplier invoice label
-		print '<td class="tdoverflowmax100 small" title="'.dol_escape_htmltag($objp->invoice_label).'">';
-		print dol_escape_htmltag($objp->invoice_label);
-		print '</td>';
+		echo'<td class="tdoverflowmax100 small" title="'.dol_escape_htmltag($objp->invoice_label).'">';
+		echodol_escape_htmltag($objp->invoice_label);
+		echo'</td>';
 
 		// Date
-		print '<td class="center">'.dol_print_date($facturefourn_static->date, 'day').'</td>';
+		echo'<td class="center">'.dol_print_date($facturefourn_static->date, 'day').'</td>';
 
 		// Ref Product
-		print '<td class="tdoverflowmax100">';
+		echo'<td class="tdoverflowmax100">';
 		if ($product_static->id > 0) {
-			print $product_static->getNomUrl(1);
+			echo$product_static->getNomUrl(1);
 		}
 		if ($product_static->label) {
-			print '<br><span class="opacitymedium small">'.dol_escape_htmltag($product_static->label).'</span>';
+			echo'<br><span class="opacitymedium small">'.dol_escape_htmltag($product_static->label).'</span>';
 		}
-		print '</td>';
+		echo'</td>';
 
 		// Description of line
 		$text = dolGetFirstLineOfText(dol_string_nohtmltag($facturefourn_static_det->desc, 1));
-		print '<td class="tdoverflowmax150 small classfortooltip" title="'.dol_escape_htmltag($text).'">';
+		echo'<td class="tdoverflowmax150 small classfortooltip" title="'.dol_escape_htmltag($text).'">';
 		$trunclength = getDolGlobalInt('ACCOUNTING_LENGTH_DESCRIPTION');
-		print dol_trunc($text, $trunclength);
-		print '</td>';
+		echodol_trunc($text, $trunclength);
+		echo'</td>';
 
-		print '<td class="right nowraponall amount">';
-		print price($objp->total_ht);
-		print '</td>';
+		echo'<td class="right nowraponall amount">';
+		echoprice($objp->total_ht);
+		echo'</td>';
 
 		// Vat rate
 		$code_vat_differ = '';
 		//if ($objp->vat_tx_l != $objp->vat_tx_p && price2num($objp->vat_tx_p) && price2num($objp->vat_tx_l)) {	// Note: having a vat rate of 0 is often the normal case when sells is intra b2b or to export
 		//	$code_vat_differ = 'warning bold';
 		//}
-		print '<td class="right'.($code_vat_differ ? ' '.$code_vat_differ : '').'">';
-		print vatrate($facturefourn_static_det->tva_tx.($facturefourn_static_det->vat_src_code ? ' ('.$facturefourn_static_det->vat_src_code.')' : ''), false, 0, 0, 1);
-		print '</td>';
+		echo'<td class="right'.($code_vat_differ ? ' '.$code_vat_differ : '').'">';
+		echovatrate($facturefourn_static_det->tva_tx.($facturefourn_static_det->vat_src_code ? ' ('.$facturefourn_static_det->vat_src_code.')' : ''), false, 0, 0, 1);
+		echo'</td>';
 
 		// Thirdparty
-		print '<td class="tdoverflowmax100">'.$thirdpartystatic->getNomUrl(1, 'supplier').'</td>';
+		echo'<td class="tdoverflowmax100">'.$thirdpartystatic->getNomUrl(1, 'supplier').'</td>';
 
 		// Country
 		$labelcountry = ($objp->country_code && ($langs->trans("Country".$objp->country_code) != "Country".$objp->country_code)) ? $langs->trans("Country".$objp->country_code) : $objp->country_label;
-		print '<td class="tdoverflowmax100" title="'.dol_escape_htmltag($labelcountry).'">';
-		print dol_escape_htmltag($labelcountry);
-		print '</td>';
+		echo'<td class="tdoverflowmax100" title="'.dol_escape_htmltag($labelcountry).'">';
+		echodol_escape_htmltag($labelcountry);
+		echo'</td>';
 
 		// VAT Num
-		print '<td class="tdoverflowmax80" title="'.dol_escape_htmltag($objp->tva_intra).'">'.dol_escape_htmltag($objp->tva_intra).'</td>';
+		echo'<td class="tdoverflowmax80" title="'.dol_escape_htmltag($objp->tva_intra).'">'.dol_escape_htmltag($objp->tva_intra).'</td>';
 
 		// Found accounts
-		print '<td class="small">';
+		echo'<td class="small">';
 		$s = '1. '.(($facturefourn_static_det->product_type == 1) ? $langs->trans("DefaultForService") : $langs->trans("DefaultForProduct")).': ';
 		$shelp = '';
 		$ttype = 'help';
@@ -737,9 +737,9 @@ if ($result) {
 			$shelp .= $langs->trans("SaleExport");
 		}
 		$s .= ($code_buy_l > 0 ? length_accountg($code_buy_l) : '<span style="'.$code_buy_p_notset.'">'.$langs->trans("NotDefined").'</span>');
-		print $form->textwithpicto($s, $shelp, 1, $ttype, '', 0, 2, '', 1);
+		echo$form->textwithpicto($s, $shelp, 1, $ttype, '', 0, 2, '', 1);
 		if ($product_static->id > 0) {
-			print '<br>';
+			echo'<br>';
 			$s = '2. '.(($facturefourn_static_det->product_type == 1) ? $langs->trans("ThisService") : $langs->trans("ThisProduct")).': ';
 			$shelp = '';
 			$ttype = 'help';
@@ -754,30 +754,30 @@ if ($result) {
 				$shelp = $langs->trans("SaleExport");
 			}
 			$s .= (empty($code_buy_p) ? '<span style="'.$code_buy_p_notset.'">'.$langs->trans("NotDefined").'</span>' : length_accountg($code_buy_p));
-			print $form->textwithpicto($s, $shelp, 1, $ttype, '', 0, 2, '', 1);
+			echo$form->textwithpicto($s, $shelp, 1, $ttype, '', 0, 2, '', 1);
 		} else {
-			print '<br>';
+			echo'<br>';
 			$s = '2. '.(($objp->type_l == 1) ? $langs->trans("ThisService") : $langs->trans("ThisProduct")).': ';
 			$shelp = '';
 			$s .= $langs->trans("NotDefined");
-			print $form->textwithpicto($s, $shelp, 1, 'help', '', 0, 2, '', 1);
+			echo$form->textwithpicto($s, $shelp, 1, 'help', '', 0, 2, '', 1);
 		}
 		if (getDolGlobalString('ACCOUNTANCY_USE_PRODUCT_ACCOUNT_ON_THIRDPARTY')) {
-			print '<br>';
+			echo'<br>';
 			$s = '3. '.(($facturefourn_static_det->product_type == 1) ? $langs->trans("ServiceForThisThirdparty") : $langs->trans("ProductForThisThirdparty")).': ';
 			$shelp = '';
 			$s .= ($code_buy_t > 0 ? length_accountg($code_buy_t) : '<span style="'.$code_buy_t_notset.'">'.$langs->trans("NotDefined").'</span>');
-			print $form->textwithpicto($s, $shelp, 1, 'help', '', 0, 2, '', 1);
+			echo$form->textwithpicto($s, $shelp, 1, 'help', '', 0, 2, '', 1);
 		}
-		print '</td>';
+		echo'</td>';
 
 		// Suggested accounting account
-		print '<td>';
-		print $formaccounting->select_account(($default_account > 0 && $confirm === 'yes' && in_array($objp->rowid."_".$i, $toselect)) ? $default_account : $suggestedid, 'codeventil'.$facturefourn_static_det->id, 1, array(), 0, 0, 'codeventil maxwidth150 maxwidthonsmartphone', 'cachewithshowemptyone');
-		print '</td>';
+		echo'<td>';
+		echo$formaccounting->select_account(($default_account > 0 && $confirm === 'yes' && in_array($objp->rowid."_".$i, $toselect)) ? $default_account : $suggestedid, 'codeventil'.$facturefourn_static_det->id, 1, array(), 0, 0, 'codeventil maxwidth150 maxwidthonsmartphone', 'cachewithshowemptyone');
+		echo'</td>';
 
 		// Column with checkbox
-		print '<td class="center">';
+		echo'<td class="center">';
 		$ischecked = 0;
 		if (!empty($suggestedid) && $suggestedaccountingaccountfor != '' && $suggestedaccountingaccountfor != 'eecwithoutvatnumber') {
 			$ischecked = 1;
@@ -790,29 +790,29 @@ if ($result) {
 			}
 		}
 
-		print '<input type="checkbox" class="flat checkforselect checkforselect'.$facturefourn_static_det->id.'" name="toselect[]" value="'.$facturefourn_static_det->id."_".$i.'"'.($ischecked ? " checked" : "").'/>';
-		print '</td>';
+		echo'<input type="checkbox" class="flat checkforselect checkforselect'.$facturefourn_static_det->id.'" name="toselect[]" value="'.$facturefourn_static_det->id."_".$i.'"'.($ischecked ? " checked" : "").'/>';
+		echo'</td>';
 
-		print '</tr>';
+		echo'</tr>';
 		$i++;
 	}
 	if ($num_lines == 0) {
-		print '<tr><td colspan="14"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
+		echo'<tr><td colspan="14"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
 	}
 
-	print '</table>';
-	print "</div>";
+	echo'</table>';
+	echo"</div>";
 
-	print '</form>';
+	echo'</form>';
 } else {
-	print $db->error();
+	echo$db->error();
 }
 if ($db->type == 'mysqli') {
 	$db->query("SET SQL_BIG_SELECTS=0"); // Enable MAX_JOIN_SIZE limitation
 }
 
 // Add code to auto check the box when we select an account
-print '<script type="text/javascript">
+echo'<script type="text/javascript">
 jQuery(document).ready(function() {
 	jQuery(".codeventil").change(function() {
 		var s=$(this).attr("id").replace("codeventil", "")

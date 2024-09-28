@@ -100,5 +100,5 @@ if ($action == "getKnowledgeRecord") {
 		dol_print_error($db);
 	}
 	$response =json_encode($response);
-	echo $response;
+	echo  $response;
 }

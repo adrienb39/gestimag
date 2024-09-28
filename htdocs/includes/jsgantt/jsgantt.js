@@ -5288,11 +5288,11 @@ exports.printChart = function (width, height, css) {
     if (css === void 0) { css = undefined; }
     if (css === undefined) {
         css = // Default injected CSS
-            "@media print {\n        @page {\n          size: " + width + "mm " + height + "mm;\n        }\n        /* set gantt container to the same width as the page */\n        .gchartcontainer {\n            width: " + width + "mm;\n        }\n    };";
+            "@media echo {\n        @page {\n          size: " + width + "mm " + height + "mm;\n        }\n        /* set gantt container to the same width as the page */\n        .gchartcontainer {\n            width: " + width + "mm;\n        }\n    };";
     }
     var $container = document.querySelector('.gchartcontainer');
     $container.insertAdjacentHTML('afterbegin', "<style>" + css + "</style>");
-    // Remove the print CSS when the print dialog is closed
+    // Remove the echo CSS when the echo dialog is closed
     window.addEventListener('afterprint', function () {
         $container.removeChild($container.children[0]);
     }, { 'once': true });

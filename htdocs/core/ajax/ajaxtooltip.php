@@ -67,7 +67,7 @@ if ($usesublevelpermission && !$user->hasRight($module, $element)) {	// There is
 	$usesublevelpermission = '';
 }
 
-//print $object->id.' - '.$object->module.' - '.$object->element.' - '.$object->table_element.' - '.$usesublevelpermission."\n";
+//echo $object->id.' - '.$object->module.' - '.$object->element.' - '.$object->table_element.' - '.$usesublevelpermission."\n";
 
 // Security check
 restrictedArea($user, $object->module, $object, $object->table_element, $usesublevelpermission);
@@ -91,6 +91,6 @@ if (is_object($object)) {
 	unset($object);
 }
 
-print $html;
+echo $html;
 
 $db->close();

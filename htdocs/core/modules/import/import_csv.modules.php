@@ -328,7 +328,7 @@ class ImportCsv extends ModeleImports
 		//var_dump($sort_array_match_file_to_database);
 
 		if (count($arrayrecord) == 0 || (count($arrayrecord) == 1 && empty($arrayrecord[0]['val']))) {
-			//print 'W';
+			//echo 'W';
 			$this->warnings[$warning]['lib'] = $langs->trans('EmptyLine');
 			$this->warnings[$warning]['type'] = 'EMPTY';
 			$warning++;
@@ -404,7 +404,7 @@ class ImportCsv extends ModeleImports
 							// Test format only if field is not a missing mandatory field (field may be a value or empty but not mandatory)
 							// We convert field if required
 							if (!empty($objimport->array_import_convertvalue[0][$val])) {
-								//print 'Must convert '.$newval.' with rule '.join(',',$objimport->array_import_convertvalue[0][$val]).'. ';
+								//echo 'Must convert '.$newval.' with rule '.join(',',$objimport->array_import_convertvalue[0][$val]).'. ';
 								if ($objimport->array_import_convertvalue[0][$val]['rule'] == 'fetchidfromcodeid'
 									|| $objimport->array_import_convertvalue[0][$val]['rule'] == 'fetchidfromref'
 									|| $objimport->array_import_convertvalue[0][$val]['rule'] == 'fetchidfromcodeorlabel'
@@ -416,7 +416,7 @@ class ImportCsv extends ModeleImports
 									}
 
 									$newval = preg_replace('/^(id|ref):/i', '', $newval); // Remove id: or ref: that was used to force if field is id or ref
-									//print 'Newval is now "'.$newval.'" and is type '.$isidorref."<br>\n";
+									//echo 'Newval is now "'.$newval.'" and is type '.$isidorref."<br>\n";
 
 									if ($isidorref == 'ref') {    // If value into input import file is a ref, we apply the function defined into descriptor
 										$file = (empty($objimport->array_import_convertvalue[0][$val]['classfile']) ? $objimport->array_import_convertvalue[0][$val]['file'] : $objimport->array_import_convertvalue[0][$val]['classfile']);
@@ -473,7 +473,7 @@ class ImportCsv extends ModeleImports
 											}
 											$this->cacheconvert[$file.'_'.$class.'_'.$method.'_'][$newval] = $classinstance->id;
 
-											//print 'We have made a '.$class.'->'.$method.' to get id from code '.$newval.'. ';
+											//echo 'We have made a '.$class.'->'.$method.' to get id from code '.$newval.'. ';
 											if ($classinstance->id != '') {	// id may be 0, it is a found value
 												$newval = $classinstance->id;
 											} elseif (! $error) {
@@ -552,7 +552,7 @@ class ImportCsv extends ModeleImports
 										call_user_func_array(array($classinstance, $method), array('', '', $newval, $units));
 										$scaleorid = (($objimport->array_import_convertvalue[0][$val]['rule'] == 'fetchidfromcodeunits') ? $classinstance->id : $classinstance->scale);
 										$this->cacheconvert[$file.'_'.$class.'_'.$method.'_'.$units][$newval] = $scaleorid;
-										//print 'We have made a '.$class.'->'.$method." to get a value from key '".$newval."' and we got '".$scaleorid."'.";exit;
+										//echo 'We have made a '.$class.'->'.$method." to get a value from key '".$newval."' and we got '".$scaleorid."'.";exit;
 										if ($classinstance->id > 0) {	// we found record
 											$newval = $scaleorid ? $scaleorid : 0;
 										} else {
@@ -570,7 +570,7 @@ class ImportCsv extends ModeleImports
 									if (strtolower($newval) == 'auto') {
 										$this->thirdpartyobject->get_codeclient(0, 0);
 										$newval = $this->thirdpartyobject->code_client;
-										//print 'code_client='.$newval;
+										//echo 'code_client='.$newval;
 									}
 									if (empty($newval)) {
 										$arrayrecord[($key - 1)]['type'] = -1; // If we get empty value, we will use "null"
@@ -579,7 +579,7 @@ class ImportCsv extends ModeleImports
 									if (strtolower($newval) == 'auto') {
 										$this->thirdpartyobject->get_codefournisseur(0, 1);
 										$newval = $this->thirdpartyobject->code_fournisseur;
-										//print 'code_fournisseur='.$newval;
+										//echo 'code_fournisseur='.$newval;
 									}
 									if (empty($newval)) {
 										$arrayrecord[($key - 1)]['type'] = -1; // If we get empty value, we will use "null"
@@ -588,7 +588,7 @@ class ImportCsv extends ModeleImports
 									if (strtolower($newval) == 'auto') {
 										$this->thirdpartyobject->get_codecompta('customer');
 										$newval = $this->thirdpartyobject->code_compta;
-										//print 'code_compta='.$newval;
+										//echo 'code_compta='.$newval;
 									}
 									if (empty($newval)) {
 										$arrayrecord[($key - 1)]['type'] = -1; // If we get empty value, we will use "null"
@@ -600,7 +600,7 @@ class ImportCsv extends ModeleImports
 										if (empty($newval)) {
 											$arrayrecord[($key - 1)]['type'] = -1; // If we get empty value, we will use "null"
 										}
-										//print 'code_compta_fournisseur='.$newval;
+										//echo 'code_compta_fournisseur='.$newval;
 									}
 									if (empty($newval)) {
 										$arrayrecord[($key - 1)]['type'] = -1; // If we get empty value, we will use "null"
@@ -669,7 +669,7 @@ class ImportCsv extends ModeleImports
 									}
 								}
 
-								//print 'Val to use as insert is '.$newval.'<br>';
+								//echo 'Val to use as insert is '.$newval.'<br>';
 							}
 
 							// Test regexp
@@ -722,7 +722,7 @@ class ImportCsv extends ModeleImports
 									}
 								} elseif (!preg_match('/'.$objimport->array_import_regex[0][$val].'/i', $newval)) {
 									// If test is just a static regex
-									//if ($key == 19) print "xxx".$newval."zzz".$objimport->array_import_regex[0][$val]."<br>";
+									//if ($key == 19) echo "xxx".$newval."zzz".$objimport->array_import_regex[0][$val]."<br>";
 									$this->errors[$error]['lib'] = $langs->transnoentitiesnoconv('ErrorWrongValueForField', num2Alpha($key - 1), $newval, $objimport->array_import_regex[0][$val]);
 									$this->errors[$error]['type'] = 'REGEX';
 									$errorforthistable++;
@@ -802,7 +802,7 @@ class ImportCsv extends ModeleImports
 							$lastinsertid = (isset($last_insert_id_array[$tmp[1]])) ? $last_insert_id_array[$tmp[1]] : 0;
 							$listfields[] = $keyfield;
 							$listvalues[] = (int) $lastinsertid;
-							//print $tmpkey."-".$tmpval."-".$listfields."-".$listvalues."<br>";exit;
+							//echo $tmpkey."-".$tmpval."-".$listfields."-".$listvalues."<br>";exit;
 						} elseif (preg_match('/^const-/', $tmpval)) {
 							$tmp = explode('-', $tmpval, 2);
 							$listfields[] = $keyfield;
@@ -855,12 +855,12 @@ class ImportCsv extends ModeleImports
 						}
 					}
 				}
-				//print 'listfields='.$listfields.'<br>listvalues='.$listvalues.'<br>';
+				//echo 'listfields='.$listfields.'<br>listvalues='.$listvalues.'<br>';
 
 				// If no error for this $alias/$tablename, we have a complete $listfields and $listvalues that are defined
 				// so we can try to make the insert or update now.
 				if (!$errorforthistable) {
-					//print "$alias/$tablename/$listfields/$listvalues<br>";
+					//echo "$alias/$tablename/$listfields/$listvalues<br>";
 					if (!empty($listfields)) {
 						$updatedone = false;
 						$insertdone = false;
@@ -924,7 +924,7 @@ class ImportCsv extends ModeleImports
 										// No record found with filters, insert will be tried below
 									}
 								} else {
-									//print 'E';
+									//echo 'E';
 									$this->errors[$error]['lib'] = $this->db->lasterror();
 									$this->errors[$error]['type'] = 'SQL';
 									$error++;
@@ -957,7 +957,7 @@ class ImportCsv extends ModeleImports
 										$lastinsertid = 0;
 									}
 								} else {
-									//print 'E';
+									//echo 'E';
 									$this->errors[$error]['lib'] = $this->db->lasterror();
 									$this->errors[$error]['type'] = 'SQL';
 									$error++;
@@ -1004,7 +1004,7 @@ class ImportCsv extends ModeleImports
 									// No error, update has been done. $this->db->db->affected_rows can be 0 if data hasn't changed
 									$updatedone = true;
 								} else {
-									//print 'E';
+									//echo 'E';
 									$this->errors[$error]['lib'] = $this->db->lasterror();
 									$this->errors[$error]['type'] = 'SQL';
 									$error++;
@@ -1044,7 +1044,7 @@ class ImportCsv extends ModeleImports
 									}
 									$insertdone = true;
 								} else {
-									//print 'E';
+									//echo 'E';
 									$this->errors[$error]['lib'] = $this->db->lasterror();
 									$this->errors[$error]['type'] = 'SQL';
 									$error++;

@@ -13,7 +13,7 @@
 namespace Mike42\Escpos\PrintConnectors;
 
 /**
- * Interface passed to Escpos class for receiving print data. Print connectors
+ * Interface passed to Escpos class for receiving echo data. Print connectors
  * are responsible for transporting this to the actual printer.
  */
 interface PrintConnector
@@ -25,7 +25,7 @@ interface PrintConnector
     public function __destruct();
 
     /**
-     * Finish using this print connector (close file, socket, send
+     * Finish using this echo connector (close file, socket, send
      * accumulated output, etc).
      */
     public function finalize();
@@ -39,7 +39,7 @@ interface PrintConnector
     public function read($len);
 
     /**
-     * Write data to the print connector.
+     * Write data to the echo connector.
      *
      * @param string $data The data to write
      */

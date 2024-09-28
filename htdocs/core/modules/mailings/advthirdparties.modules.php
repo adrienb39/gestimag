@@ -243,7 +243,7 @@ class mailing_advthirdparties extends MailingTargets
 		$sql .= " AND entity = ".$conf->entity;
 		$sql .= " ORDER BY label";
 
-		//print $sql;
+		//echo $sql;
 		$resql = $this->db->query($sql);
 		if ($resql) {
 			$num = $this->db->num_rows($resql);

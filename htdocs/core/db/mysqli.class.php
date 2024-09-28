@@ -75,7 +75,7 @@ class DoliDBMysqli extends DoliDB
 
 		$this->transaction_opened = 0;
 
-		//print "Name DB: $host,$user,$pass,$name<br>";
+		//echo"Name DB: $host,$user,$pass,$name<br>";
 
 		if (!class_exists('mysqli')) {
 			$this->connected = false;
@@ -130,15 +130,15 @@ class DoliDBMysqli extends DoliDB
 
 						$this->db->set_charset($clientmustbe); // This set charset, but with a bad collation (colllation is forced later)
 					} catch (Exception $e) {
-						print 'Failed to force character_set_client to '.$clientmustbe." (according to setup) to match the one of the server database.<br>\n";
-						print $e->getMessage();
-						print "<br>\n";
+						echo'Failed to force character_set_client to '.$clientmustbe." (according to setup) to match the one of the server database.<br>\n";
+						echo$e->getMessage();
+						echo"<br>\n";
 						if ($clientmustbe != 'utf8') {
-							print 'Edit conf/conf.php file to set a charset "utf8"';
+							echo'Edit conf/conf.php file to set a charset "utf8"';
 							if ($clientmustbe != 'utf8mb4') {
-								print ' or "utf8mb4"';
+								echo' or "utf8mb4"';
 							}
-							print ' instead of "'.$clientmustbe.'".'."\n";
+							echo' instead of "'.$clientmustbe.'".'."\n";
 						}
 						exit;
 					}
@@ -747,7 +747,7 @@ class DoliDBMysqli extends DoliDB
 		$tmpdatabase = preg_replace('/[^a-z0-9\.\-\_]/i', '', $database);
 
 		$sql = "SHOW TABLES FROM `".$tmpdatabase."` ".$like.";";
-		//print $sql;
+		//echo$sql;
 		$result = $this->query($sql);
 		if ($result) {
 			while ($row = $this->fetch_row($result)) {

@@ -101,10 +101,10 @@ $arrayofjs = array();
 $arrayofcss = array();
 top_htmlhead($head, $title, 0, 0, $arrayofjs, $arrayofcss);
 
-print '<body class="getmenudiv">'."\n";
+echo '<body class="getmenudiv">'."\n";
 
 // Javascript to make menu active like Jmobile did.
-print '
+echo '
 <style>
     /*Lets hide the non active LIs by default*/
     body {
@@ -151,11 +151,11 @@ print '
         background-image: url(\''.DOL_URL_ROOT.'/theme/'.urlencode($conf->theme).'/img/next.png\') !important;
         background-repeat: no-repeat !important;';
 if ($langs->trans("DIRECTION") == 'rtl') {
-	print 'background-position: right;';
+	echo 'background-position: right;';
 } else {
-	print 'background-position-x: 10px;';
+	echo 'background-position-x: 10px;';
 }
-	print '
+	echo '
         background-position-y: 18px;
         padding: 1em 15px 1em 40px;
 		display: block;
@@ -187,13 +187,13 @@ if ($langs->trans("DIRECTION") == 'rtl') {
         /* background-image: url(\''.DOL_URL_ROOT.'/theme/'.urlencode($conf->theme).'/img/puce.png\') !important; */
         background-repeat: no-repeat !important;';
 if ($langs->trans("DIRECTION") == 'rtl') {
-	print 'background-position: right;';
+	echo 'background-position: right;';
 } else {
-	print 'background-position-x: 10px;';
+	echo 'background-position-x: 10px;';
 }
-	print 'background-position-y: 1px;';
-	print 'padding-left: 20px;';
-	print '
+	echo 'background-position-y: 1px;';
+	echo 'padding-left: 20px;';
+	echo '
 	}
     li.lilevel1 a, li.lilevel1 {
         color: #000;
@@ -289,8 +289,8 @@ $menumanager->loadMenu('all', 'all'); // Load this->tabMenu with sql menu entrie
 //var_dump($menumanager);exit;
 $menumanager->showmenu('jmobile');
 
-print '</body>';
+echo '</body>';
 
-print '</html>'."\n";
+echo '</html>'."\n";
 
 $db->close();

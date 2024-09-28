@@ -204,7 +204,7 @@ class FormAdmin
 		foreach ($conf->file->dol_document_root as $dirroot) {
 			foreach ($dirmenuarray as $dirtoscan) {
 				$dir = $dirroot.$dirtoscan;
-				//print $dir.'<br>';
+				//echo $dir.'<br>';
 				if (is_dir($dir)) {
 					$handle = opendir($dir);
 					if (is_resource($handle)) {
@@ -255,7 +255,7 @@ class FormAdmin
 		ksort($menuarray);
 
 		// Output combo list of menus
-		print '<select class="flat" id="'.$htmlname.'" name="'.$htmlname.'"'.($moreattrib ? ' '.$moreattrib : '').'>';
+		echo '<select class="flat" id="'.$htmlname.'" name="'.$htmlname.'"'.($moreattrib ? ' '.$moreattrib : '').'>';
 		$oldprefix = '';
 		foreach ($menuarray as $key => $val) {
 			$tab = explode('_', $key);
@@ -269,28 +269,28 @@ class FormAdmin
 			}
 			if ($newprefix != $oldprefix) {	// Add separators
 				// Affiche titre
-				print '<option value="-2" disabled>';
+				echo '<option value="-2" disabled>';
 				if ($newprefix == '0') {
-					print '-- '.$langs->trans("VersionRecommanded").' --';
+					echo '-- '.$langs->trans("VersionRecommanded").' --';
 				}
 				if ($newprefix == '1') {
-					print '-- '.$langs->trans("VersionExperimental").' --';
+					echo '-- '.$langs->trans("VersionExperimental").' --';
 				}
 				if ($newprefix == '2') {
-					print '-- '.$langs->trans("VersionDevelopment").' --';
+					echo '-- '.$langs->trans("VersionDevelopment").' --';
 				}
 				if ($newprefix == '3') {
-					print '-- '.$langs->trans("Other").' --';
+					echo '-- '.$langs->trans("Other").' --';
 				}
-				print '</option>';
+				echo '</option>';
 				$oldprefix = $newprefix;
 			}
 
-			print $val."\n"; // Show menu entry ($val contains the <option> tags
+			echo $val."\n"; // Show menu entry ($val contains the <option> tags
 		}
-		print '</select>';
+		echo '</select>';
 
-		print ajax_combobox($htmlname);
+		echo ajax_combobox($htmlname);
 
 		return;
 	}
@@ -352,24 +352,24 @@ class FormAdmin
 		ksort($menuarray);
 
 		// Show combo list of menu handlers
-		print '<select class="flat maxwidth150" id="'.$htmlname.'" name="'.$htmlname.'">';
+		echo '<select class="flat maxwidth150" id="'.$htmlname.'" name="'.$htmlname.'">';
 		foreach ($menuarray as $key => $val) {
 			$tab = explode('_', $key);
-			print '<option value="'.$key.'"';
+			echo '<option value="'.$key.'"';
 			if ($key == $selected) {
-				print '	selected';
+				echo '	selected';
 			}
-			print '>';
+			echo '>';
 			if ($key == 'all') {
-				print $langs->trans("AllMenus");
+				echo $langs->trans("AllMenus");
 			} else {
-				print $key;
+				echo $key;
 			}
-			print '</option>'."\n";
+			echo '</option>'."\n";
 		}
-		print '</select>';
+		echo '</select>';
 
-		print ajax_combobox($htmlname);
+		echo ajax_combobox($htmlname);
 	}
 
 
@@ -384,8 +384,8 @@ class FormAdmin
 	public function select_timezone($selected, $htmlname)
 	{
 		// phpcs:enable
-		print '<select class="flat" id="'.$htmlname.'" name="'.$htmlname.'">';
-		print '<option value="-1">&nbsp;</option>';
+		echo '<select class="flat" id="'.$htmlname.'" name="'.$htmlname.'">';
+		echo '<option value="-1">&nbsp;</option>';
 
 		$arraytz = array(
 			"Pacific/Midway" => "GMT-11:00",
@@ -415,13 +415,13 @@ class FormAdmin
 			"Pacific/Enderbury" => "GMT+13:00"
 		);
 		foreach ($arraytz as $lib => $gmt) {
-			print '<option value="'.$lib.'"';
+			echo '<option value="'.$lib.'"';
 			if ($selected == $lib || $selected == $gmt) {
-				print ' selected';
+				echo ' selected';
 			}
-			print '>'.$gmt.'</option>'."\n";
+			echo '>'.$gmt.'</option>'."\n";
 		}
-		print '</select>';
+		echo '</select>';
 	}
 
 

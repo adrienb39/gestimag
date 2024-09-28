@@ -17,7 +17,7 @@
 
 // Protection to avoid direct call of template
 if (empty($context) || !is_object($context)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -49,5 +49,5 @@ top_htmlhead($head, $title);
 ?>
 <body
 		data-theme="custom"
-		data-controller="<?php print dol_escape_htmltag($context->controller); ?>"
+		data-controller="<?php echo dol_escape_htmltag($context->controller); ?>"
 >

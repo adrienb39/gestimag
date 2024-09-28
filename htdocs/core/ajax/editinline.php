@@ -50,7 +50,7 @@ $element_type = GETPOST('element_type');
 
 $usercanmodify = $user->hasRight('website', 'write');
 if (!$usercanmodify) {
-	print "You don't have permission for this action.";
+	echo "You don't have permission for this action.";
 	exit;
 }
 
@@ -66,7 +66,7 @@ if (!empty($action) && $action === 'updatedElementContent' && $usercanmodify && 
 	$objectpage = new WebsitePage($db);
 	$res = $objectpage->fetch($page_id);
 	if (!$res) {
-		print "Cannot find page with ID = " . $page_id . ".";
+		echo "Cannot find page with ID = " . $page_id . ".";
 		exit;
 	}
 
@@ -74,7 +74,7 @@ if (!empty($action) && $action === 'updatedElementContent' && $usercanmodify && 
 	$objectwebsite = new Website($db);
 	$res = $objectwebsite->fetch($objectpage->fk_website);
 	if (!$res) {
-		print "Cannot find website with REF " . $objectpage->fk_website . ".";
+		echo "Cannot find website with REF " . $objectpage->fk_website . ".";
 		exit;
 	}
 
@@ -91,17 +91,17 @@ if (!empty($action) && $action === 'updatedElementContent' && $usercanmodify && 
 
 		$result = dolSavePageContent($filetpl, $objectwebsite, $objectpage, 1);
 		if (!$result) {
-			print "Failed to write file " . $filetpl . ".";
+			echo "Failed to write file " . $filetpl . ".";
 			$error++;
 		}
 	} else {
-		print "Failed to save changes error " . $objectpage->error . ".";
+		echo "Failed to save changes error " . $objectpage->error . ".";
 		$error++;
 	}
 
 	if (!$error) {
 		$db->commit();
-		print "Changes are saved for " . $element_type . " with id " . $element_id;
+		echo "Changes are saved for " . $element_type . " with id " . $element_id;
 	} else {
 		$db->rollback();
 	}

@@ -87,7 +87,7 @@
 
 6.0.097 (2014-10-20)
 	- Bug item #988 "hyphenateText - charmin parameter not work" was fixed.
-	- New 1D barcode method to print pre-formatted IMB - Intelligent Mail Barcode - Onecode - USPS-B-3200.
+	- New 1D barcode method to echo pre-formatted IMB - Intelligent Mail Barcode - Onecode - USPS-B-3200.
 
 6.0.096 (2014-10-06)
 	- Bug item #982 "Display style is not inherited in SVG" was fixed.
@@ -218,7 +218,7 @@
 	- Method TCPDF_IMAGES::_parsepng() was fixed to support transparency in Indexed images.
 
 6.0.062 (2014-03-02)
-	- The method startLayer() now accepts the NULL value for the $print parameter to not set the print layer option.
+	- The method startLayer() now accepts the NULL value for the $echo parameter to not set the echo layer option.
 
 6.0.061 (2014-02-18)
 	- Bug #893 "Parsing error on streamed xref for secured pdf" was fixed.
@@ -304,8 +304,8 @@
 
 6.0.037 (2013-09-30)
 	- Method getAllSpotColors() was added to return all spot colors.
-	- Method colorRegistrationBar() was extended to automatically print all spot colors and support individual spot colors.
-	- The method registrationMarkCMYK() was added to print a registration mark for CMYK colors.
+	- Method colorRegistrationBar() was extended to automatically echo all spot colors and support individual spot colors.
+	- The method registrationMarkCMYK() was added to echo a registration mark for CMYK colors.
 	- A bug related to page groups was fixed.
 	- Gradient() method now supports CMYK equivalents of spot colors.
 	- Example n. 56 was updated.
@@ -413,7 +413,7 @@
 	- Minor documentation changes.
 
 6.0.010 (2013-04-03)
-	- The method Rect() was fixed to print borders correctly.
+	- The method Rect() was fixed to echo borders correctly.
 
 6.0.009 (2013-04-02)
 	- Adding back some files that were not properly committed on the latest release.
@@ -460,7 +460,7 @@
 	- tcpdf_parser was improved to support Cross-Reference Streams and large streams.
 
 5.9.207 (2013-03-04)
-	- Datamatrix class was fixed (a debug echo was removed).
+	- Datamatrix class was fixed (a debug echo  was removed).
 
 5.9.206 (2013-02-22)
 	- Bug item #754 "PNG with alpha channel becomes gray scale" was fixed.
@@ -654,7 +654,7 @@
 	- Bug item #3513749 "TCPDF Superscript/Subscript" was fixed.
 
 5.9.154 (2012-03-29)
-	- A debug echo was removed.
+	- A debug echo  was removed.
 
 5.9.153 (2012-03-28)
 	- A bug on font conversion was fixed.
@@ -664,7 +664,7 @@
 	- SetFont() method was fixed.
 
 5.9.152 (2012-03-23)
-	- The following overprint methods were added: setOverprint(), getOverprint().
+	- The following overecho methods were added: setOverprint(), getOverprint().
 	- Signature of setAlpha() method was changed and method getAlpha() was added.
 	- stroke-opacity support was added on SVG.
 	- The following date methods were added: setDocCreationTimestamp(), setDocModificationTimestamp(), getDocCreationTimestamp(), getDocModificationTimestamp(), getFormattedDate(), getTimestamp().
@@ -1044,7 +1044,7 @@
 	- Bug #3167115 "PDF error in <table> (example 48)" was fixed (was introduced in 5.8.046).
 
 5.9.046 (2011-01-18)
-	- PDF view/print layers are now automatically turned off if not used (see setVisibility() method).
+	- PDF view/echo layers are now automatically turned off if not used (see setVisibility() method).
 
 5.9.045 (2011-01-17)
 	- HTML list support were improved.
@@ -1685,7 +1685,7 @@
 
 4.9.000 (2010-03-27)
 	- QR Code (2D barcode) support was added (see example n. 50).
-	- The following methods were added to print crop and registration marks (see example n. 56): colorRegistrationBar(), cropMark(), registrationMark().
+	- The following methods were added to echo crop and registration marks (see example n. 56): colorRegistrationBar(), cropMark(), registrationMark().
 	- Limited support for CSS line-height property was added.
 	- Gradient method now supports Gray, RGB and CMYK space color.
 	- Example n. 51 was updated.
@@ -1931,7 +1931,7 @@
 
 4.6.018 (2009-07-10)
 	- Bug item #2819319 "Text over text" was fixed.
-	- Method Arrow() was added to print graphic arrows (example 12 was updated).
+	- Method Arrow() was added to echo graphic arrows (example 12 was updated).
 
 4.6.017 (2009-07-05)
 	- Bug item #2816079 "Example 48 not working" was fixed.
@@ -2194,7 +2194,7 @@
 
 4.5.001 (2009-01-04)
 	- The signature of startPageGroup() function was changed.
-	- Method Footer() was improved to automatically print page or page-group number (see example n. 23).
+	- Method Footer() was improved to automatically echo page or page-group number (see example n. 23).
 	- Protected method formatTOCPageNumber() was added to customize the format of page numbers on the Table Of Content.
 	- The signature of addTOC() was changed to include the font used for page numbers.
 
@@ -2202,7 +2202,7 @@
 	- A new $diskcache parameter was added to class constructor to enable disk caching and reduce RAM memory usage (see example n. 43).
 	- The method movePageTo() was added to move pages to previous positions (see example n. 44).
 	- The methods getAliasNumPage() and getPageNumGroupAlias() were added to get the alias for page number (needed when using movepageTo()).
-	- The methods addTOC() was added to print a Table Of Content (see example n. 45).
+	- The methods addTOC() was added to echo a Table Of Content (see example n. 45).
 	- Imagick class constant was removed for better compatibility with PHP4.
 	- All existing examples were updated and new examples were added.
 
@@ -2575,7 +2575,7 @@
 	- setPDFVersion() was added to change the default PDF version (currently 1.7).
 	- setViewerPreferences() was added to control the way the document is to be presented on the screen or printed (see example 29).
 	- SetDisplayMode() signature was changed (new options were added).
-	- LinearGradient(), RadialGradient(), CoonsPatchMesh() functions were added to print various color gradients (see example 30).
+	- LinearGradient(), RadialGradient(), CoonsPatchMesh() functions were added to echo various color gradients (see example 30).
 	- PieSector() function was added to render render pie charts (see example 31).
 	- ImageEps() was added to display EPS and AI images with limited support (see example 32).
 	- writeBarcode() function is now depracated, a new write1DBarcode() function was added. The barcode directory was removed and a new barcodes.php file was added.
@@ -2838,7 +2838,7 @@
 			bottom: bottom-right for LTR or bottom-left for RTL
 	- [1798103] newline was added after </ul>, </ol> and </p> tages.
 	- [1816393] Documentation was updated.
-	- 'ln' parameter was fixed on writeHTMLCell. Now it's possible to print two or more columns across several pages;
+	- 'ln' parameter was fixed on writeHTMLCell. Now it's possible to echo two or more columns across several pages;
 	- The method lastPage() was added to move the pointer on the last page;
 
 ------------------------------------------------------------

@@ -46,7 +46,7 @@ require_once(dirname(__FILE__).'/tcpdf_barcodes_1d_include.php');
 $barcodeobj = new TCPDFBarcode('http://www.tcpdf.org', 'C128');
 
 // output the barcode as HTML object
-echo $barcodeobj->getBarcodeHTML(2, 30, 'black');
+echo  $barcodeobj->getBarcodeHTML(2, 30, 'black');
 
 //============================================================+
 // END OF FILE

@@ -773,7 +773,7 @@ class Restler extends EventDispatcher
             if ($extension && isset($this->formatMap[$extension])) {
                 $format = Scope::get($this->formatMap[$extension]);
                 $format->setExtension($extension);
-                // echo "Extension $extension";
+                // echo  "Extension $extension";
                 return $format;
             }
         }
@@ -784,7 +784,7 @@ class Restler extends EventDispatcher
                 if (isset($this->formatMap[$accept])) {
                     $format = Scope::get($this->formatMap[$accept]);
                     $format->setMIME($accept);
-                    //echo "MIME $accept";
+                    //echo  "MIME $accept";
                     // Tell cache content is based on Accept header
                     @header('Vary: Accept');
 
@@ -805,7 +805,7 @@ class Restler extends EventDispatcher
                                 $this->requestedApiVersion = $version;
                                 $format = Scope::get($this->formatMap[$extension]);
                                 $format->setExtension($extension);
-                                // echo "Extension $extension";
+                                // echo  "Extension $extension";
                                 Defaults::$useVendorMIMEVersioning = true;
                                 @header('Vary: Accept');
 
@@ -1171,7 +1171,7 @@ class Restler extends EventDispatcher
         if (Defaults::$returnResponse) {
             return $this->responseData;
         } else {
-            echo $this->responseData;
+            echo  $this->responseData;
             exit;
         }
     }

@@ -54,32 +54,32 @@ function show_skin($fuser, $edit = 0)
 	$colspan = 2;
 
 	$thumbsbyrow = 6;
-	print '<table class="noborder centpercent">';
+	echo '<table class="noborder centpercent">';
 
 	$var = false;
 
 	// Title
-	print '<tr class="liste_titre"><th width="35%">'.$langs->trans("DefaultSkin").'</th>';
-	print '<th class="right">';
-	print '</th></tr>';
+	echo '<tr class="liste_titre"><th width="35%">'.$langs->trans("DefaultSkin").'</th>';
+	echo '<th class="right">';
+	echo '</th></tr>';
 
-	print '<tr class="oddeven">';
-	print '<td>'.$langs->trans("ThemeDir").'</td>';
-	print '<td>';
+	echo '<tr class="oddeven">';
+	echo '<td>'.$langs->trans("ThemeDir").'</td>';
+	echo '<td>';
 	foreach ($dirskins as $dirskin) {
-		echo '"'.$dirskin.'" ';
+		echo  '"'.$dirskin.'" ';
 	}
-	print '</td>';
-	print '</tr>';
+	echo '</td>';
+	echo '</tr>';
 
 	//
-	print '<tr class="oddeven"><td colspan="'.$colspan.'">';
+	echo '<tr class="oddeven"><td colspan="'.$colspan.'">';
 
-	print '<table class="nobordernopadding" width="100%"><tr><td><div class="center">';
+	echo '<table class="nobordernopadding" width="100%"><tr><td><div class="center">';
 
 	$i = 0;
 	foreach ($dirskins as $dir) {
-		//print $dirroot.$dir;exit;
+		//echo $dirroot.$dir;exit;
 		$dirskin = dol_buildpath($dir, 0); // This include loop on $conf->file->dol_document_root
 		$urltheme = dol_buildpath($dir, 1);
 
@@ -97,13 +97,13 @@ function show_skin($fuser, $edit = 0)
 							continue;
 						}
 
-						print '<div class="inline-block" style="margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;">';
+						echo '<div class="inline-block" style="margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;">';
 						if ($subdir == $selected_theme) {
-							print '<input '.($edit ? '' : 'disabled').' type="radio" '.$bc[$var].' style="border: 0px;" checked name="fckeditor_skin" value="'.$subdir.'"> <b>'.$subdir.'</b>';
+							echo '<input '.($edit ? '' : 'disabled').' type="radio" '.$bc[$var].' style="border: 0px;" checked name="fckeditor_skin" value="'.$subdir.'"> <b>'.$subdir.'</b>';
 						} else {
-							print '<input '.($edit ? '' : 'disabled').' type="radio" '.$bc[$var].' style="border: 0px;" name="fckeditor_skin" value="'.$subdir.'"> '.$subdir;
+							echo '<input '.($edit ? '' : 'disabled').' type="radio" '.$bc[$var].' style="border: 0px;" name="fckeditor_skin" value="'.$subdir.'"> '.$subdir;
 						}
-						print '</div>';
+						echo '</div>';
 
 						$i++;
 					}
@@ -112,9 +112,9 @@ function show_skin($fuser, $edit = 0)
 		}
 	}
 
-	print '</div></td></tr></table>';
+	echo '</div></td></tr></table>';
 
-	print '</td></tr>';
+	echo '</td></tr>';
 
-	print '</table>';
+	echo '</table>';
 }

@@ -807,7 +807,7 @@ abstract class JpGraphRendererBase implements IRenderer
             if (count($chartTypes) == 1) {
                 $chartType = array_pop($chartTypes);
             } elseif (count($chartTypes) == 0) {
-                echo 'Chart is not yet implemented<br />';
+                echo  'Chart is not yet implemented<br />';
 
                 return false;
             } else {
@@ -873,7 +873,7 @@ abstract class JpGraphRendererBase implements IRenderer
 
                 break;
             default:
-                echo $chartType . ' is not yet implemented<br />';
+                echo  $chartType . ' is not yet implemented<br />';
 
                 return false;
         }

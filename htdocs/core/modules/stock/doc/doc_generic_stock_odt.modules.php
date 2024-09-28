@@ -259,7 +259,7 @@ class doc_generic_stock_odt extends ModelePDFStock
 			}
 
 			if (file_exists($dir)) {
-				//print "srctemplatepath=".$srctemplatepath;	// Src filename
+				//echo "srctemplatepath=".$srctemplatepath;	// Src filename
 				$newfile = basename($srctemplatepath);
 				$newfiletmp = preg_replace('/\.od[ts]/i', '', $newfile);
 				$newfiletmp = preg_replace('/template_/i', '', $newfiletmp);

@@ -41,17 +41,17 @@ $coldisplay = 0;
 ?>
 <tr class="oddeven tredited">
 <?php if (getDolGlobalString('MAIN_VIEW_LINE_NUMBER')) { ?>
-		<td class="linecolnum center"><?php $coldisplay++; ?><?php echo($i + 1); ?></td>
+		<td class="linecolnum center"><?php $coldisplay++; ?><?php echo ($i + 1); ?></td>
 <?php }
 
 $coldisplay++;
 ?>
 	<td class="nobottom linecolref">
-		<div id="line_<?php echo $line->id; ?>"></div>
-		<input type="hidden" name="lineid" value="<?php echo $line->id; ?>">
+		<div id="line_<?php echo  $line->id; ?>"></div>
+		<input type="hidden" name="lineid" value="<?php echo  $line->id; ?>">
 
 		<?php $coldisplay++; ?>
-		<input type="text" name="line_ref" id="line_ref" class="flat" value="<?php echo(GETPOSTISSET("line_ref") ? GETPOST("line_ref", 'alpha', 2) : $line->ref); ?>">
+		<input type="text" name="line_ref" id="line_ref" class="flat" value="<?php echo (GETPOSTISSET("line_ref") ? GETPOST("line_ref", 'alpha', 2) : $line->ref); ?>">
 		<?php
 		if (is_object($hookmanager)) {
 			$parameters = array('line' => $line);
@@ -64,13 +64,13 @@ $coldisplay++;
 	</td>
 
 	<td class="nobottom linecolvalue"><?php $coldisplay++; ?>
-		<input type="text" name="line_value" id="line_value" class="flat" value="<?php echo(GETPOSTISSET("line_value") ? GETPOST("line_value", 'alpha', 2) : $line->value); ?>">
+		<input type="text" name="line_value" id="line_value" class="flat" value="<?php echo (GETPOSTISSET("line_value") ? GETPOST("line_value", 'alpha', 2) : $line->value); ?>">
 	</td>
 
 	<!-- colspan for this td because it replace td for buttons+... -->
-	<td class="center valignmiddle" colspan="<?php echo $colspan; ?>"><?php $coldisplay += $colspan; ?>
-		<input type="submit" class="button buttongen marginbottomonly button-save" id="savelinebutton marginbottomonly" name="save" value="<?php echo $langs->trans("Save"); ?>"><br>
-		<input type="submit" class="button buttongen marginbottomonly button-cancel" id="cancellinebutton" name="cancel" value="<?php echo $langs->trans("Cancel"); ?>">
+	<td class="center valignmiddle" colspan="<?php echo  $colspan; ?>"><?php $coldisplay += $colspan; ?>
+		<input type="submit" class="button buttongen marginbottomonly button-save" id="savelinebutton marginbottomonly" name="save" value="<?php echo  $langs->trans("Save"); ?>"><br>
+		<input type="submit" class="button buttongen marginbottomonly button-cancel" id="cancellinebutton" name="cancel" value="<?php echo  $langs->trans("Cancel"); ?>">
 	</td>
 </tr>
 

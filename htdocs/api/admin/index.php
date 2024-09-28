@@ -97,66 +97,66 @@ dol_mkdir(DOL_DATA_ROOT.'/api/temp'); // May have been deleted by a purge
 llxHeader();
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?restore_lastsearch_values=1">'.$langs->trans("BackToModuleList").'</a>';
-print load_fiche_titre($langs->trans("ApiSetup"), $linkback, 'title_setup');
+echo load_fiche_titre($langs->trans("ApiSetup"), $linkback, 'title_setup');
 
-print '<span class="opacitymedium">'.$langs->trans("ApiDesc")."</span><br>\n";
-print "<br>\n";
+echo '<span class="opacitymedium">'.$langs->trans("ApiDesc")."</span><br>\n";
+echo "<br>\n";
 
-print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="action" value="save">';
+echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="action" value="save">';
 
-print '<table class="noborder centpercent">';
+echo '<table class="noborder centpercent">';
 
-print '<tr class="liste_titre">';
-print "<td>".$langs->trans("Parameter")."</td>";
-print '<td>'.$langs->trans("Value")."</td>";
-print "<td>&nbsp;</td>";
-print "</tr>";
+echo '<tr class="liste_titre">';
+echo "<td>".$langs->trans("Parameter")."</td>";
+echo '<td>'.$langs->trans("Value")."</td>";
+echo "<td>&nbsp;</td>";
+echo "</tr>";
 
-print '<tr class="oddeven">';
-print '<td>'.$langs->trans("ApiProductionMode").'</td>';
+echo '<tr class="oddeven">';
+echo '<td>'.$langs->trans("ApiProductionMode").'</td>';
 $production_mode = (!getDolGlobalString('API_PRODUCTION_MODE') ? false : true);
 if ($production_mode) {
-	print '<td><a class="reposition" href="'.$_SERVER['PHP_SELF'].'?action=setproductionmode&token='.newToken().'&status=0">';
-	print img_picto($langs->trans("Activated"), 'switch_on');
-	print '</a></td>';
+	echo '<td><a class="reposition" href="'.$_SERVER['PHP_SELF'].'?action=setproductionmode&token='.newToken().'&status=0">';
+	echo img_picto($langs->trans("Activated"), 'switch_on');
+	echo '</a></td>';
 } else {
-	print '<td><a class="reposition" href="'.$_SERVER['PHP_SELF'].'?action=setproductionmode&token='.newToken().'&status=1">';
-	print img_picto($langs->trans("Disabled"), 'switch_off');
-	print '</a></td>';
+	echo '<td><a class="reposition" href="'.$_SERVER['PHP_SELF'].'?action=setproductionmode&token='.newToken().'&status=1">';
+	echo img_picto($langs->trans("Disabled"), 'switch_off');
+	echo '</a></td>';
 }
-print '<td>&nbsp;</td>';
-print '</tr>';
+echo '<td>&nbsp;</td>';
+echo '</tr>';
 
-print '<tr class="oddeven">';
-print '<td>'.$langs->trans("API_DISABLE_COMPRESSION").'</td>';
+echo '<tr class="oddeven">';
+echo '<td>'.$langs->trans("API_DISABLE_COMPRESSION").'</td>';
 $disable_compression = (!getDolGlobalString('API_DISABLE_COMPRESSION') ? false : true);
 if ($disable_compression) {
-	print '<td><a class="reposition" href="'.$_SERVER['PHP_SELF'].'?action=setdisablecompression&token='.newToken().'&status=0">';
-	print img_picto($langs->trans("Activated"), 'switch_on');
-	print '</a></td>';
+	echo '<td><a class="reposition" href="'.$_SERVER['PHP_SELF'].'?action=setdisablecompression&token='.newToken().'&status=0">';
+	echo img_picto($langs->trans("Activated"), 'switch_on');
+	echo '</a></td>';
 } else {
-	print '<td><a class="reposition" href="'.$_SERVER['PHP_SELF'].'?action=setdisablecompression&token='.newToken().'&status=1">';
-	print img_picto($langs->trans("Disabled"), 'switch_off');
-	print '</a></td>';
+	echo '<td><a class="reposition" href="'.$_SERVER['PHP_SELF'].'?action=setdisablecompression&token='.newToken().'&status=1">';
+	echo img_picto($langs->trans("Disabled"), 'switch_off');
+	echo '</a></td>';
 }
-print '<td>&nbsp;</td>';
-print '</tr>';
+echo '<td>&nbsp;</td>';
+echo '</tr>';
 
-print '<tr class="oddeven">';
-print '<td>'.$form->textwithpicto($langs->trans("RESTRICT_ON_IP"), $langs->trans("Example").': '.$langs->trans("IPListExample"));
-print '</td>';
-print '<td><input type="text" name="API_RESTRICT_ON_IP" value="'.dol_escape_htmltag(getDolGlobalString('API_RESTRICT_ON_IP')).'"></td>';
-print '<td>';
-print '<input type="submit" class="button button-save smallpaddingimp" name="save" value="'.dol_escape_htmltag($langs->trans("Save")).'"></td>';
-print '</td>';
-print '</tr>';
+echo '<tr class="oddeven">';
+echo '<td>'.$form->textwithpicto($langs->trans("RESTRICT_ON_IP"), $langs->trans("Example").': '.$langs->trans("IPListExample"));
+echo '</td>';
+echo '<td><input type="text" name="API_RESTRICT_ON_IP" value="'.dol_escape_htmltag(getDolGlobalString('API_RESTRICT_ON_IP')).'"></td>';
+echo '<td>';
+echo '<input type="submit" class="button button-save smallpaddingimp" name="save" value="'.dol_escape_htmltag($langs->trans("Save")).'"></td>';
+echo '</td>';
+echo '</tr>';
 
-print '</table>';
-print '<br><br>';
+echo '</table>';
+echo '<br><br>';
 
-print '</form>';
+echo '</form>';
 
 
 // Define $urlwithroot
@@ -170,26 +170,26 @@ $message = '';
 $url = $urlwithroot.'/api/index.php/login?login=auserlogin&password=thepassword[&reset=1]';
 $message .= '<span class="opacitymedium">'.$langs->trans("UrlToGetKeyToUseAPIs").':</span><br>';
 $message .= '<div class="urllink soixantepercent">'.img_picto('', 'globe').' <input type="text" class="quatrevingtpercent" id="urltogettoken" value="'.$url.'"></div>';
-print $message;
-print ajax_autoselect("urltogettoken");
-print '<br>';
-print '<br>';
+echo $message;
+echo ajax_autoselect("urltogettoken");
+echo '<br>';
+echo '<br>';
 
 // Explorer
-print '<span class="opacitymedium">'.$langs->trans("ApiExporerIs").':</span><br>';
+echo '<span class="opacitymedium">'.$langs->trans("ApiExporerIs").':</span><br>';
 if (dol_is_dir(DOL_DOCUMENT_ROOT.'/includes/restler/framework/Luracast/Restler/explorer')) {
 	$url = DOL_MAIN_URL_ROOT.'/api/index.php/explorer';
-	print '<div class="urllink soixantepercent">'.img_picto('', 'globe').' <a href="'.$url.'" target="_blank" rel="noopener noreferrer">'.$url."</a></div><br>\n";
+	echo '<div class="urllink soixantepercent">'.img_picto('', 'globe').' <a href="'.$url.'" target="_blank" rel="noopener noreferrer">'.$url."</a></div><br>\n";
 
-	print '<div class="opacitymediumxxx"><br><span class="opacitymedium">'.$langs->trans("SwaggerDescriptionFile").':</span><br>';
+	echo '<div class="opacitymediumxxx"><br><span class="opacitymedium">'.$langs->trans("SwaggerDescriptionFile").':</span><br>';
 	$urlswagger = DOL_MAIN_URL_ROOT.'/api/index.php/explorer/swagger.json?DOLAPIKEY=youruserapikey';
 	//$urlswaggerreal = DOL_MAIN_URL_ROOT.'/api/index.php/explorer/swagger.json?DOLAPIKEY='.$user->api_key;
-	print '<div class="urllink soixantepercent">'.img_picto('', 'globe').' <input type="text" class="quatrevingtpercent" id="urltogetapidesc" value="'.$urlswagger.'"></div>';
-	print '</div>';
-	print ajax_autoselect("urltogetapidesc");
+	echo '<div class="urllink soixantepercent">'.img_picto('', 'globe').' <input type="text" class="quatrevingtpercent" id="urltogetapidesc" value="'.$urlswagger.'"></div>';
+	echo '</div>';
+	echo ajax_autoselect("urltogetapidesc");
 } else {
 	$langs->load("errors");
-	print info_admin($langs->trans("ErrorNotAvailableWithThisDistribution"), 0, 0, 'error');
+	echo info_admin($langs->trans("ErrorNotAvailableWithThisDistribution"), 0, 0, 'error');
 }
 
 llxFooter();

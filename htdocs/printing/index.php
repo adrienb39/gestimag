@@ -49,7 +49,7 @@ llxHeader("", $langs->trans("Printing"));
 
 print_barre_liste($langs->trans("Printing"), 0, $_SERVER["PHP_SELF"], '', '', '', '<a class="button" href="'.$_SERVER["PHP_SELF"].'">'.$langs->trans("Refresh").'</a>', 0, 0, 'title_setup.png');
 
-print $langs->trans("DirectPrintingJobsDesc").'<br><br>';
+echo $langs->trans("DirectPrintingJobsDesc").'<br><br>';
 
 // List Jobs from printing modules
 $object = new PrintingDriver($db);
@@ -63,7 +63,7 @@ foreach ($result as $driver) {
 	if ($keyforprinteractive && getDolGlobalString($keyforprinteractive)) {
 		//$printer->listJobs('commande');
 		$result = $printer->listJobs();
-		print $printer->resprint;
+		echo $printer->resprint;
 
 		if ($result > 0) {
 			setEventMessages($printer->error, $printer->errors, 'errors');

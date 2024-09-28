@@ -65,7 +65,7 @@ if ($usesublevelpermission && !$user->hasRight($module, $element)) {	// There is
 	$usesublevelpermission = '';
 }
 
-//print $object->id.' - '.$object->module.' - '.$object->element.' - '.$object->table_element.' - '.$usesublevelpermission."\n";
+//echo $object->id.' - '.$object->module.' - '.$object->element.' - '.$object->table_element.' - '.$usesublevelpermission."\n";
 
 // Security check
 if (!empty($user->socid)) {
@@ -92,7 +92,7 @@ if (preg_match('/statu[st]$/', $field) || ($field == 'evenunsubscribe' && $objec
 
 top_httphead();
 
-print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 // Registering new values
 if (($action == 'set') && !empty($id)) {
@@ -108,7 +108,7 @@ if (($action == 'set') && !empty($id)) {
 	$result = $object->setValueFrom($field, $value, $object->table_element, $id, $format, '', $user, $triggerkey);
 
 	if ($result < 0) {
-		print $object->error;
+		echo $object->error;
 		http_response_code(500);
 		exit;
 	}

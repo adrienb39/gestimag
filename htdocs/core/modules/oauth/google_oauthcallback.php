@@ -224,7 +224,7 @@ if (!GETPOST('code')) {
 	// We must validate that the $state is the same than the one into $_SESSION['oauthstateanticsrf'], return error if not.
 	if (isset($_SESSION['oauthstateanticsrf']) && $state != $_SESSION['oauthstateanticsrf']) {
 		//var_dump($_SESSION['oauthstateanticsrf']);exit;
-		print 'Value for state='.dol_escape_htmltag($state).' differs from value in $_SESSION["oauthstateanticsrf"]. Code is refused.';
+		echo 'Value for state='.dol_escape_htmltag($state).' differs from value in $_SESSION["oauthstateanticsrf"]. Code is refused.';
 		unset($_SESSION['oauthstateanticsrf']);
 	} else {
 		// This was a callback request from service, get the token
@@ -371,7 +371,7 @@ if (!GETPOST('code')) {
 			header('Location: '.$backtourl);
 			exit();
 		} catch (Exception $e) {
-			print $e->getMessage();
+			echo $e->getMessage();
 		}
 	}
 }

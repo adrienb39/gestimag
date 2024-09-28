@@ -16,7 +16,7 @@ use Exception;
 use BadMethodCallException;
 
 /**
- * Print connector that passes print data to CUPS print commands.
+ * Print connector that passes echo data to CUPS echo commands.
  * Your printer mut be installed on the local CUPS instance to use this connector.
  */
 class CupsPrintConnector implements PrintConnector
@@ -36,10 +36,10 @@ class CupsPrintConnector implements PrintConnector
     private $printerName;
     
     /**
-     * Construct new CUPS print connector.
+     * Construct new CUPS echo connector.
      *
      * @param string $dest
-     *          The CUPS printer name to print to. This must be loaded using a raw driver.
+     *          The CUPS printer name to echo to. This must be loaded using a raw driver.
      * @throws BadMethodCallException
      */
     public function __construct($dest)

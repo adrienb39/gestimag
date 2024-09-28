@@ -24,7 +24,7 @@
 
 // Protection to avoid direct call of template
 if (empty($conf) || !is_object($conf)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -46,26 +46,26 @@ foreach ($object->fields as $key => $val) {
 		continue; // We don't want this field
 	}
 
-	print '<tr class="field_'.$key.'">';
-	print '<td';
-	print ' class="titlefieldcreate';
+	echo '<tr class="field_'.$key.'">';
+	echo '<td';
+	echo ' class="titlefieldcreate';
 	if (isset($val['notnull']) && $val['notnull'] > 0) {
-		print ' fieldrequired';
+		echo ' fieldrequired';
 	}
 	if ($val['type'] == 'text' || $val['type'] == 'html') {
-		print ' tdtop';
+		echo ' tdtop';
 	}
-	print '"';
-	print '>';
+	echo '"';
+	echo '>';
 	if (!empty($val['help'])) {
-		print $form->textwithpicto($langs->trans($val['label']), $langs->trans($val['help']));
+		echo $form->textwithpicto($langs->trans($val['label']), $langs->trans($val['help']));
 	} else {
-		print $langs->trans($val['label']);
+		echo $langs->trans($val['label']);
 	}
-	print '</td>';
-	print '<td class="valuefieldcreate">';
+	echo '</td>';
+	echo '<td class="valuefieldcreate">';
 	if (!empty($val['picto'])) {
-		print img_picto('', $val['picto'], '', false, 0, 0, '', 'pictofixedwidth');
+		echo img_picto('', $val['picto'], '', false, 0, 0, '', 'pictofixedwidth');
 	}
 	if (in_array($val['type'], array('int', 'integer'))) {
 		$value = GETPOSTINT($key);
@@ -101,17 +101,17 @@ foreach ($object->fields as $key => $val) {
 		$value = GETPOST($key, 'alphanohtml');
 	}
 	if (!empty($val['noteditable'])) {
-		print $object->showOutputField($val, $key, $value, '', '', '', 0);
+		echo $object->showOutputField($val, $key, $value, '', '', '', 0);
 	} else {
 		if ($key == 'lang') {
-			print img_picto('', 'language', 'class="pictofixedwidth"');
-			print $formadmin->select_language($value, $key, 0, null, 1, 0, 0, 'minwidth300', 2);
+			echo img_picto('', 'language', 'class="pictofixedwidth"');
+			echo $formadmin->select_language($value, $key, 0, null, 1, 0, 0, 'minwidth300', 2);
 		} else {
-			print $object->showInputField($val, $key, $value, '', '', '', 0);
+			echo $object->showInputField($val, $key, $value, '', '', '', 0);
 		}
 	}
-	print '</td>';
-	print '</tr>';
+	echo '</td>';
+	echo '</tr>';
 }
 
 ?>

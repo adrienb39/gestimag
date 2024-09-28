@@ -149,11 +149,11 @@ function rebuild_merge_pdf($db, $langs, $conf, $diroutputpdf, $newlangid, $filte
 		$sql .= $sqlorder;
 	}
 
-	//print $sql; exit;
+	//echo$sql; exit;
 	dol_syslog("scripts/invoices/rebuild_merge.php:", LOG_DEBUG);
 
 	if ($usestdout) {
-		print '--- start'."\n";
+		echo'--- start'."\n";
 	}
 
 	// Start of transaction
@@ -191,12 +191,12 @@ function rebuild_merge_pdf($db, $langs, $conf, $diroutputpdf, $newlangid, $filte
 					$filename = $conf->facture->dir_output.'/'.$fac->ref.'/'.$fac->ref.'.pdf';
 					if ($regenerate || !dol_is_file($filename)) {
 						if ($usestdout) {
-							print "Build PDF for invoice ".$obj->ref." - Lang = ".$outputlangs->defaultlang."\n";
+							echo"Build PDF for invoice ".$obj->ref." - Lang = ".$outputlangs->defaultlang."\n";
 						}
 						$result = $fac->generateDocument($regenerate ? $regenerate : $fac->model_pdf, $outputlangs);
 					} else {
 						if ($usestdout) {
-							print "PDF for invoice ".$obj->ref." already exists\n";
+							echo"PDF for invoice ".$obj->ref." already exists\n";
 						}
 					}
 
@@ -207,7 +207,7 @@ function rebuild_merge_pdf($db, $langs, $conf, $diroutputpdf, $newlangid, $filte
 				if ($result <= 0) {
 					$error++;
 					if ($usestdout) {
-						print "Error: Failed to build PDF for invoice ".($fac->ref ? $fac->ref : ' id '.$obj->rowid)."\n";
+						echo"Error: Failed to build PDF for invoice ".($fac->ref ? $fac->ref : ' id '.$obj->rowid)."\n";
 					} else {
 						dol_syslog("Failed to build PDF for invoice ".($fac->ref ? $fac->ref : ' id '.$obj->rowid), LOG_ERR);
 					}
@@ -224,7 +224,7 @@ function rebuild_merge_pdf($db, $langs, $conf, $diroutputpdf, $newlangid, $filte
 			$format = array($page_largeur, $page_hauteur);
 
 			if ($usestdout) {
-				print "Using output PDF format ".implode('x', $format)."\n";
+				echo"Using output PDF format ".implode('x', $format)."\n";
 			} else {
 				dol_syslog("Using output PDF format ".implode('x', $format), LOG_ERR);
 			}
@@ -249,7 +249,7 @@ function rebuild_merge_pdf($db, $langs, $conf, $diroutputpdf, $newlangid, $filte
 			// Add all others
 			foreach ($files as $file) {
 				if ($usestdout) {
-					print "Merge PDF file for invoice ".$file."\n";
+					echo"Merge PDF file for invoice ".$file."\n";
 				} else {
 					dol_syslog("Merge PDF file for invoice ".$file);
 				}
@@ -284,16 +284,16 @@ function rebuild_merge_pdf($db, $langs, $conf, $diroutputpdf, $newlangid, $filte
 
 			if ($usestdout) {
 				if (!$error) {
-					print "Merged PDF has been built in ".$file."\n";
+					echo"Merged PDF has been built in ".$file."\n";
 				} else {
-					print "Can't build PDF ".$file."\n";
+					echo"Can't build PDF ".$file."\n";
 				}
 			}
 
 			$result = 1;
 		} else {
 			if ($usestdout) {
-				print "No invoices found for criteria.\n";
+				echo"No invoices found for criteria.\n";
 			} else {
 				dol_syslog("No invoices found for criteria");
 			}

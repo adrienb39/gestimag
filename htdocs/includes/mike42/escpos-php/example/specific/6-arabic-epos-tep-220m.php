@@ -49,7 +49,7 @@ $textLtr = $Arabic -> utf8Glyphs($textUtf8, $maxChars);
 $textLine = explode("\n", $textLtr);
 
 /*
- * Set up and use an image print buffer with a suitable font
+ * Set up and use an image echo buffer with a suitable font
  */
 $buffer = new ImagePrintBuffer();
 $buffer -> setFont($fontPath);

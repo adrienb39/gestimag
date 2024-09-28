@@ -137,7 +137,7 @@ class InfoBox
 						$relsourcefile = "/core/boxes/".$boxname.".php";
 					}
 
-					//print $obj->box_id.'-'.$boxname.'-'.$relsourcefile.'<br>';
+					//echo $obj->box_id.'-'.$boxname.'-'.$relsourcefile.'<br>';
 
 					// TODO PERF Do not make "dol_include_once" here, nor "new" later. This means, we must store a 'depends' field to store modules list, then
 					// the "enabled" condition for modules forbidden for external users and the depends condition can be done.
@@ -181,7 +181,7 @@ class InfoBox
 									if (!empty($conf->$tmpmodule->enabled)) {
 										$tmpenabled = 1;
 									}
-									//print $boxname.'-'.$module.'-module enabled='.(empty($conf->$tmpmodule->enabled)?0:1).'<br>';
+									//echo $boxname.'-'.$module.'-module enabled='.(empty($conf->$tmpmodule->enabled)?0:1).'<br>';
 								}
 								if (empty($tmpenabled)) {	// We found at least one module required that is disabled
 									$enabled = 0;
@@ -189,9 +189,9 @@ class InfoBox
 								}
 							}
 						}
-						//print '=>'.$boxname.'-enabled='.$enabled.'<br>';
+						//echo '=>'.$boxname.'-enabled='.$enabled.'<br>';
 
-						//print 'xx module='.$module.' enabled='.$enabled;
+						//echo 'xx module='.$module.' enabled='.$enabled;
 						if ($enabled && ($includehidden || empty($box->hidden))) {
 							$boxes[] = $box;
 						} else {

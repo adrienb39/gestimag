@@ -30,7 +30,7 @@ final class RawbtPrintConnector implements PrintConnector
     private $readData;
 
     /**
-     * Create new print connector
+     * Create new echo connector
      */
     public function __construct()
     {
@@ -53,7 +53,7 @@ final class RawbtPrintConnector implements PrintConnector
     public function finalize()
     {
         ob_end_clean();
-        echo "intent:base64," . base64_encode($this->getData()) . "#Intent;scheme=rawbt;package=ru.a402d.rawbtprinter;end;";
+        echo  "intent:base64," . base64_encode($this->getData()) . "#Intent;scheme=rawbt;package=ru.a402d.rawbtprinter;end;";
         $this->buffer = null;
     }
 

@@ -128,7 +128,7 @@ class Comment extends CommonObject
 		$sql .= ")";
 
 		//var_dump($this->db);
-		//echo $sql;
+		//echo  $sql;
 
 		$this->db->begin();
 

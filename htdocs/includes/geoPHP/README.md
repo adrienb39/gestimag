@@ -44,10 +44,10 @@ $centroid = $polygon->getCentroid();
 $centX = $centroid->getX();
 $centY = $centroid->getY();
 
-print "This polygon has an area of ".$area." and a centroid with X=".$centX." and Y=".$centY;
+echo "This polygon has an area of ".$area." and a centroid with X=".$centX." and Y=".$centY;
 
 // MultiPoint json example
-print "<br/>";
+echo "<br/>";
 $json = 
 '{
    "type": "MultiPoint",
@@ -60,7 +60,7 @@ $multipoint = geoPHP::load($json, 'json');
 $multipoint_points = $multipoint->getComponents();
 $first_wkt = $multipoint_points[0]->out('wkt');
 
-print "This multipoint has ".$multipoint->numGeometries()." points. The first point has a wkt representation of ".$first_wkt;
+echo "This multipoint has ".$multipoint->numGeometries()." points. The first point has a wkt representation of ".$first_wkt;
 ```
 =======
 	
@@ -83,16 +83,16 @@ Calling get components returns the sub-geometries within a geometry as an array.
     $geomComponents = $geom2->getComponents();    //an array of the two linestring geometries
     $linestring1 = $geomComponents[0]->getComponents();	//an array of the first linestring's point geometries
     $linestring2 = $geomComponents[1]->getComponents();
-    echo $linestring1[0]->x() . ", " . $linestring1[0]->y();    //outputs '1, 1'
+    echo  $linestring1[0]->x() . ", " . $linestring1[0]->y();    //outputs '1, 1'
 
 An alternative is to use the `asArray()` method. Using the above geometry collection of two linestrings, 
     
 	$geometryArray = $geom2->asArray();
-	echo $geometryArray[0][0][0] . ", " . $geometryArray[0][0][1];    //outputs '1, 1'
+	echo  $geometryArray[0][0][0] . ", " . $geometryArray[0][0][1];    //outputs '1, 1'
 
 Clearly, more complex analysis is possible.
     
-	echo $geom2->envelope()->area();
+	echo  $geom2->envelope()->area();
 
 
 Working with PostGIS

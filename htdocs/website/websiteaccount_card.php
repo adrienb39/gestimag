@@ -205,27 +205,27 @@ if ($action == 'create') {
 		accessforbidden('NotEnoughPermissions', 0, 1);
 	}
 
-	print load_fiche_titre($langs->trans("NewWebsiteAccount", $langs->transnoentitiesnoconv("WebsiteAccount")));
+	echo load_fiche_titre($langs->trans("NewWebsiteAccount", $langs->transnoentitiesnoconv("WebsiteAccount")));
 
-	print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="add">';
+	echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="add">';
 	if ($backtopage) {
-		print '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
+		echo '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
 	}
 	if (!empty($backtopageforcancel)) {
-		print '<input type="hidden" name="backtopageforcancel" value="'.$backtopageforcancel.'">';
+		echo '<input type="hidden" name="backtopageforcancel" value="'.$backtopageforcancel.'">';
 	}
 	if (!empty($backtopagejsfields)) {
-		print '<input type="hidden" name="backtopagejsfields" value="'.$backtopagejsfields.'">';
+		echo '<input type="hidden" name="backtopagejsfields" value="'.$backtopagejsfields.'">';
 	}
 	if (!empty($dol_openinpopup)) {
-		print '<input type="hidden" name="dol_openinpopup" value="'.$dol_openinpopup.'">';
+		echo '<input type="hidden" name="dol_openinpopup" value="'.$dol_openinpopup.'">';
 	}
 
-	print dol_get_fiche_head(array(), '');
+	echo dol_get_fiche_head(array(), '');
 
-	print '<table class="border centpercent tableforfieldcreate">'."\n";
+	echo '<table class="border centpercent tableforfieldcreate">'."\n";
 
 	// Common attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/commonfields_add.tpl.php';
@@ -233,30 +233,30 @@ if ($action == 'create') {
 	// Other attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_add.tpl.php';
 
-	print '</table>'."\n";
+	echo '</table>'."\n";
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print $form->buttonsSaveCancel("Create");
+	echo $form->buttonsSaveCancel("Create");
 
-	print '</form>';
+	echo '</form>';
 
-	print $out_js;
+	echo $out_js;
 }
 
 // Part to edit record
 if (($id || $ref) && $action == 'edit') {
-	print load_fiche_titre($langs->trans("WebsiteAccount"));
+	echo load_fiche_titre($langs->trans("WebsiteAccount"));
 
-	print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="update">';
-	print '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
-	print '<input type="hidden" name="id" value="'.$object->id.'">';
+	echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="update">';
+	echo '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
+	echo '<input type="hidden" name="id" value="'.$object->id.'">';
 
-	print dol_get_fiche_head();
+	echo dol_get_fiche_head();
 
-	print '<table class="border centpercent tableforfieldedit">'."\n";
+	echo '<table class="border centpercent tableforfieldedit">'."\n";
 
 	// Common attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/commonfields_edit.tpl.php';
@@ -264,15 +264,15 @@ if (($id || $ref) && $action == 'edit') {
 	// Other attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_edit.tpl.php';
 
-	print '</table>';
+	echo '</table>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print $form->buttonsSaveCancel();
+	echo $form->buttonsSaveCancel();
 
-	print '</form>';
+	echo '</form>';
 
-	print $out_js;
+	echo $out_js;
 }
 
 // Part to show record
@@ -285,7 +285,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 
 	$head = websiteaccountPrepareHead($object);
 
-	print dol_get_fiche_head($head, 'card', $langs->trans("WebsiteAccount"), -1, $object->picto);
+	echo dol_get_fiche_head($head, 'card', $langs->trans("WebsiteAccount"), -1, $object->picto);
 
 	$formconfirm = '';
 
@@ -304,7 +304,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	}
 
 	// Print form confirm
-	print $formconfirm;
+	echo $formconfirm;
 
 
 	// Object card
@@ -368,10 +368,10 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	dol_banner_tab($object, 'id', $linkback, 1, 'rowid', 'rowid', $morehtmlref);
 
 
-	print '<div class="fichecenter">';
-	print '<div class="fichehalfleft">';
-	print '<div class="underbanner clearboth"></div>';
-	print '<table class="border centpercent tableforfield">'."\n";
+	echo '<div class="fichecenter">';
+	echo '<div class="fichehalfleft">';
+	echo '<div class="underbanner clearboth"></div>';
+	echo '<table class="border centpercent tableforfield">'."\n";
 
 	// Common attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/commonfields_view.tpl.php';
@@ -379,18 +379,18 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	// Other attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_view.tpl.php';
 
-	print '</table>';
-	print '</div>';
-	print '</div>';
+	echo '</table>';
+	echo '</div>';
+	echo '</div>';
 
-	print '<div class="clearboth"></div>';
+	echo '<div class="clearboth"></div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
 
 	// Buttons for actions
 	if ($action != 'presend' && $action != 'editline') {
-		print '<div class="tabsAction">'."\n";
+		echo '<div class="tabsAction">'."\n";
 		$parameters = array();
 		$reshook = $hookmanager->executeHooks('addMoreActionsButtons', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
 		if ($reshook < 0) {
@@ -400,19 +400,19 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 		if (empty($reshook)) {
 			// Send
 			if (empty($user->socid)) {
-				print dolGetButtonAction('', $langs->trans('SendMail'), 'default', $_SERVER["PHP_SELF"].'?id='.$object->id.'&action=presend&token='.newToken().'&mode=init#formmailbeforetitle');
+				echo dolGetButtonAction('', $langs->trans('SendMail'), 'default', $_SERVER["PHP_SELF"].'?id='.$object->id.'&action=presend&token='.newToken().'&mode=init#formmailbeforetitle');
 			}
 
 			// Clone
 			if ($permissiontoadd) {
-				print dolGetButtonAction('', $langs->trans('ToClone'), 'default', $_SERVER['PHP_SELF'].'?id='.$object->id.(!empty($object->socid) ? '&socid='.$object->socid : '').'&action=clone&token='.newToken(), '', $permissiontoadd);
+				echo dolGetButtonAction('', $langs->trans('ToClone'), 'default', $_SERVER['PHP_SELF'].'?id='.$object->id.(!empty($object->socid) ? '&socid='.$object->socid : '').'&action=clone&token='.newToken(), '', $permissiontoadd);
 			}
 
 			// Delete
 			$params = array();
-			print dolGetButtonAction('', $langs->trans("Delete"), 'delete', $_SERVER["PHP_SELF"].'?id='.$object->id.'&action=delete&token='.newToken(), 'delete', $permissiontodelete, $params);
+			echo dolGetButtonAction('', $langs->trans("Delete"), 'delete', $_SERVER["PHP_SELF"].'?id='.$object->id.'&action=delete&token='.newToken(), 'delete', $permissiontodelete, $params);
 		}
-		print '</div>'."\n";
+		echo '</div>'."\n";
 	}
 
 
@@ -422,10 +422,10 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	}
 
 	if ($action != 'presend') {
-		print '<div class="fichecenter"><div class="fichehalfleft">';
-		print '<a name="builddoc"></a>'; // ancre
+		echo '<div class="fichecenter"><div class="fichehalfleft">';
+		echo '<a name="builddoc"></a>'; // ancre
 
-		print '</div><div class="fichehalfright">';
+		echo '</div><div class="fichehalfright">';
 
 		/*
 		$MAXEVENT = 10;
@@ -438,7 +438,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 		$somethingshown = $formactions->showactions($object, $object->element, $socid, 1, '', $MAXEVENT);
 		*/
 
-		print '</div></div>';
+		echo '</div></div>';
 	}
 
 	// Presend form

@@ -55,7 +55,7 @@ $action = GETPOST('action', 'aZ09');
 //top_htmlhead("", "", 1);  // Replaced with top_httphead. An ajax page does not need html header.
 top_httphead();
 
-//print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+//echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 if (($user->hasRight('banque', 'modifier') || $user->hasRight('banque', 'consolidate')) && $action == 'dvnext') {
 	// Increase date
@@ -63,7 +63,7 @@ if (($user->hasRight('banque', 'modifier') || $user->hasRight('banque', 'consoli
 	$al->datev_next(GETPOSTINT('rowid'));
 	$al->fetch(GETPOSTINT('rowid'));
 
-	print '<span class="spanforajaxedit" id="datevalue_'.$al->id.'">'.dol_print_date($al->datev, "day").'</span>';
+	echo '<span class="spanforajaxedit" id="datevalue_'.$al->id.'">'.dol_print_date($al->datev, "day").'</span>';
 
 	exit;
 }
@@ -74,7 +74,7 @@ if (($user->hasRight('banque', 'modifier') || $user->hasRight('banque', 'consoli
 	$al->datev_previous(GETPOSTINT('rowid'));
 	$al->fetch(GETPOSTINT('rowid'));
 
-	print '<span class="spanforajaxedit" id="datevalue_'.$al->id.'">'.dol_print_date($al->datev, "day").'</span>';
+	echo '<span class="spanforajaxedit" id="datevalue_'.$al->id.'">'.dol_print_date($al->datev, "day").'</span>';
 
 	exit;
 }
@@ -85,7 +85,7 @@ if (($user->hasRight('banque', 'modifier') || $user->hasRight('banque', 'consoli
 	$al->dateo_next(GETPOSTINT('rowid'));
 	$al->fetch(GETPOSTINT('rowid'));
 
-	print '<span class="spanforajaxedit" id="dateoperation_'.$al->id.'">'.dol_print_date($al->dateo, "day").'</span>';
+	echo '<span class="spanforajaxedit" id="dateoperation_'.$al->id.'">'.dol_print_date($al->dateo, "day").'</span>';
 
 	exit;
 }
@@ -96,7 +96,7 @@ if (($user->hasRight('banque', 'modifier') || $user->hasRight('banque', 'consoli
 	$al->dateo_previous(GETPOSTINT('rowid'));
 	$al->fetch(GETPOSTINT('rowid'));
 
-	print '<span class="spanforajaxedit" id="dateoperation_'.$al->id.'">'.dol_print_date($al->dateo, "day").'</span>';
+	echo '<span class="spanforajaxedit" id="dateoperation_'.$al->id.'">'.dol_print_date($al->dateo, "day").'</span>';
 
 	exit;
 }

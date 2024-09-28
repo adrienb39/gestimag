@@ -52,7 +52,7 @@ class EscposPrintBuffer implements PrintBuffer
     private $printer;
 
     /**
-     * Empty print buffer.
+     * Empty echo buffer.
      */
     public function __construct()
     {

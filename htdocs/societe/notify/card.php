@@ -157,51 +157,51 @@ if ($result > 0) {
 
 	$head = societe_prepare_head($object);
 
-	print dol_get_fiche_head($head, 'notify', $langs->trans("ThirdParty"), -1, 'company');
+	echo dol_get_fiche_head($head, 'notify', $langs->trans("ThirdParty"), -1, 'company');
 
 	$linkback = '<a href="'.DOL_URL_ROOT.'/societe/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
 	dol_banner_tab($object, 'socid', $linkback, ($user->socid ? 0 : 1), 'rowid', 'nom');
 
-	print '<div class="fichecenter">';
+	echo '<div class="fichecenter">';
 
-	print '<div class="underbanner clearboth"></div>';
-	print '<table class="border centpercent tableforfield">';
+	echo '<div class="underbanner clearboth"></div>';
+	echo '<table class="border centpercent tableforfield">';
 
 	// Type Prospect/Customer/Supplier
-	print '<tr><td class="titlefield">'.$langs->trans('NatureOfThirdParty').'</td><td>';
-	print $object->getTypeUrl(1);
-	print '</td></tr>';
+	echo '<tr><td class="titlefield">'.$langs->trans('NatureOfThirdParty').'</td><td>';
+	echo $object->getTypeUrl(1);
+	echo '</td></tr>';
 
 	// Prefix
 	if (getDolGlobalString('SOCIETE_USEPREFIX')) {  // Old not used prefix field
-		print '<tr><td class="titlefield">'.$langs->trans('Prefix').'</td><td colspan="3">'.$object->prefix_comm.'</td></tr>';
+		echo '<tr><td class="titlefield">'.$langs->trans('Prefix').'</td><td colspan="3">'.$object->prefix_comm.'</td></tr>';
 	}
 
 	if ($object->client) {
-		print '<tr><td class="titlefield">';
-		print $langs->trans('CustomerCode').'</td><td colspan="3">';
-		print showValueWithClipboardCPButton(dol_escape_htmltag($object->code_client));
+		echo '<tr><td class="titlefield">';
+		echo $langs->trans('CustomerCode').'</td><td colspan="3">';
+		echo showValueWithClipboardCPButton(dol_escape_htmltag($object->code_client));
 		$tmpcheck = $object->check_codeclient();
 		if ($tmpcheck != 0 && $tmpcheck != -5) {
-			print ' <span class="error">('.$langs->trans("WrongCustomerCode").')</span>';
+			echo ' <span class="error">('.$langs->trans("WrongCustomerCode").')</span>';
 		}
-		print '</td></tr>';
+		echo '</td></tr>';
 	}
 
 	if ((isModEnabled("supplier_order") || isModEnabled("supplier_invoice")) && $object->fournisseur && $user->hasRight('fournisseur', 'lire')) {
-		print '<tr><td class="titlefield">';
-		print $langs->trans('SupplierCode').'</td><td colspan="3">';
-		print showValueWithClipboardCPButton(dol_escape_htmltag($object->code_fournisseur));
+		echo '<tr><td class="titlefield">';
+		echo $langs->trans('SupplierCode').'</td><td colspan="3">';
+		echo showValueWithClipboardCPButton(dol_escape_htmltag($object->code_fournisseur));
 		$tmpcheck = $object->check_codefournisseur();
 		if ($tmpcheck != 0 && $tmpcheck != -5) {
-			print ' <span class="error">('.$langs->trans("WrongSupplierCode").')</span>';
+			echo ' <span class="error">('.$langs->trans("WrongSupplierCode").')</span>';
 		}
-		print '</td></tr>';
+		echo '</td></tr>';
 	}
 
-	/*print '<tr><td class="titlefield">'.$langs->trans("NbOfActiveNotifications").'</td>';   // Notification for this thirdparty
-	print '<td colspan="3">';
+	/*echo '<tr><td class="titlefield">'.$langs->trans("NbOfActiveNotifications").'</td>';   // Notification for this thirdparty
+	echo '<td colspan="3">';
 	$nbofrecipientemails=0;
 	$notify=new Notify($db);
 	$tmparray = $notify->getNotificationsArray('', $object->id, null, 0, array('thirdparty'));
@@ -209,27 +209,27 @@ if ($result > 0) {
 	{
 		if (!empty($tmpkey)) $nbofrecipientemails++;
 	}
-	print $nbofrecipientemails;
-	print '</td></tr>';*/
+	echo $nbofrecipientemails;
+	echo '</td></tr>';*/
 
-	print '</table>';
+	echo '</table>';
 
-	print '</div>';
+	echo '</div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print "\n";
+	echo "\n";
 
 	// Help
-	print '<div class="opacitymedium hideonsmartphone">';
-	print $langs->trans("NotificationsDesc");
-	print '<br>'.$langs->trans("NotificationsDescUser");
-	print '<br>'.$langs->trans("NotificationsDescContact").' - '.$langs->trans("YouAreHere");
-	print '<br>'.$langs->trans("NotificationsDescGlobal");
-	print '<br>';
-	print '</div>';
+	echo '<div class="opacitymedium hideonsmartphone">';
+	echo $langs->trans("NotificationsDesc");
+	echo '<br>'.$langs->trans("NotificationsDescUser");
+	echo '<br>'.$langs->trans("NotificationsDescContact").' - '.$langs->trans("YouAreHere");
+	echo '<br>'.$langs->trans("NotificationsDescGlobal");
+	echo '<br>';
+	echo '</div>';
 
-	print '<br><br>'."\n";
+	echo '<br><br>'."\n";
 
 	$nbtotalofrecords = '';
 
@@ -258,25 +258,25 @@ if ($result > 0) {
 	$titlelist = $langs->trans("ListOfActiveNotifications");
 
 	// Add notification form
-	//print load_fiche_titre($titlelist.' <span class="opacitymedium colorblack paddingleft">('.$num.')</span>', '', '');
+	//echo load_fiche_titre($titlelist.' <span class="opacitymedium colorblack paddingleft">('.$num.')</span>', '', '');
 	$num = $nbtotalofrecords;
 	print_barre_liste($titlelist, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, (empty($nbtotalofrecords) ? -1 : $nbtotalofrecords), 'email', 0, $newcardbutton, '', $limit, 0, 0, 1);
 
-	print '<form action="'.$_SERVER["PHP_SELF"].'?socid='.$socid.'" method="post">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="add">';
+	echo '<form action="'.$_SERVER["PHP_SELF"].'?socid='.$socid.'" method="post">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="add">';
 
 	$param = "&socid=".$socid;
 
 	// Line with titles
-	print '<div class="div-table-responsive-no-min">';
-	print '<table class="centpercent noborder">';
-	print '<tr class="liste_titre">';
+	echo '<div class="div-table-responsive-no-min">';
+	echo '<table class="centpercent noborder">';
+	echo '<tr class="liste_titre">';
 	print_liste_field_titre("Target", $_SERVER["PHP_SELF"], "c.lastname,c.firstname", '', $param, 'width="45%"', $sortfield, $sortorder);
 	print_liste_field_titre("Action", $_SERVER["PHP_SELF"], "", '', $param, 'width="35%"', $sortfield, $sortorder);
 	print_liste_field_titre("Type", $_SERVER["PHP_SELF"], "n.type", '', $param, 'width="10%"', $sortfield, $sortorder);
 	print_liste_field_titre('');
-	print "</tr>\n";
+	echo "</tr>\n";
 
 	// Line to add a new subscription
 	if ($action == 'create') {
@@ -299,28 +299,28 @@ if ($result > 0) {
 				$newlistofemails[$tmpkey] = array('label' => dol_string_nohtmltag($tmpval), 'id' => $tmpkey, 'data-html' => $labelhtml);
 			}
 
-			print '<tr class="oddeven nohover">';
-			print '<td class="nowraponall">';
-			print img_picto('', 'contact', '', false, 0, 0, '', 'paddingright');
-			print $form->selectarray("contactid", $newlistofemails, '', 1, 0, 0, '', 0, 0, 0, '', 'minwidth100imp maxwidthonsmartphone');
-			print '</td>';
-			print '<td class="nowraponall">';
-			print img_picto('', 'object_action', '', false, 0, 0, '', 'paddingright');
-			print $form->selectarray("actionid", $actions, '', 1, 0, 0, '', 0, 0, 0, '', 'minwidth100imp maxwidthonsmartphone');
-			print '</td>';
-			print '<td>';
+			echo '<tr class="oddeven nohover">';
+			echo '<td class="nowraponall">';
+			echo img_picto('', 'contact', '', false, 0, 0, '', 'paddingright');
+			echo $form->selectarray("contactid", $newlistofemails, '', 1, 0, 0, '', 0, 0, 0, '', 'minwidth100imp maxwidthonsmartphone');
+			echo '</td>';
+			echo '<td class="nowraponall">';
+			echo img_picto('', 'object_action', '', false, 0, 0, '', 'paddingright');
+			echo $form->selectarray("actionid", $actions, '', 1, 0, 0, '', 0, 0, 0, '', 'minwidth100imp maxwidthonsmartphone');
+			echo '</td>';
+			echo '<td>';
 			$type = array('email' => $langs->trans("EMail"));
-			print $form->selectarray("typeid", $type, '', 0, 0, 0, '', 0, 0, 0, '', 'minwidth75imp');
-			print '</td>';
-			print '<td class="right nowraponall">';
-			print '<input type="submit" class="button button-add small" value="'.$langs->trans("Add").'">';
-			print '<input type="submit" class="button button-cancel small" name="cancel" value="'.$langs->trans("Cancel").'">';
-			print '</td>';
-			print '</tr>';
+			echo $form->selectarray("typeid", $type, '', 0, 0, 0, '', 0, 0, 0, '', 'minwidth75imp');
+			echo '</td>';
+			echo '<td class="right nowraponall">';
+			echo '<input type="submit" class="button button-add small" value="'.$langs->trans("Add").'">';
+			echo '<input type="submit" class="button button-cancel small" name="cancel" value="'.$langs->trans("Cancel").'">';
+			echo '</td>';
+			echo '</tr>';
 		} else {
-			print '<tr class="oddeven"><td colspan="4" class="opacitymedium">';
-			print $langs->trans("YouMustCreateContactFirst");
-			print '</td></tr>';
+			echo '<tr class="oddeven"><td colspan="4" class="opacitymedium">';
+			echo $langs->trans("YouMustCreateContactFirst");
+			echo '</td></tr>';
 		}
 	} else {
 		if ($num) {
@@ -335,47 +335,47 @@ if ($result > 0) {
 				$contactstatic->lastname = $obj->lastname;
 				$contactstatic->firstname = $obj->firstname;
 
-				print '<tr class="oddeven">';
-				print '<td>'.$contactstatic->getNomUrl(1);
+				echo '<tr class="oddeven">';
+				echo '<td>'.$contactstatic->getNomUrl(1);
 				if ($obj->type == 'email') {
 					if (isValidEmail($obj->email)) {
-						print ' &lt;'.$obj->email.'&gt;';
+						echo ' &lt;'.$obj->email.'&gt;';
 					} else {
 						$langs->load("errors");
-						print ' '.img_warning().' <span class="warning">'.$langs->trans("ErrorBadEMail", $obj->email).'</span>';
+						echo ' '.img_warning().' <span class="warning">'.$langs->trans("ErrorBadEMail", $obj->email).'</span>';
 					}
 				}
-				print '</td>';
+				echo '</td>';
 
 				$label = ($langs->trans("Notify_".$obj->code) != "Notify_".$obj->code ? $langs->trans("Notify_".$obj->code) : $obj->label);
-				print '<td class="tdoverflowmax200" title="'.dol_escape_htmltag($label).'">';
-				print img_picto('', 'object_action', '', false, 0, 0, '', 'paddingright').$label;
-				print '</td>';
-				print '<td>';
+				echo '<td class="tdoverflowmax200" title="'.dol_escape_htmltag($label).'">';
+				echo img_picto('', 'object_action', '', false, 0, 0, '', 'paddingright').$label;
+				echo '</td>';
+				echo '<td>';
 				if ($obj->type == 'email') {
-					print $langs->trans("Email");
+					echo $langs->trans("Email");
 				}
 				if ($obj->type == 'sms') {
-					print $langs->trans("SMS");
+					echo $langs->trans("SMS");
 				}
-				print '</td>';
-				print '<td class="right"><a href="card.php?socid='.$socid.'&action=delete&token='.newToken().'&actid='.$obj->rowid.'">'.img_delete().'</a></td>';
-				print '</tr>';
+				echo '</td>';
+				echo '<td class="right"><a href="card.php?socid='.$socid.'&action=delete&token='.newToken().'&actid='.$obj->rowid.'">'.img_delete().'</a></td>';
+				echo '</tr>';
 				$i++;
 			}
 			$db->free($resql);
 		} else {
-			print '<tr><td colspan="4"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
+			echo '<tr><td colspan="4"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
 		}
 	}
 
 
 
-	print '</table>';
-	print '</div>';
-	print '</form>';
+	echo '</table>';
+	echo '</div>';
+	echo '</form>';
 
-	print '<br><br>'."\n";
+	echo '<br><br>'."\n";
 
 
 	// List
@@ -417,30 +417,30 @@ if ($result > 0) {
 		$param .= '&limit='.$limit;
 	}
 
-	print '<form method="post" action="'.$_SERVER["PHP_SELF"].'" name="formfilter">';
+	echo '<form method="post" action="'.$_SERVER["PHP_SELF"].'" name="formfilter">';
 	if ($optioncss != '') {
-		print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
+		echo '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 	}
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-	print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-	print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-	print '<input type="hidden" name="page" value="'.$page.'">';
-	print '<input type="hidden" name="socid" value="'.$object->id.'">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+	echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+	echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+	echo '<input type="hidden" name="page" value="'.$page.'">';
+	echo '<input type="hidden" name="socid" value="'.$object->id.'">';
 
 	// List of active notifications  @phan-suppress-next-line PhanPluginSuspiciousParamOrder
 	print_barre_liste($langs->trans("ListOfNotificationsDone"), $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, empty($nbtotalofrecords) ? -1 : $nbtotalofrecords, 'email', 0, '', '', $limit);
 
 	// Line with titles
-	print '<div class="div-table-responsive-no-min">';
-	print '<table class="centpercent noborder">';
-	print '<tr class="liste_titre">';
+	echo '<div class="div-table-responsive-no-min">';
+	echo '<table class="centpercent noborder">';
+	echo '<tr class="liste_titre">';
 	print_liste_field_titre("Target", $_SERVER["PHP_SELF"], "c.lastname,c.firstname", '', $param, '', $sortfield, $sortorder);
 	print_liste_field_titre("Action", $_SERVER["PHP_SELF"], "", '', $param, '', $sortfield, $sortorder);
 	print_liste_field_titre("Type", $_SERVER["PHP_SELF"], "n.type", '', $param, '', $sortfield, $sortorder);
 	//print_liste_field_titre("Object",$_SERVER["PHP_SELF"],"",'',$param,'"',$sortfield,$sortorder);
 	print_liste_field_titre("Date", $_SERVER["PHP_SELF"], "n.daten", '', $param, '', $sortfield, $sortorder, 'right ');
-	print '</tr>';
+	echo '</tr>';
 
 	if ($num > 0) {
 		$i = 0;
@@ -450,52 +450,52 @@ if ($result > 0) {
 		while ($i < $num) {
 			$obj = $db->fetch_object($resql);
 
-			print '<tr class="oddeven"><td>';
+			echo '<tr class="oddeven"><td>';
 			if ($obj->id > 0) {
 				$contactstatic->id = $obj->id;
 				$contactstatic->lastname = $obj->lastname;
 				$contactstatic->firstname = $obj->firstname;
-				print $contactstatic->getNomUrl(1);
-				print $obj->email ? ' &lt;'.$obj->email.'&gt;' : $langs->trans("NoMail");
+				echo $contactstatic->getNomUrl(1);
+				echo $obj->email ? ' &lt;'.$obj->email.'&gt;' : $langs->trans("NoMail");
 			} else {
-				print $obj->email;
+				echo $obj->email;
 			}
-			print '</td>';
-			print '<td>';
+			echo '</td>';
+			echo '<td>';
 			$label = ($langs->trans("Notify_".$obj->code) != "Notify_".$obj->code ? $langs->trans("Notify_".$obj->code) : $obj->label);
-			print $label;
-			print '</td>';
-			print '<td>';
+			echo $label;
+			echo '</td>';
+			echo '<td>';
 			if ($obj->type == 'email') {
-				print $langs->trans("Email");
+				echo $langs->trans("Email");
 			}
 			if ($obj->type == 'sms') {
-				print $langs->trans("Sms");
+				echo $langs->trans("Sms");
 			}
-			print '</td>';
+			echo '</td>';
 			// TODO Add link to object here for other types
-			/*print '<td>';
+			/*echo '<td>';
 			if ($obj->object_type == 'order')
 			{
 				$orderstatic->id=$obj->object_id;
 				$orderstatic->ref=...
-				print $orderstatic->getNomUrl(1);
+				echo $orderstatic->getNomUrl(1);
 			}
-			   print '</td>';*/
+			   echo '</td>';*/
 			// print
 			print'<td class="right">'.dol_print_date($db->jdate($obj->daten), 'dayhour').'</td>';
-			print '</tr>';
+			echo '</tr>';
 			$i++;
 		}
 		$db->free($resql);
 	} else {
-		print '<tr><td colspan="4"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
+		echo '<tr><td colspan="4"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
 	}
 
-	print '</table>';
-	print '</div>';
+	echo '</table>';
+	echo '</div>';
 
-	print '</form>';
+	echo '</form>';
 } else {
 	dol_print_error(null, 'RecordNotFound');
 }

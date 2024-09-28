@@ -43,46 +43,46 @@ $form = new Form($db);
 
 llxHeader('', $langs->trans("ImportArea"), 'EN:Module_Imports_En|FR:Module_Imports|ES:M&oacute;dulo_Importaciones');
 
-print load_fiche_titre($langs->trans("ImportArea"));
+echo load_fiche_titre($langs->trans("ImportArea"));
 
-print $langs->trans("FormatedImportDesc1").'<br>';
-print '<br>';
+echo $langs->trans("FormatedImportDesc1").'<br>';
+echo '<br>';
 
 
-print '<div class="center">';
+echo '<div class="center">';
 if (count($import->array_import_code)) {
-	print dolGetButtonTitle($langs->trans('NewImport'), '', 'fa fa-plus-circle', DOL_URL_ROOT.'/imports/import.php?leftmenu=import');
+	echo dolGetButtonTitle($langs->trans('NewImport'), '', 'fa fa-plus-circle', DOL_URL_ROOT.'/imports/import.php?leftmenu=import');
 }
-print '</div>';
-print '<br>';
+echo '</div>';
+echo '<br>';
 
 
 // List of available import format
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre">';
-print '<td colspan="2">'.$langs->trans("AvailableFormats").'</td>';
-print '<td>'.$langs->trans("LibraryShort").'</td>';
-print '<td class="right">'.$langs->trans("LibraryVersion").'</td>';
-print '</tr>';
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre">';
+echo '<td colspan="2">'.$langs->trans("AvailableFormats").'</td>';
+echo '<td>'.$langs->trans("LibraryShort").'</td>';
+echo '<td class="right">'.$langs->trans("LibraryVersion").'</td>';
+echo '</tr>';
 
 include_once DOL_DOCUMENT_ROOT.'/core/modules/import/modules_import.php';
 $model = new ModeleImports();
 $list = $model->listOfAvailableImportFormat($db);
 
 foreach ($list as $key) {
-	print '<tr class="oddeven">';
-	print '<td width="16">'.img_picto_common($model->getDriverLabelForKey($key), $model->getPictoForKey($key)).'</td>';
+	echo '<tr class="oddeven">';
+	echo '<td width="16">'.img_picto_common($model->getDriverLabelForKey($key), $model->getPictoForKey($key)).'</td>';
 	$text = $model->getDriverDescForKey($key);
 	// @phan-suppress-next-line PhanPluginSuspiciousParamPosition
-	print '<td>'.$form->textwithpicto($model->getDriverLabelForKey($key), $text).'</td>';
-	print '<td>'.$model->getLibLabelForKey($key).'</td>';
-	print '<td class="nowrap right">'.$model->getLibVersionForKey($key).'</td>';
-	print '</tr>';
+	echo '<td>'.$form->textwithpicto($model->getDriverLabelForKey($key), $text).'</td>';
+	echo '<td>'.$model->getLibLabelForKey($key).'</td>';
+	echo '<td class="nowrap right">'.$model->getLibVersionForKey($key).'</td>';
+	echo '</tr>';
 }
 
-print '</table>';
-print '</div>';
+echo '</table>';
+echo '</div>';
 
 
 // End of page

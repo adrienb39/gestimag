@@ -248,7 +248,7 @@ class doc_generic_ticket_odt extends ModelePDFTicket
 			}
 
 			if (file_exists($dir)) {
-				//print "srctemplatepath=".$srctemplatepath;	// Src filename
+				//echo "srctemplatepath=".$srctemplatepath;	// Src filename
 				$newfile = basename($srctemplatepath);
 				$newfiletmp = preg_replace('/\.od[ts]/i', '', $newfile);
 				$newfiletmp = preg_replace('/template_/i', '', $newfiletmp);
@@ -268,10 +268,10 @@ class doc_generic_ticket_odt extends ModelePDFTicket
 					$filename = $newfiletmp . '.' . $newfileformat;
 				}
 				$file = $dir . '/' . $filename;
-				//print "newdir=".$dir;
-				//print "newfile=".$newfile;
-				//print "file=".$file;
-				//print "conf->ticket->dir_temp=".$conf->ticket->dir_temp;
+				//echo "newdir=".$dir;
+				//echo "newfile=".$newfile;
+				//echo "file=".$file;
+				//echo "conf->ticket->dir_temp=".$conf->ticket->dir_temp;
 
 				dol_mkdir($conf->ticket->dir_temp);
 				if (!is_writable($conf->ticket->dir_temp)) {

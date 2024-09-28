@@ -151,7 +151,7 @@ snippet getopt\n\
 	\n\
 	except getopt.GetoptError, err:\n\
 		# Print debug info\n\
-		print str(err)\n\
+		echo str(err)\n\
 		${3:error_action}\n\
 \n\
 	for option, argument in opts:\n\

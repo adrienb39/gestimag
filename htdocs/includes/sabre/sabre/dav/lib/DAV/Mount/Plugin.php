@@ -69,10 +69,10 @@ class Plugin extends DAV\ServerPlugin
         $response->setStatus(200);
         $response->setHeader('Content-Type', 'application/davmount+xml');
         ob_start();
-        echo '<?xml version="1.0"?>', "\n";
-        echo "<dm:mount xmlns:dm=\"http://purl.org/NET/webdav/mount\">\n";
-        echo '  <dm:url>', htmlspecialchars($uri, ENT_NOQUOTES, 'UTF-8'), "</dm:url>\n";
-        echo '</dm:mount>';
+        echo  '<?xml version="1.0"?>', "\n";
+        echo  "<dm:mount xmlns:dm=\"http://purl.org/NET/webdav/mount\">\n";
+        echo  '  <dm:url>', htmlspecialchars($uri, ENT_NOQUOTES, 'UTF-8'), "</dm:url>\n";
+        echo  '</dm:mount>';
         $response->setBody(ob_get_clean());
     }
 }

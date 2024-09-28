@@ -31,7 +31,7 @@
 
 // Protection to avoid direct call of template
 if (empty($langs) || !is_object($langs)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -69,7 +69,7 @@ if (in_array($modulepart, array('product', 'produit', 'societe', 'user', 'ticket
 
 if ($action == 'deletefile' || $action == 'deletelink') {
 	$langs->load("companies"); // Need for string DeleteFile+ConfirmDeleteFiles
-	print $form->formconfirm(
+	echo $form->formconfirm(
 		$_SERVER["PHP_SELF"].'?id='.$object->id.'&urlfile='.urlencode(GETPOST("urlfile")).'&linkid='.GETPOSTINT('linkid').(empty($param) ? '' : $param),
 		$langs->trans('DeleteFile'),
 		$langs->trans('ConfirmDeleteFile'),
@@ -159,8 +159,8 @@ $formfile->list_of_documents(
 	$disablemove
 );
 
-print "<br>";
+echo "<br>";
 
 //List of links
 $formfile->listOfLinks($object, $permission, $action, GETPOSTINT('linkid'), $param);
-print "<br>";
+echo "<br>";

@@ -63,41 +63,41 @@ llxHeader('', '', '', '', 0, 0, '', '', '', 'mod-webservices page-admin_index');
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?restore_lastsearch_values=1">'.$langs->trans("BackToModuleList").'</a>';
 
-print load_fiche_titre($langs->trans("WebServicesSetup"), $linkback, 'title_setup');
+echo load_fiche_titre($langs->trans("WebServicesSetup"), $linkback, 'title_setup');
 
-print '<span class="opacitymedium">'.$langs->trans("WebServicesDesc")."</span><br>\n";
-print "<br>\n";
+echo '<span class="opacitymedium">'.$langs->trans("WebServicesDesc")."</span><br>\n";
+echo "<br>\n";
 
-print '<form name="agendasetupform" action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="action" value="save">';
+echo '<form name="agendasetupform" action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="action" value="save">';
 
-print '<table class="noborder centpercent">';
+echo '<table class="noborder centpercent">';
 
-print '<tr class="liste_titre">';
-print "<td>".$langs->trans("Parameter")."</td>";
-print "<td>".$langs->trans("Value")."</td>";
-//print "<td>".$langs->trans("Examples")."</td>";
-print "<td>&nbsp;</td>";
-print "</tr>";
+echo '<tr class="liste_titre">';
+echo "<td>".$langs->trans("Parameter")."</td>";
+echo "<td>".$langs->trans("Value")."</td>";
+//echo "<td>".$langs->trans("Examples")."</td>";
+echo "<td>&nbsp;</td>";
+echo "</tr>";
 
-print '<tr class="oddeven">';
-print '<td class="fieldrequired">'.$langs->trans("KeyForWebServicesAccess").'</td>';
-print '<td><input type="text" class="flat" id="WEBSERVICES_KEY" name="WEBSERVICES_KEY" value="'.(GETPOST('WEBSERVICES_KEY') ? GETPOST('WEBSERVICES_KEY') : (getDolGlobalString('WEBSERVICES_KEY') ? $conf->global->WEBSERVICES_KEY : '')).'" size="40">';
+echo '<tr class="oddeven">';
+echo '<td class="fieldrequired">'.$langs->trans("KeyForWebServicesAccess").'</td>';
+echo '<td><input type="text" class="flat" id="WEBSERVICES_KEY" name="WEBSERVICES_KEY" value="'.(GETPOST('WEBSERVICES_KEY') ? GETPOST('WEBSERVICES_KEY') : (getDolGlobalString('WEBSERVICES_KEY') ? $conf->global->WEBSERVICES_KEY : '')).'" size="40">';
 if (!empty($conf->use_javascript_ajax)) {
-	print '&nbsp;'.img_picto($langs->trans('Generate'), 'refresh', 'id="generate_token" class="linkobject"');
+	echo '&nbsp;'.img_picto($langs->trans('Generate'), 'refresh', 'id="generate_token" class="linkobject"');
 }
-print '</td>';
-print '<td>&nbsp;</td>';
-print '</tr>';
+echo '</td>';
+echo '<td>&nbsp;</td>';
+echo '</tr>';
 
-print '</table>';
+echo '</table>';
 
-print $form->buttonsSaveCancel("Save", '');
+echo $form->buttonsSaveCancel("Save", '');
 
-print '</form>';
+echo '</form>';
 
-print '<br><br>';
+echo '<br><br>';
 
 // Webservices list
 $webservices = array(
@@ -116,35 +116,35 @@ $webservices = array(
 
 
 // WSDL
-print '<u>'.$langs->trans("WSDLCanBeDownloadedHere").':</u><br>';
+echo '<u>'.$langs->trans("WSDLCanBeDownloadedHere").':</u><br>';
 foreach ($webservices as $name => $right) {
 	if (!empty($right) && !verifCond($right)) {
 		continue;
 	}
 	$url = DOL_MAIN_URL_ROOT.'/webservices/server_'.$name.'.php?wsdl';
-	print img_picto('', 'globe').' <a href="'.$url.'" target="_blank" rel="noopener noreferrer">'.$url."</a><br>\n";
+	echo img_picto('', 'globe').' <a href="'.$url.'" target="_blank" rel="noopener noreferrer">'.$url."</a><br>\n";
 }
-print '<br>';
+echo '<br>';
 
 
 // Endpoint
-print '<u>'.$langs->trans("EndPointIs").':</u><br>';
+echo '<u>'.$langs->trans("EndPointIs").':</u><br>';
 foreach ($webservices as $name => $right) {
 	if (!empty($right) && !verifCond($right)) {
 		continue;
 	}
 	$url = DOL_MAIN_URL_ROOT.'/webservices/server_'.$name.'.php';
-	print img_picto('', 'globe').' <a href="'.$url.'" target="_blank" rel="noopener noreferrer">'.$url."</a><br>\n";
+	echo img_picto('', 'globe').' <a href="'.$url.'" target="_blank" rel="noopener noreferrer">'.$url."</a><br>\n";
 }
-print '<br>';
+echo '<br>';
 
 
-print '<br>';
-print $langs->trans("OnlyActiveElementsAreShown", DOL_URL_ROOT.'/admin/modules.php');
+echo '<br>';
+echo $langs->trans("OnlyActiveElementsAreShown", DOL_URL_ROOT.'/admin/modules.php');
 
 $constname = 'WEBSERVICES_KEY';
 
-print dolJSToSetRandomPassword($constname);
+echo dolJSToSetRandomPassword($constname);
 
 
 // End of page

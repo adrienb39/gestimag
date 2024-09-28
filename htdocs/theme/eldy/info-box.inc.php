@@ -336,7 +336,7 @@ if (GETPOSTISSET('THEME_SATURATE_RATIO')) {
 	<?php } ?>
 	opacity: 0.95;
 	<?php if (isset($conf->global->THEME_SATURATE_RATIO)) { ?>
-		filter: saturate(<?php echo $conf->global->THEME_SATURATE_RATIO; ?>);
+		filter: saturate(<?php echo  $conf->global->THEME_SATURATE_RATIO; ?>);
 	<?php } ?>
 }
 
@@ -378,31 +378,31 @@ if (GETPOSTISSET('THEME_SATURATE_RATIO')) {
 
 
 .bg-infobox-project{
-	<?php echo $prefix; ?>color: #6c6aa8 !important;
+	<?php echo  $prefix; ?>color: #6c6aa8 !important;
 }
 .bg-infobox-action{
-	<?php echo $prefix; ?>color: #b06080 !important;
+	<?php echo  $prefix; ?>color: #b06080 !important;
 }
 .bg-infobox-propal, .bg-infobox-facture, .bg-infobox-commande {
-	<?php echo $prefix; ?>color: #65953d !important;
+	<?php echo  $prefix; ?>color: #65953d !important;
 }
 .bg-infobox-supplier_proposal, .bg-infobox-invoice_supplier, .bg-infobox-order_supplier {
-	<?php echo $prefix; ?>color: #599caf !important;
+	<?php echo  $prefix; ?>color: #599caf !important;
 }
 .bg-infobox-contrat, .bg-infobox-ticket{
-	<?php echo $prefix; ?>color: #3bbfa8 !important;
+	<?php echo  $prefix; ?>color: #3bbfa8 !important;
 }
 .bg-infobox-bank_account{
-	<?php echo $prefix; ?>color: #b0bb39 !important;
+	<?php echo  $prefix; ?>color: #b0bb39 !important;
 }
 .bg-infobox-adherent, .bg-infobox-member {
-	<?php echo $prefix; ?>color: #79633f !important;
+	<?php echo  $prefix; ?>color: #79633f !important;
 }
 .bg-infobox-expensereport{
-	<?php echo $prefix; ?>color: #79633f !important;
+	<?php echo  $prefix; ?>color: #79633f !important;
 }
 .bg-infobox-holiday{
-	<?php echo $prefix; ?>color: #755114 !important;
+	<?php echo  $prefix; ?>color: #755114 !important;
 }
 
 /* Disable colors on left vmenu */
@@ -559,9 +559,9 @@ a.vmenu span, span.vmenu, span.vmenu span {
 }
 .box-flex-item, .kanbanlabel {
 	margin-top: 5px;
-	margin-<?php echo $right; ?>: 20px;
+	margin-<?php echo  $right; ?>: 20px;
 	margin-bottom: 0px;
-	margin-<?php echo $left; ?>: 10px;
+	margin-<?php echo  $left; ?>: 10px;
 }
 .kanbanlabel {
 	background: var(--colorbacktitle1);

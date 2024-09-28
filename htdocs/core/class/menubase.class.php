@@ -226,7 +226,7 @@ class Menubase
 				}
 
 				$sql = "SELECT setval('".$this->db->prefix()."menu_rowid_seq', ".($maxrowid).")";
-				//print $sql; exit;
+				//echo $sql; exit;
 				$resqlrowidset = $this->db->query($sql);
 				if (!$resqlrowidset) {
 					dol_print_error($this->db);
@@ -572,7 +572,7 @@ class Menubase
 		// Now complete $this->newmenu->list when fk_menu value is -1 (left menu added by modules with no top menu)
 		foreach ($tabMenu as $key => $val) {
 			if ($val['fk_menu'] == -1 && $val['fk_mainmenu'] == $mainmenu) {    // We found a menu entry not linked to parent with good mainmenu
-				//print 'Try to add menu (current is mainmenu='.$mainmenu.' leftmenu='.$leftmenu.') for '.join(',',$val).' fk_mainmenu='.$val['fk_mainmenu'].' fk_leftmenu='.$val['fk_leftmenu'].'<br>';
+				//echo 'Try to add menu (current is mainmenu='.$mainmenu.' leftmenu='.$leftmenu.') for '.join(',',$val).' fk_mainmenu='.$val['fk_mainmenu'].' fk_leftmenu='.$val['fk_leftmenu'].'<br>';
 				//var_dump($this->newmenu->liste);exit;
 				if (empty($val['fk_leftmenu'])) {
 					$this->newmenu->add($val['url'], $val['titre'], 0, $val['perms'], $val['target'], $val['mainmenu'], $val['leftmenu'], $val['position'], '', '', '', $val['prefix']);
@@ -595,19 +595,19 @@ class Menubase
 							}
 						}
 						if ($valparent['mainmenu'] == $val['fk_mainmenu'] && $valparent['leftmenu'] == $val['fk_leftmenu']) {
-							//print "We found parent: keyparent='.$keyparent.' - level=".$valparent['level'].' - '.join(',',$valparent).'<br>';
+							//echo "We found parent: keyparent='.$keyparent.' - level=".$valparent['level'].' - '.join(',',$valparent).'<br>';
 							// Now we look to find last subelement of this parent (we add at end)
 							$searchlastsub = ($valparent['level'] + 1);
 							$lastid = $keyparent;
 							$found = 1;
 						}
 					}
-					//print 'We must insert menu entry between entry '.$lastid.' and '.$nextid.'<br>';
+					//echo 'We must insert menu entry between entry '.$lastid.' and '.$nextid.'<br>';
 					if ($found) {
 						$this->newmenu->insert($lastid, $val['url'], $val['titre'], $searchlastsub, $val['perms'], $val['target'], $val['mainmenu'], $val['leftmenu'], $val['position'], '', '', '', $val['prefix']);
 					} else {
 						dol_syslog("Error. Modules ".$val['module']." has defined a menu entry with a parent='fk_mainmenu=".$val['fk_leftmenu'].",fk_leftmenu=".$val['fk_leftmenu']."' and position=".$val['position'].'. The parent was not found. May be you forget it into your definition of menu, or may be the parent has a "position" that is after the child (fix field "position" of parent or child in this case).', LOG_WARNING);
-						//print "Parent menu not found !!<br>";
+						//echo "Parent menu not found !!<br>";
 					}
 				}
 			}
@@ -647,7 +647,7 @@ class Menubase
 			$sql .= " AND m.usertype IN (1,2)";
 		}
 		$sql .= " ORDER BY m.type DESC, m.position, m.rowid";
-		//print $sql;
+		//echo $sql;
 
 		//dol_syslog(get_class($this)."::menuLoad mymainmenu=".$mymainmenu." myleftmenu=".$myleftmenu." type_user=".$type_user." menu_handler=".$menu_handler." tabMenu size=".count($tabMenu), LOG_DEBUG);
 		$resql = $this->db->query($sql);
@@ -668,7 +668,7 @@ class Menubase
 						$tmpcond = preg_replace('/\$leftmenu\s*==\s*["\'a-zA-Z_]+/', '1==1', $tmpcond); // Force the part of condition on leftmenu to true
 					}
 					$perms = verifCond($tmpcond);
-					//print "verifCond rowid=".$menu['rowid']." ".$tmpcond.":".$perms."<br>\n";
+					//echo "verifCond rowid=".$menu['rowid']." ".$tmpcond.":".$perms."<br>\n";
 				}
 
 				// Define $enabled
@@ -688,7 +688,7 @@ class Menubase
 					//var_dump($title.'-'.$menu['titre']);
 					if ($title == $menu['titre']) {   // Translation not found
 						if (!empty($menu['langs'])) {    // If there is a dedicated translation file
-							//print 'Load file '.$menu['langs'].'<br>';
+							//echo 'Load file '.$menu['langs'].'<br>';
 							$langs->load($menu['langs']);
 						}
 

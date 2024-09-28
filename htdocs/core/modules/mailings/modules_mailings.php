@@ -343,16 +343,16 @@ class MailingTargets // This can't be abstract as it is used for some method
 
 						//$modName = ucfirst($reg[1]);
 						$modName = 'mailing_'.$reg[1];	// name of selector submodule
-						//print "file=$file modName=$modName"; exit;
+						//echo "file=$file modName=$modName"; exit;
 						if (in_array($modName, $modules)) {
 							$langs->load("errors");
-							print '<div class="error">'.$langs->trans("Error").' : '.$langs->trans("ErrorDuplicateEmalingSelector", $modName, "").'</div>';
+							echo '<div class="error">'.$langs->trans("Error").' : '.$langs->trans("ErrorDuplicateEmalingSelector", $modName, "").'</div>';
 						} else {
 							try {
-								//print $newdir.'/'.$file;
+								//echo $newdir.'/'.$file;
 								include_once $newdir.'/'.$file;
 							} catch (Exception $e) {
-								print $e->getMessage();
+								echo $e->getMessage();
 							}
 						}
 
@@ -369,7 +369,7 @@ class MailingTargets // This can't be abstract as it is used for some method
 				closedir($handle);
 			}
 		}
-		//echo "<pre>";print_r($modules);echo "</pre>";
+		//echo  "<pre>";print_r($modules);echo  "</pre>";
 
 		asort($orders);
 
@@ -384,7 +384,7 @@ class MailingTargets // This can't be abstract as it is used for some method
 			}
 
 			if (!class_exists($modName)) {
-				print 'Error: An emailing selector file was found but its class "'.$modName.'" was not found.'."<br>\n";
+				echo 'Error: An emailing selector file was found but its class "'.$modName.'" was not found.'."<br>\n";
 				continue;
 			}
 

@@ -1952,7 +1952,7 @@ class PrintIPP extends BasicIPP
                     self::_putDebug( "tag is: ".$this->serveroutput->response[$j]['attributes']."\n");
                     if ($this->alert_on_end_tag === 1)
                     {
-                        echo "END tag OK<br />";
+                        echo  "END tag OK<br />";
                     }
                     $this->response_completed[(count($this->response_completed) -1)] = "completed";
                     return;

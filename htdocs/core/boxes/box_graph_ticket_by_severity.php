@@ -149,8 +149,8 @@ class box_graph_ticket_by_severity extends ModeleBoxes
 			} else {
 				dol_print_error($this->db);
 			}
-			$stringtoprint = '';
-			$stringtoprint .= '<div class="div-table-responsive-no-min ">';
+			$stringtoecho = '';
+			$stringtoecho .= '<div class="div-table-responsive-no-min ">';
 			if (!empty($dataseries) && count($dataseries) > 0) {
 				include_once DOL_DOCUMENT_ROOT.'/core/class/dolgraph.class.php';
 				$px1 = new DolGraph();
@@ -177,9 +177,9 @@ class box_graph_ticket_by_severity extends ModeleBoxes
 					$px1->mode = 'depth';
 
 					$px1->draw('idgraphticketseverity');
-					$stringtoprint .= $px1->show($totalnb ? 0 : 1);
+					$stringtoecho .= $px1->show($totalnb ? 0 : 1);
 				}
-				$stringtoprint .= '</div>';
+				$stringtoecho .= '</div>';
 				$this->info_box_contents[][]=array(
 					'td' => 'class="center"',
 					'text' => $stringtoprint

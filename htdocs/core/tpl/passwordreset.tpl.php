@@ -24,7 +24,7 @@ if (!defined('NOBROWSERNOTIF')) {
 
 // Protection to avoid direct call of template
 if (empty($conf) || !is_object($conf)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -99,7 +99,7 @@ if ($setnewpassword && $username && $passworduidhash) {
 	} else {
 		global $conf;
 
-		//print $edituser->pass_temp.'-'.$edituser->id.'-'.$conf->file->instance_unique_id.' '.$passworduidhash;
+		//echo $edituser->pass_temp.'-'.$edituser->id.'-'.$conf->file->instance_unique_id.' '.$passworduidhash;
 		if ($edituser->pass_temp && dol_verifyHash($edituser->pass_temp.'-'.$edituser->id.'-'.$conf->file->instance_unique_id, $passworduidhash)) {
 			// Clear session
 			unset($_SESSION['dol_login']);
@@ -119,14 +119,14 @@ if ($setnewpassword && $username && $passworduidhash) {
 ?>
 <!-- BEGIN PHP TEMPLATE PASSWORDRESET.TPL.PHP -->
 
-<body class="body bodylogin"<?php print !getDolGlobalString('MAIN_LOGIN_BACKGROUND') ? '' : ' style="background-size: cover; background-position: center center; background-attachment: fixed; background-repeat: no-repeat; background-image: url(\''.DOL_URL_ROOT.'/viewimage.php?cache=1&noalt=1&modulepart=mycompany&file='.urlencode('logos/' . getDolGlobalString('MAIN_LOGIN_BACKGROUND')).'\')"'; ?>>
+<body class="body bodylogin"<?php echo !getDolGlobalString('MAIN_LOGIN_BACKGROUND') ? '' : ' style="background-size: cover; background-position: center center; background-attachment: fixed; background-repeat: no-repeat; background-image: url(\''.DOL_URL_ROOT.'/viewimage.php?cache=1&noalt=1&modulepart=mycompany&file='.urlencode('logos/' . getDolGlobalString('MAIN_LOGIN_BACKGROUND')).'\')"'; ?>>
 
 <?php if (empty($conf->dol_use_jmobile)) { ?>
 <script>
 $(document).ready(function () {
 	// Set focus on correct field
 	<?php if ($focus_element) {
-		?>$('#<?php echo $focus_element; ?>').focus(); <?php
+		?>$('#<?php echo  $focus_element; ?>').focus(); <?php
 	} ?>		// Warning to use this only on visible element
 });
 </script>
@@ -138,25 +138,25 @@ if (!getDolGlobalString('ADD_UNSPLASH_LOGIN_BACKGROUND')) {
 		$backstyle = 'background: linear-gradient('.($conf->browser->layout == 'phone' ? '0deg' : '4deg').', rgb(240,240,240) 52%, rgb(4, 98, 128) 52.1%);';
 		// old style:  $backstyle = 'background-image: linear-gradient(rgb('.$colorbackhmenu1.',0.3), rgb(240,240,240));';
 		$backstyle = getDolGlobalString('MAIN_LOGIN_BACKGROUND_STYLE', $backstyle);
-		print !getDolGlobalString('MAIN_LOGIN_BACKGROUND') ? ' style="background-size: cover; background-position: center center; background-attachment: fixed; background-repeat: no-repeat; '.$backstyle.'"' : '';
+		echo !getDolGlobalString('MAIN_LOGIN_BACKGROUND') ? ' style="background-size: cover; background-position: center center; background-attachment: fixed; background-repeat: no-repeat; '.$backstyle.'"' : '';
 }
 ?>>
 <div class="login_vertical_align">
 
-<form id="login" name="login" method="POST" action="<?php echo $php_self; ?>">
-<input type="hidden" name="token" value="<?php echo newToken(); ?>">
+<form id="login" name="login" method="POST" action="<?php echo  $php_self; ?>">
+<input type="hidden" name="token" value="<?php echo  newToken(); ?>">
 <input type="hidden" name="action" value="buildnewpassword">
 
 
 <!-- Title with version -->
-<div class="login_table_title center" title="<?php echo dol_escape_htmltag($title); ?>">
+<div class="login_table_title center" title="<?php echo  dol_escape_htmltag($title); ?>">
 <?php
 if (!empty($disablenofollow)) {
-	echo '<a class="login_table_title" href="https://www.gestimag.org" target="_blank" rel="noopener noreferrer external">';
+	echo  '<a class="login_table_title" href="https://www.gestimag.org" target="_blank" rel="noopener noreferrer external">';
 }
-echo dol_escape_htmltag($title);
+echo  dol_escape_htmltag($title);
 if (!empty($disablenofollow)) {
-	echo '</a>';
+	echo  '</a>';
 }
 ?>
 </div>
@@ -168,7 +168,7 @@ if (!empty($disablenofollow)) {
 <div id="login_line1">
 
 <div id="login_left">
-<img alt="" title="" src="<?php echo $urllogo; ?>" id="img_logo" />
+<img alt="" title="" src="<?php echo  $urllogo; ?>" id="img_logo" />
 </div>
 
 <br>
@@ -182,14 +182,14 @@ if (!empty($disablenofollow)) {
 <div class="tagtd nowraponall center valignmiddle tdinputlogin">
 <!-- <span class="span-icon-user">-->
 <span class="fa fa-user"></span>
-<input type="text" maxlength="255" placeholder="<?php echo $langs->trans("NewPassword"); ?>" <?php echo $disabled; ?> id="newpass1" name="newpass1" class="flat input-icon-user minwidth150" value="<?php echo dol_escape_htmltag($newpass1); ?>" tabindex="1" autofocus />
+<input type="text" maxlength="255" placeholder="<?php echo  $langs->trans("NewPassword"); ?>" <?php echo  $disabled; ?> id="newpass1" name="newpass1" class="flat input-icon-user minwidth150" value="<?php echo  dol_escape_htmltag($newpass1); ?>" tabindex="1" autofocus />
 </div>
 </div>
 <div class="trinputlogin">
 <div class="tagtd nowraponall center valignmiddle tdinputlogin">
 <!-- <span class="span-icon-user">-->
 <span class="fa fa-user"></span>
-<input type="text" maxlength="255" placeholder="<?php echo $langs->trans("PasswordRetype"); ?>" <?php echo $disabled; ?> id="newpass2" name="newpass2" class="flat input-icon-user minwidth150" value="<?php echo dol_escape_htmltag($newpass2); ?>" tabindex="1" />
+<input type="text" maxlength="255" placeholder="<?php echo  $langs->trans("PasswordRetype"); ?>" <?php echo  $disabled; ?> id="newpass2" name="newpass2" class="flat input-icon-user minwidth150" value="<?php echo  dol_escape_htmltag($newpass2); ?>" tabindex="1" />
 </div>
 </div>
 
@@ -211,11 +211,11 @@ if (!empty($captcha)) {
 
 	<span class="fa fa-unlock"></span>
 	<span class="nofa inline-block">
-	<input id="securitycode" placeholder="<?php echo $langs->trans("SecurityCode"); ?>" class="flat input-icon-security width125" type="text" maxlength="5" name="code" tabindex="3" autocomplete="off" />
+	<input id="securitycode" placeholder="<?php echo  $langs->trans("SecurityCode"); ?>" class="flat input-icon-security width125" type="text" maxlength="5" name="code" tabindex="3" autocomplete="off" />
 	</span>
 	<span class="nowrap inline-block">
-	<img class="inline-block valignmiddle" src="<?php echo DOL_URL_ROOT ?>/core/antispamimage.php" border="0" width="80" height="32" id="img_securitycode" />
-	<a class="inline-block valignmiddle" href="<?php echo $php_self; ?>" tabindex="4"><?php echo $captcha_refresh; ?></a>
+	<img class="inline-block valignmiddle" src="<?php echo  DOL_URL_ROOT ?>/core/antispamimage.php" border="0" width="80" height="32" id="img_securitycode" />
+	<a class="inline-block valignmiddle" href="<?php echo  $php_self; ?>" tabindex="4"><?php echo  $captcha_refresh; ?></a>
 	</span>
 
 	</div></div>
@@ -226,13 +226,13 @@ if (!empty($morelogincontent)) {
 	if (is_array($morelogincontent)) {
 		foreach ($morelogincontent as $format => $option) {
 			if ($format == 'table') {
-				echo '<!-- Option by hook -->';
-				echo $option;
+				echo  '<!-- Option by hook -->';
+				echo  $option;
 			}
 		}
 	} else {
-		echo '<!-- Option by hook -->';
-		echo $morelogincontent;
+		echo  '<!-- Option by hook -->';
+		echo  $morelogincontent;
 	}
 }
 ?>
@@ -247,7 +247,7 @@ if (!empty($morelogincontent)) {
 <div id="login_line2" style="clear: both">
 
 <!-- Button "Regenerate and Send password" -->
-<br><input type="submit" <?php echo $disabled; ?> class="button small" name="button_password" value="<?php echo $langs->trans('Save'); ?>" tabindex="4" />
+<br><input type="submit" <?php echo  $disabled; ?> class="button small" name="button_password" value="<?php echo  $langs->trans('Save'); ?>" tabindex="4" />
 
 <br>
 <div class="center" style="margin-top: 15px;">
@@ -266,7 +266,7 @@ if (!empty($morelogincontent)) {
 		$moreparam .= (strpos($moreparam, '?') === false ? '?' : '&').'dol_use_jmobile='.$conf->dol_use_jmobile;
 	}
 
-	print '<a class="alogin" href="'.$dol_url_root.'/index.php'.$moreparam.'">'.$langs->trans('BackToLoginPage').'</a>';
+	echo '<a class="alogin" href="'.$dol_url_root.'/index.php'.$moreparam.'">'.$langs->trans('BackToLoginPage').'</a>';
 	?>
 </div>
 
@@ -280,18 +280,18 @@ if (!empty($morelogincontent)) {
 <?php
 if ($mode == 'gestimag' || !$disabled) {
 	if (empty($message)) {
-		print '<div class="center login_main_home divpasswordmessagedesc paddingtopbottom'.(!getDolGlobalString('MAIN_LOGIN_BACKGROUND') ? '' : ' backgroundsemitransparent boxshadow').'" style="max-width: 70%">';
-		print '<span class="passwordmessagedesc opacitymedium">';
-		print $langs->trans('EnterNewPasswordHere');
-		print '</span>';
-		print '</div>';
+		echo '<div class="center login_main_home divpasswordmessagedesc paddingtopbottom'.(!getDolGlobalString('MAIN_LOGIN_BACKGROUND') ? '' : ' backgroundsemitransparent boxshadow').'" style="max-width: 70%">';
+		echo '<span class="passwordmessagedesc opacitymedium">';
+		echo $langs->trans('EnterNewPasswordHere');
+		echo '</span>';
+		echo '</div>';
 	}
 } else {
-	print '<div class="center login_main_home divpasswordmessagedesc paddingtopbottom'.(!getDolGlobalString('MAIN_LOGIN_BACKGROUND') ? '' : ' backgroundsemitransparent boxshadow').'" style="max-width: 70%">';
-	print '<div class="warning center">';
-	print $langs->trans('AuthenticationDoesNotAllowSendNewPassword', $mode);
-	print '</div>';
-	print '</div>';
+	echo '<div class="center login_main_home divpasswordmessagedesc paddingtopbottom'.(!getDolGlobalString('MAIN_LOGIN_BACKGROUND') ? '' : ' backgroundsemitransparent boxshadow').'" style="max-width: 70%">';
+	echo '<div class="warning center">';
+	echo $langs->trans('AuthenticationDoesNotAllowSendNewPassword', $mode);
+	echo '</div>';
+	echo '</div>';
 }
 ?>
 
@@ -309,19 +309,19 @@ if ($mode == 'gestimag' || !$disabled) {
 
 <?php
 if (getDolGlobalString('MAIN_HTML_FOOTER')) {
-	print $conf->global->MAIN_HTML_FOOTER;
+	echo $conf->global->MAIN_HTML_FOOTER;
 }
 
 if (!empty($morelogincontent) && is_array($morelogincontent)) {
 	foreach ($morelogincontent as $format => $option) {
 		if ($format == 'js') {
-			echo "\n".'<!-- Javascript by hook -->';
-			echo $option."\n";
+			echo  "\n".'<!-- Javascript by hook -->';
+			echo  $option."\n";
 		}
 	}
 } elseif (!empty($moreloginextracontent)) {
-	echo '<!-- Javascript by hook -->';
-	echo $moreloginextracontent;
+	echo  '<!-- Javascript by hook -->';
+	echo  $moreloginextracontent;
 }
 
 // Google Analytics
@@ -329,9 +329,9 @@ if (!empty($morelogincontent) && is_array($morelogincontent)) {
 if (isModEnabled('google') && getDolGlobalString('MAIN_GOOGLE_AN_ID')) {
 	$tmptagarray = explode(',', getDolGlobalString('MAIN_GOOGLE_AN_ID'));
 	foreach ($tmptagarray as $tmptag) {
-		print "\n";
-		print "<!-- JS CODE TO ENABLE for google analtics tag -->\n";
-		print "
+		echo "\n";
+		echo "<!-- JS CODE TO ENABLE for google analtics tag -->\n";
+		echo "
 					<!-- Global site tag (gtag.js) - Google Analytics -->
 					<script async src=\"https://www.googletagmanager.com/gtag/js?id=".trim($tmptag)."\"></script>
 					<script>
@@ -341,7 +341,7 @@ if (isModEnabled('google') && getDolGlobalString('MAIN_GOOGLE_AN_ID')) {
 
 					gtag('config', '".trim($tmptag)."');
 					</script>";
-		print "\n";
+		echo "\n";
 	}
 }
 
@@ -352,10 +352,10 @@ if (isModEnabled('google') && getDolGlobalString('MAIN_GOOGLE_AD_CLIENT') && get
 		?>
 	<div class="center"><br>
 		<script><!--
-			google_ad_client = "<?php echo $conf->global->MAIN_GOOGLE_AD_CLIENT ?>";
-			google_ad_slot = "<?php echo $conf->global->MAIN_GOOGLE_AD_SLOT ?>";
-			google_ad_width = <?php echo $conf->global->MAIN_GOOGLE_AD_WIDTH ?>;
-			google_ad_height = <?php echo $conf->global->MAIN_GOOGLE_AD_HEIGHT ?>;
+			google_ad_client = "<?php echo  $conf->global->MAIN_GOOGLE_AD_CLIENT ?>";
+			google_ad_slot = "<?php echo  $conf->global->MAIN_GOOGLE_AD_SLOT ?>";
+			google_ad_width = <?php echo  $conf->global->MAIN_GOOGLE_AD_WIDTH ?>;
+			google_ad_height = <?php echo  $conf->global->MAIN_GOOGLE_AD_HEIGHT ?>;
 			//-->
 		</script>
 		<script	src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>

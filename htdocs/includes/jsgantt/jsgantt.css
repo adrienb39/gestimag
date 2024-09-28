@@ -780,8 +780,8 @@ td.gspanning div {
   font-size: 10px;
 }
 
-@media print {
-  /* All your print styles go here */
+@media echo {
+  /* All your echo styles go here */
   html,
   .gchartgrid {
     overflow: unset !important;
@@ -888,7 +888,7 @@ td.gspanning div {
 
 /* note that "@media print" is not supported in IE6 or 7.  Fully patched IE8 should be OK */
 
-@media print {
+@media echo {
   .ggroupblack {
     height: 0px;
     border-top: 7px solid;

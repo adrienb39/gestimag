@@ -121,8 +121,8 @@ class box_graph_new_vs_close_ticket extends ModeleBoxes
 			$colorseries = array();
 			$colorseries[] = $badgeStatus8;
 			$colorseries[] = $badgeStatus2;
-			$stringtoprint = '';
-			$stringtoprint .= '<div class="div-table-responsive-no-min ">';
+			$stringtoecho = '';
+			$stringtoecho .= '<div class="div-table-responsive-no-min ">';
 			if (!empty($data) && count($data) > 0) {
 				include_once DOL_DOCUMENT_ROOT.'/core/class/dolgraph.class.php';
 				$px1 = new DolGraph();
@@ -142,9 +142,9 @@ class box_graph_new_vs_close_ticket extends ModeleBoxes
 					$px1->mode = 'depth';
 
 					$px1->draw('idgraphticketnewvsclosetoday');
-					$stringtoprint .= $px1->show($totalnb ? 0 : 1);
+					$stringtoecho .= $px1->show($totalnb ? 0 : 1);
 				}
-				$stringtoprint .= '</div>';
+				$stringtoecho .= '</div>';
 				$this->info_box_contents[][] = array(
 					'td' => 'class="center"',
 					'text' => $stringtoprint

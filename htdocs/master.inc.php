@@ -100,16 +100,16 @@ if (!empty($gestimag_main_document_root_alt)) {
 		if (preg_match('/^http(s)?:/', $value)) {
 			// Show error message
 			$correct_value = str_replace($gestimag_main_url_root, '', $value);
-			print '<b>Error:</b><br>'."\n";
-			print 'Wrong <b>$gestimag_main_url_root_alt</b> value in <b>conf.php</b> file.<br>'."\n";
-			print 'We now use a relative path to $gestimag_main_url_root to build alternate URLs.<br>'."\n";
-			print 'Value found: '.$value.'<br>'."\n";
-			print 'Should be replaced by: '.$correct_value.'<br>'."\n";
-			print "Or something like following examples:<br>\n";
-			print "\"/extensions\"<br>\n";
-			print "\"/extensions1,/extensions2,...\"<br>\n";
-			print "\"/../extensions\"<br>\n";
-			print "\"/custom\"<br>\n";
+			echo '<b>Error:</b><br>'."\n";
+			echo 'Wrong <b>$gestimag_main_url_root_alt</b> value in <b>conf.php</b> file.<br>'."\n";
+			echo 'We now use a relative path to $gestimag_main_url_root to build alternate URLs.<br>'."\n";
+			echo 'Value found: '.$value.'<br>'."\n";
+			echo 'Should be replaced by: '.$correct_value.'<br>'."\n";
+			echo "Or something like following examples:<br>\n";
+			echo "\"/extensions\"<br>\n";
+			echo "\"/extensions1,/extensions2,...\"<br>\n";
+			echo "\"/../extensions\"<br>\n";
+			echo "\"/custom\"<br>\n";
 			exit;
 		}
 		$conf->file->dol_url_root['alt'.($i++)] = (string) $value;
@@ -149,15 +149,15 @@ if (!defined('NOREQUIREDB')) {
 			if (substr($sapi_type, 0, 3) != 'cgi') {
 				http_response_code(503); // To tel search engine this is a temporary error
 			}
-			print '<div class="center" style="text-align: center; margin: 100px;">';
+			echo '<div class="center" style="text-align: center; margin: 100px;">';
 			if (is_object($langs)) {
 				$langs->setDefaultLang('auto');
 				$langs->load("website");
-				print $langs->trans("SorryWebsiteIsCurrentlyOffLine");
+				echo $langs->trans("SorryWebsiteIsCurrentlyOffLine");
 			} else {
-				print "SorryWebsiteIsCurrentlyOffLine";
+				echo "SorryWebsiteIsCurrentlyOffLine";
 			}
-			print '</div>';
+			echo '</div>';
 			exit(1);
 		}
 		dol_print_error($db, "host=".$conf->db->host.", port=".$conf->db->port.", user=".$conf->db->user.", databasename=".$conf->db->name.", ".$db->error);
@@ -206,7 +206,7 @@ if (!is_numeric($conf->entity)) {
 	$conf->entity = 1;
 }
 // Here we read database (llx_const table) and define conf var $conf->global->XXX.
-//print "We work with data into entity instance number '".$conf->entity."'";
+//echo "We work with data into entity instance number '".$conf->entity."'";
 $conf->setValues($db);
 
 // Create object $mysoc (A thirdparty object that contains properties of companies managed by Gestimag.

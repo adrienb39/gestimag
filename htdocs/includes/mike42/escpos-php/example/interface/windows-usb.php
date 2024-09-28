@@ -13,7 +13,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
  * Troubleshooting: Fire up a command prompt, and ensure that (if your printer is shared as
  * "Receipt Printer), the following commands work:
  *
- *  echo "Hello World" > testfile
+ *  echo  "Hello World" > testfile
  *  copy testfile "\\%COMPUTERNAME%\Receipt Printer"
  *  del testfile
  */
@@ -30,5 +30,5 @@ try {
     /* Close printer */
     $printer -> close();
 } catch (Exception $e) {
-    echo "Couldn't print to this printer: " . $e -> getMessage() . "\n";
+    echo  "Couldn't echo to this printer: " . $e -> getMessage() . "\n";
 }

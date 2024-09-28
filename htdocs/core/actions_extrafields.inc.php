@@ -463,7 +463,7 @@ if ($action == 'encrypt') {
 							$sql .= " AND t.entity = ".getEntity($arrayofelement['table_element'], 0);
 						}
 
-						//print $sql;
+						//echo $sql;
 						$nbupdatedone = 0;
 						$resql = $db->query($sql);
 						if ($resql) {

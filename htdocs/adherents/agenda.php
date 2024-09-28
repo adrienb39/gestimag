@@ -142,7 +142,7 @@ if ($object->id > 0) {
 	}
 	$head = member_prepare_head($object);
 
-	print dol_get_fiche_head($head, 'agenda', $langs->trans("Member"), -1, 'user');
+	echo dol_get_fiche_head($head, 'agenda', $langs->trans("Member"), -1, 'user');
 
 	$linkback = '<a href="'.DOL_URL_ROOT.'/adherents/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
@@ -152,20 +152,20 @@ if ($object->id > 0) {
 
 	dol_banner_tab($object, 'rowid', $linkback, 1, 'rowid', 'ref', $morehtmlref);
 
-	print '<div class="fichecenter">';
+	echo '<div class="fichecenter">';
 
-	print '<div class="underbanner clearboth"></div>';
+	echo '<div class="underbanner clearboth"></div>';
 
 	$object->info($id);
 	dol_print_object_info($object, 1);
 
-	print '</div>';
+	echo '</div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
 
-	//print '<div class="tabsAction">';
-	//print '</div>';
+	//echo '<div class="tabsAction">';
+	//echo '</div>';
 
 
 	$newcardbutton = '';
@@ -180,7 +180,7 @@ if ($object->id > 0) {
 	}
 
 	if (isModEnabled('agenda') && ($user->hasRight('agenda', 'myactions', 'read') || $user->hasRight('agenda', 'allactions', 'read'))) {
-		print '<br>';
+		echo '<br>';
 
 		$param = '&id='.$id;
 		if (!empty($contextpage) && $contextpage != $_SERVER["PHP_SELF"]) {

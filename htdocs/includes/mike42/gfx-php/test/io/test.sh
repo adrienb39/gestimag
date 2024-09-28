@@ -4,8 +4,8 @@ TEST_OK=0
 TEST_FAIL=0
 
 function test_end {
-    echo ""
-    echo ""
+    echo  ""
+    echo  ""
     printf "%-40s" "$1 test failures found"
     if [ $1 -gt 0 ]; then
         log_fail
@@ -21,11 +21,11 @@ function test_start {
 }
 
 function log_ok {
-    echo -e "[ \033[0;32mPASS\033[0m ]"
+    echo  -e "[ \033[0;32mPASS\033[0m ]"
 }
 
 function log_fail {
-    echo -e "[ \033[0;31mFAIL\033[0m ]"
+    echo  -e "[ \033[0;31mFAIL\033[0m ]"
 }
 
 function expect_failure {
@@ -63,10 +63,10 @@ function expect_success {
 function test_commands {
     PNGSUITE="../resources/pngsuite/"
     for i in $(find $PNGSUITE -type f -name '*.png' | sort | grep -v pngsuite/x); do
-        echo $0 expect_success "$(basename $i)" php read.php "$i"
+        echo  $0 expect_success "$(basename $i)" php read.php "$i"
     done
     for i in $(find $PNGSUITE -type f -name '*.png' | sort | grep pngsuite/x); do
-        echo $0 expect_failure "$(basename $i)" php read.php "$i"&
+        echo  $0 expect_failure "$(basename $i)" php read.php "$i"&
     done
 }
 

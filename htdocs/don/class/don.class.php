@@ -1095,7 +1095,7 @@ class Don extends CommonObject
 				return 0;
 			}
 		} else {
-			print $langs->trans("Error")." ".$langs->trans("ErrorFileDoesNotExists", $file);
+			echo $langs->trans("Error")." ".$langs->trans("ErrorFileDoesNotExists", $file);
 			return 0;
 		}
 	}

@@ -242,7 +242,7 @@ class printing_printgcp extends PrintingDriver
 			$html .= '</td>';
 			$html .= '</tr>'."\n";
 		}
-		$this->resprint = $html;
+		$this->resecho = $html;
 		return $error;
 	}
 
@@ -300,9 +300,9 @@ class printing_printgcp extends PrintingDriver
 			$response = $apiService->request(self::PRINTERS_SEARCH_URL);
 		} catch (Exception $e) {
 			$this->errors[] = $e->getMessage();
-			print '<pre>'.print_r($e->getMessage(), true).'</pre>';
+			echo '<pre>'.print_r($e->getMessage(), true).'</pre>';
 		}
-		//print '<tr><td><pre>'.print_r($response, true).'</pre></td></tr>';
+		//echo '<tr><td><pre>'.print_r($response, true).'</pre></td></tr>';
 		$responsedata = json_decode($response, true);
 		$printers = $responsedata['printers'];
 		// Check if we have printers?
@@ -331,11 +331,11 @@ class printing_printgcp extends PrintingDriver
 		global $conf, $user;
 		$error = 0;
 
-		$fileprint = $conf->{$module}->dir_output;
+		$fileecho = $conf->{$module}->dir_output;
 		if ($subdir != '') {
-			$fileprint .= '/'.$subdir;
+			$fileecho .= '/'.$subdir;
 		}
-		$fileprint .= '/'.$file;
+		$fileecho .= '/'.$file;
 		$mimetype = dol_mimetype($fileprint);
 		$printer_id = '';
 		// select printer uri for module order, propal,...
@@ -434,7 +434,7 @@ class printing_printgcp extends PrintingDriver
 
 		// Send a request with api
 		$response = json_decode($apiService->request(self::PRINT_URL, 'POST', $post_fields), true);
-		//print '<tr><td><pre>'.print_r($response, true).'</pre></td></tr>';
+		//echo '<tr><td><pre>'.print_r($response, true).'</pre></td></tr>';
 		return array('status' => $response['success'], 'errorcode' => $response['errorCode'], 'errormessage' => $response['message']);
 	}
 
@@ -536,7 +536,7 @@ class printing_printgcp extends PrintingDriver
 		$html .= '</table>';
 		$html .= '</div>';
 
-		$this->resprint = $html;
+		$this->resecho = $html;
 
 		return $error;
 	}

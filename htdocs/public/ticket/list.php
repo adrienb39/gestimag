@@ -183,7 +183,7 @@ $user_create = new User($db);
 $formTicket = new FormTicket($db);
 
 if (!getDolGlobalString('TICKET_ENABLE_PUBLIC_INTERFACE')) {
-	print '<div class="error">'.$langs->trans('TicketPublicInterfaceForbidden').'</div>';
+	echo '<div class="error">'.$langs->trans('TicketPublicInterfaceForbidden').'</div>';
 	$db->close();
 	exit();
 }
@@ -195,9 +195,9 @@ llxHeaderTicket($langs->trans("Tickets"), "", 0, 0, $arrayofjs, $arrayofcss);
 
 
 if ($action == "view_ticketlist") {
-	print '<div class="ticketpublicarealist ticketlargemargin centpercent">';
+	echo '<div class="ticketpublicarealist ticketlargemargin centpercent">';
 
-	print '<br>';
+	echo '<br>';
 	if ($display_ticket_list) {
 		// Filters
 		$search_fk_status = GETPOST("search_fk_status", 'alpha');
@@ -426,12 +426,12 @@ if ($action == "view_ticketlist") {
 				print_barre_liste($langs->trans('TicketList'), $page, 'list.php', $param, $sortfield, $sortorder, '', $num, $num_total, 'ticket', 0, $newcardbutton);
 
 				// Search bar
-				print '<form method="POST" action="'.$_SERVER['PHP_SELF'].(!empty($entity) && isModEnabled('multicompany') ? '?entity='.$entity : '').'" id="searchFormList" >'."\n";
-				print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-				print '<input type="hidden" name="token" value="'.newToken().'">';
-				print '<input type="hidden" name="action" value="view_ticketlist">';
-				print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-				print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+				echo '<form method="POST" action="'.$_SERVER['PHP_SELF'].(!empty($entity) && isModEnabled('multicompany') ? '?entity='.$entity : '').'" id="searchFormList" >'."\n";
+				echo '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+				echo '<input type="hidden" name="token" value="'.newToken().'">';
+				echo '<input type="hidden" name="action" value="view_ticketlist">';
+				echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+				echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
 
 				$varpage = empty($contextpage) ? $url_page_current : $contextpage;
 				$selectedfields = $form->multiSelectArrayWithCheckbox('selectedfields', $arrayfields, $varpage); // This also change content of $arrayfields
@@ -439,67 +439,67 @@ if ($action == "view_ticketlist") {
 				// allow to display information before list
 				$parameters = array('arrayfields' => $arrayfields);
 				$reshook = $hookmanager->executeHooks('printFieldListHeader', $parameters, $object, $action);    // Note that $action and $object may have been modified by hook
-				print $hookmanager->resPrint;
+				echo $hookmanager->resPrint;
 
-				print '<div class="div-table-responsive">';
-				print '<table class="liste '.($moreforfilter ? "listwithfilterbefore" : "").'">';
+				echo '<div class="div-table-responsive">';
+				echo '<table class="liste '.($moreforfilter ? "listwithfilterbefore" : "").'">';
 
 				// Filter bar
-				print '<tr class="liste_titre">';
+				echo '<tr class="liste_titre">';
 
 				if (!empty($arrayfields['t.datec']['checked'])) {
-					print '<td class="liste_titre"></td>';
+					echo '<td class="liste_titre"></td>';
 				}
 
 				if (!empty($arrayfields['t.date_read']['checked'])) {
-					print '<td class="liste_titre"></td>';
+					echo '<td class="liste_titre"></td>';
 				}
 				if (!empty($arrayfields['t.date_close']['checked'])) {
-					print '<td class="liste_titre"></td>';
+					echo '<td class="liste_titre"></td>';
 				}
 
 				if (!empty($arrayfields['t.ref']['checked'])) {
-					print '<td class="liste_titre"></td>';
+					echo '<td class="liste_titre"></td>';
 				}
 
 				if (!empty($arrayfields['t.subject']['checked'])) {
-					print '<td class="liste_titre">';
-					print '<input type="text" class="flat maxwidth100" name="search_subject" value="'.$search_subject.'">';
-					print '</td>';
+					echo '<td class="liste_titre">';
+					echo '<input type="text" class="flat maxwidth100" name="search_subject" value="'.$search_subject.'">';
+					echo '</td>';
 				}
 
 				if (!empty($arrayfields['type.code']['checked'])) {
-					print '<td class="liste_titre">';
+					echo '<td class="liste_titre">';
 					$formTicket->selectTypesTickets($search_type, 'search_type', '', 2, 1, 1, 0, 'maxwidth150');
-					print '</td>';
+					echo '</td>';
 				}
 
 				if (!empty($arrayfields['category.code']['checked'])) {
-					print '<td class="liste_titre">';
+					echo '<td class="liste_titre">';
 					$formTicket->selectGroupTickets($search_category, 'search_category', '(public:=:1)', 2, 1, 1, 0, 'maxwidth150');
-					print '</td>';
+					echo '</td>';
 				}
 
 				if (!empty($arrayfields['severity.code']['checked'])) {
-					print '<td class="liste_titre">';
+					echo '<td class="liste_titre">';
 					$formTicket->selectSeveritiesTickets($search_severity, 'search_severity', '', 2, 1, 1, 0, 'maxwidth150');
-					print '</td>';
+					echo '</td>';
 				}
 
 				if (getDolGlobalString('TICKET_SHOW_PROGRESSION') && !empty($arrayfields['t.progress']['checked'])) {
-					print '<td class="liste_titre"></td>';
+					echo '<td class="liste_titre"></td>';
 				}
 
 				if (!empty($arrayfields['t.fk_user_create']['checked'])) {
-					print '<td class="liste_titre"></td>';
+					echo '<td class="liste_titre"></td>';
 				}
 
 				if (!empty($arrayfields['t.fk_user_assign']['checked'])) {
-					print '<td class="liste_titre"></td>';
+					echo '<td class="liste_titre"></td>';
 				}
 
 				if (!empty($arrayfields['t.tms']['checked'])) {
-					print '<td class="liste_titre"></td>';
+					echo '<td class="liste_titre"></td>';
 				}
 
 				// Extra fields
@@ -508,25 +508,25 @@ if ($action == "view_ticketlist") {
 				// Fields from hook
 				$parameters = array('arrayfields' => $arrayfields);
 				$reshook = $hookmanager->executeHooks('printFieldListOption', $parameters, $object); // Note that $action and $object may have been modified by hook
-				print $hookmanager->resPrint;
+				echo $hookmanager->resPrint;
 
 				// Status ticket
 				if (!empty($arrayfields['t.fk_statut']['checked'])) {
-					print '<td class="liste_titre">';
+					echo '<td class="liste_titre">';
 					$selected = ($search_fk_status != "non_closed" ? $search_fk_status : '');
 					//$object->printSelectStatus($selected);
-					print '</td>';
+					echo '</td>';
 				}
 
 				// Action column
-				print '<td class="liste_titre maxwidthsearch">';
+				echo '<td class="liste_titre maxwidthsearch">';
 				$searchpicto = $form->showFilterButtons();
-				print $searchpicto;
-				print '</td>';
-				print '</tr>';
+				echo $searchpicto;
+				echo '</td>';
+				echo '</tr>';
 
 				// Field title
-				print '<tr class="liste_titre">';
+				echo '<tr class="liste_titre">';
 				if (!empty($arrayfields['t.datec']['checked'])) {
 					print_liste_field_titre($arrayfields['t.datec']['label'], $url_page_current, 't.datec', '', $param, '', $sortfield, $sortorder);
 				}
@@ -570,163 +570,163 @@ if ($action == "view_ticketlist") {
 				// Hook fields
 				$parameters = array('arrayfields' => $arrayfields, 'param' => $param, 'sortfield' => $sortfield, 'sortorder' => $sortorder);
 				$reshook = $hookmanager->executeHooks('printFieldListTitle', $parameters, $object); // Note that $action and $object may have been modified by hook
-				print $hookmanager->resPrint;
+				echo $hookmanager->resPrint;
 
 				if (!empty($arrayfields['t.fk_statut']['checked'])) {
 					print_liste_field_titre($arrayfields['t.fk_statut']['label'], $url_page_current, 't.fk_statut', '', $param, '', $sortfield, $sortorder);
 				}
 				print_liste_field_titre($selectedfields, $url_page_current, "", '', '', 'align="right"', $sortfield, $sortorder, 'center maxwidthsearch ');
-				print '</tr>';
+				echo '</tr>';
 
 				while ($obj = $db->fetch_object($resql)) {
-					print '<tr class="oddeven">';
+					echo '<tr class="oddeven">';
 
 					// Date ticket
 					if (!empty($arrayfields['t.datec']['checked'])) {
-						print '<td>';
-						print dol_print_date($db->jdate($obj->datec), 'dayhour', 'tzuserrel');
-						print '</td>';
+						echo '<td>';
+						echo dol_print_date($db->jdate($obj->datec), 'dayhour', 'tzuserrel');
+						echo '</td>';
 					}
 
 					// Date read
 					if (!empty($arrayfields['t.date_read']['checked'])) {
-						print '<td>';
-						print dol_print_date($db->jdate($obj->date_read), 'dayhour', 'tzuserrel');
-						print '</td>';
+						echo '<td>';
+						echo dol_print_date($db->jdate($obj->date_read), 'dayhour', 'tzuserrel');
+						echo '</td>';
 					}
 
 					// Date close
 					if (!empty($arrayfields['t.date_close']['checked'])) {
-						print '<td>';
-						print dol_print_date($db->jdate($obj->date_close), 'dayhour', 'tzuserrel');
-						print '</td>';
+						echo '<td>';
+						echo dol_print_date($db->jdate($obj->date_close), 'dayhour', 'tzuserrel');
+						echo '</td>';
 					}
 
 					// Ref
 					if (!empty($arrayfields['t.ref']['checked'])) {
-						print '<td class="nowraponall">';
-						print '<a rel="nofollow" href="javascript:viewticket(\''.dol_escape_js($obj->track_id).'\',\''.dol_escape_js($_SESSION['email_customer']).'\');">';
-						print img_picto('', 'ticket', 'class="paddingrightonly"');
-						print $obj->ref;
-						print '</a>';
-						print '</td>';
+						echo '<td class="nowraponall">';
+						echo '<a rel="nofollow" href="javascript:viewticket(\''.dol_escape_js($obj->track_id).'\',\''.dol_escape_js($_SESSION['email_customer']).'\');">';
+						echo img_picto('', 'ticket', 'class="paddingrightonly"');
+						echo $obj->ref;
+						echo '</a>';
+						echo '</td>';
 					}
 
 					// Subject
 					if (!empty($arrayfields['t.subject']['checked'])) {
-						print '<td>';
-						print '<a rel="nofollow" href="javascript:viewticket(\''.dol_escape_js($obj->track_id).'\',\''.dol_escape_js($_SESSION['email_customer']).'\');">';
-						print $obj->subject;
-						print '</a>';
-						print '</td>';
+						echo '<td>';
+						echo '<a rel="nofollow" href="javascript:viewticket(\''.dol_escape_js($obj->track_id).'\',\''.dol_escape_js($_SESSION['email_customer']).'\');">';
+						echo $obj->subject;
+						echo '</a>';
+						echo '</td>';
 					}
 
 					// Type
 					if (!empty($arrayfields['type.code']['checked'])) {
-						print '<td>';
-						print $obj->type_label;
-						print '</td>';
+						echo '<td>';
+						echo $obj->type_label;
+						echo '</td>';
 					}
 
 					// Category
 					if (!empty($arrayfields['category.code']['checked'])) {
-						print '<td>';
-						print $obj->category_label;
-						print '</td>';
+						echo '<td>';
+						echo $obj->category_label;
+						echo '</td>';
 					}
 
 					// Severity
 					if (!empty($arrayfields['severity.code']['checked'])) {
-						print '<td>';
-						print $obj->severity_label;
-						print '</td>';
+						echo '<td>';
+						echo $obj->severity_label;
+						echo '</td>';
 					}
 
 					// Progression
 					if (getDolGlobalString('TICKET_SHOW_PROGRESSION') && !empty($arrayfields['t.progress']['checked'])) {
-						print '<td>';
-						print $obj->progress;
-						print '</td>';
+						echo '<td>';
+						echo $obj->progress;
+						echo '</td>';
 					}
 
 					// Message author
 					if (!empty($arrayfields['t.fk_user_create']['checked'])) {
-						print '<td title="'.dol_escape_htmltag($obj->origin_email).'">';
+						echo '<td title="'.dol_escape_htmltag($obj->origin_email).'">';
 						if ($obj->fk_user_create > 0) {
 							$user_create->firstname = (!empty($obj->user_create_firstname) ? $obj->user_create_firstname : '');
 							$user_create->name = (!empty($obj->user_create_lastname) ? $obj->user_create_lastname : '');
 							$user_create->id = (!empty($obj->fk_user_create) ? $obj->fk_user_create : '');
-							print $user_create->getFullName($langs);
+							echo $user_create->getFullName($langs);
 						} else {
-							print img_picto('', 'email', 'class="paddingrightonly"');
-							print $langs->trans('Email');
+							echo img_picto('', 'email', 'class="paddingrightonly"');
+							echo $langs->trans('Email');
 						}
-						print '</td>';
+						echo '</td>';
 					}
 
 					// Assigned author
 					if (!empty($arrayfields['t.fk_user_assign']['checked'])) {
-						print '<td>';
+						echo '<td>';
 						if ($obj->fk_user_assign > 0) {
 							$user_assign->firstname = (!empty($obj->user_assign_firstname) ? $obj->user_assign_firstname : '');
 							$user_assign->lastname = (!empty($obj->user_assign_lastname) ? $obj->user_assign_lastname : '');
 							$user_assign->id = (!empty($obj->fk_user_assign) ? $obj->fk_user_assign : '');
-							print img_picto('', 'user', 'class="paddingrightonly"');
-							print $user_assign->getFullName($langs);
+							echo img_picto('', 'user', 'class="paddingrightonly"');
+							echo $user_assign->getFullName($langs);
 						}
-						print '</td>';
+						echo '</td>';
 					}
 
 					if (!empty($arrayfields['t.tms']['checked'])) {
-						print '<td>'.dol_print_date($db->jdate($obj->tms), 'dayhour').'</td>';
+						echo '<td>'.dol_print_date($db->jdate($obj->tms), 'dayhour').'</td>';
 					}
 
 					// Extra fields
 					if (isset($extrafields->attributes[$object->table_element]['label']) && is_array($extrafields->attributes[$object->table_element]['label']) && count($extrafields->attributes[$object->table_element]['label'])) {
 						foreach ($extrafields->attributes[$object->table_element]['label'] as $key => $val) {
 							if (!empty($arrayfields["ef.".$key]['checked'])) {
-								print '<td';
+								echo '<td';
 								$cssstring = $extrafields->getAlignFlag($key, $object->table_element);
 								if ($cssstring) {
-									print ' class="'.$cssstring.'"';
+									echo ' class="'.$cssstring.'"';
 								}
-								print '>';
+								echo '>';
 								$tmpkey = 'options_'.$key;
-								print $extrafields->showOutputField($key, $obj->$tmpkey, '', $object->table_element);
-								print '</td>';
+								echo $extrafields->showOutputField($key, $obj->$tmpkey, '', $object->table_element);
+								echo '</td>';
 							}
 						}
 					}
 
 					// Statut
 					if (!empty($arrayfields['t.fk_statut']['checked'])) {
-						print '<td class="nowraponall">';
+						echo '<td class="nowraponall">';
 						$object->fk_statut = $obj->fk_statut;
-						print $object->getLibStatut(2);
-						print '</td>';
+						echo $object->getLibStatut(2);
+						echo '</td>';
 					}
 
-					print '<td></td>';
+					echo '<td></td>';
 
 					$i++;
-					print '</tr>';
+					echo '</tr>';
 				}
 
-				print '</table>';
-				print '</div>';
+				echo '</table>';
+				echo '</div>';
 
-				print '</form>';
+				echo '</form>';
 
 				$url_public_ticket = getDolGlobalString('TICKET_URL_PUBLIC_INTERFACE', dol_buildpath('/public/ticket/', 1));
 
-				print '<form method="POST" id="form_view_ticket" name="form_view_ticket" action="'.$url_public_ticket.'view.php'.(!empty($entity) && isModEnabled('multicompany')?'?entity='.$entity:'').'" style="display:none;">';
-				print '<input type="hidden" name="token" value="'.newToken().'">';
-				print '<input type="hidden" name="action" value="view_ticket">';
-				print '<input type="hidden" name="btn_view_ticket_list" value="1">';
-				print '<input type="hidden" name="track_id" value="">';
-				print '<input type="hidden" name="email" value="">';
-				print "</form>";
-				print '<script type="text/javascript">
+				echo '<form method="POST" id="form_view_ticket" name="form_view_ticket" action="'.$url_public_ticket.'view.php'.(!empty($entity) && isModEnabled('multicompany')?'?entity='.$entity:'').'" style="display:none;">';
+				echo '<input type="hidden" name="token" value="'.newToken().'">';
+				echo '<input type="hidden" name="action" value="view_ticket">';
+				echo '<input type="hidden" name="btn_view_ticket_list" value="1">';
+				echo '<input type="hidden" name="track_id" value="">';
+				echo '<input type="hidden" name="email" value="">';
+				echo "</form>";
+				echo '<script type="text/javascript">
                     function viewticket(ticket_id, email) {
                         var form = $("#form_view_ticket");
                         form.find("input[name=\\"track_id\\"]").val(ticket_id);
@@ -739,47 +739,47 @@ if ($action == "view_ticketlist") {
 			dol_print_error($db);
 		}
 	} else {
-		print '<div class="error">Not Allowed<br><a href="'.$_SERVER['PHP_SELF'].'?track_id='.$object->track_id.'">'.$langs->trans('Back').'</a></div>';
+		echo '<div class="error">Not Allowed<br><a href="'.$_SERVER['PHP_SELF'].'?track_id='.$object->track_id.'">'.$langs->trans('Back').'</a></div>';
 	}
 
-	print '</div>';
+	echo '</div>';
 } else {
-	print '<div class="ticketpublicarea ticketlargemargin centpercent">';
+	echo '<div class="ticketpublicarea ticketlargemargin centpercent">';
 
-	print '<p class="center opacitymedium">'.$langs->trans("TicketPublicMsgViewLogIn").'</p>';
-	print '<br>';
+	echo '<p class="center opacitymedium">'.$langs->trans("TicketPublicMsgViewLogIn").'</p>';
+	echo '<br>';
 
-	print '<div id="form_view_ticket">';
-	print '<form method="POST" class="maxwidth1000 center" name="form_view_ticketlist" action="'.$_SERVER['PHP_SELF'].(!empty($entity) && isModEnabled('multicompany') ? '?entity='.$entity : '').'">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="view_ticketlist">';
-	//print '<input type="hidden" name="search_fk_status" value="non_closed">';
+	echo '<div id="form_view_ticket">';
+	echo '<form method="POST" class="maxwidth1000 center" name="form_view_ticketlist" action="'.$_SERVER['PHP_SELF'].(!empty($entity) && isModEnabled('multicompany') ? '?entity='.$entity : '').'">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="view_ticketlist">';
+	//echo '<input type="hidden" name="search_fk_status" value="non_closed">';
 
-	print '<p><label for="track_id" style="display: inline-block" class="titlefieldcreate left"><span class="fieldrequired">';
-	print img_picto($langs->trans("TicketTrackId"), 'generic', 'class="pictofixedwidth"');
-	print $langs->trans("OneOfTicketTrackId");
-	print '</span></label>';
-	print '<br class="showonsmartphone hidden">';
-	print '<input class="minwidth100" id="track_id" name="track_id" value="'.(GETPOST('track_id', 'alpha') ? GETPOST('track_id', 'alpha') : '').'" />';
-	print '</p>';
+	echo '<p><label for="track_id" style="display: inline-block" class="titlefieldcreate left"><span class="fieldrequired">';
+	echo img_picto($langs->trans("TicketTrackId"), 'generic', 'class="pictofixedwidth"');
+	echo $langs->trans("OneOfTicketTrackId");
+	echo '</span></label>';
+	echo '<br class="showonsmartphone hidden">';
+	echo '<input class="minwidth100" id="track_id" name="track_id" value="'.(GETPOST('track_id', 'alpha') ? GETPOST('track_id', 'alpha') : '').'" />';
+	echo '</p>';
 
-	print '<p><label for="email" style="display: inline-block" class="titlefieldcreate left"><span class="fieldrequired">';
-	print img_picto($langs->trans("Email"), 'email', 'class="pictofixedwidth"');
-	print $langs->trans('Email').'</span></label>';
-	print '<br class="showonsmartphone hidden">';
-	print '<input class="minwidth100" id="email" name="email" value="'.(GETPOST('email', 'alpha') ? GETPOST('email', 'alpha') : (!empty($_SESSION['customer_email']) ? $_SESSION['customer_email'] : "")).'" />';
-	print '</p>';
+	echo '<p><label for="email" style="display: inline-block" class="titlefieldcreate left"><span class="fieldrequired">';
+	echo img_picto($langs->trans("Email"), 'email', 'class="pictofixedwidth"');
+	echo $langs->trans('Email').'</span></label>';
+	echo '<br class="showonsmartphone hidden">';
+	echo '<input class="minwidth100" id="email" name="email" value="'.(GETPOST('email', 'alpha') ? GETPOST('email', 'alpha') : (!empty($_SESSION['customer_email']) ? $_SESSION['customer_email'] : "")).'" />';
+	echo '</p>';
 
-	print '<p style="text-align: center; margin-top: 1.5em;">';
-	print '<input type="submit" class="button button-select" name="btn_view_ticket_list" value="'.$langs->trans('ViewMyTicketList').'" />';
-	print ' &nbsp; ';
-	print '<input type="submit" class="button button-cancel" name="cancel" value="'.$langs->trans("Cancel").'">';
-	print "</p>\n";
+	echo '<p style="text-align: center; margin-top: 1.5em;">';
+	echo '<input type="submit" class="button button-select" name="btn_view_ticket_list" value="'.$langs->trans('ViewMyTicketList').'" />';
+	echo ' &nbsp; ';
+	echo '<input type="submit" class="button button-cancel" name="cancel" value="'.$langs->trans("Cancel").'">';
+	echo "</p>\n";
 
-	print "</form>\n";
-	print "</div>\n";
+	echo "</form>\n";
+	echo "</div>\n";
 
-	print "</div>";
+	echo "</div>";
 }
 
 if (getDolGlobalInt('TICKET_SHOW_COMPANY_FOOTER')) {

@@ -242,9 +242,9 @@ You can use the following method to fine tune the line height (the number is a p
 <pre>$pdf->setImageScale(0.47);</pre>
 This is used to adjust the conversion ratio between pixels and document units. Increase the value to get smaller objects.<br />
 Since you are using pixel unit, this method is important to set theright zoom factor.<br /><br />
-Suppose that you want to print a web page larger 1024 pixels to fill all the available page width.<br />
+Suppose that you want to echo a web page larger 1024 pixels to fill all the available page width.<br />
 An A4 page is larger 210mm equivalent to 8.268 inches, if you subtract 13mm (0.512") of margins for each side, the remaining space is 184mm (7.244 inches).<br />
-The default resolution for a PDF document is 300 DPI (dots per inch), so you have 7.244 * 300 = 2173.2 dots (this is the maximum number of points you can print at 300 DPI for the given width).<br />
+The default resolution for a PDF document is 300 DPI (dots per inch), so you have 7.244 * 300 = 2173.2 dots (this is the maximum number of points you can echo at 300 DPI for the given width).<br />
 The conversion ratio is approximatively 1024 / 2173.2 = 0.47 px/dots<br />
 If the web page is larger 1280 pixels, on the same A4 page the conversion ratio to use is 1280 / 2173.2 = 0.59 pixels/dots';
 

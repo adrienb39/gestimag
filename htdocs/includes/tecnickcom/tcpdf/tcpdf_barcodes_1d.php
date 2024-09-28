@@ -100,7 +100,7 @@ class TCPDFBarcode {
 		header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
 		header('Content-Disposition: inline; filename="'.md5($code).'.svg";');
 		//header('Content-Length: '.strlen($code));
-		echo $code;
+		echo  $code;
 	}
 
 	/**
@@ -119,7 +119,7 @@ class TCPDFBarcode {
 		$svg .= '<svg width="'.round(($this->barcode_array['maxw'] * $w), 3).'" height="'.$h.'" version="1.1" xmlns="http://www.w3.org/2000/svg">'."\n";
 		$svg .= "\t".'<desc>'.strtr($this->barcode_array['code'], $repstr).'</desc>'."\n";
 		$svg .= "\t".'<g id="bars" fill="'.$color.'" stroke="none">'."\n";
-		// print bars
+		// echo bars
 		$x = 0;
 		foreach ($this->barcode_array['bcode'] as $k => $v) {
 			$bw = round(($v['w'] * $w), 3);
@@ -146,7 +146,7 @@ class TCPDFBarcode {
 	 */
 	public function getBarcodeHTML($w=2, $h=30, $color='black') {
 		$html = '<div style="font-size:0;position:relative;width:'.($this->barcode_array['maxw'] * $w).'px;height:'.($h).'px;">'."\n";
-		// print bars
+		// echo bars
 		$x = 0;
 		foreach ($this->barcode_array['bcode'] as $k => $v) {
 			$bw = round(($v['w'] * $w), 3);
@@ -178,7 +178,7 @@ class TCPDFBarcode {
 		header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Date in the past
 		header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
 		//header('Content-Length: '.strlen($data));
-		echo $data;
+		echo  $data;
 	}
 
 	/**
@@ -211,7 +211,7 @@ class TCPDFBarcode {
 		} else {
 			return false;
 		}
-		// print bars
+		// echo bars
 		$x = 0;
 		foreach ($this->barcode_array['bcode'] as $k => $v) {
 			$bw = round(($v['w'] * $w), 3);
@@ -1588,7 +1588,7 @@ class TCPDFBarcode {
 	 * POSTNET and PLANET barcodes.
 	 * Used by U.S. Postal Service for automated mail sorting
 	 * @param $code (string) zip code to represent. Must be a string containing a zip code of the form DDDDD or DDDDD-DDDD.
-	 * @param $planet (boolean) if true print the PLANET barcode, otherwise print POSTNET
+	 * @param $planet (boolean) if true echo the PLANET barcode, otherwise echo POSTNET
 	 * @return array barcode representation.
 	 * @protected
 	 */

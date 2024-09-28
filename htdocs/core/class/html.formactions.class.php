@@ -82,35 +82,35 @@ class FormActions
 			if ($selected == 'done') {
 				$selected = '100';
 			}
-			print '<select '.($canedit ? '' : 'disabled ').'name="'.$htmlname.'" id="select'.$htmlname.'" class="flat'.($morecss ? ' '.$morecss : '').'">';
+			echo '<select '.($canedit ? '' : 'disabled ').'name="'.$htmlname.'" id="select'.$htmlname.'" class="flat'.($morecss ? ' '.$morecss : '').'">';
 			if ($showempty) {
-				print '<option value="-1"'.($selected == '' ? ' selected' : '').'>&nbsp;</option>';
+				echo '<option value="-1"'.($selected == '' ? ' selected' : '').'>&nbsp;</option>';
 			}
 			foreach ($listofstatus as $key => $val) {
-				print '<option value="'.$key.'"'.(($selected == $key && strlen($selected) == strlen($key)) || (($selected > 0 && $selected < 100) && $key == '50') ? ' selected' : '').'>'.$val.'</option>';
+				echo '<option value="'.$key.'"'.(($selected == $key && strlen($selected) == strlen($key)) || (($selected > 0 && $selected < 100) && $key == '50') ? ' selected' : '').'>'.$val.'</option>';
 				if ($key == '50' && $onlyselect == 2) {
-					print '<option value="todo"'.($selected == 'todo' ? ' selected' : '').'>'.$langs->trans("ActionUncomplete").' ('.$langs->trans("ActionsToDoShort")."+".$langs->trans("ActionRunningShort").')</option>';
+					echo '<option value="todo"'.($selected == 'todo' ? ' selected' : '').'>'.$langs->trans("ActionUncomplete").' ('.$langs->trans("ActionsToDoShort")."+".$langs->trans("ActionRunningShort").')</option>';
 				}
 			}
-			print '</select>';
+			echo '</select>';
 			if ($selected == 0 || $selected == 100) {
 				$canedit = 0;
 			}
 
-			print ajax_combobox('select'.$htmlname, array(), 0, 0, 'resolve', '-1', $morecss);
+			echo ajax_combobox('select'.$htmlname, array(), 0, 0, 'resolve', '-1', $morecss);
 
 			if (empty($onlyselect)) {
-				print ' <input type="text" id="val'.$htmlname.'" name="percentage" class="flat hideifna" value="'.($selected >= 0 ? $selected : '').'" size="2"'.($canedit && ($selected >= 0) ? '' : ' disabled').'>';
-				print '<span class="hideonsmartphone hideifna">%</span>';
+				echo ' <input type="text" id="val'.$htmlname.'" name="percentage" class="flat hideifna" value="'.($selected >= 0 ? $selected : '').'" size="2"'.($canedit && ($selected >= 0) ? '' : ' disabled').'>';
+				echo '<span class="hideonsmartphone hideifna">%</span>';
 			}
 		} else {
-			print ' <input type="text" id="val'.$htmlname.'" name="percentage" class="flat" value="'.($selected >= 0 ? $selected : '').'" size="2"'.($canedit ? '' : ' disabled').'>%';
+			echo ' <input type="text" id="val'.$htmlname.'" name="percentage" class="flat" value="'.($selected >= 0 ? $selected : '').'" size="2"'.($canedit ? '' : ' disabled').'>%';
 		}
 
 		if (!empty($conf->use_javascript_ajax)) {
-			print "\n";
-			print '<script nonce="'.getNonce().'" type="text/javascript">';
-			print "
+			echo "\n";
+			echo '<script nonce="'.getNonce().'" type="text/javascript">';
+			echo "
                 var htmlname = '".dol_escape_js($htmlname)."';
 
                 $(document).ready(function () {
@@ -240,24 +240,24 @@ class FormActions
 
 			$error = 0;
 			if (empty($reshook)) {
-				print '<!-- formactions->showactions -->' . "\n";
-				print load_fiche_titre($title, $morehtmlright, '', 0, 0, '', $morehtmlcenter);
+				echo '<!-- formactions->showactions -->' . "\n";
+				echo load_fiche_titre($title, $morehtmlright, '', 0, 0, '', $morehtmlcenter);
 			}
 
 			$page = 0;
 			$param = '';
 
-			print '<div class="div-table-responsive-no-min">';
-			print '<table class="centpercent noborder'.($morecss ? ' '.$morecss : '').'">';
-			print '<tr class="liste_titre">';
-			print getTitleFieldOfList('Ref', 0, $_SERVER["PHP_SELF"], '', $page, $param, '', $sortfield, $sortorder, '', 1);
-			print getTitleFieldOfList('Date', 0, $_SERVER["PHP_SELF"], 'a.datep', $page, $param, '', $sortfield, $sortorder, 'center ', 1);
-			print getTitleFieldOfList('By', 0, $_SERVER["PHP_SELF"], '', $page, $param, '', $sortfield, $sortorder, '', 1);
-			print getTitleFieldOfList('Type', 0, $_SERVER["PHP_SELF"], '', $page, $param, '', $sortfield, $sortorder, '', 1);
-			print getTitleFieldOfList('Title', 0, $_SERVER["PHP_SELF"], '', $page, $param, '', $sortfield, $sortorder, '', 1);
-			print getTitleFieldOfList('', 0, $_SERVER["PHP_SELF"], '', $page, $param, '', $sortfield, $sortorder, 'right ', 1);
-			print '</tr>';
-			print "\n";
+			echo '<div class="div-table-responsive-no-min">';
+			echo '<table class="centpercent noborder'.($morecss ? ' '.$morecss : '').'">';
+			echo '<tr class="liste_titre">';
+			echo getTitleFieldOfList('Ref', 0, $_SERVER["PHP_SELF"], '', $page, $param, '', $sortfield, $sortorder, '', 1);
+			echo getTitleFieldOfList('Date', 0, $_SERVER["PHP_SELF"], 'a.datep', $page, $param, '', $sortfield, $sortorder, 'center ', 1);
+			echo getTitleFieldOfList('By', 0, $_SERVER["PHP_SELF"], '', $page, $param, '', $sortfield, $sortorder, '', 1);
+			echo getTitleFieldOfList('Type', 0, $_SERVER["PHP_SELF"], '', $page, $param, '', $sortfield, $sortorder, '', 1);
+			echo getTitleFieldOfList('Title', 0, $_SERVER["PHP_SELF"], '', $page, $param, '', $sortfield, $sortorder, '', 1);
+			echo getTitleFieldOfList('', 0, $_SERVER["PHP_SELF"], '', $page, $param, '', $sortfield, $sortorder, 'right ', 1);
+			echo '</tr>';
+			echo "\n";
 
 			if (is_array($listofactions) && count($listofactions)) {
 				$cacheusers = array();
@@ -268,28 +268,28 @@ class FormActions
 						break;
 					}
 
-					print '<tr class="oddeven">';
+					echo '<tr class="oddeven">';
 
 					// Ref
-					print '<td class="nowraponall nopaddingrightimp">'.$actioncomm->getNomUrl(1, -1).'</td>';
+					echo '<td class="nowraponall nopaddingrightimp">'.$actioncomm->getNomUrl(1, -1).'</td>';
 
 					// Date
-					print '<td class="center nowraponall">'.dol_print_date($actioncomm->datep, 'dayhourreduceformat', 'tzuserrel');
+					echo '<td class="center nowraponall">'.dol_print_date($actioncomm->datep, 'dayhourreduceformat', 'tzuserrel');
 					if ($actioncomm->datef) {
 						$tmpa = dol_getdate($actioncomm->datep);
 						$tmpb = dol_getdate($actioncomm->datef);
 						if ($tmpa['mday'] == $tmpb['mday'] && $tmpa['mon'] == $tmpb['mon'] && $tmpa['year'] == $tmpb['year']) {
 							if ($tmpa['hours'] != $tmpb['hours'] || $tmpa['minutes'] != $tmpb['minutes']) {
-								print '-'.dol_print_date($actioncomm->datef, 'hour', 'tzuserrel');
+								echo '-'.dol_print_date($actioncomm->datef, 'hour', 'tzuserrel');
 							}
 						} else {
-							print '-'.dol_print_date($actioncomm->datef, 'dayhourreduceformat', 'tzuserrel');
+							echo '-'.dol_print_date($actioncomm->datef, 'dayhourreduceformat', 'tzuserrel');
 						}
 					}
-					print '</td>';
+					echo '</td>';
 
 					// Owner
-					print '<td class="nowraponall tdoverflowmax100">';
+					echo '<td class="nowraponall tdoverflowmax100">';
 					if (!empty($actioncomm->userownerid)) {
 						if (isset($cacheusers[$actioncomm->userownerid]) && is_object($cacheusers[$actioncomm->userownerid])) {
 							$tmpuser = $cacheusers[$actioncomm->userownerid];
@@ -299,10 +299,10 @@ class FormActions
 							$cacheusers[$actioncomm->userownerid] = $tmpuser;
 						}
 						if ($tmpuser->id > 0) {
-							print $tmpuser->getNomUrl(-1, '', 0, 0, 16, 0, 'firstelselast', '');
+							echo $tmpuser->getNomUrl(-1, '', 0, 0, 16, 0, 'firstelselast', '');
 						}
 					}
-					print '</td>';
+					echo '</td>';
 
 					// Example: Email sent from invoice card
 					//$actionstatic->code = 'AC_BILL_SENTBYMAIL
@@ -310,34 +310,34 @@ class FormActions
 
 					// Type
 					$labeltype = $actioncomm->getTypeLabel(0);
-					print '<td class="tdoverflowmax100" title="'.dol_escape_htmltag($labeltype).'">';
-					print $actioncomm->getTypePicto();
-					print $labeltype;
-					print '</td>';
+					echo '<td class="tdoverflowmax100" title="'.dol_escape_htmltag($labeltype).'">';
+					echo $actioncomm->getTypePicto();
+					echo $labeltype;
+					echo '</td>';
 
 					// Label
-					print '<td class="tdoverflowmax250">';
-					print $actioncomm->getNomUrl(0);
-					print '</td>';
+					echo '<td class="tdoverflowmax250">';
+					echo $actioncomm->getNomUrl(0);
+					echo '</td>';
 
 					// Status
-					print '<td class="right">';
-					print $actioncomm->getLibStatut(3);
-					print '</td>';
-					print '</tr>';
+					echo '<td class="right">';
+					echo $actioncomm->getLibStatut(3);
+					echo '</td>';
+					echo '</tr>';
 
 					$cursorevent++;
 				}
 			} else {
-				print '<tr class="oddeven"><td colspan="6"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
+				echo '<tr class="oddeven"><td colspan="6"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
 			}
 
 			if ($max && $num > $max) {
-				print '<tr class="oddeven"><td colspan="6"><span class="opacitymedium">'.$langs->trans("More").'...</span></td></tr>';
+				echo '<tr class="oddeven"><td colspan="6"><span class="opacitymedium">'.$langs->trans("More").'...</span></td></tr>';
 			}
 
-			print '</table>';
-			print '</div>';
+			echo '</table>';
+			echo '</div>';
 		}
 
 		return $num;
@@ -418,7 +418,7 @@ class FormActions
 		if ($nooutput) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 		return '';
 	}

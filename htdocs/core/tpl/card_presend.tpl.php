@@ -32,7 +32,7 @@
 
 // Protection to avoid direct call of template
 if (empty($conf) || !is_object($conf)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -123,12 +123,12 @@ if ($action == 'presend') {
 		}
 	}
 
-	print '<div id="formmailbeforetitle" name="formmailbeforetitle"></div>';
-	print '<div class="clearboth"></div>';
-	print '<br>';
-	print load_fiche_titre($langs->trans($titreform));
+	echo '<div id="formmailbeforetitle" name="formmailbeforetitle"></div>';
+	echo '<div class="clearboth"></div>';
+	echo '<br>';
+	echo load_fiche_titre($langs->trans($titreform));
 
-	print dol_get_fiche_head('', '', '', -1);
+	echo dol_get_fiche_head('', '', '', -1);
 
 	// Create form for email
 	include_once DOL_DOCUMENT_ROOT.'/core/class/html.formmail.class.php';
@@ -396,7 +396,7 @@ if ($action == 'presend') {
 	$formmail->param['object_entity'] = $object->entity;
 
 	// Show form
-	print $formmail->get_form();
+	echo $formmail->get_form();
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 }

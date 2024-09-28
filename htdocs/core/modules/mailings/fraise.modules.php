@@ -175,7 +175,7 @@ class mailing_fraise extends MailingTargets
 		$sql .= " AND entity = ".$conf->entity;
 		$sql .= " ORDER BY label";
 
-		//print $sql;
+		//echo $sql;
 		$resql = $this->db->query($sql);
 		if ($resql) {
 			$num = $this->db->num_rows($resql);
@@ -282,7 +282,7 @@ class mailing_fraise extends MailingTargets
 			$sql .= " AND NOT EXISTS (SELECT rowid FROM ".MAIN_DB_PREFIX."mailing_unsubscribe as mu WHERE mu.email = a.email and mu.entity = ".((int) $conf->entity).")";
 		}
 		$sql .= " ORDER BY a.email";
-		//print $sql;
+		//echo $sql;
 
 		// Add targets into table
 		dol_syslog(get_class($this)."::add_to_target", LOG_DEBUG);

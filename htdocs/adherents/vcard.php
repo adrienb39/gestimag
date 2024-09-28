@@ -172,4 +172,4 @@ header("Content-Length: ".dol_strlen($output));
 header("Connection: close");
 header("Content-Type: text/x-vcard; name=\"".$filename."\"");
 
-print $output;
+echo $output;

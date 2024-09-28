@@ -114,7 +114,7 @@ if (!empty($pageid) && $pageid > 0) {
 
 		//httponly_accessforbidden('<center><br><br>'.$weblangs->trans("YouTryToAccessToAFileThatIsNotAWebsitePage", $websitepage->pageurl, $websitepage->type_container, $websitepage->status).'</center>', 404, 1);
 		http_response_code(404);
-		print '<center><br><br>'.$weblangs->trans("YouTryToAccessToAFileThatIsNotAWebsitePage", $websitepage->pageurl, $websitepage->type_container, $websitepage->status).'</center>';
+		echo '<center><br><br>'.$weblangs->trans("YouTryToAccessToAFileThatIsNotAWebsitePage", $websitepage->pageurl, $websitepage->type_container, $websitepage->status).'</center>';
 		exit;
 	}
 }
@@ -286,7 +286,7 @@ if (!defined('USEDOLIBARREDITOR') && empty($website->status)) {
 
 	//httponly_accessforbidden('<center><br><br>'.$weblangs->trans("SorryWebsiteIsCurrentlyOffLine").'</center>', 503, 1);
 	http_response_code(503);
-	print '<center><br><br>'.$weblangs->trans("SorryWebsiteIsCurrentlyOffLine").'</center>';
+	echo '<center><br><br>'.$weblangs->trans("SorryWebsiteIsCurrentlyOffLine").'</center>';
 	exit;
 }
 

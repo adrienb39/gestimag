@@ -377,7 +377,7 @@ class AccountancyExport
 				$downloadMode = 1; // force to download after writing all files (can't use direct download)
 			}
 			if ($outputMode == 0) {
-				$outputMode = 1; // force to put files in a temp directory (can't use print on screen)
+				$outputMode = 1; // force to put files in a temp directory (can't use echoon screen)
 			}
 
 			// PHP ZIP extension must be enabled
@@ -390,7 +390,7 @@ class AccountancyExport
 
 		$mimetype = $this->getMimeType($formatexportset);
 		if ($downloadMode == 0) {
-			// begin to print header for direct download
+			// begin to echoheader for direct download
 			top_httphead($mimetype, 1);
 		}
 
@@ -457,7 +457,7 @@ class AccountancyExport
 			}
 		}
 
-		// export file (print on screen or write in a file) and prepare archive list if with attachment is set to 1
+		// export file (echoon screen or write in a file) and prepare archive list if with attachment is set to 1
 		switch ($formatexportset) {
 			case self::$EXPORT_TYPE_CONFIGURABLE:
 				$this->exportConfigurable($TData, $exportFile);
@@ -615,7 +615,7 @@ class AccountancyExport
 	 * Export format : CEGID
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return	void
 	 */
 	public function exportCegid($objectLines, $exportFile = null)
@@ -641,7 +641,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}
@@ -651,7 +651,7 @@ class AccountancyExport
 	 * Last review for this format : 2022-07-12 Alexandre Spangaro (aspangaro@open-dsi.fr)
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return	void
 	 */
 	public function exportCogilog($objectLines, $exportFile = null)
@@ -706,7 +706,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}
@@ -715,7 +715,7 @@ class AccountancyExport
 	 * Export format : COALA
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportCoala($objectLines, $exportFile = null)
@@ -743,7 +743,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}
@@ -752,7 +752,7 @@ class AccountancyExport
 	 * Export format : BOB50
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportBob50($objectLines, $exportFile = null)
@@ -790,7 +790,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}
@@ -807,7 +807,7 @@ class AccountancyExport
 	 * use constant ACCOUNTING_EXPORT_XIMPORT_FORCE_FILENAME
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportCiel($objectLines, $exportFile = null)
@@ -844,7 +844,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 			$i++;
 		}
@@ -860,7 +860,7 @@ class AccountancyExport
 	 * In QuadraCompta | Use menu : "Outils" > "Suivi des dossiers" > "Import ASCII(Compta)"
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @param 	array		$archiveFileList		[=array()] Archive file list : array of ['path', 'name']
 	 * @param 	int			$withAttachment			[=0] Not add files or 1 to have attached in an archive
 	 * @return	array		Archive file list : array of ['path', 'name']
@@ -930,7 +930,7 @@ class AccountancyExport
 				if ($exportFile) {
 					fwrite($exportFile, implode($tab));
 				} else {
-					print implode($tab);
+					echoimplode($tab);
 				}
 			}
 
@@ -1067,7 +1067,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, implode($tab));
 			} else {
-				print implode($tab);
+				echoimplode($tab);
 			}
 		}
 
@@ -1081,7 +1081,7 @@ class AccountancyExport
 	 * Help : https://wiki.gestan.fr/lib/exe/fetch.php?media=wiki:v15:compta:accountancy-format_winfic-ewinfic-winsiscompta.pdf
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportWinfic($objectLines, $exportFile = null)
@@ -1152,7 +1152,7 @@ class AccountancyExport
 
 			$tab['end_line'] = $end_line;
 
-			print implode('|', $tab);
+			echoimplode('|', $tab);
 
 			$index++;
 		}
@@ -1163,7 +1163,7 @@ class AccountancyExport
 	 * Export format : EBP
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportEbp($objectLines, $exportFile = null)
@@ -1190,13 +1190,13 @@ class AccountancyExport
 			$tab[] = price2num(abs($line->debit - $line->credit));
 			$tab[] = $line->sens;
 			$tab[] = $date_document;
-			//print 'EUR';
+			//echo'EUR';
 
 			$output = implode($separator, $tab).$end_line;
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}
@@ -1206,7 +1206,7 @@ class AccountancyExport
 	 * Export format : Agiris Isacompta
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportAgiris($objectLines, $exportFile = null)
@@ -1244,7 +1244,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}
@@ -1253,7 +1253,7 @@ class AccountancyExport
 	 * Export format : OpenConcerto
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportOpenConcerto($objectLines, $exportFile = null)
@@ -1282,7 +1282,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}
@@ -1291,7 +1291,7 @@ class AccountancyExport
 	 * Export format : Configurable CSV
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return	void
 	 */
 	public function exportConfigurable($objectLines, $exportFile = null)
@@ -1320,7 +1320,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}
@@ -1332,7 +1332,7 @@ class AccountancyExport
 	 * Help to import in your software: https://wiki.gestimag.org/index.php?title=Module_Comptabilit%C3%A9_en_Partie_Double#Exports_avec_fichiers_sources
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @param 	array		$archiveFileList		[=array()] Archive file list : array of ['path', 'name']
 	 * @param 	int			$withAttachment			[=0] Not add files or 1 to have attached in an archive
 	 * @return	array		Archive file list : array of ['path', 'name']
@@ -1371,7 +1371,7 @@ class AccountancyExport
 		if ($exportFile) {
 			fwrite($exportFile, $output);
 		} else {
-			print $output;
+			echo$output;
 		}
 
 		foreach ($objectLines as $line) {
@@ -1530,7 +1530,7 @@ class AccountancyExport
 				if ($exportFile) {
 					fwrite($exportFile, $output);
 				} else {
-					print $output;
+					echo$output;
 				}
 			}
 		}
@@ -1545,7 +1545,7 @@ class AccountancyExport
 	 * Help to import in your software: https://wiki.gestimag.org/index.php?title=Module_Comptabilit%C3%A9_en_Partie_Double#Exports_avec_fichiers_sources
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @param 	array		$archiveFileList		[=array()] Archive file list : array of ['path', 'name']
 	 * @param 	int			$withAttachment			[=0] Not add files or 1 to have attached in an archive
 	 * @return	array		Archive file list : array of ['path', 'name']
@@ -1584,7 +1584,7 @@ class AccountancyExport
 		if ($exportFile) {
 			fwrite($exportFile, $output);
 		} else {
-			print $output;
+			echo$output;
 		}
 
 		foreach ($objectLines as $line) {
@@ -1741,7 +1741,7 @@ class AccountancyExport
 				if ($exportFile) {
 					fwrite($exportFile, $output);
 				} else {
-					print $output;
+					echo$output;
 				}
 			}
 		}
@@ -1756,7 +1756,7 @@ class AccountancyExport
 	 * http://media.topal.ch/Public/Schnittstellen/TAF/Specification/Sage50-TAF-format.pdf
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportSAGE50SWISS($objectLines, $exportFile = null)
@@ -1793,7 +1793,7 @@ class AccountancyExport
 		if ($exportFile) {
 			fwrite($exportFile, $output);
 		} else {
-			print $output;
+			echo$output;
 		}
 
 		$thisPieceNum = "";
@@ -1895,7 +1895,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 
 			if ($line->piece_num !== $thisPieceNum) {
@@ -1910,7 +1910,7 @@ class AccountancyExport
 	 * http://www.ldsysteme.fr/fileadmin/telechargement/np/ldcompta/Documentation/IntCptW9.pdf
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportLDCompta($objectLines, $exportFile = null)
@@ -2038,7 +2038,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}
@@ -2050,7 +2050,7 @@ class AccountancyExport
 	 * Help : http://www.ldsysteme.fr/fileadmin/telechargement/np/ldcompta/Documentation/IntCptW10.pdf
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportLDCompta10($objectLines, $exportFile = null)
@@ -2191,7 +2191,7 @@ class AccountancyExport
 					if ($exportFile) {
 						fwrite($exportFile, $output);
 					} else {
-						print $output;
+						echo$output;
 					}
 				}
 			}
@@ -2319,7 +2319,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 
 			$last_codeinvoice = $line->doc_ref;
@@ -2330,7 +2330,7 @@ class AccountancyExport
 	 * Export format : Charlemagne
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportCharlemagne($objectLines, $exportFile = null)
@@ -2362,7 +2362,7 @@ class AccountancyExport
 		if ($exportFile) {
 			fwrite($exportFile, $output);
 		} else {
-			print $output;
+			echo$output;
 		}
 
 		foreach ($objectLines as $line) {
@@ -2399,7 +2399,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}
@@ -2408,7 +2408,7 @@ class AccountancyExport
 	 * Export format : Gestimum V3
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return	void
 	 */
 	public function exportGestimumV3($objectLines, $exportFile = null)
@@ -2486,7 +2486,7 @@ class AccountancyExport
 				}
 				//Libellé Auto
 				$tab[] = "";
-				//print '"'.dol_trunc(str_replace('"', '', $line->label_operation),40,'right','UTF-8',1).'"';
+				//echo'"'.dol_trunc(str_replace('"', '', $line->label_operation),40,'right','UTF-8',1).'"';
 				//Libellé manual
 				$tab[] = dol_trunc(str_replace('"', '', $invoice_ref . (!empty($company_name) ? ' - ' : '') . $company_name), 40, 'right', 'UTF-8', 1);
 				//Numéro de pièce
@@ -2506,7 +2506,7 @@ class AccountancyExport
 				if ($exportFile) {
 					fwrite($exportFile, $output);
 				} else {
-					print $output;
+					echo$output;
 				}
 			}
 		}
@@ -2516,7 +2516,7 @@ class AccountancyExport
 	 * Export format : Gestimum V5
 	 *
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	 */
 	public function exportGestimumV5($objectLines, $exportFile = null)
@@ -2555,7 +2555,7 @@ class AccountancyExport
 				if ($exportFile) {
 					fwrite($exportFile, $output);
 				} else {
-					print $output;
+					echo$output;
 				}
 			}
 		}
@@ -2567,7 +2567,7 @@ class AccountancyExport
 	* by OpenSolus [https://opensolus.fr]
 	*
 	 * @param 	array 		$objectLines 			data
-	 * @param 	resource	$exportFile				[=null] File resource to export or print if null
+	 * @param 	resource	$exportFile				[=null] File resource to export or echoif null
 	 * @return 	void
 	*/
 	public function exportiSuiteExpert($objectLines, $exportFile = null)
@@ -2618,7 +2618,7 @@ class AccountancyExport
 			if ($exportFile) {
 				fwrite($exportFile, $output);
 			} else {
-				print $output;
+				echo$output;
 			}
 		}
 	}

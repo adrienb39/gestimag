@@ -104,7 +104,7 @@ var PraatHighlightRules = function() {
                 regex : /(^\s*)(?:(\.?[a-z][a-zA-Z0-9_.]*\$?\s+)(=)(\s+))?(stopwatch)/
             }, {
                 token : ["text", "keyword", "text", "string"],
-                regex : /(^\s*)(print(?:line|tab)?|echo|exit|pause|send(?:praat|socket)|include|execute|system(?:_nocheck)?)(\s+)(.*)/
+                regex : /(^\s*)(print(?:line|tab)?|echo |exit|pause|send(?:praat|socket)|include|execute|system(?:_nocheck)?)(\s+)(.*)/
             }, {
                 token : ["text", "keyword"],
                 regex : "(^\\s*)(" + directives + ")$"

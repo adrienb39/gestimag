@@ -175,7 +175,7 @@ function dol_ftp_delete($connect_id, $file, $newsection)
 	$remotefile = $newsection.(preg_match('@[\\\/]$@', $newsection) ? '' : '/').$file;
 	$newremotefileiso = mb_convert_encoding($remotefile, 'ISO-8859-1');
 
-	//print "x".$newremotefileiso;
+	//echo "x".$newremotefileiso;
 	dol_syslog("ftp/index.php ftp_delete ".$newremotefileiso);
 	if (getDolGlobalString('FTP_CONNECT_WITH_SFTP')) {
 		return ssh2_sftp_unlink($connect_id, $newremotefileiso);

@@ -4,7 +4,7 @@ namespace Complex;
 
 include(__DIR__ . '/../vendor/autoload.php');
 
-echo 'Function Examples', PHP_EOL;
+echo  'Function Examples', PHP_EOL;
 
 $functions = array(
     'abs',
@@ -42,11 +42,11 @@ for ($real = -3.5; $real <= 3.5; $real += 0.5) {
             $complexFunction = __NAMESPACE__ . '\\Functions::' . $function;
             $complex = new Complex($real, $imaginary);
             try {
-                echo $function, '(', $complex, ') = ', $complexFunction($complex), PHP_EOL;
+                echo  $function, '(', $complex, ') = ', $complexFunction($complex), PHP_EOL;
             } catch (\Exception $e) {
-                echo $function, '(', $complex, ') ERROR: ', $e->getMessage(), PHP_EOL;
+                echo  $function, '(', $complex, ') ERROR: ', $e->getMessage(), PHP_EOL;
             }
         }
-        echo PHP_EOL;
+        echo  PHP_EOL;
     }
 }

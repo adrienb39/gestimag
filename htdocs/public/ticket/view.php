@@ -231,7 +231,7 @@ $formticket = new FormTicket($db);
 $hookmanager->initHooks(array('ticketpublicview', 'globalcard'));
 
 if (!getDolGlobalString('TICKET_ENABLE_PUBLIC_INTERFACE')) {
-	print '<div class="error">'.$langs->trans('TicketPublicInterfaceForbidden').'</div>';
+	echo '<div class="error">'.$langs->trans('TicketPublicInterfaceForbidden').'</div>';
 	$db->close();
 	exit();
 }
@@ -244,148 +244,148 @@ llxHeaderTicket($langs->trans("Tickets"), "", 0, 0, $arrayofjs, $arrayofcss);
 
 if ($action == "view_ticket" || $action == "presend" || $action == "close" || $action == "confirm_public_close") {
 	if ($display_ticket) {
-		print '<!-- public view ticket -->';
-		print '<div class="ticketpublicarea ticketlargemargin centpercent">';
+		echo '<!-- public view ticket -->';
+		echo '<div class="ticketpublicarea ticketlargemargin centpercent">';
 
 		// Confirmation close
 		if ($action == 'close') {
-			print $form->formconfirm($_SERVER["PHP_SELF"]."?track_id=".$track_id.(!empty($entity) && isModEnabled('multicompany') ? '&entity='.$entity : ''), $langs->trans("CloseATicket"), $langs->trans("ConfirmCloseAticket"), "confirm_public_close", '', '', 1);
+			echo $form->formconfirm($_SERVER["PHP_SELF"]."?track_id=".$track_id.(!empty($entity) && isModEnabled('multicompany') ? '&entity='.$entity : ''), $langs->trans("CloseATicket"), $langs->trans("ConfirmCloseAticket"), "confirm_public_close", '', '', 1);
 		}
 
-		print '<div id="form_view_ticket" class="margintoponly">';
+		echo '<div id="form_view_ticket" class="margintoponly">';
 
-		print '<table class="ticketpublictable centpercent tableforfield">';
+		echo '<table class="ticketpublictable centpercent tableforfield">';
 
 		// Ref
-		print '<tr><td class="titlefield">'.$langs->trans("Ref").'</td><td>';
-		print img_picto('', 'ticket', 'class="pictofixedwidth"');
-		print dol_escape_htmltag($object->dao->ref);
-		print '</td></tr>';
+		echo '<tr><td class="titlefield">'.$langs->trans("Ref").'</td><td>';
+		echo img_picto('', 'ticket', 'class="pictofixedwidth"');
+		echo dol_escape_htmltag($object->dao->ref);
+		echo '</td></tr>';
 
 		// Tracking ID
-		print '<tr><td>'.$langs->trans("TicketTrackId").'</td><td>';
-		print dol_escape_htmltag($object->dao->track_id);
-		print '</td></tr>';
+		echo '<tr><td>'.$langs->trans("TicketTrackId").'</td><td>';
+		echo dol_escape_htmltag($object->dao->track_id);
+		echo '</td></tr>';
 
 		// Subject
-		print '<tr><td>'.$langs->trans("Subject").'</td><td>';
-		print '<span class="bold">';
-		print dol_escape_htmltag($object->dao->subject);
-		print '</span>';
-		print '</td></tr>';
+		echo '<tr><td>'.$langs->trans("Subject").'</td><td>';
+		echo '<span class="bold">';
+		echo dol_escape_htmltag($object->dao->subject);
+		echo '</span>';
+		echo '</td></tr>';
 
 		// Statut
-		print '<tr><td>'.$langs->trans("Status").'</td><td>';
-		print $object->dao->getLibStatut(2);
-		print '</td></tr>';
+		echo '<tr><td>'.$langs->trans("Status").'</td><td>';
+		echo $object->dao->getLibStatut(2);
+		echo '</td></tr>';
 
 		// Type
-		print '<tr><td>'.$langs->trans("Type").'</td><td>';
-		print dol_escape_htmltag($object->dao->type_label);
-		print '</td></tr>';
+		echo '<tr><td>'.$langs->trans("Type").'</td><td>';
+		echo dol_escape_htmltag($object->dao->type_label);
+		echo '</td></tr>';
 
 		// Category
-		print '<tr><td>'.$langs->trans("Category").'</td><td>';
+		echo '<tr><td>'.$langs->trans("Category").'</td><td>';
 		if ($object->dao->category_label) {
-			print img_picto('', 'category', 'class="pictofixedwidth"');
-			print dol_escape_htmltag($object->dao->category_label);
+			echo img_picto('', 'category', 'class="pictofixedwidth"');
+			echo dol_escape_htmltag($object->dao->category_label);
 		}
-		print '</td></tr>';
+		echo '</td></tr>';
 
 		// Severity
-		print '<tr><td>'.$langs->trans("Severity").'</td><td>';
-		print dol_escape_htmltag($object->dao->severity_label);
-		print '</td></tr>';
+		echo '<tr><td>'.$langs->trans("Severity").'</td><td>';
+		echo dol_escape_htmltag($object->dao->severity_label);
+		echo '</td></tr>';
 
 		// Creation date
-		print '<tr><td>'.$langs->trans("DateCreation").'</td><td>';
-		print dol_print_date($object->dao->datec, 'dayhour');
-		print '</td></tr>';
+		echo '<tr><td>'.$langs->trans("DateCreation").'</td><td>';
+		echo dol_print_date($object->dao->datec, 'dayhour');
+		echo '</td></tr>';
 
 		// Author
-		print '<tr><td>'.$langs->trans("Author").'</td><td>';
+		echo '<tr><td>'.$langs->trans("Author").'</td><td>';
 		if ($object->dao->fk_user_create > 0) {
 			$langs->load("users");
 			$fuser = new User($db);
 			$fuser->fetch($object->dao->fk_user_create);
-			print img_picto('', 'user', 'class="pictofixedwidth"');
-			print $fuser->getFullName($langs);
+			echo img_picto('', 'user', 'class="pictofixedwidth"');
+			echo $fuser->getFullName($langs);
 		} else {
-			print img_picto('', 'email', 'class="pictofixedwidth"');
-			print dol_escape_htmltag($object->dao->origin_email);
+			echo img_picto('', 'email', 'class="pictofixedwidth"');
+			echo dol_escape_htmltag($object->dao->origin_email);
 		}
 
-		print '</td></tr>';
+		echo '</td></tr>';
 
 		// Read date
 		if (!empty($object->dao->date_read)) {
-			print '<tr><td>'.$langs->trans("TicketReadOn").'</td><td>';
-			print dol_print_date($object->dao->date_read, 'dayhour');
-			print '</td></tr>';
+			echo '<tr><td>'.$langs->trans("TicketReadOn").'</td><td>';
+			echo dol_print_date($object->dao->date_read, 'dayhour');
+			echo '</td></tr>';
 		}
 
 		// Close date
 		if (!empty($object->dao->date_close)) {
-			print '<tr><td>'.$langs->trans("TicketCloseOn").'</td><td>';
-			print dol_print_date($object->dao->date_close, 'dayhour');
-			print '</td></tr>';
+			echo '<tr><td>'.$langs->trans("TicketCloseOn").'</td><td>';
+			echo dol_print_date($object->dao->date_close, 'dayhour');
+			echo '</td></tr>';
 		}
 
 		// User assigned
-		print '<tr><td>'.$langs->trans("AssignedTo").'</td><td>';
+		echo '<tr><td>'.$langs->trans("AssignedTo").'</td><td>';
 		if ($object->dao->fk_user_assign > 0) {
 			$fuser = new User($db);
 			$fuser->fetch($object->dao->fk_user_assign);
-			print img_picto('', 'user', 'class="pictofixedwidth"');
-			print $fuser->getFullName($langs, 0);
+			echo img_picto('', 'user', 'class="pictofixedwidth"');
+			echo $fuser->getFullName($langs, 0);
 		}
-		print '</td></tr>';
+		echo '</td></tr>';
 
 		// External contributors
 		if (getDolGlobalInt('TICKET_PUBLIC_DISPLAY_EXTERNAL_CONTRIBUTORS')) {
-			print '<tr><td>'.$langs->trans("ExternalContributors").'</td><td>';
+			echo '<tr><td>'.$langs->trans("ExternalContributors").'</td><td>';
 			if ($object->dao->id > 0) {
 				$contactlist = $object->dao->liste_contact(-1, 'external');
 				foreach ($contactlist as $externalContributor) {
-					print img_picto('', 'contact', 'class="pictofixedwidth"');
-					print $externalContributor["lastname"]." ".$externalContributor["firstname"]."<br>";
+					echo img_picto('', 'contact', 'class="pictofixedwidth"');
+					echo $externalContributor["lastname"]." ".$externalContributor["firstname"]."<br>";
 				}
 			}
-			print '</td></tr>';
+			echo '</td></tr>';
 		}
 
 		// Add new external contributor
 		if (getDolGlobalInt('TICKET_PUBLIC_SELECT_EXTERNAL_CONTRIBUTORS') && !empty($object->dao->fk_soc)) {
-			print '<form method="post" id="form_view_add_contact" name="form_view_add_contact" action="'.$_SERVER['PHP_SELF'].'?track_id='.$object->dao->track_id.'">';
-			print '<input type="hidden" name="token" value="'.newToken().'">';
-			print '<input type="hidden" name="action" value="add_contact">';
-			print '<input type="hidden" name="email" value="'.$_SESSION['email_customer'].'">';
-			print '<tr><td>'.$langs->trans("AddContributor").'</td><td>';
-			//print $form->selectcontacts($object->dao->fk_soc, '', 'contactid', 3, '', '', 1, 'minwidth100imp widthcentpercentminusxx maxwidth400');
-			print $form->select_contact($object->dao->fk_soc, '', 'contactid', 3, '', '', 1, 'minwidth100imp widthcentpercentminusxx maxwidth400', true);
-			print '<input type="submit" class="button smallpaddingimp reposition" name="btn_add_contact" value="'.$langs->trans('Add').'" />';
-			print '</td></tr></form>';
+			echo '<form method="post" id="form_view_add_contact" name="form_view_add_contact" action="'.$_SERVER['PHP_SELF'].'?track_id='.$object->dao->track_id.'">';
+			echo '<input type="hidden" name="token" value="'.newToken().'">';
+			echo '<input type="hidden" name="action" value="add_contact">';
+			echo '<input type="hidden" name="email" value="'.$_SESSION['email_customer'].'">';
+			echo '<tr><td>'.$langs->trans("AddContributor").'</td><td>';
+			//echo $form->selectcontacts($object->dao->fk_soc, '', 'contactid', 3, '', '', 1, 'minwidth100imp widthcentpercentminusxx maxwidth400');
+			echo $form->select_contact($object->dao->fk_soc, '', 'contactid', 3, '', '', 1, 'minwidth100imp widthcentpercentminusxx maxwidth400', true);
+			echo '<input type="submit" class="button smallpaddingimp reposition" name="btn_add_contact" value="'.$langs->trans('Add').'" />';
+			echo '</td></tr></form>';
 		}
 
 		// Progression
 		if (getDolGlobalString('TICKET_SHOW_PROGRESSION')) {
-			print '<tr><td>'.$langs->trans("Progression").'</td><td>';
+			echo '<tr><td>'.$langs->trans("Progression").'</td><td>';
 			print($object->dao->progress > 0 ? dol_escape_htmltag($object->dao->progress) : '0').'%';
-			print '</td></tr>';
+			echo '</td></tr>';
 		}
 
 		// Other attributes
 		include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_view.tpl.php';
 
-		print '</table>';
+		echo '</table>';
 
-		print '</div>';
+		echo '</div>';
 
-		print '<div style="clear: both; margin-top: 1.5em;"></div>';
+		echo '<div style="clear: both; margin-top: 1.5em;"></div>';
 
 		if ($action == 'presend') {
-			print '<br>';
-			print load_fiche_titre($langs->trans('TicketAddMessage'), '', 'conversation');
+			echo '<br>';
+			echo load_fiche_titre($langs->trans('TicketAddMessage'), '', 'conversation');
 
 			$formticket = new FormTicket($db);
 
@@ -407,84 +407,84 @@ if ($action == "view_ticket" || $action == "presend" || $action == "close" || $a
 		if ($action != 'presend') {
 			$baseurl = getDolGlobalString('TICKET_URL_PUBLIC_INTERFACE', DOL_URL_ROOT.'/public/ticket/');
 
-			print '<form method="POST" id="form_view_ticket_list" name="form_view_ticket_list" action="'.$baseurl.'list.php'.(!empty($entity) && isModEnabled('multicompany')?'?entity='.$entity:'').'">';
-			print '<input type="hidden" name="token" value="'.newToken().'">';
-			print '<input type="hidden" name="action" value="view_ticketlist">';
-			print '<input type="hidden" name="track_id" value="'.$object->dao->track_id.'">';
-			print '<input type="hidden" name="email" value="'.$_SESSION['email_customer'].'">';
-			//print '<input type="hidden" name="search_fk_status" value="non_closed">';
-			print "</form>\n";
+			echo '<form method="POST" id="form_view_ticket_list" name="form_view_ticket_list" action="'.$baseurl.'list.php'.(!empty($entity) && isModEnabled('multicompany')?'?entity='.$entity:'').'">';
+			echo '<input type="hidden" name="token" value="'.newToken().'">';
+			echo '<input type="hidden" name="action" value="view_ticketlist">';
+			echo '<input type="hidden" name="track_id" value="'.$object->dao->track_id.'">';
+			echo '<input type="hidden" name="email" value="'.$_SESSION['email_customer'].'">';
+			//echo '<input type="hidden" name="search_fk_status" value="non_closed">';
+			echo "</form>\n";
 
-			print '<div class="tabsAction">';
+			echo '<div class="tabsAction">';
 
 			// List ticket
-			print '<div class="inline-block divButAction"><a class="left" style="padding-right: 50px" href="javascript:$(\'#form_view_ticket_list\').submit();">'.$langs->trans('ViewMyTicketList').'</a></div>';
+			echo '<div class="inline-block divButAction"><a class="left" style="padding-right: 50px" href="javascript:$(\'#form_view_ticket_list\').submit();">'.$langs->trans('ViewMyTicketList').'</a></div>';
 
 			if ($object->dao->fk_statut < Ticket::STATUS_CLOSED) {
 				// New message
-				print '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER['PHP_SELF'].'?action=presend&mode=init&track_id='.$object->dao->track_id.(!empty($entity) && isModEnabled('multicompany') ? '&entity='.$entity : '').'&token='.newToken().'">'.$langs->trans('TicketAddMessage').'</a></div>';
+				echo '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER['PHP_SELF'].'?action=presend&mode=init&track_id='.$object->dao->track_id.(!empty($entity) && isModEnabled('multicompany') ? '&entity='.$entity : '').'&token='.newToken().'">'.$langs->trans('TicketAddMessage').'</a></div>';
 
 				// Close ticket
 				if ($object->dao->fk_statut >= Ticket::STATUS_NOT_READ && $object->dao->fk_statut < Ticket::STATUS_CLOSED) {
-					print '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER['PHP_SELF'].'?action=close&track_id='.$object->dao->track_id.(!empty($entity) && isModEnabled('multicompany') ? '&entity='.$entity : '').'&token='.newToken().'">'.$langs->trans('CloseTicket').'</a></div>';
+					echo '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER['PHP_SELF'].'?action=close&track_id='.$object->dao->track_id.(!empty($entity) && isModEnabled('multicompany') ? '&entity='.$entity : '').'&token='.newToken().'">'.$langs->trans('CloseTicket').'</a></div>';
 				}
 			}
 
-			print '</div>';
+			echo '</div>';
 		}
 
-		print '</div>';
+		echo '</div>';
 
 		// Message list
-		print '<div class="ticketpublicarea ticketlargemargin centpercent">';
-		print load_fiche_titre($langs->trans('TicketMessagesList'), '', 'conversation');
-		print '</div>';
+		echo '<div class="ticketpublicarea ticketlargemargin centpercent">';
+		echo load_fiche_titre($langs->trans('TicketMessagesList'), '', 'conversation');
+		echo '</div>';
 
 		$object->viewTicketMessages(false, true, $object->dao);
 	} else {
-		print '<!-- public view ticket -->';
-		print '<div class="ticketpublicarea ticketlargemargin centpercent">';
+		echo '<!-- public view ticket -->';
+		echo '<div class="ticketpublicarea ticketlargemargin centpercent">';
 
-		print '<div class="error">Not Allowed<br><a href="'.$_SERVER['PHP_SELF'].'?track_id='.$object->dao->track_id.(!empty($entity) && isModEnabled('multicompany') ? '?entity='.$entity : '').'" rel="nofollow noopener">'.$langs->trans('Back').'</a></div>';
+		echo '<div class="error">Not Allowed<br><a href="'.$_SERVER['PHP_SELF'].'?track_id='.$object->dao->track_id.(!empty($entity) && isModEnabled('multicompany') ? '?entity='.$entity : '').'" rel="nofollow noopener">'.$langs->trans('Back').'</a></div>';
 
-		print '</div>';
+		echo '</div>';
 	}
 } else {
-	print '<!-- public view ticket -->';
-	print '<div class="ticketpublicarea ticketlargemargin centpercent">';
+	echo '<!-- public view ticket -->';
+	echo '<div class="ticketpublicarea ticketlargemargin centpercent">';
 
-	print '<div class="center opacitymedium margintoponly marginbottomonly ticketlargemargin">'.$langs->trans("TicketPublicMsgViewLogIn").'</div>';
+	echo '<div class="center opacitymedium margintoponly marginbottomonly ticketlargemargin">'.$langs->trans("TicketPublicMsgViewLogIn").'</div>';
 
-	print '<div id="form_view_ticket">';
-	print '<form method="POST" class="maxwidth1000 center" name="form_view_ticket" action="'.$_SERVER['PHP_SELF'].(!empty($entity) && isModEnabled('multicompany') ? '?entity='.$entity : '').'">';
+	echo '<div id="form_view_ticket">';
+	echo '<form method="POST" class="maxwidth1000 center" name="form_view_ticket" action="'.$_SERVER['PHP_SELF'].(!empty($entity) && isModEnabled('multicompany') ? '?entity='.$entity : '').'">';
 
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="view_ticket">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="view_ticket">';
 
-	print '<p><label for="track_id" style="display: inline-block;" class="titlefieldcreate left"><span class="fieldrequired">';
-	print img_picto($langs->trans("TicketTrackId"), 'generic', 'class="pictofixedwidth"');
-	print $langs->trans("TicketTrackId").'</span></label>';
-	print '<br class="showonsmartphone hidden">';
-	print '<input class="minwidth100" id="track_id" name="track_id" value="'.(GETPOST('track_id', 'alpha') ? GETPOST('track_id', 'alpha') : '').'" />';
-	print '</p>';
+	echo '<p><label for="track_id" style="display: inline-block;" class="titlefieldcreate left"><span class="fieldrequired">';
+	echo img_picto($langs->trans("TicketTrackId"), 'generic', 'class="pictofixedwidth"');
+	echo $langs->trans("TicketTrackId").'</span></label>';
+	echo '<br class="showonsmartphone hidden">';
+	echo '<input class="minwidth100" id="track_id" name="track_id" value="'.(GETPOST('track_id', 'alpha') ? GETPOST('track_id', 'alpha') : '').'" />';
+	echo '</p>';
 
-	print '<p><label for="email" style="display: inline-block;" class="titlefieldcreate left"><span class="fieldrequired">';
-	print img_picto($langs->trans("Email"), 'email', 'class="pictofixedwidth"');
-	print $langs->trans('Email').'</span></label>';
-	print '<br class="showonsmartphone hidden">';
-	print '<input class="minwidth100" id="email" name="email" value="'.(GETPOST('email', 'alpha') ? GETPOST('email', 'alpha') : (!empty($_SESSION['customer_email']) ? $_SESSION['customer_email'] : "")).'" />';
-	print '</p>';
+	echo '<p><label for="email" style="display: inline-block;" class="titlefieldcreate left"><span class="fieldrequired">';
+	echo img_picto($langs->trans("Email"), 'email', 'class="pictofixedwidth"');
+	echo $langs->trans('Email').'</span></label>';
+	echo '<br class="showonsmartphone hidden">';
+	echo '<input class="minwidth100" id="email" name="email" value="'.(GETPOST('email', 'alpha') ? GETPOST('email', 'alpha') : (!empty($_SESSION['customer_email']) ? $_SESSION['customer_email'] : "")).'" />';
+	echo '</p>';
 
-	print '<p style="text-align: center; margin-top: 1.5em;">';
-	print '<input type="submit" class="button" name="btn_view_ticket" value="'.$langs->trans('ViewTicket').'" />';
-	print ' &nbsp; ';
-	print '<input type="submit" class="button button-cancel" name="cancel" value="'.$langs->trans("Cancel").'">';
-	print "</p>\n";
+	echo '<p style="text-align: center; margin-top: 1.5em;">';
+	echo '<input type="submit" class="button" name="btn_view_ticket" value="'.$langs->trans('ViewTicket').'" />';
+	echo ' &nbsp; ';
+	echo '<input type="submit" class="button button-cancel" name="cancel" value="'.$langs->trans("Cancel").'">';
+	echo "</p>\n";
 
-	print "</form>\n";
-	print "</div>\n";
+	echo "</form>\n";
+	echo "</div>\n";
 
-	print '</div>';
+	echo '</div>';
 }
 
 if (getDolGlobalInt('TICKET_SHOW_COMPANY_FOOTER')) {

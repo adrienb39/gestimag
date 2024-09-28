@@ -55,7 +55,7 @@ if ($usesublevelpermission && !$user->hasRight($module, $element)) {	// There is
 	$usesublevelpermission = '';
 }
 
-//print 'fileupload.php: '.$object->id.' - '.$object->module.' - '.$object->element.' - '.$object->table_element.' - '.$usesublevelpermission."\n";
+//echo 'fileupload.php: '.$object->id.' - '.$object->module.' - '.$object->element.' - '.$object->table_element.' - '.$usesublevelpermission."\n";
 
 // Security check
 if (!empty($user->socid)) {

@@ -135,12 +135,12 @@ class box_members_subscriptions_by_year extends ModeleBoxes
 				$i = 0;
 				foreach ($Total as $key => $value) {
 					if ($i >= 8) {
-						// print '<tr class="oddeven">';
-						// print "<td>...</td>";
-						// print "<td class=\"right\"></td>";
-						// print "<td class=\"right\"></td>";
-						// print "<td class=\"right\"></td>";
-						// print "</tr>\n";
+						// echo '<tr class="oddeven">';
+						// echo "<td>...</td>";
+						// echo "<td class=\"right\"></td>";
+						// echo "<td class=\"right\"></td>";
+						// echo "<td class=\"right\"></td>";
+						// echo "</tr>\n";
 						$this->info_box_contents[$line][] = array(
 							'td' => 'class="tdoverflowmax150 maxwidth150onsmartphone"',
 							'text' => '...',

@@ -73,11 +73,11 @@ if ($WS_METHOD1)
     $result1 = $soapclient1->call($WS_METHOD1,$parameters,$ns,'');
     if (! $result1)
     {
-    	print $soapclient1->error_str;
-    	print "<br>\n\n";
-    	print $soapclient1->request;
-    	print "<br>\n\n";
-    	print $soapclient1->response;
+    	echo $soapclient1->error_str;
+    	echo "<br>\n\n";
+    	echo $soapclient1->request;
+    	echo "<br>\n\n";
+    	echo $soapclient1->response;
     	exit;
     }
 }
@@ -90,11 +90,11 @@ if ($WS_METHOD2)
     $result2 = $soapclient2->call($WS_METHOD2,$parameters,$ns,'');
     if (! $result2)
     {
-    	print $soapclient2->error_str;
-    	print "<br>\n\n";
-    	print $soapclient2->request;
-    	print "<br>\n\n";
-    	print $soapclient2->response;
+    	echo $soapclient2->error_str;
+    	echo "<br>\n\n";
+    	echo $soapclient2->request;
+    	echo "<br>\n\n";
+    	echo $soapclient2->response;
     	exit;
     }
 }
@@ -107,11 +107,11 @@ if ($WS_METHOD3)
     $result3 = $soapclient3->call($WS_METHOD3,$parameters,$ns,'');
     if (! $result3)
     {
-    	print $soapclient3->error_str;
-    	print "<br>\n\n";
-    	print $soapclient3->request;
-    	print "<br>\n\n";
-    	print $soapclient3->response;
+    	echo $soapclient3->error_str;
+    	echo "<br>\n\n";
+    	echo $soapclient3->request;
+    	echo "<br>\n\n";
+    	echo $soapclient3->response;
     	exit;
     }
 }
@@ -122,61 +122,61 @@ if ($WS_METHOD3)
  */
 
 header("Content-type: text/html; charset=utf8");
-print '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">'."\n";
-echo '<html>'."\n";
-echo '<head>';
-echo '<title>WebService Test: '.$WS_METHOD1.'</title>';
-echo '</head>'."\n";
+echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">'."\n";
+echo  '<html>'."\n";
+echo  '<head>';
+echo  '<title>WebService Test: '.$WS_METHOD1.'</title>';
+echo  '</head>'."\n";
 
-echo '<body>'."\n";
-echo 'NUSOAP_PATH='.NUSOAP_PATH.'<br>';
+echo  '<body>'."\n";
+echo  'NUSOAP_PATH='.NUSOAP_PATH.'<br>';
 
-echo "<h2>Request:</h2>";
-echo '<h4>Function</h4>';
-echo $WS_METHOD1;
-echo '<h4>SOAP Message</h4>';
-echo '<pre>' . htmlspecialchars($soapclient1->request, ENT_QUOTES) . '</pre>';
-//echo '<hr>';
-echo "<h2>Response:</h2>";
-echo '<h4>Result</h4>';
-echo '<pre>';
+echo  "<h2>Request:</h2>";
+echo  '<h4>Function</h4>';
+echo  $WS_METHOD1;
+echo  '<h4>SOAP Message</h4>';
+echo  '<pre>' . htmlspecialchars($soapclient1->request, ENT_QUOTES) . '</pre>';
+//echo  '<hr>';
+echo  "<h2>Response:</h2>";
+echo  '<h4>Result</h4>';
+echo  '<pre>';
 print_r($result1);
-echo '</pre>';
-echo '<h4>SOAP Message</h4>';
-echo '<pre>' . htmlspecialchars($soapclient1->response, ENT_QUOTES) . '</pre>';
+echo  '</pre>';
+echo  '<h4>SOAP Message</h4>';
+echo  '<pre>' . htmlspecialchars($soapclient1->response, ENT_QUOTES) . '</pre>';
 
-print '<hr>';
+echo '<hr>';
 
-echo "<h2>Request:</h2>";
-echo '<h4>Function</h4>';
-echo $WS_METHOD2;
-echo '<h4>SOAP Message</h4>';
-echo '<pre>' . htmlspecialchars($soapclient2->request, ENT_QUOTES) . '</pre>';
-//echo '<hr>';
-echo "<h2>Response:</h2>";
-echo '<h4>Result</h4>';
-echo '<pre>';
+echo  "<h2>Request:</h2>";
+echo  '<h4>Function</h4>';
+echo  $WS_METHOD2;
+echo  '<h4>SOAP Message</h4>';
+echo  '<pre>' . htmlspecialchars($soapclient2->request, ENT_QUOTES) . '</pre>';
+//echo  '<hr>';
+echo  "<h2>Response:</h2>";
+echo  '<h4>Result</h4>';
+echo  '<pre>';
 print_r($result2);
-echo '</pre>';
-echo '<h4>SOAP Message</h4>';
-echo '<pre>' . htmlspecialchars($soapclient2->response, ENT_QUOTES) . '</pre>';
+echo  '</pre>';
+echo  '<h4>SOAP Message</h4>';
+echo  '<pre>' . htmlspecialchars($soapclient2->response, ENT_QUOTES) . '</pre>';
 
-print '<hr>';
+echo '<hr>';
 
-echo "<h2>Request:</h2>";
-echo '<h4>Function</h4>';
-echo $WS_METHOD3;
-echo '<h4>SOAP Message</h4>';
-echo '<pre>' . htmlspecialchars($soapclient3->request, ENT_QUOTES) . '</pre>';
-//echo '<hr>';
-echo "<h2>Response:</h2>";
-echo '<h4>Result</h4>';
-echo '<pre>';
+echo  "<h2>Request:</h2>";
+echo  '<h4>Function</h4>';
+echo  $WS_METHOD3;
+echo  '<h4>SOAP Message</h4>';
+echo  '<pre>' . htmlspecialchars($soapclient3->request, ENT_QUOTES) . '</pre>';
+//echo  '<hr>';
+echo  "<h2>Response:</h2>";
+echo  '<h4>Result</h4>';
+echo  '<pre>';
 print_r($result3);
-echo '</pre>';
-echo '<h4>SOAP Message</h4>';
-echo '<pre>' . htmlspecialchars($soapclient3->response, ENT_QUOTES) . '</pre>';
+echo  '</pre>';
+echo  '<h4>SOAP Message</h4>';
+echo  '<pre>' . htmlspecialchars($soapclient3->response, ENT_QUOTES) . '</pre>';
 
-echo '</body>'."\n";
-echo '</html>'."\n";
+echo  '</body>'."\n";
+echo  '</html>'."\n";
 ?>

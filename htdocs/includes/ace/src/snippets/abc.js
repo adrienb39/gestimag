@@ -3,7 +3,7 @@ define("ace/snippets/abc",["require","exports","module"], function(require, expo
 
 exports.snippetText = "\n\
 snippet zupfnoter.print\n\
-	%%%%hn.print {\"startpos\": ${1:pos_y}, \"t\":\"${2:title}\", \"v\":[${3:voices}], \"s\":[[${4:syncvoices}1,2]], \"f\":[${5:flowlines}],  \"sf\":[${6:subflowlines}], \"j\":[${7:jumplines}]}\n\
+	%%%%hn.echo {\"startpos\": ${1:pos_y}, \"t\":\"${2:title}\", \"v\":[${3:voices}], \"s\":[[${4:syncvoices}1,2]], \"f\":[${5:flowlines}],  \"sf\":[${6:subflowlines}], \"j\":[${7:jumplines}]}\n\
 \n\
 snippet zupfnoter.note\n\
 	%%%%hn.note {\"pos\": [${1:pos_x},${2:pos_y}], \"text\": \"${3:text}\", \"style\": \"${4:style}\"}\n\

@@ -61,7 +61,7 @@ class FileUpload
 		$filename = dol_sanitizeFileName($element_prop['classfile']);
 		$dir_output = dol_sanitizePathName($element_prop['dir_output']);
 
-		//print 'fileupload.class.php: element='.$element.' pathname='.$pathname.' filename='.$filename.' dir_output='.$dir_output."\n";
+		//echo 'fileupload.class.php: element='.$element.' pathname='.$pathname.' filename='.$filename.' dir_output='.$dir_output."\n";
 
 		if (empty($dir_output)) {
 			setEventMessage('The element '.$element.' is not supported for uploading file. dir_output is unknown.', 'errors');
@@ -484,7 +484,7 @@ class FileUpload
 		}
 
 		header('Content-type: application/json');
-		echo json_encode($info);
+		echo  json_encode($info);
 	}
 	*/
 
@@ -550,7 +550,7 @@ class FileUpload
 		} else {
 			header('Content-type: text/plain');
 		}
-		echo $json;
+		echo  $json;
 
 		return $error;
 	}
@@ -577,7 +577,7 @@ class FileUpload
 		}
 		// Return result in json format
 		header('Content-type: application/json');
-		echo json_encode($success);
+		echo  json_encode($success);
 
 		return 0;
 	}

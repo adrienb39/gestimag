@@ -383,9 +383,9 @@ function restrictedArea(User $user, $features, $object = 0, $tableandshare = '',
 	}
 
 	//dol_syslog("functions.lib:restrictedArea $feature, $objectid, $dbtablename, $feature2, $dbt_socfield, $dbt_select, $isdraft");
-	/*print "user_id=".$user->id.", features=".$features.", feature2=".$feature2.", objectid=".$objectid;
-	print ", dbtablename=".$tableandshare.", dbt_socfield=".$dbt_keyfield.", dbt_select=".$dbt_select;
-	print ", perm: user->hasRight(".$features.($feature2 ? ",".$feature2 : "").", lire) = ".($feature2 ? $user->hasRight($features, $feature2, 'lire') : $user->hasRight($features, 'lire'))."<br>";
+	/*echo "user_id=".$user->id.", features=".$features.", feature2=".$feature2.", objectid=".$objectid;
+	echo ", dbtablename=".$tableandshare.", dbt_socfield=".$dbt_keyfield.", dbt_select=".$dbt_select;
+	echo ", perm: user->hasRight(".$features.($feature2 ? ",".$feature2 : "").", lire) = ".($feature2 ? $user->hasRight($features, $feature2, 'lire') : $user->hasRight($features, 'lire'))."<br>";
 	*/
 
 	$parentfortableentity = '';
@@ -448,7 +448,7 @@ function restrictedArea(User $user, $features, $object = 0, $tableandshare = '',
 		$parentfortableentity = 'fk_charge@chargesociales';
 	}
 
-	//print $features.' - '.$tableandshare.' - '.$feature2.' - '.$dbt_select."\n";
+	//echo $features.' - '.$tableandshare.' - '.$feature2.' - '.$dbt_select."\n";
 
 	// Get more permissions checks from hooks
 	$parameters = array('features' => $features, 'originalfeatures' => $originalfeatures, 'objectid' => $objectid, 'dbt_select' => $dbt_select, 'idtype' => $dbt_select, 'isdraft' => $isdraft);
@@ -592,7 +592,7 @@ function restrictedArea(User $user, $features, $object = 0, $tableandshare = '',
 			accessforbidden();
 		}
 	}
-	//print "Read access is ok";
+	//echo "Read access is ok";
 
 	// Check write permission from module (we need to know write permission to create but also to delete drafts record or to upload files)
 	$createok = 1;
@@ -671,7 +671,7 @@ function restrictedArea(User $user, $features, $object = 0, $tableandshare = '',
 					}
 				}
 			} elseif (!empty($feature)) {												// This is for permissions on 1 levels (module->write)
-				//print '<br>feature='.$feature.' creer='.$user->rights->$feature->creer.' write='.$user->rights->$feature->write; exit;
+				//echo '<br>feature='.$feature.' creer='.$user->rights->$feature->creer.' write='.$user->rights->$feature->write; exit;
 				if (!$user->hasRight($feature, 'creer')
 				&& !$user->hasRight($feature, 'write')
 				&& !$user->hasRight($feature, 'create')) {
@@ -693,7 +693,7 @@ function restrictedArea(User $user, $features, $object = 0, $tableandshare = '',
 				accessforbidden();
 			}
 		}
-		//print "Write access is ok";
+		//echo "Write access is ok";
 	}
 
 	// Check create user permission
@@ -710,7 +710,7 @@ function restrictedArea(User $user, $features, $object = 0, $tableandshare = '',
 				accessforbidden();
 			}
 		}
-		//print "Create user access is ok";
+		//echo "Create user access is ok";
 	}
 
 	// Check delete permission from module
@@ -790,7 +790,7 @@ function restrictedArea(User $user, $features, $object = 0, $tableandshare = '',
 					} // For bypass the second test if the first is ok
 				}
 			} elseif (!empty($feature)) {							// This is used for permissions on 1 level
-				//print '<br>feature='.$feature.' creer='.$user->rights->$feature->supprimer.' write='.$user->rights->$feature->delete;
+				//echo '<br>feature='.$feature.' creer='.$user->rights->$feature->supprimer.' write='.$user->rights->$feature->delete;
 				if (!$user->hasRight($feature, 'supprimer')
 					&& !$user->hasRight($feature, 'delete')
 					&& !$user->hasRight($feature, 'run')) {
@@ -811,7 +811,7 @@ function restrictedArea(User $user, $features, $object = 0, $tableandshare = '',
 				accessforbidden();
 			}
 		}
-		//print "Delete access is ok";
+		//echo "Delete access is ok";
 	}
 
 	// If we have a particular object to check permissions on, we check if $user has permission
@@ -819,7 +819,7 @@ function restrictedArea(User $user, $features, $object = 0, $tableandshare = '',
 	if (!empty($objectid) && $objectid > 0) {
 		$ok = checkUserAccessToObject($user, $featuresarray, $object, $tableandshare, $feature2, $dbt_keyfield, $dbt_select, $parentfortableentity);
 		$params = array('objectid' => $objectid, 'features' => implode(',', $featuresarray), 'features2' => $feature2);
-		//print 'checkUserAccessToObject ok='.$ok;
+		//echo 'checkUserAccessToObject ok='.$ok;
 		if ($mode) {
 			return $ok ? 1 : 0;
 		} else {
@@ -861,8 +861,8 @@ function checkUserAccessToObject($user, array $featuresarray, $object = 0, $tabl
 	$objectid = preg_replace('/[^0-9\.\,]/', '', $objectid);	// For the case value is coming from a non sanitized user input
 
 	//dol_syslog("functions.lib:restrictedArea $feature, $objectid, $dbtablename, $feature2, $dbt_socfield, $dbt_select, $isdraft");
-	//print "user_id=".$user->id.", features=".join(',', $featuresarray).", objectid=".$objectid;
-	//print ", tableandshare=".$tableandshare.", dbt_socfield=".$dbt_keyfield.", dbt_select=".$dbt_select."<br>";
+	//echo "user_id=".$user->id.", features=".join(',', $featuresarray).", objectid=".$objectid;
+	//echo ", tableandshare=".$tableandshare.", dbt_socfield=".$dbt_keyfield.", dbt_select=".$dbt_select."<br>";
 
 	// More parameters
 	$params = explode('&', $tableandshare);
@@ -1183,9 +1183,9 @@ function httponly_accessforbidden($message = '1', $http_response_code = 403, $st
 	http_response_code($http_response_code);
 
 	if ($stringalreadysanitized) {
-		print $message;
+		echo $message;
 	} else {
-		print htmlentities($message);
+		echo htmlentities($message);
 	}
 
 	exit(1);
@@ -1223,16 +1223,16 @@ function accessforbidden($message = '', $printheader = 1, $printfooter = 1, $sho
 		} elseif (function_exists("llxHeaderVierge")) {
 			llxHeaderVierge('');
 		}
-		print '<div style="padding: 20px">';
+		echo '<div style="padding: 20px">';
 	}
-	print '<div class="error">';
+	echo '<div class="error">';
 	if (empty($message)) {
-		print $langs->trans("ErrorForbidden");
+		echo $langs->trans("ErrorForbidden");
 	} else {
-		print $langs->trans($message);
+		echo $langs->trans($message);
 	}
-	print '</div>';
-	print '<br>';
+	echo '</div>';
+	echo '<br>';
 	if (empty($showonlymessage)) {
 		if (empty($hookmanager)) {
 			include_once DOL_DOCUMENT_ROOT.'/core/class/hookmanager.class.php';
@@ -1243,20 +1243,20 @@ function accessforbidden($message = '', $printheader = 1, $printfooter = 1, $sho
 
 		$parameters = array('message' => $message, 'params' => $params);
 		$reshook = $hookmanager->executeHooks('getAccessForbiddenMessage', $parameters, $object, $action); // Note that $action and $object may have been modified by some hooks
-		print $hookmanager->resPrint;
+		echo $hookmanager->resPrint;
 		if (empty($reshook)) {
 			$langs->loadLangs(array("errors"));
 			if ($user->login) {
-				print $langs->trans("CurrentLogin").': <span class="error">'.$user->login.'</span><br>';
-				print $langs->trans("ErrorForbidden2", $langs->transnoentitiesnoconv("Home"), $langs->transnoentitiesnoconv("Users"));
-				print $langs->trans("ErrorForbidden4");
+				echo $langs->trans("CurrentLogin").': <span class="error">'.$user->login.'</span><br>';
+				echo $langs->trans("ErrorForbidden2", $langs->transnoentitiesnoconv("Home"), $langs->transnoentitiesnoconv("Users"));
+				echo $langs->trans("ErrorForbidden4");
 			} else {
-				print $langs->trans("ErrorForbidden3");
+				echo $langs->trans("ErrorForbidden3");
 			}
 		}
 	}
 	if ($printfooter && !defined('NOHEADERNOFOOTER') && function_exists("llxFooter")) {
-		print '</div>';
+		echo '</div>';
 		llxFooter();
 	}
 

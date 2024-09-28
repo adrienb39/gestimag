@@ -504,7 +504,7 @@ class pdf_beluga extends ModelePDFProjects
 								$element = new $classname($this->db);
 								$element->fetch($idofelement);
 								$element->fetch_thirdparty();
-								// print $classname;
+								// echo $classname;
 
 								$qualifiedfortotal = true;
 								if ($key == 'invoice') {
@@ -523,7 +523,7 @@ class pdf_beluga extends ModelePDFProjects
 								if ($pageposafter > $pageposbefore) {	// There is a pagebreak
 									$pdf->rollbackTransaction(true);
 									$pageposafter = $pageposbefore;
-									//print $pageposafter.'-'.$pageposbefore;exit;
+									//echo $pageposafter.'-'.$pageposbefore;exit;
 									$pdf->setPageOrientation($this->orientation, 1, $heightforfooter); // The only function to edit the bottom margin of current page to set it.
 									// Label
 									$pdf->SetXY($this->posxref, $curY);

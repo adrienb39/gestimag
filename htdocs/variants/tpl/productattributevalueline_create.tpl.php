@@ -44,21 +44,21 @@ $objectline = null;
 print "<!-- BEGIN PHP TEMPLATE productattributevalueline_create.tpl.php -->\n";
 $nolinesbefore = (count($this->lines) == 0 || $forcetoshowtitlelines);
 ?>
-<tr class="pair nodrag nodrop nohoverpair<?php echo $nolinesbefore ? '' : ' liste_titre_create'; ?>">
+<tr class="pair nodrag nodrop nohoverpair<?php echo  $nolinesbefore ? '' : ' liste_titre_create'; ?>">
 	<?php
 	$coldisplay = 0;
 	// Adds a line numbering column
 	if (getDolGlobalString('MAIN_VIEW_LINE_NUMBER')) {
 		$coldisplay++;
-		echo '<td class="nobottom linecolnum center"></td>';
+		echo  '<td class="nobottom linecolnum center"></td>';
 	}
 	$coldisplay++;
 	?>
 	<td class="nobottom linecolref">
 		<?php $coldisplay++; if ($nolinesbefore) {
-			echo $langs->trans('Ref') . ': ';
+			echo  $langs->trans('Ref') . ': ';
 		} ?>
-		<input type="text" name="line_ref" id="line_ref" class="flat" value="<?php echo(GETPOSTISSET("line_ref") ? GETPOST("line_ref", 'alpha', 2) : ''); ?>" autofocus>
+		<input type="text" name="line_ref" id="line_ref" class="flat" value="<?php echo (GETPOSTISSET("line_ref") ? GETPOST("line_ref", 'alpha', 2) : ''); ?>" autofocus>
 		<?php
 		if (is_object($hookmanager)) {
 			$parameters = array();
@@ -71,11 +71,11 @@ $nolinesbefore = (count($this->lines) == 0 || $forcetoshowtitlelines);
 	</td>
 
 	<td class="nobottom linecolvalue"><?php $coldisplay++; ?>
-		<input type="text" name="line_value" id="line_value" class="flat" value="<?php echo(GETPOSTISSET("line_value") ? GETPOST("line_value", 'alpha', 2) : ''); ?>">
+		<input type="text" name="line_value" id="line_value" class="flat" value="<?php echo (GETPOSTISSET("line_value") ? GETPOST("line_value", 'alpha', 2) : ''); ?>">
 	</td>
 
-	<td class="nobottom linecoledit center valignmiddle" colspan="<?php echo $colspan; ?>"><?php $coldisplay += $colspan; ?>
-		<input type="submit" class="button reposition small" value="<?php echo $langs->trans('Add'); ?>" name="addline" id="addline">
+	<td class="nobottom linecoledit center valignmiddle" colspan="<?php echo  $colspan; ?>"><?php $coldisplay += $colspan; ?>
+		<input type="submit" class="button reposition small" value="<?php echo  $langs->trans('Add'); ?>" name="addline" id="addline">
 	</td>
 </tr>
 

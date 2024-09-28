@@ -74,7 +74,7 @@ TCPDF Example 002
 Default page header and footer are disabled using setPrintHeader() and setPrintFooter() methods.
 EOD;
 
-// print a block of text using Write()
+// echo a block of text using Write()
 $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 
 // ---------------------------------------------------------

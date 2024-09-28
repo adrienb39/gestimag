@@ -83,7 +83,7 @@ if ($state) {
 	$requestedpermissionsarray = explode(',', $state); // Example: 'user'. 'state' parameter is standard to retrieve some parameters back
 }
 if ($action != 'delete' && empty($requestedpermissionsarray)) {
-	print 'Error, parameter state is not defined';
+	echo 'Error, parameter state is not defined';
 	exit;
 }
 //var_dump($requestedpermissionsarray);exit;
@@ -100,7 +100,7 @@ var_dump($requestedpermissionsarray);
 */
 
 if (empty($apiService)) {
-	print 'Error, failed to create serviceFactory';
+	echo 'Error, failed to create serviceFactory';
 	exit;
 }
 
@@ -160,7 +160,7 @@ if (GETPOST('code') || GETPOST('error')) {     // We are coming from oauth provi
 		header('Location: '.$backtourl);
 		exit();
 	} catch (Exception $e) {
-		print $e->getMessage();
+		echo $e->getMessage();
 	}
 } else {
 	// If we enter this page without 'code' parameter, we arrive here. This is the case when we want to get the redirect

@@ -106,7 +106,7 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 
 	top_htmlhead($head, $title, $disablejs, $disablehead, $arrayofjs, $arrayofcss); // Show html headers
 
-	print '<body id="mainbody" class="publicnewmemberform">';
+	echo '<body id="mainbody" class="publicnewmemberform">';
 
 	// Define urllogo
 	$urllogo = DOL_URL_ROOT.'/theme/common/login_logo.png';
@@ -119,29 +119,29 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 		$urllogo = DOL_URL_ROOT.'/theme/gestimag_logo.svg';
 	}
 
-	print '<div class="center">';
+	echo '<div class="center">';
 
 	// Output html code for logo
 	if ($urllogo) {
-		print '<div class="backgreypublicpayment">';
-		print '<div class="logopublicpayment">';
-		print '<img id="dolpaymentlogo" src="'.$urllogo.'">';
-		print '</div>';
+		echo '<div class="backgreypublicpayment">';
+		echo '<div class="logopublicpayment">';
+		echo '<img id="dolpaymentlogo" src="'.$urllogo.'">';
+		echo '</div>';
 		if (!getDolGlobalString('MAIN_HIDE_POWERED_BY')) {
-			print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+			echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 		}
-		print '</div>';
+		echo '</div>';
 	}
 
 	if (getDolGlobalString('PARTNERSHIP_IMAGE_PUBLIC_REGISTRATION')) {
-		print '<div class="backimagepublicregistration">';
-		print '<img id="idPARTNERSHIP_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('PARTNERSHIP_IMAGE_PUBLIC_REGISTRATION').'">';
-		print '</div>';
+		echo '<div class="backimagepublicregistration">';
+		echo '<img id="idPARTNERSHIP_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('PARTNERSHIP_IMAGE_PUBLIC_REGISTRATION').'">';
+		echo '</div>';
 	}
 
-	print '</div>';
+	echo '</div>';
 
-	print '<div class="divmainbodylarge">';
+	echo '<div class="divmainbodylarge">';
 }
 
 /**
@@ -153,17 +153,17 @@ function llxFooterVierge()
 {
 	global $conf, $langs;
 
-	print '</div>';
+	echo '</div>';
 
 	printCommonFooter('public');
 
 	if (!empty($conf->use_javascript_ajax)) {
-		print "\n".'<!-- Includes JS Footer of Gestimag -->'."\n";
-		print '<script src="'.DOL_URL_ROOT.'/core/js/lib_foot.js.php?lang='.$langs->defaultlang.'"></script>'."\n";
+		echo "\n".'<!-- Includes JS Footer of Gestimag -->'."\n";
+		echo '<script src="'.DOL_URL_ROOT.'/core/js/lib_foot.js.php?lang='.$langs->defaultlang.'"></script>'."\n";
 	}
 
-	print "</body>\n";
-	print "</html>\n";
+	echo "</body>\n";
+	echo "</html>\n";
 }
 
 
@@ -530,10 +530,10 @@ if (empty($reshook) && $action == 'added') {
 	llxHeaderVierge($langs->trans("NewPartnershipForm"));
 
 	// Si on a pas ete redirige
-	print '<br><br>';
-	print '<div class="center">';
-	print $langs->trans("NewPartnershipbyWeb");
-	print '</div>';
+	echo '<br><br>';
+	echo '<div class="center">';
+	echo $langs->trans("NewPartnershipbyWeb");
+	echo '</div>';
 
 	llxFooterVierge();
 	exit;
@@ -553,38 +553,38 @@ $extrafields->fetch_name_optionals_label($object->table_element); // fetch optio
 
 llxHeaderVierge($langs->trans("NewPartnershipRequest"));
 
-print '<br>';
-print load_fiche_titre(img_picto('', 'hands-helping', 'class="pictofixedwidth"').' &nbsp; '.$langs->trans("NewPartnershipRequest"), '', '', 0, 0, 'center');
+echo '<br>';
+echo load_fiche_titre(img_picto('', 'hands-helping', 'class="pictofixedwidth"').' &nbsp; '.$langs->trans("NewPartnershipRequest"), '', '', 0, 0, 'center');
 
 
-print '<div align="center">';
-print '<div id="divsubscribe">';
+echo '<div align="center">';
+echo '<div id="divsubscribe">';
 
-print '<div class="center subscriptionformhelptext opacitymedium justify">';
+echo '<div class="center subscriptionformhelptext opacitymedium justify">';
 if (getDolGlobalString('PARTNERSHIP_NEWFORM_TEXT')) {
-	print $langs->trans(getDolGlobalString('PARTNERSHIP_NEWFORM_TEXT'))."<br>\n";
+	echo $langs->trans(getDolGlobalString('PARTNERSHIP_NEWFORM_TEXT'))."<br>\n";
 } else {
-	print $langs->trans("NewPartnershipRequestDesc", getDolGlobalString("MAIN_INFO_SOCIETE_MAIL"))."<br>\n";
+	echo $langs->trans("NewPartnershipRequestDesc", getDolGlobalString("MAIN_INFO_SOCIETE_MAIL"))."<br>\n";
 }
-print '</div>';
+echo '</div>';
 
 dol_htmloutput_errors($errmsg);
 
 // Print form
-print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST" name="newmember">'."\n";
-print '<input type="hidden" name="token" value="'.newToken().'" / >';
-print '<input type="hidden" name="entity" value="'.$entity.'" />';
-print '<input type="hidden" name="action" value="add" />';
+echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST" name="newmember">'."\n";
+echo '<input type="hidden" name="token" value="'.newToken().'" / >';
+echo '<input type="hidden" name="entity" value="'.$entity.'" />';
+echo '<input type="hidden" name="action" value="add" />';
 
-print '<br>';
+echo '<br>';
 
 $messagemandatory = '<span class="">'.$langs->trans("FieldsWithAreMandatory", '*').'</span>';
-//print '<br><span class="opacitymedium small">'.$langs->trans("FieldsWithAreMandatory", '*').'</span><br>';
-//print $langs->trans("FieldsWithIsForPublic",'**').'<br>';
+//echo '<br><span class="opacitymedium small">'.$langs->trans("FieldsWithAreMandatory", '*').'</span><br>';
+//echo $langs->trans("FieldsWithIsForPublic",'**').'<br>';
 
-print dol_get_fiche_head();
+echo dol_get_fiche_head();
 
-print '<script type="text/javascript">
+echo '<script type="text/javascript">
 jQuery(document).ready(function () {
     jQuery(document).ready(function () {
         jQuery("#selectcountry_id").change(function() {
@@ -605,31 +605,31 @@ foreach ($listofpartnershipobj as $partnershipobj) {
 }
 
 if (getDolGlobalString('PARTNERSHIP_NEWFORM_FORCETYPE')) {
-	print $listofpartnership[getDolGlobalString('PARTNERSHIP_NEWFORM_FORCETYPE')];
-	print '<input type="hidden" id="partnershiptype" name="partnershiptype" value="' . getDolGlobalString('PARTNERSHIP_NEWFORM_FORCETYPE').'">';
+	echo $listofpartnership[getDolGlobalString('PARTNERSHIP_NEWFORM_FORCETYPE')];
+	echo '<input type="hidden" id="partnershiptype" name="partnershiptype" value="' . getDolGlobalString('PARTNERSHIP_NEWFORM_FORCETYPE').'">';
 }
 
-print '<table class="border" summary="form to subscribe" id="tablesubscribe">'."\n";
+echo '<table class="border" summary="form to subscribe" id="tablesubscribe">'."\n";
 if (!getDolGlobalString('PARTNERSHIP_NEWFORM_FORCETYPE')) {
-	print '<tr class="morphy"><td class="classfortooltip" title="'.dol_escape_htmltag($messagemandatory).'">'.$langs->trans('PartnershipType').' <span class="star">*</span></td><td>'."\n";
-	print $form->selectarray("partnershiptype", $listofpartnership, GETPOSTISSET('partnershiptype') ? GETPOSTINT('partnershiptype') : 'ifone', 1);
-	print '</td></tr>'."\n";
+	echo '<tr class="morphy"><td class="classfortooltip" title="'.dol_escape_htmltag($messagemandatory).'">'.$langs->trans('PartnershipType').' <span class="star">*</span></td><td>'."\n";
+	echo $form->selectarray("partnershiptype", $listofpartnership, GETPOSTISSET('partnershiptype') ? GETPOSTINT('partnershiptype') : 'ifone', 1);
+	echo '</td></tr>'."\n";
 }
 // Company
-print '<tr id="trcompany" class="trcompany"><td class="classfortooltip" title="'.dol_escape_htmltag($messagemandatory).'">'.$langs->trans("Company").' <span class="star">*</span></td><td>';
-print img_picto('', 'company', 'class="pictofixedwidth"');
-print '<input type="text" name="societe" class="minwidth150 maxwidth300 widthcentpercentminusxx" value="'.dol_escape_htmltag(GETPOST('societe')).'"></td></tr>'."\n";
+echo '<tr id="trcompany" class="trcompany"><td class="classfortooltip" title="'.dol_escape_htmltag($messagemandatory).'">'.$langs->trans("Company").' <span class="star">*</span></td><td>';
+echo img_picto('', 'company', 'class="pictofixedwidth"');
+echo '<input type="text" name="societe" class="minwidth150 maxwidth300 widthcentpercentminusxx" value="'.dol_escape_htmltag(GETPOST('societe')).'"></td></tr>'."\n";
 // Lastname
-print '<tr><td class="classfortooltip" title="'.dol_escape_htmltag($messagemandatory).'">'.$langs->trans("Lastname").' <span class="star">*</span></td><td><input type="text" name="lastname" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('lastname')).'"></td></tr>'."\n";
+echo '<tr><td class="classfortooltip" title="'.dol_escape_htmltag($messagemandatory).'">'.$langs->trans("Lastname").' <span class="star">*</span></td><td><input type="text" name="lastname" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('lastname')).'"></td></tr>'."\n";
 // Firstname
-print '<tr><td class="classfortooltip" title="'.dol_escape_htmltag($messagemandatory).'">'.$langs->trans("Firstname").' <span class="star">*</span></td><td><input type="text" name="firstname" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('firstname')).'"></td></tr>'."\n";
+echo '<tr><td class="classfortooltip" title="'.dol_escape_htmltag($messagemandatory).'">'.$langs->trans("Firstname").' <span class="star">*</span></td><td><input type="text" name="firstname" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('firstname')).'"></td></tr>'."\n";
 // EMail
-print '<tr><td class="classfortooltip" title="'.dol_escape_htmltag($messagemandatory).'">'.$langs->trans("Email").' <span class="star">*</span></td><td>';
-//print img_picto('', 'email', 'class="pictofixedwidth"');
-print '<input type="text" name="email" maxlength="255" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('email')).'"></td></tr>'."\n";
+echo '<tr><td class="classfortooltip" title="'.dol_escape_htmltag($messagemandatory).'">'.$langs->trans("Email").' <span class="star">*</span></td><td>';
+//echo img_picto('', 'email', 'class="pictofixedwidth"');
+echo '<input type="text" name="email" maxlength="255" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('email')).'"></td></tr>'."\n";
 // Url
-print '<tr><td class="tdtop">'.$langs->trans("Url").' <span class="star">*</span></td><td>';
-print '<input type="text" name="url" maxlength="255" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('url')).'">';
+echo '<tr><td class="tdtop">'.$langs->trans("Url").' <span class="star">*</span></td><td>';
+echo '<input type="text" name="url" maxlength="255" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('url')).'">';
 if (getDolGlobalString('PARTNERSHIP_BACKLINKS_TO_CHECK')) {
 	$listofkeytocheck = explode('|', getDolGlobalString('PARTNERSHIP_BACKLINKS_TO_CHECK'));
 	$i = 0;
@@ -638,75 +638,75 @@ if (getDolGlobalString('PARTNERSHIP_BACKLINKS_TO_CHECK')) {
 		$i++;
 		$s .= ($s ? ($i == count($listofkeytocheck) ? ' '.$langs->trans("or").' ' : ', ') : '').$val;
 	}
-	print '<br><span class="opacitymedium small">'.$langs->trans("ThisUrlMustContainsAtLeastOneLinkToWebsite", $s).'</small>';
+	echo '<br><span class="opacitymedium small">'.$langs->trans("ThisUrlMustContainsAtLeastOneLinkToWebsite", $s).'</small>';
 }
-print '</td></tr>'."\n";
+echo '</td></tr>'."\n";
 // Address
-print '<tr><td class="tdtop">'.$langs->trans("Address").'</td><td>'."\n";
-print '<textarea name="address" id="address" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_3.'">'.dol_escape_htmltag(GETPOST('address', 'restricthtml'), 0, 1).'</textarea></td></tr>'."\n";
+echo '<tr><td class="tdtop">'.$langs->trans("Address").'</td><td>'."\n";
+echo '<textarea name="address" id="address" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_3.'">'.dol_escape_htmltag(GETPOST('address', 'restricthtml'), 0, 1).'</textarea></td></tr>'."\n";
 // Zip / Town
-print '<tr><td>'.$langs->trans('Zip').' / '.$langs->trans('Town').'</td><td>';
-print $formcompany->select_ziptown(GETPOST('zipcode'), 'zipcode', array('town', 'selectcountry_id', 'state_id'), 6, 1);
-print ' / ';
-print $formcompany->select_ziptown(GETPOST('town'), 'town', array('zipcode', 'selectcountry_id', 'state_id'), 0, 1);
-print '</td></tr>';
+echo '<tr><td>'.$langs->trans('Zip').' / '.$langs->trans('Town').'</td><td>';
+echo $formcompany->select_ziptown(GETPOST('zipcode'), 'zipcode', array('town', 'selectcountry_id', 'state_id'), 6, 1);
+echo ' / ';
+echo $formcompany->select_ziptown(GETPOST('town'), 'town', array('zipcode', 'selectcountry_id', 'state_id'), 0, 1);
+echo '</td></tr>';
 // Country
-print '<tr><td>'.$langs->trans('Country').'</td><td>';
-print img_picto('', 'country', 'class="pictofixedwidth"');
+echo '<tr><td>'.$langs->trans('Country').'</td><td>';
+echo img_picto('', 'country', 'class="pictofixedwidth"');
 $country_id = GETPOSTINT('country_id');
 if (!$country_id && getDolGlobalString('PARTNERSHIP_NEWFORM_FORCECOUNTRYCODE')) {
 	$country_id = getCountry($conf->global->PARTNERSHIP_NEWFORM_FORCECOUNTRYCODE, 2, $db, $langs);
 }
 if (!$country_id && !empty($conf->geoipmaxmind->enabled)) {
 	$country_code = dol_user_country();
-	//print $country_code;
+	//echo $country_code;
 	if ($country_code) {
 		$new_country_id = getCountry($country_code, 3, $db, $langs);
-		//print 'xxx'.$country_code.' - '.$new_country_id;
+		//echo 'xxx'.$country_code.' - '.$new_country_id;
 		if ($new_country_id) {
 			$country_id = $new_country_id;
 		}
 	}
 }
 $country_code = getCountry($country_id, 2, $db, $langs);
-print $form->select_country($country_id, 'country_id');
-print '</td></tr>';
+echo $form->select_country($country_id, 'country_id');
+echo '</td></tr>';
 // State
 if (!getDolGlobalString('SOCIETE_DISABLE_STATE')) {
-	print '<tr><td class="wordbreak">'.$langs->trans('State').'</td><td>';
+	echo '<tr><td class="wordbreak">'.$langs->trans('State').'</td><td>';
 	if ($country_code) {
-		print $formcompany->select_state(GETPOST("state_id"), $country_code);
+		echo $formcompany->select_state(GETPOST("state_id"), $country_code);
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 // Logo
-//print '<tr><td>'.$langs->trans("URLPhoto").'</td><td><input type="text" name="photo" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('photo')).'"></td></tr>'."\n";
+//echo '<tr><td>'.$langs->trans("URLPhoto").'</td><td><input type="text" name="photo" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('photo')).'"></td></tr>'."\n";
 // Other attributes
 $parameters['tdclass'] = 'titlefieldauto';
 $parameters['tpl_context'] = 'public';	// define template context to public
 include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_add.tpl.php';
 // Comments
-print '<tr>';
-print '<td class="tdtop wordbreak">'.$langs->trans("Comments").'</td>';
-print '<td class="tdtop"><textarea name="note_private" id="note_private" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_3.'">'.dol_escape_htmltag(GETPOST('note_private', 'restricthtml'), 0, 1).'</textarea></td>';
-print '</tr>'."\n";
+echo '<tr>';
+echo '<td class="tdtop wordbreak">'.$langs->trans("Comments").'</td>';
+echo '<td class="tdtop"><textarea name="note_private" id="note_private" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_3.'">'.dol_escape_htmltag(GETPOST('note_private', 'restricthtml'), 0, 1).'</textarea></td>';
+echo '</tr>'."\n";
 
-print "</table>\n";
+echo "</table>\n";
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 // Save
-print '<div class="center">';
-print '<input type="submit" value="'.$langs->trans("Submit").'" id="submitsave" class="button">';
+echo '<div class="center">';
+echo '<input type="submit" value="'.$langs->trans("Submit").'" id="submitsave" class="button">';
 if (!empty($backtopage)) {
-	print ' &nbsp; &nbsp; <input type="submit" value="'.$langs->trans("Cancel").'" id="submitcancel" class="button button-cancel">';
+	echo ' &nbsp; &nbsp; <input type="submit" value="'.$langs->trans("Cancel").'" id="submitcancel" class="button button-cancel">';
 }
-print '</div>';
+echo '</div>';
 
 
-print "</form>\n";
-print "<br>";
-print '</div></div>';
+echo "</form>\n";
+echo "<br>";
+echo '</div></div>';
 
 
 llxFooterVierge();

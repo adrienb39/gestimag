@@ -17,7 +17,7 @@
 
 // Protection to avoid direct call of template
 if (empty($conf) || !is_object($conf)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -51,7 +51,7 @@ $(document).ready(function(){
 			});
 
 
-			var $dialog = $('<form id="' + formId + '" action="<?php print $objectUrl; ?>"  method="post" ></form>')
+			var $dialog = $('<form id="' + formId + '" action="<?php echo $objectUrl; ?>"  method="post" ></form>')
 			.load( page + " #tablelines", function() {
 
 				$("#" + formId + " #tablelines").prop("id", "ajaxloaded_tablelines"); // change id attribute
@@ -72,16 +72,16 @@ $(document).ready(function(){
 				modal: true,
 				height: windowHeight,
 				width: windowWidth,
-				title: "<?php echo $langs->transnoentities('LinesToImport'); ?>",
+				title: "<?php echo  $langs->transnoentities('LinesToImport'); ?>",
 				buttons: {
-						"<?php echo $langs->trans('Import'); ?>": function() {
+						"<?php echo  $langs->trans('Import'); ?>": function() {
 							  $( this ).dialog( "close" );
 							  $("#" + formId).append('<input type="hidden" name="action" value="import_lines_from_object" />');
 							  $("#" + formId).append('<input type="hidden" name="fromelement" value="' + fromelement + '" />');
 							  $("#" + formId).append('<input type="hidden" name="fromelementid" value="' + fromelementid + '" />');
 							  $("#" + formId).submit();
 						},
-						"<?php echo $langs->trans("Cancel"); ?>": function() {
+						"<?php echo  $langs->trans("Cancel"); ?>": function() {
 						  $( this ).dialog( "close" );
 						}
 				}
@@ -91,7 +91,7 @@ $(document).ready(function(){
 		}
 		else
 		{
-			$.jnotify("<?php echo $langs->trans('ErrorNoUrl'); ?>", "error", true);
+			$.jnotify("<?php echo  $langs->trans('ErrorNoUrl'); ?>", "error", true);
 		}
 
 	});

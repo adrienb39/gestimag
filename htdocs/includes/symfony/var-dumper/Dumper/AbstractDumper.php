@@ -74,7 +74,7 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
                 $output = fopen($output, 'w');
             }
             $this->outputStream = $output;
-            $this->lineDumper = $this->echoLine(...);
+            $this->lineDumper = $this->echo Line(...);
         }
 
         return $prev;
@@ -172,7 +172,7 @@ abstract class AbstractDumper implements DataDumperInterface, DumperInterface
      *
      * @return void
      */
-    protected function echoLine(string $line, int $depth, string $indentPad)
+    protected function echo Line(string $line, int $depth, string $indentPad)
     {
         if (-1 !== $depth) {
             fwrite($this->outputStream, str_repeat($indentPad, $depth).$line."\n");

@@ -67,7 +67,7 @@ function llxHeaderVierge($title, $head = "")
 {
 	top_htmlhead($head, $title);
 
-	print '<body class="public_body">'."\n";
+	echo '<body class="public_body">'."\n";
 }
 
 /**
@@ -79,8 +79,8 @@ function llxFooterVierge()
 {
 	printCommonFooter('public');
 
-	print "</body>\n";
-	print "</html>\n";
+	echo "</body>\n";
+	echo "</html>\n";
 }
 
 
@@ -172,38 +172,38 @@ if ($result) {
 	$param = "&statut=$statut&sortorder=$sortorder&sortfield=$sortfield";
 	$title = $langs->trans("ListOfValidatedPublicMembers");
 	print_barre_liste($title, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, $nbtotalofrecords, '');
-	print '<table class="public_border centpercent">';
+	echo '<table class="public_border centpercent">';
 
-	print '<tr class="public_liste_titre">';
-	print '<th class="left"><a href="'.$_SERVER["PHP_SELF"].'?page='.$page.'&sortorder=ASC&sortfield=firstname">'.dolGetFirstLastname($langs->trans("Firstname"), $langs->trans("Lastname")).'</a></th>';
-	print '<th class="left"><a href="'.$_SERVER["PHP_SELF"].'?page='.$page.'&sortorder=ASC&sortfield=societe">'.$langs->trans("Company").'</a></th>'."\n";
+	echo '<tr class="public_liste_titre">';
+	echo '<th class="left"><a href="'.$_SERVER["PHP_SELF"].'?page='.$page.'&sortorder=ASC&sortfield=firstname">'.dolGetFirstLastname($langs->trans("Firstname"), $langs->trans("Lastname")).'</a></th>';
+	echo '<th class="left"><a href="'.$_SERVER["PHP_SELF"].'?page='.$page.'&sortorder=ASC&sortfield=societe">'.$langs->trans("Company").'</a></th>'."\n";
 	//print_liste_field_titre("DateOfBirth", $_SERVER["PHP_SELF"],"birth",'',$param,$sortfield,$sortorder); // est-ce nécessaire ??
 	print_liste_field_titre("EMail", $_SERVER["PHP_SELF"], "email", '', $param, '', $sortfield, $sortorder, 'left public_');
 	print_liste_field_titre("Zip", $_SERVER["PHP_SELF"], "zip", "", $param, '', $sortfield, $sortorder, 'left public_');
 	print_liste_field_titre("Town", $_SERVER["PHP_SELF"], "town", "", $param, '', $sortfield, $sortorder, 'left public_');
 	print_liste_field_titre("Photo", $_SERVER["PHP_SELF"], "", "", $param, '', $sortfield, $sortorder, 'center public_');
-	print "</tr>\n";
+	echo "</tr>\n";
 
 	while ($i < $num && $i < $conf->liste_limit) {
 		$objp = $db->fetch_object($result);
 
-		print '<tr class="oddeven">';
-		print '<td><a href="public_card.php?id='.$objp->rowid.'">'.dolGetFirstLastname($objp->firstname, $objp->lastname).'</a></td>'."\n";
-		print '<td>'.$objp->societe.'</td>'."\n";
-		print '<td>'.$objp->email.'</td>'."\n";
-		print '<td>'.$objp->zip.'</td>'."\n";
-		print '<td>'.$objp->town.'</td>'."\n";
+		echo '<tr class="oddeven">';
+		echo '<td><a href="public_card.php?id='.$objp->rowid.'">'.dolGetFirstLastname($objp->firstname, $objp->lastname).'</a></td>'."\n";
+		echo '<td>'.$objp->societe.'</td>'."\n";
+		echo '<td>'.$objp->email.'</td>'."\n";
+		echo '<td>'.$objp->zip.'</td>'."\n";
+		echo '<td>'.$objp->town.'</td>'."\n";
 		if (isset($objp->photo) && $objp->photo != '') {
-			print '<td class="center">';
-			print $form->showphoto('memberphoto', $objp, 64);
-			print '</td>'."\n";
+			echo '<td class="center">';
+			echo $form->showphoto('memberphoto', $objp, 64);
+			echo '</td>'."\n";
 		} else {
-			print "<td>&nbsp;</td>\n";
+			echo "<td>&nbsp;</td>\n";
 		}
-		print "</tr>";
+		echo "</tr>";
 		$i++;
 	}
-	print "</table>";
+	echo "</table>";
 } else {
 	dol_print_error($db);
 }

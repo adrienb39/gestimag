@@ -28,7 +28,7 @@
 
 // Protection to avoid direct call of template
 if (empty($object) || !is_object($object)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -53,7 +53,7 @@ if (!empty($object->fk_soc)) {
 	$parameters['socid'] = $object->fk_soc;
 }
 $reshook = $hookmanager->executeHooks('formObjectOptions', $parameters, $object, $action);
-print $hookmanager->resPrint;
+echo $hookmanager->resPrint;
 if ($reshook < 0) {
 	setEventMessages($hookmanager->error, $hookmanager->errors, 'errors');
 }
@@ -84,7 +84,7 @@ if (empty($reshook) && !empty($object->table_element) && isset($extrafields->att
 		if ($perms && isset($extrafields->attributes[$object->table_element]['perms'][$tmpkeyextra])) {
 			$perms = (int) dol_eval($extrafields->attributes[$object->table_element]['perms'][$tmpkeyextra], 1, 1, '2');
 		}
-		//print $tmpkeyextra.'-'.$enabled.'-'.$perms.'<br>'."\n";
+		//echo $tmpkeyextra.'-'.$enabled.'-'.$perms.'<br>'."\n";
 
 		if (empty($enabled)) {
 			continue; // 0 = Never visible field
@@ -111,42 +111,42 @@ if (empty($reshook) && !empty($object->table_element) && isset($extrafields->att
 		if ($extrafields->attributes[$object->table_element]['type'][$tmpkeyextra] == 'separate') {
 			$extrafields_collapse_num = $tmpkeyextra;
 
-			print $extrafields->showSeparator($tmpkeyextra, $object);
+			echo $extrafields->showSeparator($tmpkeyextra, $object);
 
 			$lastseparatorkeyfound = $tmpkeyextra;
 		} else {
 			$collapse_group = $extrafields_collapse_num.(!empty($object->id) ? '_'.$object->id : '');
 
-			print '<tr class="trextrafields_collapse'.$collapse_group;
+			echo '<tr class="trextrafields_collapse'.$collapse_group;
 			/*if ($extrafields_collapse_num && $extrafields_collapse_num_old && $extrafields_collapse_num != $extrafields_collapse_num_old) {
-				print ' trextrafields_collapse_new';
+				echo ' trextrafields_collapse_new';
 			}*/
 			if ($extrafields_collapse_num && $i == count($extrafields->attributes[$object->table_element]['label'])) {
-				print ' trextrafields_collapse_last';
+				echo ' trextrafields_collapse_last';
 			}
-			print '"';
+			echo '"';
 			if (isset($extrafields->expand_display) && empty($extrafields->expand_display[$collapse_group])) {
-				print ' style="display: none;"';
+				echo ' style="display: none;"';
 			}
-			print '>';
+			echo '>';
 			$extrafields_collapse_num_old = $extrafields_collapse_num;
-			print '<td>';
-			print '<table class="nobordernopadding centpercent">';
-			print '<tr>';
+			echo '<td>';
+			echo '<table class="nobordernopadding centpercent">';
+			echo '<tr>';
 
-			print '<td class="';
+			echo '<td class="';
 			if ((!empty($action) && ($action == 'create' || $action == 'edit')) && !empty($extrafields->attributes[$object->table_element]['required'][$tmpkeyextra])) {
-				print ' fieldrequired';
+				echo ' fieldrequired';
 			}
-			print '">';
+			echo '">';
 			if (!empty($extrafields->attributes[$object->table_element]['help'][$tmpkeyextra])) {
 				// You can also use 'TranslationString:keyfortooltiponlick' for a tooltip on click.
 				$tmptooltip = explode(':', $extrafields->attributes[$object->table_element]['help'][$tmpkeyextra]);
-				print $form->textwithpicto($langs->trans($tmplabelextra), $langs->trans($tmptooltip[0]), 1, 'help', '', 0, 3, (empty($tmptooltip[1]) ? '' : 'extra_'.$tmpkeyextra.'_'.$tmptooltip[1]));
+				echo $form->textwithpicto($langs->trans($tmplabelextra), $langs->trans($tmptooltip[0]), 1, 'help', '', 0, 3, (empty($tmptooltip[1]) ? '' : 'extra_'.$tmpkeyextra.'_'.$tmptooltip[1]));
 			} else {
-				print $langs->trans($tmplabelextra);
+				echo $langs->trans($tmplabelextra);
 			}
-			print '</td>';
+			echo '</td>';
 
 			//TODO Improve element and rights detection
 			//var_dump($user->rights);
@@ -208,33 +208,33 @@ if (empty($reshook) && !empty($object->table_element) && isset($extrafields->att
 					$fieldid = 'socid';
 				}
 
-				print '<td class="right"><a class="reposition editfielda" href="'.$_SERVER['PHP_SELF'].'?'.$fieldid.'='.$valueid.'&action=edit_extras&token='.newToken().'&attribute='.$tmpkeyextra.'&ignorecollapsesetup=1">'.img_edit().'</a></td>';
+				echo '<td class="right"><a class="reposition editfielda" href="'.$_SERVER['PHP_SELF'].'?'.$fieldid.'='.$valueid.'&action=edit_extras&token='.newToken().'&attribute='.$tmpkeyextra.'&ignorecollapsesetup=1">'.img_edit().'</a></td>';
 			}
-			print '</tr></table>';
-			print '</td>';
+			echo '</tr></table>';
+			echo '</td>';
 
 			$cssview = !empty($extrafields->attributes[$object->table_element]['cssview'][$tmpkeyextra]) ? ($extrafields->attributes[$object->table_element]['cssview'][$tmpkeyextra] . ' ') : '';
 			$html_id = !empty($object->id) ? $object->element.'_extras_'.$tmpkeyextra.'_'.$object->id : '';
 
-			print '<td id="' . $html_id . '" class="valuefield ' . $cssview . $object->element . '_extras_' . $tmpkeyextra . ' wordbreakimp"' . (!empty($cols) ? ' colspan="' . $cols . '"' : '') . '>';
+			echo '<td id="' . $html_id . '" class="valuefield ' . $cssview . $object->element . '_extras_' . $tmpkeyextra . ' wordbreakimp"' . (!empty($cols) ? ' colspan="' . $cols . '"' : '') . '>';
 
 			// Convert date into timestamp format
 			if (in_array($extrafields->attributes[$object->table_element]['type'][$tmpkeyextra], array('date'))) {
 				$datenotinstring = empty($object->array_options['options_'.$tmpkeyextra]) ? '' : $object->array_options['options_'.$tmpkeyextra];
-				// print 'X'.$object->array_options['options_' . $tmpkeyextra].'-'.$datenotinstring.'x';
+				// echo 'X'.$object->array_options['options_' . $tmpkeyextra].'-'.$datenotinstring.'x';
 				if (!empty($object->array_options['options_'.$tmpkeyextra]) && !is_numeric($object->array_options['options_'.$tmpkeyextra])) {	// For backward compatibility
 					$datenotinstring = $db->jdate($datenotinstring);
 				}
-				//print 'x'.$object->array_options['options_' . $tmpkeyextra].'-'.$datenotinstring.' - '.dol_print_date($datenotinstring, 'dayhour');
+				//echo 'x'.$object->array_options['options_' . $tmpkeyextra].'-'.$datenotinstring.' - '.dol_print_date($datenotinstring, 'dayhour');
 				$value = GETPOSTISSET("options_".$tmpkeyextra) ? dol_mktime(12, 0, 0, GETPOSTINT("options_".$tmpkeyextra."month"), GETPOSTINT("options_".$tmpkeyextra."day"), GETPOSTINT("options_".$tmpkeyextra."year")) : $datenotinstring;
 			}
 			if (in_array($extrafields->attributes[$object->table_element]['type'][$tmpkeyextra], array('datetime'))) {
 				$datenotinstring = empty($object->array_options['options_'.$tmpkeyextra]) ? '' : $object->array_options['options_'.$tmpkeyextra];
-				// print 'X'.$object->array_options['options_' . $tmpkeyextra].'-'.$datenotinstring.'x';
+				// echo 'X'.$object->array_options['options_' . $tmpkeyextra].'-'.$datenotinstring.'x';
 				if (!empty($object->array_options['options_'.$tmpkeyextra]) && !is_numeric($object->array_options['options_'.$tmpkeyextra])) {	// For backward compatibility
 					$datenotinstring = $db->jdate($datenotinstring);
 				}
-				//print 'x'.$object->array_options['options_' . $tmpkeyextra].'-'.$datenotinstring.' - '.dol_print_date($datenotinstring, 'dayhour');
+				//echo 'x'.$object->array_options['options_' . $tmpkeyextra].'-'.$datenotinstring.' - '.dol_print_date($datenotinstring, 'dayhour');
 				$value = GETPOSTISSET("options_".$tmpkeyextra) ? dol_mktime(GETPOSTINT("options_".$tmpkeyextra."hour"), GETPOSTINT("options_".$tmpkeyextra."min"), GETPOSTINT("options_".$tmpkeyextra."sec"), GETPOSTINT("options_".$tmpkeyextra."month"), GETPOSTINT("options_".$tmpkeyextra."day"), GETPOSTINT("options_".$tmpkeyextra."year"), 'tzuserrel') : $datenotinstring;
 			}
 
@@ -244,31 +244,31 @@ if (empty($reshook) && !empty($object->table_element) && isset($extrafields->att
 				if ($object->table_element == 'societe') {
 					$fieldid = 'socid';
 				}
-				print '<form enctype="multipart/form-data" action="'.$_SERVER["PHP_SELF"] . '?' . $fieldid . '=' . $object->id . '" method="post" name="formextra">';
-				print '<input type="hidden" name="action" value="update_extras">';
-				print '<input type="hidden" name="attribute" value="'.$tmpkeyextra.'">';
-				print '<input type="hidden" name="token" value="'.newToken().'">';
-				print '<input type="hidden" name="'.$fieldid.'" value="'.$object->id.'">';
-				print $extrafields->showInputField($tmpkeyextra, $value, '', '', '', 0, $object->id, $object->table_element);
+				echo '<form enctype="multipart/form-data" action="'.$_SERVER["PHP_SELF"] . '?' . $fieldid . '=' . $object->id . '" method="post" name="formextra">';
+				echo '<input type="hidden" name="action" value="update_extras">';
+				echo '<input type="hidden" name="attribute" value="'.$tmpkeyextra.'">';
+				echo '<input type="hidden" name="token" value="'.newToken().'">';
+				echo '<input type="hidden" name="'.$fieldid.'" value="'.$object->id.'">';
+				echo $extrafields->showInputField($tmpkeyextra, $value, '', '', '', 0, $object->id, $object->table_element);
 
-				print '<input type="submit" class="button" value="'.dol_escape_htmltag($langs->trans('Modify')).'">';
+				echo '<input type="submit" class="button" value="'.dol_escape_htmltag($langs->trans('Modify')).'">';
 
-				print '</form>';
+				echo '</form>';
 			} else {
 				//var_dump($tmpkeyextra.'-'.$value.'-'.$object->table_element);
-				print $extrafields->showOutputField($tmpkeyextra, $value, '', $object->table_element);
+				echo $extrafields->showOutputField($tmpkeyextra, $value, '', $object->table_element);
 			}
 
-			print '</td>';
-			print '</tr>'."\n";
+			echo '</td>';
+			echo '</tr>'."\n";
 		}
 	}
 
 	// Add code to manage list depending on others
 	// TODO Test/enhance this with a more generic solution
 	if (!empty($conf->use_javascript_ajax)) {
-		print "\n";
-		print '
+		echo "\n";
+		echo '
 				<script>
 				    jQuery(document).ready(function() {
 				    	function showOptions(child_list, parent_list)

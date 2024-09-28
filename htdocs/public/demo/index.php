@@ -153,7 +153,7 @@ foreach ($modulesdir as $dir) {
 	$handle = @opendir($dir);
 	if (is_resource($handle)) {
 		while (($file = readdir($handle)) !== false) {
-			//print "$i ".$file."\n<br>";
+			//echo "$i ".$file."\n<br>";
 			if (is_readable($dir.$file) && substr($file, 0, 3) == 'mod' && substr($file, dol_strlen($file) - 10) == '.class.php') {
 				$modName = substr($file, 0, dol_strlen($file) - 10);
 
@@ -183,7 +183,7 @@ foreach ($modulesdir as $dir) {
 							$modules[$i] = $objMod;
 							$filename[$i] = $modName;
 							$orders[$i]  = $objMod->family."_".$j; // Tri par famille puis numero module
-							//print "x".$modName." ".$orders[$i]."\n<br>";
+							//echo "x".$modName." ".$orders[$i]."\n<br>";
 							$j++;
 							$i++;
 						}
@@ -204,7 +204,7 @@ asort($orders);
  */
 
 if (GETPOST('action', 'aZ09') == 'gotodemo') {     // Action run when we click on "Start" after selection modules
-	//print 'ee'.GETPOST("demochoice");
+	//echo 'ee'.GETPOST("demochoice");
 	$disablestring = '';
 	// If we disable modules using a profile choice
 	if (GETPOST("demochoice")) {
@@ -277,29 +277,29 @@ jQuery(document).ready(function () {
 llxHeaderVierge($langs->trans("GestimagDemo"), $head);
 
 
-print "\n";
+echo "\n";
 
-print '<div class="demoban demobackground">';
-print '<div class="right" style="padding-right: 30px; padding-top: 30px;">';
-print '<a alt="Official portal of your ERP CRM application" targe="_blank" href="https://www.gestimag.org?utm_medium=website&utm_source=demo"><img class="demologo" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" alt="Gestimag logo"></a>';
-print '</div>';
-print '</div>';
+echo '<div class="demoban demobackground">';
+echo '<div class="right" style="padding-right: 30px; padding-top: 30px;">';
+echo '<a alt="Official portal of your ERP CRM application" targe="_blank" href="https://www.gestimag.org?utm_medium=website&utm_source=demo"><img class="demologo" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" alt="Gestimag logo"></a>';
+echo '</div>';
+echo '</div>';
 
-print '<div class="demobantext" style="max-width: 1024px;">';
-print '<div style="font-size: 20px; padding: 40px;">';
-print '<div class="hideonsmartphone" style="text-align: justify;">'.$langs->trans("DemoDesc").'</div><br>';
-print '<div class="titre"><span style="font-size: 20px">'.$langs->trans("ChooseYourDemoProfil").'</span></div>';
-print '</div>';
-print '</div>';
+echo '<div class="demobantext" style="max-width: 1024px;">';
+echo '<div style="font-size: 20px; padding: 40px;">';
+echo '<div class="hideonsmartphone" style="text-align: justify;">'.$langs->trans("DemoDesc").'</div><br>';
+echo '<div class="titre"><span style="font-size: 20px">'.$langs->trans("ChooseYourDemoProfil").'</span></div>';
+echo '</div>';
+echo '</div>';
 
 
-print '<div class="clearboth"></div>';
-print '<div class="demobanbox">';
+echo '<div class="clearboth"></div>';
+echo '<div class="demobanbox">';
 
 $i = 0;
 foreach ($demoprofiles as $profilearray) {
 	if ($profilearray['default'] >= 0) {
-		//print $profilearray['lang'];
+		//echo $profilearray['lang'];
 		if (!empty($profilearray['lang'])) {
 			$langs->load($profilearray['lang']);
 		}
@@ -307,10 +307,10 @@ foreach ($demoprofiles as $profilearray) {
 		$url = $_SERVER["PHP_SELF"].'?action=gotodemo';
 		$urlwithmod = $url.'&amp;demochoice='.$profilearray['key'];
 		// Should work with DOL_URL_ROOT='' or DOL_URL_ROOT='/gestimag'
-		//print "xx".$_SERVER["PHP_SELF"].' '.DOL_URL_ROOT.'<br>';
+		//echo "xx".$_SERVER["PHP_SELF"].' '.DOL_URL_ROOT.'<br>';
 
 		$urlfrom = preg_replace('/^'.preg_quote(DOL_URL_ROOT, '/').'/i', '', $_SERVER["PHP_SELF"]);
-		//print $urlfrom;
+		//echo $urlfrom;
 
 		if (!empty($profilearray['url'])) {
 			$urlwithmod = $profilearray['url'];
@@ -321,54 +321,54 @@ foreach ($demoprofiles as $profilearray) {
 		}
 
 		if (empty($profilearray['url'])) {
-			print '<div class="clearboth"></div>';
+			echo '<div class="clearboth"></div>';
 		}
 
-		print '<form method="POST" class="valigntop inline-block" name="form'.$profilearray['key'].'" id="form'.$profilearray['key'].'" action="'.$_SERVER["PHP_SELF"].'#a1'.$profilearray['key'].'">'."\n";
-		print '<input type="hidden" name="action" value="gotodemo">'."\n";
-		print '<input type="hidden" name="urlfrom" value="'.dol_escape_htmltag($urlfrom).'">'."\n";
-		print '<input type="hidden" name="token" value="'.newToken().'">'."\n";
-		print '<input type="hidden" name="username" value="demo">'."\n";
-		print '<input type="hidden" name="dol_hide_topmenu" value="'.$conf->dol_hide_topmenu.'">'."\n";
-		print '<input type="hidden" name="dol_hide_leftmenu" value="'.$conf->dol_hide_leftmenu.'">'."\n";
-		print '<input type="hidden" name="dol_optimize_smallscreen" value="'.$conf->dol_optimize_smallscreen.'">'."\n";
-		print '<input type="hidden" name="dol_no_mouse_hover" value="'.$conf->dol_no_mouse_hover.'">'."\n";
-		print '<input type="hidden" name="dol_use_jmobile" value="'.$conf->dol_use_jmobile.'">'."\n";
+		echo '<form method="POST" class="valigntop inline-block" name="form'.$profilearray['key'].'" id="form'.$profilearray['key'].'" action="'.$_SERVER["PHP_SELF"].'#a1'.$profilearray['key'].'">'."\n";
+		echo '<input type="hidden" name="action" value="gotodemo">'."\n";
+		echo '<input type="hidden" name="urlfrom" value="'.dol_escape_htmltag($urlfrom).'">'."\n";
+		echo '<input type="hidden" name="token" value="'.newToken().'">'."\n";
+		echo '<input type="hidden" name="username" value="demo">'."\n";
+		echo '<input type="hidden" name="dol_hide_topmenu" value="'.$conf->dol_hide_topmenu.'">'."\n";
+		echo '<input type="hidden" name="dol_hide_leftmenu" value="'.$conf->dol_hide_leftmenu.'">'."\n";
+		echo '<input type="hidden" name="dol_optimize_smallscreen" value="'.$conf->dol_optimize_smallscreen.'">'."\n";
+		echo '<input type="hidden" name="dol_no_mouse_hover" value="'.$conf->dol_no_mouse_hover.'">'."\n";
+		echo '<input type="hidden" name="dol_use_jmobile" value="'.$conf->dol_use_jmobile.'">'."\n";
 
-		print '<div id="div'.$profilearray['key'].'" summary="Gestimag online demonstration for profile '.$profilearray['label'].'" class="center inline-block CTable CTableRow'.($i % 2 == 0 ? '1' : '0').'">'."\n";
+		echo '<div id="div'.$profilearray['key'].'" summary="Gestimag online demonstration for profile '.$profilearray['label'].'" class="center inline-block CTable CTableRow'.($i % 2 == 0 ? '1' : '0').'">'."\n";
 
 
-		print '<div id="a1'.$profilearray['key'].'" class="demobox '.(empty($profilearray['url']) ? 'modulelineshow cursorpointer maxwidth1000' : 'nomodulelines').'">';
+		echo '<div id="a1'.$profilearray['key'].'" class="demobox '.(empty($profilearray['url']) ? 'modulelineshow cursorpointer maxwidth1000' : 'nomodulelines').'">';
 
-		print '<a href="'.$urlwithmod.'" class="'.(empty($profilearray['url']) ? 'modulelineshow' : 'nomodulelines').'">';
-		print '<div style="padding: 10px;">';
+		echo '<a href="'.$urlwithmod.'" class="'.(empty($profilearray['url']) ? 'modulelineshow' : 'nomodulelines').'">';
+		echo '<div style="padding: 10px;">';
 
-		print '<img class="demothumb" src="'.$profilearray['icon'].'" alt="Demo '.$profilearray['label'].'">';
+		echo '<img class="demothumb" src="'.$profilearray['icon'].'" alt="Demo '.$profilearray['label'].'">';
 
-		print '<div class="clearboth"></div>';
+		echo '<div class="clearboth"></div>';
 
-		print '<div class="demothumbtext">';
-		print $langs->trans($profilearray['label']);
-		print '</div>';
+		echo '<div class="demothumbtext">';
+		echo $langs->trans($profilearray['label']);
+		echo '</div>';
 
-		print '</div>';
-		print '</a>';
+		echo '</div>';
+		echo '</a>';
 
 
 		// Modules (a profile you must choose modules)
 		if (empty($profilearray['url'])) {
-			print '<div id="tr1'.$profilearray['key'].'" class="moduleline hidden" style="margin-left: 8px; margin-right: 8px; text-align: justify; font-size:0.75em; padding-bottom: 8px">';
+			echo '<div id="tr1'.$profilearray['key'].'" class="moduleline hidden" style="margin-left: 8px; margin-right: 8px; text-align: justify; font-size:0.75em; padding-bottom: 8px">';
 
-			print '<span class="opacitymedium small">'.$langs->trans("ThisIsListOfModules").'</span><br><br>';
+			echo '<span class="opacitymedium small">'.$langs->trans("ThisIsListOfModules").'</span><br><br>';
 
-			print '<div class="csscolumns">';
+			echo '<div class="csscolumns">';
 
 			$listofdisabledmodules = explode(',', $profilearray['disablemodules']);
 			$j = 0;
 			//$nbcolsmod = empty($conf->dol_optimize_smallscreen) ? 4 : 3;
 			//var_dump($modules);
 			foreach ($orders as $index => $key) { // Loop on qualified (enabled) modules
-				//print $index.' '.$key;
+				//echo $index.' '.$key;
 				$val = $modules[$index];
 				$modulekeyname = strtolower($val->name);
 
@@ -387,75 +387,75 @@ foreach ($demoprofiles as $profilearray) {
 				}
 
 				if (in_array($modulekeyname, $alwayshiddencheckedmodules)) {
-					print "\n".'<!-- Module '.$modulekeyname.' hidden and always checked -->';
-					print '<input type="hidden" name="'.$modulekeyname.'" value="1">';
+					echo "\n".'<!-- Module '.$modulekeyname.' hidden and always checked -->';
+					echo '<input type="hidden" name="'.$modulekeyname.'" value="1">';
 				} else {
 					//$modulo = ($j % $nbcolsmod);
-					//if ($modulo == 0) print '<tr>';
-					print '<!-- id='.$val->numero.' -->';
-					print '<div class="nowrap">';
-					print '<input type="checkbox" class="checkbox valignmiddle paddingright" id="id'.$modulekeyname.'" name="'.$modulekeyname.'" value="1" title="'.dol_escape_htmltag($val->getName()).'"';
+					//if ($modulo == 0) echo '<tr>';
+					echo '<!-- id='.$val->numero.' -->';
+					echo '<div class="nowrap">';
+					echo '<input type="checkbox" class="checkbox valignmiddle paddingright" id="id'.$modulekeyname.'" name="'.$modulekeyname.'" value="1" title="'.dol_escape_htmltag($val->getName()).'"';
 					$disabled = '';
 					if (in_array($modulekeyname, $alwaysuncheckedmodules)) {
 						$disabled = 'disabled';
-						print ' '.$disabled;
+						echo ' '.$disabled;
 					}
 					if (!in_array($modulekeyname, $alwaysuncheckedmodules) && (!in_array($modulekeyname, $listofdisabledmodules) || in_array($modulekeyname, $alwayscheckedmodules))) {
-						print ' checked';
+						echo ' checked';
 					}
-					print '>';
+					echo '>';
 					/*
 					$s = img_picto('', $modulekeyname, 'class="pictofixedwidth paddingleft"');
 					if ($s) {
-						print $s;
+						echo $s;
 					} else {
-						print img_picto('', 'generic', 'class="pictofixedwidth paddingleft"');
+						echo img_picto('', 'generic', 'class="pictofixedwidth paddingleft"');
 					}*/
-					print '<label for="id'.$modulekeyname.'" class="inline-block demomaxoveflow valignmiddle paddingleft'.($disabled ? ' opacitymedium' : '').'" title="'.dol_escape_htmltag($val->getName()).'">'.$val->getName().'</label><br>';
-					print '</div>';
-					//if ($modulo == ($nbcolsmod - 1)) print '</tr>';
+					echo '<label for="id'.$modulekeyname.'" class="inline-block demomaxoveflow valignmiddle paddingleft'.($disabled ? ' opacitymedium' : '').'" title="'.dol_escape_htmltag($val->getName()).'">'.$val->getName().'</label><br>';
+					echo '</div>';
+					//if ($modulo == ($nbcolsmod - 1)) echo '</tr>';
 					$j++;
 				}
 			}
 
-			print '</div>';
+			echo '</div>';
 
-			print '<br><div class="center">';
-			print '<input type="submit" value=" &nbsp; &nbsp; '.$langs->trans("Start").' &nbsp; &nbsp; " class="button">';
-			print '<br><br>';
-			print '</div>';
+			echo '<br><div class="center">';
+			echo '<input type="submit" value=" &nbsp; &nbsp; '.$langs->trans("Start").' &nbsp; &nbsp; " class="button">';
+			echo '<br><br>';
+			echo '</div>';
 
-			print '</div>';
+			echo '</div>';
 		}
 
-		print '</div></div>';
-		print '</form>'."\n";
+		echo '</div></div>';
+		echo '</form>'."\n";
 
 		$i++;
 	}
 }
 
-print '</div>';
+echo '</div>';
 
-print '<br>';
+echo '<br>';
 
 
 // TODO Replace this with a hook
 // Google Adsense (need Google module)
 if (isModEnabled('google') && getDolGlobalString('MAIN_GOOGLE_AD_CLIENT') && getDolGlobalString('MAIN_GOOGLE_AD_SLOT')) {
 	if (empty($conf->dol_use_jmobile)) {
-		print '<div align="center">'."\n";
-		print '<script><!--'."\n";
-		print 'google_ad_client = "' . getDolGlobalString('MAIN_GOOGLE_AD_CLIENT').'";'."\n";
-		print 'google_ad_slot = "' . getDolGlobalString('MAIN_GOOGLE_AD_SLOT').'";'."\n";
-		print 'google_ad_width = ' . getDolGlobalString('MAIN_GOOGLE_AD_WIDTH').';'."\n";
-		print 'google_ad_height = ' . getDolGlobalString('MAIN_GOOGLE_AD_HEIGHT').';'."\n";
-		print '//-->'."\n";
-		print '</script>'."\n";
-		print '<script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>'."\n";
-		print '</div>'."\n";
+		echo '<div align="center">'."\n";
+		echo '<script><!--'."\n";
+		echo 'google_ad_client = "' . getDolGlobalString('MAIN_GOOGLE_AD_CLIENT').'";'."\n";
+		echo 'google_ad_slot = "' . getDolGlobalString('MAIN_GOOGLE_AD_SLOT').'";'."\n";
+		echo 'google_ad_width = ' . getDolGlobalString('MAIN_GOOGLE_AD_WIDTH').';'."\n";
+		echo 'google_ad_height = ' . getDolGlobalString('MAIN_GOOGLE_AD_HEIGHT').';'."\n";
+		echo '//-->'."\n";
+		echo '</script>'."\n";
+		echo '<script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>'."\n";
+		echo '</div>'."\n";
 	} else {
-		print '<!-- google js advert tag disabled with jmobile -->'."\n";
+		echo '<!-- google js advert tag disabled with jmobile -->'."\n";
 	}
 }
 
@@ -477,7 +477,7 @@ function llxHeaderVierge($title, $head = "")
 
 	top_htmlhead($head, $title, 0, 0, array(), array('public/demo/demo.css'), 0, 1);
 
-	print '<body class="demobody"><div class="demobackgrounddiv">'."\n";
+	echo '<body class="demobody"><div class="demobackgrounddiv">'."\n";
 }
 
 /**
@@ -489,7 +489,7 @@ function llxFooterVierge()
 {
 	printCommonFooter('public');
 
-	print "\n";
-	print "</div></body>\n";
-	print "</html>\n";
+	echo "\n";
+	echo "</div></body>\n";
+	echo "</html>\n";
 }

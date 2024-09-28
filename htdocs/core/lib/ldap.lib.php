@@ -102,20 +102,20 @@ function ldap_prepare_head()
 function show_ldap_test_button($butlabel, $testlabel, $key, $dn, $objectclass)
 {
 	global $langs, $conf, $user;
-	//print 'key='.$key.' dn='.$dn.' objectclass='.$objectclass;
+	//echo'key='.$key.' dn='.$dn.' objectclass='.$objectclass;
 
-	print '<br>';
+	echo'<br>';
 	if (!function_exists("ldap_connect")) {
-		print '<a class="butActionRefused classfortooltip" href="#" title="'.$langs->trans('LDAPFunctionsNotAvailableOnPHP').'">'.$butlabel.'</a>';
+		echo'<a class="butActionRefused classfortooltip" href="#" title="'.$langs->trans('LDAPFunctionsNotAvailableOnPHP').'">'.$butlabel.'</a>';
 	} elseif (!getDolGlobalString('LDAP_SERVER_HOST')) {
-		print '<a class="butActionRefused classfortooltip" href="#" title="'.$langs->trans('LDAPSetupNotComplete').'">'.$butlabel.'</a>';
+		echo'<a class="butActionRefused classfortooltip" href="#" title="'.$langs->trans('LDAPSetupNotComplete').'">'.$butlabel.'</a>';
 	} elseif (empty($key) || empty($dn) || empty($objectclass)) {
 		$langs->load("errors");
-		print '<a class="butActionRefused classfortooltip" href="#" title="'.$langs->trans('ErrorLDAPSetupNotComplete').'">'.$butlabel.'</a>';
+		echo'<a class="butActionRefused classfortooltip" href="#" title="'.$langs->trans('ErrorLDAPSetupNotComplete').'">'.$butlabel.'</a>';
 	} else {
-		print '<a class="butAction reposition" href="'.$_SERVER["PHP_SELF"].'?action='.$testlabel.'">'.$butlabel.'</a>';
+		echo'<a class="butAction reposition" href="'.$_SERVER["PHP_SELF"].'?action='.$testlabel.'">'.$butlabel.'</a>';
 	}
-	print '<br><br>';
+	echo'<br><br>';
 }
 
 /**
@@ -162,10 +162,10 @@ function show_ldap_content($result, $level, $count, $var, $hide = 0, $subcount =
 		if (is_array($val)) {
 			$hide = 0;
 			if (!is_numeric($key)) {
-				print '<tr class="oddeven">';
-				print '<td>';
-				print $key;
-				print '</td><td>';
+				echo'<tr class="oddeven">';
+				echo'<td>';
+				echo$key;
+				echo'</td><td>';
 				if (strtolower($key) == 'userpassword') {
 					$hide = 1;
 				}
@@ -175,14 +175,14 @@ function show_ldap_content($result, $level, $count, $var, $hide = 0, $subcount =
 			$subcount--;
 			$newstring = dol_htmlentitiesbr($val);
 			if ($hide) {
-				print preg_replace('/./i', '*', $newstring);
+				echopreg_replace('/./i', '*', $newstring);
 			} else {
-				print $newstring;
+				echo$newstring;
 			}
-			print '<br>';
+			echo'<br>';
 		}
 		if (!is_array($val) && "$val" != $lastkey[$level] && !$subcount) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		}
 	}
 	return 1;

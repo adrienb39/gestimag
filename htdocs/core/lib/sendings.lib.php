@@ -267,34 +267,34 @@ function show_list_sending_receive($origin, $origin_id, $filter = '')
 
 		if ($num) {
 			if ($filter) {
-				print load_fiche_titre($langs->trans("OtherSendingsForSameOrder"));
+				echo load_fiche_titre($langs->trans("OtherSendingsForSameOrder"));
 			} else {
-				print load_fiche_titre($langs->trans("SendingsAndReceivingForSameOrder"));
+				echo load_fiche_titre($langs->trans("SendingsAndReceivingForSameOrder"));
 			}
 
-			print '<table class="liste centpercent">';
-			print '<tr class="liste_titre">';
-			//print '<td class="left">'.$langs->trans("QtyOrdered").'</td>';
-			print '<td>'.$langs->trans("SendingSheet").'</td>';
-			print '<td>'.$langs->trans("Description").'</td>';
-			print '<td class="center">'.$langs->trans("DateCreation").'</td>';
-			print '<td class="center">'.$langs->trans("DateDeliveryPlanned").'</td>';
-			print '<td class="center">'.$langs->trans("QtyPreparedOrShipped").'</td>';
+			echo '<table class="liste centpercent">';
+			echo '<tr class="liste_titre">';
+			//echo '<td class="left">'.$langs->trans("QtyOrdered").'</td>';
+			echo '<td>'.$langs->trans("SendingSheet").'</td>';
+			echo '<td>'.$langs->trans("Description").'</td>';
+			echo '<td class="center">'.$langs->trans("DateCreation").'</td>';
+			echo '<td class="center">'.$langs->trans("DateDeliveryPlanned").'</td>';
+			echo '<td class="center">'.$langs->trans("QtyPreparedOrShipped").'</td>';
 			if (isModEnabled('stock')) {
-				print '<td>'.$langs->trans("Warehouse").'</td>';
+				echo '<td>'.$langs->trans("Warehouse").'</td>';
 			}
 			/*TODO Add link to expeditiondet_batch
 			if (!empty($conf->productbatch->enabled))
 			{
-				print '<td>';
-				print '</td>';
+				echo '<td>';
+				echo '</td>';
 			}*/
 			if (getDolGlobalInt('MAIN_SUBMODULE_DELIVERY')) {
-				print '<td>'.$langs->trans("DeliveryOrder").'</td>';
-				//print '<td class="center">'.$langs->trans("QtyReceived").'</td>';
-				print '<td class="right">'.$langs->trans("DeliveryDate").'</td>';
+				echo '<td>'.$langs->trans("DeliveryOrder").'</td>';
+				//echo '<td class="center">'.$langs->trans("QtyReceived").'</td>';
+				echo '<td class="right">'.$langs->trans("DeliveryDate").'</td>';
 			}
-			print "</tr>\n";
+			echo "</tr>\n";
 
 			while ($i < $num) {
 				$objp = $db->fetch_object($resql);
@@ -305,13 +305,13 @@ function show_list_sending_receive($origin, $origin_id, $filter = '')
 				$expedition->statut = $objp->status;
 				$expedition->status = $objp->status;
 
-				print '<tr class="oddeven">';
+				echo '<tr class="oddeven">';
 
 				// Sending id
-				print '<td class="nowrap left">';
-				print $expedition->getNomUrl(1);
-				//print '<a href="'.DOL_URL_ROOT.'/expedition/card.php?id='.$objp->expedition_id.'">'.img_object($langs->trans("ShowSending"), 'sending').' '.$objp->exp_ref.'<a>';
-				print '</td>';
+				echo '<td class="nowrap left">';
+				echo $expedition->getNomUrl(1);
+				//echo '<a href="'.DOL_URL_ROOT.'/expedition/card.php?id='.$objp->expedition_id.'">'.img_object($langs->trans("ShowSending"), 'sending').' '.$objp->exp_ref.'<a>';
+				echo '</td>';
 
 				// Description
 				if ($objp->fk_product > 0) {
@@ -343,7 +343,7 @@ function show_list_sending_receive($origin, $origin_id, $filter = '')
 						$label = (!empty($objp->label) ? $objp->label : $objp->product_label);
 					}
 
-					print '<td>';
+					echo '<td>';
 
 					// Show product and description
 					$product_static->type = $objp->fk_product_type;
@@ -354,19 +354,19 @@ function show_list_sending_receive($origin, $origin_id, $filter = '')
 					$text = $product_static->getNomUrl(1);
 					$text .= ' - '.$label;
 					$description = (getDolGlobalInt('PRODUIT_DESC_IN_FORM_ACCORDING_TO_DEVICE') ? '' : dol_htmlentitiesbr($objp->description));
-					print $form->textwithtooltip($text, $description, 3, '', '', $i);
+					echo $form->textwithtooltip($text, $description, 3, '', '', $i);
 
 					// Show range
 					print_date_range($objp->date_start, $objp->date_end);
 
 					// Add description in form
 					if (getDolGlobalInt('PRODUIT_DESC_IN_FORM_ACCORDING_TO_DEVICE')) {
-						print (!empty($objp->description) ? ((empty($objp->product) || $objp->description != $objp->product) ? '<br>'.dol_htmlentitiesbr($objp->description) : '') : '');
+						echo (!empty($objp->description) ? ((empty($objp->product) || $objp->description != $objp->product) ? '<br>'.dol_htmlentitiesbr($objp->description) : '') : '');
 					}
 
-					print '</td>';
+					echo '</td>';
 				} else {
-					print "<td>";
+					echo "<td>";
 					if ($objp->fk_product_type == 1) {
 						$text = img_object($langs->trans('Service'), 'service');
 					} else {
@@ -375,35 +375,35 @@ function show_list_sending_receive($origin, $origin_id, $filter = '')
 
 					if (!empty($objp->label)) {
 						$text .= ' <strong>'.$objp->label.'</strong>';
-						print $form->textwithtooltip($text, $objp->description, 3, '', '', $i);
+						echo $form->textwithtooltip($text, $objp->description, 3, '', '', $i);
 					} else {
-						print $text.' '.nl2br($objp->description);
+						echo $text.' '.nl2br($objp->description);
 					}
 
 					// Show range
 					print_date_range($objp->date_start, $objp->date_end);
-					print "</td>\n";
+					echo "</td>\n";
 				}
 
-				//print '<td class="center">'.$objp->qty_asked.'</td>';
+				//echo '<td class="center">'.$objp->qty_asked.'</td>';
 
 				// Date creation
-				print '<td class="nowrap center">'.dol_print_date($db->jdate($objp->date_creation), 'day').'</td>';
+				echo '<td class="nowrap center">'.dol_print_date($db->jdate($objp->date_creation), 'day').'</td>';
 
 				// Date shipping creation
-				print '<td class="nowrap center">'.dol_print_date($db->jdate($objp->date_delivery), 'day').'</td>';
+				echo '<td class="nowrap center">'.dol_print_date($db->jdate($objp->date_delivery), 'day').'</td>';
 
 				// Qty shipped
-				print '<td class="center">'.$objp->qty_shipped.'</td>';
+				echo '<td class="center">'.$objp->qty_shipped.'</td>';
 
 				// Warehouse
 				if (isModEnabled('stock')) {
-					print '<td>';
+					echo '<td>';
 					if ($objp->warehouse_id > 0) {
 						$warehousestatic->fetch($objp->warehouse_id);
-						print $warehousestatic->getNomUrl(1);
+						echo $warehousestatic->getNomUrl(1);
 					}
-					print '</td>';
+					echo '</td>';
 				}
 
 				// Batch number management
@@ -414,7 +414,7 @@ function show_list_sending_receive($origin, $origin_id, $filter = '')
 					$lines[$i]->detail_batch
 					if (isset($lines[$i]->detail_batch))
 					{
-						print '<td>';
+						echo '<td>';
 						if ($lines[$i]->product_tobatch)
 						{
 							$detail = '';
@@ -426,15 +426,15 @@ function show_list_sending_receive($origin, $origin_id, $filter = '')
 								$detail.= ' - '.$langs->trans("Qty").': '.$dbatch->qty;
 								$detail.= '<br>';
 							}
-							print $form->textwithtooltip(img_picto('', 'object_barcode').' '.$langs->trans("DetailBatchNumber"),$detail);
+							echo $form->textwithtooltip(img_picto('', 'object_barcode').' '.$langs->trans("DetailBatchNumber"),$detail);
 						}
 						else
 						{
-							print $langs->trans("NA");
+							echo $langs->trans("NA");
 						}
-						print '</td>';
+						echo '</td>';
 					} else {
-						print '<td></td>';
+						echo '<td></td>';
 					}
 				}*/
 
@@ -456,31 +456,31 @@ function show_list_sending_receive($origin, $origin_id, $filter = '')
 						// $receiving->origin_id may be id of shipping
 
 						// Ref
-						print '<td>';
-						print $receiving->getNomUrl($db);
-						//print '<a href="'.DOL_URL_ROOT.'/delivery/card.php?id='.$livraison_id.'">'.img_object($langs->trans("ShowReceiving"),'sending').' '.$objp->livraison_ref.'<a>';
-						print '</td>';
+						echo '<td>';
+						echo $receiving->getNomUrl($db);
+						//echo '<a href="'.DOL_URL_ROOT.'/delivery/card.php?id='.$livraison_id.'">'.img_object($langs->trans("ShowReceiving"),'sending').' '.$objp->livraison_ref.'<a>';
+						echo '</td>';
 						// Qty received
-						//print '<td class="center">';
+						//echo '<td class="center">';
 						// TODO No solution for the moment to link a line det of receipt with a line det of shipping,
 						// so no way to know the qty received for this line of shipping.
-						//print $langs->trans("FeatureNotYetAvailable");
-						//print '</td>';
+						//echo $langs->trans("FeatureNotYetAvailable");
+						//echo '</td>';
 						// Date shipping real
-						print '<td class="right">';
-						print dol_print_date($receiving->date_delivery, 'day');
-						print '</td>';
+						echo '<td class="right">';
+						echo dol_print_date($receiving->date_delivery, 'day');
+						echo '</td>';
 					} else {
-						//print '<td>&nbsp;</td>';
-						print '<td>&nbsp;</td>';
-						print '<td>&nbsp;</td>';
+						//echo '<td>&nbsp;</td>';
+						echo '<td>&nbsp;</td>';
+						echo '<td>&nbsp;</td>';
 					}
 				}
-				print '</tr>';
+				echo '</tr>';
 				$i++;
 			}
 
-			print '</table>';
+			echo '</table>';
 		}
 		$db->free($resql);
 	} else {

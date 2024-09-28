@@ -438,7 +438,7 @@ if ($action == 'confirm_delete' && !empty($permissiontodelete)) {
 
 		if (empty($noback)) {
 			if (empty($backurlforlist)) {
-				print 'Error backurlforlist is not defined';
+				echo'Error backurlforlist is not defined';
 				exit;
 			}
 			header("Location: " . $backurlforlist);

@@ -551,7 +551,7 @@ class DiscountAbsolute extends CommonObject
 			$obj = $this->db->fetch_object($resql);
 			//while ($obj)
 			//{
-			//print 'zz'.$obj->amount;
+			//echo 'zz'.$obj->amount;
 			//$obj = $this->db->fetch_object($resql);
 			//}
 			if ($multicurrency) {

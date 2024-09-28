@@ -1040,25 +1040,25 @@ function getCustomerInvoiceUnpaidOpenTable($maxCount = 500, $socid = 0)
 
 			$formfile = new FormFile($db);
 
-			print '<div class="div-table-responsive-no-min">';
-			print '<table class="noborder centpercent">';
+			echo'<div class="div-table-responsive-no-min">';
+			echo'<table class="noborder centpercent">';
 
-			print '<tr class="liste_titre">';
-			print '<th colspan="2">';
-			print $langs->trans("BillsCustomersUnpaid", $num).' ';
-			print '<a href="'.DOL_URL_ROOT.'/compta/facture/list.php?search_status='.Facture::STATUS_VALIDATED.'">';
-			print '<span class="badge">'.$num.'</span>';
-			print '</a>';
-			print '</th>';
+			echo'<tr class="liste_titre">';
+			echo'<th colspan="2">';
+			echo$langs->trans("BillsCustomersUnpaid", $num).' ';
+			echo'<a href="'.DOL_URL_ROOT.'/compta/facture/list.php?search_status='.Facture::STATUS_VALIDATED.'">';
+			echo'<span class="badge">'.$num.'</span>';
+			echo'</a>';
+			echo'</th>';
 
-			print '<th class="right">'.$langs->trans("DateDue").'</th>';
+			echo'<th class="right">'.$langs->trans("DateDue").'</th>';
 			if (getDolGlobalString('MAIN_SHOW_HT_ON_SUMMARY')) {
-				print '<th class="right">'.$langs->trans("AmountHT").'</th>';
+				echo'<th class="right">'.$langs->trans("AmountHT").'</th>';
 			}
-			print '<th class="right">'.$langs->trans("AmountTTC").'</th>';
-			print '<th class="right">'.$langs->trans("Received").'</th>';
-			print '<th width="16">&nbsp;</th>';
-			print '</tr>';
+			echo'<th class="right">'.$langs->trans("AmountTTC").'</th>';
+			echo'<th class="right">'.$langs->trans("Received").'</th>';
+			echo'<th width="16">&nbsp;</th>';
+			echo'</tr>';
 			if ($num) {
 				$societestatic = new Societe($db);
 				$total_ttc = $totalam = $total = 0;
@@ -1095,37 +1095,37 @@ function getCustomerInvoiceUnpaidOpenTable($maxCount = 500, $socid = 0)
 					$societestatic->code_compta = $obj->code_compta;
 					$societestatic->code_compta_fournisseur = $obj->code_compta_fournisseur;
 
-					print '<tr class="oddeven">';
-					print '<td class="nowrap">';
+					echo'<tr class="oddeven">';
+					echo'<td class="nowrap">';
 
-					print '<table class="nobordernopadding"><tr class="nocellnopadd">';
-					print '<td class="nobordernopadding nowrap">';
-					print $tmpinvoice->getNomUrl(1, '');
-					print '</td>';
-					print '<td width="16" class="nobordernopadding hideonsmartphone right">';
+					echo'<table class="nobordernopadding"><tr class="nocellnopadd">';
+					echo'<td class="nobordernopadding nowrap">';
+					echo$tmpinvoice->getNomUrl(1, '');
+					echo'</td>';
+					echo'<td width="16" class="nobordernopadding hideonsmartphone right">';
 					$filename = dol_sanitizeFileName($obj->ref);
 					$filedir = $conf->facture->dir_output.'/'.dol_sanitizeFileName($obj->ref);
 					$urlsource = $_SERVER['PHP_SELF'].'?facid='.$obj->rowid;
-					print $formfile->getDocumentsLink($tmpinvoice->element, $filename, $filedir);
-					print '</td></tr></table>';
+					echo$formfile->getDocumentsLink($tmpinvoice->element, $filename, $filedir);
+					echo'</td></tr></table>';
 
-					print '</td>';
-					print '<td class="nowrap tdoverflowmax100">';
-					print $societestatic->getNomUrl(1, 'customer');
-					print '</td>';
-					print '<td class="right">';
-					print dol_print_date($db->jdate($obj->datelimite), 'day');
+					echo'</td>';
+					echo'<td class="nowrap tdoverflowmax100">';
+					echo$societestatic->getNomUrl(1, 'customer');
+					echo'</td>';
+					echo'<td class="right">';
+					echodol_print_date($db->jdate($obj->datelimite), 'day');
 					if ($tmpinvoice->hasDelay()) {
-						print img_warning($langs->trans("Late"));
+						echoimg_warning($langs->trans("Late"));
 					}
-					print '</td>';
+					echo'</td>';
 					if (getDolGlobalString('MAIN_SHOW_HT_ON_SUMMARY')) {
-						print '<td class="right"><span class="amount">'.price($obj->total_ht).'</span></td>';
+						echo'<td class="right"><span class="amount">'.price($obj->total_ht).'</span></td>';
 					}
-					print '<td class="nowrap right"><span class="amount">'.price($obj->total_ttc).'</span></td>';
-					print '<td class="nowrap right"><span class="amount">'.price($obj->am).'</span></td>';
-					print '<td>'.$tmpinvoice->getLibStatut(3, $obj->am).'</td>';
-					print '</tr>';
+					echo'<td class="nowrap right"><span class="amount">'.price($obj->total_ttc).'</span></td>';
+					echo'<td class="nowrap right"><span class="amount">'.price($obj->am).'</span></td>';
+					echo'<td>'.$tmpinvoice->getLibStatut(3, $obj->am).'</td>';
+					echo'</tr>';
 
 					$total_ttc += $obj->total_ttc;
 					$total += $obj->total_ht;
@@ -1139,30 +1139,30 @@ function getCustomerInvoiceUnpaidOpenTable($maxCount = 500, $socid = 0)
 					if (getDolGlobalString('MAIN_SHOW_HT_ON_SUMMARY')) {
 						$colspan++;
 					}
-					print '<tr class="oddeven">';
-					print '<td class="nowrap" colspan="'.$colspan.'">';
-					print '<span class="opacitymedium">'.$langs->trans("More").'... ('.$othernb.')</span>';
-					print '</td>';
-					print "</tr>\n";
+					echo'<tr class="oddeven">';
+					echo'<td class="nowrap" colspan="'.$colspan.'">';
+					echo'<span class="opacitymedium">'.$langs->trans("More").'... ('.$othernb.')</span>';
+					echo'</td>';
+					echo"</tr>\n";
 				}
 
-				print '<tr class="liste_total"><td colspan="2">'.$langs->trans("Total").' &nbsp; <span style="font-weight: normal">('.$langs->trans("RemainderToTake").': '.price($total_ttc - $totalam).')</span> </td>';
-				print '<td>&nbsp;</td>';
+				echo'<tr class="liste_total"><td colspan="2">'.$langs->trans("Total").' &nbsp; <span style="font-weight: normal">('.$langs->trans("RemainderToTake").': '.price($total_ttc - $totalam).')</span> </td>';
+				echo'<td>&nbsp;</td>';
 				if (getDolGlobalString('MAIN_SHOW_HT_ON_SUMMARY')) {
-					print '<td class="right"><span class="amount">'.price($total).'</span></td>';
+					echo'<td class="right"><span class="amount">'.price($total).'</span></td>';
 				}
-				print '<td class="nowrap right"><span class="amount">'.price($total_ttc).'</span></td>';
-				print '<td class="nowrap right"><span class="amount">'.price($totalam).'</span></td>';
-				print '<td>&nbsp;</td>';
-				print '</tr>';
+				echo'<td class="nowrap right"><span class="amount">'.price($total_ttc).'</span></td>';
+				echo'<td class="nowrap right"><span class="amount">'.price($totalam).'</span></td>';
+				echo'<td>&nbsp;</td>';
+				echo'</tr>';
 			} else {
 				$colspan = 6;
 				if (getDolGlobalString('MAIN_SHOW_HT_ON_SUMMARY')) {
 					$colspan++;
 				}
-				print '<tr class="oddeven"><td colspan="'.$colspan.'" class="opacitymedium">'.$langs->trans("NoInvoice").'</td></tr>';
+				echo'<tr class="oddeven"><td colspan="'.$colspan.'" class="opacitymedium">'.$langs->trans("NoInvoice").'</td></tr>';
 			}
-			print '</table></div><br>';
+			echo'</table></div><br>';
 			$db->free($resql);
 		} else {
 			dol_print_error($db);
@@ -1227,25 +1227,25 @@ function getPurchaseInvoiceUnpaidOpenTable($maxCount = 500, $socid = 0)
 
 			$formfile = new FormFile($db);
 
-			print '<div class="div-table-responsive-no-min">';
-			print '<table class="noborder centpercent">';
+			echo'<div class="div-table-responsive-no-min">';
+			echo'<table class="noborder centpercent">';
 
-			print '<tr class="liste_titre">';
-			print '<th colspan="2">';
-			print $langs->trans("BillsSuppliersUnpaid", $num).' ';
-			print '<a href="'.DOL_URL_ROOT.'/fourn/facture/list.php?search_status='.FactureFournisseur::STATUS_VALIDATED.'">';
-			print '<span class="badge">'.$num.'</span>';
-			print '</a>';
-			print '</th>';
+			echo'<tr class="liste_titre">';
+			echo'<th colspan="2">';
+			echo$langs->trans("BillsSuppliersUnpaid", $num).' ';
+			echo'<a href="'.DOL_URL_ROOT.'/fourn/facture/list.php?search_status='.FactureFournisseur::STATUS_VALIDATED.'">';
+			echo'<span class="badge">'.$num.'</span>';
+			echo'</a>';
+			echo'</th>';
 
-			print '<th class="right">'.$langs->trans("DateDue").'</th>';
+			echo'<th class="right">'.$langs->trans("DateDue").'</th>';
 			if (getDolGlobalString('MAIN_SHOW_HT_ON_SUMMARY')) {
-				print '<th class="right">'.$langs->trans("AmountHT").'</th>';
+				echo'<th class="right">'.$langs->trans("AmountHT").'</th>';
 			}
-			print '<th class="right">'.$langs->trans("AmountTTC").'</th>';
-			print '<th class="right">'.$langs->trans("Paid").'</th>';
-			print '<th width="16">&nbsp;</th>';
-			print "</tr>\n";
+			echo'<th class="right">'.$langs->trans("AmountTTC").'</th>';
+			echo'<th class="right">'.$langs->trans("Paid").'</th>';
+			echo'<th width="16">&nbsp;</th>';
+			echo"</tr>\n";
 			$societestatic = new Societe($db);
 			if ($num) {
 				$i = 0;
@@ -1282,19 +1282,19 @@ function getPurchaseInvoiceUnpaidOpenTable($maxCount = 500, $socid = 0)
 					$societestatic->code_compta = $obj->code_compta;
 					$societestatic->code_compta_fournisseur = $obj->code_compta_fournisseur;
 
-					print '<tr class="oddeven">';
-					print '<td class="nowrap tdoverflowmax100">';
-					print $facstatic->getNomUrl(1, '');
-					print '</td>';
-					print '<td class="nowrap tdoverflowmax100">'.$societestatic->getNomUrl(1, 'supplier').'</td>';
-					print '<td class="right">'.dol_print_date($db->jdate($obj->date_lim_reglement), 'day').'</td>';
+					echo'<tr class="oddeven">';
+					echo'<td class="nowrap tdoverflowmax100">';
+					echo$facstatic->getNomUrl(1, '');
+					echo'</td>';
+					echo'<td class="nowrap tdoverflowmax100">'.$societestatic->getNomUrl(1, 'supplier').'</td>';
+					echo'<td class="right">'.dol_print_date($db->jdate($obj->date_lim_reglement), 'day').'</td>';
 					if (getDolGlobalString('MAIN_SHOW_HT_ON_SUMMARY')) {
-						print '<td class="right"><span class="amount">'.price($obj->total_ht).'</span></td>';
+						echo'<td class="right"><span class="amount">'.price($obj->total_ht).'</span></td>';
 					}
-					print '<td class="nowrap right"><span class="amount">'.price($obj->total_ttc).'</span></td>';
-					print '<td class="nowrap right"><span class="amount">'.price($obj->am).'</span></td>';
-					print '<td>'.$facstatic->getLibStatut(3, $obj->am).'</td>';
-					print '</tr>';
+					echo'<td class="nowrap right"><span class="amount">'.price($obj->total_ttc).'</span></td>';
+					echo'<td class="nowrap right"><span class="amount">'.price($obj->am).'</span></td>';
+					echo'<td>'.$facstatic->getLibStatut(3, $obj->am).'</td>';
+					echo'</tr>';
 					$total += $obj->total_ht;
 					$total_ttc += $obj->total_ttc;
 					$totalam += $obj->am;
@@ -1306,30 +1306,30 @@ function getPurchaseInvoiceUnpaidOpenTable($maxCount = 500, $socid = 0)
 					if (getDolGlobalString('MAIN_SHOW_HT_ON_SUMMARY')) {
 						$colspan++;
 					}
-					print '<tr class="oddeven">';
-					print '<td class="nowrap" colspan="'.$colspan.'">';
-					print '<span class="opacitymedium">'.$langs->trans("More").'... ('.$othernb.')</span>';
-					print '</td>';
-					print "</tr>\n";
+					echo'<tr class="oddeven">';
+					echo'<td class="nowrap" colspan="'.$colspan.'">';
+					echo'<span class="opacitymedium">'.$langs->trans("More").'... ('.$othernb.')</span>';
+					echo'</td>';
+					echo"</tr>\n";
 				}
 
-				print '<tr class="liste_total"><td colspan="2">'.$langs->trans("Total").' &nbsp; <span style="font-weight: normal">('.$langs->trans("RemainderToPay").': '.price($total_ttc - $totalam).')</span> </td>';
-				print '<td>&nbsp;</td>';
+				echo'<tr class="liste_total"><td colspan="2">'.$langs->trans("Total").' &nbsp; <span style="font-weight: normal">('.$langs->trans("RemainderToPay").': '.price($total_ttc - $totalam).')</span> </td>';
+				echo'<td>&nbsp;</td>';
 				if (getDolGlobalString('MAIN_SHOW_HT_ON_SUMMARY')) {
-					print '<td class="right">'.price($total).'</td>';
+					echo'<td class="right">'.price($total).'</td>';
 				}
-				print '<td class="nowrap right">'.price($total_ttc).'</td>';
-				print '<td class="nowrap right">'.price($totalam).'</td>';
-				print '<td>&nbsp;</td>';
-				print '</tr>';
+				echo'<td class="nowrap right">'.price($total_ttc).'</td>';
+				echo'<td class="nowrap right">'.price($totalam).'</td>';
+				echo'<td>&nbsp;</td>';
+				echo'</tr>';
 			} else {
 				$colspan = 6;
 				if (getDolGlobalString('MAIN_SHOW_HT_ON_SUMMARY')) {
 					$colspan++;
 				}
-				print '<tr class="oddeven"><td colspan="'.$colspan.'" class="opacitymedium">'.$langs->trans("NoInvoice").'</td></tr>';
+				echo'<tr class="oddeven"><td colspan="'.$colspan.'" class="opacitymedium">'.$langs->trans("NoInvoice").'</td></tr>';
 			}
-			print '</table></div><br>';
+			echo'</table></div><br>';
 		} else {
 			dol_print_error($db);
 		}

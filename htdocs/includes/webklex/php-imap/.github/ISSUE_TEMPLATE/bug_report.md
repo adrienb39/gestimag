@@ -13,7 +13,7 @@ Please provide the used config, if you are not using the package default config.
 **Code to Reproduce**
 The troubling code section which produces the reported bug.
 ```php
-echo "Bug";
+echo  "Bug";
 ```
 
 **Expected behavior**

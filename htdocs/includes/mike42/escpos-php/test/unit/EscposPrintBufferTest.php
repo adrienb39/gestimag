@@ -29,7 +29,7 @@ class EscposPrintBufferTest extends PHPUnit\Framework\TestCase
         /* Check those output strings */
         $outp = $this -> outputConnector -> getData();
         if ($expected === null) {
-            echo "\nOutput was:\n\"" . friendlyBinary($outp) . "\"\n";
+            echo  "\nOutput was:\n\"" . friendlyBinary($outp) . "\"\n";
         }
         $this -> assertEquals($expected, $outp);
     }

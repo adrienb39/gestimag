@@ -1010,10 +1010,10 @@ abstract class CommonInvoice extends CommonObject
 					$totalpaid = $this->getSommePaiement();
 					$totalcreditnotes = $this->getSumCreditNotesUsed();
 					$totaldeposits = $this->getSumDepositsUsed();
-					//print "totalpaid=".$totalpaid." totalcreditnotes=".$totalcreditnotes." totaldeposts=".$totaldeposits;
+					//echo "totalpaid=".$totalpaid." totalcreditnotes=".$totalcreditnotes." totaldeposts=".$totaldeposits;
 
 					// We can also use bcadd to avoid pb with floating points
-					// For example print 239.2 - 229.3 - 9.9; does not return 0.
+					// For example echo 239.2 - 229.3 - 9.9; does not return 0.
 					//$resteapayer=bcadd($this->total_ttc,$totalpaid,$conf->global->MAIN_MAX_DECIMALS_TOT);
 					//$resteapayer=bcadd($resteapayer,$totalavoir,$conf->global->MAIN_MAX_DECIMALS_TOT);
 					if (empty($amount)) {

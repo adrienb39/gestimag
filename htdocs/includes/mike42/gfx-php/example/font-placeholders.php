@@ -31,5 +31,5 @@ $out -> compose($subImages[2], 0, 0, 4, 9, $charWidth, $charHeight);
 $out -> compose($subImages[3], 0, 0, 10, 9, $charWidth, $charHeight);
 
 # Print output for debugging ;)
-echo $out -> toString();
+echo  $out -> toString();
 $out -> write($outFile);

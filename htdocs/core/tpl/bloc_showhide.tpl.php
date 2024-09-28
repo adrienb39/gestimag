@@ -19,7 +19,7 @@
 
 // Protection to avoid direct call of template
 if (empty($blocname)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -35,42 +35,42 @@ if (isset($object->extraparams[$blocname]['showhide'])) {
 <!-- BEGIN PHP TEMPLATE bloc_showhide.tpl.php -->
 
 <?php
-print '<script>'."\n";
-print '$(document).ready(function() {'."\n";
-print '$("#hide-'.$blocname.'").click(function(){'."\n";
-print '		setShowHide(0);'."\n";
-print '		$("#'.$blocname.'_bloc").hide("blind", {direction: "vertical"}, 300).removeClass("nohideobject");'."\n";
-print '		$(this).hide();'."\n";
-print '		$("#show-'.$blocname.'").show();'."\n";
-print '});'."\n";
+echo '<script>'."\n";
+echo '$(document).ready(function() {'."\n";
+echo '$("#hide-'.$blocname.'").click(function(){'."\n";
+echo '		setShowHide(0);'."\n";
+echo '		$("#'.$blocname.'_bloc").hide("blind", {direction: "vertical"}, 300).removeClass("nohideobject");'."\n";
+echo '		$(this).hide();'."\n";
+echo '		$("#show-'.$blocname.'").show();'."\n";
+echo '});'."\n";
 
-print '$("#show-'.$blocname.'").click(function(){'."\n";
-print '		setShowHide(1);'."\n";
-print '		$("#'.$blocname.'_bloc").show("blind", {direction: "vertical"}, 300).addClass("nohideobject");'."\n";
-print '		$(this).hide();'."\n";
-print '		$("#hide-'.$blocname.'").show();'."\n";
-print '});'."\n";
+echo '$("#show-'.$blocname.'").click(function(){'."\n";
+echo '		setShowHide(1);'."\n";
+echo '		$("#'.$blocname.'_bloc").show("blind", {direction: "vertical"}, 300).addClass("nohideobject");'."\n";
+echo '		$(this).hide();'."\n";
+echo '		$("#hide-'.$blocname.'").show();'."\n";
+echo '});'."\n";
 
-print 'function setShowHide(status) {'."\n";
-print '		var id			= '.((int) $object->id).";\n";
-print "		var element		= '".dol_escape_js($object->element)."';\n";
-print "		var htmlelement	= '".dol_escape_js($blocname)."';\n";
-print '		var type		= "showhide";'."\n";
-print '		$.get("'.dol_buildpath('/core/ajax/extraparams.php', 1);
-print '?id="+id+"&element="+element+"&htmlelement="+htmlelement+"&type="+type+"&value="+status);'."\n";
-print '}'."\n";
+echo 'function setShowHide(status) {'."\n";
+echo '		var id			= '.((int) $object->id).";\n";
+echo "		var element		= '".dol_escape_js($object->element)."';\n";
+echo "		var htmlelement	= '".dol_escape_js($blocname)."';\n";
+echo '		var type		= "showhide";'."\n";
+echo '		$.get("'.dol_buildpath('/core/ajax/extraparams.php', 1);
+echo '?id="+id+"&element="+element+"&htmlelement="+htmlelement+"&type="+type+"&value="+status);'."\n";
+echo '}'."\n";
 
-print '});'."\n";
-print '</script>'."\n";
+echo '});'."\n";
+echo '</script>'."\n";
 
-print '<div style="float:right; position: relative; top: 3px; right:5px;" id="hide-'.$blocname.'"';
-print ' class="linkobject'.($hide ? ' hideobject' : '').'">'.img_picto('', '1uparrow.png').'</div>'."\n";
-print '<div style="float:right; position: relative; top: 3px; right:5px;" id="show-'.$blocname.'"';
-print ' class="linkobject'.($hide ? '' : ' hideobject').'">'.img_picto('', '1downarrow.png').'</div>'."\n";
-print '<div id="'.$blocname.'_title" class="liste_titre">'.$title.'</div>'."\n";
-print '<div id="'.$blocname.'_bloc" class="'.($hide ? 'hideobject' : 'nohideobject').'">'."\n";
+echo '<div style="float:right; position: relative; top: 3px; right:5px;" id="hide-'.$blocname.'"';
+echo ' class="linkobject'.($hide ? ' hideobject' : '').'">'.img_picto('', '1uparrow.png').'</div>'."\n";
+echo '<div style="float:right; position: relative; top: 3px; right:5px;" id="show-'.$blocname.'"';
+echo ' class="linkobject'.($hide ? '' : ' hideobject').'">'.img_picto('', '1downarrow.png').'</div>'."\n";
+echo '<div id="'.$blocname.'_title" class="liste_titre">'.$title.'</div>'."\n";
+echo '<div id="'.$blocname.'_bloc" class="'.($hide ? 'hideobject' : 'nohideobject').'">'."\n";
 
 include DOL_DOCUMENT_ROOT.'/core/tpl/'.$blocname.'.tpl.php';
-print '</div><br>';
+echo '</div><br>';
 ?>
 <!-- END PHP TEMPLATE BLOCK SHOW/HIDE -->

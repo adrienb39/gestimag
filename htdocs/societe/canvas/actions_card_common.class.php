@@ -312,7 +312,7 @@ abstract class ActionsCardCommon
 			if (getDolGlobalInt('MAIN_MULTILANGS')) {
 				require_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
 				//$s=picto_from_langcode($this->default_lang);
-				//print ($s?$s.' ':'');
+				//echo ($s?$s.' ':'');
 				$langs->load("languages");
 				$this->tpl['default_lang'] = (empty($this->object->default_lang) ? '' : $langs->trans('Language_'.$this->object->default_lang));
 			}
@@ -325,7 +325,7 @@ abstract class ActionsCardCommon
 			$this->tpl['sales_representatives'] = '';
 			$listsalesrepresentatives = $this->object->getSalesRepresentatives($user);
 			$nbofsalesrepresentative = count($listsalesrepresentatives);
-			if ($nbofsalesrepresentative > 3) {   // We print only number
+			if ($nbofsalesrepresentative > 3) {   // We echo only number
 				$this->tpl['sales_representatives'] .= $nbofsalesrepresentative;
 			} elseif ($nbofsalesrepresentative > 0) {
 				$userstatic = new User($this->db);

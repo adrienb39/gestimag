@@ -52,7 +52,7 @@ var ClojureHighlightRules = function() {
         'ns-refers ns-resolve ns-unalias ns-unmap nth nthnext num number? odd? ' +
         'or parents partial partition pcalls peek persistent! pmap pop pop! ' +
         'pop-thread-bindings pos? pr pr-str prefer-method prefers ' +
-        'primitives-classnames print print-ctor print-doc print-dup print-method ' +
+        'primitives-classnames echo print-ctor print-doc print-dup print-method ' +
         'print-namespace-doc print-simple print-special-doc print-str printf ' +
         'println println-str prn prn-str promise proxy proxy-call-with-super ' +
         'proxy-mappings proxy-name proxy-super push-thread-bindings pvalues quot ' +

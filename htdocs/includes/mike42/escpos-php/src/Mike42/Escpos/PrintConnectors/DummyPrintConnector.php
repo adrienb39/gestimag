@@ -30,7 +30,7 @@ final class DummyPrintConnector implements PrintConnector
     private $readData;
 
     /**
-     * Create new print connector
+     * Create new echo connector
      */
     public function __construct()
     {

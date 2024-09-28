@@ -424,9 +424,9 @@ class SimpleOpenID
 		// phpcs:enable
 		$redirect_to = $this->GetRedirectURL();
 		if (headers_sent()) { // Use JavaScript to redirect if content has been previously sent (not recommended, but safe)
-			echo '<script nonce="'.getNonce().'" type="text/javascript">window.location=\'';
-			echo $redirect_to;
-			echo '\';</script>';
+			echo  '<script nonce="'.getNonce().'" type="text/javascript">window.location=\'';
+			echo  $redirect_to;
+			echo  '\';</script>';
 		} else {	// Default Header Redirect
 			header('Location: '.$redirect_to);
 		}

@@ -140,7 +140,7 @@ class modAdherent extends GestimagModules
 		$this->const[$r][0] = "ADHERENT_CARD_TEXT";
 		$this->const[$r][1] = "texte";
 		$this->const[$r][2] = "__FULLNAME__\r\nID: __ID__\r\n__EMAIL__\r\n__ADDRESS__\r\n__ZIP__ __TOWN__\r\n__COUNTRY__";
-		$this->const[$r][3] = "Text to print on member cards";
+		$this->const[$r][3] = "Text to echo on member cards";
 		$this->const[$r][4] = 0;
 		$r++;
 
@@ -161,7 +161,7 @@ class modAdherent extends GestimagModules
 		$this->const[$r][0] = "ADHERENT_ETIQUETTE_TEXT";
 		$this->const[$r][1] = "texte";
 		$this->const[$r][2] = "__FULLNAME__\n__ADDRESS__\n__ZIP__ __TOWN__\n__COUNTRY__";
-		$this->const[$r][3] = "Text to print on member address sheets";
+		$this->const[$r][3] = "Text to echo on member address sheets";
 		$this->const[$r][4] = 0;
 		$r++;
 

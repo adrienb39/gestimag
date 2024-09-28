@@ -85,7 +85,7 @@ $pdf->SetFillColor(200, 255, 200);
 $txt = 'An alternative configuration file is used on this example.
 Check the definition of the K_TCPDF_EXTERNAL_CONFIG constant on the source code.';
 
-// print some text
+// echo some text
 $pdf->MultiCell(0, 0, $txt."\n", 1, 'J', 1, 1, '', '', true, 0, false, true, 0);
 
 // ---------------------------------------------------------

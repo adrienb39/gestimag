@@ -29,7 +29,7 @@ if (!defined('ISLOADEDBYSTEELSHEET')) {
 
 .mainmenu::before{
 	/* font part */
-	font-family: "<?php echo getDolGlobalString('MAIN_FONTAWESOME_FAMILY', 'Font Awesome 5 Free'); ?>";
+	font-family: "<?php echo  getDolGlobalString('MAIN_FONTAWESOME_FAMILY', 'Font Awesome 5 Free'); ?>";
 	font-weight: 900;
 	font-style: normal;
 	font-variant: normal;
@@ -39,7 +39,7 @@ if (!defined('ISLOADEDBYSTEELSHEET')) {
 	text-align:center;
 	text-decoration:none;
 	color: var(--colortextbackhmenu);
-	/* font-size: <?php echo $topMenuFontSize; ?>; */
+	/* font-size: <?php echo  $topMenuFontSize; ?>; */
 }
 
 div.mainmenu.menu {
@@ -118,7 +118,7 @@ div.mainmenu.generic4::before {
 .tmenu span.fas, .tmenu span.far {
 	<?php
 	if (!getDolGlobalString('THEME_MENU_COLORLOGO')) {
-		echo "color: unset !important;";
+		echo  "color: unset !important;";
 	}
 	?>;
 	line-height: 28px;

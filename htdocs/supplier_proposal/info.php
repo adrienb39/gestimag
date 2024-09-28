@@ -61,7 +61,7 @@ llxHeader('', $title, $help_url);
 
 
 $head = supplier_proposal_prepare_head($object);
-print dol_get_fiche_head($head, 'info', $langs->trans('CommRequest'), -1, 'supplier_proposal');
+echo dol_get_fiche_head($head, 'info', $langs->trans('CommRequest'), -1, 'supplier_proposal');
 
 // Supplier proposal card
 $linkback = '<a href="'.DOL_URL_ROOT.'/supplier_proposal/list.php?restore_lastsearch_values=1'.(!empty($socid) ? '&socid='.$socid : '').'">'.$langs->trans("BackToList").'</a>';
@@ -102,18 +102,18 @@ $morehtmlref .= '</div>';
 dol_banner_tab($object, 'ref', $linkback, 1, 'ref', 'ref', $morehtmlref);
 
 
-print '<div class="fichecenter">';
-print '<div class="underbanner clearboth"></div>';
+echo '<div class="fichecenter">';
+echo '<div class="underbanner clearboth"></div>';
 
-print '<br>';
+echo '<br>';
 
-print '<table width="100%"><tr><td>';
+echo '<table width="100%"><tr><td>';
 dol_print_object_info($object);
-print '</td></tr></table>';
+echo '</td></tr></table>';
 
-print '</div>';
+echo '</div>';
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 // End of page
 llxFooter();

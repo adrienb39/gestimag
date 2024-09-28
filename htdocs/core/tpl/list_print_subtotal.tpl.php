@@ -11,41 +11,41 @@ if (!empty($subtotalarray['totalizable']) && is_array($subtotalarray['totalizabl
 }
 // Show total line
 if (isset($totalarray['pos'])) {
-	print '<tr class="liste_total">';
+	echo '<tr class="liste_total">';
 	$j = 0;
 	while ($j < $totalarray['nbfield']) {
 		$j++;
 		if (!empty($totalarray['pos'][$j])) {
 			switch ($totalarray['pos'][$j]) {
 				case 'duration':
-					print '<td class="right">';
+					echo '<td class="right">';
 					print(!empty($subtotalarray['val'][$totalarray['pos'][$j]]) ? convertSecondToTime($subtotalarray['val'][$totalarray['pos'][$j]], 'allhourmin') : 0);
-					print '</td>';
+					echo '</td>';
 					break;
 				case 'string':
-					print '<td class="left">';
+					echo '<td class="left">';
 					print(!empty($subtotalarray['val'][$totalarray['pos'][$j]]) ? $subtotalarray['val'][$totalarray['pos'][$j]] : '');
-					print '</td>';
+					echo '</td>';
 					break;
 				case 'stock':
-					print '<td class="right">';
-					print price2num(!empty($subtotalarray['val'][$totalarray['pos'][$j]]) ? $subtotalarray['val'][$totalarray['pos'][$j]] : 0, 'MS');
-					print '</td>';
+					echo '<td class="right">';
+					echo price2num(!empty($subtotalarray['val'][$totalarray['pos'][$j]]) ? $subtotalarray['val'][$totalarray['pos'][$j]] : 0, 'MS');
+					echo '</td>';
 					break;
 				default:
-					print '<td class="right">';
-					print price(!empty($subtotalarray['val'][$totalarray['pos'][$j]]) ? $subtotalarray['val'][$totalarray['pos'][$j]] : 0);
-					print '</td>';
+					echo '<td class="right">';
+					echo price(!empty($subtotalarray['val'][$totalarray['pos'][$j]]) ? $subtotalarray['val'][$totalarray['pos'][$j]] : 0);
+					echo '</td>';
 					break;
 			}
 			$subtotalarray['val'][$totalarray['pos'][$j]] = 0;
 		} else {
 			if ($j == 1) {
-				print '<td>'.$langs->trans("SubTotal").'</td>';
+				echo '<td>'.$langs->trans("SubTotal").'</td>';
 			} else {
-				print '<td></td>';
+				echo '<td></td>';
 			}
 		}
 	}
-	print '</tr>';
+	echo '</tr>';
 }

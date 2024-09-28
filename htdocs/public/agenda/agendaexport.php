@@ -61,7 +61,7 @@ if (!defined('NOIPCHECK')) {
  */
 function llxHeaderVierge()
 {
-	print '<html><title>Export agenda cal</title><body>';
+	echo '<html><title>Export agenda cal</title><body>';
 }
 /**
  * Footer function
@@ -70,7 +70,7 @@ function llxHeaderVierge()
  */
 function llxFooterVierge()
 {
-	print '</body></html>';
+	echo '</body></html>';
 }
 
 // For MultiCompany module.
@@ -167,7 +167,7 @@ if (!getDolGlobalString('MAIN_AGENDA_XCAL_EXPORTKEY')) {
 	top_httphead();
 
 	llxHeaderVierge();
-	print '<div class="error">Module Agenda was not configured properly.</div>';
+	echo '<div class="error">Module Agenda was not configured properly.</div>';
 	llxFooterVierge();
 	exit;
 }
@@ -181,9 +181,9 @@ if ($reshook < 0) {
 
 	llxHeaderVierge();
 	if (!empty($hookmanager->errors) && is_array($hookmanager->errors)) {
-		print '<div class="error">'.implode('<br>', $hookmanager->errors).'</div>';
+		echo '<div class="error">'.implode('<br>', $hookmanager->errors).'</div>';
 	} else {
-		print '<div class="error">'.$hookmanager->error.'</div>';
+		echo '<div class="error">'.$hookmanager->error.'</div>';
 	}
 	llxFooterVierge();
 } elseif (empty($reshook)) {
@@ -194,7 +194,7 @@ if ($reshook < 0) {
 		top_httphead();
 
 		llxHeaderVierge();
-		print '<div class="error">Bad value for key.</div>';
+		echo '<div class="error">Bad value for key.</div>';
 		llxFooterVierge();
 		exit;
 	}
@@ -269,7 +269,7 @@ if ($shortfilename == 'gestimagcalendar') {
 	top_httphead();
 
 	llxHeaderVierge();
-	print '<div class="error">'.$langs->trans("ErrorWrongValueForParameterX", 'format').'</div>';
+	echo '<div class="error">'.$langs->trans("ErrorWrongValueForParameterX", 'format').'</div>';
 	llxFooterVierge();
 	exit;
 }
@@ -323,7 +323,7 @@ if ($format == 'ical' || $format == 'vcal') {
 		$outputfile = $conf->agenda->dir_temp.'/'.$filename;
 		$result = readfile($outputfile);
 		if (!$result) {
-			print 'File '.$outputfile.' was empty.';
+			echo 'File '.$outputfile.' was empty.';
 		}
 
 		//header("Location: ".DOL_URL_ROOT.'/document.php?modulepart=agenda&file='.urlencode($filename));
@@ -331,7 +331,7 @@ if ($format == 'ical' || $format == 'vcal') {
 	} else {
 		top_httphead();
 
-		print 'Error '.$agenda->error;
+		echo 'Error '.$agenda->error;
 
 		exit;
 	}
@@ -376,7 +376,7 @@ if ($format == 'rss') {
 		$outputfile = $conf->agenda->dir_temp.'/'.$filename;
 		$result = readfile($outputfile);
 		if (!$result) {
-			print 'File '.$outputfile.' was empty.';
+			echo 'File '.$outputfile.' was empty.';
 		}
 
 		// header("Location: ".DOL_URL_ROOT.'/document.php?modulepart=agenda&file='.urlencode($filename));
@@ -384,7 +384,7 @@ if ($format == 'rss') {
 	} else {
 		top_httphead();
 
-		print 'Error '.$agenda->error;
+		echo 'Error '.$agenda->error;
 
 		exit;
 	}
@@ -394,5 +394,5 @@ if ($format == 'rss') {
 top_httphead();
 
 llxHeaderVierge();
-print '<div class="error">'.$agenda->error.'</div>';
+echo '<div class="error">'.$agenda->error.'</div>';
 llxFooterVierge();

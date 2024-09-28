@@ -194,9 +194,9 @@ if (!$result && !empty($_SERVER["GATEWAY_INTERFACE"])) {    // If install not do
 	header("Location: ".$path."install/index.php");
 
 	/*
-	print '<br><center>';
-	print 'The conf/conf.php file was not found or is not readable by the web server. If this is your first access, <a href="'.$path.'install/index.php">click here to start the Gestimag installation process</a> to create it...';
-	print '</center><br>';
+	echo '<br><center>';
+	echo 'The conf/conf.php file was not found or is not readable by the web server. If this is your first access, <a href="'.$path.'install/index.php">click here to start the Gestimag installation process</a> to create it...';
+	echo '</center><br>';
 	*/
 
 	exit;
@@ -266,8 +266,8 @@ if (empty($gestimag_strict_mode)) {
 define('DOL_DOCUMENT_ROOT', $gestimag_main_document_root); // Filesystem core php (htdocs)
 
 if (!file_exists(DOL_DOCUMENT_ROOT."/core/lib/functions.lib.php")) {
-	print "Error: Gestimag config file content seems to be not correctly defined.<br>\n";
-	print "Please run gestimag setup by calling page <b>/install</b>.<br>\n";
+	echo "Error: Gestimag config file content seems to be not correctly defined.<br>\n";
+	echo "Please run gestimag setup by calling page <b>/install</b>.<br>\n";
 	exit(1);
 }
 
@@ -275,7 +275,7 @@ if (!file_exists(DOL_DOCUMENT_ROOT."/core/lib/functions.lib.php")) {
 // Included by default (must be before the CSRF check so wa can use the dol_syslog)
 include_once DOL_DOCUMENT_ROOT.'/core/lib/functions.lib.php';
 include_once DOL_DOCUMENT_ROOT.'/core/lib/security.lib.php';
-//print memory_get_usage();
+//echo memory_get_usage();
 
 
 // Security: CSRF protection
@@ -296,24 +296,24 @@ if (!defined('NOCSRFCHECK') && isset($gestimag_nocsrfcheck) && $gestimag_nocsrfc
 			}
 		}
 		if ($csrfattack) {
-			//print 'NOCSRFCHECK='.defined('NOCSRFCHECK').' REQUEST_METHOD='.$_SERVER['REQUEST_METHOD'].' HTTP_HOST='.$_SERVER['HTTP_HOST'].' HTTP_REFERER='.$_SERVER['HTTP_REFERER'];
+			//echo 'NOCSRFCHECK='.defined('NOCSRFCHECK').' REQUEST_METHOD='.$_SERVER['REQUEST_METHOD'].' HTTP_HOST='.$_SERVER['HTTP_HOST'].' HTTP_REFERER='.$_SERVER['HTTP_REFERER'];
 			// Note: We can't use dol_escape_htmltag here to escape output because lib functions.lib.ph is not yet loaded.
 			dol_syslog("--- Access to ".(empty($_SERVER["REQUEST_METHOD"]) ? '' : $_SERVER["REQUEST_METHOD"].' ').$_SERVER["PHP_SELF"]." refused by CSRF protection (Bad referrer).", LOG_WARNING);
-			print "Access refused by CSRF protection in main.inc.php. Referrer of form (".htmlentities(empty($_SERVER['HTTP_REFERER']) ? '' : $_SERVER['HTTP_REFERER'], ENT_COMPAT, 'UTF-8').") is outside the server that serve this page (with method = ".htmlentities($_SERVER['REQUEST_METHOD'], ENT_COMPAT, 'UTF-8').").\n";
-			print "If you access your server behind a proxy using url rewriting, you might check that all HTTP headers are propagated (or add the line \$gestimag_nocsrfcheck=1 into your conf.php file to remove this security check).\n";
+			echo "Access refused by CSRF protection in main.inc.php. Referrer of form (".htmlentities(empty($_SERVER['HTTP_REFERER']) ? '' : $_SERVER['HTTP_REFERER'], ENT_COMPAT, 'UTF-8').") is outside the server that serve this page (with method = ".htmlentities($_SERVER['REQUEST_METHOD'], ENT_COMPAT, 'UTF-8').").\n";
+			echo "If you access your server behind a proxy using url rewriting, you might check that all HTTP headers are propagated (or add the line \$gestimag_nocsrfcheck=1 into your conf.php file to remove this security check).\n";
 			die;
 		}
 	}
 	// Another test is done later on token if option MAIN_SECURITY_CSRF_WITH_TOKEN is on.
 }
 if (empty($gestimag_main_db_host) && !defined('NOREQUIREDB')) {
-	print '<div class="center">Gestimag setup is not yet complete.<br><br>'."\n";
-	print '<a href="install/index.php">Click here to finish Gestimag install process</a> ...</div>'."\n";
+	echo '<div class="center">Gestimag setup is not yet complete.<br><br>'."\n";
+	echo '<a href="install/index.php">Click here to finish Gestimag install process</a> ...</div>'."\n";
 	die;
 }
 if (empty($gestimag_main_url_root) && !defined('NOREQUIREVIRTUALURL')) {
-	print 'Value for parameter \'gestimag_main_url_root\' is not defined in your \'htdocs\conf\conf.php\' file.<br>'."\n";
-	print 'You must add this parameter with your full Gestimag root Url (Example: http://myvirtualdomain/ or http://mydomain/mygestimagurl/)'."\n";
+	echo 'Value for parameter \'gestimag_main_url_root\' is not defined in your \'htdocs\conf\conf.php\' file.<br>'."\n";
+	echo 'You must add this parameter with your full Gestimag root Url (Example: http://myvirtualdomain/ or http://mydomain/mygestimagurl/)'."\n";
 	die;
 }
 
@@ -349,16 +349,16 @@ foreach ($paths as $tmppath) {	// We check to find (B+start of C)=A
 	}
 	$concatpath .= '/'.$tmppath;
 	//if ($tmppath) $concatpath.='/'.$tmppath;
-	//print $_SERVER["SCRIPT_NAME"].'-'.$pathroot.'-'.$concatpath.'-'.$real_gestimag_main_document_root.'-'.realpath($pathroot.$concatpath).'<br>';
+	//echo $_SERVER["SCRIPT_NAME"].'-'.$pathroot.'-'.$concatpath.'-'.$real_gestimag_main_document_root.'-'.realpath($pathroot.$concatpath).'<br>';
 	if ($real_gestimag_main_document_root == @realpath($pathroot.$concatpath)) {    // @ avoid warning when safe_mode is on.
-		//print "Found relative url = ".$concatpath;
+		//echo "Found relative url = ".$concatpath;
 		$tmp3 = $concatpath;
 		$found = 1;
 		break;
 	}
-	//else print "Not found yet for concatpath=".$concatpath."<br>\n";
+	//else echo "Not found yet for concatpath=".$concatpath."<br>\n";
 }
-//print "found=".$found." gestimag_main_url_root=".$gestimag_main_url_root."\n";
+//echo "found=".$found." gestimag_main_url_root=".$gestimag_main_url_root."\n";
 if (!$found) {
 	// There is no subdir that compose the main url root or autodetect fails (Ie: when using apache alias that point outside default DOCUMENT_ROOT).
 	$tmp = $gestimag_main_url_root;
@@ -366,7 +366,7 @@ if (!$found) {
 	$tmp = 'http'.((!isHTTPS() && (empty($_SERVER["SERVER_PORT"]) || $_SERVER["SERVER_PORT"] != 443)) ? '' : 's').'://'.$_SERVER["SERVER_NAME"].((empty($_SERVER["SERVER_PORT"]) || $_SERVER["SERVER_PORT"] == 80 || $_SERVER["SERVER_PORT"] == 443) ? '' : ':'.$_SERVER["SERVER_PORT"]).($tmp3 ? (preg_match('/^\//', $tmp3) ? '' : '/').$tmp3 : '');
 }
 
-//print "tmp1=".$tmp1." tmp2=".$tmp2." tmp3=".$tmp3." tmp=".$tmp."\n";
+//echo "tmp1=".$tmp1." tmp2=".$tmp2." tmp3=".$tmp3." tmp=".$tmp."\n";
 if (!empty($gestimag_main_force_https)) {
 	$tmp = preg_replace('/^http:/i', 'https:', $tmp);
 }
@@ -379,7 +379,7 @@ if (empty($suburi) || $suburi === '/') {
 if (!defined('DOL_URL_ROOT')) {
 	define('DOL_URL_ROOT', $suburi); // URL relative root ('', '/gestimag', ...)
 }
-//print DOL_MAIN_URL_ROOT.'-'.DOL_URL_ROOT."\n";
+//echo DOL_MAIN_URL_ROOT.'-'.DOL_URL_ROOT."\n";
 
 // Define prefix MAIN_DB_PREFIX
 define('MAIN_DB_PREFIX', $gestimag_main_db_prefix);

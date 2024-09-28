@@ -109,9 +109,9 @@ top_htmlhead($head, $title, 0, 0, $arrayofjs, $arrayofcss);
 
 
 
-print '<body>'."\n";
-print '<div>';
-//print '<br>';
+echo '<body>'."\n";
+echo '<div>';
+//echo '<br>';
 
 $nbofsearch = 0;
 
@@ -190,18 +190,18 @@ if ($conf->dol_use_jmobile) {
 
 
 // Show all forms
-print "\n";
-print "<!-- Begin SearchForm -->\n";
-print '<div class="center"><div class="center" style="padding: 30px;">';
-print '<style>.menu_titre { padding-top: 7px; }</style>';
-print '<div id="blockvmenusearch" class="tagtable center searchpage">'."\n";
-print $searchform;
-print '</div>'."\n";
-print '</div></div>';
-print "\n<!-- End SearchForm -->\n";
+echo "\n";
+echo "<!-- Begin SearchForm -->\n";
+echo '<div class="center"><div class="center" style="padding: 30px;">';
+echo '<style>.menu_titre { padding-top: 7px; }</style>';
+echo '<div id="blockvmenusearch" class="tagtable center searchpage">'."\n";
+echo $searchform;
+echo '</div>'."\n";
+echo '</div></div>';
+echo "\n<!-- End SearchForm -->\n";
 
 
-print '</div>';
-print '</body></html>'."\n";
+echo '</div>';
+echo '</body></html>'."\n";
 
 $db->close();

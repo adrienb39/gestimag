@@ -25,7 +25,7 @@
  * $backtopage				URL to come back to from discount modification pages
  */
 
-print '<!-- BEGIN object_discounts.tpl.php -->'."\n";
+echo '<!-- BEGIN object_discounts.tpl.php -->'."\n";
 
 $objclassname = get_class($object);
 $isInvoice = in_array($object->element, array('facture', 'invoice', 'facture_fourn', 'invoice_supplier'));
@@ -52,22 +52,22 @@ if (!empty($discount_type)) {
 
 if ($fixedDiscount > 0) {
 	$translationKey = (empty($discount_type)) ? 'CompanyHasRelativeDiscount' : 'HasRelativeDiscountFromSupplier';
-	print $langs->trans($translationKey, $fixedDiscount);
+	echo $langs->trans($translationKey, $fixedDiscount);
 } else {
 	if ($conf->dol_optimize_smallscreen) {
 		$translationKey = 'RelativeDiscount';
 	} else {
 		$translationKey = (empty($discount_type)) ? 'CompanyHasNoRelativeDiscount' : 'HasNoRelativeDiscountFromSupplier';
 	}
-	print '<span class="opacitymedium">'.$langs->trans($translationKey).'</span>';
+	echo '<span class="opacitymedium">'.$langs->trans($translationKey).'</span>';
 }
 // Add link to edit the relative discount
-print ' '.$addrelativediscount;
+echo ' '.$addrelativediscount;
 
 
 // Is there is commercial discount or down payment available ?
 if ($absolute_discount > 0) {
-	print '<!-- absolute_discount -->';
+	echo '<!-- absolute_discount -->';
 	if (!empty($cannotApplyDiscount) || !$isInvoice || $isNewObject || $object->statut > $objclassname::STATUS_DRAFT || $object->type == $objclassname::TYPE_CREDIT_NOTE || $object->type == $objclassname::TYPE_DEPOSIT) {
 		$translationKey = empty($discount_type) ? 'CompanyHasDownPaymentOrCommercialDiscount' : 'HasDownPaymentOrCommercialDiscountFromSupplier';
 		$text = $langs->trans($translationKey, price($absolute_discount, 0, $langs, 1, -1, -1, $conf->currency)).'.';
@@ -81,9 +81,9 @@ if ($absolute_discount > 0) {
 		}
 
 		if ($isNewObject) {
-			print '<br>'.$text;
+			echo '<br>'.$text;
 		} else {
-			print '<div class="inline-block clearboth">'.$text.'</div>';
+			echo '<div class="inline-block clearboth">'.$text.'</div>';
 		}
 	} else {
 		// Discount available of type fixed amount (not credit note)
@@ -95,7 +95,7 @@ if ($absolute_discount > 0) {
 
 // Is there credit notes availables ?
 if ($absolute_creditnote > 0) {
-	print '<!-- absolute_creditnote -->';
+	echo '<!-- absolute_creditnote -->';
 	// If validated, we show link "add credit note to payment"
 	if (!empty($cannotApplyDiscount) || !$isInvoice || $isNewObject || $object->statut != $objclassname::STATUS_VALIDATED || $object->type == $objclassname::TYPE_CREDIT_NOTE) {
 		$translationKey = empty($discount_type) ? 'CompanyHasCreditNote' : 'HasCreditNoteFromSupplier';
@@ -110,9 +110,9 @@ if ($absolute_creditnote > 0) {
 		}
 
 		if ($isNewObject) {
-			print '<br>'.$text;
+			echo '<br>'.$text;
 		} else {
-			print '<div class="inline-block clearboth">'.$text.'</div>';
+			echo '<div class="inline-block clearboth">'.$text.'</div>';
 		}
 	} else {  // We can add a credit note on a down payment or standard invoice or situation invoice
 		// There is credit notes discounts available
@@ -127,11 +127,11 @@ if ($absolute_discount <= 0 && $absolute_creditnote <= 0) {
 	} else {
 		$translationKey = !empty($discount_type) ? 'HasNoAbsoluteDiscountFromSupplier' : 'CompanyHasNoAbsoluteDiscount';
 	}
-	print '<br><span class="opacitymedium">'.$langs->trans($translationKey).'</span>';
+	echo '<br><span class="opacitymedium">'.$langs->trans($translationKey).'</span>';
 
 	if ($isInvoice && $object->statut == $objclassname::STATUS_DRAFT && $object->type != $objclassname::TYPE_CREDIT_NOTE && $object->type != $objclassname::TYPE_DEPOSIT) {
-		print ' '.$addabsolutediscount;
+		echo ' '.$addabsolutediscount;
 	}
 }
 
-print '<!-- END template -->';
+echo '<!-- END template -->';

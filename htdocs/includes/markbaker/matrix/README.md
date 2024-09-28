@@ -159,7 +159,7 @@ $grid = [
 
 $matrix = new Matrix\Matrix($grid);
 
-echo $matrix->trace();
+echo  $matrix->trace();
 ```
 or you can call the static method, passing the Matrix object or array as an argument 
 ```php
@@ -171,7 +171,7 @@ $grid = [
 ];
 
 $matrix = new Matrix\Matrix($grid);
-echo Matrix\Functions::trace($matrix);
+echo  Matrix\Functions::trace($matrix);
 ```
 ```php
 $grid = [
@@ -181,7 +181,7 @@ $grid = [
     [ 4, 15, 14,  1],
 ];
 
-echo Matrix\Functions::trace($grid);
+echo  Matrix\Functions::trace($grid);
 ```
 
 ## Decomposition

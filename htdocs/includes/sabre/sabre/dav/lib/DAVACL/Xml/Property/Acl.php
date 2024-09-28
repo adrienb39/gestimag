@@ -115,25 +115,25 @@ class Acl implements Element, HtmlOutput
     public function toHtml(HtmlOutputHelper $html)
     {
         ob_start();
-        echo '<table>';
-        echo '<tr><th>Principal</th><th>Privilege</th><th></th></tr>';
+        echo  '<table>';
+        echo  '<tr><th>Principal</th><th>Privilege</th><th></th></tr>';
         foreach ($this->privileges as $privilege) {
-            echo '<tr>';
+            echo  '<tr>';
             // if it starts with a {, it's a special principal
             if ('{' === $privilege['principal'][0]) {
-                echo '<td>', $html->xmlName($privilege['principal']), '</td>';
+                echo  '<td>', $html->xmlName($privilege['principal']), '</td>';
             } else {
-                echo '<td>', $html->link($privilege['principal']), '</td>';
+                echo  '<td>', $html->link($privilege['principal']), '</td>';
             }
-            echo '<td>', $html->xmlName($privilege['privilege']), '</td>';
-            echo '<td>';
+            echo  '<td>', $html->xmlName($privilege['privilege']), '</td>';
+            echo  '<td>';
             if (!empty($privilege['protected'])) {
-                echo '(protected)';
+                echo  '(protected)';
             }
-            echo '</td>';
-            echo '</tr>';
+            echo  '</td>';
+            echo  '</tr>';
         }
-        echo '</table>';
+        echo  '</table>';
 
         return ob_get_clean();
     }

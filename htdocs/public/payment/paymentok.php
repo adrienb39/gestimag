@@ -211,8 +211,8 @@ if (empty($doactionsthenredirect)) {
 
 
 	// Show page content id="dolpaymentdiv"
-	print '<span id="dolpaymentspan"></span>'."\n";
-	print '<div id="dolpaymentdiv" class="center">'."\n";
+	echo '<span id="dolpaymentspan"></span>'."\n";
+	echo '<div id="dolpaymentdiv" class="center">'."\n";
 
 
 	// Show logo (search order: logo defined by PAYMENT_LOGO_suffix, then PAYMENT_LOGO, then small company logo, large company logo, theme logo, common logo)
@@ -225,7 +225,7 @@ if (empty($doactionsthenredirect)) {
 	} elseif (getDolGlobalString('ONLINE_PAYMENT_LOGO')) {
 		$logosmall = getDolGlobalString('ONLINE_PAYMENT_LOGO');
 	}
-	//print '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
+	//echo '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
 	// Define urllogo
 	$urllogo = '';
 	$urllogofull = '';
@@ -239,30 +239,30 @@ if (empty($doactionsthenredirect)) {
 
 	// Output html code for logo
 	if ($urllogo) {
-		print '<div class="backgreypublicpayment">';
-		print '<div class="logopublicpayment">';
-		print '<img id="dolpaymentlogo" src="'.$urllogo.'"';
-		print '>';
-		print '</div>';
+		echo '<div class="backgreypublicpayment">';
+		echo '<div class="logopublicpayment">';
+		echo '<img id="dolpaymentlogo" src="'.$urllogo.'"';
+		echo '>';
+		echo '</div>';
 		if (!getDolGlobalString('MAIN_HIDE_POWERED_BY')) {
-			print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+			echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 		}
-		print '</div>';
+		echo '</div>';
 	} elseif ($creditor) {
-		print '<div class="backgreypublicpayment">';
-		print '<div class="logopublicpayment">';
-		print $creditor;
-		print '</div>';
-		print '</div>';
+		echo '<div class="backgreypublicpayment">';
+		echo '<div class="logopublicpayment">';
+		echo $creditor;
+		echo '</div>';
+		echo '</div>';
 	}
 	if (getDolGlobalString('MAIN_IMAGE_PUBLIC_PAYMENT')) {
-		print '<div class="backimagepublicpayment">';
-		print '<img id="idMAIN_IMAGE_PUBLIC_PAYMENT" src="' . getDolGlobalString('MAIN_IMAGE_PUBLIC_PAYMENT').'">';
-		print '</div>';
+		echo '<div class="backimagepublicpayment">';
+		echo '<img id="idMAIN_IMAGE_PUBLIC_PAYMENT" src="' . getDolGlobalString('MAIN_IMAGE_PUBLIC_PAYMENT').'">';
+		echo '</div>';
 	}
 
 
-	print '<br><br><br>';
+	echo '<br><br><br>';
 }
 
 
@@ -1897,26 +1897,26 @@ if ($ispaymentok) {
 // Show result message
 if (empty($doactionsthenredirect)) {
 	if ($ispaymentok) {
-		print $langs->trans("YourPaymentHasBeenRecorded")."<br>\n";
+		echo $langs->trans("YourPaymentHasBeenRecorded")."<br>\n";
 		if ($TRANSACTIONID) {
-			print $langs->trans("ThisIsTransactionId", $TRANSACTIONID)."<br><br>\n";
+			echo $langs->trans("ThisIsTransactionId", $TRANSACTIONID)."<br><br>\n";
 		}
 
 		// Show a custom message
 		$key = 'ONLINE_PAYMENT_MESSAGE_OK';
 		if (getDolGlobalString($key)) {
-			print '<br>';
-			print getDolGlobalString($key);
+			echo '<br>';
+			echo getDolGlobalString($key);
 		}
 	} else {
-		print $langs->trans('DoExpressCheckoutPaymentAPICallFailed')."<br>\n";
-		print $langs->trans('DetailedErrorMessage').": ".$ErrorLongMsg."<br>\n";
-		print $langs->trans('ShortErrorMessage').": ".$ErrorShortMsg."<br>\n";
-		print $langs->trans('ErrorCode').": ".$ErrorCode."<br>\n";
-		print $langs->trans('ErrorSeverityCode').": ".$ErrorSeverityCode."<br>\n";
+		echo $langs->trans('DoExpressCheckoutPaymentAPICallFailed')."<br>\n";
+		echo $langs->trans('DetailedErrorMessage').": ".$ErrorLongMsg."<br>\n";
+		echo $langs->trans('ShortErrorMessage').": ".$ErrorShortMsg."<br>\n";
+		echo $langs->trans('ErrorCode').": ".$ErrorCode."<br>\n";
+		echo $langs->trans('ErrorSeverityCode').": ".$ErrorSeverityCode."<br>\n";
 
 		if ($mysoc->email) {
-			print "\nPlease, send a screenshot of this page to ".$mysoc->email."<br>\n";
+			echo "\nPlease, send a screenshot of this page to ".$mysoc->email."<br>\n";
 		}
 	}
 }
@@ -2087,9 +2087,9 @@ unset($_SESSION["TRANSACTIONID"]);
 
 // Close page content id="dolpaymentdiv"
 if (empty($doactionsthenredirect)) {
-	print "\n</div>\n";
+	echo "\n</div>\n";
 
-	print "<!-- Info for payment: FinalPaymentAmt=".dol_escape_htmltag($FinalPaymentAmt)." paymentTypeId=".dol_escape_htmltag($paymentTypeId)." currencyCodeType=".dol_escape_htmltag($currencyCodeType)." -->\n";
+	echo "<!-- Info for payment: FinalPaymentAmt=".dol_escape_htmltag($FinalPaymentAmt)." paymentTypeId=".dol_escape_htmltag($paymentTypeId)." currencyCodeType=".dol_escape_htmltag($currencyCodeType)." -->\n";
 }
 
 
@@ -2110,11 +2110,11 @@ if (!empty($doactionsthenredirect)) {
 		// Redirect to a success page
 		// Paymentok page must be created for the specific website
 		$ext_urlok = DOL_URL_ROOT.'/public/website/index.php?website='.urlencode($ws).'&pageref=paymentok&fulltag='.$FULLTAG;
-		print "<script>window.top.location.href = '".dol_escape_js($ext_urlok) ."';</script>";
+		echo "<script>window.top.location.href = '".dol_escape_js($ext_urlok) ."';</script>";
 	} else {
 		// Redirect to an error page
 		// Paymentko page must be created for the specific website
 		$ext_urlko = DOL_URL_ROOT.'/public/website/index.php?website='.urlencode($ws).'&pageref=paymentko&fulltag='.$FULLTAG;
-		print "<script>window.top.location.href = '".dol_escape_js($ext_urlko)."';</script>";
+		echo "<script>window.top.location.href = '".dol_escape_js($ext_urlko)."';</script>";
 	}
 }

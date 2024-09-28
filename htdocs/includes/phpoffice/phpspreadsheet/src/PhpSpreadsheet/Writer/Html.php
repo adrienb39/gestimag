@@ -1849,7 +1849,7 @@ class Html extends BaseWriter
             '  body>div:first-child {margin-top: 0;}',
             '  .scrpgbrk {margin-top: 1px;}',
             '}',
-            '@media print {',
+            '@media echo {',
             '  .gridlinesp td {border: 1px solid black;}',
             '  .gridlinesp th {border: 1px solid black;}',
             '  .navigation {display: none;}',

@@ -33,7 +33,7 @@ jobs:
 
       - name: Get composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo  "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Cache composer dependencies
         uses: actions/cache@v3
@@ -47,16 +47,16 @@ jobs:
         if: ${{ matrix.php-version == '8.0' || matrix.php-version == '8.1' || matrix.php-version == '8.2' || matrix.php-version == 'nightly' }}
         run: |
           rm composer.lock
-          echo "::set-output name=flags::--ignore-platform-reqs"
+          echo  "::set-output name=flags::--ignore-platform-reqs"
 
       - name: Install dependencies
         run: composer update --no-progress --prefer-dist --optimize-autoloader ${{ steps.composer-lock.outputs.flags }}
 
       - name: Setup problem matchers for PHP
-        run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+        run: echo  "::add-matcher::${{ runner.tool_cache }}/php.json"
 
       - name: Setup problem matchers for PHPUnit
-        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+        run: echo  "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
       - name: "Run PHPUnit tests (Experimental: ${{ matrix.experimental }})"
         env:
@@ -78,7 +78,7 @@ jobs:
 
       - name: Get composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo  "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Cache composer dependencies
         uses: actions/cache@v3
@@ -108,7 +108,7 @@ jobs:
 
       - name: Get composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo  "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Cache composer dependencies
         uses: actions/cache@v3
@@ -137,7 +137,7 @@ jobs:
 
       - name: Get composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo  "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Cache composer dependencies
         uses: actions/cache@v3

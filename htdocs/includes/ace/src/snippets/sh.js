@@ -75,9 +75,9 @@ snippet getopt\n\
 \n\
 		h|help     )  usage; exit 0   ;;\n\
 \n\
-		v|version  )  echo \"$${0:0} -- Version $__ScriptVersion\"; exit 0   ;;\n\
+		v|version  )  echo  \"$${0:0} -- Version $__ScriptVersion\"; exit 0   ;;\n\
 \n\
-		\\? )  echo -e \"\\n  Option does not exist : $OPTARG\\n\"\n\
+		\\? )  echo  -e \"\\n  Option does not exist : $OPTARG\\n\"\n\
 			  usage; exit 1   ;;\n\
 \n\
 	  esac    # --- end of case ---\n\

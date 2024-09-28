@@ -129,10 +129,10 @@ class ImagickEscposImageTest extends PHPUnit\Framework\TestCase
         $rasterFormatActual = $img -> toRasterFormat();
         $columnFormatActual = $img -> toColumnFormat();
         if ($rasterFormatExpected === null) {
-            echo "\nImage was: " . $img -> getWidth() . "x" . $img -> getHeight() . ", raster data \"" . friendlyBinary($rasterFormatActual) . "\"";
+            echo  "\nImage was: " . $img -> getWidth() . "x" . $img -> getHeight() . ", raster data \"" . friendlyBinary($rasterFormatActual) . "\"";
         }
         if ($columnFormatExpected === null) {
-            echo "\nImage was: " . $img -> getWidth() . "x" . $img -> getHeight() . ", column data \"" . friendlyBinary($columnFormatActual) . "\"";
+            echo  "\nImage was: " . $img -> getWidth() . "x" . $img -> getHeight() . ", column data \"" . friendlyBinary($columnFormatActual) . "\"";
         }
         $this -> assertEquals($height , $img -> getHeight());
         $this -> assertEquals($width, $img -> getWidth());

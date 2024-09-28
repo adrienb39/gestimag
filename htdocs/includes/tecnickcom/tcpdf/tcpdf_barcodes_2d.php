@@ -94,7 +94,7 @@ class TCPDF2DBarcode {
 		header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
 		header('Content-Disposition: inline; filename="'.md5($code).'.svg";');
 		//header('Content-Length: '.strlen($code));
-		echo $code;
+		echo  $code;
 	}
 
 	/**
@@ -113,7 +113,7 @@ class TCPDF2DBarcode {
 		$svg .= '<svg width="'.round(($this->barcode_array['num_cols'] * $w), 3).'" height="'.round(($this->barcode_array['num_rows'] * $h), 3).'" version="1.1" xmlns="http://www.w3.org/2000/svg">'."\n";
 		$svg .= "\t".'<desc>'.strtr($this->barcode_array['code'], $repstr).'</desc>'."\n";
 		$svg .= "\t".'<g id="elements" fill="'.$color.'" stroke="none">'."\n";
-		// print barcode elements
+		// echo barcode elements
 		$y = 0;
 		// for each row
 		for ($r = 0; $r < $this->barcode_array['num_rows']; ++$r) {
@@ -143,7 +143,7 @@ class TCPDF2DBarcode {
 	 */
 	public function getBarcodeHTML($w=10, $h=10, $color='black') {
 		$html = '<div style="font-size:0;position:relative;width:'.($w * $this->barcode_array['num_cols']).'px;height:'.($h * $this->barcode_array['num_rows']).'px;">'."\n";
-		// print barcode elements
+		// echo barcode elements
 		$y = 0;
 		// for each row
 		for ($r = 0; $r < $this->barcode_array['num_rows']; ++$r) {
@@ -178,7 +178,7 @@ class TCPDF2DBarcode {
 		header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Date in the past
 		header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
 		//header('Content-Length: '.strlen($data));
-		echo $data;
+		echo  $data;
 
 	}
 
@@ -212,7 +212,7 @@ class TCPDF2DBarcode {
 		} else {
 			return false;
 		}
-		// print barcode elements
+		// echo barcode elements
 		$y = 0;
 		// for each row
 		for ($r = 0; $r < $this->barcode_array['num_rows']; ++$r) {

@@ -35,7 +35,7 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 
 /*
   The permission array is composed of values taken from the following ones (specify the ones you want to block):
-	- print : Print the document;
+	- echo : Print the document;
 	- modify : Modify the contents of the document by operations other than those controlled by 'fill-forms', 'extract' and 'assemble';
 	- copy : Copy or otherwise extract text and graphics from the document;
 	- annot-forms : Add or modify text annotations, fill in interactive form fields, and, if 'modify' is also set, create or modify interactive form fields (including signature fields);
@@ -120,7 +120,7 @@ Encryption Example
 Consult the source code documentation for the SetProtection() method.
 EOD;
 
-// print a block of text using Write()
+// echo a block of text using Write()
 $pdf->Write(0, $txt, '', 0, 'L', true, 0, false, false, 0);
 
 

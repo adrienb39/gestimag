@@ -67,7 +67,7 @@ $securekeyreceived = GETPOST("securekey", 'alpha');
 $securekeytocompare = dol_hash(getDolGlobalString('EVENTORGANIZATION_SECUREKEY').'conferenceorbooth'.((int) $id), 'md5');
 
 if ($securekeytocompare != $securekeyreceived) {
-	print $langs->trans('MissingOrBadSecureKey');
+	echo $langs->trans('MissingOrBadSecureKey');
 	exit;
 }
 
@@ -113,7 +113,7 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 
 	top_htmlhead($head, $title, $disablejs, $disablehead, $arrayofjs, $arrayofcss); // Show html headers
 
-	print '<body id="mainbody" class="publicnewmemberform">';
+	echo '<body id="mainbody" class="publicnewmemberform">';
 
 	// Define urllogo
 	$urllogo = DOL_URL_ROOT.'/theme/common/login_logo.png';
@@ -126,31 +126,31 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 		$urllogo = DOL_URL_ROOT.'/theme/gestimag_logo.svg';
 	}
 
-	print '<div class="center">';
+	echo '<div class="center">';
 	// Output html code for logo
-	print '<div class="backgreypublicpayment">';
-	print '<div class="logopublicpayment">';
+	echo '<div class="backgreypublicpayment">';
+	echo '<div class="logopublicpayment">';
 	if ($urllogo) {
-		print '<img id="dolpaymentlogo" src="'.$urllogo.'">';
+		echo '<img id="dolpaymentlogo" src="'.$urllogo.'">';
 	}
 	if (empty($urllogo)) {
-		print $mysoc->name;
+		echo $mysoc->name;
 	}
-	print '</div>';
+	echo '</div>';
 	if (!getDolGlobalString('MAIN_HIDE_POWERED_BY')) {
-		print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+		echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 	}
-	print '</div>';
+	echo '</div>';
 
 	if (getDolGlobalString('PROJECT_IMAGE_PUBLIC_ORGANIZEDEVENT')) {
-		print '<div class="backimagepubliceventorganizationsubscription">';
-		print '<img id="idPROJECT_IMAGE_PUBLIC_ORGANIZEDEVENT" src="' . getDolGlobalString('PROJECT_IMAGE_PUBLIC_ORGANIZEDEVENT').'">';
-		print '</div>';
+		echo '<div class="backimagepubliceventorganizationsubscription">';
+		echo '<img id="idPROJECT_IMAGE_PUBLIC_ORGANIZEDEVENT" src="' . getDolGlobalString('PROJECT_IMAGE_PUBLIC_ORGANIZEDEVENT').'">';
+		echo '</div>';
 	}
 
-	print '</div>';
+	echo '</div>';
 
-	print '<div class="divmainbodylarge">';
+	echo '<div class="divmainbodylarge">';
 }
 
 /**
@@ -160,12 +160,12 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
  */
 function llxFooterVierge()
 {
-	print '</div>';
+	echo '</div>';
 
 	printCommonFooter('public');
 
-	print "</body>\n";
-	print "</html>\n";
+	echo "</body>\n";
+	echo "</html>\n";
 }
 
 
@@ -211,40 +211,40 @@ llxHeaderVierge($langs->trans("SuggestForm"));
 
 
 
-print '<span id="dolpaymentspan"></span>'."\n";
-print '<div class="center">'."\n";
+echo '<span id="dolpaymentspan"></span>'."\n";
+echo '<div class="center">'."\n";
 
-print '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-print '<input type="hidden" name="token" value="'.newToken().'">'."\n";
-print '<input type="hidden" name="action" value="dopayment">'."\n";
-print '<input type="hidden" name="tag" value="'.GETPOST("tag", 'alpha').'">'."\n";
-//print '<input type="hidden" name="suffix" value="'.dol_escape_htmltag($suffix).'">'."\n";
-print '<input type="hidden" name="id" value="'.dol_escape_htmltag($id).'">'."\n";
-print '<input type="hidden" name="securekey" value="'.dol_escape_htmltag($securekeyreceived).'">'."\n";
-print '<input type="hidden" name="e" value="'.$entity.'" />';
-print '<input type="hidden" name="forcesandbox" value="'.GETPOSTINT('forcesandbox').'" />';
-print "\n";
+echo '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
+echo '<input type="hidden" name="token" value="'.newToken().'">'."\n";
+echo '<input type="hidden" name="action" value="dopayment">'."\n";
+echo '<input type="hidden" name="tag" value="'.GETPOST("tag", 'alpha').'">'."\n";
+//echo '<input type="hidden" name="suffix" value="'.dol_escape_htmltag($suffix).'">'."\n";
+echo '<input type="hidden" name="id" value="'.dol_escape_htmltag($id).'">'."\n";
+echo '<input type="hidden" name="securekey" value="'.dol_escape_htmltag($securekeyreceived).'">'."\n";
+echo '<input type="hidden" name="e" value="'.$entity.'" />';
+echo '<input type="hidden" name="forcesandbox" value="'.GETPOSTINT('forcesandbox').'" />';
+echo "\n";
 
 
-print '<div align="center">';
-print '<div id="divsubscribe">';
+echo '<div align="center">';
+echo '<div id="divsubscribe">';
 
 
 // Sub banner
-print '<div class="center subscriptionformbanner subbanner justify margintoponly paddingtop marginbottomonly padingbottom">';
-print load_fiche_titre($langs->trans("NewRegistration"), '', '', 0, 0, 'center');
+echo '<div class="center subscriptionformbanner subbanner justify margintoponly paddingtop marginbottomonly padingbottom">';
+echo load_fiche_titre($langs->trans("NewRegistration"), '', '', 0, 0, 'center');
 // Welcome message
-print '<span class="opacitymedium">'.$langs->trans("EvntOrgRegistrationWelcomeMessage").'</span>';
-print '<br>';
+echo '<span class="opacitymedium">'.$langs->trans("EvntOrgRegistrationWelcomeMessage").'</span>';
+echo '<br>';
 // Title
-print '<span class="eventlabel large">'.dol_escape_htmltag($project->title . ' '. $conference->label).'</span><br>';
-print '</div>';
+echo '<span class="eventlabel large">'.dol_escape_htmltag($project->title . ' '. $conference->label).'</span><br>';
+echo '</div>';
 
 // Help text
-print '<div class="justify subscriptionformhelptext">';
+echo '<div class="justify subscriptionformhelptext">';
 
 if ($project->date_start_event || $project->date_end_event) {
-	print '<br><span class="fa fa-calendar pictofixedwidth opacitymedium"></span>';
+	echo '<br><span class="fa fa-calendar pictofixedwidth opacitymedium"></span>';
 }
 if ($project->date_start_event) {
 	$format = 'day';
@@ -252,10 +252,10 @@ if ($project->date_start_event) {
 	if ($tmparray['hours'] || $tmparray['minutes'] || $tmparray['minutes']) {
 		$format = 'dayhour';
 	}
-	print dol_print_date($project->date_start_event, $format);
+	echo dol_print_date($project->date_start_event, $format);
 }
 if ($project->date_start_event && $project->date_end_event) {
-	print ' - ';
+	echo ' - ';
 }
 if ($project->date_end_event) {
 	$format = 'day';
@@ -263,26 +263,26 @@ if ($project->date_end_event) {
 	if ($tmparray['hours'] || $tmparray['minutes'] || $tmparray['minutes']) {
 		$format = 'dayhour';
 	}
-	print dol_print_date($project->date_end_event, $format);
+	echo dol_print_date($project->date_end_event, $format);
 }
 if ($project->date_start_event || $project->date_end_event) {
-	print '<br>';
+	echo '<br>';
 }
 if ($project->location) {
-	print '<span class="fa fa-map-marked-alt pictofixedwidth opacitymedium"></span>'.dol_escape_htmltag($project->location).'<br>';
+	echo '<span class="fa fa-map-marked-alt pictofixedwidth opacitymedium"></span>'.dol_escape_htmltag($project->location).'<br>';
 }
 
-print '</div>';
+echo '</div>';
 
 
-print '<br>';
+echo '<br>';
 
-print '<table id="dolsuggestboost" summary="Suggest a boost form" class="center">'."\n";
+echo '<table id="dolsuggestboost" summary="Suggest a boost form" class="center">'."\n";
 
-print $text;
+echo $text;
 
 // Output payment summary form
-print '<tr><td align="center">';
+echo '<tr><td align="center">';
 
 $found = false;
 $error = 0;
@@ -290,44 +290,44 @@ $var = false;
 
 $object = null;
 
-print "\n";
+echo "\n";
 
 
 // Show all action buttons
-print '<br>';
+echo '<br>';
 
 // Output introduction text
 $foundaction = 0;
 if ($project->accept_booth_suggestions) {
 	$foundaction++;
-	print '<input type="submit" value="'.$langs->trans("SuggestBooth").'" id="suggestbooth" name="suggestbooth" class="button minwidth250">';
-	print '<br><br>';
+	echo '<input type="submit" value="'.$langs->trans("SuggestBooth").'" id="suggestbooth" name="suggestbooth" class="button minwidth250">';
+	echo '<br><br>';
 }
 if ($project->accept_conference_suggestions == 1 || $project->accept_conference_suggestions == 2) {		// Can suggest conferences
 	$foundaction++;
-	print '<input type="submit" value="'.$langs->trans("SuggestConference").'" id="suggestconference" name="suggestconference" class="button minwidth250">';
-	print '<br><br>';
+	echo '<input type="submit" value="'.$langs->trans("SuggestConference").'" id="suggestconference" name="suggestconference" class="button minwidth250">';
+	echo '<br><br>';
 }
 if ($project->accept_conference_suggestions == 2 || $project->accept_conference_suggestions == 3) {		// Can vote for conferences
 	$foundaction++;
-	print '<input type="submit" value="'.$langs->trans("ViewAndVote").'" id="viewandvote" name="viewandvote" class="button minwidth250">';
+	echo '<input type="submit" value="'.$langs->trans("ViewAndVote").'" id="viewandvote" name="viewandvote" class="button minwidth250">';
 }
 
 if (! $foundaction) {
-	print '<span class="opacitymedium">'.$langs->trans("NoPublicActionsAllowedForThisEvent").'</span>';
+	echo '<span class="opacitymedium">'.$langs->trans("NoPublicActionsAllowedForThisEvent").'</span>';
 }
 
-print '</td></tr>'."\n";
+echo '</td></tr>'."\n";
 
-print '</table>'."\n";
-
-
-print '</div></div>';
+echo '</table>'."\n";
 
 
-print '</form>'."\n";
-print '</div>'."\n";
-print '<br>';
+echo '</div></div>';
+
+
+echo '</form>'."\n";
+echo '</div>'."\n";
+echo '<br>';
 
 
 

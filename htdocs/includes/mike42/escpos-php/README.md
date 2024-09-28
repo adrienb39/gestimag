@@ -4,7 +4,7 @@
 [![License](https://poser.pugx.org/mike42/escpos-php/license)](https://packagist.org/packages/mike42/escpos-php)
 [![Coverage Status](https://coveralls.io/repos/github/mike42/escpos-php/badge.svg?branch=development)](https://coveralls.io/github/mike42/escpos-php?branch=development)
 
-This project implements a subset of Epson's ESC/POS protocol for thermal receipt printers. It allows you to generate and print receipts with basic formatting, cutting, and barcodes on a compatible printer.
+This project implements a subset of Epson's ESC/POS protocol for thermal receipt printers. It allows you to generate and echo receipts with basic formatting, cutting, and barcodes on a compatible printer.
 
 The library was developed to add drop-in support for receipt printing to any PHP app, including web-based point-of-sale (POS) applications.
 
@@ -235,11 +235,11 @@ copy foo.txt LPT1
 del foo.txt
 ```
 
-If you have troubles at this point, then you should consult your OS and printer system documentation to try to find a working print command.
+If you have troubles at this point, then you should consult your OS and printer system documentation to try to find a working echo command.
 
 ### Using a PrintConnector
 
-To print receipts from PHP, use the most applicable [PrintConnector](https://github.com/mike42/escpos-php/tree/master/src/Mike42/Escpos/PrintConnectors) for your setup. The connector simply provides the plumbing to get data to the printer.
+To echo receipts from PHP, use the most applicable [PrintConnector](https://github.com/mike42/escpos-php/tree/master/src/Mike42/Escpos/PrintConnectors) for your setup. The connector simply provides the plumbing to get data to the printer.
 
 For example, a `NetworkPrintConnector` accepts an IP address and port:
 
@@ -264,7 +264,7 @@ $connector = new FilePrintConnector("/dev/ttyS0");
 $printer = new Printer($connector);
 ```
 
-For each OS/interface combination that's supported, there are examples in the compatibility section of how a `PrintConnector` would be constructed. If you can't get a `PrintConnector` to work, then be sure to include the working print command in your issue.
+For each OS/interface combination that's supported, there are examples in the compatibility section of how a `PrintConnector` would be constructed. If you can't get a `PrintConnector` to work, then be sure to include the working echo command in your issue.
 
 ### Using a CapabilityProfile
 
@@ -296,7 +296,7 @@ For a list of available profiles, or to have support for your printer improved, 
 
 On Linux, your printer device file will be somewhere like `/dev/lp0` (parallel), `/dev/usb/lp1` (USB), `/dev/ttyUSB0` (USB-Serial), `/dev/ttyS0` (serial).
 
-On Windows, the device files will be along the lines of `LPT1` (parallel) or `COM1` (serial). Use the `WindowsPrintConnector` to tap into system printing on Windows (eg. [Windows USB](https://github.com/mike42/escpos-php/tree/master/example/interface/windows-usb.php), [SMB](https://github.com/mike42/escpos-php/tree/master/example/interface/smb.php) or [Windows LPT](https://github.com/mike42/escpos-php/tree/master/example/interface/windows-lpt.php)) - this submits print jobs via a queue rather than communicating directly with the printer.
+On Windows, the device files will be along the lines of `LPT1` (parallel) or `COM1` (serial). Use the `WindowsPrintConnector` to tap into system printing on Windows (eg. [Windows USB](https://github.com/mike42/escpos-php/tree/master/example/interface/windows-usb.php), [SMB](https://github.com/mike42/escpos-php/tree/master/example/interface/smb.php) or [Windows LPT](https://github.com/mike42/escpos-php/tree/master/example/interface/windows-lpt.php)) - this submits echo jobs via a queue rather than communicating directly with the printer.
 
 A complete real-world receipt can be found in the code of [Auth](https://github.com/mike42/Auth) in [ReceiptPrinter.php](https://github.com/mike42/Auth/blob/master/lib/misc/ReceiptPrinter.php). It includes justification, boldness, and a barcode.
 
@@ -305,7 +305,7 @@ Other examples are located in the [example/](https://github.com/mike42/escpos-ph
 ## Available methods
 
 ### __construct(PrintConnector $connector, CapabilityProfile $profile)
-Construct new print object.
+Construct new echo object.
 
 Parameters:
 - `PrintConnector $connector`: The PrintConnector to send data to.
@@ -331,7 +331,7 @@ Currently supported barcode standards are (depending on your printer):
 - `BARCODE_ITF`
 - `BARCODE_CODABAR`
 
-Note that some barcode standards can only encode numbers, so attempting to print non-numeric codes with them may result in strange behaviour.
+Note that some barcode standards can only encode numbers, so attempting to echo non-numeric codes with them may result in strange behaviour.
 
 ### bitImage(EscposImage $image, $size)
 See [graphics()](#graphicsescposimage-image-size) below.
@@ -420,7 +420,7 @@ Print the given data as a QR code on the printer.
 - `int $model`: QR code model to use. Must be one of `Printer::QR_MODEL_1`, `Printer::QR_MODEL_2` (default) or `Printer::QR_MICRO` (not supported by all printers).
 
 ### selectPrintMode($mode)
-Select print mode(s).
+Select echo mode(s).
 
 Parameters:
 
@@ -450,7 +450,7 @@ Parameters:
 - `int $width`: Bar width in dots. If not specified, 3 will be used. Values above 6 appear to have no effect.
 
 ### setColor($color)
-Select print color - on printers that support multiple colors.
+Select echo color - on printers that support multiple colors.
 
 Parameters:
 
@@ -496,19 +496,19 @@ Parameters:
 
 ### setPrintLeftMargin($margin)
 
-Set print area left margin. Reset to default with `Printer::initialize()`.
+Set echo area left margin. Reset to default with `Printer::initialize()`.
 
 Parameters:
 
-- `int $margin`: The left margin to set on to the print area, in dots.
+- `int $margin`: The left margin to set on to the echo area, in dots.
 
 ### setPrintWidth($width)
 
-Set print area width. This can be used to add a right margin to the print area. Reset to default with `Printer::initialize()`.
+Set echo area width. This can be used to add a right margin to the echo area. Reset to default with `Printer::initialize()`.
 
 Parameters:
 
-- `int $width`: The width of the page print area, in dots.
+- `int $width`: The width of the page echo area, in dots.
 
 ### setReverseColors($on)
 Set black/white reverse mode on or off. In this mode, text is printed white on a black background.

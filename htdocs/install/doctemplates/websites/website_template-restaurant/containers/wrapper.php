@@ -45,14 +45,14 @@ if (!empty($hashp)) {
 				$original_file = (($tmp[1] ? $tmp[1].'/' : '').$ecmfile->filename); // this is relative to module dir
 				//var_dump($original_file); exit;
 			} else {
-				print 'Bad link. File is from another module part.';
+				echo 'Bad link. File is from another module part.';
 			}
 		} else {
 			$modulepart = $moduleparttocheck;
 			$original_file = (($tmp[1] ? $tmp[1].'/' : '').$ecmfile->filename); // this is relative to module dir
 		}
 	} else {
-		print "ErrorFileNotFoundWithSharedLink";
+		echo "ErrorFileNotFoundWithSharedLink";
 		exit;
 	}
 }
@@ -172,14 +172,14 @@ if ($rss) {
 				$error = 'Failed to rename '.$outputfiletmp.' into '.$outputfile;
 				dol_syslog("build_exportfile ".$error, LOG_ERR);
 				dol_delete_file($outputfiletmp, 0, 1);
-				print $error;
+				echo $error;
 				exit(-1);
 			}
 		} else {
 			dol_syslog("build_exportfile build_xxxfile function fails to for format=".$format." outputfiletmp=".$outputfile, LOG_ERR);
 			dol_delete_file($outputfiletmp, 0, 1);
 			$langs->load("errors");
-			print $langs->trans("ErrorFailToCreateFile", $outputfile);
+			echo $langs->trans("ErrorFailToCreateFile", $outputfile);
 			exit(-1);
 		}
 	}
@@ -217,7 +217,7 @@ if ($rss) {
 		$outputfile = $dir_temp.'/'.$filename;
 		$result = readfile($outputfile);
 		if (!$result) {
-			print 'File '.$outputfile.' was empty.';
+			echo 'File '.$outputfile.' was empty.';
 		}
 
 		// header("Location: ".DOL_URL_ROOT.'/document.php?modulepart=agenda&file='.urlencode($filename));
@@ -241,7 +241,7 @@ if ($rss) {
 	// Security:
 	// Limit access if permissions are wrong
 	if (!$accessallowed) {
-		print 'Access forbidden';
+		echo 'Access forbidden';
 		exit;
 	}
 
@@ -255,7 +255,7 @@ if ($rss) {
 
 	// This test if file exists should be useless. We keep it to find bug more easily
 	if (!file_exists($fullpath_original_file_osencoded)) {
-		print "ErrorFileDoesNotExists: ".dol_escape_htmltag($original_file);
+		echo "ErrorFileDoesNotExists: ".dol_escape_htmltag($original_file);
 		exit;
 	}
 

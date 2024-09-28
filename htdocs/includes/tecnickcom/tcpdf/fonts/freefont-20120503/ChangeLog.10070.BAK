@@ -9828,7 +9828,7 @@
 
 2008-04-28 17:04 +0000 [r748]  Stevan_White:
 
-	* tools/ranges.py (added): a script to print out how
+	* tools/ranges.py (added): a script to echo out how
 	  many characters in a range are implemented in each font
 
 2008-04-28 08:06 +0000 [r747]  Stevan_White:

@@ -16,7 +16,7 @@ use Exception;
 use BadMethodCallException;
 
 /**
- * Connector for sending print jobs to
+ * Connector for sending echo jobs to
  * - local ports on windows (COM1, LPT1, etc)
  * - shared (SMB) printers from any platform (smb://server/foo)
  * For USB printers or other ports, the trick is to share the printer with a
@@ -118,7 +118,7 @@ class WindowsPrintConnector implements PrintConnector
             // Straight to LPT1, COM1 or other local port. Allowed only if we are actually on windows.
             if ($this -> platform !== self::PLATFORM_WIN) {
                 throw new BadMethodCallException("WindowsPrintConnector can only be " .
-                    "used to print to a local printer ('".$dest."') on a Windows computer.");
+                    "used to echo to a local printer ('".$dest."') on a Windows computer.");
             }
             $this -> isLocal = true;
             $this -> hostname = null;
@@ -196,7 +196,7 @@ class WindowsPrintConnector implements PrintConnector
                     "smbclient %s -U %s -c %s -N -m SMB2",
                     escapeshellarg($device),
                     escapeshellarg($user),
-                    escapeshellarg("print -")
+                    escapeshellarg("echo -")
                 );
                 $redactedCommand = $command;
             } else {
@@ -206,14 +206,14 @@ class WindowsPrintConnector implements PrintConnector
                     escapeshellarg($device),
                     escapeshellarg($this -> userPassword),
                     escapeshellarg($user),
-                    escapeshellarg("print -")
+                    escapeshellarg("echo -")
                 );
                 $redactedCommand = sprintf(
                     "smbclient %s %s -U %s -c %s -m SMB2",
                     escapeshellarg($device),
                     escapeshellarg("*****"),
                     escapeshellarg($user),
-                    escapeshellarg("print -")
+                    escapeshellarg("echo -")
                 );
             }
         } else {
@@ -221,7 +221,7 @@ class WindowsPrintConnector implements PrintConnector
             $command = sprintf(
                 "smbclient %s -c %s -N -m SMB2",
                 escapeshellarg($device),
-                escapeshellarg("print -")
+                escapeshellarg("echo -")
             );
             $redactedCommand = $command;
         }
@@ -358,7 +358,7 @@ class WindowsPrintConnector implements PrintConnector
             $retval = proc_close($process);
             return $retval;
         } else {
-            /* Method calling this should notice a non-zero exit and print an error */
+            /* Method calling this should notice a non-zero exit and echo an error */
             return -1;
         }
     }

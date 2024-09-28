@@ -134,8 +134,8 @@ class Canvas
 			$this->template_dir = '';
 		}
 
-		//print 'dimodule='.$dirmodule.' canvas='.$this->canvas.'<br>';
-		//print ' => template_dir='.$this->template_dir.'<br>';
+		//echo 'dimodule='.$dirmodule.' canvas='.$this->canvas.'<br>';
+		//echo ' => template_dir='.$this->template_dir.'<br>';
 	}
 
 	// phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps

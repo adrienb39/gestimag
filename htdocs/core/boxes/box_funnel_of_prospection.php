@@ -179,8 +179,8 @@ class box_funnel_of_prospection extends ModeleBoxes
 				$this->db->free($resql);
 				$ponderated_opp_amount = $ponderated_opp_amount / 100;
 
-				$stringtoprint = '';
-				$stringtoprint .= '<div class="div-table-responsive-no-min ">';
+				$stringtoecho = '';
+				$stringtoecho .= '<div class="div-table-responsive-no-min ">';
 				$listofstatus = array_keys($listofoppstatus);
 				$liststatus = array();
 				$data = array('');
@@ -204,10 +204,10 @@ class box_funnel_of_prospection extends ModeleBoxes
 						$data[] = $amount;
 						$liststatus[] = $labelStatus;
 						if (!$conf->use_javascript_ajax) {
-							$stringtoprint .= '<tr class="oddeven">';
-							$stringtoprint .= '<td>'.$labelStatus.'</td>';
-							$stringtoprint .= '<td class="nowraponall right amount"><a href="list.php?statut='.$status.'">'.price((isset($valsamount[$status]) ? (float) $valsamount[$status] : 0), 0, '', 1, -1, -1, $conf->currency).'</a></td>';
-							$stringtoprint .= "</tr>\n";
+							$stringtoecho .= '<tr class="oddeven">';
+							$stringtoecho .= '<td>'.$labelStatus.'</td>';
+							$stringtoecho .= '<td class="nowraponall right amount"><a href="list.php?statut='.$status.'">'.price((isset($valsamount[$status]) ? (float) $valsamount[$status] : 0), 0, '', 1, -1, -1, $conf->currency).'</a></td>';
+							$stringtoecho .= "</tr>\n";
 						}
 						$customlabels[] = $customlabel;
 						if ($maxamount < $amount) {
@@ -249,9 +249,9 @@ class box_funnel_of_prospection extends ModeleBoxes
 					$dolgraph->setTooltipsLabels($customlabels);
 					$dolgraph->mode = 'depth';
 					$dolgraph->draw('idgraphleadfunnel');
-					$stringtoprint .= $dolgraph->show($totaloppnb ? 0 : 1);
+					$stringtoecho .= $dolgraph->show($totaloppnb ? 0 : 1);
 				}
-				$stringtoprint .= '</div>';
+				$stringtoecho .= '</div>';
 
 				$line = 0;
 				/*$this->info_box_contents[$line][] = array(
@@ -313,7 +313,7 @@ class box_funnel_of_prospection extends ModeleBoxes
 	 *
 	 *	@param	array	$head       Array with properties of box title
 	 *	@param  array	$contents   Array with properties of box lines
-	 *  @param	int		$nooutput	No $stringtoprint .=, only return string
+	 *  @param	int		$nooutput	No $stringtoecho .=, only return string
 	 *	@return	string
 	 */
 	public function showBox($head = null, $contents = null, $nooutput = 0)

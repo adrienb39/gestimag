@@ -110,7 +110,7 @@ class box_external_rss extends ModeleBoxes
 
 		// INFO on items
 		$items = $rssparser->getItems();
-		//print '<pre>'.print_r($items,true).'</pre>';
+		//echo '<pre>'.print_r($items,true).'</pre>';
 
 		// Loop on last items
 		$nbitems = count($items);

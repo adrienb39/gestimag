@@ -78,47 +78,47 @@ pHeader($langs->trans("Repair"), "upgrade2", GETPOST('action', 'aZ09'));
 // Action to launch the repair script
 $actiondone = 1;
 
-print '<div class="warning" style="padding-top: 10px">';
-print $langs->trans("SetAtLeastOneOptionAsUrlParameter");
-print '</div>';
+echo '<div class="warning" style="padding-top: 10px">';
+echo $langs->trans("SetAtLeastOneOptionAsUrlParameter");
+echo '</div>';
 
-//print 'You must set one of the following option with a parameter value that is "test" or "confirmed" on the URL<br>';
-//print $langs->trans("Example").': '.DOL_MAIN_URL_ROOT.'/install/repair.php?standard=confirmed<br>'."\n";
-print '<br>';
+//echo 'You must set one of the following option with a parameter value that is "test" or "confirmed" on the URL<br>';
+//echo $langs->trans("Example").': '.DOL_MAIN_URL_ROOT.'/install/repair.php?standard=confirmed<br>'."\n";
+echo '<br>';
 
-print 'Option standard is '.(GETPOST('standard', 'alpha') ? GETPOST('standard', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option standard is '.(GETPOST('standard', 'alpha') ? GETPOST('standard', 'alpha') : 'undefined').'<br>'."\n";
 // Disable modules
-print 'Option force_disable_of_modules_not_found is '.(GETPOST('force_disable_of_modules_not_found', 'alpha') ? GETPOST('force_disable_of_modules_not_found', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option force_disable_of_modules_not_found is '.(GETPOST('force_disable_of_modules_not_found', 'alpha') ? GETPOST('force_disable_of_modules_not_found', 'alpha') : 'undefined').'<br>'."\n";
 // Files
-print 'Option restore_thirdparties_logos is '.(GETPOST('restore_thirdparties_logos', 'alpha') ? GETPOST('restore_thirdparties_logos', 'alpha') : 'undefined').'<br>'."\n";
-print 'Option restore_user_pictures is '.(GETPOST('restore_user_pictures', 'alpha') ? GETPOST('restore_user_pictures', 'alpha') : 'undefined').'<br>'."\n";
-print 'Option rebuild_product_thumbs is '.(GETPOST('rebuild_product_thumbs', 'alpha') ? GETPOST('rebuild_product_thumbs', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option restore_thirdparties_logos is '.(GETPOST('restore_thirdparties_logos', 'alpha') ? GETPOST('restore_thirdparties_logos', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option restore_user_pictures is '.(GETPOST('restore_user_pictures', 'alpha') ? GETPOST('restore_user_pictures', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option rebuild_product_thumbs is '.(GETPOST('rebuild_product_thumbs', 'alpha') ? GETPOST('rebuild_product_thumbs', 'alpha') : 'undefined').'<br>'."\n";
 // Clean tables and data
-print 'Option clean_linked_elements is '.(GETPOST('clean_linked_elements', 'alpha') ? GETPOST('clean_linked_elements', 'alpha') : 'undefined').'<br>'."\n";
-print 'Option clean_menus is '.(GETPOST('clean_menus', 'alpha') ? GETPOST('clean_menus', 'alpha') : 'undefined').'<br>'."\n";
-print 'Option clean_orphelin_dir is '.(GETPOST('clean_orphelin_dir', 'alpha') ? GETPOST('clean_orphelin_dir', 'alpha') : 'undefined').'<br>'."\n";
-print 'Option clean_product_stock_batch is '.(GETPOST('clean_product_stock_batch', 'alpha') ? GETPOST('clean_product_stock_batch', 'alpha') : 'undefined').'<br>'."\n";
-print 'Option clean_perm_table is '.(GETPOST('clean_perm_table', 'alpha') ? GETPOST('clean_perm_table', 'alpha') : 'undefined').'<br>'."\n";
-print 'Option repair_link_dispatch_lines_supplier_order_lines, is '.(GETPOST('repair_link_dispatch_lines_supplier_order_lines', 'alpha') ? GETPOST('repair_link_dispatch_lines_supplier_order_lines', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option clean_linked_elements is '.(GETPOST('clean_linked_elements', 'alpha') ? GETPOST('clean_linked_elements', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option clean_menus is '.(GETPOST('clean_menus', 'alpha') ? GETPOST('clean_menus', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option clean_orphelin_dir is '.(GETPOST('clean_orphelin_dir', 'alpha') ? GETPOST('clean_orphelin_dir', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option clean_product_stock_batch is '.(GETPOST('clean_product_stock_batch', 'alpha') ? GETPOST('clean_product_stock_batch', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option clean_perm_table is '.(GETPOST('clean_perm_table', 'alpha') ? GETPOST('clean_perm_table', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option repair_link_dispatch_lines_supplier_order_lines, is '.(GETPOST('repair_link_dispatch_lines_supplier_order_lines', 'alpha') ? GETPOST('repair_link_dispatch_lines_supplier_order_lines', 'alpha') : 'undefined').'<br>'."\n";
 // Init data
-print 'Option set_empty_time_spent_amount is '.(GETPOST('set_empty_time_spent_amount', 'alpha') ? GETPOST('set_empty_time_spent_amount', 'alpha') : 'undefined').'<br>'."\n";
+echo 'Option set_empty_time_spent_amount is '.(GETPOST('set_empty_time_spent_amount', 'alpha') ? GETPOST('set_empty_time_spent_amount', 'alpha') : 'undefined').'<br>'."\n";
 // Structure
-print 'Option force_utf8_on_tables (force utf8 + row=dynamic), for mysql/mariadb only, is '.(GETPOST('force_utf8_on_tables', 'alpha') ? GETPOST('force_utf8_on_tables', 'alpha') : 'undefined').'<br>'."\n";
-print '<span class="valignmiddle">'."Option force_utf8mb4_on_tables (force utf8mb4 + row=dynamic, EXPERIMENTAL!), for mysql/mariadb only, is ".(GETPOST('force_utf8mb4_on_tables', 'alpha') ? GETPOST('force_utf8mb4_on_tables', 'alpha') : 'undefined');
-print '</span>';
+echo 'Option force_utf8_on_tables (force utf8 + row=dynamic), for mysql/mariadb only, is '.(GETPOST('force_utf8_on_tables', 'alpha') ? GETPOST('force_utf8_on_tables', 'alpha') : 'undefined').'<br>'."\n";
+echo '<span class="valignmiddle">'."Option force_utf8mb4_on_tables (force utf8mb4 + row=dynamic, EXPERIMENTAL!), for mysql/mariadb only, is ".(GETPOST('force_utf8mb4_on_tables', 'alpha') ? GETPOST('force_utf8mb4_on_tables', 'alpha') : 'undefined');
+echo '</span>';
 if ($gestimag_main_db_character_set != 'utf8mb4') {
-	print '<img src="../theme/eldy/img/warning.png" class="pictofortooltip valignmiddle" title="If you switch to utf8mb4, you must also check the value for $gestimag_main_db_character_set and $gestimag_main_db_collation into conf/conf.php file.">';
+	echo '<img src="../theme/eldy/img/warning.png" class="pictofortooltip valignmiddle" title="If you switch to utf8mb4, you must also check the value for $gestimag_main_db_character_set and $gestimag_main_db_collation into conf/conf.php file.">';
 }
-print "<br>\n";
-print "Option force_collation_from_conf_on_tables (force ".$conf->db->character_set."/".$conf->db->gestimag_main_db_collation." + row=dynamic), for mysql/mariadb only is ".(GETPOST('force_collation_from_conf_on_tables', 'alpha') ? GETPOST('force_collation_from_conf_on_tables', 'alpha') : 'undefined')."<br>\n";
+echo "<br>\n";
+echo "Option force_collation_from_conf_on_tables (force ".$conf->db->character_set."/".$conf->db->gestimag_main_db_collation." + row=dynamic), for mysql/mariadb only is ".(GETPOST('force_collation_from_conf_on_tables', 'alpha') ? GETPOST('force_collation_from_conf_on_tables', 'alpha') : 'undefined')."<br>\n";
 
 // Rebuild sequence
-print 'Option rebuild_sequences, for postgresql only, is '.(GETPOST('rebuild_sequences', 'alpha') ? GETPOST('rebuild_sequences', 'alpha') : 'undefined').'<br>'."\n";
-print '<br>';
+echo 'Option rebuild_sequences, for postgresql only, is '.(GETPOST('rebuild_sequences', 'alpha') ? GETPOST('rebuild_sequences', 'alpha') : 'undefined').'<br>'."\n";
+echo '<br>';
 
-print '<hr>';
+echo '<hr>';
 
-print '<table cellspacing="0" cellpadding="1" class="centpercent">';
+echo '<table cellspacing="0" cellpadding="1" class="centpercent">';
 $error = 0;
 
 // If password is encoded, we decode it
@@ -148,24 +148,24 @@ $conf->db->gestimag_main_db_cryptkey = isset($gestimag_main_db_cryptkey) ? $gest
 $db = getDoliDBInstance($conf->db->type, $conf->db->host, $conf->db->user, $conf->db->pass, $conf->db->name, (int) $conf->db->port);
 
 if ($db->connected) {
-	print '<tr><td class="nowrap">';
-	print $langs->trans("ServerConnection")." : $gestimag_main_db_host</td><td class=\"right\">".$langs->trans("OK")."</td></tr>";
+	echo '<tr><td class="nowrap">';
+	echo $langs->trans("ServerConnection")." : $gestimag_main_db_host</td><td class=\"right\">".$langs->trans("OK")."</td></tr>";
 	gestimag_install_syslog("repair: ".$langs->transnoentities("ServerConnection").": ".$gestimag_main_db_host.$langs->transnoentities("OK"));
 	$ok = 1;
 } else {
-	print "<tr><td>".$langs->trans("ErrorFailedToConnectToDatabase", $gestimag_main_db_name)."</td><td class=\"right\">".$langs->transnoentities("Error")."</td></tr>";
+	echo "<tr><td>".$langs->trans("ErrorFailedToConnectToDatabase", $gestimag_main_db_name)."</td><td class=\"right\">".$langs->transnoentities("Error")."</td></tr>";
 	gestimag_install_syslog("repair: ".$langs->transnoentities("ErrorFailedToConnectToDatabase", $gestimag_main_db_name));
 	$ok = 0;
 }
 
 if ($ok) {
 	if ($db->database_selected) {
-		print '<tr><td class="nowrap">';
-		print $langs->trans("DatabaseConnection")." : ".$gestimag_main_db_name."</td><td class=\"right\">".$langs->trans("OK")."</td></tr>";
+		echo '<tr><td class="nowrap">';
+		echo $langs->trans("DatabaseConnection")." : ".$gestimag_main_db_name."</td><td class=\"right\">".$langs->trans("OK")."</td></tr>";
 		gestimag_install_syslog("repair: database connection successful: ".$gestimag_main_db_name);
 		$ok = 1;
 	} else {
-		print "<tr><td>".$langs->trans("ErrorFailedToConnectToDatabase", $gestimag_main_db_name)."</td><td class=\"right\">".$langs->trans("Error")."</td></tr>";
+		echo "<tr><td>".$langs->trans("ErrorFailedToConnectToDatabase", $gestimag_main_db_name)."</td><td class=\"right\">".$langs->trans("Error")."</td></tr>";
 		gestimag_install_syslog("repair: ".$langs->transnoentities("ErrorFailedToConnectToDatabase", $gestimag_main_db_name));
 		$ok = 0;
 	}
@@ -175,10 +175,10 @@ if ($ok) {
 if ($ok) {
 	$version = $db->getVersion();
 	$versionarray = $db->getVersionArray();
-	print '<tr><td>'.$langs->trans("ServerVersion").'</td>';
-	print '<td class="right">'.$version.'</td></tr>';
+	echo '<tr><td>'.$langs->trans("ServerVersion").'</td>';
+	echo '<td class="right">'.$version.'</td></tr>';
 	gestimag_install_syslog("repair: ".$langs->transnoentities("ServerVersion").": ".$version);
-	//print '<td class="right">'.join('.',$versionarray).'</td></tr>';
+	//echo '<td class="right">'.join('.',$versionarray).'</td></tr>';
 }
 
 $conf->setValues($db);
@@ -200,7 +200,7 @@ $oneoptionset = (GETPOST('standard', 'alpha') || GETPOST('restore_thirdparties_l
 
 if ($ok && $oneoptionset) {
 	// Show wait message
-	print '<tr><td colspan="2">'.$langs->trans("PleaseBePatient").'<br><br></td></tr>';
+	echo '<tr><td colspan="2">'.$langs->trans("PleaseBePatient").'<br><br></td></tr>';
 	flush();
 }
 
@@ -233,8 +233,8 @@ if ($ok && GETPOST('standard', 'alpha')) {
 
 	// Loop on each file
 	foreach ($filelist as $file) {
-		print '<tr><td class="nowrap">*** ';
-		print $langs->trans("Script").'</td><td class="right">'.$file.'</td></tr>';
+		echo '<tr><td class="nowrap">*** ';
+		echo $langs->trans("Script").'</td><td class="right">'.$file.'</td></tr>';
 
 		$name = substr($file, 0, dol_strlen($file) - 4);
 
@@ -261,7 +261,7 @@ if ($ok && GETPOST('standard', 'alpha')) {
 				'adherent_type' => 'adherent_type', 'user' => 'user', 'partnership' => 'partnership', 'projet' => 'projet', 'projet_task' => 'projet_task', 'ticket' => 'ticket');
 	//$listofmodulesextra = array('fichinter'=>'fichinter');
 
-	print '<tr><td colspan="2"><br>*** Check fields into extra table structure match table of definition. If not add column into table</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Check fields into extra table structure match table of definition. If not add column into table</td></tr>';
 	foreach ($listofmodulesextra as $tablename => $elementtype) {
 		// Get list of fields
 		$tableextra = MAIN_DB_PREFIX.$tablename.'_extrafields';
@@ -273,7 +273,7 @@ if ($ok && GETPOST('standard', 'alpha')) {
 		$arrayoffieldsfound = array();
 		$resql = $db->DDLDescTable($tableextra);
 		if ($resql) {
-			print '<tr><td>Check availability of extra field for '.$tableextra;
+			echo '<tr><td>Check availability of extra field for '.$tableextra;
 			$i = 0;
 			while ($obj = $db->fetch_object($resql)) {
 				$fieldname = $fieldtype = '';
@@ -293,16 +293,16 @@ if ($ok && GETPOST('standard', 'alpha')) {
 				}
 				$arrayoffieldsfound[$fieldname] = array('type' => $fieldtype);
 			}
-			print ' - Found '.count($arrayoffieldsfound).' fields into table';
+			echo ' - Found '.count($arrayoffieldsfound).' fields into table';
 			if (count($arrayoffieldsfound) > 0) {
-				print ' <span class="opacitymedium">('.implode(', ', array_keys($arrayoffieldsfound)).')</span>';
+				echo ' <span class="opacitymedium">('.implode(', ', array_keys($arrayoffieldsfound)).')</span>';
 			}
-			print '<br>'."\n";
+			echo '<br>'."\n";
 
 			// If it does not match, we create fields
 			foreach ($arrayoffieldsdesc as $code => $label) {
 				if (!in_array($code, array_keys($arrayoffieldsfound))) {
-					print 'Found field '.$code.' declared into '.MAIN_DB_PREFIX.'extrafields table but not found into desc of table '.$tableextra." -> ";
+					echo 'Found field '.$code.' declared into '.MAIN_DB_PREFIX.'extrafields table but not found into desc of table '.$tableextra." -> ";
 					$type = $extrafields->attributes[$elementtype]['type'][$code];
 					$length = $extrafields->attributes[$elementtype]['size'][$code];
 					$attribute = '';
@@ -348,19 +348,19 @@ if ($ok && GETPOST('standard', 'alpha')) {
 						$result = $db->DDLAddField($tableextra, $code, $field_desc, "");
 
 						if ($result < 0) {
-							print "KO ".$db->lasterror."<br>\n";
+							echo "KO ".$db->lasterror."<br>\n";
 						} else {
-							print "OK<br>\n";
+							echo "OK<br>\n";
 						}
 					} else {
-						print ' - Mode test, no column added.';
+						echo ' - Mode test, no column added.';
 					}
 				}
 			}
 
-			print "</td><td>&nbsp;</td></tr>\n";
+			echo "</td><td>&nbsp;</td></tr>\n";
 		} else {
-			print '<tr><td>Table '.$tableextra.' is not found</td><td></td></tr>'."\n";
+			echo '<tr><td>Table '.$tableextra.' is not found</td><td></td></tr>'."\n";
 		}
 	}
 }
@@ -374,7 +374,7 @@ if ($ok && GETPOST('standard', 'alpha')) {
 
 // clean declaration constants
 if ($ok && GETPOST('standard', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Clean constant record of modules not enabled</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Clean constant record of modules not enabled</td></tr>';
 
 	$sql = "SELECT name, entity, value";
 	$sql .= " FROM ".MAIN_DB_PREFIX."const as c";
@@ -414,12 +414,12 @@ if ($ok && GETPOST('standard', 'alpha')) {
 							if (GETPOST('standard', 'alpha') == 'confirmed') {
 								$db->query($sqldelete);
 
-								print '<tr><td>Widget '.$obj->name.' set in entity '.$obj->entity.' with value '.$obj->value.' -> Module '.$name.' not enabled in entity '.((int) $obj->entity).', we delete record</td></tr>';
+								echo '<tr><td>Widget '.$obj->name.' set in entity '.$obj->entity.' with value '.$obj->value.' -> Module '.$name.' not enabled in entity '.((int) $obj->entity).', we delete record</td></tr>';
 							} else {
-								print '<tr><td>Widget '.$obj->name.' set in entity '.$obj->entity.' with value '.$obj->value.' -> Module '.$name.' not enabled in entity '.((int) $obj->entity).', we should delete record (not done, mode test)</td></tr>';
+								echo '<tr><td>Widget '.$obj->name.' set in entity '.$obj->entity.' with value '.$obj->value.' -> Module '.$name.' not enabled in entity '.((int) $obj->entity).', we should delete record (not done, mode test)</td></tr>';
 							}
 						} else {
-							//print '<tr><td>Constant '.$obj->name.' set in entity '.$obj->entity.' with value '.$obj->value.' -> Module found in entity '.$obj->entity.', we keep record</td></tr>';
+							//echo '<tr><td>Constant '.$obj->name.' set in entity '.$obj->entity.' with value '.$obj->value.' -> Module found in entity '.$obj->entity.', we keep record</td></tr>';
 						}
 					}
 				}
@@ -437,7 +437,7 @@ if ($ok && GETPOST('standard', 'alpha')) {
 
 // clean box of not enabled modules
 if ($ok && GETPOST('standard', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Clean definition of boxes of modules not enabled</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Clean definition of boxes of modules not enabled</td></tr>';
 
 	$sql = "SELECT file, entity FROM ".MAIN_DB_PREFIX."boxes_def";
 	$sql .= " WHERE file like '%@%'";
@@ -475,12 +475,12 @@ if ($ok && GETPOST('standard', 'alpha')) {
 								$db->query($sqldeletea);
 								$db->query($sqldeleteb);
 
-								print '<tr><td>Constant '.$obj->file.' set in boxes_def for entity '.$obj->entity.' but MAIN_MODULE_'.strtoupper($module).' not defined in entity '.((int) $obj->entity).', we delete record</td></tr>';
+								echo '<tr><td>Constant '.$obj->file.' set in boxes_def for entity '.$obj->entity.' but MAIN_MODULE_'.strtoupper($module).' not defined in entity '.((int) $obj->entity).', we delete record</td></tr>';
 							} else {
-								print '<tr><td>Constant '.$obj->file.' set in boxes_def for entity '.$obj->entity.' but MAIN_MODULE_'.strtoupper($module).' not defined in entity '.((int) $obj->entity).', we should delete record (not done, mode test)</td></tr>';
+								echo '<tr><td>Constant '.$obj->file.' set in boxes_def for entity '.$obj->entity.' but MAIN_MODULE_'.strtoupper($module).' not defined in entity '.((int) $obj->entity).', we should delete record (not done, mode test)</td></tr>';
 							}
 						} else {
-							//print '<tr><td>Constant '.$obj->name.' set in entity '.$obj->entity.' with value '.$obj->value.' -> Module found in entity '.$obj->entity.', we keep record</td></tr>';
+							//echo '<tr><td>Constant '.$obj->name.' set in entity '.$obj->entity.' with value '.$obj->value.' -> Module found in entity '.$obj->entity.', we keep record</td></tr>';
 						}
 					}
 				}
@@ -500,7 +500,7 @@ if ($ok && GETPOST('restore_thirdparties_logos')) {
 
 	$ext = '';
 
-	print '<tr><td colspan="2"><br>*** Restore thirdparties logo<br>';
+	echo '<tr><td colspan="2"><br>*** Restore thirdparties logo<br>';
 
 	$sql = "SELECT s.rowid, s.nom as name, s.logo FROM ".MAIN_DB_PREFIX."societe as s ORDER BY s.nom";
 	$resql = $db->query($sql);
@@ -527,7 +527,7 @@ if ($ok && GETPOST('restore_thirdparties_logos')) {
 				$filetotest = $gestimag_main_data_root.'/societe/logos/'.$name.$ext;
 				$filetotestsmall = $gestimag_main_data_root.'/societe/logos/thumbs/'.$name.'_small'.$ext;
 				$exists = (int) dol_is_file($filetotest);
-				print 'Check thirdparty '.$obj->rowid.' name='.$obj->name.' logo='.$obj->logo.' file '.$filetotest." exists=".$exists."<br>\n";
+				echo 'Check thirdparty '.$obj->rowid.' name='.$obj->name.' logo='.$obj->logo.' file '.$filetotest." exists=".$exists."<br>\n";
 				if ($exists) {
 					$filetarget = $gestimag_main_data_root.'/societe/'.$obj->rowid.'/logos/'.$name.$ext;
 					$filetargetsmall = $gestimag_main_data_root.'/societe/'.$obj->rowid.'/logos/thumbs/'.$name.'_small'.$ext;
@@ -537,7 +537,7 @@ if ($ok && GETPOST('restore_thirdparties_logos')) {
 							dol_mkdir($gestimag_main_data_root.'/societe/'.$obj->rowid.'/logos');
 						}
 
-						print "  &nbsp; &nbsp; &nbsp; -> Copy file ".$filetotest." -> ".$filetarget."<br>\n";
+						echo "  &nbsp; &nbsp; &nbsp; -> Copy file ".$filetotest." -> ".$filetarget."<br>\n";
 						if (GETPOST('restore_thirdparties_logos', 'alpha') == 'confirmed') {
 							dol_copy($filetotest, $filetarget, '', 0);
 						}
@@ -548,7 +548,7 @@ if ($ok && GETPOST('restore_thirdparties_logos')) {
 						if (GETPOST('restore_thirdparties_logos', 'alpha') == 'confirmed') {
 							dol_mkdir($gestimag_main_data_root.'/societe/'.$obj->rowid.'/logos/thumbs');
 						}
-						print "  &nbsp; &nbsp; &nbsp; -> Copy file ".$filetotestsmall." -> ".$filetargetsmall."<br>\n";
+						echo "  &nbsp; &nbsp; &nbsp; -> Copy file ".$filetotestsmall." -> ".$filetargetsmall."<br>\n";
 						if (GETPOST('restore_thirdparties_logos', 'alpha') == 'confirmed') {
 							dol_copy($filetotestsmall, $filetargetsmall, '', 0);
 						}
@@ -563,7 +563,7 @@ if ($ok && GETPOST('restore_thirdparties_logos')) {
 		dol_print_error($db);
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 
@@ -574,7 +574,7 @@ if ($ok && GETPOST('restore_user_pictures', 'alpha')) {
 
 	$ext = '';
 
-	print '<tr><td colspan="2"><br>*** Restore user pictures<br>';
+	echo '<tr><td colspan="2"><br>*** Restore user pictures<br>';
 
 	$sql = "SELECT s.rowid, s.firstname, s.lastname, s.login, s.photo FROM ".MAIN_DB_PREFIX."user as s ORDER BY s.rowid";
 	$resql = $db->query($sql);
@@ -602,7 +602,7 @@ if ($ok && GETPOST('restore_user_pictures', 'alpha')) {
 				$filetotestsmall = $gestimag_main_data_root.'/users/'.substr(sprintf('%08d', $obj->rowid), -1, 1).'/'.substr(sprintf('%08d', $obj->rowid), -2, 1).'/thumbs/'.$name.'_small'.$ext;
 				$filetotestmini = $gestimag_main_data_root.'/users/'.substr(sprintf('%08d', $obj->rowid), -1, 1).'/'.substr(sprintf('%08d', $obj->rowid), -2, 1).'/thumbs/'.$name.'_mini'.$ext;
 				$exists = (int) dol_is_file($filetotest);
-				print 'Check user '.$obj->rowid.' lastname='.$obj->lastname.' firstname='.$obj->firstname.' photo='.$obj->photo.' file '.$filetotest." exists=".$exists."<br>\n";
+				echo 'Check user '.$obj->rowid.' lastname='.$obj->lastname.' firstname='.$obj->firstname.' photo='.$obj->photo.' file '.$filetotest." exists=".$exists."<br>\n";
 				if ($exists) {
 					$filetarget = $gestimag_main_data_root.'/users/'.$obj->rowid.'/'.$name.$ext;
 					$filetargetsmall = $gestimag_main_data_root.'/users/'.$obj->rowid.'/thumbs/'.$name.'_small'.$ext;
@@ -614,7 +614,7 @@ if ($ok && GETPOST('restore_user_pictures', 'alpha')) {
 							dol_mkdir($gestimag_main_data_root.'/users/'.$obj->rowid);
 						}
 
-						print "  &nbsp; &nbsp; &nbsp; -> Copy file ".$filetotest." -> ".$filetarget."<br>\n";
+						echo "  &nbsp; &nbsp; &nbsp; -> Copy file ".$filetotest." -> ".$filetarget."<br>\n";
 						if (GETPOST('restore_user_pictures', 'alpha') == 'confirmed') {
 							dol_copy($filetotest, $filetarget, '', 0);
 						}
@@ -626,7 +626,7 @@ if ($ok && GETPOST('restore_user_pictures', 'alpha')) {
 							dol_mkdir($gestimag_main_data_root.'/users/'.$obj->rowid.'/thumbs');
 						}
 
-						print "  &nbsp; &nbsp; &nbsp; -> Copy file ".$filetotestsmall." -> ".$filetargetsmall."<br>\n";
+						echo "  &nbsp; &nbsp; &nbsp; -> Copy file ".$filetotestsmall." -> ".$filetargetsmall."<br>\n";
 						if (GETPOST('restore_user_pictures', 'alpha') == 'confirmed') {
 							dol_copy($filetotestsmall, $filetargetsmall, '', 0);
 						}
@@ -638,7 +638,7 @@ if ($ok && GETPOST('restore_user_pictures', 'alpha')) {
 							dol_mkdir($gestimag_main_data_root.'/users/'.$obj->rowid.'/thumbs');
 						}
 
-						print "  &nbsp; &nbsp; &nbsp; -> Copy file ".$filetotestmini." -> ".$filetargetmini."<br>\n";
+						echo "  &nbsp; &nbsp; &nbsp; -> Copy file ".$filetotestmini." -> ".$filetargetmini."<br>\n";
 						if (GETPOST('restore_user_pictures', 'alpha') == 'confirmed') {
 							dol_copy($filetotestmini, $filetargetmini, '', 0);
 						}
@@ -653,7 +653,7 @@ if ($ok && GETPOST('restore_user_pictures', 'alpha')) {
 		dol_print_error($db);
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 
@@ -662,7 +662,7 @@ if ($ok && GETPOST('rebuild_product_thumbs', 'alpha')) {
 	$ext = '';
 	global $maxwidthsmall, $maxheightsmall, $maxwidthmini, $maxheightmini;
 
-	print '<tr><td colspan="2"><br>*** Rebuild product thumbs<br>';
+	echo '<tr><td colspan="2"><br>*** Rebuild product thumbs<br>';
 
 	$sql = "SELECT s.rowid, s.ref FROM ".MAIN_DB_PREFIX."product as s ORDER BY s.ref";
 	$resql = $db->query($sql);
@@ -683,14 +683,14 @@ if ($ok && GETPOST('rebuild_product_thumbs', 'alpha')) {
 							// Used on logon for example
 							$imgThumbSmall = vignette($file['fullname'], $maxwidthsmall, $maxheightsmall, '_small', 50, "thumbs");
 						}
-						print 'Check product '.$obj->rowid.", file ".$file['fullname']." -> ".$imgThumbSmall." maxwidthsmall=".$maxwidthsmall." maxheightsmall=".$maxheightsmall."<br>\n";
+						echo 'Check product '.$obj->rowid.", file ".$file['fullname']." -> ".$imgThumbSmall." maxwidthsmall=".$maxwidthsmall." maxheightsmall=".$maxheightsmall."<br>\n";
 						$imgThumbMini = 'notbuild';
 						if (GETPOST('rebuild_product_thumbs', 'alpha') == 'confirmed') {
 							// Create mini thumbs for image (Ratio is near 16/9)
 							// Used on menu or for setup page for example
 							$imgThumbMini = vignette($file['fullname'], $maxwidthmini, $maxheightmini, '_mini', 50, "thumbs");
 						}
-						print 'Check product '.$obj->rowid.", file ".$file['fullname']." -> ".$imgThumbMini." maxwidthmini=".$maxwidthmini." maxheightmini=".$maxheightmini."<br>\n";
+						echo 'Check product '.$obj->rowid.", file ".$file['fullname']." -> ".$imgThumbMini." maxwidthmini=".$maxwidthmini." maxheightmini=".$maxheightmini."<br>\n";
 					}
 				}
 			}
@@ -702,35 +702,35 @@ if ($ok && GETPOST('rebuild_product_thumbs', 'alpha')) {
 		dol_print_error($db);
 	}
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 // clean_linked_elements: Check and clean linked elements
 if ($ok && GETPOST('clean_linked_elements', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Check table of linked elements and delete orphelins links</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Check table of linked elements and delete orphelins links</td></tr>';
 	// propal => order
-	print '<tr><td colspan="2">'.checkLinkedElements('propal', 'commande')."</td></tr>\n";
+	echo '<tr><td colspan="2">'.checkLinkedElements('propal', 'commande')."</td></tr>\n";
 
 	// propal => invoice
-	print '<tr><td colspan="2">'.checkLinkedElements('propal', 'facture')."</td></tr>\n";
+	echo '<tr><td colspan="2">'.checkLinkedElements('propal', 'facture')."</td></tr>\n";
 
 	// order => invoice
-	print '<tr><td colspan="2">'.checkLinkedElements('commande', 'facture')."</td></tr>\n";
+	echo '<tr><td colspan="2">'.checkLinkedElements('commande', 'facture')."</td></tr>\n";
 
 	// order => shipping
-	print '<tr><td colspan="2">'.checkLinkedElements('commande', 'shipping')."</td></tr>\n";
+	echo '<tr><td colspan="2">'.checkLinkedElements('commande', 'shipping')."</td></tr>\n";
 
 	// shipping => delivery
-	print '<tr><td colspan="2">'.checkLinkedElements('shipping', 'delivery')."</td></tr>\n";
+	echo '<tr><td colspan="2">'.checkLinkedElements('shipping', 'delivery')."</td></tr>\n";
 
 	// order_supplier => invoice_supplier
-	print '<tr><td colspan="2">'.checkLinkedElements('order_supplier', 'invoice_supplier')."</td></tr>\n";
+	echo '<tr><td colspan="2">'.checkLinkedElements('order_supplier', 'invoice_supplier')."</td></tr>\n";
 }
 
 
 // clean_menus: Check orphelins menus
 if ($ok && GETPOST('clean_menus', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Clean menu entries coming from disabled modules</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Clean menu entries coming from disabled modules</td></tr>';
 
 	$sql = "SELECT rowid, module";
 	$sql .= " FROM ".MAIN_DB_PREFIX."menu as c";
@@ -748,8 +748,8 @@ if ($ok && GETPOST('clean_menus', 'alpha')) {
 				$modulecond = $obj->module;
 				$modulecondarray = explode('|', $obj->module); // Name of module
 
-				print '<tr><td>';
-				print $modulecond;
+				echo '<tr><td>';
+				echo $modulecond;
 
 				$db->begin();
 
@@ -770,7 +770,7 @@ if ($ok && GETPOST('clean_menus', 'alpha')) {
 					}
 
 					if (!$moduleok && $modulecond) {
-						print ' - Module condition '.$modulecond.' seems ko, we delete menu entry.';
+						echo ' - Module condition '.$modulecond.' seems ko, we delete menu entry.';
 						if (GETPOST('clean_menus') == 'confirmed') {
 							$sql2 = "DELETE FROM ".MAIN_DB_PREFIX."menu WHERE module = '".$db->escape($modulecond)."'";
 							$resql2 = $db->query($sql2);
@@ -778,13 +778,13 @@ if ($ok && GETPOST('clean_menus', 'alpha')) {
 								$error++;
 								dol_print_error($db);
 							} else {
-								print ' - <span class="warning">Cleaned</span>';
+								echo ' - <span class="warning">Cleaned</span>';
 							}
 						} else {
-							print ' - <span class="warning">Canceled (test mode)</span>';
+							echo ' - <span class="warning">Canceled (test mode)</span>';
 						}
 					} else {
-						print ' - Module condition '.$modulecond.' is ok, we do nothing.';
+						echo ' - Module condition '.$modulecond.' is ok, we do nothing.';
 					}
 				}
 
@@ -803,7 +803,7 @@ if ($ok && GETPOST('clean_menus', 'alpha')) {
 				$i++;
 			}
 		} else {
-			print '<tr><td>No menu entries of disabled menus found</td></tr>';
+			echo '<tr><td>No menu entries of disabled menus found</td></tr>';
 		}
 	} else {
 		dol_print_error($db);
@@ -841,7 +841,7 @@ if ($ok && GETPOST('clean_orphelin_dir', 'alpha')) {
 			continue;
 		}
 
-		print '<tr><td colspan="2"><br>*** Clean orphelins files into files '.$upload_dir.'</td></tr>';
+		echo '<tr><td colspan="2"><br>*** Clean orphelins files into files '.$upload_dir.'</td></tr>';
 
 		$filearray = dol_dir_list($upload_dir, "files", 1, '', array('^SPECIMEN\.pdf$', '^\.', '(\.meta|_preview.*\.png)$', '^temp$', '^payments$', '^CVS$', '^thumbs$'), '', SORT_DESC, 1, true);
 
@@ -920,20 +920,20 @@ if ($ok && GETPOST('clean_orphelin_dir', 'alpha')) {
 				}
 
 				if ($id || $ref) {
-					//print 'Fetch '.$id.' or '.$ref.'<br>';
+					//echo 'Fetch '.$id.' or '.$ref.'<br>';
 					$result = $object_instance->fetch($id, $ref);
-					//print $result.'<br>';
+					//echo $result.'<br>';
 					if ($result == 0) {    // Not found but no error
 						// Clean of orphelins directories are done into repair.php
-						print '<tr><td colspan="2">';
-						print 'Delete orphelins file '.$file['fullname'].'<br>';
+						echo '<tr><td colspan="2">';
+						echo 'Delete orphelins file '.$file['fullname'].'<br>';
 						if (GETPOST('clean_orphelin_dir', 'alpha') == 'confirmed') {
 							dol_delete_file($file['fullname'], 1, 1, 1);
 							dol_delete_dir(dirname($file['fullname']), 1);
 						}
-						print "</td></tr>";
+						echo "</td></tr>";
 					} elseif ($result < 0) {
-						print 'Error in '.get_class($object_instance).'.fetch of id'.$id.' ref='.$ref.', result='.$result.'<br>';
+						echo 'Error in '.get_class($object_instance).'.fetch of id'.$id.' ref='.$ref.', result='.$result.'<br>';
 					}
 				}
 			}
@@ -945,14 +945,14 @@ if ($ok && GETPOST('clean_orphelin_dir', 'alpha')) {
 if ($ok && GETPOST('clean_product_stock_batch', 'alpha')) {
 	$methodtofix = GETPOST('methodtofix', 'alpha') ? GETPOST('methodtofix', 'alpha') : 'updatestock';
 
-	print '<tr><td colspan="2"><br>*** Clean table product_batch, methodtofix='.$methodtofix.' (possible values: updatestock or updatebatch)</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Clean table product_batch, methodtofix='.$methodtofix.' (possible values: updatestock or updatebatch)</td></tr>';
 
 	$sql = "SELECT p.rowid, p.ref, p.tobatch, ps.rowid as psrowid, ps.fk_entrepot, ps.reel, SUM(pb.qty) as reelbatch";
 	$sql .= " FROM ".MAIN_DB_PREFIX."product as p, ".MAIN_DB_PREFIX."product_stock as ps LEFT JOIN ".MAIN_DB_PREFIX."product_batch as pb ON ps.rowid = pb.fk_product_stock";
 	$sql .= " WHERE p.rowid = ps.fk_product";
 	$sql .= " GROUP BY p.rowid, p.ref, p.tobatch, ps.rowid, ps.fk_entrepot, ps.reel";
 	$sql .= " HAVING (SUM(pb.qty) IS NOT NULL AND reel != SUM(pb.qty)) OR (SUM(pb.qty) IS NULL AND p.tobatch > 0)";
-	print $sql;
+	echo $sql;
 	$resql = $db->query($sql);
 	if ($resql) {
 		$num = $db->num_rows($resql);
@@ -961,16 +961,16 @@ if ($ok && GETPOST('clean_product_stock_batch', 'alpha')) {
 			$i = 0;
 			while ($i < $num) {
 				$obj = $db->fetch_object($resql);
-				print '<tr><td>Product '.$obj->rowid.'-'.$obj->ref.' in warehouse id='.$obj->fk_entrepot.' (product_stock.id='.$obj->psrowid.'): '.$obj->reel.' (Stock product_stock.reel) != '.($obj->reelbatch ? $obj->reelbatch : '0').' (Stock batch sum product_batch)';
+				echo '<tr><td>Product '.$obj->rowid.'-'.$obj->ref.' in warehouse id='.$obj->fk_entrepot.' (product_stock.id='.$obj->psrowid.'): '.$obj->reel.' (Stock product_stock.reel) != '.($obj->reelbatch ? $obj->reelbatch : '0').' (Stock batch sum product_batch)';
 
 				// Fix is required
 				if ($obj->reel != $obj->reelbatch) {
 					if (empty($obj->tobatch)) {
 						// If product is not a product that support batches, we can clean stock by deleting the product batch lines
-						print ' -> Delete qty '.$obj->reelbatch.' for any lot linked to fk_product_stock='.$obj->psrowid;
+						echo ' -> Delete qty '.$obj->reelbatch.' for any lot linked to fk_product_stock='.$obj->psrowid;
 						$sql2 = "DELETE FROM ".MAIN_DB_PREFIX."product_batch";
 						$sql2 .= " WHERE fk_product_stock = ".((int) $obj->psrowid);
-						print '<br>'.$sql2;
+						echo '<br>'.$sql2;
 
 						if (GETPOST('clean_product_stock_batch') == 'confirmed') {
 							$resql2 = $db->query($sql2);
@@ -982,10 +982,10 @@ if ($ok && GETPOST('clean_product_stock_batch', 'alpha')) {
 					} else {
 						if ($methodtofix == 'updatebatch') {
 							// Method 1
-							print ' -> Insert qty '.($obj->reel - $obj->reelbatch).' with lot 000000 linked to fk_product_stock='.$obj->psrowid;
+							echo ' -> Insert qty '.($obj->reel - $obj->reelbatch).' with lot 000000 linked to fk_product_stock='.$obj->psrowid;
 							$sql2 = "INSERT INTO ".MAIN_DB_PREFIX."product_batch(fk_product_stock, batch, qty)";
 							$sql2 .= "VALUES(".((int) $obj->psrowid).", '000000', ".((float) ($obj->reel - $obj->reelbatch)).")";
-							print '<br>'.$sql2;
+							echo '<br>'.$sql2;
 
 							if (GETPOST('clean_product_stock_batch') == 'confirmed') {
 								$resql2 = $db->query($sql2);
@@ -999,10 +999,10 @@ if ($ok && GETPOST('clean_product_stock_batch', 'alpha')) {
 						}
 						if ($methodtofix == 'updatestock') {
 							// Method 2
-							print ' -> Update qty of product_stock with qty = '.($obj->reelbatch ? ((float) $obj->reelbatch) : '0').' for ps.rowid = '.((int) $obj->psrowid);
+							echo ' -> Update qty of product_stock with qty = '.($obj->reelbatch ? ((float) $obj->reelbatch) : '0').' for ps.rowid = '.((int) $obj->psrowid);
 							$sql2 = "UPDATE ".MAIN_DB_PREFIX."product_stock";
 							$sql2 .= " SET reel = ".($obj->reelbatch ? ((float) $obj->reelbatch) : '0')." WHERE rowid = ".((int) $obj->psrowid);
-							print '<br>'.$sql2;
+							echo '<br>'.$sql2;
 
 							if (GETPOST('clean_product_stock_batch') == 'confirmed') {
 								$error = 0;
@@ -1038,7 +1038,7 @@ if ($ok && GETPOST('clean_product_stock_batch', 'alpha')) {
 				$i++;
 			}
 		} else {
-			print '<tr><td colspan="2">Nothing to do</td></tr>';
+			echo '<tr><td colspan="2">Nothing to do</td></tr>';
 		}
 	} else {
 		dol_print_error($db);
@@ -1048,7 +1048,7 @@ if ($ok && GETPOST('clean_product_stock_batch', 'alpha')) {
 
 // clean_product_stock_negative_if_batch
 if ($ok && GETPOST('clean_product_stock_negative_if_batch', 'alpha')) {
-	print '<tr><td colspan="2"><br>Clean table product_batch, methodtofix='.$methodtofix.' (possible values: updatestock or updatebatch)</td></tr>';
+	echo '<tr><td colspan="2"><br>Clean table product_batch, methodtofix='.$methodtofix.' (possible values: updatestock or updatebatch)</td></tr>';
 
 	$sql = "SELECT p.rowid, p.ref, p.tobatch, ps.rowid as psrowid, ps.fk_entrepot, ps.reel, SUM(pb.qty) as reelbatch";
 	$sql .= " FROM ".MAIN_DB_PREFIX."product as p, ".MAIN_DB_PREFIX."product_stock as ps, ".MAIN_DB_PREFIX."product_batch as pb";
@@ -1064,7 +1064,7 @@ if ($ok && GETPOST('clean_product_stock_negative_if_batch', 'alpha')) {
 			$i = 0;
 			while ($i < $num) {
 				$obj = $db->fetch_object($resql);
-				print '<tr><td>'.$obj->rowid.'-'.$obj->ref.'-'.$obj->fk_entrepot.' -> '.$obj->psrowid.': '.$obj->reel.' != '.$obj->reelbatch;
+				echo '<tr><td>'.$obj->rowid.'-'.$obj->ref.'-'.$obj->fk_entrepot.' -> '.$obj->psrowid.': '.$obj->reel.' != '.$obj->reelbatch;
 
 				// TODO
 			}
@@ -1074,7 +1074,7 @@ if ($ok && GETPOST('clean_product_stock_negative_if_batch', 'alpha')) {
 
 // set_empty_time_spent_amount
 if ($ok && GETPOST('set_empty_time_spent_amount', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Set value of time spent without amount</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Set value of time spent without amount</td></tr>';
 
 	$sql = "SELECT COUNT(ptt.rowid) as nb, u.rowid as user_id, u.login, u.thm as user_thm";
 	$sql .= " FROM ".MAIN_DB_PREFIX."element_time as ptt, ".MAIN_DB_PREFIX."user as u";
@@ -1090,7 +1090,7 @@ if ($ok && GETPOST('set_empty_time_spent_amount', 'alpha')) {
 			$i = 0;
 			while ($i < $num) {
 				$obj = $db->fetch_object($resql);
-				print '<tr><td>'.$obj->login.'-'.$obj->user_id.' ('.$obj->nb.' lines to fix) -> '.$obj->user_thm;
+				echo '<tr><td>'.$obj->login.'-'.$obj->user_id.' ('.$obj->nb.' lines to fix) -> '.$obj->user_thm;
 
 				$db->begin();
 
@@ -1119,7 +1119,7 @@ if ($ok && GETPOST('set_empty_time_spent_amount', 'alpha')) {
 				$i++;
 			}
 		} else {
-			print '<tr><td>No time spent with empty line on users with a hourly rate defined</td></tr>';
+			echo '<tr><td>No time spent with empty line on users with a hourly rate defined</td></tr>';
 		}
 	} else {
 		dol_print_error($db);
@@ -1129,7 +1129,7 @@ if ($ok && GETPOST('set_empty_time_spent_amount', 'alpha')) {
 
 // force_disable_of_modules_not_found
 if ($ok && GETPOST('force_disable_of_modules_not_found', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Force modules not found physically to be disabled (only modules adding js, css or hooks can be detected as removed physically)</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Force modules not found physically to be disabled (only modules adding js, css or hooks can be detected as removed physically)</td></tr>';
 
 	$arraylistofkey = array('hooks', 'js', 'css');
 
@@ -1148,8 +1148,8 @@ if ($ok && GETPOST('force_disable_of_modules_not_found', 'alpha')) {
 					$obj = $db->fetch_object($resql);
 					$constantname = $obj->name; // Name of constant for hook or js or css declaration
 
-					print '<tr><td>';
-					print dol_escape_htmltag($constantname);
+					echo '<tr><td>';
+					echo dol_escape_htmltag($constantname);
 
 					$db->begin();
 
@@ -1192,7 +1192,7 @@ if ($ok && GETPOST('force_disable_of_modules_not_found', 'alpha')) {
 							}
 
 							if (!$result) {
-								print ' - File of '.$key.' ('.$reloffile.') NOT found, we disable the module.';
+								echo ' - File of '.$key.' ('.$reloffile.') NOT found, we disable the module.';
 								if (GETPOST('force_disable_of_modules_not_found') == 'confirmed') {
 									$sql2 = "DELETE FROM ".MAIN_DB_PREFIX."const WHERE name = 'MAIN_MODULE_".strtoupper($name)."_".strtoupper($key)."'";
 									$resql2 = $db->query($sql2);
@@ -1206,13 +1206,13 @@ if ($ok && GETPOST('force_disable_of_modules_not_found', 'alpha')) {
 										$error++;
 										dol_print_error($db);
 									} else {
-										print ' - <span class="warning">Cleaned</span>';
+										echo ' - <span class="warning">Cleaned</span>';
 									}
 								} else {
-									print ' - <span class="warning">Canceled (test mode)</span>';
+									echo ' - <span class="warning">Canceled (test mode)</span>';
 								}
 							} else {
-								print ' - File of '.$key.' ('.$reloffile.') found, we do nothing.';
+								echo ' - File of '.$key.' ('.$reloffile.') found, we do nothing.';
 							}
 						}
 
@@ -1232,7 +1232,7 @@ if ($ok && GETPOST('force_disable_of_modules_not_found', 'alpha')) {
 					$i++;
 				}
 			} else {
-				print '<tr><td>No active module with missing files found by searching on MAIN_MODULE_(.*)_'.strtoupper($key).'</td></tr>';
+				echo '<tr><td>No active module with missing files found by searching on MAIN_MODULE_(.*)_'.strtoupper($key).'</td></tr>';
 			}
 		} else {
 			dol_print_error($db);
@@ -1243,7 +1243,7 @@ if ($ok && GETPOST('force_disable_of_modules_not_found', 'alpha')) {
 
 // clean_old_module_entries: Clean data into const when files of module were removed without being
 if ($ok && GETPOST('clean_perm_table', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Clean table user_rights from lines of external modules no more enabled</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Clean table user_rights from lines of external modules no more enabled</td></tr>';
 
 	$listofmods = '';
 	foreach ($conf->modules as $key => $val) {
@@ -1260,21 +1260,21 @@ if ($ok && GETPOST('clean_perm_table', 'alpha')) {
 			while ($i < $num) {
 				$obj = $db->fetch_object($resql);
 				if ($obj->id > 0) {
-					print '<tr><td>Found line with id '.$obj->id.', label "'.$obj->label.'" of module "'.$obj->module.'" to delete';
+					echo '<tr><td>Found line with id '.$obj->id.', label "'.$obj->label.'" of module "'.$obj->module.'" to delete';
 					if (GETPOST('clean_perm_table', 'alpha') == 'confirmed') {
 						$sqldelete = "DELETE FROM ".MAIN_DB_PREFIX."rights_def WHERE id = ".((int) $obj->id);
 						$resqldelete = $db->query($sqldelete);
 						if (!$resqldelete) {
 							dol_print_error($db);
 						}
-						print ' - deleted';
+						echo ' - deleted';
 					}
-					print '</td></tr>';
+					echo '</td></tr>';
 				}
 				$i++;
 			}
 		} else {
-			print '<tr><td>No lines of a disabled external module (with id > 100000) found into table rights_def</td></tr>';
+			echo '<tr><td>No lines of a disabled external module (with id > 100000) found into table rights_def</td></tr>';
 		}
 	} else {
 		dol_print_error($db);
@@ -1285,7 +1285,7 @@ if ($ok && GETPOST('clean_perm_table', 'alpha')) {
 
 // force utf8 on tables
 if ($ok && GETPOST('force_utf8_on_tables', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Force page code and collation of tables into utf8/utf8_unicode_ci and row_format=dynamic (for mysql/mariadb only)</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Force page code and collation of tables into utf8/utf8_unicode_ci and row_format=dynamic (for mysql/mariadb only)</td></tr>';
 
 	if ($db->type == "mysql" || $db->type == "mysqli") {
 		$force_utf8_on_tables = GETPOST('force_utf8_on_tables', 'alpha');
@@ -1295,8 +1295,8 @@ if ($ok && GETPOST('force_utf8_on_tables', 'alpha')) {
 		// Disable foreign key checking for avoid errors
 		if ($force_utf8_on_tables == 'confirmed') {
 			$sql = 'SET FOREIGN_KEY_CHECKS=0';
-			print '<!-- '.$sql.' -->';
-			print '<tr><td colspan="2">'.$sql.'</td></tr>';
+			echo '<!-- '.$sql.' -->';
+			echo '<tr><td colspan="2">'.$sql.'</td></tr>';
 			$resql = $db->query($sql);
 		}
 
@@ -1309,7 +1309,7 @@ if ($ok && GETPOST('force_utf8_on_tables', 'alpha')) {
 				continue;
 			}
 			if ($table[1] == 'VIEW') {
-				print '<tr><td colspan="2">'.$table[0].' is a '.$table[1].' <span class="opacitymedium">(Skipped)</span></td></tr>';
+				echo '<tr><td colspan="2">'.$table[0].' is a '.$table[1].' <span class="opacitymedium">(Skipped)</span></td></tr>';
 				continue;
 			}
 
@@ -1323,15 +1323,15 @@ if ($ok && GETPOST('force_utf8_on_tables', 'alpha')) {
 
 			foreach ($arrayofforeignkey as $tmptable => $foreignkeyname) {
 				if ($table[0] == $tmptable) {
-					print '<tr><td colspan="2">';
+					echo '<tr><td colspan="2">';
 					$sqltmp = "ALTER TABLE ".$db->sanitize($table[0])." DROP FOREIGN KEY ".$db->sanitize($foreignkeyname);
-					print $sqltmp;
+					echo $sqltmp;
 					if ($force_utf8_on_tables == 'confirmed') {
 						$resqltmp = $db->query($sqltmp);
 					} else {
-						print ' - <span class="opacitymedium">Disabled</span>';
+						echo ' - <span class="opacitymedium">Disabled</span>';
 					}
-					print '</td></tr>';
+					echo '</td></tr>';
 					$foreignkeystorestore[$tmptable] = $foreignkeyname;
 				}
 			}
@@ -1343,16 +1343,16 @@ if ($ok && GETPOST('force_utf8_on_tables', 'alpha')) {
 				continue;
 			}
 			if ($table[1] == 'VIEW') {
-				print '<tr><td colspan="2">'.$table[0].' is a '.$table[1].' <span class="opacitymedium">(Skipped)</span></td></tr>';
+				echo '<tr><td colspan="2">'.$table[0].' is a '.$table[1].' <span class="opacitymedium">(Skipped)</span></td></tr>';
 				continue;
 			}
 
-			print '<tr><td colspan="2">';
-			print $table[0];
+			echo '<tr><td colspan="2">';
+			echo $table[0];
 			$sql1 = "ALTER TABLE ".$db->sanitize($table[0])." ROW_FORMAT=dynamic";
 			$sql2 = "ALTER TABLE ".$db->sanitize($table[0])." CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci";
-			print '<!-- '.$sql1.' -->';
-			print '<!-- '.$sql2.' -->';
+			echo '<!-- '.$sql1.' -->';
+			echo '<!-- '.$sql2.' -->';
 			if ($force_utf8_on_tables == 'confirmed') {
 				$resql1 = $db->query($sql1);
 				if ($resql1) {
@@ -1360,11 +1360,11 @@ if ($ok && GETPOST('force_utf8_on_tables', 'alpha')) {
 				} else {
 					$resql2 = false;
 				}
-				print ' - Done '.(($resql1 && $resql2) ? '<span class="opacitymedium">(OK)</span>' : '<span class="error" title="'.dol_escape_htmltag($db->lasterror).'">(KO)</span>');
+				echo ' - Done '.(($resql1 && $resql2) ? '<span class="opacitymedium">(OK)</span>' : '<span class="error" title="'.dol_escape_htmltag($db->lasterror).'">(KO)</span>');
 			} else {
-				print ' - <span class="opacitymedium">Disabled</span>';
+				echo ' - <span class="opacitymedium">Disabled</span>';
 			}
-			print '</td></tr>';
+			echo '</td></tr>';
 			flush();
 			ob_flush();
 		}
@@ -1373,7 +1373,7 @@ if ($ok && GETPOST('force_utf8_on_tables', 'alpha')) {
 		foreach ($foreignkeystorestore as $tmptable => $foreignkeyname) {
 			$stringtofindinline = "ALTER TABLE .* ADD CONSTRAINT ".$db->sanitize($foreignkeyname);
 			$fileforkeys = DOL_DOCUMENT_ROOT.'/install/mysql/tables/'.$tmptable.'.key.sql';
-			//print 'Search in '.$fileforkeys.' to get '.$stringtofindinline."<br>\n";
+			//echo 'Search in '.$fileforkeys.' to get '.$stringtofindinline."<br>\n";
 
 			$handle = fopen($fileforkeys, 'r');
 			if ($handle) {
@@ -1381,10 +1381,10 @@ if ($ok && GETPOST('force_utf8_on_tables', 'alpha')) {
 					// Process the line read.
 					if (preg_match('/^'.$stringtofindinline.'/i', $line)) {
 						$resqltmp = $db->query($line);
-						print '<tr><td colspan="2">';
-						print $line;
-						print ' - Done '.($resqltmp ? '<span class="opacitymedium">(OK)</span>' : '<span class="error" title="'.dol_escape_htmltag($db->lasterror).'">(KO)</span>');
-						print '</td></tr>';
+						echo '<tr><td colspan="2">';
+						echo $line;
+						echo ' - Done '.($resqltmp ? '<span class="opacitymedium">(OK)</span>' : '<span class="error" title="'.dol_escape_htmltag($db->lasterror).'">(KO)</span>');
+						echo '</td></tr>';
 						break;
 					}
 				}
@@ -1397,18 +1397,18 @@ if ($ok && GETPOST('force_utf8_on_tables', 'alpha')) {
 		// Enable foreign key checking
 		if ($force_utf8_on_tables == 'confirmed') {
 			$sql = 'SET FOREIGN_KEY_CHECKS=1';
-			print '<!-- '.$sql.' -->';
-			print '<tr><td colspan="2">'.$sql.'</td></tr>';
+			echo '<!-- '.$sql.' -->';
+			echo '<tr><td colspan="2">'.$sql.'</td></tr>';
 			$resql = $db->query($sql);
 		}
 	} else {
-		print '<tr><td colspan="2">Not available with database type '.$db->type.'</td></tr>';
+		echo '<tr><td colspan="2">Not available with database type '.$db->type.'</td></tr>';
 	}
 }
 
 // force utf8mb4 on tables  EXPERIMENTAL !
 if ($ok && GETPOST('force_utf8mb4_on_tables', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Force page code and collation of tables into utf8mb4/utf8mb4_unicode_ci (for mysql/mariadb only)</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Force page code and collation of tables into utf8mb4/utf8mb4_unicode_ci (for mysql/mariadb only)</td></tr>';
 
 	if ($db->type == "mysql" || $db->type == "mysqli") {
 		$force_utf8mb4_on_tables = GETPOST('force_utf8mb4_on_tables', 'alpha');
@@ -1419,8 +1419,8 @@ if ($ok && GETPOST('force_utf8mb4_on_tables', 'alpha')) {
 		// Disable foreign key checking for avoid errors
 		if ($force_utf8mb4_on_tables == 'confirmed') {
 			$sql = 'SET FOREIGN_KEY_CHECKS=0';
-			print '<!-- '.$sql.' -->';
-			print '<tr><td colspan="2">'.$sql.'</td></tr>';
+			echo '<!-- '.$sql.' -->';
+			echo '<tr><td colspan="2">'.$sql.'</td></tr>';
 			$resql = $db->query($sql);
 		}
 
@@ -1433,7 +1433,7 @@ if ($ok && GETPOST('force_utf8mb4_on_tables', 'alpha')) {
 				continue;
 			}
 			if ($table[1] == 'VIEW') {
-				print '<tr><td colspan="2">'.$table[0].' is a '.$table[1].' <span class="opacitymedium">(Skipped)</span></td></tr>';
+				echo '<tr><td colspan="2">'.$table[0].' is a '.$table[1].' <span class="opacitymedium">(Skipped)</span></td></tr>';
 				continue;
 			}
 
@@ -1447,15 +1447,15 @@ if ($ok && GETPOST('force_utf8mb4_on_tables', 'alpha')) {
 
 			foreach ($arrayofforeignkey as $tmptable => $foreignkeyname) {
 				if ($table[0] == $tmptable) {
-					print '<tr><td colspan="2">';
+					echo '<tr><td colspan="2">';
 					$sqltmp = "ALTER TABLE ".$db->sanitize($table[0])." DROP FOREIGN KEY ".$db->sanitize($foreignkeyname);
-					print $sqltmp;
+					echo $sqltmp;
 					if ($force_utf8mb4_on_tables == 'confirmed') {
 						$resqltmp = $db->query($sqltmp);
 					} else {
-						print ' - <span class="opacitymedium">Disabled</span>';
+						echo ' - <span class="opacitymedium">Disabled</span>';
 					}
-					print '</td></tr>';
+					echo '</td></tr>';
 					$foreignkeystorestore[$tmptable] = $foreignkeyname;
 				}
 			}
@@ -1467,16 +1467,16 @@ if ($ok && GETPOST('force_utf8mb4_on_tables', 'alpha')) {
 				continue;
 			}
 			if ($table[1] == 'VIEW') {
-				print '<tr><td colspan="2">'.$table[0].' is a '.$table[1].' <span class="opacitymedium">(Skipped)</span></td></tr>';
+				echo '<tr><td colspan="2">'.$table[0].' is a '.$table[1].' <span class="opacitymedium">(Skipped)</span></td></tr>';
 				continue;
 			}
 
-			print '<tr><td colspan="2">';
-			print $table[0];
+			echo '<tr><td colspan="2">';
+			echo $table[0];
 			$sql1 = "ALTER TABLE ".$db->sanitize($table[0])." ROW_FORMAT=dynamic";
 			$sql2 = "ALTER TABLE ".$db->sanitize($table[0])." CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
-			print '<!-- '.$sql1.' -->';
-			print '<!-- '.$sql2.' -->';
+			echo '<!-- '.$sql1.' -->';
+			echo '<!-- '.$sql2.' -->';
 			if ($force_utf8mb4_on_tables == 'confirmed') {
 				$resql1 = $db->query($sql1);
 				if ($resql1) {
@@ -1484,11 +1484,11 @@ if ($ok && GETPOST('force_utf8mb4_on_tables', 'alpha')) {
 				} else {
 					$resql2 = false;
 				}
-				print ' - Done '.(($resql1 && $resql2) ? '<span class="opacitymedium">(OK)</span>' : '<span class="error" title="'.dol_escape_htmltag($db->lasterror).'">(KO)</span>');
+				echo ' - Done '.(($resql1 && $resql2) ? '<span class="opacitymedium">(OK)</span>' : '<span class="error" title="'.dol_escape_htmltag($db->lasterror).'">(KO)</span>');
 			} else {
-				print ' - <span class="opacitymedium">Disabled</span>';
+				echo ' - <span class="opacitymedium">Disabled</span>';
 			}
-			print '</td></tr>';
+			echo '</td></tr>';
 			flush();
 			ob_flush();
 		}
@@ -1497,7 +1497,7 @@ if ($ok && GETPOST('force_utf8mb4_on_tables', 'alpha')) {
 		foreach ($foreignkeystorestore as $tmptable => $foreignkeyname) {
 			$stringtofindinline = "ALTER TABLE .* ADD CONSTRAINT ".$db->sanitize($foreignkeyname);
 			$fileforkeys = DOL_DOCUMENT_ROOT.'/install/mysql/tables/'.$tmptable.'.key.sql';
-			//print 'Search in '.$fileforkeys.' to get '.$stringtofindinline."<br>\n";
+			//echo 'Search in '.$fileforkeys.' to get '.$stringtofindinline."<br>\n";
 
 			$handle = fopen($fileforkeys, 'r');
 			if ($handle) {
@@ -1505,10 +1505,10 @@ if ($ok && GETPOST('force_utf8mb4_on_tables', 'alpha')) {
 					// Process the line read.
 					if (preg_match('/^'.$stringtofindinline.'/i', $line)) {
 						$resqltmp = $db->query($line);
-						print '<tr><td colspan="2">';
-						print $line;
-						print ' - Done '.($resqltmp ? '<span class="opacitymedium">(OK)</span>' : '<span class="error" title="'.dol_escape_htmltag($db->lasterror).'">(KO)</span>');
-						print '</td></tr>';
+						echo '<tr><td colspan="2">';
+						echo $line;
+						echo ' - Done '.($resqltmp ? '<span class="opacitymedium">(OK)</span>' : '<span class="error" title="'.dol_escape_htmltag($db->lasterror).'">(KO)</span>');
+						echo '</td></tr>';
 						break;
 					}
 				}
@@ -1521,17 +1521,17 @@ if ($ok && GETPOST('force_utf8mb4_on_tables', 'alpha')) {
 		// Enable foreign key checking
 		if ($force_utf8mb4_on_tables == 'confirmed') {
 			$sql = 'SET FOREIGN_KEY_CHECKS=1';
-			print '<!-- '.$sql.' -->';
-			print '<tr><td colspan="2">'.$sql.'</td></tr>';
+			echo '<!-- '.$sql.' -->';
+			echo '<tr><td colspan="2">'.$sql.'</td></tr>';
 			$resql = $db->query($sql);
 		}
 	} else {
-		print '<tr><td colspan="2">Not available with database type '.$db->type.'</td></tr>';
+		echo '<tr><td colspan="2">Not available with database type '.$db->type.'</td></tr>';
 	}
 }
 
 if ($ok && GETPOST('force_collation_from_conf_on_tables', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Force page code and collation of tables into '.$conf->db->character_set.'/'.$conf->db->gestimag_main_db_collation.' and row_format=dynamic (for mysql/mariadb only)</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Force page code and collation of tables into '.$conf->db->character_set.'/'.$conf->db->gestimag_main_db_collation.' and row_format=dynamic (for mysql/mariadb only)</td></tr>';
 
 	if ($db->type == "mysql" || $db->type == "mysqli") {
 		$force_collation_from_conf_on_tables = GETPOST('force_collation_from_conf_on_tables', 'alpha');
@@ -1541,7 +1541,7 @@ if ($ok && GETPOST('force_collation_from_conf_on_tables', 'alpha')) {
 		// Disable foreign key checking for avoid errors
 		if ($force_collation_from_conf_on_tables == 'confirmed') {
 			$sql = 'SET FOREIGN_KEY_CHECKS=0';
-			print '<!-- '.$sql.' -->';
+			echo '<!-- '.$sql.' -->';
 			$resql = $db->query($sql);
 		}
 
@@ -1551,16 +1551,16 @@ if ($ok && GETPOST('force_collation_from_conf_on_tables', 'alpha')) {
 				continue;
 			}
 			if ($table[1] == 'VIEW') {
-				print '<tr><td colspan="2">'.$table[0].' is a '.$table[1].' (Skipped)</td></tr>';
+				echo '<tr><td colspan="2">'.$table[0].' is a '.$table[1].' (Skipped)</td></tr>';
 				continue;
 			}
 
-			print '<tr><td colspan="2">';
-			print $table[0];
+			echo '<tr><td colspan="2">';
+			echo $table[0];
 			$sql1 = "ALTER TABLE ".$table[0]." ROW_FORMAT=dynamic";
 			$sql2 = "ALTER TABLE ".$table[0]." CONVERT TO CHARACTER SET ".$conf->db->character_set." COLLATE ".$conf->db->gestimag_main_db_collation;
-			print '<!-- '.$sql1.' -->';
-			print '<!-- '.$sql2.' -->';
+			echo '<!-- '.$sql1.' -->';
+			echo '<!-- '.$sql2.' -->';
 			if ($force_collation_from_conf_on_tables == 'confirmed') {
 				$resql1 = $db->query($sql1);
 				if ($resql1) {
@@ -1568,38 +1568,38 @@ if ($ok && GETPOST('force_collation_from_conf_on_tables', 'alpha')) {
 				} else {
 					$resql2 = false;
 				}
-				print ' - Done '.(($resql1 && $resql2) ? '<span class="opacitymedium">(OK)</span>' : '<span class="error" title="'.dol_escape_htmltag($db->lasterror).'">(KO)</span>');
+				echo ' - Done '.(($resql1 && $resql2) ? '<span class="opacitymedium">(OK)</span>' : '<span class="error" title="'.dol_escape_htmltag($db->lasterror).'">(KO)</span>');
 			} else {
-				print ' - <span class="opacitymedium">Disabled</span>';
+				echo ' - <span class="opacitymedium">Disabled</span>';
 			}
-			print '</td></tr>';
+			echo '</td></tr>';
 		}
 
 		// Enable foreign key checking
 		if ($force_collation_from_conf_on_tables == 'confirmed') {
 			$sql = 'SET FOREIGN_KEY_CHECKS=1';
-			print '<!-- '.$sql.' -->';
+			echo '<!-- '.$sql.' -->';
 			$resql = $db->query($sql);
 		}
 	} else {
-		print '<tr><td colspan="2">Not available with database type '.$db->type.'</td></tr>';
+		echo '<tr><td colspan="2">Not available with database type '.$db->type.'</td></tr>';
 	}
 }
 
 // rebuild sequences for pgsql
 if ($ok && GETPOST('rebuild_sequences', 'alpha')) {
-	print '<tr><td colspan="2"><br>*** Force to rebuild sequences (for postgresql only)</td></tr>';
+	echo '<tr><td colspan="2"><br>*** Force to rebuild sequences (for postgresql only)</td></tr>';
 
 	if ($db->type == "pgsql") {
 		$rebuild_sequence = GETPOST('rebuild_sequences', 'alpha');
 
 		if ($rebuild_sequence == 'confirmed') {
 			$sql = "SELECT dol_util_rebuild_sequences();";
-			print '<!-- '.$sql.' -->';
+			echo '<!-- '.$sql.' -->';
 			$resql = $db->query($sql);
 		}
 	} else {
-		print '<tr><td colspan="2">Not available with database type '.$db->type.'</td></tr>';
+		echo '<tr><td colspan="2">Not available with database type '.$db->type.'</td></tr>';
 	}
 }
 
@@ -1631,8 +1631,8 @@ if ($ok && GETPOST('repair_link_dispatch_lines_supplier_order_lines')) {
 	$repair_link_dispatch_lines_supplier_order_lines = GETPOST('repair_link_dispatch_lines_supplier_order_lines', 'alpha');
 
 
-	echo '<tr><th>Repair llx_receptiondet_batch.fk_commandefourndet</th></tr>';
-	echo '<tr><td>Repair in progress. This may take a while.</td></tr>';
+	echo  '<tr><th>Repair llx_receptiondet_batch.fk_commandefourndet</th></tr>';
+	echo  '<tr><td>Repair in progress. This may take a while.</td></tr>';
 
 	$sql_dispatch = 'SELECT * FROM '.MAIN_DB_PREFIX.'receptiondet_batch WHERE COALESCE(fk_elementdet, 0) = 0';
 	$db->begin();
@@ -1641,7 +1641,7 @@ if ($ok && GETPOST('repair_link_dispatch_lines_supplier_order_lines')) {
 	$errors = array();
 	if ($resql_dispatch) {
 		if ($db->num_rows($resql_dispatch) == 0) {
-			echo '<tr><td>Nothing to do.</td></tr>';
+			echo  '<tr><td>Nothing to do.</td></tr>';
 			exit;
 		}
 		while ($obj_dispatch = $db->fetch_object($resql_dispatch)) {
@@ -1657,7 +1657,7 @@ if ($ok && GETPOST('repair_link_dispatch_lines_supplier_order_lines')) {
 			$remaining_qty = $obj_dispatch->qty;
 			$first_iteration = true;
 			if (!$resql_line) {
-				echo '<tr><td>Unable to find a matching supplier order line for dispatch #'.$obj_dispatch->rowid.'</td></tr>';
+				echo  '<tr><td>Unable to find a matching supplier order line for dispatch #'.$obj_dispatch->rowid.'</td></tr>';
 				$errors[] = $sql_line;
 				$n_processed_rows++;
 				continue;
@@ -1719,28 +1719,28 @@ if ($ok && GETPOST('repair_link_dispatch_lines_supplier_order_lines')) {
 
 			// report progress every 256th row
 			if (!($n_processed_rows & 0xff)) {
-				echo '<tr><td>Processed '.$n_processed_rows.' rows with '.count($errors).' errors…'."</td></tr>\n";
+				echo  '<tr><td>Processed '.$n_processed_rows.' rows with '.count($errors).' errors…'."</td></tr>\n";
 				flush();
 				ob_flush();
 			}
 		}
 	} else {
-		echo '<tr><td>Unable to find any dispatch without an fk_commandefourndet.'."</td></tr>\n";
-		echo $sql_dispatch."\n";
+		echo  '<tr><td>Unable to find any dispatch without an fk_commandefourndet.'."</td></tr>\n";
+		echo  $sql_dispatch."\n";
 	}
-	echo '<tr><td>Fixed '.$n_processed_rows.' rows with '.count($errors).' errors…'."</td></tr>\n";
-	echo '<tr><td>DONE.'."</td></tr>\n";
+	echo  '<tr><td>Fixed '.$n_processed_rows.' rows with '.count($errors).' errors…'."</td></tr>\n";
+	echo  '<tr><td>DONE.'."</td></tr>\n";
 
 	if (count($errors)) {
 		$db->rollback();
-		echo '<tr><td>The transaction was rolled back due to errors: nothing was changed by the script.</td></tr>';
+		echo  '<tr><td>The transaction was rolled back due to errors: nothing was changed by the script.</td></tr>';
 	} else {
 		$db->commit();
 	}
 	$db->close();
 
-	echo '<tr><td><h3>SQL queries with errors:</h3></tr></td>';
-	echo '<tr><td>'.implode('</td></tr><tr><td>', $errors).'</td></tr>';
+	echo  '<tr><td><h3>SQL queries with errors:</h3></tr></td>';
+	echo  '<tr><td>'.implode('</td></tr><tr><td>', $errors).'</td></tr>';
 }
 
 // Repair llx_commande_fournisseur to eliminate duplicate reference
@@ -1809,7 +1809,7 @@ if ($ok && GETPOST('recalculateinvoicetotal') == 'confirmed') {
 	$resql = $db->query($sql);
 	if ($resql) {
 		$num = $db->num_rows($resql);
-		print "We found ".$num." factures qualified that will have their total recalculated because they are at zero and line items not at zero\n";
+		echo "We found ".$num." factures qualified that will have their total recalculated because they are at zero and line items not at zero\n";
 		dol_syslog("We found ".$num." factures qualified that will have their total recalculated because they are at zero and line items not at zero");
 
 		if ($num) {
@@ -1844,7 +1844,7 @@ if ($ok && GETPOST('recalculateinvoicetotal') == 'confirmed') {
 				$i++;
 			}
 		} else {
-			print "Pas de factures à traiter\n";
+			echo "Pas de factures à traiter\n";
 		}
 	} else {
 		dol_print_error($db);
@@ -1859,16 +1859,16 @@ if ($ok && GETPOST('recalculateinvoicetotal') == 'confirmed') {
 	}
 }
 
-print '</table>';
+echo '</table>';
 
 if (empty($actiondone)) {
-	print '<div class="error">'.$langs->trans("ErrorWrongParameters").'</div>';
+	echo '<div class="error">'.$langs->trans("ErrorWrongParameters").'</div>';
 }
 
 if ($oneoptionset) {
-	print '<div class="center" style="padding-top: 10px"><a href="../index.php?mainmenu=home&leftmenu=home'.(GETPOSTISSET("login") ? '&username='.urlencode(GETPOST("login")) : '').'">';
-	print $langs->trans("GoToGestimag");
-	print '</a></div>';
+	echo '<div class="center" style="padding-top: 10px"><a href="../index.php?mainmenu=home&leftmenu=home'.(GETPOSTISSET("login") ? '&username='.urlencode(GETPOST("login")) : '').'">';
+	echo $langs->trans("GoToGestimag");
+	echo '</a></div>';
 }
 
 gestimag_install_syslog("--- repair: end");

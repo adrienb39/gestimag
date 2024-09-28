@@ -257,7 +257,7 @@ $arrayofselected = is_array($toselect) ? $toselect : array();
 
 // List of members type
 if (!$rowid && $action != 'create' && $action != 'edit') {
-	//print dol_get_fiche_head('');
+	//echo dol_get_fiche_head('');
 
 	$sql = "SELECT d.rowid, d.libelle as label, d.subscription, d.amount, d.caneditamount, d.vote, d.statut as status, d.morphy, d.duration";
 	$sql .= " FROM ".MAIN_DB_PREFIX."adherent_type as d";
@@ -291,42 +291,42 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 			$newcardbutton .= dolGetButtonTitle($langs->trans('NewMemberType'), '', 'fa fa-plus-circle', DOL_URL_ROOT.'/adherents/type.php?action=create');
 		}
 
-		print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+		echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
 		if ($optioncss != '') {
-			print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
+			echo '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 		}
-		print '<input type="hidden" name="token" value="'.newToken().'">';
-		print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-		print '<input type="hidden" name="action" value="list">';
-		print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-		print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-		print '<input type="hidden" name="mode" value="'.$mode.'">';
+		echo '<input type="hidden" name="token" value="'.newToken().'">';
+		echo '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+		echo '<input type="hidden" name="action" value="list">';
+		echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+		echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+		echo '<input type="hidden" name="mode" value="'.$mode.'">';
 
 
 		print_barre_liste($langs->trans("MembersTypes"), $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, $nbtotalofrecords, 'members', 0, $newcardbutton, '', $limit, 0, 0, 1);
 
 		$moreforfilter = '';
 
-		print '<div class="div-table-responsive">';
-		print '<table class="tagtable liste'.($moreforfilter ? " listwithfilterbefore" : "").'">'."\n";
+		echo '<div class="div-table-responsive">';
+		echo '<table class="tagtable liste'.($moreforfilter ? " listwithfilterbefore" : "").'">'."\n";
 
-		print '<tr class="liste_titre">';
+		echo '<tr class="liste_titre">';
 		if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-			print '<th>&nbsp;</th>';
+			echo '<th>&nbsp;</th>';
 		}
-		print '<th>'.$langs->trans("Ref").'</th>';
-		print '<th>'.$langs->trans("Label").'</th>';
-		print '<th class="center">'.$langs->trans("MembersNature").'</th>';
-		print '<th class="center">'.$langs->trans("MembershipDuration").'</th>';
-		print '<th class="center">'.$langs->trans("SubscriptionRequired").'</th>';
-		print '<th class="center">'.$langs->trans("Amount").'</th>';
-		print '<th class="center">'.$langs->trans("CanEditAmountShort").'</th>';
-		print '<th class="center">'.$langs->trans("VoteAllowed").'</th>';
-		print '<th class="center">'.$langs->trans("Status").'</th>';
+		echo '<th>'.$langs->trans("Ref").'</th>';
+		echo '<th>'.$langs->trans("Label").'</th>';
+		echo '<th class="center">'.$langs->trans("MembersNature").'</th>';
+		echo '<th class="center">'.$langs->trans("MembershipDuration").'</th>';
+		echo '<th class="center">'.$langs->trans("SubscriptionRequired").'</th>';
+		echo '<th class="center">'.$langs->trans("Amount").'</th>';
+		echo '<th class="center">'.$langs->trans("CanEditAmountShort").'</th>';
+		echo '<th class="center">'.$langs->trans("VoteAllowed").'</th>';
+		echo '<th class="center">'.$langs->trans("Status").'</th>';
 		if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-			print '<th>&nbsp;</th>';
+			echo '<th>&nbsp;</th>';
 		}
-		print "</tr>\n";
+		echo "</tr>\n";
 
 		$membertype = new AdherentType($db);
 
@@ -350,43 +350,43 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 
 			if ($mode == 'kanban') {
 				if ($i == 0) {
-					print '<tr class="trkanban"><td colspan="'.$savnbfield.'">';
-					print '<div class="box-flex-container kanban">';
+					echo '<tr class="trkanban"><td colspan="'.$savnbfield.'">';
+					echo '<div class="box-flex-container kanban">';
 				}
 				//output kanban
 				$membertype->label = $objp->label;
-				print $membertype->getKanbanView('', array('selected' => in_array($object->id, $arrayofselected)));
+				echo $membertype->getKanbanView('', array('selected' => in_array($object->id, $arrayofselected)));
 				if ($i == ($imaxinloop - 1)) {
-					print '</div>';
-					print '</td></tr>';
+					echo '</div>';
+					echo '</td></tr>';
 				}
 			} else {
-				print '<tr class="oddeven">';
+				echo '<tr class="oddeven">';
 
 				if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 					if ($user->hasRight('adherent', 'configurer')) {
-						print '<td class="center"><a class="editfielda" href="'.$_SERVER["PHP_SELF"].'?action=edit&rowid='.$objp->rowid.'">'.img_edit().'</a></td>';
+						echo '<td class="center"><a class="editfielda" href="'.$_SERVER["PHP_SELF"].'?action=edit&rowid='.$objp->rowid.'">'.img_edit().'</a></td>';
 					}
 				}
 
-				print '<td class="nowraponall">';
-				print $membertype->getNomUrl(1);
+				echo '<td class="nowraponall">';
+				echo $membertype->getNomUrl(1);
 				//<a href="'.$_SERVER["PHP_SELF"].'?rowid='.$objp->rowid.'">'.img_object($langs->trans("ShowType"),'group').' '.$objp->rowid.'</a>
-				print '</td>';
+				echo '</td>';
 
-				print '<td>'.dol_escape_htmltag($objp->label).'</td>';
+				echo '<td>'.dol_escape_htmltag($objp->label).'</td>';
 
-				print '<td class="center">';
+				echo '<td class="center">';
 				if ($objp->morphy == 'phy') {
-					print $langs->trans("Physical");
+					echo $langs->trans("Physical");
 				} elseif ($objp->morphy == 'mor') {
-					print $langs->trans("Moral");
+					echo $langs->trans("Moral");
 				} else {
-					print $langs->trans("MorAndPhy");
+					echo $langs->trans("MorAndPhy");
 				}
-				print '</td>';
+				echo '</td>';
 
-				print '<td class="center nowrap">';
+				echo '<td class="center nowrap">';
 				if ($objp->duration) {
 					$duration_value = intval($objp->duration);
 					if ($duration_value > 1) {
@@ -395,26 +395,26 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 						$dur = array("i" => $langs->trans("Minute"), "h" => $langs->trans("Hour"), "d" => $langs->trans("Day"), "w" => $langs->trans("Week"), "m" => $langs->trans("Month"), "y" => $langs->trans("Year"));
 					}
 					$unit = preg_replace("/[^a-zA-Z]+/", "", $objp->duration);
-					print max(1, $duration_value).' '.$dur[$unit];
+					echo max(1, $duration_value).' '.$dur[$unit];
 				}
-				print '</td>';
+				echo '</td>';
 
-				print '<td class="center">'.yn($objp->subscription).'</td>';
+				echo '<td class="center">'.yn($objp->subscription).'</td>';
 
-				print '<td class="center"><span class="amount">'.(is_null($objp->amount) || $objp->amount === '' ? '' : price($objp->amount)).'</span></td>';
+				echo '<td class="center"><span class="amount">'.(is_null($objp->amount) || $objp->amount === '' ? '' : price($objp->amount)).'</span></td>';
 
-				print '<td class="center">'.yn($objp->caneditamount).'</td>';
+				echo '<td class="center">'.yn($objp->caneditamount).'</td>';
 
-				print '<td class="center">'.yn($objp->vote).'</td>';
+				echo '<td class="center">'.yn($objp->vote).'</td>';
 
-				print '<td class="center">'.$membertype->getLibStatut(5).'</td>';
+				echo '<td class="center">'.$membertype->getLibStatut(5).'</td>';
 
 				if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 					if ($user->hasRight('adherent', 'configurer')) {
-						print '<td class="right"><a class="editfielda" href="'.$_SERVER["PHP_SELF"].'?action=edit&rowid='.$objp->rowid.'">'.img_edit().'</a></td>';
+						echo '<td class="right"><a class="editfielda" href="'.$_SERVER["PHP_SELF"].'?action=edit&rowid='.$objp->rowid.'">'.img_edit().'</a></td>';
 					}
 				}
-				print "</tr>";
+				echo "</tr>";
 			}
 			$i++;
 		}
@@ -428,13 +428,13 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 				}
 			}*/
 			$colspan = 9;
-			print '<tr><td colspan="'.$colspan.'" class="opacitymedium">'.$langs->trans("NoRecordFound").'</td></tr>';
+			echo '<tr><td colspan="'.$colspan.'" class="opacitymedium">'.$langs->trans("NoRecordFound").'</td></tr>';
 		}
 
-		print "</table>";
-		print '</div>';
+		echo "</table>";
+		echo '</div>';
 
-		print '</form>';
+		echo '</form>';
 	} else {
 		dol_print_error($db);
 	}
@@ -444,76 +444,76 @@ if (!$rowid && $action != 'create' && $action != 'edit') {
 if ($action == 'create') {
 	$object = new AdherentType($db);
 
-	print load_fiche_titre($langs->trans("NewMemberType"), '', 'members');
+	echo load_fiche_titre($langs->trans("NewMemberType"), '', 'members');
 
-	print '<form action="'.$_SERVER['PHP_SELF'].'" method="POST">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="add">';
-	print '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
+	echo '<form action="'.$_SERVER['PHP_SELF'].'" method="POST">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="add">';
+	echo '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
 
-	print dol_get_fiche_head('');
+	echo dol_get_fiche_head('');
 
-	print '<table class="border centpercent">';
-	print '<tbody>';
+	echo '<table class="border centpercent">';
+	echo '<tbody>';
 
-	print '<tr><td class="titlefieldcreate fieldrequired">'.$langs->trans("Label").'</td><td><input type="text" class="minwidth200" name="label" autofocus="autofocus"></td></tr>';
+	echo '<tr><td class="titlefieldcreate fieldrequired">'.$langs->trans("Label").'</td><td><input type="text" class="minwidth200" name="label" autofocus="autofocus"></td></tr>';
 
-	print '<tr><td>'.$langs->trans("Status").'</td><td>';
-	print $form->selectarray('status', array('0' => $langs->trans('ActivityCeased'), '1' => $langs->trans('InActivity')), 1, 0, 0, 0, '', 0, 0, 0, '', 'minwidth100');
-	print '</td></tr>';
+	echo '<tr><td>'.$langs->trans("Status").'</td><td>';
+	echo $form->selectarray('status', array('0' => $langs->trans('ActivityCeased'), '1' => $langs->trans('InActivity')), 1, 0, 0, 0, '', 0, 0, 0, '', 'minwidth100');
+	echo '</td></tr>';
 
 	// Morphy
 	$morphys = array();
 	$morphys[""] = $langs->trans("MorAndPhy");
 	$morphys["phy"] = $langs->trans("Physical");
 	$morphys["mor"] = $langs->trans("Moral");
-	print '<tr><td><span>'.$langs->trans("MembersNature").'</span></td><td>';
-	print $form->selectarray("morphy", $morphys, GETPOSTISSET("morphy") ? GETPOST("morphy", 'aZ09') : 'morphy');
-	print "</td></tr>";
+	echo '<tr><td><span>'.$langs->trans("MembersNature").'</span></td><td>';
+	echo $form->selectarray("morphy", $morphys, GETPOSTISSET("morphy") ? GETPOST("morphy", 'aZ09') : 'morphy');
+	echo "</td></tr>";
 
-	print '<tr><td>'.$form->textwithpicto($langs->trans("SubscriptionRequired"), $langs->trans("SubscriptionRequiredDesc")).'</td><td>';
-	print $form->selectyesno("subscription", 1, 1);
-	print '</td></tr>';
+	echo '<tr><td>'.$form->textwithpicto($langs->trans("SubscriptionRequired"), $langs->trans("SubscriptionRequiredDesc")).'</td><td>';
+	echo $form->selectyesno("subscription", 1, 1);
+	echo '</td></tr>';
 
-	print '<tr><td>'.$langs->trans("Amount").'</td><td>';
-	print '<input name="amount" size="5" value="'.(GETPOSTISSET('amount') ? GETPOST('amount') : price($amount)).'">';
-	print '</td></tr>';
+	echo '<tr><td>'.$langs->trans("Amount").'</td><td>';
+	echo '<input name="amount" size="5" value="'.(GETPOSTISSET('amount') ? GETPOST('amount') : price($amount)).'">';
+	echo '</td></tr>';
 
-	print '<tr><td>'.$form->textwithpicto($langs->trans("CanEditAmountShort"), $langs->transnoentities("CanEditAmount")).'</td><td>';
-	print $form->selectyesno("caneditamount", GETPOSTISSET('caneditamount') ? GETPOST('caneditamount') : 0, 1);
-	print '</td></tr>';
+	echo '<tr><td>'.$form->textwithpicto($langs->trans("CanEditAmountShort"), $langs->transnoentities("CanEditAmount")).'</td><td>';
+	echo $form->selectyesno("caneditamount", GETPOSTISSET('caneditamount') ? GETPOST('caneditamount') : 0, 1);
+	echo '</td></tr>';
 
-	print '<tr><td>'.$langs->trans("VoteAllowed").'</td><td>';
-	print $form->selectyesno("vote", GETPOSTISSET("vote") ? GETPOST('vote', 'aZ09') : 1, 1);
-	print '</td></tr>';
+	echo '<tr><td>'.$langs->trans("VoteAllowed").'</td><td>';
+	echo $form->selectyesno("vote", GETPOSTISSET("vote") ? GETPOST('vote', 'aZ09') : 1, 1);
+	echo '</td></tr>';
 
-	print '<tr><td>'.$langs->trans("Duration").'</td><td colspan="3">';
-	print '<input name="duration_value" size="5" value="'.GETPOST('duraction_unit', 'aZ09').'"> ';
-	print $formproduct->selectMeasuringUnits("duration_unit", "time", GETPOSTISSET("duration_unit") ? GETPOST('duration_unit', 'aZ09') : 'y', 0, 1);
-	print '</td></tr>';
+	echo '<tr><td>'.$langs->trans("Duration").'</td><td colspan="3">';
+	echo '<input name="duration_value" size="5" value="'.GETPOST('duraction_unit', 'aZ09').'"> ';
+	echo $formproduct->selectMeasuringUnits("duration_unit", "time", GETPOSTISSET("duration_unit") ? GETPOST('duration_unit', 'aZ09') : 'y', 0, 1);
+	echo '</td></tr>';
 
-	print '<tr><td class="tdtop">'.$langs->trans("Description").'</td><td>';
+	echo '<tr><td class="tdtop">'.$langs->trans("Description").'</td><td>';
 	require_once DOL_DOCUMENT_ROOT.'/core/class/doleditor.class.php';
 	$doleditor = new DolEditor('comment', (GETPOSTISSET('comment') ? GETPOST('comment', 'restricthtml') : $object->note_public), '', 200, 'gestimag_notes', '', false, true, isModEnabled('fckeditor'), 15, '90%');
 	$doleditor->Create();
 
-	print '<tr><td class="tdtop">'.$langs->trans("WelcomeEMail").'</td><td>';
+	echo '<tr><td class="tdtop">'.$langs->trans("WelcomeEMail").'</td><td>';
 	require_once DOL_DOCUMENT_ROOT.'/core/class/doleditor.class.php';
 	$doleditor = new DolEditor('mail_valid', GETPOSTISSET('mail_valid') ? GETPOST('mail_valid') : $object->mail_valid, '', 250, 'gestimag_notes', '', false, true, isModEnabled('fckeditor'), 15, '90%');
 	$doleditor->Create();
-	print '</td></tr>';
+	echo '</td></tr>';
 
 	// Other attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_add.tpl.php';
 
-	print '<tbody>';
-	print "</table>\n";
+	echo '<tbody>';
+	echo "</table>\n";
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print $form->buttonsSaveCancel();
+	echo $form->buttonsSaveCancel();
 
-	print "</form>\n";
+	echo "</form>\n";
 }
 
 // View
@@ -527,81 +527,81 @@ if ($rowid > 0) {
 		 * Confirmation deletion
 		 */
 		if ($action == 'delete') {
-			print $form->formconfirm($_SERVER['PHP_SELF']."?rowid=".$object->id, $langs->trans("DeleteAMemberType"), $langs->trans("ConfirmDeleteMemberType", $object->label), "confirm_delete", '', 0, 1);
+			echo $form->formconfirm($_SERVER['PHP_SELF']."?rowid=".$object->id, $langs->trans("DeleteAMemberType"), $langs->trans("ConfirmDeleteMemberType", $object->label), "confirm_delete", '', 0, 1);
 		}
 
 		$head = member_type_prepare_head($object);
 
-		print dol_get_fiche_head($head, 'card', $langs->trans("MemberType"), -1, 'group');
+		echo dol_get_fiche_head($head, 'card', $langs->trans("MemberType"), -1, 'group');
 
 		$linkback = '<a href="'.DOL_URL_ROOT.'/adherents/type.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
 		dol_banner_tab($object, 'rowid', $linkback);
 
-		print '<div class="fichecenter">';
-		print '<div class="underbanner clearboth"></div>';
+		echo '<div class="fichecenter">';
+		echo '<div class="underbanner clearboth"></div>';
 
-		print '<table class="tableforfield border centpercent">';
+		echo '<table class="tableforfield border centpercent">';
 
 		// Morphy
-		print '<tr><td>'.$langs->trans("MembersNature").'</td><td class="valeur" >'.$object->getmorphylib($object->morphy).'</td>';
-		print '</tr>';
+		echo '<tr><td>'.$langs->trans("MembersNature").'</td><td class="valeur" >'.$object->getmorphylib($object->morphy).'</td>';
+		echo '</tr>';
 
-		print '<tr><td>'.$form->textwithpicto($langs->trans("SubscriptionRequired"), $langs->trans("SubscriptionRequiredDesc")).'</td><td>';
-		print yn($object->subscription);
-		print '</tr>';
+		echo '<tr><td>'.$form->textwithpicto($langs->trans("SubscriptionRequired"), $langs->trans("SubscriptionRequiredDesc")).'</td><td>';
+		echo yn($object->subscription);
+		echo '</tr>';
 
 		// Amount
-		print '<tr><td class="titlefield">'.$langs->trans("Amount").'</td><td>';
+		echo '<tr><td class="titlefield">'.$langs->trans("Amount").'</td><td>';
 		print((is_null($object->amount) || $object->amount === '') ? '' : '<span class="amount">'.price($object->amount).'</span>');
-		print '</tr>';
+		echo '</tr>';
 
-		print '<tr><td>'.$form->textwithpicto($langs->trans("CanEditAmountShort"), $langs->transnoentities("CanEditAmount")).'</td><td>';
-		print yn($object->caneditamount);
-		print '</td></tr>';
+		echo '<tr><td>'.$form->textwithpicto($langs->trans("CanEditAmountShort"), $langs->transnoentities("CanEditAmount")).'</td><td>';
+		echo yn($object->caneditamount);
+		echo '</td></tr>';
 
-		print '<tr><td>'.$langs->trans("VoteAllowed").'</td><td>';
-		print yn($object->vote);
-		print '</tr>';
+		echo '<tr><td>'.$langs->trans("VoteAllowed").'</td><td>';
+		echo yn($object->vote);
+		echo '</tr>';
 
 		// Duration
-		print '<tr><td class="titlefield">'.$langs->trans("Duration").'</td><td colspan="2">'.$object->duration_value.'&nbsp;';
+		echo '<tr><td class="titlefield">'.$langs->trans("Duration").'</td><td colspan="2">'.$object->duration_value.'&nbsp;';
 		if ($object->duration_value > 1) {
 			$dur = array("i" => $langs->trans("Minutes"), "h" => $langs->trans("Hours"), "d" => $langs->trans("Days"), "w" => $langs->trans("Weeks"), "m" => $langs->trans("Months"), "y" => $langs->trans("Years"));
 		} elseif ($object->duration_value > 0) {
 			$dur = array("i" => $langs->trans("Minute"), "h" => $langs->trans("Hour"), "d" => $langs->trans("Day"), "w" => $langs->trans("Week"), "m" => $langs->trans("Month"), "y" => $langs->trans("Year"));
 		}
 		print(!empty($object->duration_unit) && isset($dur[$object->duration_unit]) ? $langs->trans($dur[$object->duration_unit]) : '')."&nbsp;";
-		print '</td></tr>';
+		echo '</td></tr>';
 
 		// Description
-		print '<tr><td class="tdtop">'.$langs->trans("Description").'</td><td><div class="longmessagecut">';
-		print dol_string_onlythesehtmltags(dol_htmlentitiesbr($object->note_public));
-		print "</div></td></tr>";
+		echo '<tr><td class="tdtop">'.$langs->trans("Description").'</td><td><div class="longmessagecut">';
+		echo dol_string_onlythesehtmltags(dol_htmlentitiesbr($object->note_public));
+		echo "</div></td></tr>";
 
 		// Welcome email content
-		print '<tr><td class="tdtop">'.$langs->trans("WelcomeEMail").'</td><td><div class="longmessagecut">';
-		print dol_string_onlythesehtmltags(dol_htmlentitiesbr($object->mail_valid));
-		print "</div></td></tr>";
+		echo '<tr><td class="tdtop">'.$langs->trans("WelcomeEMail").'</td><td><div class="longmessagecut">';
+		echo dol_string_onlythesehtmltags(dol_htmlentitiesbr($object->mail_valid));
+		echo "</div></td></tr>";
 
 		// Other attributes
 		include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_view.tpl.php';
 
-		print '</table>';
-		print '</div>';
+		echo '</table>';
+		echo '</div>';
 
-		print dol_get_fiche_end();
+		echo dol_get_fiche_end();
 
 
 		/*
 		 * Buttons
 		 */
 
-		print '<div class="tabsAction">';
+		echo '<div class="tabsAction">';
 
 		// Edit
 		if ($user->hasRight('adherent', 'configurer')) {
-			print '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER['PHP_SELF'].'?action=edit&token='.newToken().'&rowid='.$object->id.'">'.$langs->trans("Modify").'</a></div>';
+			echo '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER['PHP_SELF'].'?action=edit&token='.newToken().'&rowid='.$object->id.'">'.$langs->trans("Modify").'</a></div>';
 		}
 
 		// Add
@@ -614,17 +614,17 @@ if ($rowid > 0) {
 		}
 
 		if ($user->hasRight('adherent', 'configurer') && !empty($object->status)) {
-			print '<div class="inline-block divButAction"><a class="butAction" href="card.php?action=create&token='.newToken().'&typeid='.$object->id.($morphy ? '&morphy='.urlencode($morphy) : '').'&backtopage='.urlencode($_SERVER["PHP_SELF"].'?rowid='.$object->id).'">'.$langs->trans("AddMember").'</a></div>';
+			echo '<div class="inline-block divButAction"><a class="butAction" href="card.php?action=create&token='.newToken().'&typeid='.$object->id.($morphy ? '&morphy='.urlencode($morphy) : '').'&backtopage='.urlencode($_SERVER["PHP_SELF"].'?rowid='.$object->id).'">'.$langs->trans("AddMember").'</a></div>';
 		} else {
-			print '<div class="inline-block divButAction"><a class="butActionRefused classfortooltip" href="#" title="'.dol_escape_htmltag($langs->trans("NoAddMember")).'">'.$langs->trans("AddMember").'</a></div>';
+			echo '<div class="inline-block divButAction"><a class="butActionRefused classfortooltip" href="#" title="'.dol_escape_htmltag($langs->trans("NoAddMember")).'">'.$langs->trans("AddMember").'</a></div>';
 		}
 
 		// Delete
 		if ($user->hasRight('adherent', 'configurer')) {
-			print '<div class="inline-block divButAction"><a class="butActionDelete" href="'.$_SERVER['PHP_SELF'].'?action=delete&token='.newToken().'&rowid='.$object->id.'">'.$langs->trans("DeleteType").'</a></div>';
+			echo '<div class="inline-block divButAction"><a class="butActionDelete" href="'.$_SERVER['PHP_SELF'].'?action=delete&token='.newToken().'&rowid='.$object->id.'">'.$langs->trans("DeleteType").'</a></div>';
 		}
 
-		print "</div>";
+		echo "</div>";
 
 
 		// Show list of members (nearly same code than in page list.php)
@@ -763,60 +763,60 @@ if ($rowid > 0) {
 			}
 
 			if ($sall) {
-				print $langs->trans("Filter")." (".$langs->trans("Lastname").", ".$langs->trans("Firstname").", ".$langs->trans("EMail").", ".$langs->trans("Address")." ".$langs->trans("or")." ".$langs->trans("Town")."): ".$sall;
+				echo $langs->trans("Filter")." (".$langs->trans("Lastname").", ".$langs->trans("Firstname").", ".$langs->trans("EMail").", ".$langs->trans("Address")." ".$langs->trans("or")." ".$langs->trans("Town")."): ".$sall;
 			}
 
-			print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'" name="formfilter" autocomplete="off">';
-			print '<input type="hidden" name="token" value="'.newToken().'">';
-			print '<input class="flat" type="hidden" name="rowid" value="'.$object->id.'"></td>';
-			print '<input class="flat" type="hidden" name="page_y" value=""></td>';
+			echo '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'" name="formfilter" autocomplete="off">';
+			echo '<input type="hidden" name="token" value="'.newToken().'">';
+			echo '<input class="flat" type="hidden" name="rowid" value="'.$object->id.'"></td>';
+			echo '<input class="flat" type="hidden" name="page_y" value=""></td>';
 
 			print_barre_liste('', $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, $nbtotalofrecords, 'generic', 0, '', '', $limit);
 
 			$moreforfilter = '';
 
-			print '<div class="div-table-responsive">';
-			print '<table class="tagtable liste'.($moreforfilter ? " listwithfilterbefore" : "").'">'."\n";
+			echo '<div class="div-table-responsive">';
+			echo '<table class="tagtable liste'.($moreforfilter ? " listwithfilterbefore" : "").'">'."\n";
 
 			// Fields title search
-			print '<tr class="liste_titre_filter">';
+			echo '<tr class="liste_titre_filter">';
 
 			if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-				print '<td class="liste_titre center maxwidthsearch">';
+				echo '<td class="liste_titre center maxwidthsearch">';
 				$searchpicto = $form->showFilterButtons('left');
-				print $searchpicto;
-				print '</td>';
+				echo $searchpicto;
+				echo '</td>';
 			}
 
-			print '<td class="liste_titre left">';
-			print '<input class="flat maxwidth100" type="text" name="search_ref" value="'.dol_escape_htmltag($search_ref).'"></td>';
+			echo '<td class="liste_titre left">';
+			echo '<input class="flat maxwidth100" type="text" name="search_ref" value="'.dol_escape_htmltag($search_ref).'"></td>';
 
-			print '<td class="liste_titre left">';
-			print '<input class="flat maxwidth100" type="text" name="search_lastname" value="'.dol_escape_htmltag($search_lastname).'"></td>';
+			echo '<td class="liste_titre left">';
+			echo '<input class="flat maxwidth100" type="text" name="search_lastname" value="'.dol_escape_htmltag($search_lastname).'"></td>';
 
-			print '<td class="liste_titre left">';
-			print '<input class="flat maxwidth100" type="text" name="search_login" value="'.dol_escape_htmltag($search_login).'"></td>';
+			echo '<td class="liste_titre left">';
+			echo '<input class="flat maxwidth100" type="text" name="search_login" value="'.dol_escape_htmltag($search_login).'"></td>';
 
-			print '<td class="liste_titre">&nbsp;</td>';
+			echo '<td class="liste_titre">&nbsp;</td>';
 
-			print '<td class="liste_titre left">';
-			print '<input class="flat maxwidth100" type="text" name="search_email" value="'.dol_escape_htmltag($search_email).'"></td>';
+			echo '<td class="liste_titre left">';
+			echo '<input class="flat maxwidth100" type="text" name="search_email" value="'.dol_escape_htmltag($search_email).'"></td>';
 
-			print '<td class="liste_titre">&nbsp;</td>';
+			echo '<td class="liste_titre">&nbsp;</td>';
 
-			print '<td class="liste_titre">&nbsp;</td>';
+			echo '<td class="liste_titre">&nbsp;</td>';
 
 			if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-				print '<td class="liste_titre center nowraponall">';
-				print '<input type="image" class="liste_titre" src="'.DOL_URL_ROOT.'/theme/'.$conf->theme.'/img/search.png" name="button_search" value="'.dol_escape_htmltag($langs->trans("Search")).'" title="'.dol_escape_htmltag($langs->trans("Search")).'">';
-				print '&nbsp; ';
-				print '<input type="image" class="liste_titre" src="'.DOL_URL_ROOT.'/theme/'.$conf->theme.'/img/searchclear.png" name="button_removefilter" value="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'" title="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'">';
-				print '</td>';
+				echo '<td class="liste_titre center nowraponall">';
+				echo '<input type="image" class="liste_titre" src="'.DOL_URL_ROOT.'/theme/'.$conf->theme.'/img/search.png" name="button_search" value="'.dol_escape_htmltag($langs->trans("Search")).'" title="'.dol_escape_htmltag($langs->trans("Search")).'">';
+				echo '&nbsp; ';
+				echo '<input type="image" class="liste_titre" src="'.DOL_URL_ROOT.'/theme/'.$conf->theme.'/img/searchclear.png" name="button_removefilter" value="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'" title="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'">';
+				echo '</td>';
 			}
 
-			print "</tr>\n";
+			echo "</tr>\n";
 
-			print '<tr class="liste_titre">';
+			echo '<tr class="liste_titre">';
 			if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 				print_liste_field_titre("Action", $_SERVER["PHP_SELF"], "", $param, "", 'width="60" align="center"', $sortfield, $sortorder);
 			}
@@ -830,7 +830,7 @@ if ($rowid > 0) {
 			if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 				print_liste_field_titre("Action", $_SERVER["PHP_SELF"], "", $param, "", 'width="60" align="center"', $sortfield, $sortorder);
 			}
-			print "</tr>\n";
+			echo "</tr>\n";
 
 			$adh = new Adherent($db);
 
@@ -852,98 +852,98 @@ if ($rowid > 0) {
 				$adh->email = $objp->email;
 				$adh->photo = $objp->photo;
 
-				print '<tr class="oddeven">';
+				echo '<tr class="oddeven">';
 
 				// Actions
 				if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-					print '<td class="center">';
+					echo '<td class="center">';
 					if ($user->hasRight('adherent', 'creer')) {
-						print '<a class="editfielda marginleftonly" href="card.php?rowid='.$objp->rowid.'&action=edit&token='.newToken().'&backtopage='.urlencode($_SERVER["PHP_SELF"].'?rowid='.$object->id).'">'.img_edit().'</a>';
+						echo '<a class="editfielda marginleftonly" href="card.php?rowid='.$objp->rowid.'&action=edit&token='.newToken().'&backtopage='.urlencode($_SERVER["PHP_SELF"].'?rowid='.$object->id).'">'.img_edit().'</a>';
 					}
 					if ($user->hasRight('adherent', 'supprimer')) {
-						print '<a class="marginleftonly" href="card.php?rowid='.$objp->rowid.'&action=resiliate&token='.newToken().'">'.img_picto($langs->trans("Resiliate"), 'disable.png').'</a>';
+						echo '<a class="marginleftonly" href="card.php?rowid='.$objp->rowid.'&action=resiliate&token='.newToken().'">'.img_picto($langs->trans("Resiliate"), 'disable.png').'</a>';
 					}
-					print "</td>";
+					echo "</td>";
 				}
 
 				// Ref
-				print "<td>";
-				print $adh->getNomUrl(-1, 0, 'card', 'ref', '', -1, 0, 1);
-				print "</td>\n";
+				echo "<td>";
+				echo $adh->getNomUrl(-1, 0, 'card', 'ref', '', -1, 0, 1);
+				echo "</td>\n";
 
 				// Lastname
 				if ($objp->company != '') {
-					print '<td><a href="card.php?rowid='.$objp->rowid.'">'.img_object($langs->trans("ShowMember"), "user", 'class="paddingright"').$adh->getFullName($langs, 0, -1, 20).' / '.dol_trunc($objp->company, 12).'</a></td>'."\n";
+					echo '<td><a href="card.php?rowid='.$objp->rowid.'">'.img_object($langs->trans("ShowMember"), "user", 'class="paddingright"').$adh->getFullName($langs, 0, -1, 20).' / '.dol_trunc($objp->company, 12).'</a></td>'."\n";
 				} else {
-					print '<td><a href="card.php?rowid='.$objp->rowid.'">'.img_object($langs->trans("ShowMember"), "user", 'class="paddingright"').$adh->getFullName($langs, 0, -1, 32).'</a></td>'."\n";
+					echo '<td><a href="card.php?rowid='.$objp->rowid.'">'.img_object($langs->trans("ShowMember"), "user", 'class="paddingright"').$adh->getFullName($langs, 0, -1, 32).'</a></td>'."\n";
 				}
 
 				// Login
-				print "<td>".dol_escape_htmltag($objp->login)."</td>\n";
+				echo "<td>".dol_escape_htmltag($objp->login)."</td>\n";
 
 				// Type
-				/*print '<td class="nowrap">';
+				/*echo '<td class="nowrap">';
 				$membertypestatic->id=$objp->type_id;
 				$membertypestatic->label=$objp->type;
-				print $membertypestatic->getNomUrl(1,12);
-				print '</td>';
+				echo $membertypestatic->getNomUrl(1,12);
+				echo '</td>';
 				*/
 
 				// Moral/Physique
-				print "<td>".$adh->getmorphylib($objp->morphy, 1)."</td>\n";
+				echo "<td>".$adh->getmorphylib($objp->morphy, 1)."</td>\n";
 
 				// EMail
-				print "<td>".dol_print_email($objp->email, 0, 0, 1)."</td>\n";
+				echo "<td>".dol_print_email($objp->email, 0, 0, 1)."</td>\n";
 
 				// Status
-				print '<td class="nowrap">';
-				print $adh->getLibStatut(2);
-				print "</td>";
+				echo '<td class="nowrap">';
+				echo $adh->getLibStatut(2);
+				echo "</td>";
 
 				// Date end subscription
 				if ($datefin) {
-					print '<td class="nowrap center">';
+					echo '<td class="nowrap center">';
 					if ($datefin < dol_now() && $objp->status > 0) {
-						print dol_print_date($datefin, 'day')." ".img_warning($langs->trans("SubscriptionLate"));
+						echo dol_print_date($datefin, 'day')." ".img_warning($langs->trans("SubscriptionLate"));
 					} else {
-						print dol_print_date($datefin, 'day');
+						echo dol_print_date($datefin, 'day');
 					}
-					print '</td>';
+					echo '</td>';
 				} else {
-					print '<td class="nowrap center">';
+					echo '<td class="nowrap center">';
 					if (!empty($objp->subscription)) {
-						print '<span class="opacitymedium">'.$langs->trans("SubscriptionNotReceived").'</span>';
+						echo '<span class="opacitymedium">'.$langs->trans("SubscriptionNotReceived").'</span>';
 						if ($objp->status > 0) {
-							print " ".img_warning();
+							echo " ".img_warning();
 						}
 					} else {
-						print '&nbsp;';
+						echo '&nbsp;';
 					}
-					print '</td>';
+					echo '</td>';
 				}
 
 				// Actions
 				if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-					print '<td class="center">';
+					echo '<td class="center">';
 					if ($user->hasRight('adherent', 'creer')) {
-						print '<a class="editfielda marginleftonly" href="card.php?rowid='.$objp->rowid.'&action=edit&token='.newToken().'&backtopage='.urlencode($_SERVER["PHP_SELF"].'?rowid='.$object->id).'">'.img_edit().'</a>';
+						echo '<a class="editfielda marginleftonly" href="card.php?rowid='.$objp->rowid.'&action=edit&token='.newToken().'&backtopage='.urlencode($_SERVER["PHP_SELF"].'?rowid='.$object->id).'">'.img_edit().'</a>';
 					}
 					if ($user->hasRight('adherent', 'supprimer')) {
-						print '<a class="marginleftonly" href="card.php?rowid='.$objp->rowid.'&action=resiliate&token='.newToken().'">'.img_picto($langs->trans("Resiliate"), 'disable.png').'</a>';
+						echo '<a class="marginleftonly" href="card.php?rowid='.$objp->rowid.'&action=resiliate&token='.newToken().'">'.img_picto($langs->trans("Resiliate"), 'disable.png').'</a>';
 					}
-					print "</td>";
+					echo "</td>";
 				}
-				print "</tr>\n";
+				echo "</tr>\n";
 				$i++;
 			}
 
 			if ($i == 0) {
-				print '<tr><td colspan="9"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
+				echo '<tr><td colspan="9"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
 			}
 
-			print "</table>\n";
-			print '</div>';
-			print '</form>';
+			echo "</table>\n";
+			echo '</div>';
+			echo '</form>';
 		} else {
 			dol_print_error($db);
 		}
@@ -962,75 +962,75 @@ if ($rowid > 0) {
 
 		$head = member_type_prepare_head($object);
 
-		print '<form method="post" action="'.$_SERVER["PHP_SELF"].'?rowid='.$object->id.'">';
-		print '<input type="hidden" name="token" value="'.newToken().'">';
-		print '<input type="hidden" name="rowid" value="'.$object->id.'">';
-		print '<input type="hidden" name="action" value="update">';
+		echo '<form method="post" action="'.$_SERVER["PHP_SELF"].'?rowid='.$object->id.'">';
+		echo '<input type="hidden" name="token" value="'.newToken().'">';
+		echo '<input type="hidden" name="rowid" value="'.$object->id.'">';
+		echo '<input type="hidden" name="action" value="update">';
 
-		print dol_get_fiche_head($head, 'card', $langs->trans("MemberType"), 0, 'group');
+		echo dol_get_fiche_head($head, 'card', $langs->trans("MemberType"), 0, 'group');
 
-		print '<table class="border centpercent">';
+		echo '<table class="border centpercent">';
 
-		print '<tr><td class="titlefield">'.$langs->trans("Ref").'</td><td>'.$object->id.'</td></tr>';
+		echo '<tr><td class="titlefield">'.$langs->trans("Ref").'</td><td>'.$object->id.'</td></tr>';
 
-		print '<tr><td class="fieldrequired">'.$langs->trans("Label").'</td><td><input type="text" class="minwidth300" name="label" value="'.dol_escape_htmltag($object->label).'"></td></tr>';
+		echo '<tr><td class="fieldrequired">'.$langs->trans("Label").'</td><td><input type="text" class="minwidth300" name="label" value="'.dol_escape_htmltag($object->label).'"></td></tr>';
 
-		print '<tr><td>'.$langs->trans("Status").'</td><td>';
-		print $form->selectarray('status', array('0' => $langs->trans('ActivityCeased'), '1' => $langs->trans('InActivity')), $object->status, 0, 0, 0, '', 0, 0, 0, '', 'minwidth100');
-		print '</td></tr>';
+		echo '<tr><td>'.$langs->trans("Status").'</td><td>';
+		echo $form->selectarray('status', array('0' => $langs->trans('ActivityCeased'), '1' => $langs->trans('InActivity')), $object->status, 0, 0, 0, '', 0, 0, 0, '', 'minwidth100');
+		echo '</td></tr>';
 
 		// Morphy
 		$morphys[""] = $langs->trans("MorAndPhy");
 		$morphys["phy"] = $langs->trans("Physical");
 		$morphys["mor"] = $langs->trans("Moral");
-		print '<tr><td><span>'.$langs->trans("MembersNature").'</span></td><td>';
-		print $form->selectarray("morphy", $morphys, GETPOSTISSET("morphy") ? GETPOST("morphy", 'aZ09') : $object->morphy);
-		print "</td></tr>";
+		echo '<tr><td><span>'.$langs->trans("MembersNature").'</span></td><td>';
+		echo $form->selectarray("morphy", $morphys, GETPOSTISSET("morphy") ? GETPOST("morphy", 'aZ09') : $object->morphy);
+		echo "</td></tr>";
 
-		print '<tr><td>'.$langs->trans("SubscriptionRequired").'</td><td>';
-		print $form->selectyesno("subscription", $object->subscription, 1);
-		print '</td></tr>';
+		echo '<tr><td>'.$langs->trans("SubscriptionRequired").'</td><td>';
+		echo $form->selectyesno("subscription", $object->subscription, 1);
+		echo '</td></tr>';
 
-		print '<tr><td>'.$langs->trans("Amount").'</td><td>';
-		print '<input name="amount" size="5" value="';
+		echo '<tr><td>'.$langs->trans("Amount").'</td><td>';
+		echo '<input name="amount" size="5" value="';
 		print((is_null($object->amount) || $object->amount === '') ? '' : price($object->amount));
-		print '">';
-		print '</td></tr>';
+		echo '">';
+		echo '</td></tr>';
 
-		print '<tr><td>'.$form->textwithpicto($langs->trans("CanEditAmountShort"), $langs->transnoentities("CanEditAmountDetail")).'</td><td>';
-		print $form->selectyesno("caneditamount", $object->caneditamount, 1);
-		print '</td></tr>';
+		echo '<tr><td>'.$form->textwithpicto($langs->trans("CanEditAmountShort"), $langs->transnoentities("CanEditAmountDetail")).'</td><td>';
+		echo $form->selectyesno("caneditamount", $object->caneditamount, 1);
+		echo '</td></tr>';
 
-		print '<tr><td>'.$langs->trans("VoteAllowed").'</td><td>';
-		print $form->selectyesno("vote", $object->vote, 1);
-		print '</td></tr>';
+		echo '<tr><td>'.$langs->trans("VoteAllowed").'</td><td>';
+		echo $form->selectyesno("vote", $object->vote, 1);
+		echo '</td></tr>';
 
-		print '<tr><td>'.$langs->trans("Duration").'</td><td colspan="3">';
-		print '<input name="duration_value" size="5" value="'.$object->duration_value.'"> ';
-		print $formproduct->selectMeasuringUnits("duration_unit", "time", ($object->duration_unit === '' ? 'y' : $object->duration_unit), 0, 1);
-		print '</td></tr>';
+		echo '<tr><td>'.$langs->trans("Duration").'</td><td colspan="3">';
+		echo '<input name="duration_value" size="5" value="'.$object->duration_value.'"> ';
+		echo $formproduct->selectMeasuringUnits("duration_unit", "time", ($object->duration_unit === '' ? 'y' : $object->duration_unit), 0, 1);
+		echo '</td></tr>';
 
-		print '<tr><td class="tdtop">'.$langs->trans("Description").'</td><td>';
+		echo '<tr><td class="tdtop">'.$langs->trans("Description").'</td><td>';
 		require_once DOL_DOCUMENT_ROOT.'/core/class/doleditor.class.php';
 		$doleditor = new DolEditor('comment', $object->note_public, '', 220, 'gestimag_notes', '', false, true, isModEnabled('fckeditor'), 15, '90%');
 		$doleditor->Create();
-		print "</td></tr>";
+		echo "</td></tr>";
 
-		print '<tr><td class="tdtop">'.$langs->trans("WelcomeEMail").'</td><td>';
+		echo '<tr><td class="tdtop">'.$langs->trans("WelcomeEMail").'</td><td>';
 		$doleditor = new DolEditor('mail_valid', $object->mail_valid, '', 280, 'gestimag_notes', '', false, true, isModEnabled('fckeditor'), 15, '90%');
 		$doleditor->Create();
-		print "</td></tr>";
+		echo "</td></tr>";
 
 		// Other attributes
 		include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_edit.tpl.php';
 
-		print '</table>';
+		echo '</table>';
 
-		print dol_get_fiche_end();
+		echo dol_get_fiche_end();
 
-		print $form->buttonsSaveCancel();
+		echo $form->buttonsSaveCancel();
 
-		print "</form>";
+		echo "</form>";
 	}
 }
 

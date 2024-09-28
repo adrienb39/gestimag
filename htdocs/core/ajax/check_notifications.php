@@ -158,4 +158,4 @@ if (empty($_SESSION['auto_check_events_not_before']) || $time >= $_SESSION['auto
 	}
 }
 
-print json_encode(array('pastreminders'=>$eventfound, 'nextreminder'=>''));
+echo json_encode(array('pastreminders'=>$eventfound, 'nextreminder'=>''));

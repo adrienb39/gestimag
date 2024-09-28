@@ -2831,7 +2831,7 @@ class pdf_octopus extends ModelePDFFactures
 		$i = -8;
 		foreach ($form->cache_vatrates as $TVatInfo) {
 			$tva_tx_formated = sprintf("%01.3f", (float) $TVatInfo['txtva']);
-			// print "<p>Un taux de tva ... $tva_tx_formated :: " . json_encode($this->TDataSituation['current'][$tva_tx_formated]) . "</p>";
+			// echo "<p>Un taux de tva ... $tva_tx_formated :: " . json_encode($this->TDataSituation['current'][$tva_tx_formated]) . "</p>";
 			if (empty($this->TDataSituation['current'][$tva_tx_formated])) {
 				continue;
 			}
@@ -2880,8 +2880,8 @@ class pdf_octopus extends ModelePDFFactures
 
 		$x = $this->marge_gauche + 85;
 		// unset($this->TDataSituation['derniere_situation']);
-		// print json_encode($object->lines);exit;
-		// print json_encode($this->TDataSituation);exit;
+		// echo json_encode($object->lines);exit;
+		// echo json_encode($this->TDataSituation);exit;
 		foreach ($TToDisplay as $col) {
 			// Travaux principaux
 			$pdf->SetXY($x, $tab_top + 8);
@@ -2977,7 +2977,7 @@ class pdf_octopus extends ModelePDFFactures
 		unset($object->tab_previous_situation_invoice);
 
 		// liste de toutes les factures précédentes
-		// print json_encode($TPreviousInvoices); exit;
+		// echo json_encode($TPreviousInvoices); exit;
 
 		$TPreviousInvoices = array_reverse($TPreviousInvoices);
 		$facDerniereSituation = $TPreviousInvoices[0];
@@ -3065,7 +3065,7 @@ class pdf_octopus extends ModelePDFFactures
 			$TDataSituation['cumul_anterieur']['total_a_payer'] = $TDataSituation['cumul_anterieur']['TTC'] - $retenue_garantie_anterieure;
 		}
 
-		// print json_encode($facDerniereSituation->lines);exit;
+		// echo json_encode($facDerniereSituation->lines);exit;
 		$TDataSituation['current'] = $this->btpGetInvoiceAmounts($object->id);
 
 		if (! empty($facDerniereSituation->lines)) {
@@ -3073,7 +3073,7 @@ class pdf_octopus extends ModelePDFFactures
 			$TObjectLinesKey = array_keys($object->lines);
 			$TDiffKey = array_diff($TObjectLinesKey, $TFacLinesKey);
 
-			// print json_encode($TDiffKey);exit;
+			// echo json_encode($TDiffKey);exit;
 
 			foreach ($TDiffKey as $i) {
 				if (empty($object->lines[$i]->fk_prev_id)) {
@@ -3298,7 +3298,7 @@ class pdf_octopus extends ModelePDFFactures
 		unset($ret['derniere_situation']->fields);
 		unset($ret['derniere_situation']->lines);
 
-		// print "<p>Store to cache $id : " . json_encode($_cache_btpProrataGetInvoiceAmounts[$id]) . "</p>";
+		// echo "<p>Store to cache $id : " . json_encode($_cache_btpProrataGetInvoiceAmounts[$id]) . "</p>";
 		return $ret;
 	}
 

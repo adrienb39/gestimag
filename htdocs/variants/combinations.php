@@ -451,7 +451,7 @@ if (!empty($id) || !empty($ref)) {
 	if (empty($positiverates)) {
 		$positiverates = '0';
 	}
-	echo vatrate($positiverates.($object->default_vat_code ? ' ('.$object->default_vat_code.')' : ''), '%', $object->tva_npr);
+	echo  vatrate($positiverates.($object->default_vat_code ? ' ('.$object->default_vat_code.')' : ''), '%', $object->tva_npr);
 	/*
 	if ($object->default_vat_code)
 	{
@@ -537,7 +537,7 @@ if (!empty($id) || !empty($ref)) {
 
 		<script type="text/javascript">
 
-			variants_available = <?php echo json_encode($prodattr_alljson, JSON_PARTIAL_OUTPUT_ON_ERROR); ?>;
+			variants_available = <?php echo  json_encode($prodattr_alljson, JSON_PARTIAL_OUTPUT_ON_ERROR); ?>;
 			variants_selected = {
 				index: [],
 				info: []
@@ -546,12 +546,12 @@ if (!empty($id) || !empty($ref)) {
 			<?php
 			foreach ($productCombination2ValuePairs1 as $pc2v) {
 				$prodattr_val->fetch($pc2v->fk_prod_attr_val); ?>
-				variants_selected.index.push(<?php echo $pc2v->fk_prod_attr ?>);
-				variants_selected.info[<?php echo $pc2v->fk_prod_attr ?>] = {
-					attribute: variants_available[<?php echo $pc2v->fk_prod_attr ?>],
+				variants_selected.index.push(<?php echo  $pc2v->fk_prod_attr ?>);
+				variants_selected.info[<?php echo  $pc2v->fk_prod_attr ?>] = {
+					attribute: variants_available[<?php echo  $pc2v->fk_prod_attr ?>],
 					value: {
-						id: <?php echo $pc2v->fk_prod_attr_val ?>,
-						label: '<?php echo $prodattr_val->value ?>'
+						id: <?php echo  $pc2v->fk_prod_attr_val ?>,
+						label: '<?php echo  $prodattr_val->value ?>'
 					}
 				};
 				<?php
@@ -646,7 +646,7 @@ if (!empty($id) || !empty($ref)) {
 			print '</tr>'; ?>
 			<!-- Value -->
 			<tr>
-				<td class="fieldrequired"><label for="value"><?php echo $langs->trans('Value') ?></label></td>
+				<td class="fieldrequired"><label for="value"><?php echo  $langs->trans('Value') ?></label></td>
 				<td>
 					<select class="flat minwidth100" id="value" name="value">
 						<option value="-1">&nbsp;</option>
@@ -663,7 +663,7 @@ if (!empty($id) || !empty($ref)) {
 			</tr>
 			<tr>
 				<td></td><td>
-					<input type="submit" class="button" name="selectvariant" id="selectvariant" value="<?php echo dol_escape_htmltag($langs->trans("SelectCombination")); ?>">
+					<input type="submit" class="button" name="selectvariant" id="selectvariant" value="<?php echo  dol_escape_htmltag($langs->trans("SelectCombination")); ?>">
 				</td>
 			</tr>
 			<?php
@@ -683,7 +683,7 @@ if (!empty($id) || !empty($ref)) {
 			if (is_array($productCombination2ValuePairs1) && count($productCombination2ValuePairs1)) {
 				?>
 				<tr>
-					<td class="titlefieldcreate tdtop"><label for="features"><?php echo $langs->trans('Attributes') ?></label></td>
+					<td class="titlefieldcreate tdtop"><label for="features"><?php echo  $langs->trans('Attributes') ?></label></td>
 					<td class="tdtop">
 						<div class="inline-block valignmiddle quatrevingtpercent">
 					<?php
@@ -697,7 +697,7 @@ if (!empty($id) || !empty($ref)) {
 					} ?>
 						</div>
 						<!-- <div class="inline-block valignmiddle">
-						<a href="#" class="inline-block valignmiddle button" id="delfeature"><?php echo img_edit_remove() ?></a>
+						<a href="#" class="inline-block valignmiddle button" id="delfeature"><?php echo  img_edit_remove() ?></a>
 						</div>-->
 					</td>
 					<td>
@@ -706,16 +706,16 @@ if (!empty($id) || !empty($ref)) {
 				<?php
 			} ?>
 			<tr>
-				<td><label for="reference"><?php echo $langs->trans('Reference') ?></label></td>
-				<td><input type="text" id="reference" name="reference" value="<?php echo trim($reference) ?>"></td>
+				<td><label for="reference"><?php echo  $langs->trans('Reference') ?></label></td>
+				<td><input type="text" id="reference" name="reference" value="<?php echo  trim($reference) ?>"></td>
 			</tr>
 			<?php
 			if (!getDolGlobalString('PRODUIT_MULTIPRICES')) {
 				?>
 			<tr>
-				<td><label for="price_impact"><?php echo $langs->trans('PriceImpact') ?></label></td>
-				<td><input type="text" id="price_impact" name="price_impact" value="<?php echo price($price_impact) ?>">
-				<input type="checkbox" id="price_impact_percent" name="price_impact_percent" <?php echo $price_impact_percent ? ' checked' : '' ?>> <label for="price_impact_percent"><?php echo $langs->trans('PercentageVariation') ?></label>
+				<td><label for="price_impact"><?php echo  $langs->trans('PriceImpact') ?></label></td>
+				<td><input type="text" id="price_impact" name="price_impact" value="<?php echo  price($price_impact) ?>">
+				<input type="checkbox" id="price_impact_percent" name="price_impact_percent" <?php echo  $price_impact_percent ? ' checked' : '' ?>> <label for="price_impact_percent"><?php echo  $langs->trans('PercentageVariation') ?></label>
 				</td>
 			</tr>
 				<?php
@@ -776,9 +776,9 @@ if (!empty($id) || !empty($ref)) {
 		<div style="text-align: center">
 		<input type="submit" name="create" <?php if (!is_array($productCombination2ValuePairs1)) {
 			print ' disabled="disabled"';
-										   } ?> value="<?php echo $action == 'add' ? $langs->trans('Create') : $langs->trans("Save") ?>" class="button button-save">
+										   } ?> value="<?php echo  $action == 'add' ? $langs->trans('Create') : $langs->trans("Save") ?>" class="button button-save">
 		&nbsp;
-		<input type="submit" name="cancel" value="<?php echo $langs->trans("Cancel"); ?>" class="button button-cancel">
+		<input type="submit" name="cancel" value="<?php echo  $langs->trans("Cancel"); ?>" class="button button-cancel">
 		</div>
 
 		<?php
@@ -890,14 +890,14 @@ if (!empty($id) || !empty($ref)) {
 					print $searchpicto;
 					print '</td>';
 				} ?>
-				<td class="liste_titre"><?php echo $langs->trans('Product') ?></td>
-				<td class="liste_titre"><?php echo $langs->trans('Attributes') ?></td>
-				<td class="liste_titre right"><?php echo $langs->trans('PriceImpact') ?></td>
+				<td class="liste_titre"><?php echo  $langs->trans('Product') ?></td>
+				<td class="liste_titre"><?php echo  $langs->trans('Attributes') ?></td>
+				<td class="liste_titre right"><?php echo  $langs->trans('PriceImpact') ?></td>
 				<?php if ($object->isProduct()) {
 					print'<td class="liste_titre right">'.$langs->trans('WeightImpact').'</td>';
 				} ?>
-				<td class="liste_titre center"><?php echo $langs->trans('OnSell') ?></td>
-				<td class="liste_titre center"><?php echo $langs->trans('OnBuy') ?></td>
+				<td class="liste_titre center"><?php echo  $langs->trans('OnSell') ?></td>
+				<td class="liste_titre center"><?php echo  $langs->trans('OnBuy') ?></td>
 				<td class="liste_titre"></td>
 				<?php
 				// Action column

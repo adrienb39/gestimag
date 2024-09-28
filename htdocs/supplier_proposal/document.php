@@ -102,7 +102,7 @@ if ($object->id > 0) {
 	$upload_dir = $conf->supplier_proposal->dir_output.'/'.dol_sanitizeFileName($object->ref);
 
 	$head = supplier_proposal_prepare_head($object);
-	print dol_get_fiche_head($head, 'document', $langs->trans('CommRequest'), -1, 'supplier_proposal');
+	echo dol_get_fiche_head($head, 'document', $langs->trans('CommRequest'), -1, 'supplier_proposal');
 
 	// Build file list
 	$filearray = dol_dir_list($upload_dir, "files", 0, '', '(\.meta|_preview.*\.png)$', $sortfield, (strtolower($sortorder) == 'desc' ? SORT_DESC : SORT_ASC), 1);
@@ -149,19 +149,19 @@ if ($object->id > 0) {
 	dol_banner_tab($object, 'ref', $linkback, 1, 'ref', 'ref', $morehtmlref);
 
 
-	print '<div class="fichecenter">';
-	print '<div class="underbanner clearboth"></div>';
+	echo '<div class="fichecenter">';
+	echo '<div class="underbanner clearboth"></div>';
 
-	print '<table class="border tableforfield centpercent">';
+	echo '<table class="border tableforfield centpercent">';
 
-	print '<tr><td class="titlefield">'.$langs->trans("NbOfAttachedFiles").'</td><td>'.count($filearray).'</td></tr>';
-	print '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td>'.dol_print_size($totalsize, 1, 1).'</td></tr>';
+	echo '<tr><td class="titlefield">'.$langs->trans("NbOfAttachedFiles").'</td><td>'.count($filearray).'</td></tr>';
+	echo '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td>'.dol_print_size($totalsize, 1, 1).'</td></tr>';
 
-	print '</table>';
+	echo '</table>';
 
-	print '</div>';
+	echo '</div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
 	$modulepart = 'supplier_proposal';
 	$permissiontoadd = $user->hasRight('supplier_proposal', 'creer');
@@ -169,7 +169,7 @@ if ($object->id > 0) {
 	$param = '&id='.$object->id;
 	include DOL_DOCUMENT_ROOT.'/core/tpl/document_actions_post_headers.tpl.php';
 } else {
-	print $langs->trans("ErrorUnknown");
+	echo $langs->trans("ErrorUnknown");
 }
 
 // End of page

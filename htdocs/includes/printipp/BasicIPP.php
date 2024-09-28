@@ -73,7 +73,7 @@ class BasicIPP
     public $http_data_timeout = 30; // data reading timeout (milliseconds) 0 => default => 30.
     public $ssl = false;
     public $debug_level = 3; // max 3: almost silent
-    public $alert_on_end_tag; // debugging purpose: echo "END tag OK" if (1 and  reads while end tag)
+    public $alert_on_end_tag; // debugging purpose: echo  "END tag OK" if (1 and  reads while end tag)
     public $with_exceptions = 1; // compatibility mode for old scripts		// DOL_LDR_CHANGE set this to 1
     public $handle_http_exceptions = 1;
 
@@ -431,8 +431,8 @@ class BasicIPP
     public function setFidelity()
     {
         // whether the server can't replace any attributes
-        // (eg, 2 sided print is not possible,
-        // so print one sided) and DO NOT THE JOB.
+        // (eg, 2 sided echo is not possible,
+        // so echo one sided) and DO NOT THE JOB.
         $this->meta->fidelity = chr(0x22) // boolean type  |  value-tag
             . chr(0x00) . chr(0x16) //                  name-length
             . "ipp-attribute-fidelity" // ipp-attribute-fidelity | name
@@ -444,8 +444,8 @@ class BasicIPP
     public function unsetFidelity()
     {
         // whether the server can replace any attributes
-        // (eg, 2 sided print is not possible,
-        // so print one sided) and DO THE JOB.
+        // (eg, 2 sided echo is not possible,
+        // so echo one sided) and DO THE JOB.
         $this->meta->fidelity = chr(0x22) //  boolean type | value-tag
             . chr(0x00) . chr(0x16) //        name-length
             . "ipp-attribute-fidelity" // ipp-attribute-fidelity | name
@@ -658,7 +658,7 @@ class BasicIPP
     {
         for ($i = 0; $i < $this->debug_count; $i++)
         {
-            echo $this->debug[$i], "\n";
+            echo  $this->debug[$i], "\n";
         }
         $this->debug = array();
         $this->debug_count = 0;

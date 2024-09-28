@@ -54,7 +54,7 @@ if (!getDolGlobalString('MAIN_USE_ZIPTOWN_DICTIONNARY')) {
  * View
  */
 
-//print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+//echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 dol_syslog('ziptown call with MAIN_USE_ZIPTOWN_DICTIONNARY='.getDolGlobalString('MAIN_USE_ZIPTOWN_DICTIONNARY'));
 
@@ -105,7 +105,7 @@ if (GETPOST('zipcode') || GETPOST('town')) {
 		$sql .= $db->plimit(100); // Avoid pb with bad criteria
 	}
 
-	//print $sql;
+	//echo $sql;
 	$resql = $db->query($sql);
 	//var_dump($db);
 	if ($resql) {
@@ -138,12 +138,12 @@ if (GETPOST('zipcode') || GETPOST('town')) {
 		}
 	}
 
-	echo json_encode($return_arr);
+	echo  json_encode($return_arr);
 } elseif (GETPOSTISSET('country_codeid')) {
 	top_httphead('text/html');
 
 	$formcompany = new FormCompany($db);
-	print $formcompany->select_state(GETPOSTINT('selected', 1), GETPOSTINT('country_codeid', 1), GETPOSTINT('htmlname', 1), GETPOSTINT('morecss', 1));
+	echo $formcompany->select_state(GETPOSTINT('selected', 1), GETPOSTINT('country_codeid', 1), GETPOSTINT('htmlname', 1), GETPOSTINT('morecss', 1));
 }
 
 $db->close();

@@ -1168,49 +1168,49 @@ class Form
 		if ($forceall == 1 || (empty($forceall) && isModEnabled("product") && isModEnabled("service"))
 			|| (empty($forceall) && !isModEnabled('product') && !isModEnabled('service'))) {
 			if (empty($hidetext)) {
-				print $langs->trans("Type") . ': ';
+				echo $langs->trans("Type") . ': ';
 			}
-			print '<select class="flat'.($morecss ? ' '.$morecss : '').'" id="select_' . $htmlname . '" name="' . $htmlname . '">';
+			echo '<select class="flat'.($morecss ? ' '.$morecss : '').'" id="select_' . $htmlname . '" name="' . $htmlname . '">';
 			if ($showempty) {
-				print '<option value="-1"';
+				echo '<option value="-1"';
 				if ($selected == -1) {
-					print ' selected';
+					echo ' selected';
 				}
-				print '>';
+				echo '>';
 				if (is_numeric($showempty)) {
-					print '&nbsp;';
+					echo '&nbsp;';
 				} else {
-					print $showempty;
+					echo $showempty;
 				}
-				print '</option>';
+				echo '</option>';
 			}
 
-			print '<option value="0"';
+			echo '<option value="0"';
 			if (0 == $selected || ($selected == -1 && getDolGlobalString('MAIN_FREE_PRODUCT_CHECKED_BY_DEFAULT') == 'product')) {
-				print ' selected';
+				echo ' selected';
 			}
-			print '>' . $langs->trans("Product");
+			echo '>' . $langs->trans("Product");
 
-			print '<option value="1"';
+			echo '<option value="1"';
 			if (1 == $selected || ($selected == -1 && getDolGlobalString('MAIN_FREE_PRODUCT_CHECKED_BY_DEFAULT') == 'service')) {
-				print ' selected';
+				echo ' selected';
 			}
-			print '>' . $langs->trans("Service");
+			echo '>' . $langs->trans("Service");
 
-			print '</select>';
-			print ajax_combobox('select_' . $htmlname);
-			//if ($user->admin) print info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"),1);
+			echo '</select>';
+			echo ajax_combobox('select_' . $htmlname);
+			//if ($user->admin) echo info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"),1);
 		}
 		if ((empty($forceall) && !isModEnabled('product') && isModEnabled("service")) || $forceall == 3) {
-			print $langs->trans("Service");
-			print '<input type="hidden" name="' . $htmlname . '" value="1">';
+			echo $langs->trans("Service");
+			echo '<input type="hidden" name="' . $htmlname . '" value="1">';
 		}
 		if ((empty($forceall) && isModEnabled("product") && !isModEnabled('service')) || $forceall == 2) {
-			print $langs->trans("Product");
-			print '<input type="hidden" name="' . $htmlname . '" value="0">';
+			echo $langs->trans("Product");
+			echo '<input type="hidden" name="' . $htmlname . '" value="0">';
 		}
 		if ($forceall < 0) {    // This should happened only for contracts when both predefined product and service are disabled.
-			print '<input type="hidden" name="' . $htmlname . '" value="1">'; // By default we set on service for contract. If CONTRACT_SUPPORT_PRODUCTS is set, forceall should be 1 not -1
+			echo '<input type="hidden" name="' . $htmlname . '" value="1">'; // By default we set on service for contract. If CONTRACT_SUPPORT_PRODUCTS is set, forceall should be 1 not -1
 		}
 	}
 
@@ -1281,28 +1281,28 @@ class Form
 
 		$this->load_cache_types_fees();
 
-		print '<select id="select_' . $htmlname . '" class="flat" name="' . $htmlname . '">';
+		echo '<select id="select_' . $htmlname . '" class="flat" name="' . $htmlname . '">';
 		if ($showempty) {
-			print '<option value="-1"';
+			echo '<option value="-1"';
 			if ($selected == -1) {
-				print ' selected';
+				echo ' selected';
 			}
-			print '>&nbsp;</option>';
+			echo '>&nbsp;</option>';
 		}
 
 		foreach ($this->cache_types_fees as $key => $value) {
-			print '<option value="' . $key . '"';
+			echo '<option value="' . $key . '"';
 			if ($key == $selected) {
-				print ' selected';
+				echo ' selected';
 			}
-			print '>';
-			print $value;
-			print '</option>';
+			echo '>';
+			echo $value;
+			echo '</option>';
 		}
 
-		print '</select>';
+		echo '</select>';
 		if ($user->admin) {
-			print info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
+			echo info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
 		}
 	}
 
@@ -1360,7 +1360,7 @@ class Form
 
 			$out .= '<!-- force css to be higher than dialog popup --><style type="text/css">.ui-autocomplete { z-index: 1010; }</style>';
 			if (empty($hidelabel)) {
-				print $langs->trans("RefOrLabel") . ' : ';
+				echo $langs->trans("RefOrLabel") . ' : ';
 			} elseif ($hidelabel > 1) {
 				$placeholder = $langs->trans("RefOrLabel");
 				if ($hidelabel == 2) {
@@ -2033,14 +2033,14 @@ class Form
 		dol_syslog(get_class($this) . "::select_remises", LOG_DEBUG);
 		$resql = $this->db->query($sql);
 		if ($resql) {
-			print '<select id="select_' . $htmlname . '" class="flat maxwidthonsmartphone" name="' . $htmlname . '">';
+			echo '<select id="select_' . $htmlname . '" class="flat maxwidthonsmartphone" name="' . $htmlname . '">';
 			$num = $this->db->num_rows($resql);
 
 			$qualifiedlines = $num;
 
 			$i = 0;
 			if ($num) {
-				print '<option value="0">&nbsp;</option>';
+				echo '<option value="0">&nbsp;</option>';
 				while ($i < $num) {
 					$obj = $this->db->fetch_object($resql);
 					$desc = dol_trunc($obj->description, 40);
@@ -2075,12 +2075,12 @@ class Form
 						}
 					}
 
-					print '<option value="' . $obj->rowid . '"' . $selectstring . $disabled . '>' . $desc . ' (' . price($obj->amount_ht) . ' ' . $langs->trans("HT") . ' - ' . price($obj->amount_ttc) . ' ' . $langs->trans("TTC") . ')</option>';
+					echo '<option value="' . $obj->rowid . '"' . $selectstring . $disabled . '>' . $desc . ' (' . price($obj->amount_ht) . ' ' . $langs->trans("HT") . ' - ' . price($obj->amount_ttc) . ' ' . $langs->trans("TTC") . ')</option>';
 					$i++;
 				}
 			}
-			print '</select>';
-			print ajax_combobox('select_' . $htmlname);
+			echo '</select>';
+			echo ajax_combobox('select_' . $htmlname);
 
 			return $qualifiedlines;
 		} else {
@@ -2110,7 +2110,7 @@ class Form
 	public function select_users($selected = '', $htmlname = 'userid', $show_empty = 0, $exclude = null, $disabled = 0, $include = '', $enableonly = array(), $force_entity = '0')
 	{
 		// phpcs:enable
-		print $this->select_dolusers($selected, $htmlname, $show_empty, $exclude, $disabled, $include, $enableonly, $force_entity);
+		echo $this->select_dolusers($selected, $htmlname, $show_empty, $exclude, $disabled, $include, $enableonly, $force_entity);
 	}
 
 	// phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
@@ -2637,7 +2637,7 @@ class Form
 	 *										            'warehouseclosed' = count products from closed warehouses,
 	 *										            'warehouseinternal' = count products from warehouses for internal correct/transfer only
 	 *  @param 		?mixed[]	$selected_combinations 	Selected combinations. Format: array([attrid] => attrval, [...])
-	 *  @param		int<0,1> 	$nooutput				No print if 1, return the output into a string
+	 *  @param		int<0,1> 	$nooutput				No echo if 1, return the output into a string
 	 *  @param		int<-1,1>	$status_purchase		Purchase status: -1=No filter on purchase status, 0=Products not on purchase, 1=Products on purchase
 	 *  @return		void|string
 	 */
@@ -2777,7 +2777,7 @@ class Form
 		}
 
 		if (empty($nooutput)) {
-			print $out;
+			echo $out;
 		} else {
 			return $out;
 		}
@@ -2857,7 +2857,7 @@ class Form
 		}
 		$out .= '</select>';
 		if (empty($nooutput)) {
-			print $out;
+			echo $out;
 		} else {
 			return $out;
 		}
@@ -3620,11 +3620,11 @@ class Form
 
 			// mode=2 means suppliers products
 			$urloption = ($socid > 0 ? 'socid=' . $socid . '&' : '') . 'htmlname=' . $htmlname . '&outjson=1&price_level=' . $price_level . '&type=' . $filtertype . '&mode=2&status=' . $status . '&finished=' . $finished . '&alsoproductwithnosupplierprice=' . $alsoproductwithnosupplierprice;
-			print ajax_autocompleter($selected, $htmlname, DOL_URL_ROOT . '/product/ajax/products.php', $urloption, getDolGlobalString('PRODUIT_USE_SEARCH_TO_SELECT'), 0, $ajaxoptions);
+			echo ajax_autocompleter($selected, $htmlname, DOL_URL_ROOT . '/product/ajax/products.php', $urloption, getDolGlobalString('PRODUIT_USE_SEARCH_TO_SELECT'), 0, $ajaxoptions);
 
 			print($hidelabel ? '' : $langs->trans("RefOrLabel") . ' : ') . '<input type="text" class="'.$morecss.'" name="search_' . $htmlname . '" id="search_' . $htmlname . '" value="' . $selected_input_value . '"' . ($placeholder ? ' placeholder="' . $placeholder . '"' : '') . '>';
 		} else {
-			print $this->select_produits_fournisseurs_list($socid, $selected, $htmlname, $filtertype, $filtre, '', $status, 0, 0, $alsoproductwithnosupplierprice, $morecss, 0, $placeholder);
+			echo $this->select_produits_fournisseurs_list($socid, $selected, $htmlname, $filtertype, $filtre, '', $status, 0, 0, $alsoproductwithnosupplierprice, $morecss, 0, $placeholder);
 		}
 	}
 
@@ -4309,24 +4309,24 @@ class Form
 
 		dol_syslog(__METHOD__ . " selected=" . $selected . ", htmlname=" . $htmlname, LOG_DEBUG);
 
-		print '<select id="' . $htmlname . '" class="flat' . ($morecss ? ' ' . $morecss : '') . '" name="' . $htmlname . '">';
+		echo '<select id="' . $htmlname . '" class="flat' . ($morecss ? ' ' . $morecss : '') . '" name="' . $htmlname . '">';
 		if ($addempty) {
-			print '<option value="0">&nbsp;</option>';
+			echo '<option value="0">&nbsp;</option>';
 		}
 		foreach ($this->cache_availability as $id => $arrayavailability) {
 			if ($selected == $id) {
-				print '<option value="' . $id . '" selected>';
+				echo '<option value="' . $id . '" selected>';
 			} else {
-				print '<option value="' . $id . '">';
+				echo '<option value="' . $id . '">';
 			}
-			print dol_escape_htmltag($arrayavailability['label']);
-			print '</option>';
+			echo dol_escape_htmltag($arrayavailability['label']);
+			echo '</option>';
 		}
-		print '</select>';
+		echo '</select>';
 		if ($user->admin) {
-			print info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
+			echo info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
 		}
-		print ajax_combobox($htmlname);
+		echo ajax_combobox($htmlname);
 	}
 
 	/**
@@ -4398,9 +4398,9 @@ class Form
 
 		$this->loadCacheInputReason();
 
-		print '<select class="flat' . ($morecss ? ' ' . $morecss : '') . '" id="select_' . $htmlname . '" name="' . $htmlname . '">';
+		echo '<select class="flat' . ($morecss ? ' ' . $morecss : '') . '" id="select_' . $htmlname . '" name="' . $htmlname . '">';
 		if ($addempty) {
-			print '<option value="0"' . (empty($selected) ? ' selected' : '') . '>&nbsp;</option>';
+			echo '<option value="0"' . (empty($selected) ? ' selected' : '') . '>&nbsp;</option>';
 		}
 		foreach ($this->cache_demand_reason as $id => $arraydemandreason) {
 			if ($arraydemandreason['code'] == $exclude) {
@@ -4408,19 +4408,19 @@ class Form
 			}
 
 			if ($selected && ($selected == $arraydemandreason['id'] || $selected == $arraydemandreason['code'])) {
-				print '<option value="' . $arraydemandreason['id'] . '" selected>';
+				echo '<option value="' . $arraydemandreason['id'] . '" selected>';
 			} else {
-				print '<option value="' . $arraydemandreason['id'] . '">';
+				echo '<option value="' . $arraydemandreason['id'] . '">';
 			}
 			$label = $arraydemandreason['label']; // Translation of label was already done into the ->loadCacheInputReason
-			print $langs->trans($label);
-			print '</option>';
+			echo $langs->trans($label);
+			echo '</option>';
 		}
-		print '</select>';
+		echo '</select>';
 		if ($user->admin && empty($notooltip)) {
-			print info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
+			echo info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
 		}
-		print ajax_combobox('select_' . $htmlname);
+		echo ajax_combobox('select_' . $htmlname);
 	}
 
 	// phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
@@ -4478,7 +4478,7 @@ class Form
 	// phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
 
 	/**
-	 *    print list of payment modes.
+	 *    echo list of payment modes.
 	 *    Constant MAIN_DEFAULT_PAYMENT_TERM_ID can be used to set default value but scope is all application, probably not what you want.
 	 *    See instead to force the default value by the caller.
 	 *
@@ -4491,16 +4491,16 @@ class Form
 	 * @param int	 $deposit_percent < 0 : deposit_percent input makes no sense (for example, in list filters)
 	 *                                0 : use default deposit percentage from entry
 	 *                                > 0 : force deposit percentage (for example, from company object)
-	 * @param int $noprint if set to one we return the html to print, if 0 (default) we print it
+	 * @param int $noecho if set to one we return the html to print, if 0 (default) we echo it
 	 * @return    void|string
-	 * @deprecated Use getSelectConditionsPaiements() instead and handle noprint locally.
+	 * @deprecated Use getSelectConditionsPaiements() instead and handle noecho locally.
 	 */
-	public function select_conditions_paiements($selected = 0, $htmlname = 'condid', $filtertype = -1, $addempty = 0, $noinfoadmin = 0, $morecss = '', $deposit_percent = -1, $noprint = 0)
+	public function select_conditions_paiements($selected = 0, $htmlname = 'condid', $filtertype = -1, $addempty = 0, $noinfoadmin = 0, $morecss = '', $deposit_percent = -1, $noecho = 0)
 	{
 		// phpcs:enable
 		$out = $this->getSelectConditionsPaiements($selected, $htmlname, $filtertype, $addempty, $noinfoadmin, $morecss, $deposit_percent);
 		if (empty($noprint)) {
-			print $out;
+			echo $out;
 		} else {
 			return $out;
 		}
@@ -4703,7 +4703,7 @@ class Form
 		$out .= ajax_combobox('select' . $htmlname);
 
 		if (empty($nooutput)) {
-			print $out;
+			echo $out;
 		} else {
 			return $out;
 		}
@@ -4814,9 +4814,9 @@ class Form
 
 		$this->load_cache_transport_mode();
 
-		print '<select id="select' . $htmlname . '" class="flat selectmodetransport' . ($morecss ? ' ' . $morecss : '') . '" name="' . $htmlname . '">';
+		echo '<select id="select' . $htmlname . '" class="flat selectmodetransport' . ($morecss ? ' ' . $morecss : '') . '" name="' . $htmlname . '">';
 		if ($empty) {
-			print '<option value="">&nbsp;</option>';
+			echo '<option value="">&nbsp;</option>';
 		}
 		foreach ($this->cache_transport_mode as $id => $arraytypes) {
 			// If not good status
@@ -4830,21 +4830,21 @@ class Form
 			}
 
 			if ($format == 0) {
-				print '<option value="' . $id . '"';
+				echo '<option value="' . $id . '"';
 			} elseif ($format == 1) {
-				print '<option value="' . $arraytypes['code'] . '"';
+				echo '<option value="' . $arraytypes['code'] . '"';
 			} elseif ($format == 2) {
-				print '<option value="' . $arraytypes['code'] . '"';
+				echo '<option value="' . $arraytypes['code'] . '"';
 			} elseif ($format == 3) {
-				print '<option value="' . $id . '"';
+				echo '<option value="' . $id . '"';
 			}
 			// If text is selected, we compare with code, else with id
 			if (preg_match('/[a-z]/i', $selected) && $selected == $arraytypes['code']) {
-				print ' selected';
+				echo ' selected';
 			} elseif ($selected == $id) {
-				print ' selected';
+				echo ' selected';
 			}
-			print '>';
+			echo '>';
 			$value = '';
 			if ($format == 0) {
 				$value = ($maxlength ? dol_trunc($arraytypes['label'], $maxlength) : $arraytypes['label']);
@@ -4855,12 +4855,12 @@ class Form
 			} elseif ($format == 3) {
 				$value = $arraytypes['code'];
 			}
-			print $value ? $value : '&nbsp;';
-			print '</option>';
+			echo $value ? $value : '&nbsp;';
+			echo '</option>';
 		}
-		print '</select>';
+		echo '</select>';
 		if ($user->admin && !$noadmininfo) {
-			print info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
+			echo info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
 		}
 	}
 
@@ -4897,29 +4897,29 @@ class Form
 			$num = $this->db->num_rows($result);
 			$i = 0;
 			if ($num) {
-				print '<select id="select' . $htmlname . '" class="flat selectshippingmethod' . ($morecss ? ' ' . $morecss : '') . '" name="' . $htmlname . '"' . ($moreattrib ? ' ' . $moreattrib : '') . '>';
+				echo '<select id="select' . $htmlname . '" class="flat selectshippingmethod' . ($morecss ? ' ' . $morecss : '') . '" name="' . $htmlname . '"' . ($moreattrib ? ' ' . $moreattrib : '') . '>';
 				if ($useempty == 1 || ($useempty == 2 && $num > 1)) {
-					print '<option value="-1">&nbsp;</option>';
+					echo '<option value="-1">&nbsp;</option>';
 				}
 				while ($i < $num) {
 					$obj = $this->db->fetch_object($result);
 					if ($selected == $obj->rowid) {
-						print '<option value="' . $obj->rowid . '" selected>';
+						echo '<option value="' . $obj->rowid . '" selected>';
 					} else {
-						print '<option value="' . $obj->rowid . '">';
+						echo '<option value="' . $obj->rowid . '">';
 					}
-					print ($langs->trans("SendingMethod" . strtoupper($obj->code)) != "SendingMethod" . strtoupper($obj->code)) ? $langs->trans("SendingMethod" . strtoupper($obj->code)) : $obj->label;
-					print '</option>';
+					echo ($langs->trans("SendingMethod" . strtoupper($obj->code)) != "SendingMethod" . strtoupper($obj->code)) ? $langs->trans("SendingMethod" . strtoupper($obj->code)) : $obj->label;
+					echo '</option>';
 					$i++;
 				}
-				print "</select>";
+				echo "</select>";
 				if ($user->admin && empty($noinfoadmin)) {
-					print info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
+					echo info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
 				}
 
-				print ajax_combobox('select' . $htmlname);
+				echo ajax_combobox('select' . $htmlname);
 			} else {
-				print $langs->trans("NoShippingMethodDefined");
+				echo $langs->trans("NoShippingMethodDefined");
 			}
 		} else {
 			dol_print_error($this->db);
@@ -4942,18 +4942,18 @@ class Form
 		$langs->load("deliveries");
 
 		if ($htmlname != "none") {
-			print '<form method="POST" action="' . $page . '">';
-			print '<input type="hidden" name="action" value="setshippingmethod">';
-			print '<input type="hidden" name="token" value="' . newToken() . '">';
+			echo '<form method="POST" action="' . $page . '">';
+			echo '<input type="hidden" name="action" value="setshippingmethod">';
+			echo '<input type="hidden" name="token" value="' . newToken() . '">';
 			$this->selectShippingMethod($selected, $htmlname, '', $addempty);
-			print '<input type="submit" class="button valignmiddle" value="' . $langs->trans("Modify") . '">';
-			print '</form>';
+			echo '<input type="submit" class="button valignmiddle" value="' . $langs->trans("Modify") . '">';
+			echo '</form>';
 		} else {
 			if ($selected) {
 				$code = $langs->getLabelFromKey($this->db, $selected, 'c_shipment_mode', 'rowid', 'code');
-				print $langs->trans("SendingMethod" . strtoupper($code));
+				echo $langs->trans("SendingMethod" . strtoupper($code));
 			} else {
-				print "&nbsp;";
+				echo "&nbsp;";
 			}
 		}
 	}
@@ -5142,7 +5142,7 @@ class Form
 
 		// Output or return
 		if (empty($nooutput)) {
-			print $out;
+			echo $out;
 		} else {
 			return $out;
 		}
@@ -5185,31 +5185,31 @@ class Form
 			$num = $this->db->num_rows($result);
 			$i = 0;
 			if ($num) {
-				print '<select id="select' . $htmlname . '" class="flat selectestablishment" name="' . $htmlname . '"' . ($moreattrib ? ' ' . $moreattrib : '') . '>';
+				echo '<select id="select' . $htmlname . '" class="flat selectestablishment" name="' . $htmlname . '"' . ($moreattrib ? ' ' . $moreattrib : '') . '>';
 				if ($useempty == 1 || ($useempty == 2 && $num > 1)) {
-					print '<option value="-1">&nbsp;</option>';
+					echo '<option value="-1">&nbsp;</option>';
 				}
 
 				while ($i < $num) {
 					$obj = $this->db->fetch_object($result);
 					if ($selected == $obj->rowid) {
-						print '<option value="' . $obj->rowid . '" selected>';
+						echo '<option value="' . $obj->rowid . '" selected>';
 					} else {
-						print '<option value="' . $obj->rowid . '">';
+						echo '<option value="' . $obj->rowid . '">';
 					}
-					print trim($obj->name);
+					echo trim($obj->name);
 					if ($status == 2 && $obj->status == 1) {
-						print ' (' . $langs->trans("Closed") . ')';
+						echo ' (' . $langs->trans("Closed") . ')';
 					}
-					print '</option>';
+					echo '</option>';
 					$i++;
 				}
-				print "</select>";
+				echo "</select>";
 			} else {
 				if ($status == 0) {
-					print '<span class="opacitymedium">' . $langs->trans("NoActiveEstablishmentDefined") . '</span>';
+					echo '<span class="opacitymedium">' . $langs->trans("NoActiveEstablishmentDefined") . '</span>';
 				} else {
-					print '<span class="opacitymedium">' . $langs->trans("NoEstablishmentFound") . '</span>';
+					echo '<span class="opacitymedium">' . $langs->trans("NoEstablishmentFound") . '</span>';
 				}
 			}
 
@@ -5233,15 +5233,15 @@ class Form
 	{
 		global $langs;
 		if ($htmlname != "none") {
-			print '<form method="POST" action="' . $page . '">';
-			print '<input type="hidden" name="action" value="setbankaccount">';
-			print '<input type="hidden" name="token" value="' . newToken() . '">';
-			print img_picto('', 'bank_account', 'class="pictofixedwidth"');
+			echo '<form method="POST" action="' . $page . '">';
+			echo '<input type="hidden" name="action" value="setbankaccount">';
+			echo '<input type="hidden" name="token" value="' . newToken() . '">';
+			echo img_picto('', 'bank_account', 'class="pictofixedwidth"');
 			$nbaccountfound = $this->select_comptes($selected, $htmlname, 0, '', $addempty);
 			if ($nbaccountfound > 0) {
-				print '<input type="submit" class="button smallpaddingimp valignmiddle" value="' . $langs->trans("Modify") . '">';
+				echo '<input type="submit" class="button smallpaddingimp valignmiddle" value="' . $langs->trans("Modify") . '">';
 			}
-			print '</form>';
+			echo '</form>';
 		} else {
 			$langs->load('banks');
 
@@ -5250,10 +5250,10 @@ class Form
 				$bankstatic = new Account($this->db);
 				$result = $bankstatic->fetch($selected);
 				if ($result) {
-					print $bankstatic->getNomUrl(1);
+					echo $bankstatic->getNomUrl(1);
 				}
 			} else {
-				print "&nbsp;";
+				echo "&nbsp;";
 			}
 		}
 	}
@@ -5393,7 +5393,7 @@ class Form
 	{
 		// phpcs:enable
 		dol_syslog(__METHOD__ . ': using form_confirm is deprecated. Use formconfim instead.', LOG_WARNING);
-		print $this->formconfirm($page, $title, $question, $action, $formquestion, $selectedchoice, $useajax, $height, $width);
+		echo $this->formconfirm($page, $title, $question, $action, $formquestion, $selectedchoice, $useajax, $height, $width);
 	}
 
 	/**
@@ -5401,11 +5401,11 @@ class Form
 	 *     Easiest way to use this is with useajax=1.
 	 *     If you use useajax='xxx', you must also add jquery code to trigger opening of box (with correct parameters)
 	 *     just after calling this method. For example:
-	 *       print '<script nonce="'.getNonce().'" type="text/javascript">'."\n";
-	 *       print 'jQuery(document).ready(function() {'."\n";
-	 *       print 'jQuery(".xxxlink").click(function(e) { jQuery("#aparamid").val(jQuery(this).attr("rel")); jQuery("#dialog-confirm-xxx").dialog("open"); return false; });'."\n";
-	 *       print '});'."\n";
-	 *       print '</script>'."\n";
+	 *       echo '<script nonce="'.getNonce().'" type="text/javascript">'."\n";
+	 *       echo 'jQuery(document).ready(function() {'."\n";
+	 *       echo 'jQuery(".xxxlink").click(function(e) { jQuery("#aparamid").val(jQuery(this).attr("rel")); jQuery("#dialog-confirm-xxx").dialog("open"); return false; });'."\n";
+	 *       echo '});'."\n";
+	 *       echo '</script>'."\n";
 	 *
 	 * @param string 		$page 				Url of page to call if confirmation is OK. Can contains parameters (param 'action' and 'confirm' will be reformatted)
 	 * @param string 		$title 				Title
@@ -5611,7 +5611,7 @@ class Form
 			// Add input fields into list of fields to read during submit (inputok and inputko)
 			if (is_array($formquestion)) {
 				foreach ($formquestion as $key => $input) {
-					//print "xx ".$key." rr ".is_array($input)."<br>\n";
+					//echo "xx ".$key." rr ".is_array($input)."<br>\n";
 					// Add name of fields to propagate with the GET when submitting the form with button OK.
 					if (is_array($input) && isset($input['name'])) {
 						if (strpos($input['name'], ',') > 0) {
@@ -5834,7 +5834,7 @@ class Form
 	 * @param 	int 		$discard_closed 	Discard closed projects (0=Keep,1=hide completely except $selected,2=Disable)
 	 * @param 	int 		$maxlength 			Max length
 	 * @param 	int 		$forcefocus 		Force focus on field (works with javascript only)
-	 * @param 	int 		$nooutput 			No print is done. String is returned.
+	 * @param 	int 		$nooutput 			No echo is done. String is returned.
 	 * @param 	string 		$textifnoproject 	Text to show if no project
 	 * @param 	string 		$morecss 			More CSS
 	 * @return	string                      	Return html content
@@ -5872,7 +5872,7 @@ class Form
 		}
 
 		if (empty($nooutput)) {
-			print $out;
+			echo $out;
 			return '';
 		}
 		return $out;
@@ -5892,7 +5892,7 @@ class Form
 	 * @param int	 	$deposit_percent 	< 0 : deposit_percent input makes no sense (for example, in list filters)
 	 *                                		0 : use default deposit percentage from entry
 	 *                                		> 0 : force deposit percentage (for example, from company object)
-	 * @param int 		$nooutput 			No print is done. String is returned.
+	 * @param int 		$nooutput 			No echo is done. String is returned.
 	 * @return string                   	HTML output or ''
 	 */
 	public function form_conditions_reglement($page, $selected = '', $htmlname = 'cond_reglement_id', $addempty = 0, $type = '', $filtertype = -1, $deposit_percent = -1, $nooutput = 0)
@@ -5933,7 +5933,7 @@ class Form
 		}
 
 		if (empty($nooutput)) {
-			print $out;
+			echo $out;
 			return '';
 		}
 		return $out;
@@ -5955,19 +5955,19 @@ class Form
 		// phpcs:enable
 		global $langs;
 		if ($htmlname != "none") {
-			print '<form method="post" action="' . $page . '">';
-			print '<input type="hidden" name="action" value="setavailability">';
-			print '<input type="hidden" name="token" value="' . newToken() . '">';
+			echo '<form method="post" action="' . $page . '">';
+			echo '<input type="hidden" name="action" value="setavailability">';
+			echo '<input type="hidden" name="token" value="' . newToken() . '">';
 			$this->selectAvailabilityDelay($selected, $htmlname, -1, $addempty);
-			print '<input type="submit" name="modify" class="button smallpaddingimp" value="' . $langs->trans("Modify") . '">';
-			print '<input type="submit" name="cancel" class="button smallpaddingimp" value="' . $langs->trans("Cancel") . '">';
-			print '</form>';
+			echo '<input type="submit" name="modify" class="button smallpaddingimp" value="' . $langs->trans("Modify") . '">';
+			echo '<input type="submit" name="cancel" class="button smallpaddingimp" value="' . $langs->trans("Cancel") . '">';
+			echo '</form>';
 		} else {
 			if ($selected) {
 				$this->load_cache_availability();
-				print $this->cache_availability[$selected]['label'];
+				echo $this->cache_availability[$selected]['label'];
 			} else {
-				print "&nbsp;";
+				echo "&nbsp;";
 			}
 		}
 	}
@@ -5986,23 +5986,23 @@ class Form
 	{
 		global $langs;
 		if ($htmlname != "none") {
-			print '<form method="post" action="' . $page . '">';
-			print '<input type="hidden" name="action" value="setdemandreason">';
-			print '<input type="hidden" name="token" value="' . newToken() . '">';
+			echo '<form method="post" action="' . $page . '">';
+			echo '<input type="hidden" name="action" value="setdemandreason">';
+			echo '<input type="hidden" name="token" value="' . newToken() . '">';
 			$this->selectInputReason($selected, $htmlname, -1, $addempty);
-			print '<input type="submit" class="button smallpaddingimp" value="' . $langs->trans("Modify") . '">';
-			print '</form>';
+			echo '<input type="submit" class="button smallpaddingimp" value="' . $langs->trans("Modify") . '">';
+			echo '</form>';
 		} else {
 			if ($selected) {
 				$this->loadCacheInputReason();
 				foreach ($this->cache_demand_reason as $key => $val) {
 					if ($val['id'] == $selected) {
-						print $val['label'];
+						echo $val['label'];
 						break;
 					}
 				}
 			} else {
-				print "&nbsp;";
+				echo "&nbsp;";
 			}
 		}
 	}
@@ -6017,7 +6017,7 @@ class Form
 	 * @param string $htmlname Html name of date input fields or 'none'
 	 * @param int $displayhour Display hour selector
 	 * @param int $displaymin Display minutes selector
-	 * @param int $nooutput 1=No print output, return string
+	 * @param int $nooutput 1=No echo output, return string
 	 * @param string $type 'direct-debit' or 'bank-transfer'
 	 * @return    string
 	 * @see        selectDate()
@@ -6051,7 +6051,7 @@ class Form
 		}
 
 		if (empty($nooutput)) {
-			print $ret;
+			echo $ret;
 		}
 		return $ret;
 	}
@@ -6075,20 +6075,20 @@ class Form
 		global $langs;
 
 		if ($htmlname != "none") {
-			print '<form method="POST" action="' . $page . '" name="form' . $htmlname . '">';
-			print '<input type="hidden" name="action" value="set' . $htmlname . '">';
-			print '<input type="hidden" name="token" value="' . newToken() . '">';
-			print $this->select_dolusers($selected, $htmlname, 1, $exclude, 0, $include);
-			print '<input type="submit" class="button smallpaddingimp valignmiddle" value="' . $langs->trans("Modify") . '">';
-			print '</form>';
+			echo '<form method="POST" action="' . $page . '" name="form' . $htmlname . '">';
+			echo '<input type="hidden" name="action" value="set' . $htmlname . '">';
+			echo '<input type="hidden" name="token" value="' . newToken() . '">';
+			echo $this->select_dolusers($selected, $htmlname, 1, $exclude, 0, $include);
+			echo '<input type="submit" class="button smallpaddingimp valignmiddle" value="' . $langs->trans("Modify") . '">';
+			echo '</form>';
 		} else {
 			if ($selected) {
 				require_once DOL_DOCUMENT_ROOT . '/user/class/user.class.php';
 				$theuser = new User($this->db);
 				$theuser->fetch($selected);
-				print $theuser->getNomUrl(1);
+				echo $theuser->getNomUrl(1);
 			} else {
-				print "&nbsp;";
+				echo "&nbsp;";
 			}
 		}
 	}
@@ -6137,7 +6137,7 @@ class Form
 		if ($nooutput) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 		return '';
 	}
@@ -6156,18 +6156,18 @@ class Form
 	{
 		global $langs;
 		if ($htmlname != "none") {
-			print '<form method="POST" action="' . $page . '">';
-			print '<input type="hidden" name="action" value="settransportmode">';
-			print '<input type="hidden" name="token" value="' . newToken() . '">';
+			echo '<form method="POST" action="' . $page . '">';
+			echo '<input type="hidden" name="action" value="settransportmode">';
+			echo '<input type="hidden" name="token" value="' . newToken() . '">';
 			$this->selectTransportMode($selected, $htmlname, 0, $addempty, 0, 0, $active);
-			print '<input type="submit" class="button smallpaddingimp valignmiddle" value="' . $langs->trans("Modify") . '">';
-			print '</form>';
+			echo '<input type="submit" class="button smallpaddingimp valignmiddle" value="' . $langs->trans("Modify") . '">';
+			echo '</form>';
 		} else {
 			if ($selected) {
 				$this->load_cache_transport_mode();
-				print $this->cache_transport_mode[$selected]['label'];
+				echo $this->cache_transport_mode[$selected]['label'];
 			} else {
-				print "&nbsp;";
+				echo "&nbsp;";
 			}
 		}
 	}
@@ -6187,15 +6187,15 @@ class Form
 		// phpcs:enable
 		global $langs;
 		if ($htmlname != "none") {
-			print '<form method="POST" action="' . $page . '">';
-			print '<input type="hidden" name="action" value="setmulticurrencycode">';
-			print '<input type="hidden" name="token" value="' . newToken() . '">';
-			print $this->selectMultiCurrency($selected, $htmlname, 0);
-			print '<input type="submit" class="button smallpaddingimp valignmiddle" value="' . $langs->trans("Modify") . '">';
-			print '</form>';
+			echo '<form method="POST" action="' . $page . '">';
+			echo '<input type="hidden" name="action" value="setmulticurrencycode">';
+			echo '<input type="hidden" name="token" value="' . newToken() . '">';
+			echo $this->selectMultiCurrency($selected, $htmlname, 0);
+			echo '<input type="submit" class="button smallpaddingimp valignmiddle" value="' . $langs->trans("Modify") . '">';
+			echo '</form>';
 		} else {
 			require_once DOL_DOCUMENT_ROOT . '/core/lib/company.lib.php';
-			print !empty($selected) ? currency_name($selected, 1) : '&nbsp;';
+			echo !empty($selected) ? currency_name($selected, 1) : '&nbsp;';
 		}
 	}
 
@@ -6216,24 +6216,24 @@ class Form
 		global $langs, $mysoc, $conf;
 
 		if ($htmlname != "none") {
-			print '<form method="POST" action="' . $page . '">';
-			print '<input type="hidden" name="action" value="setmulticurrencyrate">';
-			print '<input type="hidden" name="token" value="' . newToken() . '">';
-			print '<input type="text" class="maxwidth100" name="' . $htmlname . '" value="' . (!empty($rate) ? price(price2num($rate, 'CU')) : 1) . '" /> ';
-			print '<select name="calculation_mode">';
-			print '<option value="1">Change ' . $langs->trans("PriceUHT") . ' of lines</option>';
-			print '<option value="2">Change ' . $langs->trans("PriceUHTCurrency") . ' of lines</option>';
-			print '</select> ';
-			print '<input type="submit" class="button smallpaddingimp valignmiddle" value="' . $langs->trans("Modify") . '">';
-			print '</form>';
+			echo '<form method="POST" action="' . $page . '">';
+			echo '<input type="hidden" name="action" value="setmulticurrencyrate">';
+			echo '<input type="hidden" name="token" value="' . newToken() . '">';
+			echo '<input type="text" class="maxwidth100" name="' . $htmlname . '" value="' . (!empty($rate) ? price(price2num($rate, 'CU')) : 1) . '" /> ';
+			echo '<select name="calculation_mode">';
+			echo '<option value="1">Change ' . $langs->trans("PriceUHT") . ' of lines</option>';
+			echo '<option value="2">Change ' . $langs->trans("PriceUHTCurrency") . ' of lines</option>';
+			echo '</select> ';
+			echo '<input type="submit" class="button smallpaddingimp valignmiddle" value="' . $langs->trans("Modify") . '">';
+			echo '</form>';
 		} else {
 			if (!empty($rate)) {
-				print price($rate, 1, $langs, 0, 0);
+				echo price($rate, 1, $langs, 0, 0);
 				if ($currency && $rate != 1) {
-					print ' &nbsp; (' . price($rate, 1, $langs, 0, 0) . ' ' . $currency . ' = 1 ' . $conf->currency . ')';
+					echo ' &nbsp; (' . price($rate, 1, $langs, 0, 0) . ' ' . $currency . ' = 1 ' . $conf->currency . ')';
 				}
 			} else {
-				print 1;
+				echo 1;
 			}
 		}
 	}
@@ -6261,10 +6261,10 @@ class Form
 		// phpcs:enable
 		global $conf, $langs;
 		if ($htmlname != "none") {
-			print '<form method="post" action="' . $page . '">';
-			print '<input type="hidden" name="action" value="setabsolutediscount">';
-			print '<input type="hidden" name="token" value="' . newToken() . '">';
-			print '<div class="inline-block">';
+			echo '<form method="post" action="' . $page . '">';
+			echo '<input type="hidden" name="action" value="setabsolutediscount">';
+			echo '<input type="hidden" name="token" value="' . newToken() . '">';
+			echo '<div class="inline-block">';
 			if (!empty($discount_type)) {
 				if (getDolGlobalString('FACTURE_SUPPLIER_DEPOSITS_ARE_JUST_PAYMENTS')) {
 					if (!$filter || $filter == "fk_invoice_supplier_source IS NULL") {
@@ -6294,13 +6294,13 @@ class Form
 					}
 				}
 			}
-			print $langs->trans($translationKey, price($amount, 0, $langs, 0, 0, -1, $conf->currency));
+			echo $langs->trans($translationKey, price($amount, 0, $langs, 0, 0, -1, $conf->currency));
 			if (empty($hidelist)) {
-				print ' ';
+				echo ' ';
 			}
-			print '</div>';
+			echo '</div>';
 			if (empty($hidelist)) {
-				print '<div class="inline-block" style="padding-right: 10px">';
+				echo '<div class="inline-block" style="padding-right: 10px">';
 				$newfilter = 'discount_type=' . intval($discount_type);
 				if (!empty($discount_type)) {
 					$newfilter .= ' AND fk_invoice_supplier IS NULL AND fk_invoice_supplier_line IS NULL'; // Supplier discounts available
@@ -6313,29 +6313,29 @@ class Form
 				// output the combo of discounts
 				$nbqualifiedlines = $this->select_remises($selected, $htmlname, $newfilter, $socid, $maxvalue);
 				if ($nbqualifiedlines > 0) {
-					print ' &nbsp; <input type="submit" class="button smallpaddingimp" value="' . dol_escape_htmltag($langs->trans("UseLine")) . '"';
+					echo ' &nbsp; <input type="submit" class="button smallpaddingimp" value="' . dol_escape_htmltag($langs->trans("UseLine")) . '"';
 					if (!empty($discount_type) && $filter && $filter != "fk_invoice_supplier_source IS NULL OR (description LIKE '(DEPOSIT)%' AND description NOT LIKE '(EXCESS PAID)%')") {
-						print ' title="' . $langs->trans("UseCreditNoteInInvoicePayment") . '"';
+						echo ' title="' . $langs->trans("UseCreditNoteInInvoicePayment") . '"';
 					}
 					if (empty($discount_type) && $filter && $filter != "fk_facture_source IS NULL OR (description LIKE '(DEPOSIT)%' AND description NOT LIKE '(EXCESS RECEIVED)%')") {
-						print ' title="' . $langs->trans("UseCreditNoteInInvoicePayment") . '"';
+						echo ' title="' . $langs->trans("UseCreditNoteInInvoicePayment") . '"';
 					}
 
-					print '>';
+					echo '>';
 				}
-				print '</div>';
+				echo '</div>';
 			}
 			if ($more) {
-				print '<div class="inline-block">';
-				print $more;
-				print '</div>';
+				echo '<div class="inline-block">';
+				echo $more;
+				echo '</div>';
 			}
-			print '</form>';
+			echo '</form>';
 		} else {
 			if ($selected) {
-				print $selected;
+				echo $selected;
 			} else {
-				print "0";
+				echo "0";
 			}
 		}
 	}
@@ -6358,28 +6358,28 @@ class Form
 		global $langs;
 
 		if ($htmlname != "none") {
-			print '<form method="post" action="' . $page . '">';
-			print '<input type="hidden" name="action" value="set_contact">';
-			print '<input type="hidden" name="token" value="' . newToken() . '">';
-			print '<table class="nobordernopadding">';
-			print '<tr><td>';
-			print $this->selectcontacts($societe->id, $selected, $htmlname);
+			echo '<form method="post" action="' . $page . '">';
+			echo '<input type="hidden" name="action" value="set_contact">';
+			echo '<input type="hidden" name="token" value="' . newToken() . '">';
+			echo '<table class="nobordernopadding">';
+			echo '<tr><td>';
+			echo $this->selectcontacts($societe->id, $selected, $htmlname);
 			$num = $this->num;
 			if ($num == 0) {
 				$addcontact = (getDolGlobalString('SOCIETE_ADDRESSES_MANAGEMENT') ? $langs->trans("AddContact") : $langs->trans("AddContactAddress"));
-				print '<a href="' . DOL_URL_ROOT . '/contact/card.php?socid=' . $societe->id . '&amp;action=create&amp;backtoreferer=1">' . $addcontact . '</a>';
+				echo '<a href="' . DOL_URL_ROOT . '/contact/card.php?socid=' . $societe->id . '&amp;action=create&amp;backtoreferer=1">' . $addcontact . '</a>';
 			}
-			print '</td>';
-			print '<td class="left"><input type="submit" class="button smallpaddingimp" value="' . $langs->trans("Modify") . '"></td>';
-			print '</tr></table></form>';
+			echo '</td>';
+			echo '<td class="left"><input type="submit" class="button smallpaddingimp" value="' . $langs->trans("Modify") . '"></td>';
+			echo '</tr></table></form>';
 		} else {
 			if ($selected) {
 				require_once DOL_DOCUMENT_ROOT . '/contact/class/contact.class.php';
 				$contact = new Contact($this->db);
 				$contact->fetch($selected);
-				print $contact->getFullName($langs);
+				echo $contact->getFullName($langs);
 			} else {
-				print "&nbsp;";
+				echo "&nbsp;";
 			}
 		}
 	}
@@ -6397,7 +6397,7 @@ class Form
 	 * @param int<0,1>	$showtype 				Show third party type in combolist (customer, prospect or supplier)
 	 * @param int<0,1>	$forcecombo 			Force to use combo box
 	 * @param 	array<array{method:string,url:string,htmlname:string,params:array<string,string>}> 	$events 	Event options. Example: array(array('method'=>'getContacts', 'url'=>dol_buildpath('/core/ajax/contacts.php',1), 'htmlname'=>'contactid', 'params'=>array('add-customer-contact'=>'disabled')))
-	 * @param int 		$nooutput 				No print output. Return it only.
+	 * @param int 		$nooutput 				No echo output. Return it only.
 	 * @param int[] 	$excludeids 			Exclude IDs from the select combo
 	 * @param string 	$textifnothirdparty 	Text to show if no thirdparty
 	 * @return    string                        HTML output or ''
@@ -6429,7 +6429,7 @@ class Form
 		if ($nooutput) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 
 		return '';
@@ -6448,7 +6448,7 @@ class Form
 	public function select_currency($selected = '', $htmlname = 'currency_id')
 	{
 		// phpcs:enable
-		print $this->selectCurrency($selected, $htmlname);
+		echo $this->selectCurrency($selected, $htmlname);
 	}
 
 	/**
@@ -6711,7 +6711,7 @@ class Form
 		}
 
 		//var_dump($societe_acheteuse);
-		//print "name=$name, selectedrate=$selectedrate, seller=".$societe_vendeuse->country_code." buyer=".$societe_acheteuse->country_code." buyer is company=".$societe_acheteuse->isACompany()." idprod=$idprod, info_bits=$info_bits type=$type";
+		//echo "name=$name, selectedrate=$selectedrate, seller=".$societe_vendeuse->country_code." buyer=".$societe_acheteuse->country_code." buyer is company=".$societe_acheteuse->isACompany()." idprod=$idprod, info_bits=$info_bits type=$type";
 		//exit;
 
 		// Define list of countries to use to search VAT rates to show
@@ -6916,7 +6916,7 @@ class Form
 		if (!empty($nooutput)) {
 			return $retstring;
 		}
-		print $retstring;
+		echo $retstring;
 
 		return '';
 	}
@@ -7073,7 +7073,7 @@ class Form
 			// Show date with popup
 			if ($usecalendar != 'combo') {
 				$formated_date = '';
-				//print "e".$set_time." t ".$conf->format_date_short;
+				//echo "e".$set_time." t ".$conf->format_date_short;
 				if (strval($set_time) != '' && $set_time != -1) {
 					//$formated_date=dol_print_date($set_time,$conf->format_date_short);
 					$formated_date = dol_print_date($set_time, $langs->trans("FormatDateShortInput"), $gm); // FormatDateShortInput for dol_print_date / FormatDateShortJavaInput that is same for javascript
@@ -7334,7 +7334,7 @@ class Form
 					$reset_scripts .= ' } ';
 				}
 			}
-			// If reset_scripts is not empty, print the link with the reset_scripts in the onClick
+			// If reset_scripts is not empty, echo the link with the reset_scripts in the onClick
 			if ($reset_scripts && !getDolGlobalString('MAIN_OPTIMIZEFORTEXTBROWSER')) {
 				$retstring .= ' <button class="dpInvisibleButtons datenowlink" id="' . $prefix . 'ButtonNow" type="button" name="_useless" value="now" onClick="' . $reset_scripts . '">';
 				$retstring .= $langs->trans("Now");
@@ -7372,7 +7372,7 @@ class Form
 					$reset_scripts .= ' } ';
 				}
 			}
-			// If reset_scripts is not empty, print the link with the reset_scripts in the onClick
+			// If reset_scripts is not empty, echo the link with the reset_scripts in the onClick
 			if ($reset_scripts && empty($conf->dol_optimize_smallscreen)) {
 				$retstring .= ' <button class="dpInvisibleButtons datenowlink" id="' . $prefix . 'ButtonPlusOne" type="button" name="_useless2" value="plusone" onClick="' . $reset_scripts . '">';
 				$retstring .= $langs->trans("DateStartPlusOne");
@@ -7535,7 +7535,7 @@ class Form
 			return $retstring;
 		}
 
-		print $retstring;
+		echo $retstring;
 
 		return '';
 	}
@@ -7601,7 +7601,7 @@ class Form
 		}
 
 		if (empty($nooutput)) {
-			print $out;
+			echo $out;
 		} else {
 			return $out;
 		}
@@ -7827,7 +7827,7 @@ class Form
 		}
 
 		if (empty($nooutput)) {
-			print $out;
+			echo $out;
 		} else {
 			return $out;
 		}
@@ -8059,7 +8059,7 @@ class Form
 		}
 
 		if (empty($nooutput)) {
-			print $out;
+			echo $out;
 		} else {
 			return $out;
 		}
@@ -8434,7 +8434,7 @@ class Form
 	{
 		global $langs, $user, $hookmanager;
 
-		//print "$htmlname, $preselectedvalue, $showempty, $searchkey, $placeholder, $morecss, $moreparams, $forcecombo, $outputmode, $disabled";
+		//echo "$htmlname, $preselectedvalue, $showempty, $searchkey, $placeholder, $morecss, $moreparams, $forcecombo, $outputmode, $disabled";
 
 		$prefixforautocompletemode = $objecttmp->element;
 		if ($prefixforautocompletemode == 'societe') {
@@ -8540,7 +8540,7 @@ class Form
 		}
 		$sql .= $this->db->order($sortfield ? $sortfield : $fieldstoshow, "ASC");
 		//$sql.=$this->db->plimit($limit, 0);
-		//print $sql;
+		//echo $sql;
 
 		// Build output string
 		$resql = $this->db->query($sql);
@@ -9291,7 +9291,7 @@ class Form
 		$categories = $cat->containing($id, $type);
 
 		if ($rendermode == 1) {
-			$toprint = array();
+			$toecho = array();
 			foreach ($categories as $c) {
 				$ways = $c->print_all_ways(' &gt;&gt; ', ($nolink ? 'none' : ''), 0, 1); // $ways[0] = "ccc2 >> ccc2a >> ccc2a1" with html formatted text
 				foreach ($ways as $way) {
@@ -9345,22 +9345,22 @@ class Form
 		$nbofdifferenttypes = count($object->linkedObjects);
 
 		if (empty($reshook)) {
-			print '<!-- showLinkedObjectBlock -->';
-			print load_fiche_titre($langs->trans($title), $morehtmlright, '', 0, 0, 'showlinkedobjectblock');
+			echo '<!-- showLinkedObjectBlock -->';
+			echo load_fiche_titre($langs->trans($title), $morehtmlright, '', 0, 0, 'showlinkedobjectblock');
 
 
-			print '<div class="div-table-responsive-no-min">';
-			print '<table class="noborder allwidth" data-block="showLinkedObject" data-element="' . $object->element . '"  data-elementid="' . $object->id . '"   >';
+			echo '<div class="div-table-responsive-no-min">';
+			echo '<table class="noborder allwidth" data-block="showLinkedObject" data-element="' . $object->element . '"  data-elementid="' . $object->id . '"   >';
 
-			print '<tr class="liste_titre">';
-			print '<td>' . $langs->trans("Type") . '</td>';
-			print '<td>' . $langs->trans("Ref") . '</td>';
-			print '<td class="center"></td>';
-			print '<td class="center">' . $langs->trans("Date") . '</td>';
-			print '<td class="right">' . $langs->trans("AmountHTShort") . '</td>';
-			print '<td class="right">' . $langs->trans("Status") . '</td>';
-			print '<td></td>';
-			print '</tr>';
+			echo '<tr class="liste_titre">';
+			echo '<td>' . $langs->trans("Type") . '</td>';
+			echo '<td>' . $langs->trans("Ref") . '</td>';
+			echo '<td class="center"></td>';
+			echo '<td class="center">' . $langs->trans("Date") . '</td>';
+			echo '<td class="right">' . $langs->trans("AmountHTShort") . '</td>';
+			echo '<td class="right">' . $langs->trans("Status") . '</td>';
+			echo '<td></td>';
+			echo '</tr>';
 
 			$nboftypesoutput = 0;
 
@@ -9462,16 +9462,16 @@ class Form
 			}
 
 			if (!$nboftypesoutput) {
-				print '<tr><td class="impair" colspan="7"><span class="opacitymedium">' . $langs->trans("None") . '</span></td></tr>';
+				echo '<tr><td class="impair" colspan="7"><span class="opacitymedium">' . $langs->trans("None") . '</span></td></tr>';
 			}
 
-			print '</table>';
+			echo '</table>';
 
 			if (!empty($compatibleImportElementsList)) {
 				$res = @include dol_buildpath('core/tpl/objectlinked_lineimport.tpl.php');
 			}
 
-			print '</div>';
+			echo '</div>';
 		}
 
 		return $nbofdifferenttypes;
@@ -9611,25 +9611,25 @@ class Form
 			}
 
 			if (!empty($possiblelink['perms']) && (empty($restrictlinksto) || in_array($key, $restrictlinksto)) && (empty($excludelinksto) || !in_array($key, $excludelinksto))) {
-				print '<div id="' . $key . 'list"' . (empty($conf->use_javascript_ajax) ? '' : ' style="display:none"') . '>';
+				echo '<div id="' . $key . 'list"' . (empty($conf->use_javascript_ajax) ? '' : ' style="display:none"') . '>';
 
 				if (getDolGlobalString('MAIN_LINK_BY_REF_IN_LINKTO')) {
-					print '<br>'."\n";
-					print '<!-- form to add a link from anywhere -->'."\n";
-					print '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST" name="formlinkedbyref' . $key . '">';
-					print '<input type="hidden" name="id" value="' . $object->id . '">';
-					print '<input type="hidden" name="action" value="addlinkbyref">';
-					print '<input type="hidden" name="token" value="' . newToken() . '">';
-					print '<input type="hidden" name="addlink" value="' . $key . '">';
-					print '<table class="noborder">';
-					print '<tr>';
-					//print '<td>' . $langs->trans("Ref") . '</td>';
-					print '<td class="center"><input type="text" placeholder="'.dol_escape_htmltag($langs->trans("Ref")).'" name="reftolinkto" value="' . dol_escape_htmltag(GETPOST('reftolinkto', 'alpha')) . '">&nbsp;';
-					print '<input type="submit" class="button small valignmiddle" value="' . $langs->trans('ToLink') . '">&nbsp;';
-					print '<input type="submit" class="button small" name="cancel" value="' . $langs->trans('Cancel') . '"></td>';
-					print '</tr>';
-					print '</table>';
-					print '</form>';
+					echo '<br>'."\n";
+					echo '<!-- form to add a link from anywhere -->'."\n";
+					echo '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST" name="formlinkedbyref' . $key . '">';
+					echo '<input type="hidden" name="id" value="' . $object->id . '">';
+					echo '<input type="hidden" name="action" value="addlinkbyref">';
+					echo '<input type="hidden" name="token" value="' . newToken() . '">';
+					echo '<input type="hidden" name="addlink" value="' . $key . '">';
+					echo '<table class="noborder">';
+					echo '<tr>';
+					//echo '<td>' . $langs->trans("Ref") . '</td>';
+					echo '<td class="center"><input type="text" placeholder="'.dol_escape_htmltag($langs->trans("Ref")).'" name="reftolinkto" value="' . dol_escape_htmltag(GETPOST('reftolinkto', 'alpha')) . '">&nbsp;';
+					echo '<input type="submit" class="button small valignmiddle" value="' . $langs->trans('ToLink') . '">&nbsp;';
+					echo '<input type="submit" class="button small" name="cancel" value="' . $langs->trans('Cancel') . '"></td>';
+					echo '</tr>';
+					echo '</table>';
+					echo '</form>';
 				}
 
 				$sql = $possiblelink['sql'];
@@ -9639,57 +9639,57 @@ class Form
 					$num = $this->db->num_rows($resqllist);
 					$i = 0;
 
-					print '<br>';
-					print '<!-- form to add a link from object to same thirdparty -->'."\n";
-					print '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST" name="formlinked' . $key . '">';
-					print '<input type="hidden" name="action" value="addlink">';
-					print '<input type="hidden" name="token" value="' . newToken() . '">';
-					print '<input type="hidden" name="id" value="' . $object->id . '">';
-					print '<input type="hidden" name="addlink" value="' . $key . '">';
-					print '<table class="noborder">';
-					print '<tr class="liste_titre">';
-					print '<td class="nowrap"></td>';
-					print '<td class="center">' . $langs->trans("Ref") . '</td>';
-					print '<td class="left">' . $langs->trans("RefCustomer") . '</td>';
-					print '<td class="right">' . $langs->trans("AmountHTShort") . '</td>';
-					print '<td class="left">' . $langs->trans("Company") . '</td>';
-					print '</tr>';
+					echo '<br>';
+					echo '<!-- form to add a link from object to same thirdparty -->'."\n";
+					echo '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST" name="formlinked' . $key . '">';
+					echo '<input type="hidden" name="action" value="addlink">';
+					echo '<input type="hidden" name="token" value="' . newToken() . '">';
+					echo '<input type="hidden" name="id" value="' . $object->id . '">';
+					echo '<input type="hidden" name="addlink" value="' . $key . '">';
+					echo '<table class="noborder">';
+					echo '<tr class="liste_titre">';
+					echo '<td class="nowrap"></td>';
+					echo '<td class="center">' . $langs->trans("Ref") . '</td>';
+					echo '<td class="left">' . $langs->trans("RefCustomer") . '</td>';
+					echo '<td class="right">' . $langs->trans("AmountHTShort") . '</td>';
+					echo '<td class="left">' . $langs->trans("Company") . '</td>';
+					echo '</tr>';
 					while ($i < $num) {
 						$objp = $this->db->fetch_object($resqllist);
 
-						print '<tr class="oddeven">';
-						print '<td class="left">';
-						print '<input type="radio" name="idtolinkto" id="' . $key . '_' . $objp->rowid . '" value="' . $objp->rowid . '">';
-						print '</td>';
-						print '<td class="center"><label for="' . $key . '_' . $objp->rowid . '">' . $objp->ref . '</label></td>';
-						print '<td>' . (!empty($objp->ref_client) ? $objp->ref_client : (!empty($objp->ref_supplier) ? $objp->ref_supplier : '')) . '</td>';
-						print '<td class="right">';
+						echo '<tr class="oddeven">';
+						echo '<td class="left">';
+						echo '<input type="radio" name="idtolinkto" id="' . $key . '_' . $objp->rowid . '" value="' . $objp->rowid . '">';
+						echo '</td>';
+						echo '<td class="center"><label for="' . $key . '_' . $objp->rowid . '">' . $objp->ref . '</label></td>';
+						echo '<td>' . (!empty($objp->ref_client) ? $objp->ref_client : (!empty($objp->ref_supplier) ? $objp->ref_supplier : '')) . '</td>';
+						echo '<td class="right">';
 						if ($possiblelink['label'] == 'LinkToContract') {
 							$form = new Form($this->db);
-							print $form->textwithpicto('', $langs->trans("InformationOnLinkToContract")) . ' ';
+							echo $form->textwithpicto('', $langs->trans("InformationOnLinkToContract")) . ' ';
 						}
-						print '<span class="amount">' . (isset($objp->total_ht) ? price($objp->total_ht) : '') . '</span>';
-						print '</td>';
-						print '<td>' . $objp->name . '</td>';
-						print '</tr>';
+						echo '<span class="amount">' . (isset($objp->total_ht) ? price($objp->total_ht) : '') . '</span>';
+						echo '</td>';
+						echo '<td>' . $objp->name . '</td>';
+						echo '</tr>';
 						$i++;
 					}
-					print '</table>';
-					print '<div class="center">';
+					echo '</table>';
+					echo '<div class="center">';
 					if ($num) {
-						print '<input type="submit" class="button valignmiddle marginleftonly marginrightonly small" value="' . $langs->trans('ToLink') . '">';
+						echo '<input type="submit" class="button valignmiddle marginleftonly marginrightonly small" value="' . $langs->trans('ToLink') . '">';
 					}
 					if (empty($conf->use_javascript_ajax)) {
-						print '<input type="submit" class="button button-cancel marginleftonly marginrightonly small" name="cancel" value="' . $langs->trans("Cancel") . '"></div>';
+						echo '<input type="submit" class="button button-cancel marginleftonly marginrightonly small" name="cancel" value="' . $langs->trans("Cancel") . '"></div>';
 					} else {
-						print '<input type="submit" onclick="jQuery(\'#' . $key . 'list\').toggle(); return false;" class="button button-cancel marginleftonly marginrightonly small" name="cancel" value="' . $langs->trans("Cancel") . '"></div>';
+						echo '<input type="submit" onclick="jQuery(\'#' . $key . 'list\').toggle(); return false;" class="button button-cancel marginleftonly marginrightonly small" name="cancel" value="' . $langs->trans("Cancel") . '"></div>';
 					}
-					print '</form>';
+					echo '</form>';
 					$this->db->free($resqllist);
 				} else {
 					dol_print_error($this->db);
 				}
-				print '</div>';
+				echo '</div>';
 
 				//$linktoelem.=($linktoelem?' &nbsp; ':'');
 				if ($num > 0 || getDolGlobalString('MAIN_LINK_BY_REF_IN_LINKTO')) {
@@ -9720,7 +9720,7 @@ class Form
 		}
 
 		if (!empty($conf->use_javascript_ajax)) {
-			print '<!-- Add js to show linkto box -->
+			echo '<!-- Add js to show linkto box -->
 				<script nonce="' . getNonce() . '">
 				jQuery(document).ready(function() {
 					jQuery(".linkto").click(function() {
@@ -9803,9 +9803,9 @@ class Form
 		$sql .= " ORDER BY rowid";
 		$result = $this->db->query($sql);
 		if ($result) {
-			print '<select class="flat" id="select_' . $htmlname . '" name="' . $htmlname . '">';
+			echo '<select class="flat" id="select_' . $htmlname . '" name="' . $htmlname . '">';
 			if ($useempty) {
-				print '<option value="-1">&nbsp;</option>';
+				echo '<option value="-1">&nbsp;</option>';
 			}
 
 			$num = $this->db->num_rows($result);
@@ -9813,15 +9813,15 @@ class Form
 			while ($i < $num) {
 				$obj = $this->db->fetch_object($result);
 				if ($selected == $obj->rowid) {
-					print '<option value="' . $obj->rowid . '" selected>';
+					echo '<option value="' . $obj->rowid . '" selected>';
 				} else {
-					print '<option value="' . $obj->rowid . '">';
+					echo '<option value="' . $obj->rowid . '">';
 				}
-				print $obj->label;
-				print '</option>';
+				echo $obj->label;
+				echo '</option>';
 				$i++;
 			}
-			print "</select>";
+			echo "</select>";
 		} else {
 			dol_print_error($this->db);
 		}
@@ -9883,7 +9883,7 @@ class Form
 
 		$previous_ref = $next_ref = '';
 		if ($shownav) {
-			//print "paramid=$paramid,morehtml=$morehtml,shownav=$shownav,$fieldid,$fieldref,$morehtmlref,$moreparam";
+			//echo "paramid=$paramid,morehtml=$morehtml,shownav=$shownav,$fieldid,$fieldref,$morehtmlref,$moreparam";
 			$object->load_previous_next_ref((isset($object->next_prev_filter) ? $object->next_prev_filter : ''), $fieldid, $nodbprefix);
 
 			$navurl = $_SERVER["PHP_SELF"];
@@ -9910,7 +9910,7 @@ class Form
 			$next_ref = $object->ref_next ? '<a accesskey="n" alt="'.dol_escape_htmltag($langs->trans("Next")).'" title="' . $stringforfirstkey . ' n" class="classfortooltip" href="' . $navurl . '?' . $paramid . '=' . urlencode($object->ref_next) . $moreparam . '"><i class="fa fa-chevron-right"></i></a>' : '<span class="inactive"><i class="fa fa-chevron-right opacitymedium"></i></span>';
 		}
 
-		//print "xx".$previous_ref."x".$next_ref;
+		//echo "xx".$previous_ref."x".$next_ref;
 		$ret .= '<!-- Start banner content --><div style="vertical-align: middle">';
 
 		// Right part of banner
@@ -10888,7 +10888,7 @@ class Form
 				$out .= '</select>';
 			}
 
-			print $out;
+			echo $out;
 
 			$this->db->free($resql);
 			return $num;

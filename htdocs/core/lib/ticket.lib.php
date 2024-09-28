@@ -231,10 +231,10 @@ function llxHeaderTicket($title, $head = "", $disablejs = 0, $disablehead = 0, $
 	$urllogo = "";
 	top_htmlhead($head, $title, $disablejs, $disablehead, $arrayofjs, $arrayofcss, 0, 1); // Show html headers
 
-	print '<body id="mainbody" class="publicnewticketform">';
-	print '<div class="publicnewticketform2 flexcontainer centpercent" style="min-height: 100%;">';
+	echo '<body id="mainbody" class="publicnewticketform">';
+	echo '<div class="publicnewticketform2 flexcontainer centpercent" style="min-height: 100%;">';
 
-	print '<header class="center centpercent">';
+	echo '<header class="center centpercent">';
 
 	// Define urllogo
 	if (getDolGlobalInt('TICKET_SHOW_COMPANY_LOGO') || getDolGlobalString('TICKET_PUBLIC_INTERFACE_TOPIC')) {
@@ -254,31 +254,31 @@ function llxHeaderTicket($title, $head = "", $disablejs = 0, $disablehead = 0, $
 
 	// Output html code for logo
 	if ($urllogo || getDolGlobalString('TICKET_PUBLIC_INTERFACE_TOPIC')) {
-		print '<div class="backgreypublicpayment">';
-		print '<div class="logopublicpayment">';
+		echo '<div class="backgreypublicpayment">';
+		echo '<div class="logopublicpayment">';
 		if ($urllogo) {
-			print '<a href="'.(getDolGlobalString('TICKET_URL_PUBLIC_INTERFACE') ? getDolGlobalString('TICKET_URL_PUBLIC_INTERFACE') : dol_buildpath('/public/ticket/index.php?entity='.$conf->entity, 1)).'">';
-			print '<img id="dolpaymentlogo" src="'.$urllogo.'"';
-			print '>';
-			print '</a>';
+			echo '<a href="'.(getDolGlobalString('TICKET_URL_PUBLIC_INTERFACE') ? getDolGlobalString('TICKET_URL_PUBLIC_INTERFACE') : dol_buildpath('/public/ticket/index.php?entity='.$conf->entity, 1)).'">';
+			echo '<img id="dolpaymentlogo" src="'.$urllogo.'"';
+			echo '>';
+			echo '</a>';
 		}
 		if (getDolGlobalString('TICKET_PUBLIC_INTERFACE_TOPIC')) {
-			print '<div class="clearboth"></div><strong>'.(getDolGlobalString('TICKET_PUBLIC_INTERFACE_TOPIC') ? getDolGlobalString('TICKET_PUBLIC_INTERFACE_TOPIC') : $langs->trans("TicketSystem")).'</strong>';
+			echo '<div class="clearboth"></div><strong>'.(getDolGlobalString('TICKET_PUBLIC_INTERFACE_TOPIC') ? getDolGlobalString('TICKET_PUBLIC_INTERFACE_TOPIC') : $langs->trans("TicketSystem")).'</strong>';
 		}
-		print '</div>';
+		echo '</div>';
 		if (!getDolGlobalInt('MAIN_HIDE_POWERED_BY')) {
-			print '<div class="poweredbypublicpayment opacitymedium right hideonsmartphone"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+			echo '<div class="poweredbypublicpayment opacitymedium right hideonsmartphone"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 		}
-		print '</div>';
+		echo '</div>';
 	}
 
 	if (getDolGlobalInt('TICKET_IMAGE_PUBLIC_INTERFACE')) {
-		print '<div class="backimagepublicticket">';
-		print '<img id="idTICKET_IMAGE_PUBLIC_INTERFACE" src="'.getDolGlobalString('TICKET_IMAGE_PUBLIC_INTERFACE').'">';
-		print '</div>';
+		echo '<div class="backimagepublicticket">';
+		echo '<img id="idTICKET_IMAGE_PUBLIC_INTERFACE" src="'.getDolGlobalString('TICKET_IMAGE_PUBLIC_INTERFACE').'">';
+		echo '</div>';
 	}
 
-	print '</header>';
+	echo '</header>';
 
-	//print '<div class="ticketlargemargin">';
+	//echo '<div class="ticketlargemargin">';
 }

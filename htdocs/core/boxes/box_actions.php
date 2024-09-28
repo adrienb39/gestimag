@@ -265,7 +265,7 @@ class box_actions extends ModeleBoxes
 		if ($nooutput) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 
 		return '';

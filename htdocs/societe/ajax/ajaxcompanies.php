@@ -71,7 +71,7 @@ restrictedArea($user, 'societe', $object, '&societe');
 //top_htmlhead("", "", 1);  // Replaced with top_httphead. An ajax page does not need html header.
 top_httphead('application/json');
 
-//print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+//echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 
 $return_arr = array();
@@ -87,7 +87,7 @@ if (!$socid) {
 
 // Generate list of companies
 if (! $socid) {
-	echo json_encode(array('nom' => 'ErrorBadParameter', 'label' => 'ErrorBadParameter', 'key' => 'ErrorBadParameter', 'value' => 'ErrorBadParameter'));
+	echo  json_encode(array('nom' => 'ErrorBadParameter', 'label' => 'ErrorBadParameter', 'key' => 'ErrorBadParameter', 'value' => 'ErrorBadParameter'));
 	exit;
 }
 
@@ -178,7 +178,7 @@ if ($resql) {
 		array_push($return_arr, $row_array);
 	}
 
-	echo json_encode($return_arr);
+	echo  json_encode($return_arr);
 } else {
-	echo json_encode(array('nom' => 'Error', 'label' => 'Error', 'key' => 'Error', 'value' => 'Error'));
+	echo  json_encode(array('nom' => 'Error', 'label' => 'Error', 'key' => 'Error', 'value' => 'Error'));
 }

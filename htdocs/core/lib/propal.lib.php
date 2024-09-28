@@ -318,10 +318,10 @@ function getCustomerProposalPieChart($socid = 0)
 
 		//if ($totalinprocess != $total)
 		//{
-		//	print '<tr class="liste_total">';
-		//	print '<td>'.$langs->trans("Total").' ('.$langs->trans("CustomersOrdersRunning").')</td>';
-		//	print '<td class="right">'.$totalinprocess.'</td>';
-		//	print '</tr>';
+		//	echo '<tr class="liste_total">';
+		//	echo '<td>'.$langs->trans("Total").' ('.$langs->trans("CustomersOrdersRunning").')</td>';
+		//	echo '<td class="right">'.$totalinprocess.'</td>';
+		//	echo '</tr>';
 		//}
 
 		$result .=  '<tr class="liste_total">';

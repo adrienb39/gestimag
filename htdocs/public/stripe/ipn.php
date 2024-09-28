@@ -377,12 +377,12 @@ if ($event->type == 'payout.created') {
 		} else {
 			dol_syslog("Payment intent ".$TRANSACTIONID." not found into database, so ignored.");
 			http_response_code(200);
-			print "Payment intent ".$TRANSACTIONID." not found into database, so ignored.";
+			echo "Payment intent ".$TRANSACTIONID." not found into database, so ignored.";
 			return 1;
 		}
 	} else {
 		http_response_code(500);
-		print $db->lasterror();
+		echo $db->lasterror();
 		return -1;
 	}
 

@@ -31,7 +31,7 @@
  */
 
 // Enable this line to trace path when function is called.
-//print xdebug_print_function_stack('Functions2.lib was called');exit;
+//echoxdebug_print_function_stack('Functions2.lib was called');exit;
 
 /**
  * Same function than javascript unescape() function but in PHP.
@@ -160,375 +160,375 @@ function dol_print_object_info($object, $usetable = 0)
 	$deltadateforclient = ((int) $_SESSION['dol_tz'] + (int) $_SESSION['dol_dst']);
 	//$deltadateforcompany=((int) $_SESSION['dol_tz'] + (int) $_SESSION['dol_dst']);
 	$deltadateforuser = round($deltadateforclient - $deltadateforserver);
-	//print "x".$deltadateforserver." - ".$deltadateforclient." - ".$deltadateforuser;
+	//echo"x".$deltadateforserver." - ".$deltadateforclient." - ".$deltadateforuser;
 
 	if ($usetable) {
-		print '<table class="border tableforfield centpercent">';
+		echo'<table class="border tableforfield centpercent">';
 	}
 
 	// Import key
 	if (!empty($object->import_key)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("ImportedWithSet");
+		echo$langs->trans("ImportedWithSet");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
-		print $object->import_key;
+		echo$object->import_key;
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// User creation (old method using already loaded object and not id is kept for backward compatibility)
 	if (!empty($object->user_creation) || !empty($object->user_creation_id)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("CreatedBy");
+		echo$langs->trans("CreatedBy");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
 		if (! empty($object->user_creation) && is_object($object->user_creation)) {	// deprecated mode
 			if ($object->user_creation->id) {
-				print $object->user_creation->getNomUrl(-1, '', 0, 0, 0);
+				echo$object->user_creation->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans("Unknown");
+				echo$langs->trans("Unknown");
 			}
 		} else {
 			$userstatic = new User($db);
 			$userstatic->fetch($object->user_creation_id);
 			if ($userstatic->id) {
-				print $userstatic->getNomUrl(-1, '', 0, 0, 0);
+				echo$userstatic->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans("Unknown");
+				echo$langs->trans("Unknown");
 			}
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// Date creation
 	if (!empty($object->date_creation)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("DateCreation");
+		echo$langs->trans("DateCreation");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
-		print dol_print_date($object->date_creation, 'dayhour', 'tzserver');
+		echodol_print_date($object->date_creation, 'dayhour', 'tzserver');
 		if ($deltadateforuser) {
-			print ' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_creation, "dayhour", "tzuserrel").' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
+			echo' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_creation, "dayhour", "tzuserrel").' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// User change (old method using already loaded object and not id is kept for backward compatibility)
 	if (!empty($object->user_modification) || !empty($object->user_modification_id)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("ModifiedBy");
+		echo$langs->trans("ModifiedBy");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
 		if (is_object($object->user_modification)) {
 			if ($object->user_modification->id) {
-				print $object->user_modification->getNomUrl(-1, '', 0, 0, 0);
+				echo$object->user_modification->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans("Unknown");
+				echo$langs->trans("Unknown");
 			}
 		} else {
 			$userstatic = new User($db);
 			$userstatic->fetch($object->user_modification_id);
 			if ($userstatic->id) {
-				print $userstatic->getNomUrl(-1, '', 0, 0, 0);
+				echo$userstatic->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans("Unknown");
+				echo$langs->trans("Unknown");
 			}
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// Date change
 	if (!empty($object->date_modification)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("DateLastModification");
+		echo$langs->trans("DateLastModification");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
-		print dol_print_date($object->date_modification, 'dayhour', 'tzserver');
+		echodol_print_date($object->date_modification, 'dayhour', 'tzserver');
 		if ($deltadateforuser) {
-			print ' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_modification, "dayhour", "tzuserrel").' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
+			echo' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_modification, "dayhour", "tzuserrel").' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// User validation (old method using already loaded object and not id is kept for backward compatibility)
 	if (!empty($object->user_validation) || !empty($object->user_validation_id)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("ValidatedBy");
+		echo$langs->trans("ValidatedBy");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
 		if (is_object($object->user_validation)) {
 			if ($object->user_validation->id) {
-				print $object->user_validation->getNomUrl(-1, '', 0, 0, 0);
+				echo$object->user_validation->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans("Unknown");
+				echo$langs->trans("Unknown");
 			}
 		} else {
 			$userstatic = new User($db);
 			$userstatic->fetch($object->user_validation_id ? $object->user_validation_id : $object->user_validation);
 			if ($userstatic->id) {
-				print $userstatic->getNomUrl(-1, '', 0, 0, 0);
+				echo$userstatic->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans("Unknown");
+				echo$langs->trans("Unknown");
 			}
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// Date validation
 	if (!empty($object->date_validation)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("DateValidation");
+		echo$langs->trans("DateValidation");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
-		print dol_print_date($object->date_validation, 'dayhour', 'tzserver');
+		echodol_print_date($object->date_validation, 'dayhour', 'tzserver');
 		if ($deltadateforuser) {
-			print ' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_validation, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
+			echo' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_validation, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// User approve (old method using already loaded object and not id is kept for backward compatibility)
 	if (!empty($object->user_approve) || !empty($object->user_approve_id)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("ApprovedBy");
+		echo$langs->trans("ApprovedBy");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
 		if (!empty($object->user_approve) && is_object($object->user_approve)) {
 			if ($object->user_approve->id) {
-				print $object->user_approve->getNomUrl(-1, '', 0, 0, 0);
+				echo$object->user_approve->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans("Unknown");
+				echo$langs->trans("Unknown");
 			}
 		} else {
 			$userstatic = new User($db);
 			$userstatic->fetch($object->user_approve_id ? $object->user_approve_id : $object->user_approve);
 			if ($userstatic->id) {
-				print $userstatic->getNomUrl(-1, '', 0, 0, 0);
+				echo$userstatic->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans("Unknown");
+				echo$langs->trans("Unknown");
 			}
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// Date approve
 	if (!empty($object->date_approve) || !empty($object->date_approval)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("DateApprove");
+		echo$langs->trans("DateApprove");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
-		print dol_print_date($object->date_approve ? $object->date_approve : $object->date_approval, 'dayhour', 'tzserver');
+		echodol_print_date($object->date_approve ? $object->date_approve : $object->date_approval, 'dayhour', 'tzserver');
 		if ($deltadateforuser) {
-			print ' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_approve, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
+			echo' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_approve, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// User approve
 	if (!empty($object->user_approve_id2)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("ApprovedBy");
+		echo$langs->trans("ApprovedBy");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
 		$userstatic = new User($db);
 		$userstatic->fetch($object->user_approve_id2);
 		if ($userstatic->id) {
-			print $userstatic->getNomUrl(-1, '', 0, 0, 0);
+			echo$userstatic->getNomUrl(-1, '', 0, 0, 0);
 		} else {
-			print $langs->trans("Unknown");
+			echo$langs->trans("Unknown");
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// Date approve
 	if (!empty($object->date_approve2)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("DateApprove2");
+		echo$langs->trans("DateApprove2");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
-		print dol_print_date($object->date_approve2, 'dayhour', 'tzserver');
+		echodol_print_date($object->date_approve2, 'dayhour', 'tzserver');
 		if ($deltadateforuser) {
-			print ' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_approve2, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
+			echo' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_approve2, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// User signature
 	if (!empty($object->user_signature) || !empty($object->user_signature_id)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans('SignedBy');
+		echo$langs->trans('SignedBy');
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
 		if (is_object($object->user_signature)) {
 			if ($object->user_signature->id) {
-				print $object->user_signature->getNomUrl(-1, '', 0, 0, 0);
+				echo$object->user_signature->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans('Unknown');
+				echo$langs->trans('Unknown');
 			}
 		} else {
 			$userstatic = new User($db);
 			$userstatic->fetch($object->user_signature_id ? $object->user_signature_id : $object->user_signature);
 			if ($userstatic->id) {
-				print $userstatic->getNomUrl(-1, '', 0, 0, 0);
+				echo$userstatic->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans('Unknown');
+				echo$langs->trans('Unknown');
 			}
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// Date signature
 	if (!empty($object->date_signature)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans('DateSigning');
+		echo$langs->trans('DateSigning');
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
-		print dol_print_date($object->date_signature, 'dayhour');
+		echodol_print_date($object->date_signature, 'dayhour');
 		if ($deltadateforuser) {
-			print ' <span class="opacitymedium">'.$langs->trans('CurrentHour').'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_signature, 'dayhour', 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans('ClientHour').'</span>';
+			echo' <span class="opacitymedium">'.$langs->trans('CurrentHour').'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_signature, 'dayhour', 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans('ClientHour').'</span>';
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// User close
 	if (!empty($object->user_closing_id)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("ClosedBy");
+		echo$langs->trans("ClosedBy");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
 		$userstatic = new User($db);
 		$userstatic->fetch($object->user_closing_id);
 		if ($userstatic->id) {
-			print $userstatic->getNomUrl(-1, '', 0, 0, 0);
+			echo$userstatic->getNomUrl(-1, '', 0, 0, 0);
 		} else {
-			print $langs->trans("Unknown");
+			echo$langs->trans("Unknown");
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
@@ -538,104 +538,104 @@ function dol_print_object_info($object, $usetable = 0)
 			$object->date_closing = $object->date_cloture;
 		}
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("DateClosing");
+		echo$langs->trans("DateClosing");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
-		print dol_print_date($object->date_closing, 'dayhour', 'tzserver');
+		echodol_print_date($object->date_closing, 'dayhour', 'tzserver');
 		if ($deltadateforuser) {
-			print ' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_closing, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
+			echo' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_closing, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// User conciliate
 	if (!empty($object->user_rappro) || !empty($object->user_rappro_id)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("ReconciledBy");
+		echo$langs->trans("ReconciledBy");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
 		if (is_object($object->user_rappro)) {
 			if ($object->user_rappro->id) {
-				print $object->user_rappro->getNomUrl(-1, '', 0, 0, 0);
+				echo$object->user_rappro->getNomUrl(-1, '', 0, 0, 0);
 			} else {
-				print $langs->trans("Unknown");
+				echo$langs->trans("Unknown");
 			}
 		} else {
 			$userstatic = new User($db);
 			$userstatic->fetch($object->user_rappro_id ? $object->user_rappro_id : $object->user_rappro);
 			if ($userstatic->id) {
-				print $userstatic->getNomUrl(1, '', 0, 0, 0);
+				echo$userstatic->getNomUrl(1, '', 0, 0, 0);
 			} else {
-				print $langs->trans("Unknown");
+				echo$langs->trans("Unknown");
 			}
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// Date conciliate
 	if (!empty($object->date_rappro)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("DateConciliating");
+		echo$langs->trans("DateConciliating");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
-		print dol_print_date($object->date_rappro, 'dayhour', 'tzserver');
+		echodol_print_date($object->date_rappro, 'dayhour', 'tzserver');
 		if ($deltadateforuser) {
-			print ' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_rappro, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
+			echo' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_rappro, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	// Date send
 	if (!empty($object->date_envoi)) {
 		if ($usetable) {
-			print '<tr><td class="titlefield">';
+			echo'<tr><td class="titlefield">';
 		}
-		print $langs->trans("DateLastSend");
+		echo$langs->trans("DateLastSend");
 		if ($usetable) {
-			print '</td><td>';
+			echo'</td><td>';
 		} else {
-			print ': ';
+			echo': ';
 		}
-		print dol_print_date($object->date_envoi, 'dayhour', 'tzserver');
+		echodol_print_date($object->date_envoi, 'dayhour', 'tzserver');
 		if ($deltadateforuser) {
-			print ' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_envoi, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
+			echo' <span class="opacitymedium">'.$langs->trans("CurrentHour").'</span> &nbsp; / &nbsp; '.dol_print_date($object->date_envoi, "dayhour", 'tzuserrel').' &nbsp;<span class="opacitymedium">'.$langs->trans("ClientHour").'</span>';
 		}
 		if ($usetable) {
-			print '</td></tr>';
+			echo'</td></tr>';
 		} else {
-			print '<br>';
+			echo'<br>';
 		}
 	}
 
 	if ($usetable) {
-		print '</table>';
+		echo'</table>';
 	}
 }
 
@@ -721,7 +721,7 @@ function isValidUrl($url, $http = 0, $pass = 0, $port = 0, $path = 0, $query = 0
 	if (preg_match('/'.$urlregex.'/i', $url)) {
 		$ValidUrl = 1;
 	}
-	//print $urlregex.' - '.$url.' - '.$ValidUrl;
+	//echo$urlregex.' - '.$url.' - '.$ValidUrl;
 
 	return $ValidUrl;
 }
@@ -766,7 +766,7 @@ function clean_url($url, $http = 1)
 		$proto = $regs[1];
 		$domain = $regs[2];
 		$port = isset($regs[3]) ? $regs[3] : '';
-		//print $url." -> ".$proto." - ".$domain." - ".$port;
+		//echo$url." -> ".$proto." - ".$domain." - ".$port;
 		//$url = dol_string_nospecial(trim($url));
 		$url = trim($url);
 
@@ -1036,7 +1036,7 @@ function get_next_value($db, $mask, $table, $field, $where = '', $objsoc = '', $
 	$maskwithnocode = preg_replace('/\{mm\}/i', 'mm', $maskwithnocode);
 	// Now maskwithnocode = 0000ddmmyyyyccc for example
 	// and maskcounter    = 0000 for example
-	//print "maskwithonlyymcode=".$maskwithonlyymcode." maskwithnocode=".$maskwithnocode."\n<br>";
+	//echo"maskwithonlyymcode=".$maskwithonlyymcode." maskwithnocode=".$maskwithnocode."\n<br>";
 	//var_dump($reg);
 
 	// If an offset is asked
@@ -1060,13 +1060,13 @@ function get_next_value($db, $mask, $table, $field, $where = '', $objsoc = '', $
 		$yearoffsettype = preg_replace('/^@/', '', $reg[3]);
 	}
 
-	//print "yearoffset=".$yearoffset." yearoffsettype=".$yearoffsettype;
+	//echo"yearoffset=".$yearoffset." yearoffsettype=".$yearoffsettype;
 	if (is_numeric($yearoffsettype) && $yearoffsettype >= 1) {
 		$maskraz = $yearoffsettype; // For backward compatibility
 	} elseif ($yearoffsettype === '0' || (!empty($yearoffsettype) && !is_numeric($yearoffsettype) && getDolGlobalInt('SOCIETE_FISCAL_MONTH_START') > 1)) {
 		$maskraz = getDolGlobalString('SOCIETE_FISCAL_MONTH_START');
 	}
-	//print "maskraz=".$maskraz;	// -1=no reset
+	//echo"maskraz=".$maskraz;	// -1=no reset
 
 	if ($maskraz > 0) {   // A reset is required
 		if ($maskraz == 99) {
@@ -1116,7 +1116,7 @@ function get_next_value($db, $mask, $table, $field, $where = '', $objsoc = '', $
 			$monthpos = (dol_strlen($reg[1]) + 1);
 			$yearpos = ($monthpos + $monthlen);
 		}
-		//print "xxx ".$maskwithonlyymcode." maskraz=".$maskraz." posy=".$posy." yearlen=".$yearlen." yearpos=".$yearpos." posm=".$posm." monthlen=".$monthlen." monthpos=".$monthpos." yearoffsettype=".$yearoffsettype." resetEveryMonth=".$resetEveryMonth."\n";
+		//echo"xxx ".$maskwithonlyymcode." maskraz=".$maskraz." posy=".$posy." yearlen=".$yearlen." yearpos=".$yearpos." posm=".$posm." monthlen=".$monthlen." monthpos=".$monthpos." yearoffsettype=".$yearoffsettype." resetEveryMonth=".$resetEveryMonth."\n";
 
 		// Define $yearcomp and $monthcomp (that will be use in the select where to search max number)
 		$monthcomp = $maskraz;
@@ -1172,8 +1172,8 @@ function get_next_value($db, $mask, $table, $field, $where = '', $objsoc = '', $
 			$sqlwhere .= "(SUBSTRING(".$field.", ".$yearpos.", ".$yearlen.") = '".$db->escape($yearcomp)."')";
 		}
 	}
-	//print "sqlwhere=".$sqlwhere." yearcomp=".$yearcomp."<br>\n";	// sqlwhere and yearcomp defined only if we ask a reset
-	//print "masktri=".$masktri." maskcounter=".$maskcounter." maskraz=".$maskraz." maskoffset=".$maskoffset."<br>\n";
+	//echo"sqlwhere=".$sqlwhere." yearcomp=".$yearcomp."<br>\n";	// sqlwhere and yearcomp defined only if we ask a reset
+	//echo"masktri=".$masktri." maskcounter=".$maskcounter." maskraz=".$maskraz." maskoffset=".$maskoffset."<br>\n";
 
 	// Define $sqlstring
 	if (function_exists('mb_strrpos')) {
@@ -1238,7 +1238,7 @@ function get_next_value($db, $mask, $table, $field, $where = '', $objsoc = '', $
 		$sql .= " AND ".$sqlwhere;
 	}
 
-	//print $sql.'<br>';
+	//echo$sql.'<br>';
 	dol_syslog("functions2::get_next_value mode=".$mode, LOG_DEBUG);
 	$resql = $db->query($sql);
 	if ($resql) {
@@ -1321,7 +1321,7 @@ function get_next_value($db, $mask, $table, $field, $where = '', $objsoc = '', $
 		}
 
 		if (!empty($maskrefclient_maskcounter)) {
-			//print "maskrefclient_maskcounter=".$maskrefclient_maskcounter." maskwithnocode=".$maskwithnocode." maskrefclient=".$maskrefclient."\n<br>";
+			//echo"maskrefclient_maskcounter=".$maskrefclient_maskcounter." maskwithnocode=".$maskwithnocode." maskrefclient=".$maskrefclient."\n<br>";
 
 			// Define $sqlstring
 			$maskrefclient_posnumstart = strpos($maskwithnocode, $maskrefclient_maskcounter, strpos($maskwithnocode, $maskrefclient)); // Pos of counter in final string (from 0 to ...)
@@ -1329,7 +1329,7 @@ function get_next_value($db, $mask, $table, $field, $where = '', $objsoc = '', $
 				return 'ErrorBadMask';
 			}
 			$maskrefclient_sqlstring = 'SUBSTRING('.$field.', '.($maskrefclient_posnumstart + 1).', '.dol_strlen($maskrefclient_maskcounter).')';
-			//print "x".$sqlstring;
+			//echo"x".$sqlstring;
 
 			// Define $maskrefclient_maskLike
 			$maskrefclient_maskLike = dol_string_nospecial($mask);
@@ -1397,12 +1397,12 @@ function get_next_value($db, $mask, $table, $field, $where = '', $objsoc = '', $
 		// Now we replace the counter
 		$maskbefore = '{'.$masktri.'}';
 		$maskafter = str_pad($counter, dol_strlen($maskcounter), "0", STR_PAD_LEFT);
-		//print 'x'.$numFinal.' - '.$maskbefore.' - '.$maskafter.'y';exit;
+		//echo'x'.$numFinal.' - '.$maskbefore.' - '.$maskafter.'y';exit;
 		$numFinal = str_replace($maskbefore, $maskafter, $numFinal);
 
 		// Now we replace the refclient
 		if ($maskrefclient) {
-			//print "maskrefclient=".$maskrefclient." maskrefclient_counter=".$maskrefclient_counter." maskwithonlyymcode=".$maskwithonlyymcode." maskwithnocode=".$maskwithnocode." maskrefclient_clientcode=".$maskrefclient_clientcode." maskrefclient_maskcounter=".$maskrefclient_maskcounter."\n<br>";exit;
+			//echo"maskrefclient=".$maskrefclient." maskrefclient_counter=".$maskrefclient_counter." maskwithonlyymcode=".$maskwithonlyymcode." maskwithnocode=".$maskwithnocode." maskrefclient_clientcode=".$maskrefclient_clientcode." maskrefclient_maskcounter=".$maskrefclient_maskcounter."\n<br>";exit;
 			$maskrefclient_maskbefore = '{'.$maskrefclient.'}';
 			$maskrefclient_maskafter = $maskrefclient_clientcode;
 			if (dol_strlen($maskrefclient_maskcounter) > 0) {
@@ -1520,7 +1520,7 @@ function check_value($mask, $value)
 	$maskwithnocode = preg_replace('/\{mm\}/i', 'mm', $maskwithnocode);
 	// Now maskwithnocode = 0000ddmmyyyyccc for example
 	// and maskcounter    = 0000 for example
-	//print "maskwithonlyymcode=".$maskwithonlyymcode." maskwithnocode=".$maskwithnocode."\n<br>";
+	//echo"maskwithonlyymcode=".$maskwithonlyymcode." maskwithnocode=".$maskwithnocode."\n<br>";
 
 	// If an offset is asked
 	if (!empty($reg[2]) && preg_match('/^\+/', $reg[2])) {
@@ -1555,9 +1555,9 @@ function check_value($mask, $value)
 		if ($maskraz <= 1 && !preg_match('/^(.*)\{(y+)\}/i', $maskwithonlyymcode, $reg)) {
 			return 'ErrorCantUseRazIfNoYearInMask';
 		}
-		//print "x".$maskwithonlyymcode." ".$maskraz;
+		//echo"x".$maskwithonlyymcode." ".$maskraz;
 	}
-	//print "masktri=".$masktri." maskcounter=".$maskcounter." maskwithonlyymcode=".$maskwithonlyymcode." maskwithnocode=".$maskwithnocode." maskraz=".$maskraz." maskoffset=".$maskoffset."<br>\n";
+	//echo"masktri=".$masktri." maskcounter=".$maskcounter." maskwithonlyymcode=".$maskwithonlyymcode." maskwithnocode=".$maskwithnocode." maskraz=".$maskraz." maskoffset=".$maskoffset."<br>\n";
 
 	if (function_exists('mb_strrpos')) {
 		$posnumstart = mb_strrpos($maskwithnocode, $maskcounter, 0, 'UTF-8');
@@ -1790,7 +1790,7 @@ function dol_set_user_param($db, $conf, &$user, $tab)
 				return -1;
 			}
 			$user->conf->$key = $value;
-			//print "key=".$key." user->conf->key=".$user->conf->$key;
+			//echo"key=".$key." user->conf->key=".$user->conf->$key;
 		} else {
 			unset($user->conf->$key);
 		}
@@ -2051,7 +2051,7 @@ function getSoapParams()
 	$proxypass = (!getDolGlobalString('MAIN_PROXY_USE') ? false : $conf->global->MAIN_PROXY_PASS);
 	$timeout = (!getDolGlobalString('MAIN_USE_CONNECT_TIMEOUT') ? 10 : $conf->global->MAIN_USE_CONNECT_TIMEOUT); // Connection timeout
 	$response_timeout = (!getDolGlobalString('MAIN_USE_RESPONSE_TIMEOUT') ? 30 : $conf->global->MAIN_USE_RESPONSE_TIMEOUT); // Response timeout
-	//print extension_loaded('soap');
+	//echoextension_loaded('soap');
 	if ($proxyuse) {
 		$params = array('connection_timeout' => $timeout,
 					  'response_timeout' => $response_timeout,
@@ -2185,7 +2185,7 @@ function dolGetElementUrl($objectid, $objecttype, $withpicto = 0, $option = '')
 	// Generic case for $classfile and $classname
 	$classfile = strtolower($myobject);
 	$classname = ucfirst($myobject);
-	//print "objecttype=".$objecttype." module=".$module." subelement=".$subelement." classfile=".$classfile." classname=".$classname." classpath=".$classpath;
+	//echo"objecttype=".$objecttype." module=".$module." subelement=".$subelement." classfile=".$classfile." classname=".$classname." classpath=".$classpath;
 
 	if ($objecttype == 'invoice_supplier') {
 		$classfile = 'fournisseur.facture';
@@ -2271,7 +2271,7 @@ function cleanCorruptedTree($db, $tabletocleantree, $fieldfkparent)
 	}
 
 	if (count($listofid)) {
-		print 'Code requested to clean tree (may be to solve data corruption), so we check/clean orphelins and loops.'."<br>\n";
+		echo'Code requested to clean tree (may be to solve data corruption), so we check/clean orphelins and loops.'."<br>\n";
 
 		// Check loops on each other
 		$sql = "UPDATE ".MAIN_DB_PREFIX.$tabletocleantree." SET ".$fieldfkparent." = 0 WHERE ".$fieldfkparent." = rowid"; // So we update only records linked to themself
@@ -2279,7 +2279,7 @@ function cleanCorruptedTree($db, $tabletocleantree, $fieldfkparent)
 		if ($resql) {
 			$nb = $db->affected_rows($sql);
 			if ($nb > 0) {
-				print '<br>Some record that were parent of themself were cleaned.';
+				echo'<br>Some record that were parent of themself were cleaned.';
 			}
 
 			$totalnb += $nb;
@@ -2290,14 +2290,14 @@ function cleanCorruptedTree($db, $tabletocleantree, $fieldfkparent)
 		$listofidtoclean = array();
 		foreach ($listofparentid as $id => $pid) {
 			// Check depth
-			//print 'Analyse record id='.$id.' with parent '.$pid.'<br>';
+			//echo'Analyse record id='.$id.' with parent '.$pid.'<br>';
 
 			$cursor = $id;
 			$arrayidparsed = array(); // We start from child $id
 			while ($cursor > 0) {
 				$arrayidparsed[$cursor] = 1;
 				if ($arrayidparsed[$listofparentid[$cursor]]) {	// We detect a loop. A record with a parent that was already into child
-					print 'Found a loop between id '.$id.' - '.$cursor.'<br>';
+					echo'Found a loop between id '.$id.' - '.$cursor.'<br>';
 					unset($arrayidparsed);
 					$listofidtoclean[$cursor] = $id;
 					break;
@@ -2318,8 +2318,8 @@ function cleanCorruptedTree($db, $tabletocleantree, $fieldfkparent)
 			$nb = $db->affected_rows($sql);
 			if ($nb > 0) {
 				// Removed orphelins records
-				print '<br>Some records were detected to have parent that is a child, we set them as root record for id: ';
-				print implode(',', $listofidtoclean);
+				echo'<br>Some records were detected to have parent that is a child, we set them as root record for id: ';
+				echoimplode(',', $listofidtoclean);
 			}
 
 			$totalnb += $nb;
@@ -2335,15 +2335,15 @@ function cleanCorruptedTree($db, $tabletocleantree, $fieldfkparent)
 			$nb = $db->affected_rows($sql);
 			if ($nb > 0) {
 				// Removed orphelins records
-				print '<br>Some orphelins were found and modified to be parent so records are visible again for id: ';
-				print implode(',', $listofid);
+				echo'<br>Some orphelins were found and modified to be parent so records are visible again for id: ';
+				echoimplode(',', $listofid);
 			}
 
 			$totalnb += $nb;
 		}
 		//else dol_print_error($db);
 
-		print '<br>We fixed '.$totalnb.' record(s). Some records may still be corrupted. New check may be required.';
+		echo'<br>We fixed '.$totalnb.' record(s). Some records may still be corrupted. New check may be required.';
 		return $totalnb;
 	}
 	return -1;

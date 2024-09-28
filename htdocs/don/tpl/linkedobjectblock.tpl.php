@@ -19,7 +19,7 @@
  *
  */
 
-print "<!-- BEGIN PHP TEMPLATE don/tpl/linkedobjectblock.tpl.php -->\n";
+echo "<!-- BEGIN PHP TEMPLATE don/tpl/linkedobjectblock.tpl.php -->\n";
 
 global $user;
 global $noMoreLinkedObjectBlockAfter;
@@ -38,31 +38,31 @@ foreach ($linkedObjectBlock as $key => $objectlink) {
 	if ($ilink == count($linkedObjectBlock) && empty($noMoreLinkedObjectBlockAfter) && count($linkedObjectBlock) <= 1) {
 		$trclass .= ' liste_sub_total';
 	}
-	print '<tr class="'.$trclass.'">';
-	print '<td>'.$langs->trans("Donation").'</td>';
-	print '<td>'.$objectlink->getNomUrl(1).'</td>';
-	print '<td class="center">'.$objectlink->ref_client.'</td>';
-	print '<td class="center">'.dol_print_date($objectlink->date, 'day').'</td>';
-	print '<td class="right">';
+	echo '<tr class="'.$trclass.'">';
+	echo '<td>'.$langs->trans("Donation").'</td>';
+	echo '<td>'.$objectlink->getNomUrl(1).'</td>';
+	echo '<td class="center">'.$objectlink->ref_client.'</td>';
+	echo '<td class="center">'.dol_print_date($objectlink->date, 'day').'</td>';
+	echo '<td class="right">';
 	$total = $total + $objectlink->total_ht;
-	echo price($objectlink->total_ht);
+	echo  price($objectlink->total_ht);
 }
-print '</td>';
-print '<td class="right">'.$objectlink->getLibStatut(3).'</td>';
-print '</tr>';
+echo '</td>';
+echo '<td class="right">'.$objectlink->getLibStatut(3).'</td>';
+echo '</tr>';
 
 if (count($linkedObjectBlock) > 1) {
 	?>
-	<tr class="liste_total <?php echo(empty($noMoreLinkedObjectBlockAfter) ? 'liste_sub_total' : ''); ?>">
-		<td><?php echo $langs->trans("Total"); ?></td>
+	<tr class="liste_total <?php echo (empty($noMoreLinkedObjectBlockAfter) ? 'liste_sub_total' : ''); ?>">
+		<td><?php echo  $langs->trans("Total"); ?></td>
 		<td></td>
 		<td class="center"></td>
 		<td class="center"></td>
-		<td class="right"><?php echo price($total); ?></td>
+		<td class="right"><?php echo  price($total); ?></td>
 		<td class="right"></td>
 		<td class="right"></td>
 	</tr>
 	<?php
 }
 
-print "<!-- END PHP TEMPLATE -->\n";
+echo "<!-- END PHP TEMPLATE -->\n";

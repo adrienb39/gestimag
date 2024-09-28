@@ -120,7 +120,7 @@ llxHeader('', $title, $help_url);
 // Show tabs
 $head = societe_prepare_head($object);
 
-print dol_get_fiche_head($head, 'document', $langs->trans("ThirdParty"), -1, 'company');
+echo dol_get_fiche_head($head, 'document', $langs->trans("ThirdParty"), -1, 'company');
 
 
 // Build file list
@@ -134,54 +134,54 @@ $linkback = '<a href="'.DOL_URL_ROOT.'/societe/list.php?restore_lastsearch_value
 
 dol_banner_tab($object, 'socid', $linkback, ($user->socid ? 0 : 1), 'rowid', 'nom');
 
-print '<div class="fichecenter">';
+echo '<div class="fichecenter">';
 
-print '<div class="underbanner clearboth"></div>';
-print '<table class="border tableforfield centpercent">';
+echo '<div class="underbanner clearboth"></div>';
+echo '<table class="border tableforfield centpercent">';
 
 // Type Prospect/Customer/Supplier
-print '<tr><td class="titlefield">'.$langs->trans('NatureOfThirdParty').'</td><td>';
-print $object->getTypeUrl(1);
-print '</td></tr>';
+echo '<tr><td class="titlefield">'.$langs->trans('NatureOfThirdParty').'</td><td>';
+echo $object->getTypeUrl(1);
+echo '</td></tr>';
 
 // Prefix
 if (getDolGlobalString('SOCIETE_USEPREFIX')) {  // Old not used prefix field
-	print '<tr><td class="titlefield">'.$langs->trans('Prefix').'</td><td colspan="3">'.$object->prefix_comm.'</td></tr>';
+	echo '<tr><td class="titlefield">'.$langs->trans('Prefix').'</td><td colspan="3">'.$object->prefix_comm.'</td></tr>';
 }
 
 if ($object->client) {
-	print '<tr><td class="titlefield">';
-	print $langs->trans('CustomerCode').'</td><td colspan="3">';
-	print showValueWithClipboardCPButton(dol_escape_htmltag($object->code_client));
+	echo '<tr><td class="titlefield">';
+	echo $langs->trans('CustomerCode').'</td><td colspan="3">';
+	echo showValueWithClipboardCPButton(dol_escape_htmltag($object->code_client));
 	$tmpcheck = $object->check_codeclient();
 	if ($tmpcheck != 0 && $tmpcheck != -5) {
-		print ' <span class="error">('.$langs->trans("WrongCustomerCode").')</span>';
+		echo ' <span class="error">('.$langs->trans("WrongCustomerCode").')</span>';
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 if ($object->fournisseur) {
-	print '<tr><td class="titlefield">';
-	print $langs->trans('SupplierCode').'</td><td colspan="3">';
-	print showValueWithClipboardCPButton(dol_escape_htmltag($object->code_fournisseur));
+	echo '<tr><td class="titlefield">';
+	echo $langs->trans('SupplierCode').'</td><td colspan="3">';
+	echo showValueWithClipboardCPButton(dol_escape_htmltag($object->code_fournisseur));
 	$tmpcheck = $object->check_codefournisseur();
 	if ($tmpcheck != 0 && $tmpcheck != -5) {
-		print ' <span class="error">('.$langs->trans("WrongSupplierCode").')</span>';
+		echo ' <span class="error">('.$langs->trans("WrongSupplierCode").')</span>';
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
 // Number of files
-print '<tr><td class="titlefield">'.$langs->trans("NbOfAttachedFiles").'</td><td colspan="3">'.count($filearray).'</td></tr>';
+echo '<tr><td class="titlefield">'.$langs->trans("NbOfAttachedFiles").'</td><td colspan="3">'.count($filearray).'</td></tr>';
 
 // Total size
-print '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td colspan="3">'.dol_print_size($totalsize, 1, 1).'</td></tr>';
+echo '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td colspan="3">'.dol_print_size($totalsize, 1, 1).'</td></tr>';
 
-print '</table>';
+echo '</table>';
 
-print '</div>';
+echo '</div>';
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 $modulepart = 'societe';
 $permissiontoadd = $user->hasRight('societe', 'creer');

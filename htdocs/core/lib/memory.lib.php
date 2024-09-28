@@ -165,10 +165,10 @@ function dol_getcache($memoryid)
 
 		$memoryid = session_name().'_'.$memoryid;
 		//$m->setOption(Memcached::OPT_COMPRESSION, false);
-		//print "Get memoryid=".$memoryid;
+		//echo "Get memoryid=".$memoryid;
 		$data = $m->get($memoryid);
 		$rescode = $m->getResultCode();
-		//print "memoryid=".$memoryid." - rescode=".$rescode." - count(response)=".count($data)."\n<br>";
+		//echo "memoryid=".$memoryid." - rescode=".$rescode." - count(response)=".count($data)."\n<br>";
 		//var_dump($data);
 		if ($rescode == 0) {
 			return $data;
@@ -192,7 +192,7 @@ function dol_getcache($memoryid)
 		$memoryid = session_name().'_'.$memoryid;
 		//$m->setOption(Memcached::OPT_COMPRESSION, false);
 		$data = $m->get($memoryid);
-		//print "memoryid=".$memoryid." - rescode=".$rescode." - data=".count($data)."\n<br>";
+		//echo "memoryid=".$memoryid." - rescode=".$rescode." - data=".count($data)."\n<br>";
 		//var_dump($data);
 		if ($data) {
 			return $data;
@@ -261,7 +261,7 @@ function dol_setshmop($memoryid, $data, $expire)
 {
 	global $shmkeys, $shmoffset;
 
-	//print 'dol_setshmop memoryid='.$memoryid."<br>\n";
+	//echo 'dol_setshmop memoryid='.$memoryid."<br>\n";
 	if (empty($shmkeys[$memoryid]) || !function_exists("shmop_write")) {
 		return 0;
 	}
@@ -272,19 +272,19 @@ function dol_setshmop($memoryid, $data, $expire)
 
 	$newdata = serialize($data);
 	$size = strlen($newdata);
-	//print 'dol_setshmop memoryid='.$memoryid." shmkey=".$shmkey." newdata=".$size."bytes<br>\n";
+	//echo 'dol_setshmop memoryid='.$memoryid." shmkey=".$shmkey." newdata=".$size."bytes<br>\n";
 	$handle = shmop_open($shmkey, 'c', 0644, 6 + $size);
 	if ($handle) {
 		$shm_bytes_written1 = shmop_write($handle, str_pad((string) $size, 6), 0);
 		$shm_bytes_written2 = shmop_write($handle, $newdata, 6);
 		if ($shm_bytes_written1 + $shm_bytes_written2 != 6 + dol_strlen($newdata)) {
-			print "Couldn't write the entire length of data\n";
+			echo "Couldn't write the entire length of data\n";
 		}
 		// @phan-suppress-next-line PhanDeprecatedFunctionInternal
 		shmop_close($handle);
 		return ($shm_bytes_written1 + $shm_bytes_written2);
 	} else {
-		print 'Error in shmop_open for memoryid='.$memoryid.' shmkey='.$shmkey.' 6+size=6+'.$size;
+		echo 'Error in shmop_open for memoryid='.$memoryid.' shmkey='.$shmkey.' 6+size=6+'.$size;
 		return -1;
 	}
 }
@@ -309,7 +309,7 @@ function dol_getshmop($memoryid)
 		return null; // No key reserved for this memoryid, we can't cache this memoryid
 	}
 
-	//print 'dol_getshmop memoryid='.$memoryid." shmkey=".$shmkey."<br>\n";
+	//echo 'dol_getshmop memoryid='.$memoryid." shmkey=".$shmkey."<br>\n";
 	$handle = @shmop_open($shmkey, 'a', 0, 0);
 	if ($handle) {
 		$size = (int) trim(shmop_read($handle, 0, 6));

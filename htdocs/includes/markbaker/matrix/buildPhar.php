@@ -4,7 +4,7 @@
 
 // ini option check
 if (ini_get('phar.readonly')) {
-    echo "php.ini: set the 'phar.readonly' option to 0 to enable phar creation\n";
+    echo  "php.ini: set the 'phar.readonly' option to 0 to enable phar creation\n";
     exit(1);
 }
 
@@ -26,11 +26,11 @@ $metaData = array(
 
 // cleanup
 if (file_exists($pharName)) {
-    echo "Removed: {$pharName}\n";
+    echo  "Removed: {$pharName}\n";
     unlink($pharName);
 }
 
-echo "Building phar file...\n";
+echo  "Building phar file...\n";
 
 // the phar object
 $phar = new Phar($pharName, null, 'Matrix');
@@ -57,6 +57,6 @@ EOT
 $phar->setMetadata($metaData);
 $phar->compressFiles(Phar::GZ);
 
-echo "Complete.\n";
+echo  "Complete.\n";
 
 exit();

@@ -1717,7 +1717,7 @@ PHP.Lexer = function(src, ini) {
             },
             {
                 value: PHP.Constants.T_ECHO,
-                re: /^echo\b/i
+                re: /^echo \b/i
             },
             {
                 value: PHP.Constants.T_ELSE,

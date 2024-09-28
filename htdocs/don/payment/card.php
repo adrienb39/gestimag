@@ -92,37 +92,37 @@ $head[$h][1] = $langs->trans("DonationPayment");
 $hselected = $h;
 $h++;
 
-print dol_get_fiche_head($head, $hselected, $langs->trans("DonationPayment"), -1, 'payment');
+echo dol_get_fiche_head($head, $hselected, $langs->trans("DonationPayment"), -1, 'payment');
 
 /*
  * Confirm deleting of the payment
  */
 if ($action == 'delete') {
-	print $form->formconfirm('card.php?id='.$object->id, $langs->trans("DeletePayment"), $langs->trans("ConfirmDeletePayment"), 'confirm_delete', '', 0, 2);
+	echo $form->formconfirm('card.php?id='.$object->id, $langs->trans("DeletePayment"), $langs->trans("ConfirmDeletePayment"), 'confirm_delete', '', 0, 2);
 }
 
 
 dol_banner_tab($object, 'id', '', 1, 'rowid', 'id');
 
-print '<div class="fichecenter">';
-print '<div class="underbanner clearboth"></div>';
+echo '<div class="fichecenter">';
+echo '<div class="underbanner clearboth"></div>';
 
-print '<table class="border centpercent">';
+echo '<table class="border centpercent">';
 
 // Date
-print '<tr><td class="titlefield">'.$langs->trans('Date').'</td><td>'.dol_print_date($object->datep, 'day').'</td></tr>';
+echo '<tr><td class="titlefield">'.$langs->trans('Date').'</td><td>'.dol_print_date($object->datep, 'day').'</td></tr>';
 
 // Mode
-print '<tr><td>'.$langs->trans('Mode').'</td><td>'.$langs->trans("PaymentType".$object->type_code).'</td></tr>';
+echo '<tr><td>'.$langs->trans('Mode').'</td><td>'.$langs->trans("PaymentType".$object->type_code).'</td></tr>';
 
 // Number
-print '<tr><td>'.$langs->trans('Numero').'</td><td>'.dol_escape_htmltag($object->num_payment).'</td></tr>';
+echo '<tr><td>'.$langs->trans('Numero').'</td><td>'.dol_escape_htmltag($object->num_payment).'</td></tr>';
 
 // Amount
-print '<tr><td>'.$langs->trans('Amount').'</td><td>'.price($object->amount, 0, $outputlangs, 1, -1, -1, $conf->currency).'</td></tr>';
+echo '<tr><td>'.$langs->trans('Amount').'</td><td>'.price($object->amount, 0, $outputlangs, 1, -1, -1, $conf->currency).'</td></tr>';
 
 // Note public
-print '<tr><td>'.$langs->trans('Note').'</td><td class="valeur sensiblehtmlcontent">'.dol_string_onlythesehtmltags(dol_htmlcleanlastbr($object->note_public)).'</td></tr>';
+echo '<tr><td>'.$langs->trans('Note').'</td><td class="valeur sensiblehtmlcontent">'.dol_string_onlythesehtmltags(dol_htmlcleanlastbr($object->note_public)).'</td></tr>';
 
 // Bank account
 if (isModEnabled("bank")) {
@@ -130,16 +130,16 @@ if (isModEnabled("bank")) {
 		$bankline = new AccountLine($db);
 		$bankline->fetch($object->bank_line);
 
-		print '<tr>';
-		print '<td>'.$langs->trans('BankTransactionLine').'</td>';
-		print '<td>';
-		print $bankline->getNomUrl(1, 0, 'showall');
-		print '</td>';
-		print '</tr>';
+		echo '<tr>';
+		echo '<td>'.$langs->trans('BankTransactionLine').'</td>';
+		echo '<td>';
+		echo $bankline->getNomUrl(1, 0, 'showall');
+		echo '</td>';
+		echo '</tr>';
 	}
 }
 
-print '</table>';
+echo '</table>';
 
 
 /*
@@ -160,31 +160,31 @@ if ($resql) {
 
 	$i = 0;
 	$total = 0;
-	print '<br><table class="noborder centpercent">';
-	print '<tr class="liste_titre">';
-	print '<td>'.$langs->trans('Donation').'</td>';
-	print '<td class="right">'.$langs->trans('ExpectedToPay').'</td>';
-	print '<td class="center">'.$langs->trans('Status').'</td>';
-	print '<td class="right">'.$langs->trans('PayedByThisPayment').'</td>';
-	print "</tr>\n";
+	echo '<br><table class="noborder centpercent">';
+	echo '<tr class="liste_titre">';
+	echo '<td>'.$langs->trans('Donation').'</td>';
+	echo '<td class="right">'.$langs->trans('ExpectedToPay').'</td>';
+	echo '<td class="center">'.$langs->trans('Status').'</td>';
+	echo '<td class="right">'.$langs->trans('PayedByThisPayment').'</td>';
+	echo "</tr>\n";
 
 	if ($num > 0) {
 		while ($i < $num) {
 			$objp = $db->fetch_object($resql);
 
-			print '<tr class="oddeven">';
+			echo '<tr class="oddeven">';
 			// Ref
-			print '<td>';
+			echo '<td>';
 			$don->fetch($objp->did);
-			print $don->getNomUrl(1);
-			print "</td>\n";
+			echo $don->getNomUrl(1);
+			echo "</td>\n";
 			// Expected to pay
-			print '<td class="right">'.price($objp->d_amount).'</td>';
+			echo '<td class="right">'.price($objp->d_amount).'</td>';
 			// Status
-			print '<td class="center">'.$don->getLibStatut(4).'</td>';
+			echo '<td class="center">'.$don->getLibStatut(4).'</td>';
 			// Amount paid
-			print '<td class="right">'.price($objp->amount).'</td>';
-			print "</tr>\n";
+			echo '<td class="right">'.price($objp->amount).'</td>';
+			echo "</tr>\n";
 			if ($objp->paid == 1) {
 				// If at least one invoice is paid, disable delete
 				$disable_delete = 1;
@@ -195,33 +195,33 @@ if ($resql) {
 	}
 
 
-	print "</table>\n";
+	echo "</table>\n";
 	$db->free($resql);
 } else {
 	dol_print_error($db);
 }
 
-print '</div>';
+echo '</div>';
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 
 /*
  * Actions buttons
  */
-print '<div class="tabsAction">';
+echo '<div class="tabsAction">';
 
 if (empty($action)) {
 	if ($user->hasRight('don', 'supprimer')) {
 		if (!$disable_delete) {
-			print dolGetButtonAction($langs->trans('Delete'), '', 'delete', $_SERVER["PHP_SELF"].'?id='.$object->id.'&action=delete&token='.newToken(), '', 1);
+			echo dolGetButtonAction($langs->trans('Delete'), '', 'delete', $_SERVER["PHP_SELF"].'?id='.$object->id.'&action=delete&token='.newToken(), '', 1);
 		} else {
-			print dolGetButtonAction($langs->trans("CantRemovePaymentWithOneInvoicePaid"), $langs->trans('Delete'), '', $_SERVER["PHP_SELF"].'?id='.$object->id.'#', '', 1, [ 'attr' => ['classOverride' => 'butActionRefused']]);
+			echo dolGetButtonAction($langs->trans("CantRemovePaymentWithOneInvoicePaid"), $langs->trans('Delete'), '', $_SERVER["PHP_SELF"].'?id='.$object->id.'#', '', 1, [ 'attr' => ['classOverride' => 'butActionRefused']]);
 		}
 	}
 }
 
-print '</div>';
+echo '</div>';
 
 
 

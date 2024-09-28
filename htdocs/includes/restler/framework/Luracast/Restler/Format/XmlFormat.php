@@ -61,7 +61,7 @@ class XmlFormat extends Format
 
     /**
      * When you decode an XML its structure is copied to the static vars
-     * we can use this function to echo them out and then copy paste inside
+     * we can use this function to echo  them out and then copy paste inside
      * our service methods
      *
      * @return string PHP source code to reproduce the configuration

@@ -166,7 +166,7 @@ class Utils
 
 			if (is_array($filesarray) && count($filesarray)) {
 				foreach ($filesarray as $key => $value) {
-					//print "x ".$filesarray[$key]['fullname']."-".$filesarray[$key]['type']."<br>\n";
+					//echo "x ".$filesarray[$key]['fullname']."-".$filesarray[$key]['type']."<br>\n";
 					if ($filesarray[$key]['type'] == 'dir') {
 						$startcount = 0;
 						$tmpcountdeleted = 0;
@@ -240,7 +240,7 @@ class Utils
 	 *  @param  string      $file              'auto' or filename to build
 	 *  @param  int         $keeplastnfiles    Keep only last n files (not used yet)
 	 *  @param	int		    $execmethod		   0=Use default method (that is 1 by default), 1=Use the PHP 'exec' - need size of dump in memory, but low memory method is used if GETPOST('lowmemorydump') is set, 2=Use the 'popen' method (low memory method)
-	 *  @param	int			$lowmemorydump	   1=Use the low memory method. If $lowmemorydump is set, it means we want to make the compression using an external pipe instead retrieving the content of the dump in PHP memory array $output_arr and then print it into the PHP pipe open with xopen().
+	 *  @param	int			$lowmemorydump	   1=Use the low memory method. If $lowmemorydump is set, it means we want to make the compression using an external pipe instead retrieving the content of the dump in PHP memory array $output_arr and then echo it into the PHP pipe open with xopen().
 	 *  @return	int						       0 if OK, < 0 if KO (this function is used also by cron so only 0 is OK)
 	 */
 	public function dumpDatabase($compression = 'none', $type = 'auto', $usedefault = 1, $file = 'auto', $keeplastnfiles = 0, $execmethod = 0, $lowmemorydump = 0)
@@ -565,7 +565,7 @@ class Utils
 					$errormsg = '';
 				} else {
 					// Rename file out into a file error
-					//print "$outputfile -> $outputerror";
+					//echo "$outputfile -> $outputerror";
 					@dol_delete_file($outputerror, 1, 0, 0, null, false, 0);
 					@dol_move($outputfile, $outputerror, '0', 1, 0, 0);
 					// Si safe_mode on et command hors du parameter exec, on a un fichier out vide donc errormsg vide
@@ -1186,7 +1186,7 @@ class Utils
 			$delayed = 'DELAYED ';
 		}
 
-		// Process each table and print their definition + their datas
+		// Process each table and echo their definition + their datas
 		foreach ($tables as $table) {
 			// Saving the table structure
 			fwrite($handle, "\n--\n-- Table structure for table `".$table."`\n--\n");
@@ -1218,7 +1218,7 @@ class Utils
 				$sql = "SELECT * FROM ".$table; // Here SELECT * is allowed because we don't have definition of columns to take
 				$result = $db->query($sql);
 				while ($row = $db->fetch_row($result)) {
-					// For each row of data we print a line of INSERT
+					// For each row of data we echo a line of INSERT
 					fwrite($handle, "INSERT ".$delayed.$ignore."INTO ".$table." VALUES (");
 					$columns = count($row);
 					for ($j = 0; $j < $columns; $j++) {

@@ -256,7 +256,7 @@ if (!$accessallowed) {
 // We refuse directory transversal change and pipes in file names
 if (preg_match('/\.\./', $fullpath_original_file) || preg_match('/[<>|]/', $fullpath_original_file)) {
 	dol_syslog("Refused to deliver file ".$fullpath_original_file);
-	print "ErrorFileNameInvalid: ".dol_escape_htmltag($original_file);
+	echo "ErrorFileNameInvalid: ".dol_escape_htmltag($original_file);
 	exit;
 }
 
@@ -273,7 +273,7 @@ $fullpath_original_file_osencoded = dol_osencode($fullpath_original_file); // Ne
 // This test if file exists should be useless. We keep it to find bug more easily
 if (!file_exists($fullpath_original_file_osencoded)) {
 	dol_syslog("ErrorFileDoesNotExists: ".$fullpath_original_file);
-	print "ErrorFileDoesNotExists: ".dol_escape_htmltag($original_file);
+	echo "ErrorFileDoesNotExists: ".dol_escape_htmltag($original_file);
 	exit;
 }
 
@@ -287,7 +287,7 @@ $reshook = $hookmanager->executeHooks('downloadDocument', $parameters, $object, 
 if ($reshook < 0) {
 	$errors = $hookmanager->error.(is_array($hookmanager->errors) ? (!empty($hookmanager->error) ? ', ' : '').implode(', ', $hookmanager->errors) : '');
 	dol_syslog("document.php - Errors when executing the hook 'downloadDocument' : ".$errors);
-	print "ErrorDownloadDocumentHooks: ".$errors;
+	echo "ErrorDownloadDocumentHooks: ".$errors;
 	exit;
 }
 

@@ -30,7 +30,7 @@ header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Documentation and examples for theme.">
 
-	<link href="<?php echo DOL_URL_ROOT ?>/theme/eldy/style.css.php" rel="stylesheet">
+	<link href="<?php echo  DOL_URL_ROOT ?>/theme/eldy/style.css.php" rel="stylesheet">
   </head>
   <body class="docpage" style="padding: 20px;">
 
@@ -151,13 +151,13 @@ header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain 
 
 		<div class="bd-example">
 		<?php for ($i = 0; $i <= 9; $i++) : ?>
-		<span class="badge badge-status<?php print $i; ?>" >status-<?php print $i; ?></span>
+		<span class="badge badge-status<?php echo $i; ?>" >status-<?php echo $i; ?></span>
 		<?php endfor; ?>
 		</div>
 
 		<figure class="highlight"><pre><pre>
 <?php for ($i = 0; $i <= 9; $i++) : ?>
-&lt;span class="badge badge-status<?php print $i; ?>" &gt;status<?php print $i; ?>&lt;/span&gt;
+&lt;span class="badge badge-status<?php echo $i; ?>" &gt;status<?php echo $i; ?>&lt;/span&gt;
 <?php endfor; ?>
 		</pre></figure>
 
@@ -178,7 +178,7 @@ header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain 
 		<span class="badge badge-pill badge-dark">Dark</span>
 
 		<?php for ($i = 0; $i <= 9; $i++) : ?>
-		<span class="badge badge-pill badge-status<?php print $i; ?>" >status<?php print $i; ?></span>
+		<span class="badge badge-pill badge-status<?php echo $i; ?>" >status<?php echo $i; ?></span>
 		<?php endfor; ?>
 
 		</div>
@@ -195,7 +195,7 @@ header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain 
 &lt;span class=&quot;badge badge-pill badge-light&quot;&gt;Light&lt;/span&gt;
 &lt;span class=&quot;badge badge-pill badge-dark&quot;&gt;Dark&lt;/span&gt;
 <?php for ($i = 0; $i <= 9; $i++) : ?>
-&lt;span class="badge badge-pill badge-status<?php print $i; ?>" &gt;status<?php print $i; ?>&lt;/span&gt;
+&lt;span class="badge badge-pill badge-status<?php echo $i; ?>" &gt;status<?php echo $i; ?>&lt;/span&gt;
 <?php endfor; ?>
 		</pre></figure>
 
@@ -217,7 +217,7 @@ header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain 
 		<span class="badge badge-dot badge-dark"></span>
 
 		<?php for ($i = 0; $i <= 9; $i++) : ?>
-		<span class="badge badge-dot badge-status<?php print $i; ?>" ></span>
+		<span class="badge badge-dot badge-status<?php echo $i; ?>" ></span>
 		<?php endfor; ?>
 
 		</div>
@@ -234,7 +234,7 @@ header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain 
 &lt;span class=&quot;badge badge-dot badge-light&quot;&gt;&lt;/span&gt;
 &lt;span class=&quot;badge badge-dot badge-dark&quot;&gt;&lt;/span&gt;
 <?php for ($i = 0; $i <= 9; $i++) : ?>
-&lt;span class="badge badge-dot badge-status<?php print $i; ?>" &gt;&lt;/span&gt;
+&lt;span class="badge badge-dot badge-status<?php echo $i; ?>" &gt;&lt;/span&gt;
 <?php endfor; ?>
 		</pre></figure>
 
@@ -263,7 +263,7 @@ header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain 
 		<a href="#" class="badge badge-light">Light</a>
 		<a href="#" class="badge badge-dark">Dark</a>
 		<?php for ($i = 0; $i <= 9; $i++) : ?>
-		<a href="#" class="badge badge-status<?php print $i; ?>" >status<?php print $i; ?></a>
+		<a href="#" class="badge badge-status<?php echo $i; ?>" >status<?php echo $i; ?></a>
 		<?php endfor; ?>
 
 		</div>
@@ -278,20 +278,20 @@ header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain 
 &lt;a href=&quot;#&quot; class=&quot;badge badge-light&quot;&gt;Light&lt;/a&gt;
 &lt;a href=&quot;#&quot; class=&quot;badge badge-dark&quot;&gt;Dark&lt;/a&gt;
 <?php for ($i = 0; $i <= 9; $i++) : ?>
-&lt;a href=&quot;#&quot; class="badge badge-status<?php print $i; ?>" &gt;status<?php print $i; ?>&lt;/a&gt;
+&lt;a href=&quot;#&quot; class="badge badge-status<?php echo $i; ?>" &gt;status<?php echo $i; ?>&lt;/a&gt;
 <?php endfor; ?>
 		</pre></figure>
 
 
 		<h2 id="helper">Use badge helper function</h2>
 		<p>Using the dolGetBadge function provide in core/lib/functions.lib.php. This function is recommended for code uniformisation and easy maintain</p>
-		<?php print dolGetBadge('your label for accessibility', 'your label <u>with</u> <em>html</em>', 'primary') ?>
-		<?php print dolGetBadge('your label for accessibility', 'your label <u>with</u> <em>html</em>', 'danger', 'pill') ?>
-		<?php print dolGetBadge('your label for accessibility', 'your label <u>with</u> <em>html</em>', 'warning', 'dot') ?>
+		<?php echo dolGetBadge('your label for accessibility', 'your label <u>with</u> <em>html</em>', 'primary') ?>
+		<?php echo dolGetBadge('your label for accessibility', 'your label <u>with</u> <em>html</em>', 'danger', 'pill') ?>
+		<?php echo dolGetBadge('your label for accessibility', 'your label <u>with</u> <em>html</em>', 'warning', 'dot') ?>
 
 		<figure class="highlight"><pre>
-&lt;?php  print dolGetBadge('your label for accessibility', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'danger', 'pill') ?&gt;
-&lt;?php  print dolGetBadge('your label for accessibility', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'warning', 'dot') ?&gt;
+&lt;?php  echo dolGetBadge('your label for accessibility', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'danger', 'pill') ?&gt;
+&lt;?php  echo dolGetBadge('your label for accessibility', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'warning', 'dot') ?&gt;
 		</pre></figure>
 
 		<h2 id="helper">Use status helper function</h2>
@@ -301,34 +301,34 @@ header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain 
 		$conf->global->MAIN_STATUS_USES_CSS = 1;
 		?>
 		<h4>Using hidden global conf MAIN_STATUS_USES_CSS=1</h4>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4') ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 1) ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 2) ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 3) ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 4) ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 5) ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 6) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4') ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 1) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 2) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 3) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 4) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 5) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 6) ?></p>
 
 		<?php $conf->global->MAIN_STATUS_USES_CSS = 0; ?>
 		<h4>Disabled hidden global conf : MAIN_STATUS_USES_CSS=0</h4>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 1) ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 2) ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 3) ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 4) ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 5) ?></p>
-		<p><?php print dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 6) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 1) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 2) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 3) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 4) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 5) ?></p>
+		<p><?php echo dolGetStatus('your label for accessibility', 'your label', 'your label <u>with</u> <em>html</em>', 'status4', 6) ?></p>
 
 		<?php $conf->global->MAIN_STATUS_USES_CSS = $saveGlobalConf; ?>
 
 
 				<figure class="highlight"><pre>
-&lt;?php print dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4') ?&gt;
-&lt;?php print dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',1) ?&gt;
-&lt;?php print dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',2) ?&gt;
-&lt;?php print dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',3) ?&gt;
-&lt;?php print dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',4) ?&gt;
-&lt;?php print dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',5) ?&gt;
-&lt;?php print dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',6) ?&gt;
+&lt;?php echo dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4') ?&gt;
+&lt;?php echo dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',1) ?&gt;
+&lt;?php echo dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',2) ?&gt;
+&lt;?php echo dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',3) ?&gt;
+&lt;?php echo dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',4) ?&gt;
+&lt;?php echo dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',5) ?&gt;
+&lt;?php echo dolGetStatus('your label for accessibility', 'your label', 'your label &lt;u&gt;with&lt;/u&gt; &lt;em&gt;html&lt;/em&gt;', 'status4',6) ?&gt;
 		</pre></figure>
 
 

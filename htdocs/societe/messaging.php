@@ -130,7 +130,7 @@ llxHeader('', $title);
 
 $head = societe_prepare_head($object);
 
-print dol_get_fiche_head($head, 'agenda', $langs->trans("ThirdParty"), -1, $object->picto);
+echo dol_get_fiche_head($head, 'agenda', $langs->trans("ThirdParty"), -1, $object->picto);
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/societe/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
@@ -138,16 +138,16 @@ $morehtmlref = '';
 
 dol_banner_tab($object, 'socid', $linkback, ($user->socid ? 0 : 1), 'rowid', 'nom', $morehtmlref);
 
-print '<div class="fichecenter">';
+echo '<div class="fichecenter">';
 
-print '<div class="underbanner clearboth"></div>';
+echo '<div class="underbanner clearboth"></div>';
 
 $object->info($socid);
 dol_print_object_info($object, 1);
 
-print '</div>';
+echo '</div>';
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 
 
@@ -190,7 +190,7 @@ if (isModEnabled('agenda')) {
 }
 
 if (isModEnabled('agenda') && ($user->hasRight('agenda', 'myactions', 'read') || $user->hasRight('agenda', 'allactions', 'read'))) {
-	print '<br>';
+	echo '<br>';
 
 	$param = '&socid='.urlencode((string) ($socid));
 	if (!empty($contextpage) && $contextpage != $_SERVER["PHP_SELF"]) {

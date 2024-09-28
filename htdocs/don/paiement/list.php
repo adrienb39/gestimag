@@ -305,16 +305,16 @@ if ($optioncss != '') {
 	$param .= '&optioncss='.urlencode($optioncss);
 }
 
-print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
 if ($optioncss != '') {
-	print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
+	echo '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 }
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="action" value="list">';
-print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-print '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="action" value="list">';
+echo '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+echo '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
 
 // @phan-suppress-next-line PhanPluginSuspiciousParamOrder
 print_barre_liste($langs->trans("DonationPayments"), $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, $nbtotalofrecords, 'bill', 0, '', '', $limit, 0, 0, 1);
@@ -323,7 +323,7 @@ if ($search_all) {
 	foreach ($fieldstosearchall as $key => $val) {
 		$fieldstosearchall[$key] = $langs->trans($val);
 	}
-	print '<div class="divsearchfieldfilter">'.$langs->trans("FilterOnInto", $search_all).implode(', ', $fieldstosearchall).'</div>';
+	echo '<div class="divsearchfieldfilter">'.$langs->trans("FilterOnInto", $search_all).implode(', ', $fieldstosearchall).'</div>';
 }
 
 $varpage = empty($contextpage) ? $_SERVER["PHP_SELF"] : $contextpage;
@@ -334,105 +334,105 @@ if ($massactionbutton) {
 }
 
 $moreforfilter = '';
-print '<div class="div-table-responsive">';
-print '<table class="tagtable nobottomiftotal liste'.($moreforfilter ? " listwithfilterbefore" : '').'">';
+echo '<div class="div-table-responsive">';
+echo '<table class="tagtable nobottomiftotal liste'.($moreforfilter ? " listwithfilterbefore" : '').'">';
 
 // Fields title search
 // --------------------------------------------------------------------
-print '<tr class="liste_titre_filter">';
+echo '<tr class="liste_titre_filter">';
 // Action column
 if (getDolGlobalInt('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print '<td class="liste_titre center maxwidthsearch">';
+	echo '<td class="liste_titre center maxwidthsearch">';
 	$searchpicto = $form->showFilterButtons('left');
-	print $searchpicto;
-	print '</td>';
+	echo $searchpicto;
+	echo '</td>';
 }
 
 if (getDolGlobalString('MAIN_VIEW_LINE_NUMBER_IN_LIST')) {
-	print '<td class="liste_titre">';
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo '</td>';
 }
 
 if (!empty($arrayfields['pd.rowid']['checked'])) {
-	print '<td class="liste_titre left">';
-	print '<input class="flat" type="text" size="4" name="search_ref" value="'.dol_escape_htmltag($search_ref).'">';
-	print '</td>';
+	echo '<td class="liste_titre left">';
+	echo '<input class="flat" type="text" size="4" name="search_ref" value="'.dol_escape_htmltag($search_ref).'">';
+	echo '</td>';
 }
 
 // Filter: Date
 if (!empty($arrayfields['pd.datep']['checked'])) {
-	print '<td class="liste_titre">';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_start ? $search_date_start : -1, 'search_date_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('From'));
-	print '</div>';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_end ? $search_date_end : -1, 'search_date_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('to'));
-	print '</div>';
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo '<div class="nowrapfordate">';
+	echo $form->selectDate($search_date_start ? $search_date_start : -1, 'search_date_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('From'));
+	echo '</div>';
+	echo '<div class="nowrapfordate">';
+	echo $form->selectDate($search_date_end ? $search_date_end : -1, 'search_date_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('to'));
+	echo '</div>';
+	echo '</td>';
 }
 
 // Filter: Thirdparty
 if (!empty($arrayfields['s.nom']['checked'])) {
-	print '<td class="liste_titre">';
-	print '<input class="flat" type="text" size="6" name="search_company" value="'.dol_escape_htmltag($search_company).'">';
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo '<input class="flat" type="text" size="6" name="search_company" value="'.dol_escape_htmltag($search_company).'">';
+	echo '</td>';
 }
 
 // Filter: Payment type
 if (!empty($arrayfields['c.code']['checked'])) {
-	print '<td class="liste_titre">';
-	print $form->select_types_paiements($search_paymenttype, 'search_paymenttype', '', 2, 1, 1, 0, 1, 'maxwidth100', 1);
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo $form->select_types_paiements($search_paymenttype, 'search_paymenttype', '', 2, 1, 1, 0, 1, 'maxwidth100', 1);
+	echo '</td>';
 }
 
 // Filter: Bank transaction number
 if (!empty($arrayfields['transaction']['checked'])) {
-	print '<td class="liste_titre">';
-	print '<input class="flat" type="text" size="4" name="search_payment_num" value="'.dol_escape_htmltag($search_payment_num).'">';
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo '<input class="flat" type="text" size="4" name="search_payment_num" value="'.dol_escape_htmltag($search_payment_num).'">';
+	echo '</td>';
 }
 
 // Filter: Cheque number (fund transfer)
 if (!empty($arrayfields['pd.num_paiement']['checked'])) {
-	print '<td class="liste_titre">';
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo '</td>';
 }
 
 // Filter: Bank account
 if (!empty($arrayfields['ba.label']['checked'])) {
-	print '<td class="liste_titre">';
+	echo '<td class="liste_titre">';
 	$form->select_comptes($search_account, 'search_account', 0, '', 1);
-	print '</td>';
+	echo '</td>';
 }
 
 // Filter: Amount
 if (!empty($arrayfields['pd.amount']['checked'])) {
-	print '<td class="liste_titre right">';
-	print '<input class="flat" type="text" size="6" name="search_amount" value="'.dol_escape_htmltag($search_amount).'">';
-	print '</td>';
+	echo '<td class="liste_titre right">';
+	echo '<input class="flat" type="text" size="6" name="search_amount" value="'.dol_escape_htmltag($search_amount).'">';
+	echo '</td>';
 }
 
 // Fields from hook
 $parameters = array('arrayfields' => $arrayfields);
 $reshook = $hookmanager->executeHooks('printFieldListOption', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
-print $hookmanager->resPrint;
+echo $hookmanager->resPrint;
 
 // Action column
 if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print '<td class="liste_titre center maxwidthsearch">';
+	echo '<td class="liste_titre center maxwidthsearch">';
 	$searchpicto = $form->showFilterButtons();
-	print $searchpicto;
-	print '</td>';
+	echo $searchpicto;
+	echo '</td>';
 }
 
-print '</tr>'."\n";
+echo '</tr>'."\n";
 
 $totalarray = array();
 $totalarray['nbfield'] = 0;
 
 // Fields title label
 // --------------------------------------------------------------------
-print '<tr class="liste_titre">';
+echo '<tr class="liste_titre">';
 // Action column
 if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 	print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], "", '', '', 'align="center"', $sortfield, $sortorder, 'maxwidthsearch ');
@@ -480,13 +480,13 @@ include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_title.tpl.php';
 // Hook fields
 $parameters = array('arrayfields' => $arrayfields, 'param' => $param, 'sortfield' => $sortfield, 'sortorder' => $sortorder);
 $reshook = $hookmanager->executeHooks('printFieldListTitle', $parameters); // Note that $action and $object may have been modified by hook
-print $hookmanager->resPrint;
+echo $hookmanager->resPrint;
 // Action column
 if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 	print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], "", '', '', 'align="center"', $sortfield, $sortorder, 'maxwidthsearch ');
 	$totalarray['nbfield']++;
 }
-print '</tr>'."\n";
+echo '</tr>'."\n";
 
 // Detect if we need a fetch on each output line
 $needToFetchEachLine = 0;
@@ -514,17 +514,17 @@ while ($i < $imaxinloop) {
 	$company = new Societe($db);
 	$result = $company->fetch($obj->socid);
 
-	print '<tr class="oddeven">';
+	echo '<tr class="oddeven">';
 	if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-		print '<td class="nowrap center">';
+		echo '<td class="nowrap center">';
 		if ($massactionbutton || $massaction) { // If we are in select mode (massactionbutton defined) or if we have already selected and sent an action ($massaction) defined
 			$selected = 0;
 			if (in_array($obj->id_paiement, $arrayofselected)) {
 				$selected = 1;
 			}
-			print '<input id="cb'.$obj->id_paiement.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$obj->id_paiement.'"'.($selected ? ' checked="checked"' : '').'>';
+			echo '<input id="cb'.$obj->id_paiement.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$obj->id_paiement.'"'.($selected ? ' checked="checked"' : '').'>';
 		}
-		print '</td>';
+		echo '</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -532,7 +532,7 @@ while ($i < $imaxinloop) {
 
 	// Ref
 	if (!empty($arrayfields['pd.rowid']['checked'])) {
-		print '<td><a href="' . DOL_URL_ROOT . '/don/payment/card.php?id=' . $obj->payment_id . '">' . img_object($langs->trans("Payment"), "payment") . ' ' . $obj->payment_id . '</a></td>';
+		echo '<td><a href="' . DOL_URL_ROOT . '/don/payment/card.php?id=' . $obj->payment_id . '">' . img_object($langs->trans("Payment"), "payment") . ' ' . $obj->payment_id . '</a></td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -541,7 +541,7 @@ while ($i < $imaxinloop) {
 	// Date
 	if (!empty($arrayfields['pd.datep']['checked'])) {
 		$dateformatforpayment = 'dayhour';
-		print '<td class="nowraponall">'.dol_print_date($db->jdate($obj->datep), $dateformatforpayment, 'tzuser').'</td>';
+		echo '<td class="nowraponall">'.dol_print_date($db->jdate($obj->datep), $dateformatforpayment, 'tzuser').'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -549,13 +549,13 @@ while ($i < $imaxinloop) {
 
 	// Thirdparty
 	if (!empty($arrayfields['s.nom']['checked'])) {
-		print '<td class="nowraponall">';
+		echo '<td class="nowraponall">';
 		if ($obj->soc_id > 0) {
-			print $companystatic->getNomUrl(1, '', 24);
+			echo $companystatic->getNomUrl(1, '', 24);
 		} else {
-			print $donationstatic->societe = $obj->societe;
+			echo $donationstatic->societe = $obj->societe;
 		}
-		print '</td>';
+		echo '</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -563,7 +563,7 @@ while ($i < $imaxinloop) {
 
 	// Payment type
 	if (!empty($arrayfields['c.code']['checked'])) {
-		print '<td>'.$langs->trans("PaymentTypeShort".$obj->paiement_code).'</td>';
+		echo '<td>'.$langs->trans("PaymentTypeShort".$obj->paiement_code).'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -571,7 +571,7 @@ while ($i < $imaxinloop) {
 
 	// Filter: Cheque number (fund transfer)
 	if (!empty($arrayfields['pd.num_paiement']['checked'])) {
-		print '<td>'.$obj->num_payment.'</td>';
+		echo '<td>'.$obj->num_payment.'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -579,12 +579,12 @@ while ($i < $imaxinloop) {
 
 	// Bank transaction
 	if (!empty($arrayfields['transaction']['checked'])) {
-		print '<td class="tdoverflowmax125">';
+		echo '<td class="tdoverflowmax125">';
 		if ($obj->fk_bank > 0) {
 			$test = $bankline->fetch($obj->fk_bank);
-			print $bankline->getNomUrl(1, 0);
+			echo $bankline->getNomUrl(1, 0);
 		}
-		print '</td>';
+		echo '</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -592,7 +592,7 @@ while ($i < $imaxinloop) {
 
 	// Bank account
 	if (!empty($arrayfields['ba.label']['checked'])) {
-		print '<td>';
+		echo '<td>';
 		if ($obj->bid > 0) {
 			$accountstatic->id = $obj->bid;
 			$accountstatic->ref = $obj->bref;
@@ -604,7 +604,7 @@ while ($i < $imaxinloop) {
 			$accountingjournal->fetch($obj->accountancy_journal);
 			$accountstatic->accountancy_journal = $accountingjournal->code;
 
-			print $accountstatic->getNomUrl(1);
+			echo $accountstatic->getNomUrl(1);
 		}
 		if (!$i) {
 			$totalarray['nbfield']++;
@@ -613,7 +613,7 @@ while ($i < $imaxinloop) {
 
 	// Amount
 	if (!empty($arrayfields['pd.amount']['checked'])) {
-		print '<td class="right"><span class="amount">' . price($obj->amount) . '</span></td>';
+		echo '<td class="right"><span class="amount">' . price($obj->amount) . '</span></td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 			$totalarray['pos'][$totalarray['nbfield']] = 'amount';
@@ -639,19 +639,19 @@ if ($num == 0) {
 			$colspan++;
 		}
 	}
-	print '<tr><td colspan="'.$colspan.'"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
+	echo '<tr><td colspan="'.$colspan.'"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
 }
 
 $db->free($resql);
 
 $parameters = array('arrayfields' => $arrayfields, 'sql' => $sql);
 $reshook = $hookmanager->executeHooks('printFieldListFooter', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
-print $hookmanager->resPrint;
+echo $hookmanager->resPrint;
 
-print '</table>'."\n";
-print '</div>'."\n";
+echo '</table>'."\n";
+echo '</div>'."\n";
 
-print '</form>'."\n";
+echo '</form>'."\n";
 
 llxFooter();
 $db->close();

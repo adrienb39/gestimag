@@ -253,19 +253,19 @@ if (GETPOSTINT('nomassaction') || in_array($massaction, array('presend', 'predel
 }
 $massactionbutton = $form->selectMassAction('', $arrayofmassactions);
 
-print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">'."\n";
+echo '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">'."\n";
 if ($optioncss != '') {
-	print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
+	echo '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 }
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-print '<input type="hidden" name="action" value="list">';
-print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-print '<input type="hidden" name="page" value="'.$page.'">';
-print '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
-print '<input type="hidden" name="page_y" value="">';
-print '<input type="hidden" name="mode" value="'.$mode.'">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+echo '<input type="hidden" name="action" value="list">';
+echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+echo '<input type="hidden" name="page" value="'.$page.'">';
+echo '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
+echo '<input type="hidden" name="page_y" value="">';
+echo '<input type="hidden" name="mode" value="'.$mode.'">';
 
 
 $newcardbutton = '';
@@ -291,17 +291,17 @@ if (empty($reshook)) {
 }
 
 if (!empty($moreforfilter)) {
-	print '<div class="liste_titre liste_titre_bydiv centpercent">';
-	print $moreforfilter;
-	print '</div>';
+	echo '<div class="liste_titre liste_titre_bydiv centpercent">';
+	echo $moreforfilter;
+	echo '</div>';
 }
 
 $varpage = empty($contextpage) ? $_SERVER["PHP_SELF"] : $contextpage;
 $selectedfields = $form->multiSelectArrayWithCheckbox('selectedfields', $arrayfields, $varpage, getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')); // This also change content of $arrayfields
 $selectedfields .= (count($arrayofmassactions) ? $form->showCheckAddButtons('checkforselect', 1) : '');
 
-print '<div class="div-table-responsive">';
-print '<table class="tagtable nobottomiftotal liste'.($moreforfilter ? " listwithfilterbefore" : "").'">'."\n";
+echo '<div class="div-table-responsive">';
+echo '<table class="tagtable nobottomiftotal liste'.($moreforfilter ? " listwithfilterbefore" : "").'">'."\n";
 
 // Fields title search
 // --------------------------------------------------------------------
@@ -312,9 +312,9 @@ $totalarray['nbfield'] = 0;
 
 // Fields title label
 // --------------------------------------------------------------------
-print '<tr class="liste_titre">';
+echo '<tr class="liste_titre">';
 if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print getTitleFieldOfList(($mode != 'kanban' ? $selectedfields : ''), 0, $_SERVER["PHP_SELF"], '', '', '', '', $sortfield, $sortorder, 'center maxwidthsearch ')."\n";
+	echo getTitleFieldOfList(($mode != 'kanban' ? $selectedfields : ''), 0, $_SERVER["PHP_SELF"], '', '', '', '', $sortfield, $sortorder, 'center maxwidthsearch ')."\n";
 	$totalarray['nbfield']++;
 }
 print_liste_field_titre("Ref", $_SERVER["PHP_SELF"], "b.rowid", "", $param, '', $sortfield, $sortorder);
@@ -332,10 +332,10 @@ $totalarray['nbfield']++;
 print_liste_field_titre("Position", $_SERVER["PHP_SELF"], "b.position", "", $param, '', $sortfield, $sortorder, 'right ');
 $totalarray['nbfield']++;
 if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print getTitleFieldOfList(($mode != 'kanban' ? $selectedfields : ''), 0, $_SERVER["PHP_SELF"], '', '', '', '', $sortfield, $sortorder, 'center maxwidthsearch ')."\n";
+	echo getTitleFieldOfList(($mode != 'kanban' ? $selectedfields : ''), 0, $_SERVER["PHP_SELF"], '', '', '', '', $sortfield, $sortorder, 'center maxwidthsearch ')."\n";
 	$totalarray['nbfield']++;
 }
-print '</tr>'."\n";
+echo '</tr>'."\n";
 
 // Loop on record
 // --------------------------------------------------------------------
@@ -355,8 +355,8 @@ while ($i < $imaxinloop) {
 
 	if ($mode == 'kanban') {
 		if ($i == 0) {
-			print '<tr><td colspan="'.$savnbfield.'">';
-			print '<div class="box-flex-container">';
+			echo '<tr><td colspan="'.$savnbfield.'">';
+			echo '<div class="box-flex-container">';
 		}
 		// Output Kanban
 		$selected = -1;
@@ -366,35 +366,35 @@ while ($i < $imaxinloop) {
 				$selected = 1;
 			}
 		}
-		print $object->getKanbanView('', array('selected' => $selected));
+		echo $object->getKanbanView('', array('selected' => $selected));
 		if ($i == ($imaxinloop - 1)) {
-			print '</div>';
-			print '</td></tr>';
+			echo '</div>';
+			echo '</td></tr>';
 		}
 	} else {
 		// Show here line of result
 		$j = 0;
-		print '<tr data-rowid="'.$object->id.'" class="oddeven">';
+		echo '<tr data-rowid="'.$object->id.'" class="oddeven">';
 		// Action column
 		if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-			print '<td class="nowrap center">';
+			echo '<td class="nowrap center">';
 			if ($massactionbutton || $massaction) { // If we are in select mode (massactionbutton defined) or if we have already selected and sent an action ($massaction) defined
 				$selected = 0;
 				if (in_array($object->id, $arrayofselected)) {
 					$selected = 1;
 				}
-				print '<input id="cb'.$object->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$object->id.'"'.($selected ? ' checked="checked"' : '').'>';
+				echo '<input id="cb'.$object->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$object->id.'"'.($selected ? ' checked="checked"' : '').'>';
 			}
-			print '</td>';
+			echo '</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
 		}
 
 		// Id
-		print '<td class="nowraponall">';
-		print $object->getNomUrl(1);
-		print '</td>';
+		echo '<td class="nowraponall">';
+		echo $object->getNomUrl(1);
+		echo '</td>';
 
 		$linkintern = 1;
 		if (preg_match('/^http/i', $obj->url)) {
@@ -406,35 +406,35 @@ while ($i < $imaxinloop) {
 		$candelete  = $permissiontodelete;
 
 		// Title
-		print '<td class="tdoverflowmax200" alt="'.dol_escape_htmltag($title).'">';
-		print dol_escape_htmltag($title);
-		print "</td>\n";
+		echo '<td class="tdoverflowmax200" alt="'.dol_escape_htmltag($title).'">';
+		echo dol_escape_htmltag($title);
+		echo "</td>\n";
 
 		// Url
-		print '<td class="tdoverflowmax200">';
+		echo '<td class="tdoverflowmax200">';
 		if (empty($linkintern)) {
-			print img_picto('', 'url', 'class="pictofixedwidth"');
-			print '<a class="" href="'.$obj->url.'"'.($obj->target ? ' target="newlink" rel="noopener"' : '').'>';
+			echo img_picto('', 'url', 'class="pictofixedwidth"');
+			echo '<a class="" href="'.$obj->url.'"'.($obj->target ? ' target="newlink" rel="noopener"' : '').'>';
 		} else {
-			//print img_picto('', 'rightarrow', 'class="pictofixedwidth"');
-			print '<a class="" href="'.$obj->url.'">';
+			//echo img_picto('', 'rightarrow', 'class="pictofixedwidth"');
+			echo '<a class="" href="'.$obj->url.'">';
 		}
-		print $link;
-		print '</a>';
-		print "</td>\n";
+		echo $link;
+		echo '</a>';
+		echo "</td>\n";
 
 		// Target
-		print '<td class="tdoverflowmax100 center">';
+		echo '<td class="tdoverflowmax100 center">';
 		if ($obj->target == 0) {
-			print $langs->trans("BookmarkTargetReplaceWindowShort");
+			echo $langs->trans("BookmarkTargetReplaceWindowShort");
 		}
 		if ($obj->target == 1) {
-			print $langs->trans("BookmarkTargetNewWindowShort");
+			echo $langs->trans("BookmarkTargetNewWindowShort");
 		}
-		print "</td>\n";
+		echo "</td>\n";
 
 		// Author
-		print '<td class="tdoverflowmax100 center">';
+		echo '<td class="tdoverflowmax100 center">';
 		if ($obj->fk_user > 0) {
 			if (empty($conf->cache['users'][$obj->fk_user])) {
 				$tmpuser = new User($db);
@@ -442,39 +442,39 @@ while ($i < $imaxinloop) {
 				$conf->cache['users'][$obj->fk_user] = $tmpuser;
 			}
 			$tmpuser = $conf->cache['users'][$obj->fk_user];
-			print $tmpuser->getNomUrl(-1);
+			echo $tmpuser->getNomUrl(-1);
 		} else {
-			print '<span class="opacitymedium">'.$langs->trans("Everybody").'</span>';
+			echo '<span class="opacitymedium">'.$langs->trans("Everybody").'</span>';
 			if (!$user->admin) {
 				$candelete = false;
 				$canedit = false;
 			}
 		}
-		print "</td>\n";
+		echo "</td>\n";
 
 		// Date creation
-		print '<td class="center" title="'.dol_escape_htmltag(dol_print_date($db->jdate($obj->dateb), 'dayhour')).'">'.dol_print_date($db->jdate($obj->dateb), 'day')."</td>";
+		echo '<td class="center" title="'.dol_escape_htmltag(dol_print_date($db->jdate($obj->dateb), 'dayhour')).'">'.dol_print_date($db->jdate($obj->dateb), 'day')."</td>";
 
 		// Position
-		print '<td class="right">'.$obj->position."</td>";
+		echo '<td class="right">'.$obj->position."</td>";
 
 		// Action column
 		if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-			print '<td class="nowrap center">';
+			echo '<td class="nowrap center">';
 			if ($massactionbutton || $massaction) { // If we are in select mode (massactionbutton defined) or if we have already selected and sent an action ($massaction) defined
 				$selected = 0;
 				if (in_array($object->id, $arrayofselected)) {
 					$selected = 1;
 				}
-				print '<input id="cb'.$object->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$object->id.'"'.($selected ? ' checked="checked"' : '').'>';
+				echo '<input id="cb'.$object->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$object->id.'"'.($selected ? ' checked="checked"' : '').'>';
 			}
-			print '</td>';
+			echo '</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
 		}
 
-		print "</tr>\n";
+		echo "</tr>\n";
 	}
 
 	$i++;
@@ -491,19 +491,19 @@ if ($num == 0) {
 			$colspan++;
 		}
 	}
-	print '<tr><td colspan="'.$savnbfield.'"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
+	echo '<tr><td colspan="'.$savnbfield.'"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
 }
 
 $db->free($resql);
 
 $parameters = array('arrayfields'=>$arrayfields, 'sql'=>$sql);
 $reshook = $hookmanager->executeHooks('printFieldListFooter', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
-print $hookmanager->resPrint;
+echo $hookmanager->resPrint;
 
-print '</table>'."\n";
-print '</div>'."\n";
+echo '</table>'."\n";
+echo '</div>'."\n";
 
-print '</form>'."\n";
+echo '</form>'."\n";
 
 
 // End of page

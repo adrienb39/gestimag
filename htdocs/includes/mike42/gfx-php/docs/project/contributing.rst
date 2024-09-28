@@ -80,7 +80,7 @@ To test all examples:
 
 .. code-block:: bash
 
-   mkdir -p tmp && (cd tmp && find ../example -name '*.php' -print0 | xargs -n 1 -0 sh -c 'echo $0; php $0 || exit 255')
+   mkdir -p tmp && (cd tmp && find ../example -name '*.php' -print0 | xargs -n 1 -0 sh -c 'echo  $0; php $0 || exit 255')
 
 To run a style check and fix formatting issues:
 

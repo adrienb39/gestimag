@@ -40,7 +40,7 @@
 define('ALLOWED_IF_UPGRADE_UNLOCK_FOUND', 1);
 include_once 'inc.php';
 if (!file_exists($conffile)) {
-	print 'Error: Gestimag config file was not found. This may means that Gestimag is not installed yet. Please call the page "/install/index.php" instead of "/install/upgrade.php").';
+	echo 'Error: Gestimag config file was not found. This may means that Gestimag is not installed yet. Please call the page "/install/index.php" instead of "/install/upgrade.php").';
 }
 require_once $conffile;
 require_once $gestimag_main_document_root.'/core/lib/admin.lib.php';
@@ -91,14 +91,14 @@ if (!is_object($conf)) {
  */
 
 if (!$versionfrom && !$versionto) {
-	print 'Error: Parameter versionfrom or versionto missing.'."\n";
-	print 'Upgrade must be ran from command line with parameters or called from page install/index.php (like a first install)'."\n";
+	echo 'Error: Parameter versionfrom or versionto missing.'."\n";
+	echo 'Upgrade must be ran from command line with parameters or called from page install/index.php (like a first install)'."\n";
 	// Test if batch mode
 	$sapi_type = php_sapi_name();
 	$script_file = basename(__FILE__);
 	$path = __DIR__.'/';
 	if (substr($sapi_type, 0, 3) == 'cli') {
-		print 'Syntax from command line: '.$script_file." x.y.z a.b.c\n";
+		echo 'Syntax from command line: '.$script_file." x.y.z a.b.c\n";
 	}
 	exit;
 }
@@ -112,10 +112,10 @@ $actiondone = 0;
 if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ09'))) {
 	$actiondone = 1;
 
-	print '<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/database.svg" width="20" alt="Database"> ';
-	print '<span class="inline-block">'.$langs->trans("DatabaseMigration").'</span></h3>';
+	echo '<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/database.svg" width="20" alt="Database"> ';
+	echo '<span class="inline-block">'.$langs->trans("DatabaseMigration").'</span></h3>';
 
-	print '<table cellspacing="0" cellpadding="1" border="0" width="100%">';
+	echo '<table cellspacing="0" cellpadding="1" border="0" width="100%">';
 	$error = 0;
 
 	// If password is encoded, we decode it
@@ -155,24 +155,24 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 	$hookmanager = new HookManager($db);
 
 	if ($db->connected) {
-		print '<tr><td class="nowrap">';
-		print $langs->trans("ServerConnection")." : ".$gestimag_main_db_host.'</td><td class="right"><span class="neutral">'.$langs->trans("OK").'</span></td></tr>'."\n";
+		echo '<tr><td class="nowrap">';
+		echo $langs->trans("ServerConnection")." : ".$gestimag_main_db_host.'</td><td class="right"><span class="neutral">'.$langs->trans("OK").'</span></td></tr>'."\n";
 		gestimag_install_syslog("upgrade: ".$langs->transnoentities("ServerConnection").": $gestimag_main_db_host ".$langs->transnoentities("OK"));
 		$ok = 1;
 	} else {
-		print "<tr><td>".$langs->trans("ErrorFailedToConnectToDatabase", $gestimag_main_db_name).'</td><td class="right"><span class="error">'.$langs->transnoentities("Error")."</span></td></tr>\n";
+		echo "<tr><td>".$langs->trans("ErrorFailedToConnectToDatabase", $gestimag_main_db_name).'</td><td class="right"><span class="error">'.$langs->transnoentities("Error")."</span></td></tr>\n";
 		gestimag_install_syslog("upgrade: ".$langs->transnoentities("ErrorFailedToConnectToDatabase", $gestimag_main_db_name));
 		$ok = 0;
 	}
 
 	if ($ok) {
 		if ($db->database_selected) {
-			print '<tr><td class="nowrap">';
-			print $langs->trans("DatabaseConnection")." : ".$gestimag_main_db_name.'</td><td class="right"><span class="neutral">'.$langs->trans("OK")."</span></td></tr>\n";
+			echo '<tr><td class="nowrap">';
+			echo $langs->trans("DatabaseConnection")." : ".$gestimag_main_db_name.'</td><td class="right"><span class="neutral">'.$langs->trans("OK")."</span></td></tr>\n";
 			gestimag_install_syslog("upgrade: Database connection successful: ".$gestimag_main_db_name);
 			$ok = 1;
 		} else {
-			print "<tr><td>".$langs->trans("ErrorFailedToConnectToDatabase", $gestimag_main_db_name).'</td><td class="right"><span class="ok">'.$langs->trans("Error")."</span></td></tr>\n";
+			echo "<tr><td>".$langs->trans("ErrorFailedToConnectToDatabase", $gestimag_main_db_name).'</td><td class="right"><span class="ok">'.$langs->trans("Error")."</span></td></tr>\n";
 			gestimag_install_syslog("upgrade: ".$langs->transnoentities("ErrorFailedToConnectToDatabase", $gestimag_main_db_name));
 			$ok = 0;
 		}
@@ -182,26 +182,26 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 	if ($ok) {
 		$version = $db->getVersion();
 		$versionarray = $db->getVersionArray();
-		print '<tr><td>'.$langs->trans("ServerVersion").'</td>';
-		print '<td class="right">'.$version.'</td></tr>';
+		echo '<tr><td>'.$langs->trans("ServerVersion").'</td>';
+		echo '<td class="right">'.$version.'</td></tr>';
 		gestimag_install_syslog("upgrade: ".$langs->transnoentities("ServerVersion").": ".$version);
 		if ($db->type == 'mysqli' && function_exists('mysqli_get_charset')) {
 			$tmparray = $db->db->get_charset();
-			print '<tr><td>'.$langs->trans("ClientCharset").'</td>';
-			print '<td class="right">'.$tmparray->charset.'</td></tr>';
+			echo '<tr><td>'.$langs->trans("ClientCharset").'</td>';
+			echo '<td class="right">'.$tmparray->charset.'</td></tr>';
 			gestimag_install_syslog("upgrade: ".$langs->transnoentities("ClientCharset").": ".$tmparray->charset);
-			print '<tr><td>'.$langs->trans("ClientSortingCharset").'</td>';
-			print '<td class="right">'.$tmparray->collation.'</td></tr>';
+			echo '<tr><td>'.$langs->trans("ClientSortingCharset").'</td>';
+			echo '<td class="right">'.$tmparray->collation.'</td></tr>';
 			gestimag_install_syslog("upgrade: ".$langs->transnoentities("ClientCollation").": ".$tmparray->collation);
 		}
 
 		// Test database version requirement
 		$versionmindb = explode('.', $db::VERSIONMIN);
-		//print join('.',$versionarray).' - '.join('.',$versionmindb);
+		//echo join('.',$versionarray).' - '.join('.',$versionmindb);
 		if (count($versionmindb) && count($versionarray)
 			&& versioncompare($versionarray, $versionmindb) < 0) {
 			// Warning: database version too low.
-			print "<tr><td>".$langs->trans("ErrorDatabaseVersionTooLow", implode('.', $versionarray), implode('.', $versionmindb)).'</td><td class="right"><span class="error">'.$langs->trans("Error")."</span></td></tr>\n";
+			echo "<tr><td>".$langs->trans("ErrorDatabaseVersionTooLow", implode('.', $versionarray), implode('.', $versionmindb)).'</td><td class="right"><span class="error">'.$langs->trans("Error")."</span></td></tr>\n";
 			gestimag_install_syslog("upgrade: ".$langs->transnoentities("ErrorDatabaseVersionTooLow", implode('.', $versionarray), implode('.', $versionmindb)));
 			$ok = 0;
 		}
@@ -221,12 +221,12 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 				}
 			}
 			foreach ($dbversion_disallowed as $dbversion_totest) {
-				//print $db->type.' - '.join('.',$versionarray).' - '.versioncompare($dbversion_totest['version'],$versionarray)."<br>\n";
+				//echo $db->type.' - '.join('.',$versionarray).' - '.versioncompare($dbversion_totest['version'],$versionarray)."<br>\n";
 				if ($dbversion_totest['type'] == $db->type
 					&& (versioncompare($dbversion_totest['version'], $versionarray) == 0 || versioncompare($dbversion_totest['version'], $versionarray) <= -4 || versioncompare($dbversion_totest['version'], $versionarray) >= 4)
 				) {
 					// Warning: database version too low.
-					print '<tr><td><div class="warning">'.$langs->trans("ErrorDatabaseVersionForbiddenForMigration", implode('.', $versionarray), $listofforbiddenversion)."</div></td><td class=\"right\">".$langs->trans("Error")."</td></tr>\n";
+					echo '<tr><td><div class="warning">'.$langs->trans("ErrorDatabaseVersionForbiddenForMigration", implode('.', $versionarray), $listofforbiddenversion)."</div></td><td class=\"right\">".$langs->trans("Error")."</td></tr>\n";
 					gestimag_install_syslog("upgrade: ".$langs->transnoentities("ErrorDatabaseVersionForbiddenForMigration", implode('.', $versionarray), $listofforbiddenversion));
 					$ok = 0;
 					break;
@@ -237,12 +237,12 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 
 	// Force l'affichage de la progression
 	if ($ok) {
-		print '<tr><td colspan="2"><span class="opacitymedium messagebepatient">'.$langs->trans("PleaseBePatient").'</span></td></tr>';
-		print '</table>';
+		echo '<tr><td colspan="2"><span class="opacitymedium messagebepatient">'.$langs->trans("PleaseBePatient").'</span></td></tr>';
+		echo '</table>';
 
 		flush();
 
-		print '<table cellspacing="0" cellpadding="1" border="0" width="100%">';
+		echo '<table cellspacing="0" cellpadding="1" border="0" width="100%">';
 	}
 
 
@@ -270,7 +270,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 			foreach ($listtables as $val) {
 				// Database prefix filter
 				if (preg_match('/^'.MAIN_DB_PREFIX.'/', $val)) {
-					//print "x".$val."<br>";
+					//echo "x".$val."<br>";
 					$sql = "SHOW CREATE TABLE ".$val;
 					$resql = $db->query($sql);
 					if ($resql) {
@@ -283,7 +283,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 								$sqldrop = "ALTER TABLE ".$val." DROP FOREIGN KEY ".$reg[1];
 								$resqldrop = $db->query($sqldrop);
 								if ($resqldrop) {
-									print '<tr><td colspan="2">'.$sqldrop.";</td></tr>\n";
+									echo '<tr><td colspan="2">'.$sqldrop.";</td></tr>\n";
 								}
 								$createsql = preg_replace('/CONSTRAINT `'.$reg[1].'`/i', 'XXX', $createsql);
 								$i++;
@@ -292,7 +292,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 						$db->free($resql);
 					} else {
 						if ($db->lasterrno() != 'DB_ERROR_NOSUCHTABLE') {
-							print '<tr><td colspan="2"><span class="error">'.dol_escape_htmltag($sql).' : '.dol_escape_htmltag($db->lasterror())."</span></td></tr>\n";
+							echo '<tr><td colspan="2"><span class="error">'.dol_escape_htmltag($sql).' : '.dol_escape_htmltag($db->lasterror())."</span></td></tr>\n";
 						}
 					}
 				}
@@ -331,7 +331,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 			}
 			sort($filesindir);
 		} else {
-			print '<div class="error">'.$langs->trans("ErrorCanNotReadDir", $dir).'</div>';
+			echo '<div class="error">'.$langs->trans("ErrorCanNotReadDir", $dir).'</div>';
 		}
 
 		// Define which file to run
@@ -344,7 +344,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 		}
 
 		if (count($filelist) == 0) {
-			print '<div class="error">'.$langs->trans("ErrorNoMigrationFilesFoundForParameters").'</div>';
+			echo '<div class="error">'.$langs->trans("ErrorNoMigrationFilesFoundForParameters").'</div>';
 		} else {
 			$listoffileprocessed = array(); // Protection to avoid to process twice the same file
 
@@ -354,8 +354,8 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 					continue;
 				}
 
-				print '<tr><td colspan="2"><hr style="border-color: #ccc; border-top-style: none;"></td></tr>';
-				print '<tr><td class="nowrap">'.$langs->trans("ChoosedMigrateScript").'</td><td class="right">'.$file.'</td></tr>'."\n";
+				echo '<tr><td colspan="2"><hr style="border-color: #ccc; border-top-style: none;"></td></tr>';
+				echo '<tr><td class="nowrap">'.$langs->trans("ChoosedMigrateScript").'</td><td class="right">'.$file.'</td></tr>'."\n";
 
 				// Run sql script
 				$ok = run_sql($dir.$file, 0, '', 1, '', 'default', 32768, 0, 0, 2, 0, $db->database_name);
@@ -370,7 +370,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 					if (is_resource($handlemodule)) {
 						while (($filemodule = readdir($handlemodule)) !== false) {
 							if (!preg_match('/\./', $filemodule) && is_dir($dirroot.'/'.$filemodule.'/sql')) {	// We exclude filemodule that contains . (are not directories) and are not directories.
-								//print "Scan for ".$dirroot . '/' . $filemodule . '/sql/'.$file;
+								//echo "Scan for ".$dirroot . '/' . $filemodule . '/sql/'.$file;
 								if (is_file($dirroot.'/'.$filemodule.'/sql/gestimag_'.$file)) {
 									$modulesfile[$dirroot.'/'.$filemodule.'/sql/gestimag_'.$file] = '/'.$filemodule.'/sql/gestimag_'.$file;
 								}
@@ -384,14 +384,14 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 				}
 
 				if (count($modulesfile)) {
-					print '<tr><td colspan="2"><hr style="border-color: #ccc; border-top-style: none;"></td></tr>';
+					echo '<tr><td colspan="2"><hr style="border-color: #ccc; border-top-style: none;"></td></tr>';
 
 					foreach ($modulesfile as $modulefilelong => $modulefileshort) {
 						if (in_array($modulefilelong, $listoffileprocessed)) {
 							continue;
 						}
 
-						print '<tr><td class="nowrap">'.$langs->trans("ChoosedMigrateScript").' (external modules)</td><td class="right">'.$modulefileshort.'</td></tr>'."\n";
+						echo '<tr><td class="nowrap">'.$langs->trans("ChoosedMigrateScript").' (external modules)</td><td class="right">'.$modulefileshort.'</td></tr>'."\n";
 
 						// Run sql script
 						$okmodule = run_sql($modulefilelong, 0, '', 1); // Note: Result of migration of external module should not decide if we continue migration of Gestimag or not.
@@ -402,7 +402,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 		}
 	}
 
-	print '</table>';
+	echo '</table>';
 
 	if ($db->connected) {
 		$db->close();
@@ -411,7 +411,7 @@ if (!GETPOST('action', 'aZ09') || preg_match('/upgrade/i', GETPOST('action', 'aZ
 
 
 if (empty($actiondone)) {
-	print '<div class="error">'.$langs->trans("ErrorWrongParameters").'</div>';
+	echo '<div class="error">'.$langs->trans("ErrorWrongParameters").'</div>';
 }
 
 $ret = 0;

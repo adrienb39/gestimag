@@ -53,7 +53,7 @@ if ($usesublevelpermission && !$user->hasRight($module, $element)) {	// There is
 	$usesublevelpermission = '';
 }
 
-//print $object->id.' - '.$object->module.' - '.$object->element.' - '.$object->table_element.' - '.$usesublevelpermission."\n";
+//echo $object->id.' - '.$object->module.' - '.$object->element.' - '.$object->table_element.' - '.$usesublevelpermission."\n";
 
 // Security check
 $result = restrictedArea($user, $object->module, $object, $object->table_element, $usesublevelpermission, 'fk_soc', 'rowid', 0, 1);	// Call with mode return
@@ -72,7 +72,7 @@ if (!getDolGlobalString('MAIN_USE_JQUERY_JEDITABLE')) {
 
 top_httphead();
 
-//print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+//echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 // Load original field value
 if (!empty($field) && !empty($element) && !empty($table_element) && !empty($fk_element)) {
@@ -114,7 +114,7 @@ if (!empty($field) && !empty($element) && !empty($table_element) && !empty($fk_e
 			if (method_exists($form, $methodname)) {
 				$ret = $form->$methodname();
 				if ($ret > 0) {
-					echo json_encode($form->$cachename);
+					echo  json_encode($form->$cachename);
 				}
 			} elseif (!empty($ext_element)) {
 				$module = $subelement = $ext_element;
@@ -129,15 +129,15 @@ if (!empty($field) && !empty($element) && !empty($table_element) && !empty($fk_e
 				$object = new $classname($db);
 				$ret = $object->$methodname($fk_element);
 				if ($ret > 0) {
-					echo json_encode($object->$cachename);
+					echo  json_encode($object->$cachename);
 				}
 			}
 		} else {
 			$object = new GenericObject($db);
 			$value = $object->$loadmethod($table_element, $fk_element, $field);
-			echo $value;
+			echo  $value;
 		}
 	} else {
-		echo $langs->transnoentities('NotEnoughPermissions');
+		echo  $langs->transnoentities('NotEnoughPermissions');
 	}
 }

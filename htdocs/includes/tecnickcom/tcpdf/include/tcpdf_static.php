@@ -347,7 +347,7 @@ class TCPDF_STATIC {
 			// the content length may vary if the server is using compression
 			header('Content-Length: '.$length);
 		}
-		echo $data;
+		echo  $data;
 	}
 
 	/**

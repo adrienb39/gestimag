@@ -46,11 +46,11 @@ class MC_TCPDF extends TCPDF {
 		$this->AddPage();
 		// disable existing columns
 		$this->resetColumns();
-		// print chapter title
+		// echo chapter title
 		$this->ChapterTitle($num, $title);
 		// set columns
 		$this->setEqualColumns(3, 57);
-		// print chapter body
+		// echo chapter body
 		$this->ChapterBody($file, $mode);
 	}
 
@@ -80,7 +80,7 @@ class MC_TCPDF extends TCPDF {
 		// set font
 		$this->SetFont('times', '', 9);
 		$this->SetTextColor(50, 50, 50);
-		// print content
+		// echo content
 		if ($mode) {
 			// ------ HTML MODE ------
 			$this->writeHTML($content, true, false, true, false, 'J');
@@ -134,10 +134,10 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 // ---------------------------------------------------------
 
-// print TEXT
+// echo TEXT
 $pdf->PrintChapter(1, 'LOREM IPSUM [TEXT]', 'data/chapter_demo_1.txt', false);
 
-// print HTML
+// echo HTML
 $pdf->PrintChapter(2, 'LOREM IPSUM [HTML]', 'data/chapter_demo_2.txt', true);
 
 // ---------------------------------------------------------

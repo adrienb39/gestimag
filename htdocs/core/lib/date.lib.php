@@ -101,7 +101,7 @@ function getServerTimeZoneInt($refgmtdate = 'now')
 		$localtz = new DateTimeZone(getServerTimeZoneString());
 		$localdt = new DateTime($newrefgmtdate, $localtz);
 		$tmp = -1 * $localtz->getOffset($localdt);
-		//print $refgmtdate.'='.$tmp;
+		//echo$refgmtdate.'='.$tmp;
 	} else {
 		$tmp = 0;
 		dol_print_error(null, 'PHP version must be 5.3+');
@@ -685,7 +685,7 @@ function dol_get_first_day_week($day, $month, $year, $gm = false)
 	}
 	$days = abs($days);
 	$seconds = $days * 24 * 60 * 60;
-	//print 'start_week='.$start_week.' tmparray[wday]='.$tmparray['wday'].' day offset='.$days.' seconds offset='.$seconds.'<br>';
+	//echo'start_week='.$start_week.' tmparray[wday]='.$tmparray['wday'].' day offset='.$days.' seconds offset='.$seconds.'<br>';
 
 	//Get first day of week
 	$tmpdaytms = (int) date((string) $tmparray['0']) - $seconds; // $tmparray[0] is day of parameters
@@ -827,7 +827,7 @@ function num_public_holiday($timestampStart, $timestampEnd, $country_code = '', 
 			$mois  = (int) gmdate("m", $timestampStart);
 			$annee = (int) gmdate("Y", $timestampStart);
 
-			//print "jour=".$jour." month=".$mois." year=".$annee." includesaturday=".$includesaturday." includesunday=".$includesunday."\n";
+			//echo"jour=".$jour." month=".$mois." year=".$annee." includesaturday=".$includesaturday." includesunday=".$includesunday."\n";
 		foreach ($arrayOfPublicHolidays as $entrypublicholiday) {
 			if (!empty($entrypublicholiday['dayrule']) && $entrypublicholiday['dayrule'] != 'date') {		// For example 'easter', '...'
 				$specialdayrule[$entrypublicholiday['dayrule']] = $entrypublicholiday['dayrule'];
@@ -851,7 +851,7 @@ function num_public_holiday($timestampStart, $timestampEnd, $country_code = '', 
 			$i++;
 		}
 			//var_dump($specialdayrule)."\n";
-			//print "ferie=".$ferie."\n";
+			//echo"ferie=".$ferie."\n";
 
 		if (!$ferie) {
 			// Special dayrules
@@ -869,7 +869,7 @@ function num_public_holiday($timestampStart, $timestampEnd, $country_code = '', 
 			if (in_array('eastermonday', $specialdayrule)) {
 				// Calculation for the monday of easter date
 				$date_paques = getGMTEasterDatetime($annee);
-				//print 'PPP'.$date_paques.' '.dol_print_date($date_paques, 'dayhour', 'gmt')." ";
+				//echo'PPP'.$date_paques.' '.dol_print_date($date_paques, 'dayhour', 'gmt')." ";
 				$date_lundi_paques = $date_paques + (3600 * 24);
 				$jour_lundi_paques = gmdate("d", $date_lundi_paques);
 				$mois_lundi_paques = gmdate("m", $date_lundi_paques);
@@ -877,7 +877,7 @@ function num_public_holiday($timestampStart, $timestampEnd, $country_code = '', 
 					$ferie = true;
 				}
 				// Easter (monday)
-				//print 'annee='.$annee.' $jour='.$jour.' $mois='.$mois.' $jour_lundi_paques='.$jour_lundi_paques.' $mois_lundi_paques='.$mois_lundi_paques."\n";
+				//echo'annee='.$annee.' $jour='.$jour.' $mois='.$mois.' $jour_lundi_paques='.$jour_lundi_paques.' $mois_lundi_paques='.$mois_lundi_paques."\n";
 			}
 
 			//Good Friday
@@ -965,7 +965,7 @@ function num_public_holiday($timestampStart, $timestampEnd, $country_code = '', 
 				// Geneva fast in Switzerland
 			}
 		}
-			//print "ferie=".$ferie."\n";
+			//echo"ferie=".$ferie."\n";
 
 			// If we have to include Friday, Saturday and Sunday
 		if (!$ferie) {
@@ -989,7 +989,7 @@ function num_public_holiday($timestampStart, $timestampEnd, $country_code = '', 
 				}
 			}
 		}
-			//print "ferie=".$ferie."\n";
+			//echo"ferie=".$ferie."\n";
 
 			// We increase the counter of non working day
 		if ($ferie) {
@@ -1003,7 +1003,7 @@ function num_public_holiday($timestampStart, $timestampEnd, $country_code = '', 
 			$i++;
 	}
 
-	//print "nbFerie=".$nbFerie."\n";
+	//echo"nbFerie=".$nbFerie."\n";
 	return $nbFerie;
 }
 
@@ -1029,7 +1029,7 @@ function num_between_day($timestampStart, $timestampEnd, $lastday = 0)
 	} else {
 		$nbjours = 0;
 	}
-	//print ($timestampEnd - $timestampStart) - $lastday;
+	//echo($timestampEnd - $timestampStart) - $lastday;
 	return $nbjours;
 }
 
@@ -1063,7 +1063,7 @@ function num_open_day($timestampStart, $timestampEnd, $inhour = 0, $lastday = 0,
 		return 'ErrorBadParameter_num_open_day';
 	}
 
-	//print 'num_open_day timestampStart='.$timestampStart.' timestampEnd='.$timestampEnd.' bit='.$lastday;
+	//echo'num_open_day timestampStart='.$timestampStart.' timestampEnd='.$timestampEnd.' bit='.$lastday;
 	if ($timestampStart < $timestampEnd) {
 		$numdays = num_between_day($timestampStart, $timestampEnd, $lastday);
 

@@ -102,25 +102,25 @@ pHeader($langs->trans("GestimagSetup").' - '.$langs->trans("CreateDatabaseObject
 
 // Test if we can run a first install process
 if (!is_writable($conffile)) {
-	print $langs->trans("ConfFileIsNotWritable", $conffiletoshow);
+	echo $langs->trans("ConfFileIsNotWritable", $conffiletoshow);
 	pFooter(1, $setuplang, 'jscheckparam');
 	exit;
 }
 
 if ($action == "set") {
-	print '<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/database.svg" width="20" alt="Database"> '.$langs->trans("Database").'</h3>';
+	echo '<h3><img class="valignmiddle inline-block paddingright" src="../theme/common/octicons/build/svg/database.svg" width="20" alt="Database"> '.$langs->trans("Database").'</h3>';
 
-	print '<table cellspacing="0" style="padding: 4px 4px 4px 0" border="0" width="100%">';
+	echo '<table cellspacing="0" style="padding: 4px 4px 4px 0" border="0" width="100%">';
 	$error = 0;
 
 	$db = getDoliDBInstance($conf->db->type, $conf->db->host, $conf->db->user, $conf->db->pass, $conf->db->name, (int) $conf->db->port);
 
 	if ($db->connected) {
-		print "<tr><td>";
-		print $langs->trans("ServerConnection")." : ".$conf->db->host.'</td><td><img src="../theme/eldy/img/tick.png" alt="Ok"></td></tr>';
+		echo "<tr><td>";
+		echo $langs->trans("ServerConnection")." : ".$conf->db->host.'</td><td><img src="../theme/eldy/img/tick.png" alt="Ok"></td></tr>';
 		$ok = 1;
 	} else {
-		print "<tr><td>Failed to connect to server : ".$conf->db->host.'</td><td><img src="../theme/eldy/img/error.png" alt="Error"></td></tr>';
+		echo "<tr><td>Failed to connect to server : ".$conf->db->host.'</td><td><img src="../theme/eldy/img/error.png" alt="Error"></td></tr>';
 	}
 
 	if ($ok) {
@@ -128,7 +128,7 @@ if ($action == "set") {
 			gestimag_install_syslog("step2: successful connection to database: ".$conf->db->name);
 		} else {
 			gestimag_install_syslog("step2: failed connection to database :".$conf->db->name, LOG_ERR);
-			print "<tr><td>Failed to select database ".$conf->db->name.'</td><td><img src="../theme/eldy/img/error.png" alt="Error"></td></tr>';
+			echo "<tr><td>Failed to select database ".$conf->db->name.'</td><td><img src="../theme/eldy/img/error.png" alt="Error"></td></tr>';
 			$ok = 0;
 		}
 	}
@@ -138,13 +138,13 @@ if ($action == "set") {
 	if ($ok) {
 		$version = $db->getVersion();
 		$versionarray = $db->getVersionArray();
-		print '<tr><td>'.$langs->trans("DatabaseVersion").'</td>';
-		print '<td>'.$version.'</td></tr>';
-		//print '<td class="right">'.join('.',$versionarray).'</td></tr>';
+		echo '<tr><td>'.$langs->trans("DatabaseVersion").'</td>';
+		echo '<td>'.$version.'</td></tr>';
+		//echo '<td class="right">'.join('.',$versionarray).'</td></tr>';
 
-		print '<tr><td>'.$langs->trans("DatabaseName").'</td>';
-		print '<td>'.$db->database_name.'</td></tr>';
-		//print '<td class="right">'.join('.',$versionarray).'</td></tr>';
+		echo '<tr><td>'.$langs->trans("DatabaseName").'</td>';
+		echo '<td>'.$db->database_name.'</td></tr>';
+		//echo '<td class="right">'.join('.',$versionarray).'</td></tr>';
 	}
 
 	$requestnb = 0;
@@ -218,30 +218,30 @@ if ($action == "set") {
 					$buffer = preg_replace('/llx_/i', $gestimag_main_db_prefix, $buffer);
 				}
 
-				//print "<tr><td>Creation of table $name/td>";
+				//echo "<tr><td>Creation of table $name/td>";
 				$requestnb++;
 
 				gestimag_install_syslog("step2: request: ".$buffer);
 				$resql = $db->query($buffer, 0, 'dml');
 				if ($resql) {
-					// print "<td>OK request ==== $buffer</td></tr>";
+					// echo "<td>OK request ==== $buffer</td></tr>";
 					$db->free($resql);
 				} else {
 					if ($db->errno() == 'DB_ERROR_TABLE_ALREADY_EXISTS' ||
 						$db->errno() == 'DB_ERROR_TABLE_OR_KEY_ALREADY_EXISTS') {
-						//print "<td>already existing</td></tr>";
+						//echo "<td>already existing</td></tr>";
 					} else {
-						print "<tr><td>".$langs->trans("CreateTableAndPrimaryKey", $name);
-						print "<br>\n".$langs->trans("Request").' '.$requestnb.' : '.$buffer.' <br>Executed query : '.$db->lastquery;
-						print "\n</td>";
-						print '<td><span class="error">'.$langs->trans("ErrorSQL")." ".$db->errno()." ".$db->error().'</span></td></tr>';
+						echo "<tr><td>".$langs->trans("CreateTableAndPrimaryKey", $name);
+						echo "<br>\n".$langs->trans("Request").' '.$requestnb.' : '.$buffer.' <br>Executed query : '.$db->lastquery;
+						echo "\n</td>";
+						echo '<td><span class="error">'.$langs->trans("ErrorSQL")." ".$db->errno()." ".$db->error().'</span></td></tr>';
 						$error++;
 					}
 				}
 			} else {
-				print "<tr><td>".$langs->trans("CreateTableAndPrimaryKey", $name);
-				print "</td>";
-				print '<td><span class="error">'.$langs->trans("Error").' Failed to open file '.$dir.$file.'</span></td></tr>';
+				echo "<tr><td>".$langs->trans("CreateTableAndPrimaryKey", $name);
+				echo "</td>";
+				echo '<td><span class="error">'.$langs->trans("Error").' Failed to open file '.$dir.$file.'</span></td></tr>';
 				$error++;
 				gestimag_install_syslog("step2: failed to open file ".$dir.$file, LOG_ERR);
 			}
@@ -249,12 +249,12 @@ if ($action == "set") {
 
 		if ($tablefound) {
 			if ($error == 0) {
-				print '<tr><td>';
-				print $langs->trans("TablesAndPrimaryKeysCreation").'</td><td><img src="../theme/eldy/img/tick.png" alt="Ok"></td></tr>';
+				echo '<tr><td>';
+				echo $langs->trans("TablesAndPrimaryKeysCreation").'</td><td><img src="../theme/eldy/img/tick.png" alt="Ok"></td></tr>';
 				$ok = 1;
 			}
 		} else {
-			print '<tr><td>'.$langs->trans("ErrorFailedToFindSomeFiles", $dir).'</td><td><img src="../theme/eldy/img/error.png" alt="Error"></td></tr>';
+			echo '<tr><td>'.$langs->trans("ErrorFailedToFindSomeFiles", $dir).'</td><td><img src="../theme/eldy/img/error.png" alt="Error"></td></tr>';
 			gestimag_install_syslog("step2: failed to find files to create database in directory ".$dir, LOG_ERR);
 		}
 	}
@@ -289,7 +289,7 @@ if ($action == "set") {
 		sort($tabledata);
 		foreach ($tabledata as $file) {
 			$name = substr($file, 0, dol_strlen($file) - 4);
-			//print "<tr><td>Creation of table $name</td>";
+			//echo "<tr><td>Creation of table $name</td>";
 			$buffer = '';
 			$fp = fopen($dir.$file, "r");
 			if ($fp) {
@@ -306,7 +306,7 @@ if ($action == "set") {
 						&& versioncompare($versioncommande, $versionarray) <= 0) {
 							// Version qualified, delete SQL comments
 							$buf = preg_replace('/^--\sV([0-9\.]+)/i', '', $buf);
-							//print "Ligne $i qualifiee par version: ".$buf.'<br>';
+							//echo "Ligne $i qualifiee par version: ".$buf.'<br>';
 						}
 					}
 					// PGSQL
@@ -318,7 +318,7 @@ if ($action == "set") {
 						&& versioncompare($versioncommande, $versionarray) <= 0) {
 							// Version qualified, delete SQL comments
 							$buf = preg_replace('/^--\sPOSTGRESQL\sV([0-9\.]+)/i', '', $buf);
-							//print "Ligne $i qualifiee par version: ".$buf.'<br>';
+							//echo "Ligne $i qualifiee par version: ".$buf.'<br>';
 						}
 					}
 
@@ -339,13 +339,13 @@ if ($action == "set") {
 							$buffer = preg_replace('/llx_/i', $gestimag_main_db_prefix, $buffer);
 						}
 
-						//print "<tr><td>Creation of keys and table index $name: '$buffer'</td>";
+						//echo "<tr><td>Creation of keys and table index $name: '$buffer'</td>";
 						$requestnb++;
 
 						gestimag_install_syslog("step2: request: ".$buffer);
 						$resql = $db->query($buffer, 0, 'dml');
 						if ($resql) {
-							//print "<td>OK request ==== $buffer</td></tr>";
+							//echo "<td>OK request ==== $buffer</td></tr>";
 							$db->free($resql);
 						} else {
 							if ($db->errno() == 'DB_ERROR_KEY_NAME_ALREADY_EXISTS' ||
@@ -353,30 +353,30 @@ if ($action == "set") {
 							$db->errno() == 'DB_ERROR_PRIMARY_KEY_ALREADY_EXISTS' ||
 							$db->errno() == 'DB_ERROR_TABLE_OR_KEY_ALREADY_EXISTS' ||
 							preg_match('/duplicate key name/i', $db->error())) {
-								//print "<td>Deja existante</td></tr>";
+								//echo "<td>Deja existante</td></tr>";
 								$key_exists = 1;
 							} else {
-								print "<tr><td>".$langs->trans("CreateOtherKeysForTable", $name);
-								print "<br>\n".$langs->trans("Request").' '.$requestnb.' : '.$db->lastqueryerror();
-								print "\n</td>";
-								print '<td><span class="error">'.$langs->trans("ErrorSQL")." ".$db->errno()." ".$db->error().'</span></td></tr>';
+								echo "<tr><td>".$langs->trans("CreateOtherKeysForTable", $name);
+								echo "<br>\n".$langs->trans("Request").' '.$requestnb.' : '.$db->lastqueryerror();
+								echo "\n</td>";
+								echo '<td><span class="error">'.$langs->trans("ErrorSQL")." ".$db->errno()." ".$db->error().'</span></td></tr>';
 								$error++;
 							}
 						}
 					}
 				}
 			} else {
-				print "<tr><td>".$langs->trans("CreateOtherKeysForTable", $name);
-				print "</td>";
-				print '<td><span class="error">'.$langs->trans("Error")." Failed to open file ".$dir.$file."</span></td></tr>";
+				echo "<tr><td>".$langs->trans("CreateOtherKeysForTable", $name);
+				echo "</td>";
+				echo '<td><span class="error">'.$langs->trans("Error")." Failed to open file ".$dir.$file."</span></td></tr>";
 				$error++;
 				gestimag_install_syslog("step2: failed to open file ".$dir.$file, LOG_ERR);
 			}
 		}
 
 		if ($tablefound && $error == 0) {
-			print '<tr><td>';
-			print $langs->trans("OtherKeysCreation").'</td><td><img src="../theme/eldy/img/tick.png" alt="Ok"></td></tr>';
+			echo '<tr><td>';
+			echo $langs->trans("OtherKeysCreation").'</td><td><img src="../theme/eldy/img/tick.png" alt="Ok"></td></tr>';
 			$okkeys = 1;
 		}
 	}
@@ -426,7 +426,7 @@ if ($action == "set") {
 						$buffer = preg_replace('/llx_/i', $gestimag_main_db_prefix, $buffer);
 					}
 					gestimag_install_syslog("step2: request: ".$buffer);
-					print "<!-- Insert line : ".$buffer."<br>-->\n";
+					echo "<!-- Insert line : ".$buffer."<br>-->\n";
 					$resql = $db->query($buffer, 0, 'dml');
 					if ($resql) {
 						$ok = 1;
@@ -434,25 +434,25 @@ if ($action == "set") {
 					} else {
 						if ($db->errno() == 'DB_ERROR_RECORD_ALREADY_EXISTS'
 						|| $db->errno() == 'DB_ERROR_KEY_NAME_ALREADY_EXISTS') {
-							//print "Insert line : ".$buffer."<br>\n";
+							//echo "Insert line : ".$buffer."<br>\n";
 						} else {
 							$ok = 0;
 
-							print "<tr><td>".$langs->trans("FunctionsCreation");
-							print "<br>\n".$langs->trans("Request").' '.$requestnb.' : '.$buffer;
-							print "\n</td>";
-							print '<td><span class="error">'.$langs->trans("ErrorSQL")." ".$db->errno()." ".$db->error().'</span></td></tr>';
+							echo "<tr><td>".$langs->trans("FunctionsCreation");
+							echo "<br>\n".$langs->trans("Request").' '.$requestnb.' : '.$buffer;
+							echo "\n</td>";
+							echo '<td><span class="error">'.$langs->trans("ErrorSQL")." ".$db->errno()." ".$db->error().'</span></td></tr>';
 							$error++;
 						}
 					}
 				}
 			}
 
-			print "<tr><td>".$langs->trans("FunctionsCreation")."</td>";
+			echo "<tr><td>".$langs->trans("FunctionsCreation")."</td>";
 			if ($ok) {
-				print '<td><img src="../theme/eldy/img/tick.png" alt="Ok"></td></tr>';
+				echo '<td><img src="../theme/eldy/img/tick.png" alt="Ok"></td></tr>';
 			} else {
-				print '<td><img src="../theme/eldy/img/error.png" alt="Error"></td></tr>';
+				echo '<td><img src="../theme/eldy/img/error.png" alt="Error"></td></tr>';
 				$ok = 1;
 			}
 		}
@@ -480,7 +480,7 @@ if ($action == "set") {
 						continue; // We discard data file of chart of account. This will be loaded when a chart is selected.
 					}
 
-					//print 'x'.$file.'-'.$createdata.'<br>';
+					//echo 'x'.$file.'-'.$createdata.'<br>';
 					if (is_numeric($createdata) || preg_match('/'.preg_quote($createdata).'/i', $file)) {
 						$tablefound++;
 						$tabledata[] = $file;
@@ -546,11 +546,11 @@ if ($action == "set") {
 						//$db->free($resql);     // Not required as request we launch here does not return memory needs.
 					} else {
 						if ($db->lasterrno() == 'DB_ERROR_RECORD_ALREADY_EXISTS') {
-							//print "<tr><td>Insertion ligne : $buffer</td><td>";
+							//echo "<tr><td>Insertion ligne : $buffer</td><td>";
 						} else {
 							$ok = 0;
 							$okallfile = 0;
-							print '<span class="error">'.$langs->trans("ErrorSQL")." : ".$db->lasterrno()." - ".$db->lastqueryerror()." - ".$db->lasterror()."</span><br>";
+							echo '<span class="error">'.$langs->trans("ErrorSQL")." : ".$db->lasterrno()." - ".$db->lastqueryerror()." - ".$db->lasterror()."</span><br>";
 						}
 					}
 				}
@@ -563,17 +563,17 @@ if ($action == "set") {
 			}
 		}
 
-		print "<tr><td>".$langs->trans("ReferenceDataLoading")."</td>";
+		echo "<tr><td>".$langs->trans("ReferenceDataLoading")."</td>";
 		if ($ok) {
-			print '<td><img src="../theme/eldy/img/tick.png" alt="Ok"></td></tr>';
+			echo '<td><img src="../theme/eldy/img/tick.png" alt="Ok"></td></tr>';
 		} else {
-			print '<td><img src="../theme/eldy/img/error.png" alt="Error"></td></tr>';
+			echo '<td><img src="../theme/eldy/img/error.png" alt="Error"></td></tr>';
 			$ok = 1; // Data loading are not blocking errors
 		}
 	}
-	print '</table>';
+	echo '</table>';
 } else {
-	print 'Parameter action=set not defined';
+	echo 'Parameter action=set not defined';
 }
 
 
@@ -612,7 +612,7 @@ $out .= '  });';
 $out .= '});';
 $out .= '</script>';
 
-print $out;
+echo $out;
 
 pFooter($ok ? 0 : 1, $setuplang);
 

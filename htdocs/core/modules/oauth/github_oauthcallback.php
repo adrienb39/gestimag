@@ -80,7 +80,7 @@ if (GETPOST('state')) {
 	$requestedpermissionsarray = explode(',', GETPOST('state')); // Example: 'user'. 'state' parameter is standard to retrieve some parameters back
 }
 if ($action != 'delete' && empty($requestedpermissionsarray)) {
-	print 'Error, parameter state is not defined';
+	echo 'Error, parameter state is not defined';
 	exit;
 }
 //var_dump($requestedpermissionsarray);exit;
@@ -145,7 +145,7 @@ if (GETPOST('code')) {     // We are coming from oauth provider page
 		header('Location: '.$backtourl);
 		exit();
 	} catch (Exception $e) {
-		print $e->getMessage();
+		echo $e->getMessage();
 	}
 } else { // If entry on page with no parameter, we arrive here
 	$_SESSION["backtourlsavedbeforeoauthjump"] = $backtourl;

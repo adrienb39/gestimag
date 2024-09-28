@@ -186,57 +186,57 @@ llxHeader('', $langs->trans($page_name));
 // Subheader
 $linkback = '<a href="'.($backtopage ? $backtopage : DOL_URL_ROOT.'/admin/modules.php?restore_lastsearch_values=1').'">'.$langs->trans("BackToModuleList").'</a>';
 
-print load_fiche_titre($langs->trans($page_name), $linkback, 'title_setup');
+echo load_fiche_titre($langs->trans($page_name), $linkback, 'title_setup');
 
 // Configuration header
 $head = recruitmentAdminPrepareHead();
-print dol_get_fiche_head($head, 'settings', '', -1, '');
+echo dol_get_fiche_head($head, 'settings', '', -1, '');
 
 // Setup page goes here
-//echo '<span class="opacitymedium">'.$langs->trans("RecruitmentSetupPage").'</span><br><br>';
+//echo  '<span class="opacitymedium">'.$langs->trans("RecruitmentSetupPage").'</span><br><br>';
 
 
 if ($action == 'edit') {
-	print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="update">';
+	echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="update">';
 
-	print '<table class="noborder centpercent">';
-	print '<tr class="liste_titre"><td class="titlefield">'.$langs->trans("Parameter").'</td><td>'.$langs->trans("Value").'</td></tr>';
+	echo '<table class="noborder centpercent">';
+	echo '<tr class="liste_titre"><td class="titlefield">'.$langs->trans("Parameter").'</td><td>'.$langs->trans("Value").'</td></tr>';
 
 	foreach ($arrayofparameters as $key => $val) {
-		print '<tr class="oddeven"><td>';
+		echo '<tr class="oddeven"><td>';
 		$tooltiphelp = (($langs->trans($key.'Tooltip') != $key.'Tooltip') ? $langs->trans($key.'Tooltip') : '');
-		print $form->textwithpicto($langs->trans($key), $tooltiphelp);
-		print '</td><td><input name="'.$key.'"  class="flat '.(empty($val['css']) ? 'minwidth200' : $val['css']).'" value="'.getDolGlobalString($key).'"></td></tr>';
+		echo $form->textwithpicto($langs->trans($key), $tooltiphelp);
+		echo '</td><td><input name="'.$key.'"  class="flat '.(empty($val['css']) ? 'minwidth200' : $val['css']).'" value="'.getDolGlobalString($key).'"></td></tr>';
 	}
-	print '</table>';
+	echo '</table>';
 
-	print '<br><div class="center">';
-	print '<input class="button button-save" type="submit" value="'.$langs->trans("Save").'">';
-	print '</div>';
+	echo '<br><div class="center">';
+	echo '<input class="button button-save" type="submit" value="'.$langs->trans("Save").'">';
+	echo '</div>';
 
-	print '</form>';
-	print '<br>';
+	echo '</form>';
+	echo '<br>';
 } else {
 	if (!empty($arrayofparameters)) {
-		print '<table class="noborder centpercent">';
-		print '<tr class="liste_titre"><td class="titlefield">'.$langs->trans("Parameter").'</td><td>'.$langs->trans("Value").'</td></tr>';
+		echo '<table class="noborder centpercent">';
+		echo '<tr class="liste_titre"><td class="titlefield">'.$langs->trans("Parameter").'</td><td>'.$langs->trans("Value").'</td></tr>';
 
 		foreach ($arrayofparameters as $key => $val) {
 			$setupnotempty++;
 
-			print '<tr class="oddeven"><td>';
+			echo '<tr class="oddeven"><td>';
 			$tooltiphelp = (($langs->trans($key.'Tooltip') != $key.'Tooltip') ? $langs->trans($key.'Tooltip') : '');
-			print $form->textwithpicto($langs->trans($key), $tooltiphelp);
-			print '</td><td>'.getDolGlobalString($key).'</td></tr>';
+			echo $form->textwithpicto($langs->trans($key), $tooltiphelp);
+			echo '</td><td>'.getDolGlobalString($key).'</td></tr>';
 		}
 
-		print '</table>';
+		echo '</table>';
 
-		print '<div class="tabsAction">';
-		print '<a class="butAction" href="'.$_SERVER["PHP_SELF"].'?action=edit&token='.newToken().'">'.$langs->trans("Modify").'</a>';
-		print '</div>';
+		echo '<div class="tabsAction">';
+		echo '<a class="butAction" href="'.$_SERVER["PHP_SELF"].'?action=edit&token='.newToken().'">'.$langs->trans("Modify").'</a>';
+		echo '</div>';
 	}
 }
 
@@ -248,16 +248,16 @@ foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
 		 */
 		$setupnotempty++;
 
-		print load_fiche_titre($langs->trans("NumberingModules", $myTmpObjectKey), '', '');
+		echo load_fiche_titre($langs->trans("NumberingModules", $myTmpObjectKey), '', '');
 
-		print '<table class="noborder centpercent">';
-		print '<tr class="liste_titre">';
-		print '<td>'.$langs->trans("Name").'</td>';
-		print '<td>'.$langs->trans("Description").'</td>';
-		print '<td class="nowrap">'.$langs->trans("Example").'</td>';
-		print '<td class="center" width="60">'.$langs->trans("Status").'</td>';
-		print '<td class="center" width="16">'.$langs->trans("ShortInfo").'</td>';
-		print '</tr>'."\n";
+		echo '<table class="noborder centpercent">';
+		echo '<tr class="liste_titre">';
+		echo '<td>'.$langs->trans("Name").'</td>';
+		echo '<td>'.$langs->trans("Description").'</td>';
+		echo '<td class="nowrap">'.$langs->trans("Example").'</td>';
+		echo '<td class="center" width="60">'.$langs->trans("Status").'</td>';
+		echo '<td class="center" width="16">'.$langs->trans("ShortInfo").'</td>';
+		echo '</tr>'."\n";
 
 		clearstatcache();
 
@@ -285,33 +285,33 @@ foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
 							if ($module->isEnabled()) {
 								dol_include_once('/'.$moduledir.'/class/'.strtolower($myTmpObjectKey).'.class.php');
 
-								print '<tr class="oddeven"><td>'.$module->name."</td><td>\n";
-								print $module->info($langs);
-								print '</td>';
+								echo '<tr class="oddeven"><td>'.$module->name."</td><td>\n";
+								echo $module->info($langs);
+								echo '</td>';
 
 								// Show example of numbering model
-								print '<td class="nowrap">';
+								echo '<td class="nowrap">';
 								$tmp = $module->getExample();
 								if (preg_match('/^Error/', $tmp)) {
 									$langs->load("errors");
-									print '<div class="error">'.$langs->trans($tmp).'</div>';
+									echo '<div class="error">'.$langs->trans($tmp).'</div>';
 								} elseif ($tmp == 'NotConfigured') {
-									print $langs->trans($tmp);
+									echo $langs->trans($tmp);
 								} else {
-									print $tmp;
+									echo $tmp;
 								}
-								print '</td>'."\n";
+								echo '</td>'."\n";
 
-								print '<td class="center">';
+								echo '<td class="center">';
 								$constforvar = 'RECRUITMENT_'.strtoupper($myTmpObjectKey).'_ADDON';
 								if (getDolGlobalString($constforvar) == $file) {
-									print img_picto($langs->trans("Activated"), 'switch_on');
+									echo img_picto($langs->trans("Activated"), 'switch_on');
 								} else {
-									print '<a href="'.$_SERVER["PHP_SELF"].'?action=setmod&token='.newToken().'&object='.strtolower($myTmpObjectKey).'&value='.urlencode($file).'">';
-									print img_picto($langs->trans("Disabled"), 'switch_off');
-									print '</a>';
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setmod&token='.newToken().'&object='.strtolower($myTmpObjectKey).'&value='.urlencode($file).'">';
+									echo img_picto($langs->trans("Disabled"), 'switch_off');
+									echo '</a>';
 								}
-								print '</td>';
+								echo '</td>';
 
 								$className = $myTmpObjectArray['class'];
 								$mytmpinstance = new $className($db);
@@ -334,11 +334,11 @@ foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
 									}
 								}
 
-								print '<td class="center">';
-								print $form->textwithpicto('', $htmltooltip, 1, 0);
-								print '</td>';
+								echo '<td class="center">';
+								echo $form->textwithpicto('', $htmltooltip, 1, 0);
+								echo '</td>';
 
-								print "</tr>\n";
+								echo "</tr>\n";
 							}
 						}
 					}
@@ -346,7 +346,7 @@ foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
 				}
 			}
 		}
-		print "</table><br>\n";
+		echo "</table><br>\n";
 	}
 
 	if ($myTmpObjectArray['includedocgeneration']) {
@@ -356,7 +356,7 @@ foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
 		$setupnotempty++;
 		$type = strtolower($myTmpObjectKey);
 
-		print load_fiche_titre($langs->trans("DocumentModules", $myTmpObjectKey), '', '');
+		echo load_fiche_titre($langs->trans("DocumentModules", $myTmpObjectKey), '', '');
 
 		// Load array def with activated templates
 		$def = array();
@@ -380,15 +380,15 @@ foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
 		}
 
 
-		print "<table class=\"noborder\" width=\"100%\">\n";
-		print "<tr class=\"liste_titre\">\n";
-		print '<td>'.$langs->trans("Name").'</td>';
-		print '<td>'.$langs->trans("Description").'</td>';
-		print '<td class="center" width="60">'.$langs->trans("Status")."</td>\n";
-		print '<td class="center" width="60">'.$langs->trans("Default")."</td>\n";
-		print '<td class="center" width="38">'.$langs->trans("ShortInfo").'</td>';
-		print '<td class="center" width="38">'.$langs->trans("Preview").'</td>';
-		print "</tr>\n";
+		echo "<table class=\"noborder\" width=\"100%\">\n";
+		echo "<tr class=\"liste_titre\">\n";
+		echo '<td>'.$langs->trans("Name").'</td>';
+		echo '<td>'.$langs->trans("Description").'</td>';
+		echo '<td class="center" width="60">'.$langs->trans("Status")."</td>\n";
+		echo '<td class="center" width="60">'.$langs->trans("Default")."</td>\n";
+		echo '<td class="center" width="38">'.$langs->trans("ShortInfo").'</td>';
+		echo '<td class="center" width="38">'.$langs->trans("Preview").'</td>';
+		echo "</tr>\n";
 
 		clearstatcache();
 		$filelist = array();
@@ -425,40 +425,40 @@ foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
 									}
 
 									if ($modulequalified) {
-										print '<tr class="oddeven"><td width="100">';
+										echo '<tr class="oddeven"><td width="100">';
 										print(empty($module->name) ? $name : $module->name);
-										print "</td><td>\n";
+										echo "</td><td>\n";
 										if (method_exists($module, 'info')) {
-											print $module->info($langs);
+											echo $module->info($langs);
 										} else {
-											print $module->description;
+											echo $module->description;
 										}
-										print '</td>';
+										echo '</td>';
 
 										// Active
 										if (in_array($name, $def)) {
-											print '<td class="center">'."\n";
-											print '<a href="'.$_SERVER["PHP_SELF"].'?action=del&token='.newToken().'&value='.urlencode($name).'">';
-											print img_picto($langs->trans("Enabled"), 'switch_on');
-											print '</a>';
-											print '</td>';
+											echo '<td class="center">'."\n";
+											echo '<a href="'.$_SERVER["PHP_SELF"].'?action=del&token='.newToken().'&value='.urlencode($name).'">';
+											echo img_picto($langs->trans("Enabled"), 'switch_on');
+											echo '</a>';
+											echo '</td>';
 										} else {
-											print '<td class="center">'."\n";
-											print '<a href="'.$_SERVER["PHP_SELF"].'?action=set&token='.newToken().'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'">'.img_picto($langs->trans("Disabled"), 'switch_off').'</a>';
-											print "</td>";
+											echo '<td class="center">'."\n";
+											echo '<a href="'.$_SERVER["PHP_SELF"].'?action=set&token='.newToken().'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'">'.img_picto($langs->trans("Disabled"), 'switch_off').'</a>';
+											echo "</td>";
 										}
 
 										// Default
-										print '<td class="center">';
+										echo '<td class="center">';
 										$constforvar = 'RECRUITMENT_'.strtoupper($myTmpObjectKey).'_ADDON_PDF';
 										if (getDolGlobalString($constforvar) == $name) {
-											//print img_picto($langs->trans("Default"), 'on');
+											//echo img_picto($langs->trans("Default"), 'on');
 											// Even if choice is the default value, we allow to disable it. Replace this with previous line if you need to disable unset
-											print '<a href="'.$_SERVER["PHP_SELF"].'?action=unsetdoc&token='.newToken().'&object='.urlencode(strtolower($myTmpObjectKey)).'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'&type='.urlencode($type).'" alt="'.$langs->trans("Disable").'">'.img_picto($langs->trans("Enabled"), 'on').'</a>';
+											echo '<a href="'.$_SERVER["PHP_SELF"].'?action=unsetdoc&token='.newToken().'&object='.urlencode(strtolower($myTmpObjectKey)).'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'&type='.urlencode($type).'" alt="'.$langs->trans("Disable").'">'.img_picto($langs->trans("Enabled"), 'on').'</a>';
 										} else {
-											print '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&token='.newToken().'&object='.urlencode(strtolower($myTmpObjectKey)).'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'" alt="'.$langs->trans("Default").'">'.img_picto($langs->trans("Disabled"), 'off').'</a>';
+											echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&token='.newToken().'&object='.urlencode(strtolower($myTmpObjectKey)).'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'" alt="'.$langs->trans("Default").'">'.img_picto($langs->trans("Disabled"), 'off').'</a>';
 										}
-										print '</td>';
+										echo '</td>';
 
 										// Info
 										$htmltooltip = ''.$langs->trans("Name").': '.$module->name;
@@ -472,21 +472,21 @@ foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
 										$htmltooltip .= '<br>'.$langs->trans("Logo").': '.yn($module->option_logo, 1, 1);
 										$htmltooltip .= '<br>'.$langs->trans("MultiLanguage").': '.yn($module->option_multilang, 1, 1);
 
-										print '<td class="center">';
-										print $form->textwithpicto('', $htmltooltip, 1, 0);
-										print '</td>';
+										echo '<td class="center">';
+										echo $form->textwithpicto('', $htmltooltip, 1, 0);
+										echo '</td>';
 
 										// Preview
-										print '<td class="center">';
+										echo '<td class="center">';
 										if ($module->type == 'pdf') {
 											$newname = preg_replace('/_'.preg_quote(strtolower($myTmpObjectKey), '/').'/', '', $name);
-											print '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&module='.urlencode($newname).'&object='.urlencode($myTmpObjectKey).'">'.img_object($langs->trans("Preview"), 'pdf').'</a>';
+											echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&module='.urlencode($newname).'&object='.urlencode($myTmpObjectKey).'">'.img_object($langs->trans("Preview"), 'pdf').'</a>';
 										} else {
-											print img_object($langs->trans("PreviewNotAvailable"), 'generic');
+											echo img_object($langs->trans("PreviewNotAvailable"), 'generic');
 										}
-										print '</td>';
+										echo '</td>';
 
-										print "</tr>\n";
+										echo "</tr>\n";
 									}
 								}
 							}
@@ -496,16 +496,16 @@ foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
 			}
 		}
 
-		print '</table>';
+		echo '</table>';
 	}
 }
 
 if (empty($setupnotempty)) {
-	print '<br>'.$langs->trans("NothingToSetup");
+	echo '<br>'.$langs->trans("NothingToSetup");
 }
 
 // Page end
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 llxFooter();
 $db->close();

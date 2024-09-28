@@ -154,7 +154,7 @@ class DoliStorage implements TokenStorageInterface
 				dol_print_error($this->db);
 			}
 		}
-		//print $sql;
+		//echo $sql;
 
 		// allow chaining
 		return $this;

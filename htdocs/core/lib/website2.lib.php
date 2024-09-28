@@ -223,7 +223,7 @@ function dolSavePageContent($filetpl, Website $object, WebsitePage $objectpage, 
 						$tmpshortlangcode = preg_replace('/[_-].*$/', '', $object->lang); // en_US or en-US -> en
 					}
 					if ($tmpshortlangcode != $shortlangcode) {
-						$tplcontent .= '<link rel="alternate" hreflang="'.$tmpshortlangcode.'" href="<?php echo $website->virtualhost; ?>'.($object->fk_default_home == $tmppage->id ? '/' : (($tmpshortlangcode != substr($object->lang, 0, 2)) ? '/'.$tmpshortlangcode : '').'/'.$tmppage->pageurl.'.php').'" />'."\n";
+						$tplcontent .= '<link rel="alternate" hreflang="'.$tmpshortlangcode.'" href="<?php echo  $website->virtualhost; ?>'.($object->fk_default_home == $tmppage->id ? '/' : (($tmpshortlangcode != substr($object->lang, 0, 2)) ? '/'.$tmpshortlangcode : '').'/'.$tmppage->pageurl.'.php').'" />'."\n";
 					}
 				}
 			}
@@ -240,7 +240,7 @@ function dolSavePageContent($filetpl, Website $object, WebsitePage $objectpage, 
 							$tmpshortlangcode = preg_replace('/[_-].*$/', '', $obj->lang); // en_US or en-US -> en
 						}
 						if ($tmpshortlangcode != $shortlangcode) {
-							$tplcontent .= '<link rel="alternate" hreflang="'.$tmpshortlangcode.'" href="<?php echo $website->virtualhost; ?>'.($object->fk_default_home == $obj->id ? '/' : (($tmpshortlangcode != substr($object->lang, 0, 2) ? '/'.$tmpshortlangcode : '')).'/'.$obj->pageurl.'.php').'" />'."\n";
+							$tplcontent .= '<link rel="alternate" hreflang="'.$tmpshortlangcode.'" href="<?php echo  $website->virtualhost; ?>'.($object->fk_default_home == $obj->id ? '/' : (($tmpshortlangcode != substr($object->lang, 0, 2) ? '/'.$tmpshortlangcode : '')).'/'.$obj->pageurl.'.php').'" />'."\n";
 						}
 					}
 				}
@@ -250,17 +250,17 @@ function dolSavePageContent($filetpl, Website $object, WebsitePage $objectpage, 
 
 			// Add myself
 			$tplcontent .= '<?php if ($_SERVER["PHP_SELF"] == "'.(($object->fk_default_home == $objectpage->id) ? '/' : (($shortlangcode != substr($object->lang, 0, 2)) ? '/'.$shortlangcode : '')).'/'.$objectpage->pageurl.'.php") { ?>'."\n";
-			$tplcontent .= '<link rel="alternate" hreflang="'.$shortlangcode.'" href="<?php echo $website->virtualhost; ?>'.(($object->fk_default_home == $objectpage->id) ? '/' : (($shortlangcode != substr($object->lang, 0, 2)) ? '/'.$shortlangcode : '').'/'.$objectpage->pageurl.'.php').'" />'."\n";
+			$tplcontent .= '<link rel="alternate" hreflang="'.$shortlangcode.'" href="<?php echo  $website->virtualhost; ?>'.(($object->fk_default_home == $objectpage->id) ? '/' : (($shortlangcode != substr($object->lang, 0, 2)) ? '/'.$shortlangcode : '').'/'.$objectpage->pageurl.'.php').'" />'."\n";
 
 			$tplcontent .= '<?php } ?>'."\n";
 		}
 		// Add manifest.json. Do we have to add it only on home page ?
-		$tplcontent .= '<?php if ($website->use_manifest) { print \'<link rel="manifest" href="/manifest.json.php" />\'."\n"; } ?>'."\n";
+		$tplcontent .= '<?php if ($website->use_manifest) { echo \'<link rel="manifest" href="/manifest.json.php" />\'."\n"; } ?>'."\n";
 		$tplcontent .= '<!-- Include link to CSS file -->'."\n";
 		// Add js
-		$tplcontent .= '<link rel="stylesheet" href="/styles.css.php?website=<?php echo $websitekey; ?>" type="text/css" />'."\n";
+		$tplcontent .= '<link rel="stylesheet" href="/styles.css.php?website=<?php echo  $websitekey; ?>" type="text/css" />'."\n";
 		$tplcontent .= '<!-- Include link to JS file -->'."\n";
-		$tplcontent .= '<script nonce="'.getNonce().'" async src="/javascript.js.php?website=<?php echo $websitekey; ?>"></script>'."\n";
+		$tplcontent .= '<script nonce="'.getNonce().'" async src="/javascript.js.php?website=<?php echo  $websitekey; ?>"></script>'."\n";
 		// Add headers
 		$tplcontent .= '<!-- Include HTML header from common file -->'."\n";
 		$tplcontent .= '<?php if (file_exists(DOL_DATA_ROOT."/website/".$websitekey."/htmlheader.html")) include DOL_DATA_ROOT."/website/".$websitekey."/htmlheader.html"; ?>'."\n";
@@ -566,27 +566,27 @@ function showWebsiteTemplates(Website $website)
 
 	$colspan = 2;
 
-	print '<!-- For website template import -->'."\n";
-	print '<table class="noborder centpercent">';
+	echo '<!-- For website template import -->'."\n";
+	echo '<table class="noborder centpercent">';
 
 	// Title
-	print '<tr class="liste_titre"><th class="titlefield">';
-	print $form->textwithpicto($langs->trans("Templates"), $langs->trans("ThemeDir").' : '.implode(", ", $dirthemes));
-	print ' ';
-	print '<a href="'.$_SERVER["PHP_SELF"].'?website='.urlencode($website->ref).'&importsite=1" rel="noopener noreferrer external">';
-	print img_picto('', 'refresh');
-	print '</a>';
-	print '</th>';
-	print '<th class="right">';
+	echo '<tr class="liste_titre"><th class="titlefield">';
+	echo $form->textwithpicto($langs->trans("Templates"), $langs->trans("ThemeDir").' : '.implode(", ", $dirthemes));
+	echo ' ';
+	echo '<a href="'.$_SERVER["PHP_SELF"].'?website='.urlencode($website->ref).'&importsite=1" rel="noopener noreferrer external">';
+	echo img_picto('', 'refresh');
+	echo '</a>';
+	echo '</th>';
+	echo '<th class="right">';
 	$url = 'https://www.dolistore.com/43-web-site-templates';
-	print '<a href="'.$url.'" target="_blank" rel="noopener noreferrer external">';
-	print img_picto('', 'globe', 'class="pictofixedwidth"').$langs->trans('DownloadMoreSkins');
-	print '</a>';
-	print '</th></tr>';
+	echo '<a href="'.$url.'" target="_blank" rel="noopener noreferrer external">';
+	echo img_picto('', 'globe', 'class="pictofixedwidth"').$langs->trans('DownloadMoreSkins');
+	echo '</a>';
+	echo '</th></tr>';
 
-	print '<tr><td colspan="'.$colspan.'">';
+	echo '<tr><td colspan="'.$colspan.'">';
 
-	print '<table class="nobordernopadding centpercent"><tr><td><div class="display-flex">';
+	echo '<table class="nobordernopadding centpercent"><tr><td><div class="display-flex">';
 
 	if (count($dirthemes)) {
 		$i = 0;
@@ -612,7 +612,7 @@ function showWebsiteTemplates(Website $website)
 								continue;
 							}
 
-							print '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;">';
+							echo '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;">';
 
 							$templatedir = $dirtheme."/".$subdir;
 							$file = $dirtheme."/".$subdirwithoutzip.".jpg";
@@ -635,39 +635,39 @@ function showWebsiteTemplates(Website $website)
 							} else {
 								$ret .= '<a href="'.DOL_URL_ROOT.'/viewimage.php?modulepart='.urlencode($modulepart).'&entity='.((int) $entity).'&file='.urlencode($originalfile).'&cache='.((int) $cache).'">';
 							}
-							print $ret;
-							print '<img class="img-skinthumb shadow" src="'.$url.'" border="0" alt="'.$title.'" title="'.$title.'" style="margin-bottom: 5px;">';
-							print '</a>';
+							echo $ret;
+							echo '<img class="img-skinthumb shadow" src="'.$url.'" border="0" alt="'.$title.'" title="'.$title.'" style="margin-bottom: 5px;">';
+							echo '</a>';
 
-							print '<br>';
-							print $subdir;
-							print '<br>';
-							print '<span class="opacitymedium">'.dol_print_size(dol_filesize($dirtheme."/".$subdir), 1, 1).' - '.dol_print_date(dol_filemtime($templatedir), 'dayhour', 'tzuserrel').'</span>';
+							echo '<br>';
+							echo $subdir;
+							echo '<br>';
+							echo '<span class="opacitymedium">'.dol_print_size(dol_filesize($dirtheme."/".$subdir), 1, 1).' - '.dol_print_date(dol_filemtime($templatedir), 'dayhour', 'tzuserrel').'</span>';
 							if ($user->hasRight('website', 'delete')) {
-								print ' <a href="'.$_SERVER["PHP_SELF"].'?action=deletetemplate&token='.newToken().'&website='.urlencode($website->ref).'&templateuserfile='.urlencode($subdir).'">'.img_picto('', 'delete').'</a>';
+								echo ' <a href="'.$_SERVER["PHP_SELF"].'?action=deletetemplate&token='.newToken().'&website='.urlencode($website->ref).'&templateuserfile='.urlencode($subdir).'">'.img_picto('', 'delete').'</a>';
 							}
-							print '<br><a href="'.$_SERVER["PHP_SELF"].'?action=importsiteconfirm&token='.newToken().'&website='.urlencode($website->ref).'&templateuserfile='.urlencode($subdir).'" class="button">'.$langs->trans("Load").'</a>';
-							print '</div>';
+							echo '<br><a href="'.$_SERVER["PHP_SELF"].'?action=importsiteconfirm&token='.newToken().'&website='.urlencode($website->ref).'&templateuserfile='.urlencode($subdir).'" class="button">'.$langs->trans("Load").'</a>';
+							echo '</div>';
 
 							$i++;
 						}
 					}
-					print '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px;margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;"></div>';
-					print '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px;margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;"></div>';
-					print '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px;margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;"></div>';
-					print '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px;margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;"></div>';
-					print '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px;margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;"></div>';
+					echo '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px;margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;"></div>';
+					echo '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px;margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;"></div>';
+					echo '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px;margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;"></div>';
+					echo '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px;margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;"></div>';
+					echo '<div class="inline-block center flex-item" style="min-width: 250px; max-width: 400px;margin-top: 10px; margin-bottom: 10px; margin-right: 20px; margin-left: 20px;"></div>';
 				}
 			}
 		}
 	} else {
-		print '<span class="opacitymedium">'.$langs->trans("None").'</span>';
+		echo '<span class="opacitymedium">'.$langs->trans("None").'</span>';
 	}
 
-	print '</div></td></tr></table>';
+	echo '</div></td></tr></table>';
 
-	print '</td></tr>';
-	print '</table>';
+	echo '</td></tr>';
+	echo '</table>';
 }
 
 
@@ -676,8 +676,8 @@ function showWebsiteTemplates(Website $website)
  * - Block if bad code in the new string.
  * - Block also if user has no permission to change PHP code.
  *
- * @param	string		$phpfullcodestringold		PHP old string (before the change). For example "<?php echo 'a' ?><php echo 'b' ?>"
- * @param	string		$phpfullcodestring			PHP new string. For example "<?php echo 'a' ?><php echo 'c' ?>"
+ * @param	string		$phpfullcodestringold		PHP old string (before the change). For example "<?php echo  'a' ?><php echo  'b' ?>"
+ * @param	string		$phpfullcodestring			PHP new string. For example "<?php echo  'a' ?><php echo  'c' ?>"
  * @return	int										Error or not
  * @see dolKeepOnlyPhpCode(), dol_eval() to see sanitizing rules that should be very close.
  */
@@ -743,7 +743,7 @@ function checkPHPCode(&$phpfullcodestringold, &$phpfullcodestring)
 		}
 	}
 
-	// This char can be used to execute RCE for example using with echo `ls`
+	// This char can be used to execute RCE for example using with echo  `ls`
 	if (!$error) {
 		$forbiddenphpchars = array();
 		if (!getDolGlobalString('WEBSITE_PHP_ALLOW_DANGEROUS_CHARS')) {    // If option is not on, we disallow functions to execute commands

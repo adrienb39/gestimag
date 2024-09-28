@@ -12,24 +12,24 @@ $values = [
 ];
 
 foreach ($values as $value) {
-    echo $value, PHP_EOL;
+    echo  $value, PHP_EOL;
 }
 
-echo 'Addition', PHP_EOL;
+echo  'Addition', PHP_EOL;
 
 $result = Operations::add(...$values);
-echo '=> ', $result, PHP_EOL;
+echo  '=> ', $result, PHP_EOL;
 
-echo PHP_EOL;
+echo  PHP_EOL;
 
-echo 'Subtraction', PHP_EOL;
+echo  'Subtraction', PHP_EOL;
 
 $result = Operations::subtract(...$values);
-echo '=> ', $result, PHP_EOL;
+echo  '=> ', $result, PHP_EOL;
 
-echo PHP_EOL;
+echo  PHP_EOL;
 
-echo 'Multiplication', PHP_EOL;
+echo  'Multiplication', PHP_EOL;
 
 $result = Operations::multiply(...$values);
-echo '=> ', $result, PHP_EOL;
+echo  '=> ', $result, PHP_EOL;

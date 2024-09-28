@@ -57,7 +57,7 @@ $result = $soapclient->call($WS_METHOD,$parameters);
 if (! $result)
 {
 	//var_dump($soapclient);
-	print '<h2>Erreur SOAP 1</h2>'.$soapclient->error_str;
+	echo '<h2>Erreur SOAP 1</h2>'.$soapclient->error_str;
 	exit;
 }
 
@@ -67,31 +67,31 @@ if (! $result)
  */
 
 header("Content-type: text/html; charset=utf8");
-print '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">'."\n";
-echo '<html>'."\n";
-echo '<head>';
-echo '<title>WebService Test: '.$WS_METHOD.'</title>';
-echo '</head>'."\n";
+echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">'."\n";
+echo  '<html>'."\n";
+echo  '<head>';
+echo  '<title>WebService Test: '.$WS_METHOD.'</title>';
+echo  '</head>'."\n";
 
-echo '<body>'."\n";
+echo  '<body>'."\n";
 
-echo "<h2>Request 1:</h2>";
-echo '<h4>Function</h4>';
-echo $WS_METHOD;
-echo '<h4>SOAP Message</h4>';
-echo '<pre>' . htmlspecialchars($soapclient->request, ENT_QUOTES) . '</pre>';
+echo  "<h2>Request 1:</h2>";
+echo  '<h4>Function</h4>';
+echo  $WS_METHOD;
+echo  '<h4>SOAP Message</h4>';
+echo  '<pre>' . htmlspecialchars($soapclient->request, ENT_QUOTES) . '</pre>';
 
-echo '<hr>';
+echo  '<hr>';
 
-echo "<h2>Response:</h2>";
-echo '<h4>Result</h4>';
-echo '<pre>';
+echo  "<h2>Response:</h2>";
+echo  '<h4>Result</h4>';
+echo  '<pre>';
 print_r($result);
-echo '</pre>';
-echo '<h4>SOAP Message</h4>';
-echo '<pre>' . htmlspecialchars($soapclient->response, ENT_QUOTES) . '</pre>';
+echo  '</pre>';
+echo  '<h4>SOAP Message</h4>';
+echo  '<pre>' . htmlspecialchars($soapclient->response, ENT_QUOTES) . '</pre>';
 
 
-echo '</body>'."\n";
-echo '</html>'."\n";
+echo  '</body>'."\n";
+echo  '</html>'."\n";
 ?>

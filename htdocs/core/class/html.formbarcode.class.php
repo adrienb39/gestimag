@@ -67,15 +67,15 @@ class FormBarCode
 		$disable = '';
 
 		if (!empty($conf->use_javascript_ajax)) {
-			print "\n".'<script nonce="'.getNonce().'" type="text/javascript">';
-			print 'jQuery(document).ready(function () {
+			echo "\n".'<script nonce="'.getNonce().'" type="text/javascript">';
+			echo 'jQuery(document).ready(function () {
                         jQuery("#select'.$idForm.'").change(function() {
                             var formName = document.getElementById("form'.$idForm.'");
                             formName.action.value="setcoder";
                             formName.submit();
                         });
                });';
-			print '</script>'."\n";
+			echo '</script>'."\n";
 			//onChange="barcode_coder_save(\''.$idForm.'\')
 		}
 
@@ -121,7 +121,7 @@ class FormBarCode
 	public function select_barcode_type($selected = 0, $htmlname = 'barcodetype_id', $useempty = 0)
 	{
 		// phpcs:enable
-		print $this->selectBarcodeType($selected, $htmlname, $useempty);
+		echo $this->selectBarcodeType($selected, $htmlname, $useempty);
 	}
 
 	/**
@@ -190,7 +190,7 @@ class FormBarCode
 	public function form_barcode_type($page, $selected = 0, $htmlname = 'barcodetype_id')
 	{
 		// phpcs:enable
-		print $this->formBarcodeType($page, $selected, $htmlname);
+		echo $this->formBarcodeType($page, $selected, $htmlname);
 	}
 
 	/**

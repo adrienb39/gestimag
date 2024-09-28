@@ -78,7 +78,7 @@ if ($mode == 'memberbyregion') {
 
 llxHeader('', $title, '', '', 0, 0, $arrayjs);
 
-print load_fiche_titre($title, '', $memberstatic->picto);
+echo load_fiche_titre($title, '', $memberstatic->picto);
 
 //dol_mkdir($dir);
 
@@ -96,7 +96,7 @@ if ($mode) {
 		$sql .= " WHERE d.entity IN (".getEntity('adherent').")";
 		$sql .= " AND d.statut <> ".Adherent::STATUS_DRAFT;
 		$sql .= " GROUP BY c.label, c.code";
-		//print $sql;
+		//echo $sql;
 	}
 
 	if ($mode == 'memberbystate') {
@@ -114,7 +114,7 @@ if ($mode) {
 		$sql .= " WHERE d.entity IN (".getEntity('adherent').")";
 		$sql .= " AND d.statut <> ".Adherent::STATUS_DRAFT;
 		$sql .= " GROUP BY co.label, co.code, c.nom";
-		//print $sql;
+		//echo $sql;
 	}
 	if ($mode == 'memberbyregion') { //
 		$label = $langs->trans("Country");
@@ -131,7 +131,7 @@ if ($mode) {
 		$sql .= " WHERE d.entity IN (".getEntity('adherent').")";
 		$sql .= " AND d.statut <> ".Adherent::STATUS_DRAFT;
 		$sql .= " GROUP BY co.label, co.code, r.nom"; //+
-		//print $sql;
+		//echo $sql;
 	}
 	if ($mode == 'memberbytown') {
 		$label = $langs->trans("Country");
@@ -146,13 +146,13 @@ if ($mode) {
 		$sql .= " WHERE d.entity IN (".getEntity('adherent').")";
 		$sql .= " AND d.statut <> ".Adherent::STATUS_DRAFT;
 		$sql .= " GROUP BY c.label, c.code, d.town";
-		//print $sql;
+		//echo $sql;
 	}
 
 	$langsen = new Translate('', $conf);
 	$langsen->setDefaultLang('en_US');
 	$langsen->load("dict");
-	//print $langsen->trans("Country"."FI");exit;
+	//echo $langsen->trans("Country"."FI");exit;
 
 	// Define $data array
 	dol_syslog("Count member", LOG_DEBUG);
@@ -211,34 +211,34 @@ if ($mode) {
 
 $head = member_stats_prepare_head($memberstatic);
 
-print dol_get_fiche_head($head, $tab, '', -1, '');
+echo dol_get_fiche_head($head, $tab, '', -1, '');
 
 
 // Print title
 if ($mode && !count($data)) {
-	print $langs->trans("NoValidatedMemberYet").'<br>';
-	print '<br>';
+	echo $langs->trans("NoValidatedMemberYet").'<br>';
+	echo '<br>';
 } else {
 	if ($mode == 'memberbycountry') {
-		print '<span class="opacitymedium">'.$langs->trans("MembersByCountryDesc").'</span><br>';
+		echo '<span class="opacitymedium">'.$langs->trans("MembersByCountryDesc").'</span><br>';
 	} elseif ($mode == 'memberbystate') {
-		print '<span class="opacitymedium">'.$langs->trans("MembersByStateDesc").'</span><br>';
+		echo '<span class="opacitymedium">'.$langs->trans("MembersByStateDesc").'</span><br>';
 	} elseif ($mode == 'memberbytown') {
-		print '<span class="opacitymedium">'.$langs->trans("MembersByTownDesc").'</span><br>';
+		echo '<span class="opacitymedium">'.$langs->trans("MembersByTownDesc").'</span><br>';
 	} elseif ($mode == 'memberbyregion') {
-		print '<span class="opacitymedium">'.$langs->trans("MembersByRegion").'</span><br>'; //+
+		echo '<span class="opacitymedium">'.$langs->trans("MembersByRegion").'</span><br>'; //+
 	} else {
-		print '<span class="opacitymedium">'.$langs->trans("MembersStatisticsDesc").'</span><br>';
-		print '<br>';
-		print '<a href="'.$_SERVER["PHP_SELF"].'?mode=memberbycountry">'.$langs->trans("MembersStatisticsByCountries").'</a><br>';
-		print '<br>';
-		print '<a href="'.$_SERVER["PHP_SELF"].'?mode=memberbystate">'.$langs->trans("MembersStatisticsByState").'</a><br>';
-		print '<br>';
-		print '<a href="'.$_SERVER["PHP_SELF"].'?mode=memberbytown">'.$langs->trans("MembersStatisticsByTown").'</a><br>';
-		print '<br>'; //+
-		print '<a href="'.$_SERVER["PHP_SELF"].'?mode=memberbyregion">'.$langs->trans("MembersStatisticsByRegion").'</a><br>'; //+
+		echo '<span class="opacitymedium">'.$langs->trans("MembersStatisticsDesc").'</span><br>';
+		echo '<br>';
+		echo '<a href="'.$_SERVER["PHP_SELF"].'?mode=memberbycountry">'.$langs->trans("MembersStatisticsByCountries").'</a><br>';
+		echo '<br>';
+		echo '<a href="'.$_SERVER["PHP_SELF"].'?mode=memberbystate">'.$langs->trans("MembersStatisticsByState").'</a><br>';
+		echo '<br>';
+		echo '<a href="'.$_SERVER["PHP_SELF"].'?mode=memberbytown">'.$langs->trans("MembersStatisticsByTown").'</a><br>';
+		echo '<br>'; //+
+		echo '<a href="'.$_SERVER["PHP_SELF"].'?mode=memberbyregion">'.$langs->trans("MembersStatisticsByRegion").'</a><br>'; //+
 	}
-	print '<br>';
+	echo '<br>';
 }
 
 
@@ -251,15 +251,15 @@ if (count($arrayjs) && $mode == 'memberbycountry') {
 
 	// Assume we've already included the proper headers so just call our script inline
 	// More doc: https://developers.google.com/chart/interactive/docs/gallery/geomap?hl=fr-FR
-	print "\n<script type='text/javascript'>\n";
-	print "google.load('visualization', '1', {'packages': ['geomap']});\n";
-	print "google.setOnLoadCallback(drawMap);\n";
-	print "function drawMap() {\n\tvar data = new google.visualization.DataTable();\n";
+	echo "\n<script type='text/javascript'>\n";
+	echo "google.load('visualization', '1', {'packages': ['geomap']});\n";
+	echo "google.setOnLoadCallback(drawMap);\n";
+	echo "function drawMap() {\n\tvar data = new google.visualization.DataTable();\n";
 
 	// Get the total number of rows
-	print "\tdata.addRows(".count($data).");\n";
-	print "\tdata.addColumn('string', 'Country');\n";
-	print "\tdata.addColumn('number', 'Number');\n";
+	echo "\tdata.addRows(".count($data).");\n";
+	echo "\tdata.addColumn('string', 'Country');\n";
+	echo "\tdata.addColumn('number', 'Number');\n";
 
 	// loop and dump
 	$i = 0;
@@ -269,8 +269,8 @@ if (count($arrayjs) && $mode == 'memberbycountry') {
 		if ($valcountry == 'Great Britain') {
 			$valcountry = 'United Kingdom';
 		}    // fix case of uk (when we use labels)
-		print "\tdata.setValue(".$i.", 0, \"".$valcountry."\");\n";
-		print "\tdata.setValue(".$i.", 1, ".$val['nb'].");\n";
+		echo "\tdata.setValue(".$i.", 0, \"".$valcountry."\");\n";
+		echo "\tdata.setValue(".$i.", 1, ".$val['nb'].");\n";
 		// Google's Geomap only supports up to 400 entries
 		if ($i >= 400) {
 			break;
@@ -278,56 +278,56 @@ if (count($arrayjs) && $mode == 'memberbycountry') {
 		$i++;
 	}
 
-	print "\tvar options = {};\n";
-	print "\toptions['dataMode'] = 'regions';\n";
-	print "\toptions['showZoomOut'] = false;\n";
-	//print "\toptions['zoomOutLabel'] = '".dol_escape_js($langs->transnoentitiesnoconv("Numbers"))."';\n";
-	print "\toptions['width'] = ".$graphwidth.";\n";
-	print "\toptions['height'] = ".$graphheight.";\n";
-	print "\toptions['colors'] = [0x".colorArrayToHex($theme_datacolor[1], 'BBBBBB').", 0x".colorArrayToHex($theme_datacolor[0], '444444')."];\n";
-	print "\tvar container = document.getElementById('".$mode."');\n";
-	print "\tvar geomap = new google.visualization.GeoMap(container);\n";
-	print "\tgeomap.draw(data, options);\n";
-	print "}\n";
-	print "</script>\n";
+	echo "\tvar options = {};\n";
+	echo "\toptions['dataMode'] = 'regions';\n";
+	echo "\toptions['showZoomOut'] = false;\n";
+	//echo "\toptions['zoomOutLabel'] = '".dol_escape_js($langs->transnoentitiesnoconv("Numbers"))."';\n";
+	echo "\toptions['width'] = ".$graphwidth.";\n";
+	echo "\toptions['height'] = ".$graphheight.";\n";
+	echo "\toptions['colors'] = [0x".colorArrayToHex($theme_datacolor[1], 'BBBBBB').", 0x".colorArrayToHex($theme_datacolor[0], '444444')."];\n";
+	echo "\tvar container = document.getElementById('".$mode."');\n";
+	echo "\tvar geomap = new google.visualization.GeoMap(container);\n";
+	echo "\tgeomap.draw(data, options);\n";
+	echo "}\n";
+	echo "</script>\n";
 
-	// print the div tag that will contain the map
-	print '<div class="center" id="'.$mode.'"></div>'."\n";
+	// echo the div tag that will contain the map
+	echo '<div class="center" id="'.$mode.'"></div>'."\n";
 }
 
 if ($mode) {
 	// Print array
-	print '<div class="div-table-responsive">'; // You can use div-table-responsive-no-min if you don't need reserved height for your table
-	print '<table class="liste centpercent">';
-	print '<tr class="liste_titre">';
-	print '<td>'.$label.'</td>';
+	echo '<div class="div-table-responsive">'; // You can use div-table-responsive-no-min if you don't need reserved height for your table
+	echo '<table class="liste centpercent">';
+	echo '<tr class="liste_titre">';
+	echo '<td>'.$label.'</td>';
 	if (isset($label2)) {
-		print '<td class="center">'.$label2.'</td>';
+		echo '<td class="center">'.$label2.'</td>';
 	}
-	print '<td class="right">'.$langs->trans("NbOfMembers").' <span class="opacitymedium">('.$langs->trans("AllTime").')</span></td>';
-	print '<td class="center">'.$langs->trans("LastMemberDate").'</td>';
-	print '<td class="center">'.$langs->trans("LatestSubscriptionDate").'</td>';
-	print '</tr>';
+	echo '<td class="right">'.$langs->trans("NbOfMembers").' <span class="opacitymedium">('.$langs->trans("AllTime").')</span></td>';
+	echo '<td class="center">'.$langs->trans("LastMemberDate").'</td>';
+	echo '<td class="center">'.$langs->trans("LatestSubscriptionDate").'</td>';
+	echo '</tr>';
 
 	foreach ($data as $val) {
 		$year = isset($val['year']) ? $val['year'] : '';
-		print '<tr class="oddeven">';
-		print '<td>'.$val['label'].'</td>';
+		echo '<tr class="oddeven">';
+		echo '<td>'.$val['label'].'</td>';
 		if (isset($label2)) {
-			print '<td class="center">'.$val['label2'].'</td>';
+			echo '<td class="center">'.$val['label2'].'</td>';
 		}
-		print '<td class="right">'.$val['nb'].'</td>';
-		print '<td class="center">'.dol_print_date($val['lastdate'], 'dayhour').'</td>';
-		print '<td class="center">'.dol_print_date($val['lastsubscriptiondate'], 'dayhour').'</td>';
-		print '</tr>';
+		echo '<td class="right">'.$val['nb'].'</td>';
+		echo '<td class="center">'.dol_print_date($val['lastdate'], 'dayhour').'</td>';
+		echo '<td class="center">'.dol_print_date($val['lastsubscriptiondate'], 'dayhour').'</td>';
+		echo '</tr>';
 	}
 
-	print '</table>';
-	print '</div>';
+	echo '</table>';
+	echo '</div>';
 }
 
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 // End of page
 llxFooter();

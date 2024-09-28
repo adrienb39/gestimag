@@ -128,38 +128,38 @@ if (empty($socid)) {
 }
 
 $head = societe_prepare_head($object);
-print dol_get_fiche_head($head, 'consumption', $langs->trans("ThirdParty"), -1, 'company');
+echo dol_get_fiche_head($head, 'consumption', $langs->trans("ThirdParty"), -1, 'company');
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/societe/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
 dol_banner_tab($object, 'socid', $linkback, ($user->socid ? 0 : 1), 'rowid', 'nom');
 
-print '<div class="fichecenter">';
+echo '<div class="fichecenter">';
 
-print '<div class="underbanner clearboth"></div>';
-print '<table class="border centpercent tableforfield">';
+echo '<div class="underbanner clearboth"></div>';
+echo '<table class="border centpercent tableforfield">';
 
 // Type Prospect/Customer/Supplier
-print '<tr><td class="titlefield">'.$langs->trans('NatureOfThirdParty').'</td><td>';
-print $object->getTypeUrl(1);
-print '</td></tr>';
+echo '<tr><td class="titlefield">'.$langs->trans('NatureOfThirdParty').'</td><td>';
+echo $object->getTypeUrl(1);
+echo '</td></tr>';
 
 if (getDolGlobalString('SOCIETE_USEPREFIX')) {  // Old not used prefix field
-	print '<tr><td class="titlefield">'.$langs->trans('Prefix').'</td><td colspan="3">'.$object->prefix_comm.'</td></tr>';
+	echo '<tr><td class="titlefield">'.$langs->trans('Prefix').'</td><td colspan="3">'.$object->prefix_comm.'</td></tr>';
 }
 
 //if (isModEnabled('agenda') && $user->hasRight('agenda', 'myactions', 'read')) $elementTypeArray['action']=$langs->transnoentitiesnoconv('Events');
 $elementTypeArray = array();
 
 if ($object->client) {
-	print '<tr><td class="titlefield">';
-	print $langs->trans('CustomerCode').'</td><td colspan="3">';
-	print showValueWithClipboardCPButton(dol_escape_htmltag($object->code_client));
+	echo '<tr><td class="titlefield">';
+	echo $langs->trans('CustomerCode').'</td><td colspan="3">';
+	echo showValueWithClipboardCPButton(dol_escape_htmltag($object->code_client));
 	$tmpcheck = $object->check_codeclient();
 	if ($tmpcheck != 0 && $tmpcheck != -5) {
-		print ' <span class="error">('.$langs->trans("WrongCustomerCode").')</span>';
+		echo ' <span class="error">('.$langs->trans("WrongCustomerCode").')</span>';
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 	$sql = "SELECT count(*) as nb from ".MAIN_DB_PREFIX."facture where fk_soc = ".((int) $socid);
 	$resql = $db->query($sql);
 	if (!$resql) {
@@ -193,14 +193,14 @@ if (isModEnabled('intervention') && $user->hasRight('ficheinter', 'lire')) {
 
 if ($object->fournisseur) {
 	$langs->load("supplier_proposal");
-	print '<tr><td class="titlefield">';
-	print $langs->trans('SupplierCode').'</td><td colspan="3">';
-	print showValueWithClipboardCPButton(dol_escape_htmltag($object->code_fournisseur));
+	echo '<tr><td class="titlefield">';
+	echo $langs->trans('SupplierCode').'</td><td colspan="3">';
+	echo showValueWithClipboardCPButton(dol_escape_htmltag($object->code_fournisseur));
 	$tmpcheck = $object->check_codefournisseur();
 	if ($tmpcheck != 0 && $tmpcheck != -5) {
-		print ' <span class="error">('.$langs->trans("WrongSupplierCode").')</span>';
+		echo ' <span class="error">('.$langs->trans("WrongSupplierCode").')</span>';
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 	$sql = "SELECT count(*) as nb from ".MAIN_DB_PREFIX."commande_fournisseur where fk_soc = ".((int) $socid);
 	$resql = $db->query($sql);
 	if (!$resql) {
@@ -224,16 +224,16 @@ if ($object->fournisseur) {
 		$elementTypeArray['supplier_proposal'] = $langs->transnoentitiesnoconv('SupplierProposals');
 	}
 }
-print '</table>';
+echo '</table>';
 
-print '</div>';
+echo '</div>';
 
-print dol_get_fiche_end();
-print '<br>';
+echo dol_get_fiche_end();
+echo '<br>';
 
 
-print '<form method="POST" action="'.$_SERVER['PHP_SELF'].'?socid='.$socid.'">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<form method="POST" action="'.$_SERVER['PHP_SELF'].'?socid='.$socid.'">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
 
 $sql_select = '';
 $documentstaticline = '';
@@ -244,7 +244,7 @@ $documentstaticline = '';
 	$sql_select = 'SELECT f.id as doc_id, f.id as doc_number, \'1\' as doc_type, f.datep as dateprint, ';
 	$tables_from = MAIN_DB_PREFIX."actioncomm as f";
 	$where = " WHERE rbl.parentid = f.id AND f.entity = ".$conf->entity;
-	$dateprint = 'f.datep';
+	$dateecho = 'f.datep';
 	$doc_number='f.id';
 }*/
 if ($type_element == 'fichinter') { 	// Customer : show products from invoices
@@ -255,7 +255,7 @@ if ($type_element == 'fichinter') { 	// Customer : show products from invoices
 	$tables_from = MAIN_DB_PREFIX."fichinter as f LEFT JOIN ".MAIN_DB_PREFIX."fichinterdet as d ON d.fk_fichinter = f.rowid"; // Must use left join to work also with option that disable usage of lines.
 	$where = " WHERE f.fk_soc = s.rowid AND s.rowid = ".((int) $socid);
 	$where .= " AND f.entity = ".$conf->entity;
-	$dateprint = 'f.datec';
+	$dateecho = 'f.datec';
 	$doc_number = 'f.ref';
 }
 if ($type_element == 'invoice') { 	// Customer : show products from invoices
@@ -266,7 +266,7 @@ if ($type_element == 'invoice') { 	// Customer : show products from invoices
 	$where = " WHERE f.fk_soc = s.rowid AND s.rowid = ".((int) $socid);
 	$where .= " AND d.fk_facture = f.rowid";
 	$where .= " AND f.entity IN (".getEntity('invoice').")";
-	$dateprint = 'f.datef';
+	$dateecho = 'f.datef';
 	$doc_number = 'f.ref';
 	$thirdTypeSelect = 'customer';
 }
@@ -278,7 +278,7 @@ if ($type_element == 'propal') {
 	$where = " WHERE c.fk_soc = s.rowid AND s.rowid = ".((int) $socid);
 	$where .= " AND d.fk_propal = c.rowid";
 	$where .= " AND c.entity = ".$conf->entity;
-	$dateprint = 'c.datep';
+	$dateecho = 'c.datep';
 	$doc_number = 'c.ref';
 	$thirdTypeSelect = 'customer';
 }
@@ -291,7 +291,7 @@ if ($type_element == 'order') {
 	$where = " WHERE c.fk_soc = s.rowid AND s.rowid = ".((int) $socid);
 	$where .= " AND d.fk_commande = c.rowid";
 	$where .= " AND c.entity = ".$conf->entity;
-	$dateprint = 'c.date_commande';
+	$dateecho = 'c.date_commande';
 	$doc_number = 'c.ref';
 	$thirdTypeSelect = 'customer';
 }
@@ -305,7 +305,7 @@ if ($type_element == 'shipment') {
 	$where .= " AND ed.fk_expedition = e.rowid";
 	$where .= " AND ed.element_type = 'commande' AND ed.fk_elementdet = d.rowid";
 	$where .= " AND e.entity = ".$conf->entity;
-	$dateprint = 'e.date_creation';
+	$dateecho = 'e.date_creation';
 	$doc_number = 'e.ref';
 	$thirdTypeSelect = 'customer';
 }
@@ -317,7 +317,7 @@ if ($type_element == 'supplier_invoice') { 	// Supplier : Show products from inv
 	$where = " WHERE f.fk_soc = s.rowid AND s.rowid = ".((int) $socid);
 	$where .= " AND d.fk_facture_fourn = f.rowid";
 	$where .= " AND f.entity = ".$conf->entity;
-	$dateprint = 'f.datef';
+	$dateecho = 'f.datef';
 	$doc_number = 'f.ref';
 	$thirdTypeSelect = 'supplier';
 }
@@ -329,7 +329,7 @@ if ($type_element == 'supplier_proposal') {
 	$where = " WHERE c.fk_soc = s.rowid AND s.rowid = ".((int) $socid);
 	$where .= " AND d.fk_supplier_proposal = c.rowid";
 	$where .= " AND c.entity = ".$conf->entity;
-	$dateprint = 'c.date_valid';
+	$dateecho = 'c.date_valid';
 	$doc_number = 'c.ref';
 	$thirdTypeSelect = 'supplier';
 }
@@ -342,7 +342,7 @@ if ($type_element == 'supplier_order') { 	// Supplier : Show products from order
 	$where = " WHERE c.fk_soc = s.rowid AND s.rowid = ".((int) $socid);
 	$where .= " AND d.fk_commande = c.rowid";
 	$where .= " AND c.entity = ".$conf->entity;
-	$dateprint = 'c.date_valid';
+	$dateecho = 'c.date_valid';
 	$doc_number = 'c.ref';
 	$thirdTypeSelect = 'supplier';
 }
@@ -356,7 +356,7 @@ if ($type_element == 'reception') { 	// Supplier : Show products from orders.
 	$where .= " AND rd.fk_reception = r.rowid";
 	$where .= " AND rd.fk_elementdet = d.rowid AND rd.element_type = 'supplier_order'";
 	$where .= " AND r.entity = ".$conf->entity;
-	$dateprint = 'r.date_creation';
+	$dateecho = 'r.date_creation';
 	$doc_number = 'r.ref';
 	$thirdTypeSelect = 'supplier';
 }
@@ -369,7 +369,7 @@ if ($type_element == 'contract') { 	// Order
 	$where = " WHERE c.fk_soc = s.rowid AND s.rowid = ".((int) $socid);
 	$where .= " AND d.fk_contrat = c.rowid";
 	$where .= " AND c.entity = ".$conf->entity;
-	$dateprint = 'c.date_valid';
+	$dateecho = 'c.date_valid';
 	$doc_number = 'c.ref';
 	$thirdTypeSelect = 'customer';
 }
@@ -428,7 +428,7 @@ if (!empty($sql_select)) {
 	$totalnboflines = $db->num_rows($resql);
 
 	$sql .= $db->plimit($limit + 1, $offset);
-	//print $sql;
+	//echo $sql;
 }
 
 $disabled = 0;
@@ -480,39 +480,39 @@ if ($sql_select) {
 
 	print_barre_liste($langs->trans('ProductsIntoElements').' '.$typeElementString.' '.$button, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, $totalnboflines, '', 0, '', '', $limit);
 
-	print '<div class="div-table-responsive-no-min">';
-	print '<table class="liste centpercent">'."\n";
+	echo '<div class="div-table-responsive-no-min">';
+	echo '<table class="liste centpercent">'."\n";
 
 	// Filters
-	print '<tr class="liste_titre">';
-	print '<td class="liste_titre left">';
-	print '<input class="flat" type="text" name="sref" size="8" value="'.$sref.'">';
-	print '</td>';
-	print '<td class="liste_titre nowrap center valignmiddle">'; // date
-	print $formother->select_month($month ? $month : -1, 'month', 1, 0, 'valignmiddle');
-	print $formother->selectyear($year ? $year : -1, 'year', 1, 20, 1, 0, 0, '', 'valignmiddle maxwidth75imp marginleftonly');
-	print '</td>';
+	echo '<tr class="liste_titre">';
+	echo '<td class="liste_titre left">';
+	echo '<input class="flat" type="text" name="sref" size="8" value="'.$sref.'">';
+	echo '</td>';
+	echo '<td class="liste_titre nowrap center valignmiddle">'; // date
+	echo $formother->select_month($month ? $month : -1, 'month', 1, 0, 'valignmiddle');
+	echo $formother->selectyear($year ? $year : -1, 'year', 1, 20, 1, 0, 0, '', 'valignmiddle maxwidth75imp marginleftonly');
+	echo '</td>';
 	// delivery planned date
 	if ($type_element == 'order' || $type_element == 'supplier_order' || $type_element == 'shipment') {
-		print '<td class="liste_titre center"></td>';
+		echo '<td class="liste_titre center"></td>';
 	}
-	print '<td class="liste_titre center">';
-	print '</td>';
-	print '<td class="liste_titre left">';
-	print '<input class="flat" type="text" name="sprod_fulldescr" size="15" value="'.dol_escape_htmltag($sprod_fulldescr).'">';
-	print '</td>';
-	print '<td class="liste_titre center">';
-	print '</td>';
-	print '<td class="liste_titre center">';
-	print '</td>';
-	print '<td class="liste_titre maxwidthsearch">';
+	echo '<td class="liste_titre center">';
+	echo '</td>';
+	echo '<td class="liste_titre left">';
+	echo '<input class="flat" type="text" name="sprod_fulldescr" size="15" value="'.dol_escape_htmltag($sprod_fulldescr).'">';
+	echo '</td>';
+	echo '<td class="liste_titre center">';
+	echo '</td>';
+	echo '<td class="liste_titre center">';
+	echo '</td>';
+	echo '<td class="liste_titre maxwidthsearch">';
 	$searchpicto = $form->showFilterAndCheckAddButtons(0);
-	print $searchpicto;
-	print '</td>';
-	print '</tr>';
+	echo $searchpicto;
+	echo '</td>';
+	echo '</tr>';
 
 	// Titles with sort buttons
-	print '<tr class="liste_titre">';
+	echo '<tr class="liste_titre">';
 	print_liste_field_titre('Ref', $_SERVER['PHP_SELF'], 'doc_number', '', $param, '', $sortfield, $sortorder, 'left ');
 	print_liste_field_titre('Date', $_SERVER['PHP_SELF'], 'dateprint', '', $param, '', $sortfield, $sortorder, 'center ');
 	// delivery planned date
@@ -524,7 +524,7 @@ if ($sql_select) {
 	print_liste_field_titre('Quantity', $_SERVER['PHP_SELF'], 'prod_qty', '', $param, '', $sortfield, $sortorder, 'right ');
 	print_liste_field_titre('TotalHT', $_SERVER['PHP_SELF'], 'total_ht', '', $param, '', $sortfield, $sortorder, 'right ');
 	print_liste_field_titre('UnitPrice', $_SERVER['PHP_SELF'], '', '', $param, '', $sortfield, $sortorder, 'right ');
-	print "</tr>\n";
+	echo "</tr>\n";
 
 	$i = 0;
 	while (($objp = $db->fetch_object($resql)) && $i < min($num, $limit)) {
@@ -543,33 +543,33 @@ if ($sql_select) {
 			$documentstaticline->statut = $objp->status;
 		}
 
-		print '<tr class="oddeven">';
-		print '<td class="nobordernopadding nowrap" width="100">';
-		print $documentstatic->getNomUrl(1);
-		print '</td>';
-		print '<td class="center" width="80">'.dol_print_date($db->jdate($objp->dateprint), 'day').'</td>';
+		echo '<tr class="oddeven">';
+		echo '<td class="nobordernopadding nowrap" width="100">';
+		echo $documentstatic->getNomUrl(1);
+		echo '</td>';
+		echo '<td class="center" width="80">'.dol_print_date($db->jdate($objp->dateprint), 'day').'</td>';
 		// delivery planned date
 		if ($type_element == 'order' || $type_element == 'supplier_order' || $type_element == 'shipment') {
-			print '<td class="center">'.dol_print_date($db->jdate($objp->delivery_planned_date), 'day').'</td>';
+			echo '<td class="center">'.dol_print_date($db->jdate($objp->delivery_planned_date), 'day').'</td>';
 		}
 
 		// Status
-		print '<td class="center">';
+		echo '<td class="center">';
 		if ($type_element == 'contract') {
-			print $documentstaticline->getLibStatut(5);
+			echo $documentstaticline->getLibStatut(5);
 		} elseif ($type_element == 'invoice') {
 			// @phan-suppress-next-line PhanParamTooMany
-			print $documentstatic->getLibStatut(5, $objp->paid);
+			echo $documentstatic->getLibStatut(5, $objp->paid);
 		} elseif ($type_element == 'supplier_invoice') {
 			// @phan-suppress-next-line PhanParamTooMany
-			print $documentstatic->getLibStatut(5, $objp->paid);
+			echo $documentstatic->getLibStatut(5, $objp->paid);
 		} else {
-			print $documentstatic->getLibStatut(5);
+			echo $documentstatic->getLibStatut(5);
 		}
-		print '</td>';
+		echo '</td>';
 
 		// Label
-		print '<td class="tdoverflowmax300">';
+		echo '<td class="tdoverflowmax300">';
 
 		// Define text, description and type
 		$text = '';
@@ -617,10 +617,10 @@ if ($sql_select) {
 		}
 
 		if (($objp->info_bits & 2) == 2) { ?>
-			<a href="<?php echo DOL_URL_ROOT.'/comm/remx.php?id='.$object->id; ?>">
+			<a href="<?php echo  DOL_URL_ROOT.'/comm/remx.php?id='.$object->id; ?>">
 			<?php
 			$txt = '';
-			print img_object($langs->trans("ShowReduc"), 'reduc').' ';
+			echo img_object($langs->trans("ShowReduc"), 'reduc').' ';
 			if ($objp->description == '(DEPOSIT)') {
 				$txt = $langs->trans("Deposit");
 			} elseif ($objp->description == '(EXCESS RECEIVED)') {
@@ -629,7 +629,7 @@ if ($sql_select) {
 				$txt = $langs->trans("ExcessPaid");
 			}
 			//else $txt=$langs->trans("Discount");
-			print $txt;
+			echo $txt;
 			?>
 			</a>
 			<?php
@@ -638,38 +638,38 @@ if ($sql_select) {
 				if ($objp->description == '(CREDIT_NOTE)' && $objp->fk_remise_except > 0) {
 					$discount = new DiscountAbsolute($db);
 					$discount->fetch($objp->fk_remise_except);
-					echo($txt ? ' - ' : '').$langs->transnoentities("DiscountFromCreditNote", $discount->getNomUrl(0));
+					echo ($txt ? ' - ' : '').$langs->transnoentities("DiscountFromCreditNote", $discount->getNomUrl(0));
 				}
 				if ($objp->description == '(EXCESS RECEIVED)' && $objp->fk_remise_except > 0) {
 					$discount = new DiscountAbsolute($db);
 					$discount->fetch($objp->fk_remise_except);
-					echo($txt ? ' - ' : '').$langs->transnoentities("DiscountFromExcessReceived", $discount->getNomUrl(0));
+					echo ($txt ? ' - ' : '').$langs->transnoentities("DiscountFromExcessReceived", $discount->getNomUrl(0));
 				} elseif ($objp->description == '(EXCESS PAID)' && $objp->fk_remise_except > 0) {
 					$discount = new DiscountAbsolute($db);
 					$discount->fetch($objp->fk_remise_except);
-					echo($txt ? ' - ' : '').$langs->transnoentities("DiscountFromExcessPaid", $discount->getNomUrl(0));
+					echo ($txt ? ' - ' : '').$langs->transnoentities("DiscountFromExcessPaid", $discount->getNomUrl(0));
 				} elseif ($objp->description == '(DEPOSIT)' && $objp->fk_remise_except > 0) {
 					$discount = new DiscountAbsolute($db);
 					$discount->fetch($objp->fk_remise_except);
-					echo($txt ? ' - ' : '').$langs->transnoentities("DiscountFromDeposit", $discount->getNomUrl(0));
+					echo ($txt ? ' - ' : '').$langs->transnoentities("DiscountFromDeposit", $discount->getNomUrl(0));
 					// Add date of deposit
 					if (getDolGlobalString('INVOICE_ADD_DEPOSIT_DATE')) {
-						echo ' ('.dol_print_date($discount->datec).')';
+						echo  ' ('.dol_print_date($discount->datec).')';
 					}
 				} else {
-					echo($txt ? ' - ' : '').dol_htmlentitiesbr($objp->description);
+					echo ($txt ? ' - ' : '').dol_htmlentitiesbr($objp->description);
 				}
 			}
 		} else {
 			if ($objp->fk_product > 0) {
-				echo $form->textwithtooltip($text, $description, 3, '', '', $i, 0, '');
+				echo  $form->textwithtooltip($text, $description, 3, '', '', $i, 0, '');
 
 				// Show range
-				echo get_date_range($objp->date_start, $objp->date_end);
+				echo  get_date_range($objp->date_start, $objp->date_end);
 
 				// Add description in form
 				if (getDolGlobalInt('PRODUIT_DESC_IN_FORM_ACCORDING_TO_DEVICE')) {
-					print (!empty($objp->description) && $objp->description != $objp->product_label) ? '<br>'.dol_htmlentitiesbr($objp->description) : '';
+					echo (!empty($objp->description) && $objp->description != $objp->product_label) ? '<br>'.dol_htmlentitiesbr($objp->description) : '';
 				}
 			} else {
 				if (!empty($objp->label) || !empty($objp->description)) {
@@ -681,14 +681,14 @@ if ($sql_select) {
 
 					if (!empty($objp->label)) {
 						$text .= ' <strong>'.$objp->label.'</strong>';
-						echo $form->textwithtooltip($text, dol_htmlentitiesbr($objp->description), 3, '', '', $i, 0, '');
+						echo  $form->textwithtooltip($text, dol_htmlentitiesbr($objp->description), 3, '', '', $i, 0, '');
 					} else {
-						echo $text.' '.dol_htmlentitiesbr($objp->description);
+						echo  $text.' '.dol_htmlentitiesbr($objp->description);
 					}
 				}
 
 				// Show range
-				echo get_date_range($objp->date_start, $objp->date_end);
+				echo  get_date_range($objp->date_start, $objp->date_end);
 			}
 		}
 
@@ -710,37 +710,37 @@ if ($sql_select) {
 			$prodreftxt .= (!empty($objp->description) && $objp->description!=$objp->product_label)?'<br>'.dol_htmlentitiesbr($objp->description):'';
 		}
 		*/
-		print '</td>';
+		echo '</td>';
 
-		//print '<td class="left">'.$prodreftxt.'</td>';
+		//echo '<td class="left">'.$prodreftxt.'</td>';
 		if ($type_element == 'invoice' && $objp->doc_type == Facture::TYPE_CREDIT_NOTE) {
 			$objp->prod_qty = -($objp->prod_qty);
 		}
-		print '<td class="right"><span class="amount">'.$objp->prod_qty.'</span></td>';
+		echo '<td class="right"><span class="amount">'.$objp->prod_qty.'</span></td>';
 		$total_qty += $objp->prod_qty;
 
-		print '<td class="right"><span class="amount">'.price($objp->total_ht).'</span></td>';
+		echo '<td class="right"><span class="amount">'.price($objp->total_ht).'</span></td>';
 
 		$total_ht += (float) $objp->total_ht;
 
-		print '<td class="right">'.price($objp->total_ht / (empty($objp->prod_qty) ? 1 : $objp->prod_qty)).'</td>';
+		echo '<td class="right">'.price($objp->total_ht / (empty($objp->prod_qty) ? 1 : $objp->prod_qty)).'</td>';
 
-		print "</tr>\n";
+		echo "</tr>\n";
 		$i++;
 	}
 
-	print '<tr class="liste_total">';
-	print '<td>'.$langs->trans('Total').'</td>';
-	print '<td colspan="3"></td>';
+	echo '<tr class="liste_total">';
+	echo '<td>'.$langs->trans('Total').'</td>';
+	echo '<td colspan="3"></td>';
 	// delivery planned date
 	if ($type_element == 'order' || $type_element == 'supplier_order' || $type_element == 'shipment') {
-		print '<td></td>';
+		echo '<td></td>';
 	}
-	print '<td class="right">'.$total_qty.'</td>';
-	print '<td class="right">'.price($total_ht).'</td>';
-	print '<td class="right">'.price(price2num($total_ht / (empty($total_qty) ? 1 : $total_qty), 'MU')).'</td>';
-	print "</table>";
-	print '</div>';
+	echo '<td class="right">'.$total_qty.'</td>';
+	echo '<td class="right">'.price($total_ht).'</td>';
+	echo '<td class="right">'.price(price2num($total_ht / (empty($total_qty) ? 1 : $total_qty), 'MU')).'</td>';
+	echo "</table>";
+	echo '</div>';
 
 	if ($num > $limit) {
 		print_barre_liste('', $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num);
@@ -749,30 +749,30 @@ if ($sql_select) {
 } elseif (empty($type_element) || $type_element == -1) {
 	print_barre_liste($langs->trans('ProductsIntoElements').' '.$typeElementString.' '.$button, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', (!empty($num) ? $num : 0), '', '');
 
-	print '<table class="liste centpercent">'."\n";
+	echo '<table class="liste centpercent">'."\n";
 	// Titles with sort buttons
-	print '<tr class="liste_titre">';
+	echo '<tr class="liste_titre">';
 	print_liste_field_titre('Ref', $_SERVER['PHP_SELF'], 'doc_number', '', $param, '', $sortfield, $sortorder, 'left ');
 	print_liste_field_titre('Date', $_SERVER['PHP_SELF'], 'dateprint', '', $param, 'width="150"', $sortfield, $sortorder, 'center ');
 	print_liste_field_titre('Status', $_SERVER['PHP_SELF'], 'fk_status', '', $param, '', $sortfield, $sortorder, 'center ');
 	print_liste_field_titre('Product', $_SERVER['PHP_SELF'], '', '', $param, '', $sortfield, $sortorder, 'left ');
 	print_liste_field_titre('Quantity', $_SERVER['PHP_SELF'], 'prod_qty', '', $param, '', $sortfield, $sortorder, 'right ');
-	print "</tr>\n";
+	echo "</tr>\n";
 
-	print '<tr class="oddeven"><td colspan="5"><span class="opacitymedium">'.$langs->trans("SelectElementAndClick", $langs->transnoentitiesnoconv("Search")).'</span></td></tr>';
+	echo '<tr class="oddeven"><td colspan="5"><span class="opacitymedium">'.$langs->trans("SelectElementAndClick", $langs->transnoentitiesnoconv("Search")).'</span></td></tr>';
 
-	print "</table>";
+	echo "</table>";
 } else {
 	print_barre_liste($langs->trans('ProductsIntoElements').' '.$typeElementString.' '.$button, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, '', '');
 
-	print '<table class="liste centpercent">'."\n";
+	echo '<table class="liste centpercent">'."\n";
 
-	print '<tr class="oddeven"><td colspan="5"><span class="opacitymedium">'.$langs->trans("FeatureNotYetAvailable").'</span></td></tr>';
+	echo '<tr class="oddeven"><td colspan="5"><span class="opacitymedium">'.$langs->trans("FeatureNotYetAvailable").'</span></td></tr>';
 
-	print "</table>";
+	echo "</table>";
 }
 
-print "</form>";
+echo "</form>";
 
 // End of page
 llxFooter();

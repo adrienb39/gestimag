@@ -112,21 +112,21 @@ llxHeader('', $title, $help_url);
 
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?restore_lastsearch_values=1">'.$langs->trans("BackToModuleList").'</a>';
-print load_fiche_titre($title, $linkback, 'title_setup');
+echo load_fiche_titre($title, $linkback, 'title_setup');
 
 $head = member_admin_prepare_head();
 
 
 
-print '<form action="'.$_SERVER["PHP_SELF"].'" method="post">';
-print '<input type="hidden" name="action" value="update">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<form action="'.$_SERVER["PHP_SELF"].'" method="post">';
+echo '<input type="hidden" name="action" value="update">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
 
-print dol_get_fiche_head($head, 'website', $langs->trans("Members"), -1, 'user');
+echo dol_get_fiche_head($head, 'website', $langs->trans("Members"), -1, 'user');
 
 if ($conf->use_javascript_ajax) {
-	print "\n".'<script type="text/javascript">';
-	print 'jQuery(document).ready(function () {
+	echo "\n".'<script type="text/javascript">';
+	echo 'jQuery(document).ready(function () {
                 function initemail()
                 {
                     if (jQuery("#MEMBER_NEWFORM_PAYONLINE").val()==\'-1\')
@@ -155,11 +155,11 @@ if ($conf->use_javascript_ajax) {
                 jQuery("#MEMBER_ENABLE_PUBLIC").change(function() { initfields(); });
                 jQuery("#MEMBER_NEWFORM_PAYONLINE").change(function() { initemail(); });
 			})';
-	print '</script>'."\n";
+	echo '</script>'."\n";
 }
 
 
-print '<span class="opacitymedium">'.$langs->trans("BlankSubscriptionFormDesc").'</span><br><br>';
+echo '<span class="opacitymedium">'.$langs->trans("BlankSubscriptionFormDesc").'</span><br><br>';
 
 $param = '';
 
@@ -175,16 +175,16 @@ if (!getDolGlobalString('MEMBER_ENABLE_PUBLIC')) {
 	$enabledisablehtml .= img_picto($langs->trans("Activated"), 'switch_on');
 	$enabledisablehtml .= '</a>';
 }
-print $enabledisablehtml;
-print '<input type="hidden" id="MEMBER_ENABLE_PUBLIC" name="MEMBER_ENABLE_PUBLIC" value="'.(!getDolGlobalString('MEMBER_ENABLE_PUBLIC') ? 0 : 1).'">';
+echo $enabledisablehtml;
+echo '<input type="hidden" id="MEMBER_ENABLE_PUBLIC" name="MEMBER_ENABLE_PUBLIC" value="'.(!getDolGlobalString('MEMBER_ENABLE_PUBLIC') ? 0 : 1).'">';
 
-print '<br><br>';
+echo '<br><br>';
 
 
 if (getDolGlobalString('MEMBER_ENABLE_PUBLIC')) {
-	print '<br>';
-	//print $langs->trans('FollowingLinksArePublic').'<br>';
-	print img_picto('', 'globe').' <span class="opacitymedium">'.$langs->trans('BlankSubscriptionForm').'</span><br>';
+	echo '<br>';
+	//echo $langs->trans('FollowingLinksArePublic').'<br>';
+	echo img_picto('', 'globe').' <span class="opacitymedium">'.$langs->trans('BlankSubscriptionForm').'</span><br>';
 	if (isModEnabled('multicompany')) {
 		$entity_qr = '?entity='.((int) $conf->entity);
 	} else {
@@ -196,85 +196,85 @@ if (getDolGlobalString('MEMBER_ENABLE_PUBLIC')) {
 	$urlwithroot = $urlwithouturlroot.DOL_URL_ROOT; // This is to use external domain name found into config file
 	//$urlwithroot=DOL_MAIN_URL_ROOT;					// This is to use same domain name than current
 
-	print '<div class="urllink">';
-	print '<input type="text" id="publicurlmember" class="quatrevingtpercentminusx" value="'.$urlwithroot.'/public/members/new.php'.$entity_qr.'">';
-	print '<a target="_blank" rel="noopener noreferrer" href="'.$urlwithroot.'/public/members/new.php'.$entity_qr.'">'.img_picto('', 'globe', 'class="paddingleft"').'</a>';
-	print '</div>';
-	print ajax_autoselect('publicurlmember');
+	echo '<div class="urllink">';
+	echo '<input type="text" id="publicurlmember" class="quatrevingtpercentminusx" value="'.$urlwithroot.'/public/members/new.php'.$entity_qr.'">';
+	echo '<a target="_blank" rel="noopener noreferrer" href="'.$urlwithroot.'/public/members/new.php'.$entity_qr.'">'.img_picto('', 'globe', 'class="paddingleft"').'</a>';
+	echo '</div>';
+	echo ajax_autoselect('publicurlmember');
 
-	print '<br><br>';
+	echo '<br><br>';
 
-	print '<div class="div-table-responsive-no-min">';
-	print '<table class="noborder centpercent">';
+	echo '<div class="div-table-responsive-no-min">';
+	echo '<table class="noborder centpercent">';
 
-	print '<tr class="liste_titre">';
-	print '<td>'.$langs->trans("Parameter").'</td>';
-	print '<td>'.$langs->trans("Value").'</td>';
-	print "</tr>\n";
+	echo '<tr class="liste_titre">';
+	echo '<td>'.$langs->trans("Parameter").'</td>';
+	echo '<td>'.$langs->trans("Value").'</td>';
+	echo "</tr>\n";
 
 	// Force Type
 	$adht = new AdherentType($db);
-	print '<tr class="oddeven drag" id="trforcetype"><td>';
-	print $langs->trans("ForceMemberType");
-	print '</td><td>';
+	echo '<tr class="oddeven drag" id="trforcetype"><td>';
+	echo $langs->trans("ForceMemberType");
+	echo '</td><td>';
 	$listofval = array();
 	$listofval += $adht->liste_array(1);
 	$forcetype = getDolGlobalInt('MEMBER_NEWFORM_FORCETYPE', -1);
-	print $form->selectarray("MEMBER_NEWFORM_FORCETYPE", $listofval, $forcetype, count($listofval) > 1 ? 1 : 0);
-	print "</td></tr>\n";
+	echo $form->selectarray("MEMBER_NEWFORM_FORCETYPE", $listofval, $forcetype, count($listofval) > 1 ? 1 : 0);
+	echo "</td></tr>\n";
 
 	// Force nature of member (mor/phy)
 	$morphys = array();
 	$morphys["phy"] = $langs->trans("Physical");
 	$morphys["mor"] = $langs->trans("Moral");
-	print '<tr class="oddeven drag" id="trforcenature"><td>';
-	print $langs->trans("ForceMemberNature");
-	print '</td><td>';
+	echo '<tr class="oddeven drag" id="trforcenature"><td>';
+	echo $langs->trans("ForceMemberNature");
+	echo '</td><td>';
 	$forcenature = getDolGlobalInt('MEMBER_NEWFORM_FORCEMORPHY', 0);
-	print $form->selectarray("MEMBER_NEWFORM_FORCEMORPHY", $morphys, $forcenature, 1);
-	print "</td></tr>\n";
+	echo $form->selectarray("MEMBER_NEWFORM_FORCEMORPHY", $morphys, $forcenature, 1);
+	echo "</td></tr>\n";
 
 	// Amount
-	print '<tr class="oddeven" id="tramount"><td>';
-	print $langs->trans("DefaultAmount");
-	print '</td><td>';
-	print '<input type="text" class="right width50" id="MEMBER_NEWFORM_AMOUNT" name="MEMBER_NEWFORM_AMOUNT" value="'.getDolGlobalString('MEMBER_NEWFORM_AMOUNT').'">';
-	print "</td></tr>\n";
+	echo '<tr class="oddeven" id="tramount"><td>';
+	echo $langs->trans("DefaultAmount");
+	echo '</td><td>';
+	echo '<input type="text" class="right width50" id="MEMBER_NEWFORM_AMOUNT" name="MEMBER_NEWFORM_AMOUNT" value="'.getDolGlobalString('MEMBER_NEWFORM_AMOUNT').'">';
+	echo "</td></tr>\n";
 
 	// Min amount
-	print '<tr class="oddeven" id="tredit"><td>';
-	print $langs->trans("MinimumAmount");
-	print '</td><td>';
-	print '<input type="text" class="right width50" id="MEMBER_MIN_AMOUNT" name="MEMBER_MIN_AMOUNT" value="'.getDolGlobalString('MEMBER_MIN_AMOUNT').'">';
-	print "</td></tr>\n";
+	echo '<tr class="oddeven" id="tredit"><td>';
+	echo $langs->trans("MinimumAmount");
+	echo '</td><td>';
+	echo '<input type="text" class="right width50" id="MEMBER_MIN_AMOUNT" name="MEMBER_MIN_AMOUNT" value="'.getDolGlobalString('MEMBER_MIN_AMOUNT').'">';
+	echo "</td></tr>\n";
 
 	// SHow counter of validated members publicly
-	print '<tr class="oddeven" id="tredit"><td>';
-	print $langs->trans("MemberCountersArePublic");
-	print '</td><td>';
-	print $form->selectyesno("MEMBER_COUNTERS_ARE_PUBLIC", getDolGlobalInt('MEMBER_COUNTERS_ARE_PUBLIC'), 1, false, 0, 1);
-	print "</td></tr>\n";
+	echo '<tr class="oddeven" id="tredit"><td>';
+	echo $langs->trans("MemberCountersArePublic");
+	echo '</td><td>';
+	echo $form->selectyesno("MEMBER_COUNTERS_ARE_PUBLIC", getDolGlobalInt('MEMBER_COUNTERS_ARE_PUBLIC'), 1, false, 0, 1);
+	echo "</td></tr>\n";
 
 	// Show the table of all available membership types. If not, show a form (as the default was for Gestimag <=16.0)
 	$skiptable = getDolGlobalInt('MEMBER_SKIP_TABLE');
-	print '<tr class="oddeven" id="tredit"><td>';
-	print $langs->trans("MembersShowMembershipTypesTable");
-	print '</td><td>';
-	print $form->selectyesno("MEMBER_SHOW_TABLE", !$skiptable, 1, false, 0, 1); // Reverse the logic "hide -> show" for retrocompatibility
-	print "</td></tr>\n";
+	echo '<tr class="oddeven" id="tredit"><td>';
+	echo $langs->trans("MembersShowMembershipTypesTable");
+	echo '</td><td>';
+	echo $form->selectyesno("MEMBER_SHOW_TABLE", !$skiptable, 1, false, 0, 1); // Reverse the logic "hide -> show" for retrocompatibility
+	echo "</td></tr>\n";
 
 	// Show "vote allowed" setting for membership types
 	$hidevoteallowed = getDolGlobalInt('MEMBER_HIDE_VOTE_ALLOWED');
-	print '<tr class="oddeven" id="tredit"><td>';
-	print $langs->trans("MembersShowVotesAllowed");
-	print '</td><td>';
-	print $form->selectyesno("MEMBER_SHOW_VOTE_ALLOWED", !$hidevoteallowed, 1, false, 0, 1); // Reverse the logic "hide -> show" for retrocompatibility
-	print "</td></tr>\n";
+	echo '<tr class="oddeven" id="tredit"><td>';
+	echo $langs->trans("MembersShowVotesAllowed");
+	echo '</td><td>';
+	echo $form->selectyesno("MEMBER_SHOW_VOTE_ALLOWED", !$hidevoteallowed, 1, false, 0, 1); // Reverse the logic "hide -> show" for retrocompatibility
+	echo "</td></tr>\n";
 
 	// Jump to an online payment page
-	print '<tr class="oddeven" id="trpayment"><td>';
-	print $langs->trans("MEMBER_NEWFORM_PAYONLINE");
-	print '</td><td>';
+	echo '<tr class="oddeven" id="trpayment"><td>';
+	echo $langs->trans("MEMBER_NEWFORM_PAYONLINE");
+	echo '</td><td>';
 	$listofval = array();
 	$listofval['-1'] = $langs->trans('No');
 	$listofval['all'] = $langs->trans('Yes').' ('.$langs->trans("VisitorCanChooseItsPaymentMode").')';
@@ -287,21 +287,21 @@ if (getDolGlobalString('MEMBER_ENABLE_PUBLIC')) {
 	if (isModEnabled('stripe')) {
 		$listofval['stripe'] = 'Stripe';
 	}
-	print $form->selectarray("MEMBER_NEWFORM_PAYONLINE", $listofval, getDolGlobalString('MEMBER_NEWFORM_PAYONLINE'), 0);
-	print "</td></tr>\n";
+	echo $form->selectarray("MEMBER_NEWFORM_PAYONLINE", $listofval, getDolGlobalString('MEMBER_NEWFORM_PAYONLINE'), 0);
+	echo "</td></tr>\n";
 
-	print '</table>';
-	print '</div>';
+	echo '</table>';
+	echo '</div>';
 
-	print '<div class="center">';
-	print '<input type="submit" class="button button-edit" value="'.$langs->trans("Modify").'">';
-	print '</div>';
+	echo '<div class="center">';
+	echo '<input type="submit" class="button button-edit" value="'.$langs->trans("Modify").'">';
+	echo '</div>';
 }
 
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
-print '</form>';
+echo '</form>';
 
 // End of page
 llxFooter();

@@ -42,7 +42,7 @@ function report_header($reportname, $notused, $period, $periodlink, $description
 {
 	global $langs;
 
-	print "\n\n<!-- start banner of report -->\n";
+	echo "\n\n<!-- start banner of report -->\n";
 
 	if (!empty($varlink)) {
 		$varlink = '?'.$varlink;
@@ -52,84 +52,84 @@ function report_header($reportname, $notused, $period, $periodlink, $description
 
 	print_barre_liste($title, 0, '', '', '', '', '', -1, '', 'generic', 0, '', '', -1, 1, 1);
 
-	print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].$varlink.'">'."\n";
-	print '<input type="hidden" name="token" value="'.newToken().'">'."\n";
+	echo '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].$varlink.'">'."\n";
+	echo '<input type="hidden" name="token" value="'.newToken().'">'."\n";
 
-	print dol_get_fiche_head();
+	echo dol_get_fiche_head();
 
 	foreach ($moreparam as $key => $value) {
-		print '<input type="hidden" name="'.$key.'" value="'.$value.'">'."\n";
+		echo '<input type="hidden" name="'.$key.'" value="'.$value.'">'."\n";
 	}
 
-	print '<table class="border tableforfield centpercent">'."\n";
+	echo '<table class="border tableforfield centpercent">'."\n";
 
 	$variant = ($periodlink || $exportlink);
 
 	// Ligne de titre
-	print '<tr>';
-	print '<td width="150">'.$langs->trans("ReportName").'</td>';
-	print '<td>';
-	print $reportname;
-	print '</td>';
+	echo '<tr>';
+	echo '<td width="150">'.$langs->trans("ReportName").'</td>';
+	echo '<td>';
+	echo $reportname;
+	echo '</td>';
 	if ($variant) {
-		print '<td></td>';
+		echo '<td></td>';
 	}
-	print '</tr>'."\n";
+	echo '</tr>'."\n";
 
 	// Calculation mode
 	if ($calcmode) {
-		print '<tr>';
-		print '<td width="150">'.$langs->trans("CalculationMode").'</td>';
-		print '<td>';
-		print $calcmode;
+		echo '<tr>';
+		echo '<td width="150">'.$langs->trans("CalculationMode").'</td>';
+		echo '<td>';
+		echo $calcmode;
 		if ($variant) {
-			print '<td></td>';
+			echo '<td></td>';
 		}
-		print '</td>';
-		print '</tr>'."\n";
+		echo '</td>';
+		echo '</tr>'."\n";
 	}
 
 	// Ligne de la periode d'analyse du rapport
-	print '<tr>';
-	print '<td>'.$langs->trans("ReportPeriod").'</td>';
-	print '<td>';
+	echo '<tr>';
+	echo '<td>'.$langs->trans("ReportPeriod").'</td>';
+	echo '<td>';
 	if ($period) {
-		print $period;
+		echo $period;
 	}
 	if ($variant) {
-		print '<td class="nowraponall">'.$periodlink.'</td>';
+		echo '<td class="nowraponall">'.$periodlink.'</td>';
 	}
-	print '</td>';
-	print '</tr>'."\n";
+	echo '</td>';
+	echo '</tr>'."\n";
 
 	// Ligne de description
-	print '<tr>';
-	print '<td>'.$langs->trans("ReportDescription").'</td>';
-	print '<td>'.$description.'</td>';
+	echo '<tr>';
+	echo '<td>'.$langs->trans("ReportDescription").'</td>';
+	echo '<td>'.$description.'</td>';
 	if ($variant) {
-		print '<td></td>';
+		echo '<td></td>';
 	}
-	print '</tr>'."\n";
+	echo '</tr>'."\n";
 
 	// Ligne d'export
-	print '<tr>';
-	print '<td>'.$langs->trans("GeneratedOn").'</td>';
-	print '<td>';
-	print dol_print_date($builddate, 'dayhour');
-	print '</td>';
+	echo '<tr>';
+	echo '<td>'.$langs->trans("GeneratedOn").'</td>';
+	echo '<td>';
+	echo dol_print_date($builddate, 'dayhour');
+	echo '</td>';
 	if ($variant) {
-		print '<td>'.($exportlink ? $langs->trans("Export").': '.$exportlink : '').'</td>';
+		echo '<td>'.($exportlink ? $langs->trans("Export").': '.$exportlink : '').'</td>';
 	}
-	print '</tr>'."\n";
+	echo '</tr>'."\n";
 
-	print '</table>'."\n";
+	echo '</table>'."\n";
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print '<div class="center"><input type="submit" class="button" name="submit" value="'.$langs->trans("Refresh").'"></div>';
+	echo '<div class="center"><input type="submit" class="button" name="submit" value="'.$langs->trans("Refresh").'"></div>';
 
-	print '</form>';
-	print '<br>';
+	echo '</form>';
+	echo '<br>';
 
-	print "\n<!-- end banner of report -->\n\n";
+	echo "\n<!-- end banner of report -->\n\n";
 }

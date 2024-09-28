@@ -147,7 +147,7 @@ if (empty($pageid)) {
 	$langs->load("website");
 
 	if (!GETPOSTISSET('pageref')) {
-		print $langs->trans("PreviewOfSiteNotYetAvailable", $websitekey);
+		echo $langs->trans("PreviewOfSiteNotYetAvailable", $websitekey);
 	}
 
 	include DOL_DOCUMENT_ROOT.'/public/error-404.php';
@@ -175,7 +175,7 @@ if (getDolGlobalString('MAIN_APPLICATION_TITLE')) {
  * View
  */
 
-//print 'Directory with '.$appli.' websites.<br>';
+//echo 'Directory with '.$appli.' websites.<br>';
 
 
 // Security: Delete string ../ into $original_file
@@ -225,7 +225,7 @@ if (!file_exists($original_file_osencoded)) {
 	header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
 
 	$langs->load("website");
-	print $langs->trans("RequestedPageHasNoContentYet", $pageid);
+	echo $langs->trans("RequestedPageHasNoContentYet", $pageid);
 
 	include DOL_DOCUMENT_ROOT.'/public/error-404.php';
 	exit;
@@ -235,7 +235,7 @@ if (!file_exists($original_file_osencoded)) {
 // Output page content
 define('USEDOLIBARRSERVER', 1);
 if (!isset($originalcontentonly)) {
-	print '<!-- Page content '.$original_file.' rendered with DOLIBARR SERVER : Html with CSS link and html header + Body that was saved into tpl dir -->'."\n";
+	echo '<!-- Page content '.$original_file.' rendered with DOLIBARR SERVER : Html with CSS link and html header + Body that was saved into tpl dir -->'."\n";
 }
 include_once $original_file_osencoded; // Note: The pageXXX.tpl.php showed here contains a formatage with dolWebsiteOutput() at end of page.
 

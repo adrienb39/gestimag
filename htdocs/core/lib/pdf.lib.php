@@ -113,7 +113,7 @@ function pdf_getFormat(Translate $outputlangs = null, $mode = 'setup')
 		}
 	}
 
-	//print "pdfformat=".$pdfformat." width=".$width." height=".$height." unit=".$unit;
+	//echo "pdfformat=".$pdfformat." width=".$width." height=".$height." unit=".$unit;
 	return array('width' => $width, 'height' => $height, 'unit' => $unit);
 }
 
@@ -194,7 +194,7 @@ function pdf_getInstance($format = '', $metric = 'mm', $pagetype = 'P')
 	// Protection and encryption of pdf
 	if (getDolGlobalString('PDF_SECURITY_ENCRYPTION')) {
 		/* Permission supported by TCPDF
-		- print : Print the document;
+		- echo : Print the document;
 		- modify : Modify the contents of the document by operations other than those controlled by 'fill-forms', 'extract' and 'assemble';
 		- copy : Copy or otherwise extract text and graphics from the document;
 		- annot-forms : Add or modify text annotations, fill in interactive form fields, and, if 'modify' is also set, create or modify interactive form fields (including signature fields);
@@ -325,7 +325,7 @@ function pdf_getHeightForLogo($logo, $url = false)
 			$height = $height * $maxwidth / $width;
 		}
 	}
-	//print $tmp['width'].' '.$tmp['height'].' '.$width; exit;
+	//echo $tmp['width'].' '.$tmp['height'].' '.$width; exit;
 	return $height;
 }
 
@@ -818,7 +818,7 @@ function pdf_watermark(&$pdf, $outputlangs, $h, $w, $unit, $text)
 
 	//rotate
 	$pdf->_out(sprintf('q %.5F %.5F %.5F %.5F %.2F %.2F cm 1 0 0 1 %.2F %.2F cm', cos($watermark_angle), sin($watermark_angle), -sin($watermark_angle), cos($watermark_angle), $watermark_x * $k, ($h - $watermark_y) * $k, -$watermark_x * $k, -($h - $watermark_y) * $k));
-	//print watermark
+	//echo watermark
 	$pdf->SetXY($watermark_x_pos, $watermark_y_pos);
 	$pdf->Cell($w - 20, 25, $outputlangs->convToOutputCharset($text), "", 2, "C", 0);
 	//antirotate
@@ -1014,7 +1014,7 @@ function pdf_bank(&$pdf, $outputlangs, $curx, $cury, $account, $onlynumber = 0, 
  * 	@param	int			$showdetails	Show company address details into footer (0=Nothing, 1=Show address, 2=Show managers, 3=Both)
  *  @param	int			$hidefreetext	1=Hide free text, 0=Show free text
  *  @param	int			$page_largeur	Page width
- *  @param	string		$watermark		Watermark text to print on page
+ *  @param	string		$watermark		Watermark text to echo on page
  * 	@return	int							Return height of bottom margin including footer text
  */
 function pdf_pagefoot(&$pdf, $outputlangs, $paramfreetext, $fromcompany, $marge_basse, $marge_gauche, $page_hauteur, $object, $showdetails = 0, $hidefreetext = 0, $page_largeur = 0, $watermark = '')
@@ -1221,7 +1221,7 @@ function pdf_pagefoot(&$pdf, $outputlangs, $paramfreetext, $fromcompany, $marge_
 			$freetextheight = $pdf->getStringHeight($width, $line);
 		} else {
 			$freetextheight = pdfGetHeightForHtmlContent($pdf, dol_htmlentitiesbr($line, 1, 'UTF-8', 0)); // New method (works for HTML content)
-			//print '<br>'.$freetextheight;exit;
+			//echo '<br>'.$freetextheight;exit;
 		}
 	}
 
@@ -1749,7 +1749,7 @@ function pdf_getlinedesc($object, $i, $outputlangs, $hideref = 0, $hidedesc = 0,
 		if (!$object->lines[$i]->date_start && $object->lines[$i]->date_end) {
 			$period = '('.$outputlangs->transnoentitiesnoconv('DateUntil', dol_print_date($object->lines[$i]->date_end, $format, false, $outputlangs)).')';
 		}
-		//print '>'.$outputlangs->charset_output.','.$period;
+		//echo '>'.$outputlangs->charset_output.','.$period;
 		if (getDolGlobalString('PDF_BOLD_PRODUCT_REF_AND_PERIOD')) {
 			if (!dol_textishtml($libelleproduitservice)) {
 				$libelleproduitservice = str_replace("\n", '<br>', $libelleproduitservice);
@@ -1758,7 +1758,7 @@ function pdf_getlinedesc($object, $i, $outputlangs, $hideref = 0, $hidedesc = 0,
 		} else {
 			$libelleproduitservice = dol_concatdesc($libelleproduitservice, $period);
 		}
-		//print $libelleproduitservice;
+		//echo $libelleproduitservice;
 	}
 
 	// Show information for lot

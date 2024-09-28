@@ -405,7 +405,7 @@ class ModeleBoxes // Can't be abstract as it is instantiated to build "empty" bo
 		if ($nooutput) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 
 		return '';
@@ -458,15 +458,15 @@ class ModeleBoxes // Can't be abstract as it is instantiated to build "empty" bo
 						$part1 = $reg[1];
 
 						$modName = ucfirst($reg[1]);
-						//print "file=$file"; print "modName=$modName"; exit;
+						//echo "file=$file"; echo "modName=$modName"; exit;
 						if (in_array($modName, $modules)) {
 							$langs->load("errors");
-							print '<div class="error">'.$langs->trans("Error").' : '.$langs->trans("ErrorDuplicateWidget", $modName, "").'</div>';
+							echo '<div class="error">'.$langs->trans("Error").' : '.$langs->trans("ErrorDuplicateWidget", $modName, "").'</div>';
 						} else {
 							try {
 								include_once $newdir.'/'.$file;
 							} catch (Exception $e) {
-								print $e->getMessage();
+								echo $e->getMessage();
 							}
 						}
 
@@ -483,7 +483,7 @@ class ModeleBoxes // Can't be abstract as it is instantiated to build "empty" bo
 				closedir($handle);
 			}
 		}
-		//echo "<pre>";print_r($modules);echo "</pre>";
+		//echo  "<pre>";print_r($modules);echo  "</pre>";
 
 		asort($orders);
 
@@ -498,7 +498,7 @@ class ModeleBoxes // Can't be abstract as it is instantiated to build "empty" bo
 			}
 
 			if (!class_exists($modName)) {
-				print 'Error: A widget file was found but its class "'.$modName.'" was not found.'."<br>\n";
+				echo 'Error: A widget file was found but its class "'.$modName.'" was not found.'."<br>\n";
 				continue;
 			}
 

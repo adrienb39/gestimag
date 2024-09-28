@@ -2,7 +2,7 @@
 <?php
 // Protection to avoid direct call of template
 if (empty($context) || !is_object($context)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
@@ -79,7 +79,7 @@ $html .= $htmlError . $htmlWarning . $htmlSuccess;
 if ($html) {
 	$jsOut = $jsSuccess . $jsWarning . $jsError;
 	if ($jsOut == '') {
-		print $html;
+		echo $html;
 	}
 }
 $context->clearEventMessages();
@@ -93,10 +93,10 @@ if ($jsOut) {
 	$js .= $jsOut;
 	$js .= '});';
 	$js .= '</script>';
-	print $js;
+	echo $js;
 }
 
-print '<script src="'.$context->getControllerUrl().'/js/theme.js"></script>';
+echo '<script src="'.$context->getControllerUrl().'/js/theme.js"></script>';
 ?>
 
 </body>

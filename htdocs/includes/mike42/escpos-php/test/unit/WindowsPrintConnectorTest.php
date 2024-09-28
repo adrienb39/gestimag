@@ -21,7 +21,7 @@ class WindowsPrintConnectorTest extends PHPUnit\Framework\TestCase
 
     public function testLptMac()
     {
-        // Cannot print to local printer on Mac with this connector
+        // Cannot echo to local printer on Mac with this connector
         $this -> expectException(BadMethodCallException::class);
         $connector = $this -> getMockConnector("LPT1", WindowsPrintConnector::PLATFORM_MAC);
         $connector -> expects($this -> exactly(0))
@@ -35,7 +35,7 @@ class WindowsPrintConnectorTest extends PHPUnit\Framework\TestCase
 
     public function testLptLinux()
     {
-        // Cannot print to local printer on Linux with this connector
+        // Cannot echo to local printer on Linux with this connector
         $this -> expectException(BadMethodCallException::class);
         $connector = $this -> getMockConnector("LPT1", WindowsPrintConnector::PLATFORM_LINUX);
         $connector -> expects($this -> exactly(0))
@@ -63,7 +63,7 @@ class WindowsPrintConnectorTest extends PHPUnit\Framework\TestCase
 
     public function testComMac()
     {
-        // Cannot print to local printer on Mac with this connector
+        // Cannot echo to local printer on Mac with this connector
         $this -> expectException(BadMethodCallException::class);
         $connector = $this -> getMockConnector("COM1", WindowsPrintConnector::PLATFORM_MAC);
         $connector -> expects($this -> exactly(0))
@@ -77,7 +77,7 @@ class WindowsPrintConnectorTest extends PHPUnit\Framework\TestCase
 
     public function testComLinux()
     {
-        // Cannot print to local printer on Linux with this connector
+        // Cannot echo to local printer on Linux with this connector
         $this -> expectException(BadMethodCallException::class);
         $connector = $this -> getMockConnector("COM1", WindowsPrintConnector::PLATFORM_LINUX);
         $connector -> expects($this -> exactly(0))
@@ -176,7 +176,7 @@ class WindowsPrintConnectorTest extends PHPUnit\Framework\TestCase
         $connector = $this -> getMockConnector("smb://example-pc/Printer", WindowsPrintConnector::PLATFORM_LINUX);
         $connector -> expects($this -> once())
                 -> method('runCommand')
-                -> with($this -> equalTo('smbclient \'//example-pc/Printer\' -c \'print -\' -N -m SMB2'));
+                -> with($this -> equalTo('smbclient \'//example-pc/Printer\' -c \'echo -\' -N -m SMB2'));
         $connector -> expects($this -> exactly(0))
                 -> method('runCopy');
         $connector -> expects($this -> exactly(0))
@@ -189,7 +189,7 @@ class WindowsPrintConnectorTest extends PHPUnit\Framework\TestCase
         $connector = $this -> getMockConnector("smb://bob@example-pc/Printer", WindowsPrintConnector::PLATFORM_LINUX);
         $connector -> expects($this -> once())
                 -> method('runCommand')
-                -> with($this -> equalTo('smbclient \'//example-pc/Printer\' -U \'bob\' -c \'print -\' -N -m SMB2'));
+                -> with($this -> equalTo('smbclient \'//example-pc/Printer\' -U \'bob\' -c \'echo -\' -N -m SMB2'));
         $connector -> expects($this -> exactly(0))
                 -> method('runCopy');
         $connector -> expects($this -> exactly(0))
@@ -202,7 +202,7 @@ class WindowsPrintConnectorTest extends PHPUnit\Framework\TestCase
         $connector = $this -> getMockConnector("smb://bob@example-pc/home/Printer", WindowsPrintConnector::PLATFORM_LINUX);
         $connector -> expects($this -> once())
                 -> method('runCommand')
-                -> with($this -> equalTo('smbclient \'//example-pc/Printer\' -U \'home\\bob\' -c \'print -\' -N -m SMB2'));
+                -> with($this -> equalTo('smbclient \'//example-pc/Printer\' -U \'home\\bob\' -c \'echo -\' -N -m SMB2'));
         $connector -> expects($this -> exactly(0))
                 -> method('runCopy');
         $connector -> expects($this -> exactly(0))
@@ -215,7 +215,7 @@ class WindowsPrintConnectorTest extends PHPUnit\Framework\TestCase
         $connector = $this -> getMockConnector("smb://bob:secret@example-pc/Printer", WindowsPrintConnector::PLATFORM_LINUX);
         $connector -> expects($this -> once())
                 -> method('runCommand')
-                -> with($this -> equalTo('smbclient \'//example-pc/Printer\' \'secret\' -U \'bob\' -c \'print -\' -m SMB2'));
+                -> with($this -> equalTo('smbclient \'//example-pc/Printer\' \'secret\' -U \'bob\' -c \'echo -\' -m SMB2'));
         $connector -> expects($this -> exactly(0))
                 -> method('runCopy');
         $connector -> expects($this -> exactly(0))

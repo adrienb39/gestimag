@@ -72,7 +72,7 @@ if ($action == 'verifyavailability') {
 		$response["code"] = "MISSING_ID";
 		$response["message"] = "Missing parameter id";
 		header('HTTP/1.0 400 Bad Request');
-		echo json_encode($response);
+		echo  json_encode($response);
 		exit;
 	}
 	if (empty($datetocheckbooking)) {
@@ -80,7 +80,7 @@ if ($action == 'verifyavailability') {
 		$response["code"] = "MISSING_DATE_AVAILABILITY";
 		$response["message"] = "Missing parameter datetocheck";
 		header('HTTP/1.0 400 Bad Request');
-		echo json_encode($response);
+		echo  json_encode($response);
 		exit;
 	}
 
@@ -180,4 +180,4 @@ if ($action == 'verifyavailability') {
  * View
  */
 
-echo json_encode($result);
+echo  json_encode($result);

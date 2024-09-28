@@ -1084,12 +1084,12 @@ class tcpdi_parser {
 			$offset = $this->xref['xref'][$key[0]][$key[1]];
 			if (strpos($this->pdfdata, $objref, $offset) === $offset) {
 				// Offset is in xref table and matches actual position in file
-				//echo "Offset in XREF is correct, returning<br>";
+				//echo  "Offset in XREF is correct, returning<br>";
 				return $this->xref['xref'][$key[0]][$key[1]];
 			}
 		}
 		if (array_key_exists($objref, $this->objoffsets)) {
-			//echo "Offset found in internal reftable<br>";
+			//echo  "Offset found in internal reftable<br>";
 			return $this->objoffsets[$objref];
 		}
 		return false;
@@ -1386,7 +1386,7 @@ class tcpdi_parser {
 	 * @since 1.0.000 (2011-05-23)
 	 */
 	public function Error($msg) {
-		// exit program and print error
+		// exit program and echo error
 		die('<strong>TCPDF_PARSER ERROR: </strong>'.$msg);
 	}
 

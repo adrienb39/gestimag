@@ -34,7 +34,7 @@ foreach ($inputsOk as $str) {
 // Wrap at a fixed width (as ASCII...), and show the user
 // what's about to be sent to the printer
 $wrapped = wordwrap($input, 20);
-echo($wrapped);
+echo ($wrapped);
 
 // Roll out each line with 0.5s delay
 foreach (explode("\n", $wrapped) as $line) {

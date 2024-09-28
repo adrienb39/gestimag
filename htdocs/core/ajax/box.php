@@ -58,14 +58,14 @@ if ($userid != $user->id) {
 
 top_httphead();
 
-print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 // Add a box
 if ($boxid > 0 && $zone != '' && $userid > 0) {
 	$tmp = explode('-', $boxorder);
 	$nbboxonleft = substr_count($tmp[0], ',');
 	$nbboxonright = substr_count($tmp[1], ',');
-	print $nbboxonleft.'-'.$nbboxonright;
+	echo $nbboxonleft.'-'.$nbboxonright;
 	if ($nbboxonleft > $nbboxonright) {
 		$boxorder = preg_replace('/B:/', 'B:'.$boxid.',', $boxorder); // Insert id of new box into list
 	} else {

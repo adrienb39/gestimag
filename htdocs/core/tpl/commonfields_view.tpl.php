@@ -25,7 +25,7 @@
 
 // Protection to avoid direct call of template
 if (empty($conf) || !is_object($conf)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 if (!is_object($form)) {
@@ -57,13 +57,13 @@ foreach ($object->fields as $key => $val) {
 
 	$value = $object->$key;
 
-	print '<tr class="field_'.$key.'"><td';
-	print ' class="'.(empty($val['tdcss']) ? 'titlefield' : $val['tdcss']).' fieldname_'.$key;
-	//if ($val['notnull'] > 0) print ' fieldrequired';     // No fieldrequired on the view output
+	echo '<tr class="field_'.$key.'"><td';
+	echo ' class="'.(empty($val['tdcss']) ? 'titlefield' : $val['tdcss']).' fieldname_'.$key;
+	//if ($val['notnull'] > 0) echo ' fieldrequired';     // No fieldrequired on the view output
 	if ($val['type'] == 'text' || $val['type'] == 'html') {
-		print ' tdtop';
+		echo ' tdtop';
 	}
-	print '">';
+	echo '">';
 
 	$labeltoshow = '';
 	if (!empty($val['help'])) {
@@ -76,52 +76,52 @@ foreach ($object->fields as $key => $val) {
 		}
 	}
 	if (empty($val['alwayseditable'])) {
-		print $labeltoshow;
+		echo $labeltoshow;
 	} else {
-		print $form->editfieldkey($labeltoshow, $key, $value, $object, 1, $val['type']);
+		echo $form->editfieldkey($labeltoshow, $key, $value, $object, 1, $val['type']);
 	}
 
-	print '</td>';
-	print '<td class="valuefield fieldname_'.$key;
+	echo '</td>';
+	echo '<td class="valuefield fieldname_'.$key;
 	if ($val['type'] == 'text') {
-		print ' wordbreak';
+		echo ' wordbreak';
 	}
 	if (!empty($val['cssview'])) {
-		print ' '.$val['cssview'];
+		echo ' '.$val['cssview'];
 	}
-	print '">';
+	echo '">';
 	if (empty($val['alwayseditable'])) {
 		if (preg_match('/^(text|html)/', $val['type'])) {
-			print '<div class="longmessagecut">';
+			echo '<div class="longmessagecut">';
 		}
 		if ($key == 'lang') {
 			$langs->load("languages");
 			$labellang = ($value ? $langs->trans('Language_'.$value) : '');
-			print picto_from_langcode($value, 'class="paddingrightonly saturatemedium opacitylow"');
-			print $labellang;
+			echo picto_from_langcode($value, 'class="paddingrightonly saturatemedium opacitylow"');
+			echo $labellang;
 		} else {
 			if (isset($val['copytoclipboard']) && $val['copytoclipboard'] == 2) {
 				$out = $object->showOutputField($val, $key, $value, '', '', '', 0);
-				print showValueWithClipboardCPButton($out, 0, $out);
+				echo showValueWithClipboardCPButton($out, 0, $out);
 			} else {
-				print $object->showOutputField($val, $key, $value, '', '', '', 0);
+				echo $object->showOutputField($val, $key, $value, '', '', '', 0);
 			}
 		}
-		//print dol_escape_htmltag($object->$key, 1, 1);
+		//echo dol_escape_htmltag($object->$key, 1, 1);
 		if (preg_match('/^(text|html)/', $val['type'])) {
-			print '</div>';
+			echo '</div>';
 		}
 	} else {
-		print $form->editfieldval($labeltoshow, $key, $value, $object, 1, $val['type']);
+		echo $form->editfieldval($labeltoshow, $key, $value, $object, 1, $val['type']);
 	}
-	print '</td>';
-	print '</tr>';
+	echo '</td>';
+	echo '</tr>';
 }
 
-print '</table>';
+echo '</table>';
 
 // We close div and reopen for second column
-print '</div>';
+echo '</div>';
 
 
 $rightpart = '';
@@ -210,12 +210,12 @@ foreach ($object->fields as $key => $val) {
 }
 
 
-print '<div class="fichehalfright">';
-print '<div class="underbanner clearboth"></div>';
+echo '<div class="fichehalfright">';
+echo '<div class="underbanner clearboth"></div>';
 
-print '<table class="border centpercent tableforfield">';
+echo '<table class="border centpercent tableforfield">';
 
-print $rightpart;
+echo $rightpart;
 
 ?>
 <!-- END PHP TEMPLATE commonfields_view.tpl.php -->

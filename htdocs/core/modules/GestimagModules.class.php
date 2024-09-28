@@ -979,7 +979,7 @@ class GestimagModules // Can not be abstract, because we need to instantiate it 
 		global $langs;
 
 		$langstring = "ImportDataset_".$this->import_code[$r];
-		//print "x".$langstring;
+		//echo "x".$langstring;
 		if ($langs->trans($langstring) == $langstring) {
 			// Translation not found
 			return $langs->transnoentitiesnoconv($this->import_label[$r]);
@@ -1194,10 +1194,10 @@ class GestimagModules // Can not be abstract, because we need to instantiate it 
 						foreach ($files as $file) {
 							if ($onlywithsuffix) {
 								if (!preg_match('/\-'.preg_quote($onlywithsuffix, '/').'\./i', $file)) {
-									//print 'File '.$file.' does not match suffix '.$onlywithsuffix.' so it is discarded<br>'."\n";
+									//echo 'File '.$file.' does not match suffix '.$onlywithsuffix.' so it is discarded<br>'."\n";
 									continue;
 								} else {
-									//print 'File '.$file.' match suffix '.$onlywithsuffix.' so we keep it<br>'."\n";
+									//echo 'File '.$file.' match suffix '.$onlywithsuffix.' so we keep it<br>'."\n";
 								}
 							}
 							if (preg_match('/\.sql$/i', $file) && !preg_match('/\.key\.sql$/i', $file) && substr($file, 0, 4) == 'llx_') {
@@ -1219,10 +1219,10 @@ class GestimagModules // Can not be abstract, because we need to instantiate it 
 						foreach ($files as $file) {
 							if ($onlywithsuffix) {
 								if (!preg_match('/\-'.preg_quote($onlywithsuffix, '/').'\./i', $file)) {
-									//print 'File '.$file.' does not match suffix '.$onlywithsuffix.' so it is discarded<br>'."\n";
+									//echo 'File '.$file.' does not match suffix '.$onlywithsuffix.' so it is discarded<br>'."\n";
 									continue;
 								} else {
-									//print 'File '.$file.' match suffix '.$onlywithsuffix.' so we keep it<br>'."\n";
+									//echo 'File '.$file.' match suffix '.$onlywithsuffix.' so we keep it<br>'."\n";
 								}
 							}
 							if (preg_match('/\.key\.sql$/i', $file) && substr($file, 0, 4) == 'llx_') {
@@ -1244,10 +1244,10 @@ class GestimagModules // Can not be abstract, because we need to instantiate it 
 						foreach ($files as $file) {
 							if ($onlywithsuffix) {
 								if (!preg_match('/\-'.preg_quote($onlywithsuffix, '/').'\./i', $file)) {
-									//print 'File '.$file.' does not match suffix '.$onlywithsuffix.' so it is discarded<br>'."\n";
+									//echo 'File '.$file.' does not match suffix '.$onlywithsuffix.' so it is discarded<br>'."\n";
 									continue;
 								} else {
-									//print 'File '.$file.' match suffix '.$onlywithsuffix.' so we keep it<br>'."\n";
+									//echo 'File '.$file.' match suffix '.$onlywithsuffix.' so we keep it<br>'."\n";
 								}
 							}
 							if (preg_match('/\.sql$/i', $file) && !preg_match('/\.key\.sql$/i', $file) && substr($file, 0, 9) == 'functions') {
@@ -1269,10 +1269,10 @@ class GestimagModules // Can not be abstract, because we need to instantiate it 
 						foreach ($files as $file) {
 							if ($onlywithsuffix) {
 								if (!preg_match('/\-'.preg_quote($onlywithsuffix, '/').'\./i', $file)) {
-									//print 'File '.$file.' does not match suffix '.$onlywithsuffix.' so it is discarded<br>'."\n";
+									//echo 'File '.$file.' does not match suffix '.$onlywithsuffix.' so it is discarded<br>'."\n";
 									continue;
 								} else {
-									//print 'File '.$file.' match suffix '.$onlywithsuffix.' so we keep it<br>'."\n";
+									//echo 'File '.$file.' match suffix '.$onlywithsuffix.' so we keep it<br>'."\n";
 								}
 							}
 							if (preg_match('/\.sql$/i', $file) && !preg_match('/\.key\.sql$/i', $file) && substr($file, 0, 4) == 'data') {
@@ -1294,10 +1294,10 @@ class GestimagModules // Can not be abstract, because we need to instantiate it 
 						foreach ($files as $file) {
 							if ($onlywithsuffix) {
 								if (!preg_match('/\-'.preg_quote($onlywithsuffix, '/').'\./i', $file)) {
-									//print 'File '.$file.' does not match suffix '.$onlywithsuffix.' so it is discarded<br>'."\n";
+									//echo 'File '.$file.' does not match suffix '.$onlywithsuffix.' so it is discarded<br>'."\n";
 									continue;
 								} else {
-									//print 'File '.$file.' match suffix '.$onlywithsuffix.' so we keep it<br>'."\n";
+									//echo 'File '.$file.' match suffix '.$onlywithsuffix.' so we keep it<br>'."\n";
 								}
 							}
 							if (preg_match('/\.sql$/i', $file) && !preg_match('/\.key\.sql$/i', $file) && substr($file, 0, 6) == 'update') {
@@ -1390,7 +1390,7 @@ class GestimagModules // Can not be abstract, because we need to instantiate it 
 							$lastid = $this->db->last_insert_id(MAIN_DB_PREFIX."boxes_def", "rowid");
 
 							foreach ($pos_name as $key2 => $val2) {
-								//print 'key2='.$key2.'-val2='.$val2."<br>\n";
+								//echo 'key2='.$key2.'-val2='.$val2."<br>\n";
 								if ($enabledbydefaulton && $val2 != $enabledbydefaulton) {
 									continue; // Not enabled by default onto this page.
 								}
@@ -1451,7 +1451,7 @@ class GestimagModules // Can not be abstract, because we need to instantiate it 
 
 				// TODO If the box is also included by another module and the other module is still on, we should not remove it.
 				// For the moment, we manage this with hard coded exception
-				//print "Remove box ".$file.'<br>';
+				//echo "Remove box ".$file.'<br>';
 				if ($file == 'box_graph_product_distribution.php') {
 					if (isModEnabled("product") || isModEnabled("service")) {
 						dol_syslog("We discard deleting module ".$file." because another module still active requires it.");
@@ -2584,7 +2584,7 @@ class GestimagModules // Can not be abstract, because we need to instantiate it 
 	    <span class="info-box-desc twolinesmax opacitymedium" title="'.dol_escape_htmltag($this->getDesc()).'">'.nl2br($this->getDesc()).'</span>';
 
 		$return .=  '<div class="valignmiddle inline-block info-box-more">';
-		//if ($versiontrans) print img_warning($langs->trans("Version").' '.$this->getVersion(1)).' ';
+		//if ($versiontrans) echo img_warning($langs->trans("Version").' '.$this->getVersion(1)).' ';
 		$return .=  '<a class="valignmiddle inline-block" href="javascript:document_preview(\''.DOL_URL_ROOT.'/admin/modulehelp.php?id='.((int) $this->numero).'\',\'text/html\',\''.dol_escape_js($langs->trans("Module")).'\')">'.img_picto(($this->isCoreOrExternalModule() == 'external' ? $langs->trans("ExternalModule").' - ' : '').$langs->trans("ClickToShowDescription"), $imginfo).'</a>';
 		$return .=  '</div><br>';
 

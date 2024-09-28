@@ -174,7 +174,7 @@ class mailing_thirdparties extends MailingTargets
 		}
 		$sql .= " ORDER BY email";
 
-		//print $sql;exit;
+		//echo $sql;exit;
 
 		// Stock recipients emails into targets table
 		$result = $this->db->query($sql);
@@ -285,7 +285,7 @@ class mailing_thirdparties extends MailingTargets
 		$sql .= " AND entity = ".$conf->entity;
 		$sql .= " ORDER BY label";
 
-		//print $sql;
+		//echo $sql;
 		$resql = $this->db->query($sql);
 		if ($resql) {
 			$num = $this->db->num_rows($resql);

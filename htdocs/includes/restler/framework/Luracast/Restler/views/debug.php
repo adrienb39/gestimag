@@ -125,7 +125,7 @@ $responseHeaders .= Util::$restler->responseCode.' '.\Luracast\Restler\RestExcep
 <!DOCTYPE html>
 <html>
 <head>
-    <title><?php echo $title?></title>
+    <title><?php echo  $title?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style>
         <?php include __DIR__.'/debug.css'; ?>
@@ -138,32 +138,32 @@ $responseHeaders .= Util::$restler->responseCode.' '.\Luracast\Restler\RestExcep
         $stages =  Util::$restler->exception->getStages();
         $curStage = Util::$restler->exception->getStage();
         foreach($stages['success'] as $stage){
-            echo "<a href=\"#\">$stage</a>";
+            echo  "<a href=\"#\">$stage</a>";
         }
         foreach($stages['failure'] as $stage){
-            echo '<a href="#" class="failure">'
+            echo  '<a href="#" class="failure">'
                 . $stage
                 . ($stage==$curStage ? ' <span class="state"/> ' : '')
                 . '</a>';
         }
     } else {
         foreach(Util::$restler->_events as $stage){
-            echo "<a href=\"#\">$stage</a>";
+            echo  "<a href=\"#\">$stage</a>";
         }
     }
     ?>
 </div>
 <header>
-    <h1><?php echo $title ?></h1>
+    <h1><?php echo  $title ?></h1>
 </header>
 <article>
 
-    <h2>Response:<right><?php echo $icon;?></right></h2>
-    <pre class="header"><?php echo $responseHeaders ?></pre>
-    <?php echo render($response); ?>
+    <h2>Response:<right><?php echo  $icon;?></right></h2>
+    <pre class="header"><?php echo  $responseHeaders ?></pre>
+    <?php echo  render($response); ?>
     <h2>Additional Template Data:</h2>
-    <?php echo render($template_vars); ?>
-    <p>Restler v<?php echo Restler::VERSION?></p>
+    <?php echo  render($template_vars); ?>
+    <p>Restler v<?php echo  Restler::VERSION?></p>
 </article>
 </body>
 </html>

@@ -108,7 +108,7 @@ $pdf->SetFont('times', '', 40);
 
 $pdf->SetTextColor(255, 0, 0);
 
-// print a text
+// echo a text
 $pdf->Cell(60, 60, 'Template', 0, 0, 'C', false, '', 0, false, 'T', 'M');
 // ...................................................................
 
@@ -116,7 +116,7 @@ $pdf->Cell(60, 60, 'Template', 0, 0, 'C', false, '', 0, false, 'T', 'M');
 $pdf->endTemplate();
 
 
-// print the selected Template various times using various transparencies
+// echo the selected Template various times using various transparencies
 
 $pdf->SetAlpha(0.4);
 $pdf->printTemplate($template_id, 15, 50, 20, 20, '', '', false);

@@ -81,7 +81,7 @@ Nulla facilisi. Cras varius quam eget libero aliquam vitae tincidunt leo rutrum.
 // add a page
 $pdf->AddPage();
 
-// print some graphic content
+// echo some graphic content
 $pdf->Image('images/image_demo.jpg', 155,  30, 40, 40, 'JPG', '', '', true);
 $pdf->Image('images/image_demo.jpg',  15, 230, 40, 40, 'JPG', '', '', true);
 

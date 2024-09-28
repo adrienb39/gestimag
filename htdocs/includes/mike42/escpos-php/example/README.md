@@ -11,7 +11,7 @@ printer supports.
 
 ## List of examples
 
-Each example prints to standard output, so either edit the print connector, or redirect the output to your printer to see it in action. They are designed for developers: open them in a text editor before you run them!
+Each example prints to standard output, so either edit the echo connector, or redirect the output to your printer to see it in action. They are designed for developers: open them in a text editor before you run them!
 
 - `bit-image.php` - Prints a images to the printer using the older "bit image" commands.
 - `demo.php` - Demonstrates output using a large subset of availale features.

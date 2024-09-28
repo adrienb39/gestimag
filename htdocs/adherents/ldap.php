@@ -108,79 +108,79 @@ llxHeader('', $langs->trans("Member"), 'EN:Module_Foundations|FR:Module_Adh&eacu
 
 $head = member_prepare_head($object);
 
-print dol_get_fiche_head($head, 'ldap', $langs->trans("Member"), 0, 'user');
+echo dol_get_fiche_head($head, 'ldap', $langs->trans("Member"), 0, 'user');
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/adherents/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
 dol_banner_tab($object, 'rowid', $linkback);
 
-print '<div class="fichecenter">';
+echo '<div class="fichecenter">';
 
-print '<div class="underbanner clearboth"></div>';
-print '<table class="border centpercent tableforfield">';
+echo '<div class="underbanner clearboth"></div>';
+echo '<table class="border centpercent tableforfield">';
 
 // Login
-print '<tr><td class="titlefield">'.$langs->trans("Login").' / '.$langs->trans("Id").'</td><td class="valeur">'.dol_escape_htmltag($object->login).'&nbsp;</td></tr>';
+echo '<tr><td class="titlefield">'.$langs->trans("Login").' / '.$langs->trans("Id").'</td><td class="valeur">'.dol_escape_htmltag($object->login).'&nbsp;</td></tr>';
 
 // If there is a link to the unencrypted password, we show the value in database here so we can compare because it is shown nowhere else
 // This is for very old situation. Password are now encrypted and $object->pass is empty.
 if (getDolGlobalString('LDAP_MEMBER_FIELD_PASSWORD')) {
-	print '<tr><td>'.$langs->trans("LDAPFieldPasswordNotCrypted").'</td>';
-	print '<td class="valeur">'.dol_escape_htmltag($object->pass).'</td>';
-	print "</tr>\n";
+	echo '<tr><td>'.$langs->trans("LDAPFieldPasswordNotCrypted").'</td>';
+	echo '<td class="valeur">'.dol_escape_htmltag($object->pass).'</td>';
+	echo "</tr>\n";
 }
 
 $adht = new AdherentType($db);
 $adht->fetch($object->typeid);
 
 // Type
-print '<tr><td>'.$langs->trans("Type").'</td><td class="valeur">'.$adht->getNomUrl(1)."</td></tr>\n";
+echo '<tr><td>'.$langs->trans("Type").'</td><td class="valeur">'.$adht->getNomUrl(1)."</td></tr>\n";
 
 // LDAP DN
-print '<tr><td>LDAP '.$langs->trans("LDAPMemberDn").'</td><td class="valeur">'.getDolGlobalString('LDAP_MEMBER_DN')."</td></tr>\n";
+echo '<tr><td>LDAP '.$langs->trans("LDAPMemberDn").'</td><td class="valeur">'.getDolGlobalString('LDAP_MEMBER_DN')."</td></tr>\n";
 
 // LDAP Cle
-print '<tr><td>LDAP '.$langs->trans("LDAPNamingAttribute").'</td><td class="valeur">'.getDolGlobalString('LDAP_KEY_MEMBERS')."</td></tr>\n";
+echo '<tr><td>LDAP '.$langs->trans("LDAPNamingAttribute").'</td><td class="valeur">'.getDolGlobalString('LDAP_KEY_MEMBERS')."</td></tr>\n";
 
 // LDAP Server
-print '<tr><td>LDAP '.$langs->trans("Type").'</td><td class="valeur">'.getDolGlobalString('LDAP_SERVER_TYPE')."</td></tr>\n";
-print '<tr><td>LDAP '.$langs->trans("Version").'</td><td class="valeur">'.getDolGlobalString('LDAP_SERVER_PROTOCOLVERSION')."</td></tr>\n";
-print '<tr><td>LDAP '.$langs->trans("LDAPPrimaryServer").'</td><td class="valeur">'.getDolGlobalString('LDAP_SERVER_HOST')."</td></tr>\n";
-print '<tr><td>LDAP '.$langs->trans("LDAPSecondaryServer").'</td><td class="valeur">'.getDolGlobalString('LDAP_SERVER_HOST_SLAVE')."</td></tr>\n";
-print '<tr><td>LDAP '.$langs->trans("LDAPServerPort").'</td><td class="valeur">'.getDolGlobalString('LDAP_SERVER_PORT')."</td></tr>\n";
+echo '<tr><td>LDAP '.$langs->trans("Type").'</td><td class="valeur">'.getDolGlobalString('LDAP_SERVER_TYPE')."</td></tr>\n";
+echo '<tr><td>LDAP '.$langs->trans("Version").'</td><td class="valeur">'.getDolGlobalString('LDAP_SERVER_PROTOCOLVERSION')."</td></tr>\n";
+echo '<tr><td>LDAP '.$langs->trans("LDAPPrimaryServer").'</td><td class="valeur">'.getDolGlobalString('LDAP_SERVER_HOST')."</td></tr>\n";
+echo '<tr><td>LDAP '.$langs->trans("LDAPSecondaryServer").'</td><td class="valeur">'.getDolGlobalString('LDAP_SERVER_HOST_SLAVE')."</td></tr>\n";
+echo '<tr><td>LDAP '.$langs->trans("LDAPServerPort").'</td><td class="valeur">'.getDolGlobalString('LDAP_SERVER_PORT')."</td></tr>\n";
 
-print '</table>';
+echo '</table>';
 
-print '</div>';
+echo '</div>';
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 /*
  * Action bar
  */
-print '<div class="tabsAction">';
+echo '<div class="tabsAction">';
 
 if (getDolGlobalString('LDAP_MEMBER_ACTIVE') && getDolGlobalString('LDAP_MEMBER_ACTIVE') != Ldap::SYNCHRO_LDAP_TO_DOLIBARR) {
-	print '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER["PHP_SELF"].'?id='.$object->id.'&amp;action=gestimag2ldap">'.$langs->trans("ForceSynchronize").'</a></div>';
+	echo '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER["PHP_SELF"].'?id='.$object->id.'&amp;action=gestimag2ldap">'.$langs->trans("ForceSynchronize").'</a></div>';
 }
 
-print "</div>\n";
+echo "</div>\n";
 
 if (getDolGlobalString('LDAP_MEMBER_ACTIVE') && getDolGlobalString('LDAP_MEMBER_ACTIVE') != Ldap::SYNCHRO_LDAP_TO_DOLIBARR) {
-	print "<br>\n";
+	echo "<br>\n";
 }
 
 
 
 // Affichage attributes LDAP
-print load_fiche_titre($langs->trans("LDAPInformationsForThisMember"));
+echo load_fiche_titre($langs->trans("LDAPInformationsForThisMember"));
 
-print '<table width="100%" class="noborder">';
+echo '<table width="100%" class="noborder">';
 
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("LDAPAttributes").'</td>';
-print '<td>'.$langs->trans("Value").'</td>';
-print '</tr>';
+echo '<tr class="liste_titre">';
+echo '<td>'.$langs->trans("LDAPAttributes").'</td>';
+echo '<td>'.$langs->trans("Value").'</td>';
+echo '</tr>';
 
 // Lecture LDAP
 $ldap = new Ldap();
@@ -192,7 +192,7 @@ if ($result > 0) {
 
 	if (empty($dn)) {
 		$langs->load("errors");
-		print '<tr class="oddeven"><td colspan="2"><span class="error">'.$langs->trans("ErrorModuleSetupNotComplete", $langs->transnoentitiesnoconv("Member")).'</span></td></tr>';
+		echo '<tr class="oddeven"><td colspan="2"><span class="error">'.$langs->trans("ErrorModuleSetupNotComplete", $langs->transnoentitiesnoconv("Member")).'</span></td></tr>';
 	} else {
 		$records = $ldap->getAttribute($dn, $search);
 
@@ -201,12 +201,12 @@ if ($result > 0) {
 		// Show tree
 		if (((!is_numeric($records)) || $records != 0) && (!isset($records['count']) || $records['count'] > 0)) {
 			if (!is_array($records)) {
-				print '<tr class="oddeven"><td colspan="2"><span class="error">'.$langs->trans("ErrorFailedToReadLDAP").'</span></td></tr>';
+				echo '<tr class="oddeven"><td colspan="2"><span class="error">'.$langs->trans("ErrorFailedToReadLDAP").'</span></td></tr>';
 			} else {
 				$result = show_ldap_content($records, 0, $records['count'], true);
 			}
 		} else {
-			print '<tr class="oddeven"><td colspan="2">'.$langs->trans("LDAPRecordNotFound").' (dn='.dol_escape_htmltag($dn).' - search='.dol_escape_htmltag($search).')</td></tr>';
+			echo '<tr class="oddeven"><td colspan="2">'.$langs->trans("LDAPRecordNotFound").' (dn='.dol_escape_htmltag($dn).' - search='.dol_escape_htmltag($search).')</td></tr>';
 		}
 	}
 
@@ -216,7 +216,7 @@ if ($result > 0) {
 }
 
 
-print '</table>';
+echo '</table>';
 
 // End of page
 llxFooter();

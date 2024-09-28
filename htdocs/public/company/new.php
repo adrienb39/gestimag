@@ -115,7 +115,7 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 
 	top_htmlhead($head, $title, $disablejs, $disablehead, $arrayofjs, $arrayofcss); // Show html headers
 
-	print '<body id="mainbody" class="publicnewmemberform">';
+	echo '<body id="mainbody" class="publicnewmemberform">';
 
 	// Define urllogo
 	$urllogo = DOL_URL_ROOT . '/theme/common/login_logo.png';
@@ -128,29 +128,29 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 		$urllogo = DOL_URL_ROOT . '/theme/gestimag_logo.svg';
 	}
 
-	print '<header class="center">';
+	echo '<header class="center">';
 
 	// Output html code for logo
 	if ($urllogo) {
-		print '<div class="backgreypublicpayment">';
-		print '<div class="logopublicpayment">';
-		print '<img id="dolpaymentlogo" src="' . $urllogo . '">';
-		print '</div>';
+		echo '<div class="backgreypublicpayment">';
+		echo '<div class="logopublicpayment">';
+		echo '<img id="dolpaymentlogo" src="' . $urllogo . '">';
+		echo '</div>';
 		if (!getDolGlobalString('MAIN_HIDE_POWERED_BY')) {
-			print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">' . $langs->trans("PoweredBy") . '<br><img class="poweredbyimg" src="' . DOL_URL_ROOT . '/theme/gestimag_logo.svg" width="80px"></a></div>';
+			echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">' . $langs->trans("PoweredBy") . '<br><img class="poweredbyimg" src="' . DOL_URL_ROOT . '/theme/gestimag_logo.svg" width="80px"></a></div>';
 		}
-		print '</div>';
+		echo '</div>';
 	}
 
 	if (getDolGlobalString('MEMBER_IMAGE_PUBLIC_REGISTRATION')) {
-		print '<div class="backimagepublicregistration">';
-		print '<img id="idEVENTORGANIZATION_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('MEMBER_IMAGE_PUBLIC_REGISTRATION') . '">';
-		print '</div>';
+		echo '<div class="backimagepublicregistration">';
+		echo '<img id="idEVENTORGANIZATION_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('MEMBER_IMAGE_PUBLIC_REGISTRATION') . '">';
+		echo '</div>';
 	}
 
-	print '</header>';
+	echo '</header>';
 
-	print '<div class="divmainbodylarge">';
+	echo '<div class="divmainbodylarge">';
 }
 
 /**
@@ -164,17 +164,17 @@ function llxFooterVierge()
 
 	$ext = '';
 
-	print '</div>';
+	echo '</div>';
 
 	printCommonFooter('public');
 
 	if (!empty($conf->use_javascript_ajax)) {
-		print "\n" . '<!-- Includes JS Footer of Gestimag -->' . "\n";
-		print '<script src="' . DOL_URL_ROOT . '/core/js/lib_foot.js.php?lang=' . $langs->defaultlang . (!empty($ext) ? '&' . $ext : '') . '"></script>' . "\n";
+		echo "\n" . '<!-- Includes JS Footer of Gestimag -->' . "\n";
+		echo '<script src="' . DOL_URL_ROOT . '/core/js/lib_foot.js.php?lang=' . $langs->defaultlang . (!empty($ext) ? '&' . $ext : '') . '"></script>' . "\n";
 	}
 
-	print "</body>\n";
-	print "</html>\n";
+	echo "</body>\n";
+	echo "</html>\n";
 }
 
 
@@ -281,10 +281,10 @@ if (empty($reshook) && $action == 'added') {
 	llxHeaderVierge("newSocieteAdded");
 
 	// If we have not been redirected
-	print '<br><br>';
-	print '<div class="center">';
-	print $langs->trans("newSocieteAdded");
-	print '</div>';
+	echo '<br><br>';
+	echo '<div class="center">';
+	echo $langs->trans("newSocieteAdded");
+	echo '</div>';
 
 	llxFooterVierge();
 	exit;
@@ -304,38 +304,38 @@ $formadmin = new FormAdmin($db);
 
 llxHeaderVierge($langs->trans("ContactUs"));
 
-print '<br>';
-print load_fiche_titre(img_picto('', 'member_nocolor', 'class="pictofixedwidth"') . ' &nbsp; ' . $langs->trans("ContactUs"), '', '', 0, 0, 'center');
+echo '<br>';
+echo load_fiche_titre(img_picto('', 'member_nocolor', 'class="pictofixedwidth"') . ' &nbsp; ' . $langs->trans("ContactUs"), '', '', 0, 0, 'center');
 
 
-print '<div align="center">';
-print '<div id="divsubscribe">';
+echo '<div align="center">';
+echo '<div id="divsubscribe">';
 
-print '<div class="center subscriptionformhelptext opacitymedium justify">';
+echo '<div class="center subscriptionformhelptext opacitymedium justify">';
 if (getDolGlobalString('COMPANY_NEWFORM_TEXT')) {
-	print $langs->trans(getDolGlobalString('COMPANY_NEWFORM_TEXT')) . "<br>\n";
+	echo $langs->trans(getDolGlobalString('COMPANY_NEWFORM_TEXT')) . "<br>\n";
 } else {
-	print $langs->trans("ContactUsDesc", getDolGlobalString("MAIN_INFO_SOCIETE_MAIL")) . "<br>\n";
+	echo $langs->trans("ContactUsDesc", getDolGlobalString("MAIN_INFO_SOCIETE_MAIL")) . "<br>\n";
 }
-print '</div>';
+echo '</div>';
 
 dol_htmloutput_errors($errmsg);
 dol_htmloutput_events();
 
 // Print form
-print '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST" name="newprospect">' . "\n";
-print '<input type="hidden" name="token" value="' . newToken() . '" / >';
-print '<input type="hidden" name="entity" value="' . $entity . '" />';
-print '<input type="hidden" name="action" value="add" />';
-print '<br>';
+echo '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST" name="newprospect">' . "\n";
+echo '<input type="hidden" name="token" value="' . newToken() . '" / >';
+echo '<input type="hidden" name="entity" value="' . $entity . '" />';
+echo '<input type="hidden" name="action" value="add" />';
+echo '<br>';
 
 $messagemandatory = '<span class="">' . $langs->trans("FieldsWithAreMandatory", '*') . '</span>';
-//print '<br><span class="opacitymedium">'.$langs->trans("FieldsWithAreMandatory", '*').'</span><br>';
-//print $langs->trans("FieldsWithIsForPublic",'**').'<br>';
+//echo '<br><span class="opacitymedium">'.$langs->trans("FieldsWithAreMandatory", '*').'</span><br>';
+//echo $langs->trans("FieldsWithIsForPublic",'**').'<br>';
 
-print dol_get_fiche_head();
+echo dol_get_fiche_head();
 
-print '<script type="text/javascript">
+echo '<script type="text/javascript">
 jQuery(document).ready(function () {
 	jQuery(document).ready(function () {
 		function initmorphy()
@@ -365,78 +365,78 @@ jQuery(document).ready(function () {
 </script>';
 
 
-print '<table class="border" summary="form to subscribe" id="tablesubscribe">' . "\n";
+echo '<table class="border" summary="form to subscribe" id="tablesubscribe">' . "\n";
 //Third party name
 /*
 if ($objectsoc->particulier || $private) {
-	print '<span id="TypeName" class="fieldrequired">'.$langs->trans('ThirdPartyName').' / '.$langs->trans('LastName', 'name').'</span>';
+	echo '<span id="TypeName" class="fieldrequired">'.$langs->trans('ThirdPartyName').' / '.$langs->trans('LastName', 'name').'</span>';
 } else {
-	print '<span id="TypeName" class="fieldrequired">'.$form->editfieldkey('ThirdPartyName', 'name', '', $objectsoc, 0).'</span>';
+	echo '<span id="TypeName" class="fieldrequired">'.$form->editfieldkey('ThirdPartyName', 'name', '', $objectsoc, 0).'</span>';
 }
 */
-print '<tr class="tr-field-thirdparty-name"><td class="titlefieldcreate">'; // text appreas left
-print '<input type="hidden" name="ThirdPartyName" value="' . $langs->trans('ThirdPartyName') . '">';
-print '<span id="TypeName" class="fieldrequired"  title="' .dol_escape_htmltag($langs->trans("FieldsWithAreMandatory", '*')) . '" >' . $form->editfieldkey('Company', 'name', '', $objectsoc, 0) . '<span class="star"> *</span></span>';
-print '</td><td>'; // inline input
-print '<input type="text" class="minwidth300" maxlength="128" name="name" id="name" value="' . dol_escape_htmltag($objectsoc->name) . '" autofocus="autofocus">';
+echo '<tr class="tr-field-thirdparty-name"><td class="titlefieldcreate">'; // text appreas left
+echo '<input type="hidden" name="ThirdPartyName" value="' . $langs->trans('ThirdPartyName') . '">';
+echo '<span id="TypeName" class="fieldrequired"  title="' .dol_escape_htmltag($langs->trans("FieldsWithAreMandatory", '*')) . '" >' . $form->editfieldkey('Company', 'name', '', $objectsoc, 0) . '<span class="star"> *</span></span>';
+echo '</td><td>'; // inline input
+echo '<input type="text" class="minwidth300" maxlength="128" name="name" id="name" value="' . dol_escape_htmltag($objectsoc->name) . '" autofocus="autofocus">';
 //
 
 // Name and lastname
-print '<tr><td class="classfortooltip" title="' . dol_escape_htmltag($messagemandatory) . '">' . $langs->trans("Firstname") . ' <span class="star">*</span></td><td><input type="text" name="firstname" class="minwidth150" value="' . dol_escape_htmltag(GETPOST('firstname')) . '"></td></tr>' . "\n";
+echo '<tr><td class="classfortooltip" title="' . dol_escape_htmltag($messagemandatory) . '">' . $langs->trans("Firstname") . ' <span class="star">*</span></td><td><input type="text" name="firstname" class="minwidth150" value="' . dol_escape_htmltag(GETPOST('firstname')) . '"></td></tr>' . "\n";
 
-print '<tr><td class="classfortooltip" title="' . dol_escape_htmltag($messagemandatory) . '">' . $langs->trans("Lastname") . ' <span class="star">*</span></td><td><input type="text" name="lastname" class="minwidth150" value="' . dol_escape_htmltag(GETPOST('lastname')) . '"></td></tr>' . "\n";
+echo '<tr><td class="classfortooltip" title="' . dol_escape_htmltag($messagemandatory) . '">' . $langs->trans("Lastname") . ' <span class="star">*</span></td><td><input type="text" name="lastname" class="minwidth150" value="' . dol_escape_htmltag(GETPOST('lastname')) . '"></td></tr>' . "\n";
 
 // Address
-print '<tr><td class="tdtop">';
-print $form->editfieldkey('Address', 'address', '', $objectsoc, 0);
-print '</td>';
-print '<td>';
-print '<textarea name="address" id="address" class="quatrevingtpercent" rows="' . ROWS_2 . '" wrap="soft">';
-print dol_escape_htmltag($objectsoc->address, 0, 1);
-print '</textarea>';
-print $form->widgetForTranslation("address", $objectsoc, $permissiontoadd, 'textarea', 'alphanohtml', 'quatrevingtpercent');
-print '</td></tr>';
+echo '<tr><td class="tdtop">';
+echo $form->editfieldkey('Address', 'address', '', $objectsoc, 0);
+echo '</td>';
+echo '<td>';
+echo '<textarea name="address" id="address" class="quatrevingtpercent" rows="' . ROWS_2 . '" wrap="soft">';
+echo dol_escape_htmltag($objectsoc->address, 0, 1);
+echo '</textarea>';
+echo $form->widgetForTranslation("address", $objectsoc, $permissiontoadd, 'textarea', 'alphanohtml', 'quatrevingtpercent');
+echo '</td></tr>';
 
 // Country
-print '<tr><td>' . $form->editfieldkey('Country', 'selectcountry_id', '', $objectsoc, 0) . '</td><td class="maxwidthonsmartphone">';
-print img_picto('', 'country', 'class="pictofixedwidth"');
-print $form->select_country((GETPOSTISSET('country_id') ? GETPOST('country_id') : $objectsoc->country_id), 'country_id', '', 0, 'minwidth300 maxwidth500 widthcentpercentminusx');
+echo '<tr><td>' . $form->editfieldkey('Country', 'selectcountry_id', '', $objectsoc, 0) . '</td><td class="maxwidthonsmartphone">';
+echo img_picto('', 'country', 'class="pictofixedwidth"');
+echo $form->select_country((GETPOSTISSET('country_id') ? GETPOST('country_id') : $objectsoc->country_id), 'country_id', '', 0, 'minwidth300 maxwidth500 widthcentpercentminusx');
 if ($user->admin) {
-	print info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
+	echo info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
 }
-print '</td></tr>';
+echo '</td></tr>';
 
 // Phone / Fax
-print '<tr><td>' . $form->editfieldkey('Phone', 'phone', '', $objectsoc, 0) . '</td>';
-print '<td>' . img_picto('', 'object_phoning', 'class="pictofixedwidth"') . ' <input type="text" name="phone" id="phone" class="maxwidth200 widthcentpercentminusx" value="' . (GETPOSTISSET('phone') ? GETPOST('phone', 'alpha') : $objectsoc->phone) . '"></td>';
-print '</tr>';
+echo '<tr><td>' . $form->editfieldkey('Phone', 'phone', '', $objectsoc, 0) . '</td>';
+echo '<td>' . img_picto('', 'object_phoning', 'class="pictofixedwidth"') . ' <input type="text" name="phone" id="phone" class="maxwidth200 widthcentpercentminusx" value="' . (GETPOSTISSET('phone') ? GETPOST('phone', 'alpha') : $objectsoc->phone) . '"></td>';
+echo '</tr>';
 
-print '<tr>';
-print '<td>' . $form->editfieldkey('Fax', 'fax', '', $objectsoc, 0) . '</td>';
-print '<td>' . img_picto('', 'object_phoning_fax', 'class="pictofixedwidth"') . ' <input type="text" name="fax" id="fax" class="maxwidth200 widthcentpercentminusx" value="' . (GETPOSTISSET('fax') ? GETPOST('fax', 'alpha') : $objectsoc->fax) . '"></td>';
-print '</tr>';
+echo '<tr>';
+echo '<td>' . $form->editfieldkey('Fax', 'fax', '', $objectsoc, 0) . '</td>';
+echo '<td>' . img_picto('', 'object_phoning_fax', 'class="pictofixedwidth"') . ' <input type="text" name="fax" id="fax" class="maxwidth200 widthcentpercentminusx" value="' . (GETPOSTISSET('fax') ? GETPOST('fax', 'alpha') : $objectsoc->fax) . '"></td>';
+echo '</tr>';
 
 // Email / Web
-print '<tr><td>' . $form->editfieldkey('EMail', 'email', '', $objectsoc, 0, 'string', '', !getDolGlobalString('SOCIETE_EMAIL_MANDATORY') ? '' : $conf->global->SOCIETE_EMAIL_MANDATORY) . '</td>';
-print '<td>' . img_picto('', 'object_email', 'class="pictofixedwidth"') . ' <input type="text" class="maxwidth200 widthcentpercentminusx" name="email" id="email" value="' . $objectsoc->email . '"></td>';
+echo '<tr><td>' . $form->editfieldkey('EMail', 'email', '', $objectsoc, 0, 'string', '', !getDolGlobalString('SOCIETE_EMAIL_MANDATORY') ? '' : $conf->global->SOCIETE_EMAIL_MANDATORY) . '</td>';
+echo '<td>' . img_picto('', 'object_email', 'class="pictofixedwidth"') . ' <input type="text" class="maxwidth200 widthcentpercentminusx" name="email" id="email" value="' . $objectsoc->email . '"></td>';
 if (isModEnabled('mailing') && getDolGlobalString('THIRDPARTY_SUGGEST_ALSO_ADDRESS_CREATION')) {
 	if ($conf->browser->layout == 'phone') {
-		print '</tr><tr>';
+		echo '</tr><tr>';
 	}
-	print '<td class="individualline noemail">' . $form->editfieldkey($langs->trans('No_Email') . ' (' . $langs->trans('Contact') . ')', 'contact_no_email', '', $objectsoc, 0) . '</td>';
-	print '<td class="individualline" ' . (($conf->browser->layout == 'phone') || !isModEnabled('mailing') ? ' colspan="3"' : '') . '>' . $form->selectyesno('contact_no_email', (GETPOSTISSET("contact_no_email") ? GETPOST("contact_no_email", 'alpha') : (empty($objectsoc->no_email) ? 0 : 1)), 1, false, 1) . '</td>';
+	echo '<td class="individualline noemail">' . $form->editfieldkey($langs->trans('No_Email') . ' (' . $langs->trans('Contact') . ')', 'contact_no_email', '', $objectsoc, 0) . '</td>';
+	echo '<td class="individualline" ' . (($conf->browser->layout == 'phone') || !isModEnabled('mailing') ? ' colspan="3"' : '') . '>' . $form->selectyesno('contact_no_email', (GETPOSTISSET("contact_no_email") ? GETPOST("contact_no_email", 'alpha') : (empty($objectsoc->no_email) ? 0 : 1)), 1, false, 1) . '</td>';
 }
-print '</tr>';
+echo '</tr>';
 
-print '<tr><td>' . $form->editfieldkey('Web', 'url', '', $objectsoc, 0) . '</td>';
-print '<td>' . img_picto('', 'globe', 'class="pictofixedwidth"') . ' <input type="text" class="maxwidth500 widthcentpercentminusx" name="url" id="url" value="' . $objectsoc->url . '"></td></tr>';
+echo '<tr><td>' . $form->editfieldkey('Web', 'url', '', $objectsoc, 0) . '</td>';
+echo '<td>' . img_picto('', 'globe', 'class="pictofixedwidth"') . ' <input type="text" class="maxwidth500 widthcentpercentminusx" name="url" id="url" value="' . $objectsoc->url . '"></td></tr>';
 
 
 // Comments
-print '<tr>';
-print '<td class="tdtop">' . $langs->trans("Comments") . '</td>';
-print '<td class="tdtop"><textarea name="note_private" id="note_private" wrap="soft" class="quatrevingtpercent" rows="' . ROWS_3 . '">' . dol_escape_htmltag(GETPOST('note_private', 'restricthtml'), 0, 1) . '</textarea></td>';
-print '</tr>' . "\n";
+echo '<tr>';
+echo '<td class="tdtop">' . $langs->trans("Comments") . '</td>';
+echo '<td class="tdtop"><textarea name="note_private" id="note_private" wrap="soft" class="quatrevingtpercent" rows="' . ROWS_3 . '">' . dol_escape_htmltag(GETPOST('note_private', 'restricthtml'), 0, 1) . '</textarea></td>';
+echo '</tr>' . "\n";
 
 
 // Other attributes
@@ -449,33 +449,33 @@ include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_add.tpl.php';
 // Display Captcha code if is enabled
 if (getDolGlobalString('MAIN_SECURITY_ENABLECAPTCHA')) {
 	require_once DOL_DOCUMENT_ROOT . '/core/lib/security2.lib.php';
-	print '<tr><td class="titlefield"><label for="email"><span class="fieldrequired">' . $langs->trans("SecurityCode") . '</span></label></td><td>';
-	print '<span class="span-icon-security inline-block">';
-	print '<input id="securitycode" placeholder="' . $langs->trans("SecurityCode") . '" class="flat input-icon-security width150" type="text" maxlength="5" name="code" tabindex="3" />';
-	print '</span>';
-	print '<span class="nowrap inline-block">';
-	print '<img class="inline-block valignmiddle" src="' . DOL_URL_ROOT . '/core/antispamimage.php" border="0" width="80" height="32" id="img_securitycode" />';
-	print '<a class="inline-block valignmiddle" href="' . $php_self . '" tabindex="4" data-role="button">' . img_picto($langs->trans("Refresh"), 'refresh', 'id="captcha_refresh_img"') . '</a>';
-	print '</span>';
-	print '</td></tr>';
+	echo '<tr><td class="titlefield"><label for="email"><span class="fieldrequired">' . $langs->trans("SecurityCode") . '</span></label></td><td>';
+	echo '<span class="span-icon-security inline-block">';
+	echo '<input id="securitycode" placeholder="' . $langs->trans("SecurityCode") . '" class="flat input-icon-security width150" type="text" maxlength="5" name="code" tabindex="3" />';
+	echo '</span>';
+	echo '<span class="nowrap inline-block">';
+	echo '<img class="inline-block valignmiddle" src="' . DOL_URL_ROOT . '/core/antispamimage.php" border="0" width="80" height="32" id="img_securitycode" />';
+	echo '<a class="inline-block valignmiddle" href="' . $php_self . '" tabindex="4" data-role="button">' . img_picto($langs->trans("Refresh"), 'refresh', 'id="captcha_refresh_img"') . '</a>';
+	echo '</span>';
+	echo '</td></tr>';
 }
 
-print "</table>\n";
+echo "</table>\n";
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 // Save / Submit
-print '<div class="center">';
-print '<input type="submit" value="' . $langs->trans("Send") . '" id="submitsave" class="button">';
+echo '<div class="center">';
+echo '<input type="submit" value="' . $langs->trans("Send") . '" id="submitsave" class="button">';
 if (!empty($backtopage)) {
-	print ' &nbsp; &nbsp; <input type="submit" value="' . $langs->trans("Cancel") . '" id="submitcancel" class="button button-cancel">';
+	echo ' &nbsp; &nbsp; <input type="submit" value="' . $langs->trans("Cancel") . '" id="submitcancel" class="button button-cancel">';
 }
-print '</div>';
+echo '</div>';
 
 
-print "</form>\n";
-print "<br>";
-print '</div></div>';
+echo "</form>\n";
+echo "<br>";
+echo '</div></div>';
 
 
 

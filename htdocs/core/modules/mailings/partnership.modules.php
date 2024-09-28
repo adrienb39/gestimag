@@ -201,7 +201,7 @@ class mailing_partnership extends MailingTargets
 			$sql .= " AND NOT EXISTS (SELECT rowid FROM ".MAIN_DB_PREFIX."mailing_unsubscribe as mu WHERE mu.email = s.email and mu.entity = ".((int) $conf->entity).")";
 		}
 
-		//print $sql;
+		//echo $sql;
 
 		// La requete doit retourner un champ "nb" pour etre comprise par parent::getNbOfRecipients
 		return parent::getNbOfRecipients($sql);
@@ -228,7 +228,7 @@ class mailing_partnership extends MailingTargets
 		$sql .= " AND entity = ".$conf->entity;
 		$sql .= " ORDER BY label";
 
-		//print $sql;
+		//echo $sql;
 		$resql = $this->db->query($sql);
 		if ($resql) {
 			$num = $this->db->num_rows($resql);

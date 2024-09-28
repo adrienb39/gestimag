@@ -53,33 +53,33 @@ trait CommonSocialNetworks
 		}
 
 		if ($nbofnetworks > 1) {
-			print '<tr><td colspan="'.$colspan.'"><br><a class="paddingtop paddingbottom socialnetworklnk onreposition" id="socialnetworklnk" href="#"></a>';
-			//print '</td>';
-			//print '<td'.($colspan ? ' colspan="'.($colspan-1).'"' : '').'>';
-			//print '<br>';
-			print ' <a class="paddingtop paddingbottom socialnetworklnk onreposition" href="#"><span class="badge badge-secondary socialnetworklnk">'.$nbactive.'</span></a>';
-			print '</td>';
-			print '</tr>';
+			echo '<tr><td colspan="'.$colspan.'"><br><a class="paddingtop paddingbottom socialnetworklnk onreposition" id="socialnetworklnk" href="#"></a>';
+			//echo '</td>';
+			//echo '<td'.($colspan ? ' colspan="'.($colspan-1).'"' : '').'>';
+			//echo '<br>';
+			echo ' <a class="paddingtop paddingbottom socialnetworklnk onreposition" href="#"><span class="badge badge-secondary socialnetworklnk">'.$nbactive.'</span></a>';
+			echo '</td>';
+			echo '</tr>';
 		}
 		foreach ($socialnetworks as $key => $value) {
 			if ($value['active'] || $nbofnetworks == 1) {
-				print '<tr class="soc_network">';
-				print '<td><label for="'.$value['label'].'">'.$form->editfieldkey($value['label'], $key, '', $object, 0).'</label></td>';
-				print '<td colspan="3">';
+				echo '<tr class="soc_network">';
+				echo '<td><label for="'.$value['label'].'">'.$form->editfieldkey($value['label'], $key, '', $object, 0).'</label></td>';
+				echo '<td colspan="3">';
 				if (!empty($value['icon'])) {
-					print '<span class="fab '.$value['icon'].' pictofixedwidth"></span>';
+					echo '<span class="fab '.$value['icon'].' pictofixedwidth"></span>';
 				}
-				print '<input type="text" name="'.$key.'" id="'.$key.'" class="minwidth100 maxwidth300 widthcentpercentminusx" maxlength="80" value="'.dol_escape_htmltag(GETPOSTISSET($key) ? GETPOST($key, 'alphanohtml') : (empty($object->socialnetworks[$key]) ? '' : $object->socialnetworks[$key])).'">';
-				print '</td>';
-				print '</tr>';
+				echo '<input type="text" name="'.$key.'" id="'.$key.'" class="minwidth100 maxwidth300 widthcentpercentminusx" maxlength="80" value="'.dol_escape_htmltag(GETPOSTISSET($key) ? GETPOST($key, 'alphanohtml') : (empty($object->socialnetworks[$key]) ? '' : $object->socialnetworks[$key])).'">';
+				echo '</td>';
+				echo '</tr>';
 			} elseif (!empty($object->socialnetworks[$key])) {
-				print '<input type="hidden" name="'.$key.'" value="'.$object->socialnetworks[$key].'">';
+				echo '<input type="hidden" name="'.$key.'" value="'.$object->socialnetworks[$key].'">';
 			}
 		}
-		print '<tr><td'.($colspan ? ' colspan="'.$colspan.'"' : '').'><hr></td></tr>';
+		echo '<tr><td'.($colspan ? ' colspan="'.$colspan.'"' : '').'><hr></td></tr>';
 
 		if ($nbofnetworks > 1) {
-			print '<script nonce="'.getNonce().'" type="text/javascript">
+			echo '<script nonce="'.getNonce().'" type="text/javascript">
 		$("document").ready(function() { toogleSocialNetwork(false); });
 
 		jQuery(".socialnetworklnk").click(function() {

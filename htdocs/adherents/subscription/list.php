@@ -352,20 +352,20 @@ if (GETPOSTINT('nomassaction') || in_array($massaction, array('presend', 'predel
 }
 $massactionbutton = $form->selectMassAction('', $arrayofmassactions);
 
-print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">'."\n";
+echo '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">'."\n";
 if ($optioncss != '') {
-	print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
+	echo '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 }
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-print '<input type="hidden" name="action" value="list">';
-print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-print '<input type="hidden" name="page" value="'.$page.'">';
-print '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
-print '<input type="hidden" name="date_select" value="'.$date_select.'">';
-print '<input type="hidden" name="page_y" value="">';
-print '<input type="hidden" name="mode" value="'.$mode.'">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+echo '<input type="hidden" name="action" value="list">';
+echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+echo '<input type="hidden" name="page" value="'.$page.'">';
+echo '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
+echo '<input type="hidden" name="date_select" value="'.$date_select.'">';
+echo '<input type="hidden" name="page_y" value="">';
+echo '<input type="hidden" name="mode" value="'.$mode.'">';
 
 $newcardbutton = '';
 $newcardbutton .= dolGetButtonTitle($langs->trans('ViewList'), '', 'fa fa-bars imgforviewmode', $_SERVER["PHP_SELF"].'?mode=common'.preg_replace('/(&|\?)*mode=[^&]+/', '', $param), '', ((empty($mode) || $mode == 'common') ? 2 : 1), array('morecss' => 'reposition'));
@@ -389,8 +389,8 @@ if ($search_all) {
 		$fieldstosearchall[$key] = $langs->trans($val);
 		$setupstring .= $key."=".$val.";";
 	}
-	print '<!-- Search done like if MYOBJECT_QUICKSEARCH_ON_FIELDS = '.$setupstring.' -->'."\n";
-	print '<div class="divsearchfieldfilter">'.$langs->trans("FilterOnInto", $search_all).implode(', ', $fieldstosearchall).'</div>'."\n";
+	echo '<!-- Search done like if MYOBJECT_QUICKSEARCH_ON_FIELDS = '.$setupstring.' -->'."\n";
+	echo '<div class="divsearchfieldfilter">'.$langs->trans("FilterOnInto", $search_all).implode(', ', $fieldstosearchall).'</div>'."\n";
 }
 
 $moreforfilter = '';
@@ -407,9 +407,9 @@ if (empty($reshook)) {
 }
 
 if (!empty($moreforfilter)) {
-	print '<div class="liste_titre liste_titre_bydiv centpercent">';
-	print $moreforfilter;
-	print '</div>';
+	echo '<div class="liste_titre liste_titre_bydiv centpercent">';
+	echo $moreforfilter;
+	echo '</div>';
 }
 
 $varpage = empty($contextpage) ? $_SERVER["PHP_SELF"] : $contextpage;
@@ -417,76 +417,76 @@ $htmlofselectarray = $form->multiSelectArrayWithCheckbox('selectedfields', $arra
 $selectedfields = ($mode != 'kanban' ? $htmlofselectarray : '');
 $selectedfields .= (count($arrayofmassactions) ? $form->showCheckAddButtons('checkforselect', 1) : '');
 
-print '<div class="div-table-responsive">'; // You can use div-table-responsive-no-min if you don't need reserved height for your table
-print '<table class="tagtable nobottomiftotal liste'.($moreforfilter ? " listwithfilterbefore" : "").'">'."\n";
+echo '<div class="div-table-responsive">'; // You can use div-table-responsive-no-min if you don't need reserved height for your table
+echo '<table class="tagtable nobottomiftotal liste'.($moreforfilter ? " listwithfilterbefore" : "").'">'."\n";
 
 // Fields title search
 // --------------------------------------------------------------------
-print '<tr class="liste_titre_filter">';
+echo '<tr class="liste_titre_filter">';
 // Action column
 if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print '<td class="liste_titre center maxwidthsearch">';
+	echo '<td class="liste_titre center maxwidthsearch">';
 	$searchpicto = $form->showFilterButtons('left');
-	print $searchpicto;
-	print '</td>';
+	echo $searchpicto;
+	echo '</td>';
 }
 // Line numbering
 if (getDolGlobalString('MAIN_SHOW_TECHNICAL_ID')) {
-	print '<td class="liste_titre">&nbsp;</td>';
+	echo '<td class="liste_titre">&nbsp;</td>';
 }
 
 // Ref
 if (!empty($arrayfields['d.ref']['checked'])) {
-	print '<td class="liste_titre left">';
-	print '<input class="flat maxwidth50" type="text" name="search_ref" value="'.dol_escape_htmltag($search_ref).'"></td>';
+	echo '<td class="liste_titre left">';
+	echo '<input class="flat maxwidth50" type="text" name="search_ref" value="'.dol_escape_htmltag($search_ref).'"></td>';
 }
 
 // Type
 if (!empty($arrayfields['d.fk_type']['checked'])) {
-	print '<td class="liste_titre left">';
-	print $form->selectarray("search_type", $adht->liste_array(), $search_type, 1);
+	echo '<td class="liste_titre left">';
+	echo $form->selectarray("search_type", $adht->liste_array(), $search_type, 1);
 	print'</td>';
 }
 
 if (!empty($arrayfields['d.lastname']['checked'])) {
-	print '<td class="liste_titre left">';
-	print '<input class="flat maxwidth75" type="text" name="search_lastname" value="'.dol_escape_htmltag($search_lastname).'"></td>';
+	echo '<td class="liste_titre left">';
+	echo '<input class="flat maxwidth75" type="text" name="search_lastname" value="'.dol_escape_htmltag($search_lastname).'"></td>';
 }
 
 if (!empty($arrayfields['d.firstname']['checked'])) {
-	print '<td class="liste_titre left">';
-	print '<input class="flat maxwidth75" type="text" name="search_firstname" value="'.dol_escape_htmltag($search_firstname).'"></td>';
+	echo '<td class="liste_titre left">';
+	echo '<input class="flat maxwidth75" type="text" name="search_firstname" value="'.dol_escape_htmltag($search_firstname).'"></td>';
 }
 
 if (!empty($arrayfields['d.login']['checked'])) {
-	print '<td class="liste_titre left">';
-	print '<input class="flat maxwidth75" type="text" name="search_login" value="'.dol_escape_htmltag($search_login).'"></td>';
+	echo '<td class="liste_titre left">';
+	echo '<input class="flat maxwidth75" type="text" name="search_login" value="'.dol_escape_htmltag($search_login).'"></td>';
 }
 
 if (!empty($arrayfields['t.libelle']['checked'])) {
-	print '<td class="liste_titre">';
-	print '';
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo '';
+	echo '</td>';
 }
 
 if (!empty($arrayfields['d.bank']['checked'])) {
-	print '<td class="liste_titre">';
+	echo '<td class="liste_titre">';
 	$form->select_comptes($search_account, 'search_account', 0, '', 1, '', 0, 'maxwidth100');
-	print '</td>';
+	echo '</td>';
 }
 
 if (!empty($arrayfields['c.dateadh']['checked'])) {
-	print '<td class="liste_titre">&nbsp;</td>';
+	echo '<td class="liste_titre">&nbsp;</td>';
 }
 
 if (!empty($arrayfields['c.datef']['checked'])) {
-	print '<td class="liste_titre">&nbsp;</td>';
+	echo '<td class="liste_titre">&nbsp;</td>';
 }
 
 if (!empty($arrayfields['d.amount']['checked'])) {
-	print '<td class="liste_titre right">';
-	print '<input class="flat" type="text" name="search_amount" value="'.dol_escape_htmltag($search_amount).'" size="4">';
-	print '</td>';
+	echo '<td class="liste_titre right">';
+	echo '<input class="flat" type="text" name="search_amount" value="'.dol_escape_htmltag($search_amount).'" size="4">';
+	echo '</td>';
 }
 // Extra fields
 include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_input.tpl.php';
@@ -494,33 +494,33 @@ include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_input.tpl.php';
 // Fields from hook
 $parameters = array('arrayfields' => $arrayfields);
 $reshook = $hookmanager->executeHooks('printFieldListOption', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
-print $hookmanager->resPrint;
+echo $hookmanager->resPrint;
 // Date creation
 if (!empty($arrayfields['c.datec']['checked'])) {
-	print '<td class="liste_titre">';
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo '</td>';
 }
 // Date modification
 if (!empty($arrayfields['c.tms']['checked'])) {
-	print '<td class="liste_titre">';
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo '</td>';
 }
 
 // Action column
 if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print '<td class="liste_titre center maxwidthsearch">';
+	echo '<td class="liste_titre center maxwidthsearch">';
 	$searchpicto = $form->showFilterButtons();
-	print $searchpicto;
-	print '</td>';
+	echo $searchpicto;
+	echo '</td>';
 }
-print '</tr>'."\n";
+echo '</tr>'."\n";
 
 $totalarray = array();
 $totalarray['nbfield'] = 0;
 
 // Fields title label
 // --------------------------------------------------------------------
-print '<tr class="liste_titre">';
+echo '<tr class="liste_titre">';
 // Action column
 if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 	print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], '', '', '', 'align="center"', $sortfield, $sortorder, 'maxwidthsearch ');
@@ -573,7 +573,7 @@ include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_title.tpl.php';
 // Hook fields
 $parameters = array('arrayfields' => $arrayfields, 'param' => $param, 'sortfield' => $sortfield, 'sortorder' => $sortorder, 'totalarray' => &$totalarray);
 $reshook = $hookmanager->executeHooks('printFieldListTitle', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
-print $hookmanager->resPrint;
+echo $hookmanager->resPrint;
 if (!empty($arrayfields['c.datec']['checked'])) {
 	print_liste_field_titre($arrayfields['c.datec']['label'], $_SERVER["PHP_SELF"], "c.datec", "", $param, 'align="center" class="nowrap"', $sortfield, $sortorder);
 }
@@ -582,10 +582,10 @@ if (!empty($arrayfields['c.tms']['checked'])) {
 }
 // Action column
 if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print getTitleFieldOfList($selectedfields, 0, $_SERVER["PHP_SELF"], '', '', '', '', $sortfield, $sortorder, 'center maxwidthsearch ')."\n";
+	echo getTitleFieldOfList($selectedfields, 0, $_SERVER["PHP_SELF"], '', '', '', '', $sortfield, $sortorder, 'center maxwidthsearch ')."\n";
 	$totalarray['nbfield']++;
 }
-print '</tr>'."\n";
+echo '</tr>'."\n";
 
 // Loop on record
 // --------------------------------------------------------------------
@@ -629,8 +629,8 @@ while ($i < $imaxinloop) {
 
 	if ($mode == 'kanban') {
 		if ($i == 0) {
-			print '<tr class="trkanban"><td colspan="'.$savnbfield.'">';
-			print '<div class="box-flex-container kanban">';
+			echo '<tr class="trkanban"><td colspan="'.$savnbfield.'">';
+			echo '<div class="box-flex-container kanban">';
 		}
 		// Output Kanban
 		if ($massactionbutton || $massaction) { // If we are in select mode (massactionbutton defined) or if we have already selected and sent an action ($massaction) defined
@@ -647,44 +647,44 @@ while ($i < $imaxinloop) {
 			$accountstatic->fetch($obj->fk_account);
 		}
 		// Output Kanban
-		print $subscription->getKanbanView('', array('selected' => in_array($object->id, $arrayofselected), 'adherent_type' => $adht, 'member' => $adherent, 'bank' => ($obj->fk_account > 0 ? $accountstatic : null)));
+		echo $subscription->getKanbanView('', array('selected' => in_array($object->id, $arrayofselected), 'adherent_type' => $adht, 'member' => $adherent, 'bank' => ($obj->fk_account > 0 ? $accountstatic : null)));
 		if ($i == ($imaxinloop - 1)) {
-			print '</div>';
-			print '</td></tr>';
+			echo '</div>';
+			echo '</td></tr>';
 		}
 	} else {
 		// Show here line of result
 		$j = 0;
-		print '<tr data-rowid="'.$object->id.'" class="oddeven">';
+		echo '<tr data-rowid="'.$object->id.'" class="oddeven">';
 		// Action column
 		if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-			print '<td class="nowrap center">';
+			echo '<td class="nowrap center">';
 			if ($massactionbutton || $massaction) {   // If we are in select mode (massactionbutton defined) or if we have already selected and sent an action ($massaction) defined
 				$selected = 0;
 				if (in_array($obj->crowid, $arrayofselected)) {
 					$selected = 1;
 				}
-				print '<input id="cb'.$obj->crowid.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$obj->crowid.'"'.($selected ? ' checked="checked"' : '').'>';
+				echo '<input id="cb'.$obj->crowid.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$obj->crowid.'"'.($selected ? ' checked="checked"' : '').'>';
 			}
-			print '</td>';
+			echo '</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
 		}
 		// Ref
 		if (!empty($arrayfields['d.ref']['checked'])) {
-			print '<td class="nowraponall">'.$subscription->getNomUrl(1).'</td>';
+			echo '<td class="nowraponall">'.$subscription->getNomUrl(1).'</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
 		}
 		// Type
 		if (!empty($arrayfields['d.fk_type']['checked'])) {
-			print '<td class="tdoverflowmax100">';
+			echo '<td class="tdoverflowmax100">';
 			if ($typeid > 0) {
-				print $adht->getNomUrl(1);
+				echo $adht->getNomUrl(1);
 			}
-			print '</td>';
+			echo '</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
@@ -692,14 +692,14 @@ while ($i < $imaxinloop) {
 
 		// Lastname
 		if (!empty($arrayfields['d.lastname']['checked'])) {
-			print '<td class="tdoverflowmax125">'.$adherent->getNomUrl(-1, 0, 'card', 'lastname').'</td>';
+			echo '<td class="tdoverflowmax125">'.$adherent->getNomUrl(-1, 0, 'card', 'lastname').'</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
 		}
 		// Firstname
 		if (!empty($arrayfields['d.firstname']['checked'])) {
-			print '<td class="tdoverflowmax125" title="'.dol_escape_htmltag($adherent->firstname).'">'.dol_escape_htmltag($adherent->firstname).'</td>';
+			echo '<td class="tdoverflowmax125" title="'.dol_escape_htmltag($adherent->firstname).'">'.dol_escape_htmltag($adherent->firstname).'</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
@@ -707,7 +707,7 @@ while ($i < $imaxinloop) {
 
 		// Login
 		if (!empty($arrayfields['d.login']['checked'])) {
-			print '<td class="tdoverflowmax150" title="'.dol_escape_htmltag($adherent->login).'">'.dol_escape_htmltag($adherent->login).'</td>';
+			echo '<td class="tdoverflowmax150" title="'.dol_escape_htmltag($adherent->login).'">'.dol_escape_htmltag($adherent->login).'</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
@@ -715,9 +715,9 @@ while ($i < $imaxinloop) {
 
 		// Label
 		if (!empty($arrayfields['t.libelle']['checked'])) {
-			print '<td class="tdoverflowmax400" title="'.dol_escape_htmltag($obj->note_private).'">';
-			print dol_escape_htmltag(dolGetFirstLineOfText($obj->note_private));
-			print '</td>';
+			echo '<td class="tdoverflowmax400" title="'.dol_escape_htmltag($obj->note_private).'">';
+			echo dol_escape_htmltag(dolGetFirstLineOfText($obj->note_private));
+			echo '</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
@@ -725,14 +725,14 @@ while ($i < $imaxinloop) {
 
 		// Banque
 		if (!empty($arrayfields['d.bank']['checked'])) {
-			print '<td class="tdmaxoverflow100">';
+			echo '<td class="tdmaxoverflow100">';
 			if ($obj->fk_account > 0) {
 				$accountstatic->id = $obj->fk_account;
 				$accountstatic->fetch($obj->fk_account);
 				//$accountstatic->label=$obj->label;
-				print $accountstatic->getNomUrl(1);
+				echo $accountstatic->getNomUrl(1);
 			}
-			print "</td>\n";
+			echo "</td>\n";
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
@@ -740,21 +740,21 @@ while ($i < $imaxinloop) {
 
 		// Date start
 		if (!empty($arrayfields['c.dateadh']['checked'])) {
-			print '<td class="center nowraponall">'.dol_print_date($db->jdate($obj->dateadh), 'day')."</td>\n";
+			echo '<td class="center nowraponall">'.dol_print_date($db->jdate($obj->dateadh), 'day')."</td>\n";
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
 		}
 		// Date end
 		if (!empty($arrayfields['c.datef']['checked'])) {
-			print '<td class="center nowraponall">'.dol_print_date($db->jdate($obj->datef), 'day')."</td>\n";
+			echo '<td class="center nowraponall">'.dol_print_date($db->jdate($obj->datef), 'day')."</td>\n";
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
 		}
 		// Price
 		if (!empty($arrayfields['d.amount']['checked'])) {
-			print '<td class="right amount">'.price($obj->subscription).'</td>';
+			echo '<td class="right amount">'.price($obj->subscription).'</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
@@ -772,42 +772,42 @@ while ($i < $imaxinloop) {
 		// Fields from hook
 		$parameters = array('arrayfields' => $arrayfields, 'obj' => $obj, 'i' => $i, 'totalarray' => &$totalarray);
 		$reshook = $hookmanager->executeHooks('printFieldListValue', $parameters); // Note that $action and $object may have been modified by hook
-		print $hookmanager->resPrint;
+		echo $hookmanager->resPrint;
 		// Date creation
 		if (!empty($arrayfields['c.datec']['checked'])) {
-			print '<td class="nowrap center">';
-			print dol_print_date($db->jdate($obj->date_creation), 'dayhour', 'tzuser');
-			print '</td>';
+			echo '<td class="nowrap center">';
+			echo dol_print_date($db->jdate($obj->date_creation), 'dayhour', 'tzuser');
+			echo '</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
 		}
 		// Date modification
 		if (!empty($arrayfields['c.tms']['checked'])) {
-			print '<td class="nowrap center">';
-			print dol_print_date($db->jdate($obj->date_modification), 'dayhour', 'tzuser');
-			print '</td>';
+			echo '<td class="nowrap center">';
+			echo dol_print_date($db->jdate($obj->date_modification), 'dayhour', 'tzuser');
+			echo '</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
 		}
 		// Action column
 		if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-			print '<td class="nowrap center">';
+			echo '<td class="nowrap center">';
 			if ($massactionbutton || $massaction) {   // If we are in select mode (massactionbutton defined) or if we have already selected and sent an action ($massaction) defined
 				$selected = 0;
 				if (in_array($obj->crowid, $arrayofselected)) {
 					$selected = 1;
 				}
-				print '<input id="cb'.$obj->crowid.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$obj->crowid.'"'.($selected ? ' checked="checked"' : '').'>';
+				echo '<input id="cb'.$obj->crowid.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$obj->crowid.'"'.($selected ? ' checked="checked"' : '').'>';
 			}
-			print '</td>';
+			echo '</td>';
 			if (!$i) {
 				$totalarray['nbfield']++;
 			}
 		}
 
-		print '</tr>'."\n";
+		echo '</tr>'."\n";
 	}
 	$i++;
 }
@@ -824,19 +824,19 @@ if ($num == 0) {
 			$colspan++;
 		}
 	}
-	print '<tr><td colspan="'.$colspan.'"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
+	echo '<tr><td colspan="'.$colspan.'"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
 }
 
 $db->free($resql);
 
 $parameters = array('arrayfields' => $arrayfields, 'sql' => $sql);
 $reshook = $hookmanager->executeHooks('printFieldListFooter', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
-print $hookmanager->resPrint;
+echo $hookmanager->resPrint;
 
-print '</table>'."\n";
-print '</div>'."\n";
+echo '</table>'."\n";
+echo '</div>'."\n";
 
-print '</form>'."\n";
+echo '</form>'."\n";
 
 // End of page
 llxFooter();

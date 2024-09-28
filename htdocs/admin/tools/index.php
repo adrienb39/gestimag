@@ -44,14 +44,14 @@ $title = $langs->trans("AdminTools");
 
 llxHeader('', $title, '', '', 0, 0, '', '', '', 'mod-admin page-tools_index');
 
-print load_fiche_titre($title, '', 'title_setup');
+echo load_fiche_titre($title, '', 'title_setup');
 
-print $langs->trans("SystemToolsAreaDesc").'<br>';
-print "<br>";
+echo $langs->trans("SystemToolsAreaDesc").'<br>';
+echo "<br>";
 
-print info_admin($langs->trans("SystemAreaForAdminOnly")).'<br>';
+echo info_admin($langs->trans("SystemAreaForAdminOnly")).'<br>';
 
-print '<br><br>';
+echo '<br><br>';
 
 
 // Show logo

@@ -258,7 +258,7 @@ class RssParser
 		if ($str !== false) {
 			// Convert $str into xml
 			if (getDolGlobalString('EXTERNALRSS_USE_SIMPLEXML')) {
-				//print 'xx'.LIBXML_NOCDATA;
+				//echo 'xx'.LIBXML_NOCDATA;
 				libxml_use_internal_errors(false);
 				if (LIBXML_VERSION < 20900) {
 					// Avoid load of external entities (security problem).
@@ -322,7 +322,7 @@ class RssParser
 
 					$this->_lastfetchdate = $nowgmt;
 				} else {
-					print 'Error, failed to open file '.$newpathofdestfile.' for write';
+					echo 'Error, failed to open file '.$newpathofdestfile.' for write';
 				}
 			}
 
@@ -495,7 +495,7 @@ class RssParser
 						$itemId = '';
 						$itemAuthor = '';
 						$itemCategory = array();
-						print 'ErrorBadFeedFormat';
+						echo 'ErrorBadFeedFormat';
 					}
 
 					// Add record to result array
@@ -819,7 +819,7 @@ class RssParser
  * @param string|false $pubID
  * @return bool
 function extEntHandler($parser, $ent, $base, $sysID, $pubID)  {
-	print 'extEntHandler ran';
+	echo 'extEntHandler ran';
 	return true;
 }
 */

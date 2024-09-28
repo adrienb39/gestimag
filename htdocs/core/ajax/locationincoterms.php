@@ -61,7 +61,7 @@ if (!isModEnabled('incoterm')) {
 //top_htmlhead("", "", 1);  // Replaced with top_httphead. An ajax page does not need html header.
 top_httphead();
 
-//print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+//echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 dol_syslog('location_incoterms call with MAIN_USE_LOCATION_INCOTERMS_DICTIONNARY='.getDolGlobalString('MAIN_USE_LOCATION_INCOTERMS_DICTIONNARY', ''));
 
@@ -91,7 +91,7 @@ if (GETPOST('location_incoterms')) {
 		$sql .= $db->plimit(100); // Avoid pb with bad criteria
 	}
 
-	//print $sql;
+	//echo $sql;
 	$resql = $db->query($sql);
 	//var_dump($db);
 	if ($resql) {
@@ -107,7 +107,7 @@ if (GETPOST('location_incoterms')) {
 		}
 	}
 
-	echo json_encode($return_arr);
+	echo  json_encode($return_arr);
 }
 
 $db->close();

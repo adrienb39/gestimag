@@ -130,7 +130,7 @@ if (!isset($mode) || $mode != 'noajax') {	// if ajax mode
 	top_httphead();
 }
 
-//print '<!-- selecteddir (relative dir we click on) = '.$selecteddir.', openeddir = '.$openeddir.', modulepart='.$modulepart.', preopened='.$preopened.' -->'."\n";
+//echo '<!-- selecteddir (relative dir we click on) = '.$selecteddir.', openeddir = '.$openeddir.', modulepart='.$modulepart.', preopened='.$preopened.' -->'."\n";
 $userstatic = new User($db);
 $form = new Form($db);
 $ecmdirstatic = new EcmDirectory($db);
@@ -143,7 +143,7 @@ if (empty($sqltree)) {
 // Try to find selected dir id into $sqltree and save it into $current_ecmdir_id
 $current_ecmdir_id = -1;
 foreach ($sqltree as $keycursor => $val) {
-	//print $val['fullrelativename']." == ".$selecteddir;
+	//echo $val['fullrelativename']." == ".$selecteddir;
 	if ($val['fullrelativename'] == $selecteddir) {
 		$current_ecmdir_id = $keycursor;
 	}
@@ -155,8 +155,8 @@ if (!empty($conf->use_javascript_ajax) && !getDolGlobalString('MAIN_ECM_DISABLE_
 	// TODO Find a solution to not output this code for each leaf we open
 	// Enable jquery handlers on new generated HTML objects (same code than into lib_footer.js.php)
 	// Because the content is reloaded by ajax call, we must also reenable some jquery hooks
-	print "\n<!-- JS CODE TO ENABLE Tooltips on all object with class classfortooltip (reload into ajaxdirtree) -->\n";
-	print '<script nonce="'.getNonce().'" type="text/javascript">
+	echo "\n<!-- JS CODE TO ENABLE Tooltips on all object with class classfortooltip (reload into ajaxdirtree) -->\n";
+	echo '<script nonce="'.getNonce().'" type="text/javascript">
 	            	jQuery(document).ready(function () {
 	            		jQuery(".classfortooltip").tooltip({
 							show: { collision: "flipfit", effect:\'toggle\', delay:50 },
@@ -170,14 +170,14 @@ if (!empty($conf->use_javascript_ajax) && !getDolGlobalString('MAIN_ECM_DISABLE_
 	            	</script>';
 
 	// This ajax service is called only when a directory $selecteddir is opened but not when closed.
-	//print '<script nonce="'.getNonce().'" type="text/javascript">';
-	//print "loadandshowpreview('".dol_escape_js($selecteddir)."');";
-	//print '</script>';
+	//echo '<script nonce="'.getNonce().'" type="text/javascript">';
+	//echo "loadandshowpreview('".dol_escape_js($selecteddir)."');";
+	//echo '</script>';
 }
 
 
 if (empty($conf->use_javascript_ajax) || getDolGlobalString('MAIN_ECM_DISABLE_JS')) {
-	print '<ul class="ecmjqft">';
+	echo '<ul class="ecmjqft">';
 
 	// Load full manual tree from database. We will use it to define nbofsubdir and nboffilesinsubdir
 	if (empty($sqltree)) {
@@ -191,13 +191,13 @@ if (empty($conf->use_javascript_ajax) || getDolGlobalString('MAIN_ECM_DISABLE_JS
 	// Define fullpathselected ( _x_y_z ) of $section parameter (!! not into ajaxdirtree)
 	$fullpathselected = '';
 	foreach ($sqltree as $key => $val) {
-		//print $val['id']."-".$section."<br>";
+		//echo $val['id']."-".$section."<br>";
 		if ($val['id'] == $section) {
 			$fullpathselected = $val['fullpath'];
 			break;
 		}
 	}
-	//print "fullpathselected=".$fullpathselected."<br>";
+	//echo "fullpathselected=".$fullpathselected."<br>";
 
 	// Update expandedsectionarray in session
 	$expandedsectionarray = array();
@@ -226,7 +226,7 @@ if (empty($conf->use_javascript_ajax) || getDolGlobalString('MAIN_ECM_DISABLE_JS
 		}
 		$_SESSION['dol_ecmexpandedsectionarray'] = implode(',', $expandedsectionarray);
 	}
-	//print $_SESSION['dol_ecmexpandedsectionarray'].'<br>';
+	//echo $_SESSION['dol_ecmexpandedsectionarray'].'<br>';
 
 	$nbofentries = 0;
 	$oldvallevel = 0;
@@ -268,14 +268,14 @@ if (empty($conf->use_javascript_ajax) || getDolGlobalString('MAIN_ECM_DISABLE_JS
 			} else {
 				$option = 'indexnotexpanded';
 			}
-			//print $option;
+			//echo $option;
 
-			print '<li class="directory collapsed">';
+			echo '<li class="directory collapsed">';
 
 			// Show tree graph pictos
 			$cpt = 1;
 			while ($cpt < $sqltree[$key]['level']) {
-				print ' &nbsp; &nbsp;';
+				echo ' &nbsp; &nbsp;';
 				$cpt++;
 			}
 			$resarray = tree_showpad($sqltree, $key, 1);
@@ -284,28 +284,28 @@ if (empty($conf->use_javascript_ajax) || getDolGlobalString('MAIN_ECM_DISABLE_JS
 			$nboffilesinsubdir = $resarray[2];
 
 			// Show link
-			print $ecmdirstatic->getNomUrl(0, $option, 32, 'class="fmdirlia jqft ecmjqft"');
+			echo $ecmdirstatic->getNomUrl(0, $option, 32, 'class="fmdirlia jqft ecmjqft"');
 
-			print '<div class="ecmjqft">';
+			echo '<div class="ecmjqft">';
 
 			// Nb of docs
-			print '<table class="nobordernopadding"><tr>';
+			echo '<table class="nobordernopadding"><tr>';
 
-			print '<!-- nb of docs -->';
-			print '<td>';
-			print $val['cachenbofdoc'];
-			print '</td>';
+			echo '<!-- nb of docs -->';
+			echo '<td>';
+			echo $val['cachenbofdoc'];
+			echo '</td>';
 
-			print '<!-- nb in subdir -->';
-			print '<td class="left">';
+			echo '<!-- nb in subdir -->';
+			echo '<td class="left">';
 			if ($nbofsubdir && $nboffilesinsubdir) {
-				print '<span style="color: #AAAAAA">+'.$nboffilesinsubdir.'</span> ';
+				echo '<span style="color: #AAAAAA">+'.$nboffilesinsubdir.'</span> ';
 			}
-			print '</td>';
+			echo '</td>';
 
 			// Info
-			print '<!-- info -->';
-			print '<td class="center">';
+			echo '<!-- info -->';
+			echo '<td class="center">';
 			$userstatic->id = $val['fk_user_c'];
 			$userstatic->lastname = $val['login_c'];
 			$userstatic->status = $val['statut_c'];
@@ -320,14 +320,14 @@ if (empty($conf->use_javascript_ajax) || getDolGlobalString('MAIN_ECM_DISABLE_JS
 			} else {
 				$htmltooltip .= '<b>'.$langs->trans("ECMNbOfSubDir").'</b>: '.$nbofsubdir.'<br>';
 			}
-			print $form->textwithpicto('', $htmltooltip, 1, 'info');
-			print "</td>";
+			echo $form->textwithpicto('', $htmltooltip, 1, 'info');
+			echo "</td>";
 
-			print '</tr></table>';
+			echo '</tr></table>';
 
-			print '</div>';
+			echo '</div>';
 
-			print "</li>\n";
+			echo "</li>\n";
 		}
 
 		$oldvallevel = $val['level'];
@@ -336,14 +336,14 @@ if (empty($conf->use_javascript_ajax) || getDolGlobalString('MAIN_ECM_DISABLE_JS
 
 	// If nothing to show
 	if ($nbofentries == 0) {
-		print '<li class="directory collapsed">';
-		print '<div class="ecmjqft">';
-		print $langs->trans("ECMNoDirectoryYet");
-		print '</div>';
-		print "</li>\n";
+		echo '<li class="directory collapsed">';
+		echo '<div class="ecmjqft">';
+		echo $langs->trans("ECMNoDirectoryYet");
+		echo '</div>';
+		echo "</li>\n";
 	}
 
-	print '</ul>';
+	echo '</ul>';
 }
 
 
@@ -382,7 +382,7 @@ function treeOutputForAbsoluteDir($sqltree, $selecteddir, $fullpathselecteddir, 
 		if (!empty($files)) {
 			natcasesort($files);
 			if (count($files) > 2) {    /* The 2 accounts for . and .. */
-				echo '<ul class="ecmjqft" style="display: none;">'."\n";
+				echo  '<ul class="ecmjqft" style="display: none;">'."\n";
 
 				// All dirs
 				foreach ($files as $file) {    // $file can be '.', '..', or 'My dir' or 'My file'
@@ -397,7 +397,7 @@ function treeOutputForAbsoluteDir($sqltree, $selecteddir, $fullpathselecteddir, 
 
 					// Loop on all database entries (sqltree) to find the one matching the subdir found into dir to scan
 					foreach ($sqltree as $key => $tmpval) {
-						//print "-- key=".$key." - ".$tmpval['fullrelativename']." vs ".(($selecteddir != '/'?$selecteddir.'/':'').$file)."<br>\n";
+						//echo "-- key=".$key." - ".$tmpval['fullrelativename']." vs ".(($selecteddir != '/'?$selecteddir.'/':'').$file)."<br>\n";
 						if ($tmpval['fullrelativename'] == (($selecteddir != '/' ? $selecteddir.'/' : '').$file)) {		// We found equivalent record into database
 							$val = $tmpval;
 							$resarray = tree_showpad($sqltree, $key, 1);
@@ -418,7 +418,7 @@ function treeOutputForAbsoluteDir($sqltree, $selecteddir, $fullpathselecteddir, 
 						}
 					}
 
-					//print 'modulepart='.$modulepart.' fullpathselecteddir='.$fullpathselecteddir.' - val[fullrelativename] (in database)='.$val['fullrelativename'].' - val[id]='.$val['id'].' - is_dir='.dol_is_dir($fullpathselecteddir . $file).' - file='.$file."\n";
+					//echo 'modulepart='.$modulepart.' fullpathselecteddir='.$fullpathselecteddir.' - val[fullrelativename] (in database)='.$val['fullrelativename'].' - val[id]='.$val['id'].' - is_dir='.dol_is_dir($fullpathselecteddir . $file).' - file='.$file."\n";
 					if ($file != '.' && $file != '..' && ((!empty($val['fullrelativename']) && $val['id'] >= 0) || dol_is_dir($fullpathselecteddir.(preg_match('/\/$/', $fullpathselecteddir) ? '' : '/').$file))) {
 						if (empty($val['fullrelativename'])) {	// If we did not find entry into database, but found a directory (dol_is_dir was ok at previous test)
 							$val['fullrelativename'] = (($selecteddir && $selecteddir != '/') ? $selecteddir.'/' : '').$file;
@@ -432,54 +432,54 @@ function treeOutputForAbsoluteDir($sqltree, $selecteddir, $fullpathselecteddir, 
 						if (preg_match('/^'.preg_quote($val['fullrelativename'].'/', '/').'/', $preopened)) {
 							$collapsedorexpanded = 'expanded';
 						}
-						print '<li class="directory '.$collapsedorexpanded.' lidirecm">'; // collapsed is opposite if expanded
+						echo '<li class="directory '.$collapsedorexpanded.' lidirecm">'; // collapsed is opposite if expanded
 
-						//print '<div class="divfmdirlia inline-block">';	// Disabled, this break the javascrip component
-						print '<a class="fmdirlia jqft ecmjqft" href="';
-						print "#";
-						print "\" rel=\"".dol_escape_htmltag($val['fullrelativename'].'/')."\" id=\"fmdirlia_id_".$val['id']."\"";
-						print " onClick=\"loadandshowpreview('".dol_escape_js($val['fullrelativename'])."',".$val['id'].")";
-						print "\">";
-						print dol_escape_htmltag($file);
-						print '</a>';
-						//print '</div>';
+						//echo '<div class="divfmdirlia inline-block">';	// Disabled, this break the javascrip component
+						echo '<a class="fmdirlia jqft ecmjqft" href="';
+						echo "#";
+						echo "\" rel=\"".dol_escape_htmltag($val['fullrelativename'].'/')."\" id=\"fmdirlia_id_".$val['id']."\"";
+						echo " onClick=\"loadandshowpreview('".dol_escape_js($val['fullrelativename'])."',".$val['id'].")";
+						echo "\">";
+						echo dol_escape_htmltag($file);
+						echo '</a>';
+						//echo '</div>';
 
-						print '<div class="ecmjqft">';
+						echo '<div class="ecmjqft">';
 
-						print '<table class="nobordernopadding"><tr>';
+						echo '<table class="nobordernopadding"><tr>';
 
-						/*print '<td class="left">';
-						 print dol_escape_htmltag($file);
-						 print '</td>';*/
+						/*echo '<td class="left">';
+						 echo dol_escape_htmltag($file);
+						 echo '</td>';*/
 
 						// Nb of docs
-						print '<!-- nb of docs -->';
-						print '<td class="right">';
-						print (isset($val['cachenbofdoc']) && $val['cachenbofdoc'] >= 0) ? $val['cachenbofdoc'] : '&nbsp;';
-						print '</td>';
+						echo '<!-- nb of docs -->';
+						echo '<td class="right">';
+						echo (isset($val['cachenbofdoc']) && $val['cachenbofdoc'] >= 0) ? $val['cachenbofdoc'] : '&nbsp;';
+						echo '</td>';
 
-						print '<!-- nb of subdirs -->';
-						print '<td class="left">';
+						echo '<!-- nb of subdirs -->';
+						echo '<td class="left">';
 						if ($nbofsubdir > 0 && $nboffilesinsubdir > 0) {
-							print '<span class="opacitymedium">+'.$nboffilesinsubdir.'</span> ';
+							echo '<span class="opacitymedium">+'.$nboffilesinsubdir.'</span> ';
 						}
-						print '</td>';
+						echo '</td>';
 
 						// Edit link
-						print '<!-- edit link -->';
-						print '<td class="right" width="18"><a class="editfielda" href="';
-						print DOL_URL_ROOT.'/ecm/dir_card.php?module='.urlencode($modulepart).'&section='.$val['id'].'&relativedir='.urlencode($val['fullrelativename']);
-						print '&backtopage='.urlencode($_SERVER["PHP_SELF"].'?file_manager=1&website='.$websitekey.'&pageid='.$pageid);
-						print '">'.img_edit($langs->trans("Edit").' - '.$langs->trans("View"), 0, 'class="valignmiddle opacitymedium"').'</a></td>';
+						echo '<!-- edit link -->';
+						echo '<td class="right" width="18"><a class="editfielda" href="';
+						echo DOL_URL_ROOT.'/ecm/dir_card.php?module='.urlencode($modulepart).'&section='.$val['id'].'&relativedir='.urlencode($val['fullrelativename']);
+						echo '&backtopage='.urlencode($_SERVER["PHP_SELF"].'?file_manager=1&website='.$websitekey.'&pageid='.$pageid);
+						echo '">'.img_edit($langs->trans("Edit").' - '.$langs->trans("View"), 0, 'class="valignmiddle opacitymedium"').'</a></td>';
 
 						// Add link
-						//print '<td class="right"><a href="'.DOL_URL_ROOT.'/ecm/dir_add_card.php?action=create&amp;catParent='.$val['id'].'">'.img_edit_add().'</a></td>';
-						//print '<td class="right" width="14">&nbsp;</td>';
+						//echo '<td class="right"><a href="'.DOL_URL_ROOT.'/ecm/dir_add_card.php?action=create&amp;catParent='.$val['id'].'">'.img_edit_add().'</a></td>';
+						//echo '<td class="right" width="14">&nbsp;</td>';
 
 						// Info
 						if ($modulepart == 'ecm') {
-							print '<!-- info -->';
-							print '<td class="right" width="18">';
+							echo '<!-- info -->';
+							echo '<td class="right" width="18">';
 							$userstatic->id = isset($val['fk_user_c']) ? $val['fk_user_c'] : 0;
 							$userstatic->lastname = isset($val['login_c']) ? $val['login_c'] : 0;
 							$userstatic->status = isset($val['statut_c']) ? $val['statut_c'] : 0;
@@ -494,16 +494,16 @@ function treeOutputForAbsoluteDir($sqltree, $selecteddir, $fullpathselecteddir, 
 							} else {
 								$htmltooltip .= '<b>'.$langs->trans("ECMNbOfSubDir").'</b>: '.($nbofsubdir >= 0 ? $nbofsubdir : $langs->trans("NeedRefresh")).'<br>';
 							}
-							print $form->textwithpicto('', $htmltooltip, 1, "info");
-							print "</td>";
+							echo $form->textwithpicto('', $htmltooltip, 1, "info");
+							echo "</td>";
 						}
 
-						print "</tr></table>\n";
-						print '</div>';
+						echo "</tr></table>\n";
+						echo '</div>';
 
-						//print 'selecteddir='.$selecteddir.' preopened='.$preopened.' $val[\'fullrelativename\']='.$val['fullrelativename']."<br>\n";
+						//echo 'selecteddir='.$selecteddir.' preopened='.$preopened.' $val[\'fullrelativename\']='.$val['fullrelativename']."<br>\n";
 						if (preg_match('/^'.preg_quote($val['fullrelativename'].'/', '/').'/', $preopened)) {
-							//print 'modulepart='.$modulepart.' fullpathselecteddir='.$fullpathselecteddir.' - val[fullrelativename] (in database)='.$val['fullrelativename'].' - val[id]='.$val['id'].' - is_dir='.dol_is_dir($fullpathselecteddir . $file).' - file='.$file."\n";
+							//echo 'modulepart='.$modulepart.' fullpathselecteddir='.$fullpathselecteddir.' - val[fullrelativename] (in database)='.$val['fullrelativename'].' - val[id]='.$val['id'].' - is_dir='.dol_is_dir($fullpathselecteddir . $file).' - file='.$file."\n";
 							$newselecteddir = $val['fullrelativename'];
 							$newfullpathselecteddir = '';
 							if ($modulepart == 'ecm') {
@@ -517,14 +517,14 @@ function treeOutputForAbsoluteDir($sqltree, $selecteddir, $fullpathselecteddir, 
 							}
 						}
 
-						print "</li>\n";
+						echo "</li>\n";
 					}
 				}
 
-				echo "</ul>\n";
+				echo  "</ul>\n";
 			}
 		} else {
-			print "PermissionDenied";
+			echo "PermissionDenied";
 		}
 	}
 }

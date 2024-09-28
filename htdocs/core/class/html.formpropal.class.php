@@ -101,9 +101,9 @@ class FormPropal
 			}
 		}
 
-		print '<select id="'.$htmlname.'" name="'.$htmlname.'" class="flat'.($morecss ? ' '.$morecss : '').'">';
+		echo '<select id="'.$htmlname.'" name="'.$htmlname.'" class="flat'.($morecss ? ' '.$morecss : '').'">';
 		if ($showempty) {
-			print '<option value="-1">&nbsp;</option>';
+			echo '<option value="-1">&nbsp;</option>';
 		}
 
 		$i = 0;
@@ -115,36 +115,36 @@ class FormPropal
 				}
 			}
 			if ($selected != '' && $selected == $obj['id']) {
-				print '<option value="'.$obj['id'].'" selected>';
+				echo '<option value="'.$obj['id'].'" selected>';
 			} else {
-				print '<option value="'.$obj['id'].'">';
+				echo '<option value="'.$obj['id'].'">';
 			}
 			$key = $obj['code'];
 			if ($langs->trans($prefix.$key.($short ? 'Short' : '')) != $prefix.$key.($short ? 'Short' : '')) {
-				print $langs->trans($prefix.$key.($short ? 'Short' : ''));
+				echo $langs->trans($prefix.$key.($short ? 'Short' : ''));
 			} else {
 				$conv_to_new_code = array('PR_DRAFT'=>'Draft', 'PR_OPEN'=>'Validated', 'PR_CLOSED'=>'Closed', 'PR_SIGNED'=>'Signed', 'PR_NOTSIGNED'=>'NotSigned', 'PR_FAC'=>'Billed');
 				if (!empty($conv_to_new_code[$obj['code']])) {
 					$key = $conv_to_new_code[$obj['code']];
 				}
 
-				print ($langs->trans($prefix.$key.($short ? 'Short' : '')) != $prefix.$key.($short ? 'Short' : '')) ? $langs->trans($prefix.$key.($short ? 'Short' : '')) : ($obj['label'] ? $obj['label'] : $obj['code']);
+				echo ($langs->trans($prefix.$key.($short ? 'Short' : '')) != $prefix.$key.($short ? 'Short' : '')) ? $langs->trans($prefix.$key.($short ? 'Short' : '')) : ($obj['label'] ? $obj['label'] : $obj['code']);
 			}
-			print '</option>';
+			echo '</option>';
 			$i++;
 		}
 		// Option for Signed+Billed
 		if ($mode == 'customer') {
 			if ($selected != '' && $selected == "2,4") {
-				print '<option value="2,4" selected>';
+				echo '<option value="2,4" selected>';
 			} else {
-				print '<option value="2,4">';
+				echo '<option value="2,4">';
 			}
 			print($langs->trans($prefix.'Signed'.($short ? 'Short' : '')).' '.$langs->trans("or").' '.$langs->trans($prefix.'Billed'.($short ? 'Short' : '')));
-			print '</option>';
+			echo '</option>';
 		}
-		print '</select>';
+		echo '</select>';
 
-		print ajax_combobox($htmlname, array(), 0, 0, 'resolve', ($showempty < 0 ? (string) $showempty : '-1'), $morecss);
+		echo ajax_combobox($htmlname, array(), 0, 0, 'resolve', ($showempty < 0 ? (string) $showempty : '-1'), $morecss);
 	}
 }

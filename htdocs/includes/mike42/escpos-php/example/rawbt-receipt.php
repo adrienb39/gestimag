@@ -103,7 +103,7 @@ try {
     $printer->pulse();
 
 } catch (Exception $e) {
-    echo $e->getMessage();
+    echo  $e->getMessage();
 } finally {
     $printer->close();
 }

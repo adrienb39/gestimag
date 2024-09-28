@@ -27,7 +27,7 @@ class UriPrintConnector
         $protocol = $uri_parts[1];
         $printer = $uri_parts[2];
         $port = isset($uri_parts[3]) ? $uri_parts[3] : 9100;
-        // Initialise the most applicable print connector
+        // Initialise the most applicable echo connector
         switch ($protocol) {
             case "file":
                 return new FilePrintConnector($printer);

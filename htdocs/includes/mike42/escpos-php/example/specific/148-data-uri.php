@@ -26,7 +26,7 @@ $imagick -> readImageBlob($imageBlob, "input.png");
 $im = new ImagickEscposImage();
 $im -> readImageFromImagick($imagick);
 
-// Do a test print to make sure that this EscposImage object has the right data
+// Do a test echo to make sure that this EscposImage object has the right data
 // (should see a tiny bullet point)
 $connector = new FilePrintConnector("php://output");
 $printer = new Printer($connector);

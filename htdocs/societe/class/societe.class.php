@@ -3904,7 +3904,7 @@ class Societe extends CommonObject
 			$count = $obj->nb;
 		} else {
 			$count = 0;
-			print $this->db->error();
+			echo $this->db->error();
 		}
 		$this->db->free($resql);
 
@@ -4043,7 +4043,7 @@ class Societe extends CommonObject
 			$count = $obj->numproj;
 		} else {
 			$count = 0;
-			print $this->db->error();
+			echo $this->db->error();
 		}
 		$this->db->free($resql);
 		return ($count > 0);
@@ -5012,7 +5012,7 @@ class Societe extends CommonObject
 				if (getDolGlobalString('COMPANY_ADDON_PDF')) {
 					$modele = getDolGlobalString('COMPANY_ADDON_PDF');
 				} else {
-					print $langs->trans("Error")." ".$langs->trans("Error_COMPANY_ADDON_PDF_NotDefined");
+					echo $langs->trans("Error")." ".$langs->trans("Error_COMPANY_ADDON_PDF_NotDefined");
 					return 0;
 				}
 			}

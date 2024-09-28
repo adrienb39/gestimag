@@ -101,11 +101,11 @@ class FormOther
 		}
 		$out .= '<textarea type="text" name="barcodelist" class="centpercent" autofocus rows="'.ROWS_3.'" placeholder="'.dol_escape_htmltag($langs->trans("ScanOrTypeOrCopyPasteYourBarCodes")).'"></textarea>';
 
-		/*print '<br>'.$langs->trans("or").'<br>';
+		/*echo '<br>'.$langs->trans("or").'<br>';
 
-		print '<br>';
+		echo '<br>';
 
-		print '<input type="text" name="barcodelotserial" class="width200"> &nbsp; &nbsp; Qty <input type="text" name="barcodelotserialqty" class="width50 right" value="1"><br>';
+		echo '<input type="text" name="barcodelotserial" class="width200"> &nbsp; &nbsp; Qty <input type="text" name="barcodelotserialqty" class="width50 right" value="1"><br>';
 		*/
 		$out .= '<br>';
 		$out .= '<center>';
@@ -158,9 +158,9 @@ class FormOther
 		$sql .= " ORDER BY label";
 		$result = $this->db->query($sql);
 		if ($result) {
-			print '<select class="flat minwidth200" name="'.$htmlname.'" id="'.$htmlname.'">';
+			echo '<select class="flat minwidth200" name="'.$htmlname.'" id="'.$htmlname.'">';
 			if ($useempty) {
-				print '<option value="-1">&nbsp;</option>';
+				echo '<option value="-1">&nbsp;</option>';
 			}
 
 			$tmpuser = new User($this->db);
@@ -179,16 +179,16 @@ class FormOther
 				}
 
 				if ($selected == $obj->rowid) {
-					print '<option value="'.$obj->rowid.'" selected data-html="'.dol_escape_htmltag($label).'">';
+					echo '<option value="'.$obj->rowid.'" selected data-html="'.dol_escape_htmltag($label).'">';
 				} else {
-					print '<option value="'.$obj->rowid.'" data-html="'.dol_escape_htmltag($label).'">';
+					echo '<option value="'.$obj->rowid.'" data-html="'.dol_escape_htmltag($label).'">';
 				}
-				print $label;
-				print '</option>';
+				echo $label;
+				echo '</option>';
 				$i++;
 			}
-			print "</select>";
-			print ajax_combobox($htmlname);
+			echo "</select>";
+			echo ajax_combobox($htmlname);
 		} else {
 			dol_print_error($this->db);
 		}
@@ -220,9 +220,9 @@ class FormOther
 		$sql .= " ORDER BY label";
 		$result = $this->db->query($sql);
 		if ($result) {
-			print '<select class="flat minwidth200" name="'.$htmlname.'" id="'.$htmlname.'">';
+			echo '<select class="flat minwidth200" name="'.$htmlname.'" id="'.$htmlname.'">';
 			if ($useempty) {
-				print '<option value="-1">&nbsp;</option>';
+				echo '<option value="-1">&nbsp;</option>';
 			}
 
 			$tmpuser = new User($this->db);
@@ -241,16 +241,16 @@ class FormOther
 				}
 
 				if ($selected == $obj->rowid) {
-					print '<option value="'.$obj->rowid.'" selected data-html="'.dol_escape_htmltag($label).'">';
+					echo '<option value="'.$obj->rowid.'" selected data-html="'.dol_escape_htmltag($label).'">';
 				} else {
-					print '<option value="'.$obj->rowid.'" data-html="'.dol_escape_htmltag($label).'">';
+					echo '<option value="'.$obj->rowid.'" data-html="'.dol_escape_htmltag($label).'">';
 				}
-				print $label;
-				print '</option>';
+				echo $label;
+				echo '</option>';
 				$i++;
 			}
-			print "</select>";
-			print ajax_combobox($htmlname);
+			echo "</select>";
+			echo ajax_combobox($htmlname);
 		} else {
 			dol_print_error($this->db);
 		}
@@ -279,26 +279,26 @@ class FormOther
 		dol_syslog(get_class($this).'::select_ecotaxes', LOG_DEBUG);
 		$resql = $this->db->query($sql);
 		if ($resql) {
-			print '<select class="flat" name="'.$htmlname.'">';
+			echo '<select class="flat" name="'.$htmlname.'">';
 			$num = $this->db->num_rows($resql);
 			$i = 0;
-			print '<option value="-1">&nbsp;</option>'."\n";
+			echo '<option value="-1">&nbsp;</option>'."\n";
 			if ($num) {
 				while ($i < $num) {
 					$obj = $this->db->fetch_object($resql);
 					if ($selected && $selected == $obj->rowid) {
-						print '<option value="'.$obj->rowid.'" selected>';
+						echo '<option value="'.$obj->rowid.'" selected>';
 					} else {
-						print '<option value="'.$obj->rowid.'">';
-						//print '<option onmouseover="showtip(\''.$obj->label.'\')" onMouseout="hidetip()" value="'.$obj->rowid.'">';
+						echo '<option value="'.$obj->rowid.'">';
+						//echo '<option onmouseover="showtip(\''.$obj->label.'\')" onMouseout="hidetip()" value="'.$obj->rowid.'">';
 					}
 					$selectOptionValue = $obj->code.' - '.$obj->label.' : '.price($obj->price).' '.$langs->trans("HT").' ('.$obj->organization.')';
-					print $selectOptionValue;
-					print '</option>';
+					echo $selectOptionValue;
+					echo '</option>';
 					$i++;
 				}
 			}
-			print '</select>';
+			echo '</select>';
 			return 0;
 		} else {
 			dol_print_error($this->db);
@@ -490,7 +490,7 @@ class FormOther
 
 		$reshook = $hookmanager->executeHooks('addSQLWhereFilterOnSelectSalesRep', array(), $this, $action);
 
-		// Select each sales and print them in a select input
+		// Select each sales and echo them in a select input
 		$out .= '<select class="flat'.($morecss ? ' '.$morecss : '').'" id="'.$htmlname.'" name="'.$htmlname.'">';
 		if ($showempty) {
 			$textforempty = ' ';
@@ -568,7 +568,7 @@ class FormOther
 		} else {
 			$sql_usr .= " ORDER BY status DESC, lastname ASC, firstname ASC";
 		}
-		//print $sql_usr;exit;
+		//echo $sql_usr;exit;
 
 		$resql_usr = $this->db->query($sql_usr);
 		if ($resql_usr) {
@@ -670,22 +670,22 @@ class FormOther
 
 		require_once DOL_DOCUMENT_ROOT.'/projet/class/task.class.php';
 
-		//print $modeproject.'-'.$modetask;
+		//echo $modeproject.'-'.$modetask;
 		$task = new Task($this->db);
 		$tasksarray = $task->getTasksArray($modetask ? $user : 0, $modeproject ? $user : 0, $projectid, 0, $mode, '', $filteronprojstatus);
 		if ($tasksarray) {
-			print '<select class="flat'.($morecss ? ' '.$morecss : '').'" name="'.$htmlname.'" id="'.$htmlname.'">';
+			echo '<select class="flat'.($morecss ? ' '.$morecss : '').'" name="'.$htmlname.'" id="'.$htmlname.'">';
 			if ($useempty) {
-				print '<option value="0">&nbsp;</option>';
+				echo '<option value="0">&nbsp;</option>';
 			}
 			$j = 0;
 			$level = 0;
 			$this->_pLineSelect($j, 0, $tasksarray, $level, $selectedtask, $projectid, $disablechildoftaskid);
-			print '</select>';
+			echo '</select>';
 
-			print ajax_combobox($htmlname);
+			echo ajax_combobox($htmlname);
 		} else {
-			print '<div class="warning">'.$langs->trans("NoProject").'</div>';
+			echo '<div class="warning">'.$langs->trans("NoProject").'</div>';
 		}
 	}
 
@@ -716,11 +716,11 @@ class FormOther
 				if ($parent == 0) {	// We are on a task at first level
 					if ($lines[$i]->fk_project != $lastprojectid) {	// Break found on project
 						if ($i > 0) {
-							print '<option value="0" disabled>----------</option>';
+							echo '<option value="0" disabled>----------</option>';
 						}
-						print '<option value="'.$lines[$i]->fk_project.'_0"';
+						echo '<option value="'.$lines[$i]->fk_project.'_0"';
 						if ($selectedproject == $lines[$i]->fk_project) {
-							print ' selected';
+							echo ' selected';
 						}
 
 						$labeltoshow = $lines[$i]->projectref;
@@ -733,10 +733,10 @@ class FormOther
 							$labeltoshow = img_picto($lines[$i]->projectlabel, 'projectpub', 'class="pictofixedwidth"').$labeltoshow;
 						}
 
-						print ' data-html="'.dol_escape_htmltag($labeltoshow).'"';
-						print '>'; // Project -> Task
-						print $labeltoshow;
-						print "</option>\n";
+						echo ' data-html="'.dol_escape_htmltag($labeltoshow).'"';
+						echo '>'; // Project -> Task
+						echo $labeltoshow;
+						echo "</option>\n";
 
 						$lastprojectid = $lines[$i]->fk_project;
 						$inc++;
@@ -756,12 +756,12 @@ class FormOther
 						}
 					}
 
-					print '<option value="'.$lines[$i]->fk_project.'_'.$lines[$i]->id.'"';
+					echo '<option value="'.$lines[$i]->fk_project.'_'.$lines[$i]->id.'"';
 					if (($lines[$i]->id == $selectedtask) || ($lines[$i]->fk_project.'_'.$lines[$i]->id == $selectedtask)) {
-						print ' selected';
+						echo ' selected';
 					}
 					if ($disabled) {
-						print ' disabled';
+						echo ' disabled';
 					}
 
 					$labeltoshow = $lines[$i]->projectref;
@@ -781,10 +781,10 @@ class FormOther
 					}
 					$labeltoshow .= $lines[$i]->ref.' '.$lines[$i]->label;
 
-					print ' data-html="'.dol_escape_htmltag($labeltoshow).'"';
-					print '>';
-					print $labeltoshow;
-					print "</option>\n";
+					echo ' data-html="'.dol_escape_htmltag($labeltoshow).'"';
+					echo '>';
+					echo $labeltoshow;
+					echo "</option>\n";
 					$inc++;
 				}
 
@@ -839,7 +839,7 @@ class FormOther
 	public function select_color($set_color = '', $prefix = 'f_color', $form_name = '', $showcolorbox = 1, $arrayofcolors = [])
 	{
 		// phpcs:enable
-		print $this->selectColor($set_color, $prefix, $form_name, $showcolorbox, $arrayofcolors);
+		echo $this->selectColor($set_color, $prefix, $form_name, $showcolorbox, $arrayofcolors);
 	}
 
 	/**
@@ -975,7 +975,7 @@ class FormOther
 	             </script>';
 			}
 			$out .= '<select id="colorpicker'.$prefix.'" class="flat'.($morecss ? ' '.$morecss : '').'" name="'.$prefix.'">';
-			//print '<option value="-1">&nbsp;</option>';
+			//echo '<option value="-1">&nbsp;</option>';
 			foreach ($arrayofcolors as $val) {
 				$out .= '<option value="'.$val.'"';
 				if ($set_color == $val) {
@@ -1022,7 +1022,7 @@ class FormOther
 		$blue  = hexdec(substr($color, 4, 2));  // Blue channel conversion
 
 		$couleur = imagecolorallocate($image, $red, $green, $blue);
-		//print $red.$green.$blue;
+		//echo $red.$green.$blue;
 		imagefill($image, 0, 0, $couleur); // Fill the image
 		// Create the colr and store it in a variable to maintain it
 		imagepng($image, $file); // Returns an image in PNG format
@@ -1143,7 +1143,7 @@ class FormOther
 	public function select_year($selected = '', $htmlname = 'yearid', $useempty = 0, $min_year = 10, $max_year = 5, $offset = 0, $invert = 0, $option = '', $morecss = 'valignmiddle maxwidth75imp', $addjscombo = false)
 	{
 		// phpcs:enable
-		print $this->selectyear($selected, $htmlname, $useempty, $min_year, $max_year, $offset, $invert, $option, $morecss, $addjscombo);
+		echo $this->selectyear($selected, $htmlname, $useempty, $min_year, $max_year, $offset, $invert, $option, $morecss, $addjscombo);
 	}
 
 	/**
@@ -1385,8 +1385,8 @@ class FormOther
 				}
 				if (preg_match('/^A/i', $box->box_order)) { // column A
 					$ii++;
-					//print 'box_id '.$boxactivated[$ii]->box_id.' ';
-					//print 'box_order '.$boxactivated[$ii]->box_order.'<br>';
+					//echo 'box_id '.$boxactivated[$ii]->box_id.' ';
+					//echo 'box_order '.$boxactivated[$ii]->box_order.'<br>';
 					// Show box
 					$box->loadBox($box_max_lines);
 					$boxlista .= $box->showBox(null, null, 1);
@@ -1413,8 +1413,8 @@ class FormOther
 				}
 				if (preg_match('/^B/i', $box->box_order)) { // colonne B
 					$ii++;
-					//print 'box_id '.$boxactivated[$ii]->box_id.' ';
-					//print 'box_order '.$boxactivated[$ii]->box_order.'<br>';
+					//echo 'box_id '.$boxactivated[$ii]->box_id.' ';
+					//echo 'box_order '.$boxactivated[$ii]->box_order.'<br>';
 					// Show box
 					$box->loadBox($box_max_lines);
 					$boxlistb .= $box->showBox(null, null, 1);
@@ -1465,26 +1465,26 @@ class FormOther
 			$num = $this->db->num_rows($result);
 			$i = 0;
 			if ($num) {
-				print '<select id="select'.$htmlname.'" class="flat selectdictionary" name="'.$htmlname.'"'.($moreattrib ? ' '.$moreattrib : '').'>';
+				echo '<select id="select'.$htmlname.'" class="flat selectdictionary" name="'.$htmlname.'"'.($moreattrib ? ' '.$moreattrib : '').'>';
 				if ($useempty == 1 || ($useempty == 2 && $num > 1)) {
-					print '<option value="-1">&nbsp;</option>';
+					echo '<option value="-1">&nbsp;</option>';
 				}
 
 				while ($i < $num) {
 					$obj = $this->db->fetch_object($result);
 					if ($selected == $obj->rowid || $selected == $obj->{$keyfield}) {
-						print '<option value="'.$obj->{$keyfield}.'" selected>';
+						echo '<option value="'.$obj->{$keyfield}.'" selected>';
 					} else {
-						print '<option value="'.$obj->{$keyfield}.'">';
+						echo '<option value="'.$obj->{$keyfield}.'">';
 					}
 					$label = ($langs->trans($dictionarytable.$obj->{$keyfield}) != $dictionarytable.$obj->{$labelfield} ? $langs->trans($dictionarytable.$obj->{$keyfield}) : $obj->{$labelfield});
-					print $label;
-					print '</option>';
+					echo $label;
+					echo '</option>';
 					$i++;
 				}
-				print "</select>";
+				echo "</select>";
 			} else {
-				print $langs->trans("DictionaryEmpty");
+				echo $langs->trans("DictionaryEmpty");
 			}
 		} else {
 			dol_print_error($this->db);

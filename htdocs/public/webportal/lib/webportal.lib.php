@@ -75,9 +75,9 @@ function getNavItem($item, $deep = 0)
 			}
 
 			if (!empty($child['children'])) {
-				$menuChildren .= "\n\r" . '<!-- print sub menu -->' . "\n\r";
+				$menuChildren .= "\n\r" . '<!-- echo sub menu -->' . "\n\r";
 				$menuChildren .= getNavItem($child, $deep + 1);
-				$menuChildren .= "\n\r" . '<!-- print sub menu -->' . "\n\r";
+				$menuChildren .= "\n\r" . '<!-- echo sub menu -->' . "\n\r";
 			} else {
 				$menuChildren .= '<li class="dropdown-item '.$item['class'].'" data-deep="' . $deep . '" ><a href="' . $child['url'] . '" class="' . (!empty($child['active']) ? 'active' : '') . '" ">' . $child['name'] . '</a></li>';
 			}

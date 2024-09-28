@@ -161,41 +161,41 @@ if ($id > 0) {
 
 	$head = member_prepare_head($object);
 
-	print dol_get_fiche_head($head, 'partnership', $langs->trans("ThirdParty"), -1, 'user');
+	echo dol_get_fiche_head($head, 'partnership', $langs->trans("ThirdParty"), -1, 'user');
 
 	$linkback = '<a href="'.DOL_URL_ROOT.'/adherents/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
 	dol_banner_tab($object, 'rowid', $linkback);
 
-	print '<div class="fichecenter">';
+	echo '<div class="fichecenter">';
 
-	print '<div class="underbanner clearboth"></div>';
-	print '<table class="border centpercent tableforfield">';
+	echo '<div class="underbanner clearboth"></div>';
+	echo '<table class="border centpercent tableforfield">';
 
 	// Login
 	if (!getDolGlobalString('ADHERENT_LOGIN_NOT_REQUIRED')) {
-		print '<tr><td class="titlefield">'.$langs->trans("Login").' / '.$langs->trans("Id").'</td><td class="valeur">'.$object->login.'&nbsp;</td></tr>';
+		echo '<tr><td class="titlefield">'.$langs->trans("Login").' / '.$langs->trans("Id").'</td><td class="valeur">'.$object->login.'&nbsp;</td></tr>';
 	}
 
 	// Type
-	print '<tr><td class="titlefield">'.$langs->trans("Type").'</td><td class="valeur">'.$adht->getNomUrl(1)."</td></tr>\n";
+	echo '<tr><td class="titlefield">'.$langs->trans("Type").'</td><td class="valeur">'.$adht->getNomUrl(1)."</td></tr>\n";
 
 	// Morphy
-	print '<tr><td>'.$langs->trans("MemberNature").'</td><td class="valeur" >'.$object->getmorphylib().'</td>';
-	print '</tr>';
+	echo '<tr><td>'.$langs->trans("MemberNature").'</td><td class="valeur" >'.$object->getmorphylib().'</td>';
+	echo '</tr>';
 
 	// Company
-	print '<tr><td>'.$langs->trans("Company").'</td><td class="valeur">'.$object->company.'</td></tr>';
+	echo '<tr><td>'.$langs->trans("Company").'</td><td class="valeur">'.$object->company.'</td></tr>';
 
 	// Civility
-	print '<tr><td>'.$langs->trans("UserTitle").'</td><td class="valeur">'.$object->getCivilityLabel().'&nbsp;</td>';
-	print '</tr>';
+	echo '<tr><td>'.$langs->trans("UserTitle").'</td><td class="valeur">'.$object->getCivilityLabel().'&nbsp;</td>';
+	echo '</tr>';
 
-	print '</table>';
+	echo '</table>';
 
-	print '</div>';
+	echo '</div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 } else {
 	dol_print_error(null, 'Parameter rowid not defined');
 }
@@ -206,7 +206,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	// Buttons for actions
 
 	if ($action != 'presend') {
-		print '<div class="tabsAction">'."\n";
+		echo '<div class="tabsAction">'."\n";
 		$parameters = array();
 		$reshook = $hookmanager->executeHooks('addMoreActionsButtons', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
 		if ($reshook < 0) {
@@ -216,17 +216,17 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 		if (empty($reshook)) {
 			// Show
 			if ($permissiontoadd) {
-				print dolGetButtonAction($langs->trans('AddPartnership'), '', 'default', DOL_URL_ROOT.'/partnership/partnership_card.php?action=create&fk_member='.$object->id.'&backtopage='.urlencode(DOL_URL_ROOT.'/adherents/partnership.php?id='.$object->id), '', $permissiontoadd);
+				echo dolGetButtonAction($langs->trans('AddPartnership'), '', 'default', DOL_URL_ROOT.'/partnership/partnership_card.php?action=create&fk_member='.$object->id.'&backtopage='.urlencode(DOL_URL_ROOT.'/adherents/partnership.php?id='.$object->id), '', $permissiontoadd);
 			}
 		}
-		print '</div>'."\n";
+		echo '</div>'."\n";
 	}
 
 
 	//$morehtmlright = 'partnership/partnership_card.php?action=create&backtopage=%2Fgestimag%2Fhtdocs%2Fpartnership%2Fpartnership_list.php';
 	$morehtmlright = '';
 
-	print load_fiche_titre($langs->trans("PartnershipDedicatedToThisMember", $langs->transnoentitiesnoconv("Partnership")), $morehtmlright, '');
+	echo load_fiche_titre($langs->trans("PartnershipDedicatedToThisMember", $langs->transnoentitiesnoconv("Partnership")), $morehtmlright, '');
 
 	$memberid = $object->id;
 
@@ -237,10 +237,10 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	$partnershipid = $object->fetch(0, "", $memberid);
 
 	if ($partnershipid > 0) {
-		print '<div class="fichecenter">';
-		print '<div class="fichehalfleft">';
-		print '<div class="underbanner clearboth"></div>';
-		print '<table class="border centpercent tableforfield">'."\n";
+		echo '<div class="fichecenter">';
+		echo '<div class="fichehalfleft">';
+		echo '<div class="underbanner clearboth"></div>';
+		echo '<table class="border centpercent tableforfield">'."\n";
 
 		// Common attributes
 		//$keyforbreak='fieldkeytoswitchonsecondcolumn';	// We change column just before this field
@@ -251,29 +251,29 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 		// End of subscription date
 		$fadherent = new Adherent($db);
 		$fadherent->fetch($object->fk_member);
-		print '<tr><td>'.$langs->trans("SubscriptionEndDate").'</td><td class="valeur">';
+		echo '<tr><td>'.$langs->trans("SubscriptionEndDate").'</td><td class="valeur">';
 		if ($fadherent->datefin) {
-			print dol_print_date($fadherent->datefin, 'day');
+			echo dol_print_date($fadherent->datefin, 'day');
 			if ($fadherent->hasDelay()) {
-				print " ".img_warning($langs->trans("Late"));
+				echo " ".img_warning($langs->trans("Late"));
 			}
 		} else {
 			if (!$adht->subscription) {
-				print $langs->trans("SubscriptionNotRecorded");
+				echo $langs->trans("SubscriptionNotRecorded");
 				if ($fadherent->statut > 0) {
-					print " ".img_warning($langs->trans("Late")); // Display a delay picto only if it is not a draft and is not canceled
+					echo " ".img_warning($langs->trans("Late")); // Display a delay picto only if it is not a draft and is not canceled
 				}
 			} else {
-				print $langs->trans("SubscriptionNotReceived");
+				echo $langs->trans("SubscriptionNotReceived");
 				if ($fadherent->statut > 0) {
-					print " ".img_warning($langs->trans("Late")); // Display a delay picto only if it is not a draft and is not canceled
+					echo " ".img_warning($langs->trans("Late")); // Display a delay picto only if it is not a draft and is not canceled
 				}
 			}
 		}
-		print '</td></tr>';
+		echo '</td></tr>';
 
-		print '</table>';
-		print '</div>';
+		echo '</table>';
+		echo '</div>';
 	}
 }
 

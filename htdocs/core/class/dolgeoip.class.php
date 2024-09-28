@@ -81,7 +81,7 @@ class DolGeoIP
 				require_once DOL_DOCUMENT_ROOT.'/includes/geoip2/geoip2.phar';
 			}
 		} else {
-			print 'ErrorBadParameterInConstructor';
+			echo 'ErrorBadParameterInConstructor';
 			return;
 		}
 
@@ -111,8 +111,8 @@ class DolGeoIP
 			$this->gi = geoip_open($datfile, constant('GEOIP_STANDARD'));
 		} elseif (function_exists('geoip_country_code_by_name')) {
 			$this->gi = 'NOGI'; // We are using embedded php geoip functions
-			//print 'function_exists(geoip_country_code_by_name))='.function_exists('geoip_country_code_by_name');
-			//print geoip_database_info();
+			//echo 'function_exists(geoip_country_code_by_name))='.function_exists('geoip_country_code_by_name');
+			//echo geoip_database_info();
 		} else {
 			$this->gi = ''; // For avoid error
 		}

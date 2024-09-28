@@ -96,7 +96,7 @@ function chequereceipt_pdf_create($db, $id, $message, $modele, $outputlangs)
 		if (getDolGlobalString('CHEQUERECEIPT_ADDON_PDF')) {
 			$modele = getDolGlobalString('CHEQUERECEIPT_ADDON_PDF');
 		} else {
-			//print $langs->trans("Error")." ".$langs->trans("Error_FACTURE_ADDON_PDF_NotDefined");
+			//echo $langs->trans("Error")." ".$langs->trans("Error_FACTURE_ADDON_PDF_NotDefined");
 			//return 0;
 			$modele = 'blochet';
 		}

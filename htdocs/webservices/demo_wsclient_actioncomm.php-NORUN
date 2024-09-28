@@ -67,11 +67,11 @@ if ($action=='get')
     $result = $soapclient->call($WS_METHOD_GET,$parameters,$ns,'');
     if (! $result)
     {
-    	print $soapclient->error_str;
-    	print "<br>\n\n";
-    	print $soapclient->request;
-    	print "<br>\n\n";
-    	print $soapclient->response;
+    	echo $soapclient->error_str;
+    	echo "<br>\n\n";
+    	echo $soapclient->request;
+    	echo "<br>\n\n";
+    	echo $soapclient->response;
     	exit;
     }
 }
@@ -86,11 +86,11 @@ if ($action=='getlist')
 	$result = $soapclient->call($WS_METHOD_GET_C_LIST,$parameters,$ns,'');
 	if (! $result)
 	{
-		print $soapclient->error_str;
-		print "<br>\n\n";
-		print $soapclient->request;
-		print "<br>\n\n";
-		print $soapclient->response;
+		echo $soapclient->error_str;
+		echo "<br>\n\n";
+		echo $soapclient->request;
+		echo "<br>\n\n";
+		echo $soapclient->response;
 		exit;
 	}
 }
@@ -119,11 +119,11 @@ if ($action=='create')
 	$result = $soapclient->call($WS_METHOD_CREATE,$parameters,$ns,'');
 	if (! $result)
 	{
-		print $soapclient->error_str;
-		print "<br>\n\n";
-		print $soapclient->request;
-		print "<br>\n\n";
-		print $soapclient->response;
+		echo $soapclient->error_str;
+		echo "<br>\n\n";
+		echo $soapclient->request;
+		echo "<br>\n\n";
+		echo $soapclient->response;
 		exit;
 	}
 }
@@ -134,31 +134,31 @@ if ($action=='create')
  */
 
 header("Content-type: text/html; charset=utf8");
-print '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">'."\n";
-echo '<html>'."\n";
-echo '<head>';
-echo '<title>WebService Test: '.$WS_METHOD.'</title>';
-echo '</head>'."\n";
+echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">'."\n";
+echo  '<html>'."\n";
+echo  '<head>';
+echo  '<title>WebService Test: '.$WS_METHOD.'</title>';
+echo  '</head>'."\n";
 
-echo '<body>'."\n";
-echo 'NUSOAP_PATH='.NUSOAP_PATH.'<br>';
+echo  '<body>'."\n";
+echo  'NUSOAP_PATH='.NUSOAP_PATH.'<br>';
 
-echo "<h2>Request:</h2>";
-echo '<h4>Function</h4>';
-echo $WS_METHOD;
-echo '<h4>SOAP Message</h4>';
-echo '<pre>' . htmlspecialchars($soapclient->request, ENT_QUOTES) . '</pre>';
+echo  "<h2>Request:</h2>";
+echo  '<h4>Function</h4>';
+echo  $WS_METHOD;
+echo  '<h4>SOAP Message</h4>';
+echo  '<pre>' . htmlspecialchars($soapclient->request, ENT_QUOTES) . '</pre>';
 
-echo '<hr>';
+echo  '<hr>';
 
-echo "<h2>Response:</h2>";
-echo '<h4>Result</h4>';
-echo '<pre>';
+echo  "<h2>Response:</h2>";
+echo  '<h4>Result</h4>';
+echo  '<pre>';
 print_r($result);
-echo '</pre>';
-echo '<h4>SOAP Message</h4>';
-echo '<pre>' . htmlspecialchars($soapclient->response, ENT_QUOTES) . '</pre>';
+echo  '</pre>';
+echo  '<h4>SOAP Message</h4>';
+echo  '<pre>' . htmlspecialchars($soapclient->response, ENT_QUOTES) . '</pre>';
 
-echo '</body>'."\n";
-echo '</html>'."\n";
+echo  '</body>'."\n";
+echo  '</html>'."\n";
 ?>

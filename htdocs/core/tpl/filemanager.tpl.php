@@ -22,7 +22,7 @@
 
 // Protection to avoid direct call of template
 if (empty($conf) || !is_object($conf)) {
-	print "Error, template page filemanager.tpl.php can't be called as URL";
+	echo "Error, template page filemanager.tpl.php can't be called as URL";
 	exit;
 }
 
@@ -62,7 +62,7 @@ if (!isset($section)) {
 // Confirm remove file (for non javascript users)
 if (($action == 'delete' || $action == 'file_manager_delete') && empty($conf->use_javascript_ajax)) {
 	// TODO Add website, pageid, filemanager if defined
-	print $form->formconfirm($_SERVER["PHP_SELF"].'?section='.$section.'&urlfile='.urlencode(GETPOST("urlfile")), $langs->trans('DeleteFile'), $langs->trans('ConfirmDeleteFile'), 'confirm_deletefile', '', '', 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"].'?section='.$section.'&urlfile='.urlencode(GETPOST("urlfile")), $langs->trans('DeleteFile'), $langs->trans('ConfirmDeleteFile'), 'confirm_deletefile', '', '', 1);
 }
 
 // Start container of all panels
@@ -73,59 +73,59 @@ if (($action == 'delete' || $action == 'file_manager_delete') && empty($conf->us
 <?php
 
 // Start top panel, toolbar
-print '<div class="inline-block toolbarbutton centpercent">';
+echo '<div class="inline-block toolbarbutton centpercent">';
 
 // Toolbar
 if ($permtoadd) {
 	$websitekeyandpageid = (!empty($websitekey) ? '&website='.urlencode($websitekey) : '').(!empty($pageid) ? '&pageid='.urlencode((string) $pageid) : '');
-	print '<a id="acreatedir" href="'.DOL_URL_ROOT.'/ecm/dir_add_card.php?action=create&module='.urlencode($module).$websitekeyandpageid.'&backtopage='.urlencode($_SERVER["PHP_SELF"].'?file_manager=1'.$websitekeyandpageid).'" class="inline-block valignmiddle toolbarbutton paddingtop" title="'.dol_escape_htmltag($langs->trans('ECMAddSection')).'">';
-	print img_picto('', 'folder-plus', '', false, 0, 0, '', 'size15x marginrightonly');
-	print '</a>';
+	echo '<a id="acreatedir" href="'.DOL_URL_ROOT.'/ecm/dir_add_card.php?action=create&module='.urlencode($module).$websitekeyandpageid.'&backtopage='.urlencode($_SERVER["PHP_SELF"].'?file_manager=1'.$websitekeyandpageid).'" class="inline-block valignmiddle toolbarbutton paddingtop" title="'.dol_escape_htmltag($langs->trans('ECMAddSection')).'">';
+	echo img_picto('', 'folder-plus', '', false, 0, 0, '', 'size15x marginrightonly');
+	echo '</a>';
 } else {
-	print '<a id="acreatedir" href="#" class="inline-block valignmiddle toolbarbutton paddingtop" title="'.$langs->trans("NotAllowed").'">';
-	print img_picto('', 'folder-plus', 'disabled', false, 0, 0, '', 'size15x marginrightonly');
-	print '</a>';
+	echo '<a id="acreatedir" href="#" class="inline-block valignmiddle toolbarbutton paddingtop" title="'.$langs->trans("NotAllowed").'">';
+	echo img_picto('', 'folder-plus', 'disabled', false, 0, 0, '', 'size15x marginrightonly');
+	echo '</a>';
 }
 if ($module == 'ecm') {
 	$tmpurl = ((!empty($conf->use_javascript_ajax) && !getDolGlobalString('MAIN_ECM_DISABLE_JS')) ? '#' : ($_SERVER["PHP_SELF"].'?action=refreshmanual'.($module ? '&amp;module='.$module : '').($section ? '&amp;section='.$section : '')));
-	print '<a id="arefreshbutton" href="'.$tmpurl.'" class="inline-block valignmiddle toolbarbutton paddingtop" title="'.dol_escape_htmltag($langs->trans('ReSyncListOfDir')).'">';
-	print img_picto('', 'refresh', 'id="refreshbutton"', false, 0, 0, '', 'size15x marginrightonly');
-	print '</a>';
+	echo '<a id="arefreshbutton" href="'.$tmpurl.'" class="inline-block valignmiddle toolbarbutton paddingtop" title="'.dol_escape_htmltag($langs->trans('ReSyncListOfDir')).'">';
+	echo img_picto('', 'refresh', 'id="refreshbutton"', false, 0, 0, '', 'size15x marginrightonly');
+	echo '</a>';
 }
 if ($permtoadd && GETPOSTISSET('website')) {	// If on file manager to manage medias of a web site
-	print '<a id="agenerateimgwebp" href="'.$_SERVER["PHP_SELF"].'?action=confirmconvertimgwebp&token='.newToken().'&website='.urlencode($website->ref).'" class="inline-block valignmiddle toolbarbutton paddingtop" title="'.dol_escape_htmltag($langs->trans("GenerateImgWebp")).'">';
-	print img_picto('', 'images', '', false, 0, 0, '', 'size15x flip marginrightonly');
-	print '</a>';
+	echo '<a id="agenerateimgwebp" href="'.$_SERVER["PHP_SELF"].'?action=confirmconvertimgwebp&token='.newToken().'&website='.urlencode($website->ref).'" class="inline-block valignmiddle toolbarbutton paddingtop" title="'.dol_escape_htmltag($langs->trans("GenerateImgWebp")).'">';
+	echo img_picto('', 'images', '', false, 0, 0, '', 'size15x flip marginrightonly');
+	echo '</a>';
 } elseif ($permtoadd && $module == 'ecm') {	// If on file manager medias in ecm
 	if (getDolGlobalInt('ECM_SHOW_GENERATE_WEBP_BUTTON')) {
-		print '<a id="agenerateimgwebp" href="'.$_SERVER["PHP_SELF"].'?action=confirmconvertimgwebp&token='.newToken().'" class="inline-block valignmiddle toolbarbutton paddingtop" title="'.dol_escape_htmltag($langs->trans("GenerateImgWebp")).'">';
-		print img_picto('', 'images', '', false, 0, 0, '', 'size15x flip marginrightonly');
-		print '</a>';
+		echo '<a id="agenerateimgwebp" href="'.$_SERVER["PHP_SELF"].'?action=confirmconvertimgwebp&token='.newToken().'" class="inline-block valignmiddle toolbarbutton paddingtop" title="'.dol_escape_htmltag($langs->trans("GenerateImgWebp")).'">';
+		echo img_picto('', 'images', '', false, 0, 0, '', 'size15x flip marginrightonly');
+		echo '</a>';
 	}
 }
 
-print "<script>
+echo "<script>
 $('#acreatedir').on('click', function() {
 	try{
 		section_dir = $('.directory.expanded')[$('.directory.expanded').length-1].children[0].rel;
 		section = $('.directory.expanded')[$('.directory.expanded').length-1].children[0].id.split('_')[2];
 		catParent = ";
 if ($module == 'ecm') {
-	print "section;";
+	echo "section;";
 } else {
-	print "section_dir.substring(0, section_dir.length - 1);";
+	echo "section_dir.substring(0, section_dir.length - 1);";
 }
-print "
+echo "
 	} catch{
 		section_dir = '/';
 		section = 0;
 		catParent = ";
 if ($module == 'ecm') {
-	print "section;";
+	echo "section;";
 } else {
-	print "section_dir;";
+	echo "section_dir;";
 }
-print "
+echo "
 	}
 	console.log('We click to create a new directory, we set current section_dir='+section_dir+' into href url of button acreatedir');
 	$('#acreatedir').attr('href', $('#acreatedir').attr('href')+'%26section_dir%3D'+encodeURI(section_dir)+'%26section%3D'+encodeURI(section)+'&section_dir='+encodeURI(section_dir)+'&section='+encodeURI(section)+'&catParent='+encodeURI(catParent));
@@ -148,7 +148,7 @@ $('#agenerateimgwebp').on('click', function() {
 // Start "Add new file" area
 $nameforformuserfile = 'formuserfileecm';
 
-print '<div class="inline-block valignmiddle floatright">';
+echo '<div class="inline-block valignmiddle floatright">';
 
 // Zone to attach a new file
 if ((!empty($conf->use_javascript_ajax) && !getDolGlobalString('MAIN_ECM_DISABLE_JS')) || !empty($section)) {
@@ -156,7 +156,7 @@ if ((!empty($conf->use_javascript_ajax) && !getDolGlobalString('MAIN_ECM_DISABLE
 		?>
 		<script>
 		jQuery(document).ready(function() {
-			jQuery('#<?php echo $nameforformuserfile ?>').hide();
+			jQuery('#<?php echo  $nameforformuserfile ?>').hide();
 		});
 		</script>
 		<?php
@@ -164,19 +164,19 @@ if ((!empty($conf->use_javascript_ajax) && !getDolGlobalString('MAIN_ECM_DISABLE
 
 	$sectiondir = GETPOST('file', 'alpha') ? GETPOST('file', 'alpha') : GETPOST('section_dir', 'alpha');
 
-	print '<!-- Start form to attach new file in filemanager.tpl.php sectionid='.$section.' sectiondir='.$sectiondir.' -->'."\n";
+	echo '<!-- Start form to attach new file in filemanager.tpl.php sectionid='.$section.' sectiondir='.$sectiondir.' -->'."\n";
 	include_once DOL_DOCUMENT_ROOT.'/core/class/html.formfile.class.php';
 	$formfile = new FormFile($db);
-	print $formfile->form_attach_new_file($_SERVER["PHP_SELF"], 'none', 0, ($section ? $section : -1), $permtoupload, 48, null, '', 0, '', 0, $nameforformuserfile, '', $sectiondir, empty($formalreadyopen) ? 0 : $formalreadyopen, 0, 0, 1);
+	echo $formfile->form_attach_new_file($_SERVER["PHP_SELF"], 'none', 0, ($section ? $section : -1), $permtoupload, 48, null, '', 0, '', 0, $nameforformuserfile, '', $sectiondir, empty($formalreadyopen) ? 0 : $formalreadyopen, 0, 0, 1);
 } else {
-	print '&nbsp;';
+	echo '&nbsp;';
 }
 
-print '</div>';
+echo '</div>';
 // End "Add new file" area
 
 
-print '</div>';
+echo '</div>';
 // End top panel, toolbar
 
 ?>
@@ -188,7 +188,7 @@ print '</div>';
 
 // Ask confirmation of deletion of directory
 if ($action == 'delete_section') {
-	print $form->formconfirm($_SERVER["PHP_SELF"].'?section='.$section, $langs->trans('DeleteSection'), $langs->trans('ConfirmDeleteSection', $ecmdir->label), 'confirm_deletesection', '', '', 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"].'?section='.$section, $langs->trans('DeleteSection'), $langs->trans('ConfirmDeleteSection', $ecmdir->label), 'confirm_deletesection', '', '', 1);
 }
 // End confirm
 
@@ -214,7 +214,7 @@ if ($action == 'confirmconvertimgwebp') {
 	if (!empty($sortorder)) {
 		$param .= '&sortorder='.urlencode($sortorder);
 	}
-	print $form->formconfirm($_SERVER["PHP_SELF"].($param ? '?'.$param : ''), empty($file) ? $langs->trans('ConfirmImgWebpCreation') : $langs->trans('ConfirmChosenImgWebpCreation'), empty($file) ? $langs->trans('ConfirmGenerateImgWebp') : $langs->trans('ConfirmGenerateChosenImgWebp', basename($file)), 'convertimgwebp', $formquestion, "yes", 1);
+	echo $form->formconfirm($_SERVER["PHP_SELF"].($param ? '?'.$param : ''), empty($file) ? $langs->trans('ConfirmImgWebpCreation') : $langs->trans('ConfirmChosenImgWebpCreation'), empty($file) ? $langs->trans('ConfirmGenerateImgWebp') : $langs->trans('ConfirmGenerateChosenImgWebp', basename($file)), 'convertimgwebp', $formquestion, "yes", 1);
 	$action = 'file_manager';
 }
 
@@ -274,13 +274,13 @@ if ($action == 'convertimgwebp' && $permtoadd) {
 if (empty($action) || $action == 'editfile' || $action == 'file_manager' || preg_match('/refresh/i', $action) || $action == 'delete') {
 	$langs->load("ecm");
 
-	print '<table class="liste centpercent">'."\n";
+	echo '<table class="liste centpercent">'."\n";
 
-	print '<!-- Title for manual directories -->'."\n";
-	print '<tr class="liste_titre">'."\n";
-	print '<th class="liste_titre left">';
-	print '<span style="padding-left: 5px; padding-right: 5px;">'.$langs->trans("ECMSections").'</span>';
-	print '</th></tr>';
+	echo '<!-- Title for manual directories -->'."\n";
+	echo '<tr class="liste_titre">'."\n";
+	echo '<th class="liste_titre left">';
+	echo '<span style="padding-left: 5px; padding-right: 5px;">'.$langs->trans("ECMSections").'</span>';
+	echo '</th></tr>';
 
 	$showonrightsize = '';
 
@@ -291,35 +291,35 @@ if (empty($action) || $action == 'editfile' || $action == 'file_manager' || preg
 	if (!empty($conf->use_javascript_ajax) && !getDolGlobalString('MAIN_ECM_DISABLE_JS')) {
 		// Show the link to "Root"
 		if ($showroot) {
-			print '<tr class="oddeven nohover"><td><div style="padding-left: 5px; padding-right: 5px;"><a href="'.$_SERVER["PHP_SELF"].'?file_manager=1'.(!empty($websitekey) ? '&website='.urlencode($websitekey) : '').'&pageid='.urlencode((string) $pageid).'">';
+			echo '<tr class="oddeven nohover"><td><div style="padding-left: 5px; padding-right: 5px;"><a href="'.$_SERVER["PHP_SELF"].'?file_manager=1'.(!empty($websitekey) ? '&website='.urlencode($websitekey) : '').'&pageid='.urlencode((string) $pageid).'">';
 			if ($module == 'medias') {
-				print $langs->trans("RootOfMedias");
+				echo $langs->trans("RootOfMedias");
 			} else {
-				print $langs->trans("Root");
+				echo $langs->trans("Root");
 			}
-			print '</a></div></td></tr>';
+			echo '</a></div></td></tr>';
 		}
 
-		print '<tr class="oddeven nohover"><td>';
+		echo '<tr class="oddeven nohover"><td>';
 
 		// Show filemanager tree (will be filled by a call of ajax /ecm/tpl/enablefiletreeajax.tpl.php, later, that executes ajaxdirtree.php)
-		print '<div id="filetree" class="ecmfiletree"></div>';
+		echo '<div id="filetree" class="ecmfiletree"></div>';
 
 		if ($action == 'deletefile') {
-			print $form->formconfirm('eeeee', $langs->trans('DeleteFile'), $langs->trans('ConfirmDeleteFile'), 'confirm_deletefile', '', '', 'deletefile');
+			echo $form->formconfirm('eeeee', $langs->trans('DeleteFile'), $langs->trans('ConfirmDeleteFile'), 'confirm_deletefile', '', '', 'deletefile');
 		}
 
-		print '</td></tr>';
+		echo '</td></tr>';
 	} else {
 		// Show filtree when ajax is disabled (rare)
-		print '<tr><td style="padding-left: 20px">';
+		echo '<tr><td style="padding-left: 20px">';
 
 		$_POST['modulepart'] = $module;
 		$_POST['openeddir'] = GETPOST('openeddir');
 		$_POST['dir'] = empty($_POST['dir']) ? '/' : GETPOST('dir');
 
 		// Show filemanager tree (will be filled by direct include of ajaxdirtree.php in mode noajax, this will return all dir - all levels - to show)
-		print '<div id="filetree" class="ecmfiletree">';
+		echo '<div id="filetree" class="ecmfiletree">';
 
 		// Variables that may be defined:
 		// $_GET['modulepart'], $_GET['openeddir'], $_GET['sortfield'], $_GET['sortorder']
@@ -330,12 +330,12 @@ if (empty($action) || $action == 'editfile' || $action == 'file_manager' || preg
 		}
 		include DOL_DOCUMENT_ROOT.'/core/ajax/ajaxdirtree.php';
 
-		print '</div>';
-		print '</td></tr>';
+		echo '</div>';
+		echo '</td></tr>';
 	}
 
 
-	print "</table>";
+	echo "</table>";
 }
 
 

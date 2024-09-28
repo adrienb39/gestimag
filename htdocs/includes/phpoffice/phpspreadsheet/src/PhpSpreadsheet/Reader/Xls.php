@@ -1124,7 +1124,7 @@ class Xls extends BaseReader
             if ($definedName['isBuiltInName']) {
                 switch ($definedName['name']) {
                     case pack('C', 0x06):
-                        // print area
+                        // echo area
                         //    in general, formula looks like this: Foo!$C$7:$J$66,Bar!$A$1:$IV$2
                         $ranges = explode(',', $definedName['formula']); // FIXME: what if sheetname contains comma?
 
@@ -1148,7 +1148,7 @@ class Xls extends BaseReader
 
                         break;
                     case pack('C', 0x07):
-                        // print titles (repeating rows)
+                        // echo titles (repeating rows)
                         // Assuming BIFF8, there are 3 cases
                         // 1. repeating rows
                         //        formula looks like this: Sheet!$A$1:$IV$2
@@ -3004,7 +3004,7 @@ class Xls extends BaseReader
         $this->pos += 4 + $length;
 
         if ($this->version == self::XLS_BIFF8 && !$this->readDataOnly) {
-            // offset: 0; size: 2; 0 = do not print sheet grid lines; 1 = print sheet gridlines
+            // offset: 0; size: 2; 0 = do not echo sheet grid lines; 1 = echo sheet gridlines
             $printGridlines = (bool) self::getUInt2d($recordData, 0);
             $this->phpSheet->setPrintGridlines($printGridlines);
         }
@@ -3172,7 +3172,7 @@ class Xls extends BaseReader
         $this->pos += 4 + $length;
 
         if (!$this->readDataOnly) {
-            // offset: 0; size: 2; 0 = print sheet left aligned, 1 = print sheet centered horizontally
+            // offset: 0; size: 2; 0 = echo sheet left aligned, 1 = echo sheet centered horizontally
             $isHorizontalCentered = (bool) self::getUInt2d($recordData, 0);
 
             $this->phpSheet->getPageSetup()->setHorizontalCentered($isHorizontalCentered);
@@ -3191,7 +3191,7 @@ class Xls extends BaseReader
         $this->pos += 4 + $length;
 
         if (!$this->readDataOnly) {
-            // offset: 0; size: 2; 0 = print sheet aligned at top page border, 1 = print sheet vertically centered
+            // offset: 0; size: 2; 0 = echo sheet aligned at top page border, 1 = echo sheet vertically centered
             $isVerticalCentered = (bool) self::getUInt2d($recordData, 0);
 
             $this->phpSheet->getPageSetup()->setVerticalCentered($isVerticalCentered);

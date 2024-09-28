@@ -90,7 +90,7 @@ html .bodywebsite p a:hover {
 .bodywebsite a,
 .bodywebsite a:active,
 .bodywebsite a:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite h3 a,
 .bodywebsite h3 a:active
@@ -99,7 +99,7 @@ html .bodywebsite p a:hover {
 }
 .bodywebsite a:hover,
 .bodywebsite a:focus {
-  color: <?php echo empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
+  color: <?php echo  empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
   text-decoration: none;
 }
 .bodywebsite a:focus {
@@ -262,7 +262,7 @@ html .bodywebsite p a:hover {
 .bodywebsite .h4 a:hover,
 .bodywebsite .h5 a:hover,
 .bodywebsite .h6 a:hover {
-  color: <?php echo empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
+  color: <?php echo  empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
 }
 .bodywebsite h1,
 .bodywebsite .h1 {
@@ -369,7 +369,7 @@ html .bodywebsite p a:hover {
 .bodywebsite .bg-black a:hover,
 .bodywebsite .bg-accent a:hover
 {
-  color: <?php echo empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
+  color: <?php echo  empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
 }
 .bodywebsite .context-dark .text-extra-large-bordered,
 .bodywebsite .bg-black .text-extra-large-bordered,
@@ -386,8 +386,8 @@ html .bodywebsite p a:hover {
   fill: #000;
 }
 .bodywebsite .bg-accent {
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  fill: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  fill: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .bg-accent.bg-default-outline-btn .btn-white-outline:hover {
   background: #3a3c3e;
@@ -406,11 +406,11 @@ html .bodywebsite p a:hover {
   fill: #3a3c3e;
 }
 .bodywebsite .page .text-primary {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?> !important;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?> !important;
 }
 .bodywebsite .page a.text-primary:focus,
 .bodywebsite .page a.text-primary:hover {
-  color: <?php echo empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?> !important;
+  color: <?php echo  empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?> !important;
 }
 .bodywebsite .page .text-secondary {
   color: #00030a !important;
@@ -649,8 +649,8 @@ html .bodywebsite .btn-default:focus {
 .bodywebsite .open > html .btn-default.dropdown-toggle,
 html .bodywebsite .btn-default:hover {
   color: #fff;
-  background-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 html .bodywebsite .btn-default.disabled,
 html .bodywebsite .btn-default[disabled],
@@ -670,14 +670,14 @@ html .bodywebsite .btn-primary.active:focus,
 html .bodywebsite .btn-primary:focus:active,
 html .bodywebsite .btn-primary:focus {
   color: #fff;
-  background-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   /* border: 0; */
 }
 .bodywebsite .open > html .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   /* border: none; */
 }
 html .bodywebsite .btn-primary:hover {
@@ -691,7 +691,7 @@ html .bodywebsite .btn-primary[disabled],
   opacity: .5;
 }
 html .bodywebsite .btn-primary .badge {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   background-color: #fff;
 }
 html .bodywebsite .btn-primary-contrast,
@@ -702,8 +702,8 @@ html .bodywebsite .btn-primary-contrast.active:focus,
 html .bodywebsite .btn-primary-contrast:focus:active,
 html .bodywebsite .btn-primary-contrast:focus {
   color: #fff;
-  background-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .open > html .btn-primary-contrast.dropdown-toggle,
 html .bodywebsite .btn-primary-contrast:hover {
@@ -718,7 +718,7 @@ html .bodywebsite .btn-primary-contrast[disabled],
   opacity: .5;
 }
 html .bodywebsite .btn-primary-contrast .badge {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   background-color: #fff;
 }
 html .bodywebsite .btn-primary-outline,
@@ -728,15 +728,15 @@ html .bodywebsite .btn-primary-outline:active:focus,
 html .bodywebsite .btn-primary-outline.active:focus,
 html .bodywebsite .btn-primary-outline:focus:active,
 html .bodywebsite .btn-primary-outline:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   background-color: transparent;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .open > html .btn-primary-outline.dropdown-toggle,
 html .bodywebsite .btn-primary-outline:hover {
   color: #fff;
-  background-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 html .bodywebsite .btn-primary-outline.disabled,
 html .bodywebsite .btn-primary-outline[disabled],
@@ -746,7 +746,7 @@ html .bodywebsite .btn-primary-outline[disabled],
 }
 html .bodywebsite .btn-primary-outline .badge {
   color: transparent;
-  background-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 html .bodywebsite .btn-cello-outline,
 html .bodywebsite .btn-cello-outline:active,
@@ -789,8 +789,8 @@ html .bodywebsite .btn-white-outline:focus {
 .bodywebsite .open > html .btn-white-outline.dropdown-toggle,
 html .bodywebsite .btn-white-outline:hover {
   color: #fff;
-  background-color: <?php echo empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
-  border-color: <?php echo empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
+  background-color: <?php echo  empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
+  border-color: <?php echo  empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
 }
 html .bodywebsite .btn-white-outline.disabled,
 html .bodywebsite .btn-white-outline[disabled],
@@ -816,8 +816,8 @@ html .bodywebsite .btn-white-outline-variant-1:focus {
 .bodywebsite .open > html .btn-white-outline-variant-1.dropdown-toggle,
 html .bodywebsite .btn-white-outline-variant-1:hover {
   color: #fff;
-  background-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 html .bodywebsite .btn-white-outline-variant-1.disabled,
 html .bodywebsite .btn-white-outline-variant-1[disabled],
@@ -897,8 +897,8 @@ html .bodywebsite .btn-cello:focus {
 .bodywebsite .open > html .btn-cello.dropdown-toggle,
 html .bodywebsite .btn-cello:hover {
   color: #fff;
-  background-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 html .bodywebsite .btn-cello.disabled,
 html .bodywebsite .btn-cello[disabled],
@@ -1048,7 +1048,7 @@ html .bodywebsite .btn-cello .badge {
 .bodywebsite .btn-icon-only.btn-icon-only-primary,
 .bodywebsite .btn-icon-only.btn-icon-only-primary:active,
 .bodywebsite .btn-icon-only.btn-icon-only-primary:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .btn-icon-only.btn-icon-only-primary:hover {
   color: #000;
@@ -1065,10 +1065,10 @@ html .bodywebsite .btn-cello .badge {
   color: #000;
 }
 .bodywebsite .btn-icon-default:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .btn-cello-outline.btn-icon .icon {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   transition: .33s all ease;
 }
 .bodywebsite .btn-cello-outline.btn-icon:hover.btn-icon .icon {
@@ -1104,7 +1104,7 @@ html .bodywebsite .btn-cello .badge {
   color: #000;
 }
 .bodywebsite .page .icon-primary {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .icon-gunsmoke {
   color: #767877;
@@ -1137,19 +1137,19 @@ html .bodywebsite .btn-cello .badge {
   color: #9f9f9f;
 }
 .bodywebsite .page a.icon-default:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page a.icon-primary,
 .bodywebsite .page a.icon-primary:active,
 .bodywebsite .page a.icon-primary:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page a.icon-primary:hover {
   color: #fff;
 }
 .bodywebsite .page a.icon-abbey-filled:hover {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page a.icon-tundora-inverse,
 .bodywebsite .page a.icon-tundora-inverse:active,
@@ -1167,7 +1167,7 @@ html .bodywebsite .btn-cello .badge {
 }
 .bodywebsite .page a.icon-gray-dark-filled:hover {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page a.icon-silver-chalice-filled,
 .bodywebsite .page a.icon-silver-chalice-filled:active,
@@ -1177,7 +1177,7 @@ html .bodywebsite .btn-cello .badge {
 }
 .bodywebsite .page a.icon-silver-chalice-filled:hover {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page a.icon-san-juan-filled,
 .bodywebsite .page a.icon-san-juan-filled:active,
@@ -1187,7 +1187,7 @@ html .bodywebsite .btn-cello .badge {
 }
 .bodywebsite .page a.icon-san-juan-filled:hover {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .icon-xxs {
   width: 18px;
@@ -1495,7 +1495,7 @@ html .bodywebsite .btn-cello .badge {
   width: calc(66%);
   padding: 17px 8px 25px;
   margin: 31px 17px -25px 17px;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .thumbnail-variant-2 .thumbnail-caption * {
   color: #fff;
@@ -1906,7 +1906,7 @@ html .bodywebsite .btn-cello .badge {
   }
   .bodywebsite .thumbnail-variant-5 {
 	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
-	border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+	border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   }
   .bodywebsite .thumbnail-variant-5:hover .thumbnail-variant-5-img-wrap:before {
 	opacity: 0;
@@ -2079,7 +2079,7 @@ html .bodywebsite .btn-cello .badge {
   }
 }
 .bodywebsite .form-border-bottom {
-  border-bottom: 3px solid <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-bottom: 3px solid <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .form-validation {
   position: absolute;
@@ -2361,7 +2361,7 @@ html .bodywebsite .btn-cello .badge {
   width: 0;
   max-width: 100%;
   height: 3px;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   visibility: hidden;
   transition: .2s;
 }
@@ -2465,7 +2465,7 @@ html .bodywebsite .btn-cello .badge {
   min-height: 20px;
 }
 .bodywebsite .page .form-modern .form-input:focus {
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .form-modern .form-input {
   padding: 6px 0;
@@ -3996,8 +3996,8 @@ html .bodywebsite .group-xl-responsive > *:first-child {
 	position: absolute;
 	width: 45px;
 	height: 45px;
-	border-left: 3px solid <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-	border-top: 3px solid <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+	border-left: 3px solid <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+	border-top: 3px solid <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   }
   .bodywebsite .border-modern .border-modern-item-1,
   .bodywebsite .border-modern .border-modern-item-2 {
@@ -4045,8 +4045,8 @@ html .bodywebsite .group-xl-responsive > *:first-child {
 .bodywebsite .pagination-custom .page-item:last-child .page-link {
   padding-left: 25px;
   padding-right: 25px;
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .pagination-custom .page-item .page-link {
   display: block;
@@ -4076,8 +4076,8 @@ html .bodywebsite .group-xl-responsive > *:first-child {
 }
 .bodywebsite .pagination-custom .page-item .page-link:hover {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .pagination-custom .page-item.disabled,
 .bodywebsite .pagination-custom .page-item.active {
@@ -4085,8 +4085,8 @@ html .bodywebsite .group-xl-responsive > *:first-child {
 }
 .bodywebsite .pagination-custom .page-item.active .page-link {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .pagination-custom .page-item.disabled .page-link {
   color: #f9f9f9;
@@ -4192,7 +4192,7 @@ html .bodywebsite .group-xl-responsive > *:first-child {
   z-index: 2;
 }
 .bodywebsite .quote-bordered .quote-open > svg {
-  fill: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  fill: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .quote-bordered .quote-footer {
   padding-left: 25px;
@@ -4327,7 +4327,7 @@ html .bodywebsite .group-xl-responsive > *:first-child {
   font: 700 14px/18px "Roboto", Helvetica, Arial, sans-serif;
 }
 .bodywebsite .quote-vertical .quote-open > svg {
-  fill: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  fill: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .quote-vertical .quote-image,
 .bodywebsite .quote-vertical .quote-image > img {
@@ -4445,7 +4445,7 @@ html .bodywebsite .group-xl-responsive > *:first-child {
   left: 0;
   width: 50px;
   height: 36px;
-  background: url("medias/image/<?php echo $website->ref; ?>/icon-quote.png") no-repeat top left;
+  background: url("medias/image/<?php echo  $website->ref; ?>/icon-quote.png") no-repeat top left;
   opacity: .5;
 }
 .bodywebsite .quote-left .quote-body q {
@@ -4534,7 +4534,7 @@ html .bodywebsite .group-xl-responsive > *:first-child {
   opacity: 0;
 }
 .bodywebsite .icon-box .btn:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .icon-box .box-top,
 .bodywebsite .icon-box .box-body {
@@ -4600,7 +4600,7 @@ html .bodywebsite .group-xl-responsive > *:first-child {
 	right: 0;
 	left: 0;
 	opacity: 0;
-	background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+	background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 	transition: 0.2s ease-in-out;
   }
   .bodywebsite .desktop .icon-box:hover .icon-box-overlay {
@@ -4646,7 +4646,7 @@ html .bodywebsite .group-xl-responsive > *:first-child {
   counter-increment: li;
   font: 700 30px/30px "Roboto", Helvetica, Arial, sans-serif;
   letter-spacing: -0.025em;
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .list-blocks > li + li {
   margin-top: 50px;
@@ -5038,7 +5038,7 @@ html .bodywebsite .group-xl-responsive > *:first-child {
   content: '/';
 }
 .bodywebsite .post-preview:hover .post-header {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .post-preview * + .post-meta {
   margin-top: 5px;
@@ -5050,11 +5050,11 @@ html .bodywebsite .group-xl-responsive > *:first-child {
   color: #fff;
 }
 .bodywebsite .post-preview.post-preview-inverse:hover .post-header {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .blog-timeline > dt {
   font: 700 25px "Roboto", Helvetica, Arial, sans-serif;
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .blog-timeline > dd {
   margin-top: 20px;
@@ -5107,7 +5107,7 @@ html .bodywebsite .group-xl-responsive > *:first-child {
   color: #000;
 }
 .bodywebsite .post-boxed-title a:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .post-boxed img {
   max-width: 75%;
@@ -5399,7 +5399,7 @@ html .bodywebsite .group-xl-responsive > *:first-child {
   width: 36px;
   height: 36px;
   margin: 0 auto;
-  border: 3px solid <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border: 3px solid <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   border-radius: 50%;
   border-left-color: transparent;
   border-bottom-color: transparent;
@@ -5664,7 +5664,7 @@ html .bodywebsite .group-xl-responsive > *:first-child {
 .bodywebsite .one-screen-page .rights a,
 .bodywebsite .one-screen-page .rights a:active,
 .bodywebsite .one-screen-page .rights a:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .one-screen-page .rights a:hover {
   color: #ababab;
@@ -6703,7 +6703,7 @@ html .bodywebsite .page .offset-top-120 {
   margin-top: 13px;
 }
 .bodywebsite .page .link-primary-inline {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .link-primary-inline.active,
 .bodywebsite .page .link-primary-inline:active,
@@ -6720,12 +6720,12 @@ html .bodywebsite .page .offset-top-120 {
   color: #9f9f9f;
 }
 .bodywebsite .page .link-default:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .link-primary,
 .bodywebsite .page .link-primary:active,
 .bodywebsite .page .link-primary:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .link-primary:hover {
   color: #00030a;
@@ -6733,7 +6733,7 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .page .link-primary-inverse,
 .bodywebsite .page .link-primary-inverse:active,
 .bodywebsite .page .link-primary-inverse:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .link-primary-inverse:hover {
   color: #ddd;
@@ -6741,7 +6741,7 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .page .link-primary-inverse-v2,
 .bodywebsite .page .link-primary-inverse-v2:active,
 .bodywebsite .page .link-primary-inverse-v2:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .link-primary-inverse-v2:hover {
   color: #fff;
@@ -6752,7 +6752,7 @@ html .bodywebsite .page .offset-top-120 {
   color: #00030a;
 }
 .bodywebsite .page .link-secondary:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .link-tundora,
 .bodywebsite .page .link-tundora:active,
@@ -6760,7 +6760,7 @@ html .bodywebsite .page .offset-top-120 {
   color: #414141;
 }
 .bodywebsite .page .link-tundora:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .link-tundora-inverse,
 .bodywebsite .page .link-tundora-inverse:active,
@@ -6776,7 +6776,7 @@ html .bodywebsite .page .offset-top-120 {
   color: #000;
 }
 .bodywebsite .page .link-secondary:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .link-gray-light,
 .bodywebsite .page .link-gray-light:active,
@@ -6800,7 +6800,7 @@ html .bodywebsite .page .offset-top-120 {
   color: #000;
 }
 .bodywebsite .page .link-black:hover {
-  color: <?php echo empty($website->maincolorbis) ? 'rgb(50, 120, 180)' : '#'.$website->maincolorbis; ?>;
+  color: <?php echo  empty($website->maincolorbis) ? 'rgb(50, 120, 180)' : '#'.$website->maincolorbis; ?>;
 }
 .bodywebsite .page .link-black:hover {
   text-decoration: underline;
@@ -6813,7 +6813,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .page .link-gray-dark-filled:hover {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .page .link-shop {
   width: 25px;
@@ -6827,7 +6827,7 @@ html .bodywebsite .page .offset-top-120 {
   color: #00030a;
 }
 .bodywebsite .page .link-shop:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite ul,
 .bodywebsite ol {
@@ -7030,7 +7030,7 @@ html .bodywebsite .page .offset-top-120 {
   font-size: 13px;
   line-height: inherit;
   vertical-align: middle;
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .list-marked li:not(:last-child):after {
   content: ';';
@@ -7092,10 +7092,10 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .list-tags > li a,
 .bodywebsite .list-tags > li a:active,
 .bodywebsite .list-tags > li a:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .list-tags > li a:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .list-tags > li:after {
   content: ',';
@@ -7154,7 +7154,7 @@ html .bodywebsite .page .offset-top-120 {
   color: inherit;
 }
 .bodywebsite .list-hashtags > li a:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .list-hashtags > li > a:before {
   content: '#';
@@ -7175,7 +7175,7 @@ html .bodywebsite .page .offset-top-120 {
   font-weight: 600;
   font-size: initial;
   line-height: inherit;
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   content: '\f105';
 }
 .bodywebsite .list-marked-bordered li a span {
@@ -7187,7 +7187,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .list-marked-bordered li a:hover,
 .bodywebsite .list-marked-bordered li a:hover span:nth-child(n) {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .list-marked-bordered li span:not(:last-child) {
   margin-right: .25em;
@@ -7271,7 +7271,7 @@ html .bodywebsite .page .offset-top-120 {
   color: inherit;
 }
 .bodywebsite .list-tags-inline > li a:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .list-tags-inline > li:not(:last-child):after {
   content: ',';
@@ -7642,7 +7642,7 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .tabs-custom.tabs-corporate .nav-tabs .nav-item .nav-link:hover:after,
 .bodywebsite .tabs-custom.tabs-corporate .nav-tabs .nav-item .active.nav-link:after {
   top: -1px;
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .tabs-custom.tabs-corporate .tab-content {
   padding: 22px 0 0;
@@ -7667,7 +7667,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .tabs-custom.tabs-line .nav-tabs .nav-item .nav-link:hover,
 .bodywebsite .tabs-custom.tabs-line .nav-tabs .nav-item .active.nav-link {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .tabs-custom.tabs-minimal .nav-tabs .nav-item .nav-link {
   font: 700 11px/24px "Roboto", Helvetica, Arial, sans-serif;
@@ -7675,7 +7675,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .tabs-custom.tabs-minimal .nav-tabs .nav-item .nav-link:hover,
 .bodywebsite .tabs-custom.tabs-minimal .nav-tabs .nav-item .active.nav-link {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .tabs-custom.tabs-line .nav-tabs {
   text-align: center;
@@ -7695,8 +7695,8 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .tabs-custom.tabs-line .nav-tabs .nav-item .nav-link:hover,
 .bodywebsite .tabs-custom.tabs-line .nav-tabs .nav-item .active.nav-link {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .tabs-custom.tabs-minimal .nav-tabs {
   text-align: center;
@@ -7714,8 +7714,8 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .tabs-custom.tabs-minimal .nav-tabs .nav-item .nav-link:hover,
 .bodywebsite .tabs-custom.tabs-minimal .nav-tabs .nav-item .active.nav-link {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
-  border-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 @media (min-width: 768px) {
   .bodywebsite .tabs-custom.tabs-line .nav-item,
@@ -7782,14 +7782,14 @@ html .bodywebsite .page .offset-top-120 {
 	left: 0;
 	right: 100%;
 	bottom: -1px;
-	border-bottom: 2px solid <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+	border-bottom: 2px solid <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 	opacity: 0;
 	visibility: hidden;
 	transition: .33s all ease;
   }
   .bodywebsite .tabs-custom.tabs-horizontal.tabs-line .nav-tabs .nav-item .nav-link:hover,
   .bodywebsite .tabs-custom.tabs-horizontal.tabs-line .nav-tabs .nav-item .active.nav-link {
-	color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+	color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 	background: transparent;
   }
   .bodywebsite .tabs-custom.tabs-horizontal.tabs-line .nav-tabs .nav-item .active.nav-link:after {
@@ -7817,7 +7817,7 @@ html .bodywebsite .page .offset-top-120 {
 	left: 0;
 	right: 100%;
 	bottom: 0;
-	border-bottom: 2px solid <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+	border-bottom: 2px solid <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 	opacity: 0;
 	visibility: hidden;
 	transition: .33s all ease;
@@ -7827,7 +7827,7 @@ html .bodywebsite .page .offset-top-120 {
   }
   .bodywebsite .tabs-custom.tabs-horizontal.tabs-minimal .nav-tabs .nav-item .nav-link:hover,
   .bodywebsite .tabs-custom.tabs-horizontal.tabs-minimal .nav-tabs .nav-item .active.nav-link {
-	color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+	color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 	background: transparent;
   }
   .bodywebsite .tabs-custom.tabs-horizontal.tabs-minimal .nav-tabs .nav-item .active.nav-link:after {
@@ -8079,7 +8079,7 @@ html .bodywebsite .page .offset-top-120 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .card-light .card-arrow:before {
   width: 14px;
@@ -8156,7 +8156,7 @@ html .bodywebsite .page .offset-top-120 {
   right: 0;
   z-index: 2;
   width: 70px;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   border-radius: 0 6px 0 0;
   transition: 1.3s all ease;
 }
@@ -8310,7 +8310,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .table-primary thead > tr > th {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .table-striped > tbody > tr:nth-of-type(even) {
   background-color: #f6f7fa;
@@ -9126,7 +9126,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .owl-prev:hover,
 .bodywebsite .owl-next:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .owl-prev {
   left: 0;
@@ -9187,7 +9187,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .owl-carousel-inverse .owl-next:hover,
 .bodywebsite .owl-carousel-inverse .owl-prev:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .owl-carousel-inverse .owl-numbering-default .numbering-current {
   color: #fff;
@@ -9204,7 +9204,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .owl-carousel-dark .owl-next:hover,
 .bodywebsite .owl-carousel-dark .owl-prev:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .owl-nav-position-numbering .owl-next,
 .bodywebsite .owl-nav-position-numbering .owl-prev {
@@ -9259,7 +9259,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .owl-style-minimal .owl-dot.active,
 .bodywebsite .owl-style-minimal .owl-dot:hover {
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .owl-style-minimal .owl-dot + .owl-dot {
   margin-left: 8px;
@@ -9313,7 +9313,7 @@ html .bodywebsite .page .offset-top-120 {
   .bodywebsite .owl-nav-classic .owl-nav .owl-prev:hover,
   .bodywebsite .owl-nav-classic .owl-nav .owl-next:hover {
 	color: #fff;
-	background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+	background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   }
   .bodywebsite .owl-nav-classic .owl-nav .owl-prev {
 	padding-right: 3px;
@@ -9658,14 +9658,14 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .rd-navbar-static .rd-navbar-nav > li.active > a,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-nav > li.active > a {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   background: transparent;
 }
 .bodywebsite .rd-navbar-static .rd-navbar-nav > li.focus > a,
 .bodywebsite .rd-navbar-static .rd-navbar-nav > li > a:hover,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-nav > li.focus > a,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-nav > li > a:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   background: transparent;
 }
 .bodywebsite .rd-navbar-static .rd-navbar-nav .rd-navbar-submenu > .rd-navbar-dropdown,
@@ -9782,7 +9782,7 @@ html .bodywebsite .page .offset-top-120 {
   font-weight: 600;
   font-size: initial;
   line-height: inherit;
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   opacity: 0;
   visibility: hidden;
 }
@@ -9820,7 +9820,7 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .rd-navbar-static .rd-navbar-list > li > a:hover,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-dropdown > li > a:hover,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-list > li > a:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   background: transparent;
 }
 .bodywebsite .rd-navbar-static .rd-navbar-dropdown > li + li,
@@ -9850,7 +9850,7 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-dropdown,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-megamenu {
   box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.13);
-  border-top: 2px solid <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  border-top: 2px solid <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-navbar-static .rd-navbar-dropdown,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-dropdown {
@@ -9888,14 +9888,14 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .rd-navbar-static .rd-navbar-dropdown > li > a:hover,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-dropdown > li > a:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   background: transparent;
 }
 .bodywebsite .rd-navbar-static .rd-navbar-dropdown > li.focus > a,
 .bodywebsite .rd-navbar-static .rd-navbar-dropdown > li.opened > a,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-dropdown > li.focus > a,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-dropdown > li.opened > a {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   background: transparent;
 }
 .bodywebsite .rd-navbar-static .rd-navbar-megamenu,
@@ -9947,7 +9947,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .rd-navbar-static .rd-navbar-submenu-toggle:hover,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-submenu-toggle:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-navbar-static .rd-navbar-nav > li > .rd-navbar-submenu-toggle,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-nav > li > .rd-navbar-submenu-toggle {
@@ -9969,7 +9969,7 @@ html .bodywebsite .page .offset-top-120 {
   text-align: center;
   transition: 0.4s all ease;
   z-index: 2;
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   will-change: transform;
   -webkit-filter: blur(0);
 }
@@ -9988,7 +9988,7 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-nav > li.focus > .rd-navbar-submenu-toggle::after,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-nav > li.opened > .rd-navbar-submenu-toggle::after,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-nav > li > a:hover + .rd-navbar-submenu-toggle::after {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-navbar-static .rd-navbar-dropdown .rd-navbar-submenu-toggle,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-dropdown .rd-navbar-submenu-toggle {
@@ -10005,7 +10005,7 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-dropdown > li.focus > .rd-navbar-submenu-toggle::after,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-dropdown > li.opened > .rd-navbar-submenu-toggle::after,
 .bodywebsite .rd-navbar-fullwidth .rd-navbar-dropdown > li > a:hover + .rd-navbar-submenu-toggle::after {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-navbar-static.rd-navbar--is-clone,
 .bodywebsite .rd-navbar-fullwidth.rd-navbar--is-clone {
@@ -10327,7 +10327,7 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .rd-navbar-fixed .rd-navbar-nav li.opened > a,
 .bodywebsite .rd-navbar-fixed .rd-navbar-nav li.opened > a:hover {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-navbar-fixed .rd-navbar-nav li:hover > .rd-navbar-submenu-toggle::after,
 .bodywebsite .rd-navbar-fixed .rd-navbar-nav li.focus > .rd-navbar-submenu-toggle::after,
@@ -10562,7 +10562,7 @@ html .bodywebsite .page .offset-top-120 {
 .bodywebsite .rd-navbar-sidebar .rd-navbar-nav li:hover > a:hover,
 .bodywebsite .rd-navbar-sidebar .rd-navbar-nav li.focus > a,
 .bodywebsite .rd-navbar-sidebar .rd-navbar-nav li.focus > a:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   background: transparent;
 }
 .bodywebsite .rd-navbar-sidebar .rd-navbar-nav li:hover > .rd-navbar-submenu-toggle,
@@ -10588,7 +10588,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .rd-navbar-sidebar .rd-navbar-nav li.opened > a {
   background: transparent;
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-navbar-sidebar .rd-navbar-nav li.opened > .rd-navbar-submenu-toggle {
   color: #fff;
@@ -10675,7 +10675,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .rd-navbar-default .rd-navbar-search .rd-navbar-search-toggle:hover,
 .bodywebsite .rd-navbar-default .rd-navbar-search .rd-search-submit:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-navbar-default .rd-navbar-search .rd-navbar-search-toggle,
 .bodywebsite .rd-navbar-default .rd-navbar-search .rd-navbar-search-toggle:before,
@@ -10814,7 +10814,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .rd-navbar-corporate-dark .rd-navbar-search .rd-navbar-search-toggle:hover,
 .bodywebsite .rd-navbar-corporate-dark .rd-navbar-search .rd-search-submit:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-navbar-corporate-dark .rd-navbar-search .rd-navbar-search-toggle:after {
   display: none;
@@ -11071,7 +11071,7 @@ html .bodywebsite .page .offset-top-120 {
   font-family: 'Material Icons';
 }
 .bodywebsite .rd-navbar-corporate-light .rd-navbar-search .rd-navbar-search-toggle:hover:before {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-navbar-corporate-light .rd-navbar-search .rd-navbar-search-toggle,
 .bodywebsite .rd-navbar-corporate-light .rd-navbar-search .rd-navbar-search-toggle:before,
@@ -11145,7 +11145,7 @@ html .bodywebsite .page .offset-top-120 {
 }
 .bodywebsite .rd-navbar-corporate-light.rd-navbar-fixed .rd-navbar-search .rd-navbar-search-toggle:hover,
 .bodywebsite .rd-navbar-corporate-light.rd-navbar-fixed .rd-navbar-search .rd-search-submit:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-navbar-corporate-light.rd-navbar-fixed .rd-navbar-search .rd-navbar-search-toggle {
   position: fixed;
@@ -11766,7 +11766,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   transform: scale(0.7);
 }
 .bodywebsite .rd-search-submit:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-search-minimal {
   position: relative;
@@ -11908,7 +11908,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   color: #464a4d;
 }
 .bodywebsite .rd-search-results-live .search_link:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-search-results-live p {
   margin-top: 0;
@@ -11929,7 +11929,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   font-weight: 700;
   text-align: center;
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   border-radius: 5px;
   border: 0;
   text-transform: uppercase;
@@ -11987,7 +11987,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
 }
 .bodywebsite .rd-search-results .search {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .rd-search-results .search_error .search {
   color: #9f9f9f;
@@ -12046,7 +12046,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
 .bodywebsite .twitter-item-minimal .tweet-user a,
 .bodywebsite .twitter-item-minimal .tweet-user a:active,
 .bodywebsite .twitter-item-minimal .tweet-user a:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .twitter-item-minimal .tweet-user a:hover {
   color: #000;
@@ -12060,7 +12060,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   color: #000;
 }
 .bodywebsite .twitter-item-minimal .tweet-text a:hover {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .twitter-item-minimal * + .tweet-text {
   margin-top: 0;
@@ -12084,7 +12084,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
 .bodywebsite .twitter-widget .tweet-text a,
 .bodywebsite .twitter-widget .tweet-text a:active,
 .bodywebsite .twitter-widget .tweet-text a:focus {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .twitter-widget .tweet-text a:hover {
   color: #000;
@@ -12338,7 +12338,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
 }
 .bodywebsite .swiper-pagination-bullet:hover,
 .bodywebsite .swiper-pagination-bullet-active {
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .swiper-pagination-white .swiper-pagination-bullet-active {
   background: #fff;
@@ -12463,7 +12463,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   height: 100%;
   width: 100%;
   position: relative;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
   left: 0;
   top: 0;
 }
@@ -12642,12 +12642,12 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
 .bodywebsite .ui-to-top:active,
 .bodywebsite .ui-to-top:focus {
   color: #fff;
-  background: <?php echo empty($website->maincolor) ? 'rgb(150, 150, 150)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(150, 150, 150)' : '#'.$website->maincolor; ?>;
   opacity: 0.6;
 }
 .bodywebsite .ui-to-top:hover {
   color: #fff;
-  background: <?php echo empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
+  background: <?php echo  empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?>;
   box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.4);
 }
 .bodywebsite .ui-to-top:focus {
@@ -12752,7 +12752,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   stroke: rgba(159, 159, 159, 0.05);
 }
 .bodywebsite .progress-bar-primary .progress-bar__stroke {
-  stroke: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  stroke: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .progress-bar-primary .progress-bar__trail {
   stroke: #F8F9FB;
@@ -12956,7 +12956,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   display: none;
 }
 .bodywebsite .slick-loading .slick-list {
-  background: #fff url("medias/image/<?php echo $website->ref; ?>/ajax-loading.gif") center center no-repeat;
+  background: #fff url("medias/image/<?php echo  $website->ref; ?>/ajax-loading.gif") center center no-repeat;
 }
 .bodywebsite .slick-prev,
 .bodywebsite .slick-next {
@@ -13078,7 +13078,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
 }
 .bodywebsite .slick-dots li.slick-active button,
 .bodywebsite .slick-dots li:hover button {
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .slick-dots-variant-1 .slick-dots li button {
   height: 12px;
@@ -13103,7 +13103,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
 }
 .bodywebsite .slick-dots-variant-1 .slick-dots li.slick-active button,
 .bodywebsite .slick-dots-variant-1 .slick-dots li:hover button {
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .slick-dots-variant-1 .slick-dots li.slick-active button:after,
 .bodywebsite .slick-dots-variant-1 .slick-dots li:hover button:after {
@@ -13123,7 +13123,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   bottom: 0;
   transform: translateX(-50%);
   width: 101vw;
-  background: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .slick-carousel-complex-variant-1 > * {
   position: relative;
@@ -13172,7 +13172,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   text-align: center;
 }
 .bodywebsite #sectiontestimonies.maincolorbackground {
-  background-image: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background-image: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 @media (min-width: 576px) {
   .bodywebsite .carousel-testimonials-home .slick-slide {
@@ -13238,20 +13238,20 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   justify-content: center;
 }
 .bodywebsite .websitemaincolor {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .maincolor {
-  color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .maincolorbis {
-  color: <?php echo empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?> !important;
+  color: <?php echo  empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?> !important;
 }
 .bodywebsite .maincolorbackground {
-  background-color: <?php echo empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
+  background-color: <?php echo  empty($website->maincolor) ? 'rgb(50, 120, 180)' : '#'.$website->maincolor; ?>;
 }
 .bodywebsite .maincolorbisbackground {
-  background-color: <?php echo empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?> !important;
-  border-color: <?php echo empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?> !important;
+  background-color: <?php echo  empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?> !important;
+  border-color: <?php echo  empty($website->maincolorbis) ? '#6ca' : '#'.$website->maincolorbis; ?> !important;
 }
 .bodywebsite .maincolorbisbackground:hover {
   box-shadow: 1px 1px 8px #aaa;
@@ -13397,7 +13397,7 @@ html .bodywebsite.boxed .rd-navbar--is-clone {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-@media print {
+@media echo {
   .bodywebsite *,
   .bodywebsite *::before,
   .bodywebsite *::after {
@@ -18113,7 +18113,7 @@ html .bodywebsite [type="button"],
 .bodywebsite .d-print-block {
   display: none !important;
 }
-@media print {
+@media echo {
   .bodywebsite .d-print-block {
 	display: block !important;
   }
@@ -18121,7 +18121,7 @@ html .bodywebsite [type="button"],
 .bodywebsite .d-print-inline {
   display: none !important;
 }
-@media print {
+@media echo {
   .bodywebsite .d-print-inline {
 	display: inline !important;
   }
@@ -18129,12 +18129,12 @@ html .bodywebsite [type="button"],
 .bodywebsite .d-print-inline-block {
   display: none !important;
 }
-@media print {
+@media echo {
   .bodywebsite .d-print-inline-block {
 	display: inline-block !important;
   }
 }
-@media print {
+@media echo {
   .bodywebsite .d-print-none {
 	display: none !important;
   }

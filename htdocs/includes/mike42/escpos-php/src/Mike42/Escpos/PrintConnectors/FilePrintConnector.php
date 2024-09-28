@@ -15,7 +15,7 @@ namespace Mike42\Escpos\PrintConnectors;
 use Exception;
 
 /**
- * PrintConnector for passing print data to a file.
+ * PrintConnector for passing echo data to a file.
  */
 class FilePrintConnector implements PrintConnector
 {

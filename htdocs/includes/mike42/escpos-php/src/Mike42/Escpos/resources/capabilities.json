@@ -374,7 +374,7 @@
                 }
             },
             "name": "AF-240 Customer Display",
-            "notes": "This is a two-line, ESC/POS-aware customer display from Oxhoo. The ESC/POS command mode can be activated persistently by sending:\n\n    echo -ne \"\\n\\x02\\x05\\x43\\x31\\x03\" > /dev/ttyUSB0\n",
+            "notes": "This is a two-line, ESC/POS-aware customer display from Oxhoo. The ESC/POS command mode can be activated persistently by sending:\n\n    echo  -ne \"\\n\\x02\\x05\\x43\\x31\\x03\" > /dev/ttyUSB0\n",
             "vendor": "Oxhoo"
         },
         "CT-S651": {

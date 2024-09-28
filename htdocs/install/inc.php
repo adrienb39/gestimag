@@ -93,42 +93,42 @@ $long_options = array(
  */
 function usage($program, $header)
 {
-	echo $header."\n";
-	echo "  php ".$program." [options] [script options]\n";
-	echo "\n";
-	echo "Script syntax when using step2.php:\n";
-	echo "  php ".$program." [options] [action] [selectlang]\n";
-	echo "\n";
-	echo "  action:\n";
-	echo "      Specify the action to execute for the file among the following ones.\n";
-	echo "       - set: Create tables, keys, functions and data for the instance.\n";
-	echo "\n";
-	echo "  selectlang:\n";
-	echo "      Setup the default lang to use, default to 'auto'.\n";
-	echo "\n";
-	echo "Script syntax when using upgrade.php:\n";
-	echo "  php ".$program." [options] previous_version new_version [script options]\n";
-	echo "\n";
-	echo "  dirmodule:\n";
-	echo "      Specify dirmodule to provide a path for an external module\n";
-	echo "      so the migration is done using a script from a module.\n";
-	echo "\n";
-	echo "  ignoredbversion:\n";
-	echo "      Allow to run migration even if database version does\n";
-	echo "      not match start version of migration.\n";
-	echo "\n";
-	echo "Script syntax when using upgrade2.php:\n";
-	echo "  php ".$program." [options] previous_version new_version [module list]\n";
-	echo "\n";
-	echo "  MAIN_MODULE_NAME1,MAIN_MODULE_NAME2:\n";
-	echo "      Specify a list of module-name to enable, in upper case, with MAIN_MODULE_ prefix, joined by comma.\n";
-	echo "\n";
-	echo "Options:\n";
-	echo "  -c, --config <filename>:\n";
-	echo "      Provide a different conf.php file to use.\n";
-	echo "\n";
-	echo "  -h, --help:\n";
-	echo "      Display this help message.\n";
+	echo  $header."\n";
+	echo  "  php ".$program." [options] [script options]\n";
+	echo  "\n";
+	echo  "Script syntax when using step2.php:\n";
+	echo  "  php ".$program." [options] [action] [selectlang]\n";
+	echo  "\n";
+	echo  "  action:\n";
+	echo  "      Specify the action to execute for the file among the following ones.\n";
+	echo  "       - set: Create tables, keys, functions and data for the instance.\n";
+	echo  "\n";
+	echo  "  selectlang:\n";
+	echo  "      Setup the default lang to use, default to 'auto'.\n";
+	echo  "\n";
+	echo  "Script syntax when using upgrade.php:\n";
+	echo  "  php ".$program." [options] previous_version new_version [script options]\n";
+	echo  "\n";
+	echo  "  dirmodule:\n";
+	echo  "      Specify dirmodule to provide a path for an external module\n";
+	echo  "      so the migration is done using a script from a module.\n";
+	echo  "\n";
+	echo  "  ignoredbversion:\n";
+	echo  "      Allow to run migration even if database version does\n";
+	echo  "      not match start version of migration.\n";
+	echo  "\n";
+	echo  "Script syntax when using upgrade2.php:\n";
+	echo  "  php ".$program." [options] previous_version new_version [module list]\n";
+	echo  "\n";
+	echo  "  MAIN_MODULE_NAME1,MAIN_MODULE_NAME2:\n";
+	echo  "      Specify a list of module-name to enable, in upper case, with MAIN_MODULE_ prefix, joined by comma.\n";
+	echo  "\n";
+	echo  "Options:\n";
+	echo  "  -c, --config <filename>:\n";
+	echo  "      Provide a different conf.php file to use.\n";
+	echo  "\n";
+	echo  "  -h, --help:\n";
+	echo  "      Display this help message.\n";
 }
 
 if (php_sapi_name() === "cli" && (float) PHP_VERSION > 7.0) {
@@ -183,7 +183,7 @@ if (php_sapi_name() === "cli" && (float) PHP_VERSION > 7.0) {
 	// additional non-prefixed argument and we mostly want to check for
 	// typo right now.
 	if (count($unknown_options) > 0) {
-		echo "Unknown option: ".array_values($unknown_options)[0]."\n";
+		echo  "Unknown option: ".array_values($unknown_options)[0]."\n";
 		usage($argv[0], "Usage:");
 		exit(1);
 	}
@@ -337,21 +337,21 @@ if ($islocked) {	// Pages are locked
 	header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain (stop some XSS attacks)
 
 	if (GETPOST('action') != 'upgrade') {
-		print $langs->trans("YouTryInstallDisabledByFileLock").'<br>';
+		echo $langs->trans("YouTryInstallDisabledByFileLock").'<br>';
 	} else {
-		print $langs->trans("YouTryUpgradeDisabledByMissingFileUnLock").'<br>';
+		echo $langs->trans("YouTryUpgradeDisabledByMissingFileUnLock").'<br>';
 	}
 	if (!empty($gestimag_main_url_root)) {
 		if (GETPOST('action') != 'upgrade' && (!file_exists($conffile) || !isset($gestimag_main_url_root))) {
-			print $langs->trans("ClickOnLinkOrRemoveManualy").'<br>';
+			echo $langs->trans("ClickOnLinkOrRemoveManualy").'<br>';
 		} else {
-			print $langs->trans("ClickOnLinkOrCreateUnlockFileManualy").'<br>';
+			echo $langs->trans("ClickOnLinkOrCreateUnlockFileManualy").'<br>';
 		}
-		print '<a href="'.$gestimag_main_url_root.'/admin/index.php?mainmenu=home&leftmenu=setup'.(GETPOSTISSET("login") ? '&username='.urlencode(GETPOST("login")) : '').'">';
-		print $langs->trans("ClickHereToGoToApp");
-		print '</a>';
+		echo '<a href="'.$gestimag_main_url_root.'/admin/index.php?mainmenu=home&leftmenu=setup'.(GETPOSTISSET("login") ? '&username='.urlencode(GETPOST("login")) : '').'">';
+		echo $langs->trans("ClickHereToGoToApp");
+		echo '</a>';
 	} else {
-		print 'If you always reach this page, you must remove the install.lock file manually.<br>';
+		echo 'If you always reach this page, you must remove the install.lock file manually.<br>';
 	}
 	exit;
 }
@@ -375,7 +375,7 @@ if (!defined('SYSLOG_FILE')) {	// To avoid warning on systems with constant alre
 	} elseif (@is_writable('../../')) {
 		define('SYSLOG_FILE', '../../gestimag_install.log'); // For others
 	}
-	//print 'SYSLOG_FILE='.SYSLOG_FILE;exit;
+	//echo 'SYSLOG_FILE='.SYSLOG_FILE;exit;
 }
 if (defined('SYSLOG_FILE')) {
 	$conf->global->SYSLOG_FILE = constant('SYSLOG_FILE');
@@ -490,7 +490,7 @@ function conf($gestimag_main_document_root)
 		} elseif (@is_writable('../../')) {
 			define('SYSLOG_FILE', '../../gestimag_install.log'); // For others
 		}
-		//print 'SYSLOG_FILE='.SYSLOG_FILE;exit;
+		//echo 'SYSLOG_FILE='.SYSLOG_FILE;exit;
 	}
 	if (defined('SYSLOG_FILE')) {
 		$conf->global->SYSLOG_FILE = constant('SYSLOG_FILE');
@@ -555,64 +555,64 @@ function pHeader($subtitle, $next, $action = 'set', $param = '', $forcejqueryurl
 	header("X-Content-Type-Options: nosniff");
 	header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain (stop some XSS attacks)
 
-	print '<!DOCTYPE HTML>'."\n";
-	print '<html>'."\n";
-	print '<head>'."\n";
-	print '<meta charset="'.$conf->file->character_set_client.'">'."\n";
-	print '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
-	print '<meta name="generator" content="Gestimag installer">'."\n";
-	print '<link rel="stylesheet" type="text/css" href="default.css">'."\n";
+	echo '<!DOCTYPE HTML>'."\n";
+	echo '<html>'."\n";
+	echo '<head>'."\n";
+	echo '<meta charset="'.$conf->file->character_set_client.'">'."\n";
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";
+	echo '<meta name="generator" content="Gestimag installer">'."\n";
+	echo '<link rel="stylesheet" type="text/css" href="default.css">'."\n";
 
-	print '<!-- Includes CSS for JQuery -->'."\n";
+	echo '<!-- Includes CSS for JQuery -->'."\n";
 	if ($jQueryUiCustomPath) {
-		print '<link rel="stylesheet" type="text/css" href="'.$jQueryUiCustomPath.'css/'.$jquerytheme.'/jquery-ui.min.css" />'."\n"; // JQuery
+		echo '<link rel="stylesheet" type="text/css" href="'.$jQueryUiCustomPath.'css/'.$jquerytheme.'/jquery-ui.min.css" />'."\n"; // JQuery
 	} else {
-		print '<link rel="stylesheet" type="text/css" href="../includes/jquery/css/'.$jquerytheme.'/jquery-ui.min.css" />'."\n"; // JQuery
+		echo '<link rel="stylesheet" type="text/css" href="../includes/jquery/css/'.$jquerytheme.'/jquery-ui.min.css" />'."\n"; // JQuery
 	}
 
-	print '<!-- Includes JS for JQuery -->'."\n";
+	echo '<!-- Includes JS for JQuery -->'."\n";
 	if ($jQueryCustomPath) {
-		print '<script type="text/javascript" src="'.$jQueryCustomPath.'jquery.min.js"></script>'."\n";
+		echo '<script type="text/javascript" src="'.$jQueryCustomPath.'jquery.min.js"></script>'."\n";
 	} else {
-		print '<script type="text/javascript" src="../includes/jquery/js/jquery.min.js"></script>'."\n";
+		echo '<script type="text/javascript" src="../includes/jquery/js/jquery.min.js"></script>'."\n";
 	}
 	if ($jQueryUiCustomPath) {
-		print '<script type="text/javascript" src="'.$jQueryUiCustomPath.'jquery-ui.min.js"></script>'."\n";
+		echo '<script type="text/javascript" src="'.$jQueryUiCustomPath.'jquery-ui.min.js"></script>'."\n";
 	} else {
-		print '<script type="text/javascript" src="../includes/jquery/js/jquery-ui.min.js"></script>'."\n";
+		echo '<script type="text/javascript" src="../includes/jquery/js/jquery-ui.min.js"></script>'."\n";
 	}
 
-	print '<title>'.$langs->trans("GestimagSetup").'</title>'."\n";
-	print '</head>'."\n";
+	echo '<title>'.$langs->trans("GestimagSetup").'</title>'."\n";
+	echo '</head>'."\n";
 
-	print '<body>'."\n";
+	echo '<body>'."\n";
 
-	print '<div class="divlogoinstall" style="text-align:center">';
-	print '<img class="imglogoinstall" src="../theme/gestimag_logo.svg" alt="Gestimag logo" width="300px"><br>';
-	print DOL_VERSION;
-	print '</div><br>';
+	echo '<div class="divlogoinstall" style="text-align:center">';
+	echo '<img class="imglogoinstall" src="../theme/gestimag_logo.svg" alt="Gestimag logo" width="300px"><br>';
+	echo DOL_VERSION;
+	echo '</div><br>';
 
-	print '<span class="titre">';
+	echo '<span class="titre">';
 	if ($subtitle) {
-		print $subtitle;
+		echo $subtitle;
 	} else {
-		print $langs->trans("GestimagSetup");
+		echo $langs->trans("GestimagSetup");
 	}
-	print '</span>'."\n";
+	echo '</span>'."\n";
 
-	print '<form name="forminstall" id="forminstall" class="centpercent" action="'.$next.'.php'.($param ? '?'.$param : '').'" method="POST"';
+	echo '<form name="forminstall" id="forminstall" class="centpercent" action="'.$next.'.php'.($param ? '?'.$param : '').'" method="POST"';
 	if ($next == 'step5') {
-		print ' autocomplete="off"';
+		echo ' autocomplete="off"';
 	}
-	print '>'."\n";
-	print '<input type="hidden" name="testpost" value="ok">'."\n";
-	print '<input type="hidden" name="action" value="'.$action.'">'."\n";
+	echo '>'."\n";
+	echo '<input type="hidden" name="testpost" value="ok">'."\n";
+	echo '<input type="hidden" name="action" value="'.$action.'">'."\n";
 
-	print '<div id="divinstall">';
+	echo '<div id="divinstall">';
 
-	print '<table class="main centpercent"><tr><td>'."\n";
+	echo '<table class="main centpercent"><tr><td>'."\n";
 
-	print '<table class="'.$csstable.' centpercent"><tr><td>'."\n";
+	echo '<table class="'.$csstable.' centpercent"><tr><td>'."\n";
 }
 
 /**
@@ -631,55 +631,55 @@ function pFooter($nonext = 0, $setuplang = '', $jscheckfunction = '', $withpleas
 
 	$langs->loadLangs(array("main", "other", "admin"));
 
-	print '</td></tr></table>'."\n";
-	print '</td></tr></table>'."\n";
+	echo '</td></tr></table>'."\n";
+	echo '</td></tr></table>'."\n";
 
-	print '<!-- pFooter -->'."\n";
+	echo '<!-- pFooter -->'."\n";
 
-	print $morehtml;
+	echo $morehtml;
 
-	print '</div>';
+	echo '</div>';
 
 	if (!$nonext || ($nonext == '2')) {
-		print '<div class="nextbutton" id="nextbutton">';
+		echo '<div class="nextbutton" id="nextbutton">';
 		if ($nonext == '2') {
-			print '<span class="warning">';
-			print $langs->trans("ErrorFoundDuringMigration", isset($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"].'&ignoreerrors=1' : '');
-			print '</span>';
-			print '<br><br>';
+			echo '<span class="warning">';
+			echo $langs->trans("ErrorFoundDuringMigration", isset($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"].'&ignoreerrors=1' : '');
+			echo '</span>';
+			echo '<br><br>';
 		}
 
-		print '<input type="submit" '.($nonext == '2' ? 'disabled="disabled" ' : '').'value="'.$langs->trans("NextStep").' ->"';
+		echo '<input type="submit" '.($nonext == '2' ? 'disabled="disabled" ' : '').'value="'.$langs->trans("NextStep").' ->"';
 		if ($jscheckfunction) {
-			print ' onClick="return '.$jscheckfunction.'();"';
+			echo ' onClick="return '.$jscheckfunction.'();"';
 		}
-		print '>';
-		print '</div>';
+		echo '>';
+		echo '</div>';
 		if ($withpleasewait) {
-			print '<div style="visibility: hidden;" class="pleasewait" id="pleasewait"><br>'.$langs->trans("NextStepMightLastALongTime").'<br><br><div class="blinkwait">'.$langs->trans("PleaseBePatient").'</div></div>';
+			echo '<div style="visibility: hidden;" class="pleasewait" id="pleasewait"><br>'.$langs->trans("NextStepMightLastALongTime").'<br><br><div class="blinkwait">'.$langs->trans("PleaseBePatient").'</div></div>';
 		}
 	}
 	if ($setuplang) {
-		print '<input type="hidden" name="selectlang" value="'.dol_escape_htmltag($setuplang).'">';
+		echo '<input type="hidden" name="selectlang" value="'.dol_escape_htmltag($setuplang).'">';
 	}
 
-	print '</form><br>'."\n";
+	echo '</form><br>'."\n";
 
 	// If there is some logs in buffer to show
 	if (isset($conf->logbuffer) && count($conf->logbuffer)) {
-		print "\n";
-		print "<!-- Start of log output\n";
-		//print '<div class="hidden">'."\n";
+		echo "\n";
+		echo "<!-- Start of log output\n";
+		//echo '<div class="hidden">'."\n";
 		foreach ($conf->logbuffer as $logline) {
-			print $logline."<br>\n";
+			echo $logline."<br>\n";
 		}
-		//print '</div>'."\n";
-		print "End of log output -->\n";
-		print "\n";
+		//echo '</div>'."\n";
+		echo "End of log output -->\n";
+		echo "\n";
 	}
 
-	print '</body>'."\n";
-	print '</html>'."\n";
+	echo '</body>'."\n";
+	echo '</html>'."\n";
 }
 
 /**

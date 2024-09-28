@@ -46,11 +46,11 @@ This is a form to test if a CSRF exists into a Gestimag page.<br>
 <br>
 <?php
 	$urltosendrequest = "http://127.0.0.1/gestimag/htdocs/user/group/card.php";
-	print 'urltosendrequest = '.$urltosendrequest.'<br><br>';
+	echo 'urltosendrequest = '.$urltosendrequest.'<br><br>';
 ?>
 
 Test post
-<form method="POST" action="<?php echo $urltosendrequest; ?>" target="_blank">
+<form method="POST" action="<?php echo  $urltosendrequest; ?>" target="_blank">
 <!-- <input type="hidden" name="token" value="123456789"> -->
 <input type="text" name="action" value="add">
 <input type="text" name="nom" value="New group test">

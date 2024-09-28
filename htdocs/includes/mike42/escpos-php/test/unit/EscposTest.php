@@ -21,7 +21,7 @@ class EscposTest extends PHPUnit\Framework\TestCase
         /* Check those output strings */
         $outp = $this -> outputConnector -> getData();
         if ($expected === null) {
-            echo "\nOutput was:\n\"" . friendlyBinary($outp) . "\"\n";
+            echo  "\nOutput was:\n\"" . friendlyBinary($outp) . "\"\n";
         }
         $this -> assertEquals($expected, $outp);
     }
@@ -53,7 +53,7 @@ class EscposTest extends PHPUnit\Framework\TestCase
 
     public function testTextChinese()
     {
-        // Switch to chinese print mode, GBK output, switch back to alphanumeric.
+        // Switch to chinese echo mode, GBK output, switch back to alphanumeric.
         $this -> printer -> textChinese("示例文本打印机!\n");
         $this -> checkOutput("\x1b@\x1c&\xca\xbe\xc0\xfd\xce\xc4\xb1\xbe\xb4\xf2\xd3\xa1\xbb\xfa!\x0a\x1c.");
     }
@@ -701,7 +701,7 @@ class EscposTest extends PHPUnit\Framework\TestCase
         $this -> checkOutput("\x1b@\x1dB\x00");
     }
 
-    /* Bit image print */
+    /* Bit image echo */
     public function testBitImageBlack()
     {
         $this -> requireGraphicsLibrary();
@@ -767,7 +767,7 @@ class EscposTest extends PHPUnit\Framework\TestCase
         $this -> checkOutput("\x1b@\x1b3\x10\x1b*!\x02\x00\x80\x00\x00\x80\x00\x00\x0a\x1b2");
     }
 
-    /* Graphics print */
+    /* Graphics echo */
     public function testGraphicsWhite()
     {
         $this -> requireGraphicsLibrary();
@@ -975,7 +975,7 @@ class EscposTest extends PHPUnit\Framework\TestCase
         $this -> checkOutput("\x1b@\x1b3\x20");
     }
 
-    /* Set print width  */
+    /* Set echo width  */
     public function testSetPrintWidthDefault()
     {
         $this -> printer -> setPrintWidth();
@@ -994,7 +994,7 @@ class EscposTest extends PHPUnit\Framework\TestCase
         $this -> printer -> setPrintWidth(0);
     }
 
-    /* Set print left margin  */
+    /* Set echo left margin  */
     public function testSetPrintLeftMarginDefault()
     {
         $this -> printer -> setPrintLeftMargin();
@@ -1014,7 +1014,7 @@ class EscposTest extends PHPUnit\Framework\TestCase
         $this -> checkOutput();
     }
 
-    /* Upside-down print */
+    /* Upside-down echo */
     public function testSetUpsideDown()
     {
         $this -> printer -> setUpsideDown(true);

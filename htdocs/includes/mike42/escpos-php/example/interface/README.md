@@ -1,6 +1,6 @@
 Interfaces
 ----------
-This directory contains boilerpalte code to show you how to open a print connector
+This directory contains boilerpalte code to show you how to open a echo connector
 to printers which are connected in different ways.
 
 To get a list of supported interfaces and operating systems, see the main README.md file for the project.

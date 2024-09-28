@@ -208,112 +208,112 @@ if ($action == 'create') {
 	// Set default value of the property ref
 	$object->fields['ref']['default'] = $object->getNextNumRef();
 
-	print load_fiche_titre($title, '', 'object_'.$object->picto);
+	echo load_fiche_titre($title, '', 'object_'.$object->picto);
 
-	print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="add">';
+	echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="add">';
 	if ($backtopage) {
-		print '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
+		echo '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
 	}
 	if ($backtopageforcancel) {
-		print '<input type="hidden" name="backtopageforcancel" value="'.$backtopageforcancel.'">';
+		echo '<input type="hidden" name="backtopageforcancel" value="'.$backtopageforcancel.'">';
 	}
 
-	print dol_get_fiche_head(array(), '');
+	echo dol_get_fiche_head(array(), '');
 
-	print '<table class="border centpercent tableforfieldcreate">'."\n";
+	echo '<table class="border centpercent tableforfieldcreate">'."\n";
 
 	// Common attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/commonfields_add.tpl.php';
 
-	print '<tr id="usergroups"';
-	print ' ><td>';
-	print $langs->trans('Groups');
-	print '</td>';
-	print '<td>';
-	print img_picto('', 'group');
-	print $form->select_dolgroups($groups, 'groups', 1, '', 0, '', '', $object->entity, true, 'quatrevingtpercent widthcentpercentminusx');
-	print '</td></tr>';
+	echo '<tr id="usergroups"';
+	echo ' ><td>';
+	echo $langs->trans('Groups');
+	echo '</td>';
+	echo '<td>';
+	echo img_picto('', 'group');
+	echo $form->select_dolgroups($groups, 'groups', 1, '', 0, '', '', $object->entity, true, 'quatrevingtpercent widthcentpercentminusx');
+	echo '</td></tr>';
 
-	print '<tr id="wsresources"><td>';
-	print $langs->trans('Machines');
-	print '</td>';
-	print '<td>';
-	print img_picto('', 'resource');
-	print $formresource->select_resource_list($resources, 'resources', [], '', 0, '', '', $object->entity, true, 0, 'quatrevingtpercent widthcentpercentminusx', true);
-	print '</td></tr>';
+	echo '<tr id="wsresources"><td>';
+	echo $langs->trans('Machines');
+	echo '</td>';
+	echo '<td>';
+	echo img_picto('', 'resource');
+	echo $formresource->select_resource_list($resources, 'resources', [], '', 0, '', '', $object->entity, true, 0, 'quatrevingtpercent widthcentpercentminusx', true);
+	echo '</td></tr>';
 
 	// Other attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_add.tpl.php';
 
-	print '</table>'."\n";
+	echo '</table>'."\n";
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print $form->buttonsSaveCancel("Create");
+	echo $form->buttonsSaveCancel("Create");
 
-	print '</form>';
+	echo '</form>';
 
 	//dol_set_focus('input[name="ref"]');
 }
 
 // Part to edit record
 if (($id || $ref) && $action == 'edit') {
-	print load_fiche_titre($langs->trans("Workstation"), '', 'object_'.$object->picto);
+	echo load_fiche_titre($langs->trans("Workstation"), '', 'object_'.$object->picto);
 
-	print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="action" value="update">';
-	print '<input type="hidden" name="id" value="'.$object->id.'">';
+	echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+	echo '<input type="hidden" name="token" value="'.newToken().'">';
+	echo '<input type="hidden" name="action" value="update">';
+	echo '<input type="hidden" name="id" value="'.$object->id.'">';
 	if ($backtopage) {
-		print '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
+		echo '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
 	}
 	if ($backtopageforcancel) {
-		print '<input type="hidden" name="backtopageforcancel" value="'.$backtopageforcancel.'">';
+		echo '<input type="hidden" name="backtopageforcancel" value="'.$backtopageforcancel.'">';
 	}
 
-	print dol_get_fiche_head();
+	echo dol_get_fiche_head();
 
-	print '<table class="border centpercent tableforfieldedit">'."\n";
+	echo '<table class="border centpercent tableforfieldedit">'."\n";
 
 	// Common attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/commonfields_edit.tpl.php';
 
-	print '<tr id="usergroups"';
-	print '><td>';
-	print $langs->trans('Groups');
-	print '</td>';
-	print '<td>';
-	print img_picto('', 'group');
-	print $form->select_dolgroups(empty($groups) ? $object->usergroups : $groups, 'groups', 1, '', 0, '', '', $object->entity, true, 'quatrevingtpercent widthcentpercentminusx');
-	print '</td></tr>';
+	echo '<tr id="usergroups"';
+	echo '><td>';
+	echo $langs->trans('Groups');
+	echo '</td>';
+	echo '<td>';
+	echo img_picto('', 'group');
+	echo $form->select_dolgroups(empty($groups) ? $object->usergroups : $groups, 'groups', 1, '', 0, '', '', $object->entity, true, 'quatrevingtpercent widthcentpercentminusx');
+	echo '</td></tr>';
 
-	print '<tr id="wsresources"><td>';
-	print $langs->trans('Machines');
-	print '</td>';
-	print '<td>';
-	print img_picto('', 'resource');
-	print $formresource->select_resource_list(empty($resources) ? $object->resources : $resources, 'resources', [], '', 0, '', '', $object->entity, true, 0, 'quatrevingtpercent widthcentpercentminusx', true);
-	print '</td></tr>';
+	echo '<tr id="wsresources"><td>';
+	echo $langs->trans('Machines');
+	echo '</td>';
+	echo '<td>';
+	echo img_picto('', 'resource');
+	echo $formresource->select_resource_list(empty($resources) ? $object->resources : $resources, 'resources', [], '', 0, '', '', $object->entity, true, 0, 'quatrevingtpercent widthcentpercentminusx', true);
+	echo '</td></tr>';
 
 	// Other attributes
 	include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_edit.tpl.php';
 
-	print '</table>';
+	echo '</table>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
-	print $form->buttonsSaveCancel();
+	echo $form->buttonsSaveCancel();
 
-	print '</form>';
+	echo '</form>';
 }
 
 // Part to show record
 if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'create'))) {
 	$head = workstationPrepareHead($object);
 
-	print dol_get_fiche_head($head, 'card', $langs->trans("Workstation"), -1, $object->picto);
+	echo dol_get_fiche_head($head, 'card', $langs->trans("Workstation"), -1, $object->picto);
 
 	$formconfirm = '';
 
@@ -348,7 +348,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	}
 
 	// Print form confirm
-	print $formconfirm;
+	echo $formconfirm;
 
 
 	// Object card
@@ -391,10 +391,10 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	dol_banner_tab($object, 'ref', $linkback, 1, 'ref', 'ref', $morehtmlref);
 
 
-	print '<div class="fichecenter">';
-	print '<div class="fichehalfleft">';
-	print '<div class="underbanner clearboth"></div>';
-	print '<table class="border centpercent tableforfield">'."\n";
+	echo '<div class="fichecenter">';
+	echo '<div class="fichehalfleft">';
+	echo '<div class="underbanner clearboth"></div>';
+	echo '<table class="border centpercent tableforfield">'."\n";
 
 	// Common attributes
 	//$keyforbreak='fieldkeytoswitchonsecondcolumn';	// We change column just before this field
@@ -412,48 +412,48 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 
 	// Groups
 	if ($object->type !== 'MACHINE') {
-		$toprint = array();
+		$toecho = array();
 		$g = new UserGroup($db);
 		foreach ($object->usergroups as $id_group) {
 			$g->fetch($id_group);
 			$toprint[] = '<li class="select2-search-choice-gestimag noborderoncategories" style="background: #bbb">' . $g->getNomUrl(1, '', 0, 'categtextwhite') . '</li>';
 		}
 
-		print '<tr><td>' . $langs->trans('Groups') . '</td><td>';
-		print '<div class="select2-container-multi-gestimag"><ul class="select2-choices-gestimag">' . implode(' ', $toprint) . '</ul></div>';
-		print '</td></tr>';
+		echo '<tr><td>' . $langs->trans('Groups') . '</td><td>';
+		echo '<div class="select2-container-multi-gestimag"><ul class="select2-choices-gestimag">' . implode(' ', $toprint) . '</ul></div>';
+		echo '</td></tr>';
 	}
 
 	// Resources
 	if ($object->type !== 'HUMAN') {
-		$toprint = array();
+		$toecho = array();
 		$r = new Dolresource($db);
 		foreach ($object->resources as $id_resource) {
 			$r->fetch($id_resource);
 			$toprint[] = '<li class="select2-search-choice-gestimag noborderoncategories" style="background: #bbb">' . $r->getNomUrl(1, '', '', 0, 'categtextwhite') . '</li>';
 		}
 
-		print '<tr><td>' . $langs->trans('Machines') . '</td><td>';
-		print '<div class="select2-container-multi-gestimag"><ul class="select2-choices-gestimag">' . implode(' ', $toprint) . '</ul></div>';
-		print '</td></tr>';
+		echo '<tr><td>' . $langs->trans('Machines') . '</td><td>';
+		echo '<div class="select2-container-multi-gestimag"><ul class="select2-choices-gestimag">' . implode(' ', $toprint) . '</ul></div>';
+		echo '</td></tr>';
 	}
 
 	// Other attributes. Fields from hook formObjectOptions and Extrafields.
 	include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_view.tpl.php';
 
-	print '</table>';
-	print '</div>';
-	print '</div>';
+	echo '</table>';
+	echo '</div>';
+	echo '</div>';
 
-	print '<div class="clearboth"></div>';
+	echo '<div class="clearboth"></div>';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 
 
 	// Buttons for actions
 
 	if ($action != 'presend' && $action != 'editline') {
-		print '<div class="tabsAction">'."\n";
+		echo '<div class="tabsAction">'."\n";
 		$parameters = array();
 		$reshook = $hookmanager->executeHooks('addMoreActionsButtons', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
 		if ($reshook < 0) {
@@ -462,19 +462,19 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 
 		if (empty($reshook)) {
 			// Modify
-			print dolGetButtonAction('', $langs->trans('Modify'), 'default', $_SERVER["PHP_SELF"].'?id='.$object->id.'&action=edit&token='.newToken(), '', $permissiontoadd);
+			echo dolGetButtonAction('', $langs->trans('Modify'), 'default', $_SERVER["PHP_SELF"].'?id='.$object->id.'&action=edit&token='.newToken(), '', $permissiontoadd);
 
 			// Clone
 			if ($permissiontoadd) {
-				print dolGetButtonAction('', $langs->trans('ToClone'), 'default', $_SERVER['PHP_SELF'].'?id='.$object->id.(!empty($object->socid) ? '&socid='.$object->socid : '').'&action=clone&token='.newToken(), '', $permissiontoadd);
+				echo dolGetButtonAction('', $langs->trans('ToClone'), 'default', $_SERVER['PHP_SELF'].'?id='.$object->id.(!empty($object->socid) ? '&socid='.$object->socid : '').'&action=clone&token='.newToken(), '', $permissiontoadd);
 			}
 
 			// Disable / Enable
 			if ($permissiontoadd) {
 				if ($object->status == $object::STATUS_ENABLED) {
-					print dolGetButtonAction('', $langs->trans('Disable'), 'default', $_SERVER['PHP_SELF'].'?id='.$object->id.'&action=disable&token='.newToken(), '', $permissiontoadd);
+					echo dolGetButtonAction('', $langs->trans('Disable'), 'default', $_SERVER['PHP_SELF'].'?id='.$object->id.'&action=disable&token='.newToken(), '', $permissiontoadd);
 				} else {
-					print dolGetButtonAction('', $langs->trans('Enable'), 'default', $_SERVER['PHP_SELF'].'?id='.$object->id.'&action=enable&token='.newToken(), '', $permissiontoadd);
+					echo dolGetButtonAction('', $langs->trans('Enable'), 'default', $_SERVER['PHP_SELF'].'?id='.$object->id.'&action=enable&token='.newToken(), '', $permissiontoadd);
 				}
 			}
 
@@ -486,9 +486,9 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 				$buttonId = 'action-delete';
 			}
 			$params = array();
-			print dolGetButtonAction('', $langs->trans("Delete"), 'delete', $deleteUrl, $buttonId, $permissiontodelete, $params);
+			echo dolGetButtonAction('', $langs->trans("Delete"), 'delete', $deleteUrl, $buttonId, $permissiontodelete, $params);
 		}
-		print '</div>'."\n";
+		echo '</div>'."\n";
 	}
 }
 

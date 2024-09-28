@@ -132,7 +132,7 @@ div#topmenu-global-search-dropdown a::after, div#topmenu-quickadd-dropdown a::af
 
 
 .dropdown-toggle::after {
-	font-family: "<?php echo getDolGlobalString('MAIN_FONTAWESOME_FAMILY', 'Font Awesome 5 Free'); ?>";
+	font-family: "<?php echo  getDolGlobalString('MAIN_FONTAWESOME_FAMILY', 'Font Awesome 5 Free'); ?>";
 	font-size: 0.7em;
 	font-weight: 900;
 	font-style: normal;
@@ -169,7 +169,7 @@ div#topmenu-global-search-dropdown a::after, div#topmenu-quickadd-dropdown a::af
 .tmenu .dropdown-menu, .login_block .dropdown-menu, .topnav .dropdown-menu {
 	position: absolute;
 	right: 2px;
-	<?php echo $left; ?>: auto;
+	<?php echo  $left; ?>: auto;
 	line-height:1.3em;
 }
 .tmenu .dropdown-menu, .login_block  .dropdown-menu .user-body {
@@ -282,7 +282,7 @@ a.top-menu-dropdown-link {
 .dropdown-body::-webkit-scrollbar-thumb {
 	-webkit-border-radius: 0;
 	border-radius: 0;
-	/* background: rgb(<?php echo $colorbackhmenu1 ?>); */
+	/* background: rgb(<?php echo  $colorbackhmenu1 ?>); */
 	background: #aaa;
 }
 .dropdown-body::-webkit-scrollbar-track {
@@ -350,7 +350,7 @@ a.dropdown-item {
 }
 
 .dropdown-menu a.top-menu-dropdown-link {
-	color: rgb(<?php print $colortextlink; ?>) !important;
+	color: rgb(<?php echo $colortextlink; ?>) !important;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
@@ -377,7 +377,7 @@ a.dropdown-item {
 
 .dropdown-item::before {
 	/* font part */
-	font-family: "<?php echo getDolGlobalString('MAIN_FONTAWESOME_FAMILY', 'Font Awesome 5 Free'); ?>";
+	font-family: "<?php echo  getDolGlobalString('MAIN_FONTAWESOME_FAMILY', 'Font Awesome 5 Free'); ?>";
 	font-weight: 900;
 	font-style: normal;
 	font-variant: normal;
@@ -385,7 +385,7 @@ a.dropdown-item {
 	-webkit-font-smoothing: antialiased;
 	text-align:center;
 	text-decoration:none;
-	margin-<?php echo $right; ?>: 5px;
+	margin-<?php echo  $right; ?>: 5px;
 	display: inline-block;
 	content: "\f0da";
 	/* color: rgba(0,0,0,0.3); */
@@ -399,9 +399,9 @@ a.dropdown-item {
 }
 
 .dropdown-item.active, .dropdown-item:hover, .dropdown-item:hover span::before, .dropdown-item:focus, .dropdown-item:focus span::before {
-	color: #<?php echo $colortextbackhmenu; ?> !important;
+	color: #<?php echo  $colortextbackhmenu; ?> !important;
 	text-decoration: none;
-	background: rgb(<?php echo $colorbackhmenu1 ?>);
+	background: rgb(<?php echo  $colorbackhmenu1 ?>);
 }
 
 /*
@@ -522,7 +522,7 @@ div.quickaddblock {
 div.quickaddblock:hover,
 div.quickaddblock:active,
 div.quickaddblock:focus {
-	background: <?php print $colorbacklinepair1; ?>;
+	background: <?php echo $colorbacklinepair1; ?>;
 }
 
 
@@ -540,7 +540,7 @@ dropdown-holder {
 	right:10px;	/* will be set with js */
 	background: #fff;
 	border: 1px solid #bbb;
-	text-align: <?php echo $left; ?>
+	text-align: <?php echo  $left; ?>
 }
 
 .dropdown-content a {

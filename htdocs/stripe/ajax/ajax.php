@@ -86,10 +86,10 @@ if ($action == 'getConnexionToken') {
 		} else {
 			$connectionToken = \Stripe\Terminal\ConnectionToken::create($array, array("stripe_account" => $stripeacc));
 		}
-		echo json_encode(array('secret' => $connectionToken->secret));
+		echo  json_encode(array('secret' => $connectionToken->secret));
 	} catch (Error $e) {
 		http_response_code(500);
-		echo json_encode(['error' => $e->getMessage()]);
+		echo  json_encode(['error' => $e->getMessage()]);
 	}
 } elseif ($action == 'createPaymentIntent') {
 	try {
@@ -111,10 +111,10 @@ if ($action == 'getConnexionToken') {
 
 		$intent = $stripe->getPaymentIntent($json_obj->amount, $object->multicurrency_code, null, 'Stripe payment: '.$fulltag.(is_object($object) ? ' ref='.$object->ref : ''), $object, $customer, $stripeacc, $servicestatus, 1, 'terminal', false, null, 0, 1);
 
-		echo json_encode(array('client_secret' => $intent->client_secret));
+		echo  json_encode(array('client_secret' => $intent->client_secret));
 	} catch (Error $e) {
 		http_response_code(500);
-		echo json_encode(['error' => $e->getMessage()]);
+		echo  json_encode(['error' => $e->getMessage()]);
 	}
 } elseif ($action == 'capturePaymentIntent') {
 	try {
@@ -128,9 +128,9 @@ if ($action == 'getConnexionToken') {
 		}
 		$intent = $intent->capture();
 
-		echo json_encode($intent);
+		echo  json_encode($intent);
 	} catch (Error $e) {
 		http_response_code(500);
-		echo json_encode(['error' => $e->getMessage()]);
+		echo  json_encode(['error' => $e->getMessage()]);
 	}
 }

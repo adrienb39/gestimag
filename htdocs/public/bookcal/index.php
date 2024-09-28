@@ -109,9 +109,9 @@ if ($next_day < 6) {
 }
 $lastdaytoshow = dol_mktime(0, 0, 0, $next_month, $next_day, $next_year, 'tzuserrel');
 
-$datechosen = GETPOST('datechosen', 'alpha');
-$datetimechosen = GETPOSTINT('datetimechosen');
-$isdatechosen = false;
+$datecho sen = GETPOST('datecho sen', 'alpha');
+$datetimecho sen = GETPOSTINT('datetimecho sen');
+$isdatecho sen = false;
 $timebooking = GETPOST("timebooking");
 $datetimebooking = GETPOSTINT("datetimebooking");
 $durationbooking = GETPOSTINT("durationbooking");
@@ -134,7 +134,7 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 
 	top_htmlhead($head, $title, $disablejs, $disablehead, $arrayofjs, $arrayofcss); // Show html headers
 
-	print '<body id="mainbody" class="publicnewmemberform">';
+	echo '<body id="mainbody" class="publicnewmemberform">';
 
 	$urllogo = '';
 
@@ -154,30 +154,30 @@ function llxHeaderVierge($title, $head = "", $disablejs = 0, $disablehead = 0, $
 		}
 	}
 
-	print '<div class="center">';
+	echo '<div class="center">';
 	// Output html code for logo
-	print '<div class="backgreypublicpayment">';
-	print '<div class="logopublicpayment">';
+	echo '<div class="backgreypublicpayment">';
+	echo '<div class="logopublicpayment">';
 	if ($urllogo) {
-		print '<a href="'.(getDolGlobalString('BOOKCAL_PUBLIC_INTERFACE_TOPIC') ? getDolGlobalString('BOOKCAL_PUBLIC_INTERFACE_TOPIC') : dol_buildpath('/public/ticket/index.php?entity='.$conf->entity, 1)).'">';
-		print '<img id="dolpaymentlogo" src="'.$urllogo.'">';
-		print '</a>';
+		echo '<a href="'.(getDolGlobalString('BOOKCAL_PUBLIC_INTERFACE_TOPIC') ? getDolGlobalString('BOOKCAL_PUBLIC_INTERFACE_TOPIC') : dol_buildpath('/public/ticket/index.php?entity='.$conf->entity, 1)).'">';
+		echo '<img id="dolpaymentlogo" src="'.$urllogo.'">';
+		echo '</a>';
 	}
 	if (getDolGlobalString('BOOKCAL_PUBLIC_INTERFACE_TOPIC')) {
-		print '<div class="clearboth"></div><strong>'.(getDolGlobalString('BOOKCAL_PUBLIC_INTERFACE_TOPIC') ? getDolGlobalString('BOOKCAL_PUBLIC_INTERFACE_TOPIC') : $langs->trans("BookCalSystem")).'</strong>';
+		echo '<div class="clearboth"></div><strong>'.(getDolGlobalString('BOOKCAL_PUBLIC_INTERFACE_TOPIC') ? getDolGlobalString('BOOKCAL_PUBLIC_INTERFACE_TOPIC') : $langs->trans("BookCalSystem")).'</strong>';
 	}
 	if (empty($urllogo) && ! getDolGlobalString('BOOKCAL_PUBLIC_INTERFACE_TOPIC')) {
-		print $mysoc->name;
+		echo $mysoc->name;
 	}
-	print '</div>';
+	echo '</div>';
 	if (!getDolGlobalInt('MAIN_HIDE_POWERED_BY')) {
-		print '<div class="poweredbypublicpayment opacitymedium right hideonsmartphone"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+		echo '<div class="poweredbypublicpayment opacitymedium right hideonsmartphone"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 	}
-	print '</div>';
+	echo '</div>';
 
-	print '</div>';
+	echo '</div>';
 
-	print '<div class="divmainbodylarge">';
+	echo '<div class="divmainbodylarge">';
 }
 
 
@@ -303,34 +303,34 @@ $form = new Form($db);
 
 llxHeaderVierge('BookingCalendar');
 
-print '<center><br><h2>'.(!empty($object->label) ? $object->label : $object->ref).'</h2></center>';
+echo '<center><br><h2>'.(!empty($object->label) ? $object->label : $object->ref).'</h2></center>';
 
 dol_htmloutput_errors($errmsg);
 
 if ($action == 'create') {
-	$backtopage = $_SERVER["PHP_SELF"].'?id='.$id.'&datechosen='.$datechosen;
+	$backtopage = $_SERVER["PHP_SELF"].'?id='.$id.'&datecho sen='.$datecho sen;
 } else {
 	$backtopage = DOL_URL_ROOT.'/public/bookcal/index.php?id='.$id;
 }
 
-//print '<div class="">';
+//echo '<div class="">';
 
-print '<div class="bookcalpublicarea centpercent center" style="min-width:30%;width:fit-content;height:70%;top:60%;left: 50%;">';
-print '<div class="bookcalform" style="min-height:50%">';
+echo '<div class="bookcalpublicarea centpercent center" style="min-width:30%;width:fit-content;height:70%;top:60%;left: 50%;">';
+echo '<div class="bookcalform" style="min-height:50%">';
 if ($action == 'afteradd') {
-	print '<h2>';
-	print $langs->trans("BookingSuccessfullyBooked");
-	print '</h2>';
-	print $langs->trans("BookingReservationHourAfter", dol_print_date(GETPOSTINT("datetimebooking"), "dayhourtext"));
+	echo '<h2>';
+	echo $langs->trans("BookingSuccessfullyBooked");
+	echo '</h2>';
+	echo $langs->trans("BookingReservationHourAfter", dol_print_date(GETPOSTINT("datetimebooking"), "dayhourtext"));
 } else {
 	$param = '';
 
-	print '<table class="centpercent">';
-	print '<tr>';
-	print '<td>';
+	echo '<table class="centpercent">';
+	echo '<tr>';
+	echo '<td>';
 	if ($action != 'create') {
-		print '<form name="formsearch" action="'.$_SERVER["PHP_SELF"].'">';
-		print '<input type="hidden" name="id" value="'.$id.'">';
+		echo '<form name="formsearch" action="'.$_SERVER["PHP_SELF"].'">';
+		echo '<input type="hidden" name="id" value="'.$id.'">';
 
 		$nav = '<a href="?id='.$id."&year=".$prev_year."&month=".$prev_month.$param.'"><i class="fa fa-chevron-left"></i></a> &nbsp;'."\n";
 		$nav .= ' <span id="month_name">'.dol_print_date(dol_mktime(0, 0, 0, $month, 1, $year), "%b %Y");
@@ -342,84 +342,84 @@ if ($action == 'afteradd') {
 		$nav .= $form->selectDate($dateselect, 'dateselect', 0, 0, 1, '', 1, 0);
 		$nav .= '<button type="submit" class="liste_titre button_search valignmiddle" name="button_search_x" value="x"><span class="fa fa-search"></span></button>';
 
-		print $nav;
-		print '</form>';
+		echo $nav;
+		echo '</form>';
 	}
-	print '</td>';
-	print '<td>';
-	print '<div class="bookingtab hidden" style="height:50%">';
-	print '<div id="bookingtabspandate"></div>';
-	print '</div>';
-	print '</td>';
-	print '</tr>';
+	echo '</td>';
+	echo '<td>';
+	echo '<div class="bookingtab hidden" style="height:50%">';
+	echo '<div id="bookingtabspandate"></div>';
+	echo '</div>';
+	echo '</td>';
+	echo '</tr>';
 
-	print '<tr>';
+	echo '<tr>';
 	if ($action == "create") {
-		print '<td>';
+		echo '<td>';
 		if (empty($datetimebooking)) {
 			$timebookingarray = explode(" - ", $timebooking);
 			$timestartarray = explode(":", $timebookingarray[0]);
 			$timeendarray = explode(":", $timebookingarray[1]);
-			$datetimebooking = dol_time_plus_duree($datetimechosen, intval($timestartarray[0]), "h");
+			$datetimebooking = dol_time_plus_duree($datetimecho sen, intval($timestartarray[0]), "h");
 			$datetimebooking = dol_time_plus_duree($datetimebooking, intval($timestartarray[1]), "i");
 		}
-		print '<span>'.img_picto("", "calendar")." ".dol_print_date($datetimebooking, 'dayhourtext').'</span>';
-		print '<div class="center"><a href="'.$_SERVER["PHP_SELF"].'?id=1&year=2024&month=2" class="small">('.$langs->trans("SelectANewDate").')</a></div>';
-		print '</td>';
+		echo '<span>'.img_picto("", "calendar")." ".dol_print_date($datetimebooking, 'dayhourtext').'</span>';
+		echo '<div class="center"><a href="'.$_SERVER["PHP_SELF"].'?id=1&year=2024&month=2" class="small">('.$langs->trans("SelectANewDate").')</a></div>';
+		echo '</td>';
 
-		print '<td>';
-		print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-		print '<table class="border" summary="form to subscribe" id="tablesubscribe">'."\n";
-		print '<input type="hidden" name="token" value="'.newToken().'">';
-		print '<input type="hidden" name="action" value="add">';
-		print '<input type="hidden" name="datetimebooking" value="'.$datetimebooking.'">';
-		print '<input type="hidden" name="datechosen" value="'.$datechosen.'">';
-		print '<input type="hidden" name="id" value="'.$id.'">';
-		print '<input type="hidden" name="durationbooking" value="'.$durationbooking.'">';
+		echo '<td>';
+		echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+		echo '<table class="border" summary="form to subscribe" id="tablesubscribe">'."\n";
+		echo '<input type="hidden" name="token" value="'.newToken().'">';
+		echo '<input type="hidden" name="action" value="add">';
+		echo '<input type="hidden" name="datetimebooking" value="'.$datetimebooking.'">';
+		echo '<input type="hidden" name="datecho sen" value="'.$datecho sen.'">';
+		echo '<input type="hidden" name="id" value="'.$id.'">';
+		echo '<input type="hidden" name="durationbooking" value="'.$durationbooking.'">';
 
 		// Lastname
-		print '<tr><td><input autofocus type="text" name="lastname" class="minwidth150" placeholder="'.dol_escape_htmltag($langs->trans("Lastname").'*').'" value="'.dol_escape_htmltag(GETPOST('lastname')).'"></td></tr>'."\n";
+		echo '<tr><td><input autofocus type="text" name="lastname" class="minwidth150" placeholder="'.dol_escape_htmltag($langs->trans("Lastname").'*').'" value="'.dol_escape_htmltag(GETPOST('lastname')).'"></td></tr>'."\n";
 		// Firstname
-		print '<tr><td><input type="text" name="firstname" class="minwidth150" placeholder="'.dol_escape_htmltag($langs->trans("Firstname").'*').'" value="'.dol_escape_htmltag(GETPOST('firstname')).'"></td></tr>'."\n";
+		echo '<tr><td><input type="text" name="firstname" class="minwidth150" placeholder="'.dol_escape_htmltag($langs->trans("Firstname").'*').'" value="'.dol_escape_htmltag(GETPOST('firstname')).'"></td></tr>'."\n";
 		// EMail
-		print '<tr><td><input type="email" name="email" maxlength="255" class="minwidth150" placeholder="'.dol_escape_htmltag($langs->trans("Email").'*').'" value="'.dol_escape_htmltag(GETPOST('email')).'"></td></tr>'."\n";
+		echo '<tr><td><input type="email" name="email" maxlength="255" class="minwidth150" placeholder="'.dol_escape_htmltag($langs->trans("Email").'*').'" value="'.dol_escape_htmltag(GETPOST('email')).'"></td></tr>'."\n";
 
 		// Comments
-		print '<tr>';
-		print '<td class="tdtop">';
-		print $langs->trans("Message");
-		print '<textarea name="description" id="description" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_4.'">'.dol_escape_htmltag(GETPOST('description', 'restricthtml'), 0, 1).'</textarea></td>';
-		print '</tr>'."\n";
-		print '</table>'."\n";
-		print '<div class="center">';
-		print '<input type="submit" value="'.$langs->trans("Submit").'" id="submitsave" class="button">';
-		print '</div>';
-		print '</form>';
-		print '</td>';
+		echo '<tr>';
+		echo '<td class="tdtop">';
+		echo $langs->trans("Message");
+		echo '<textarea name="description" id="description" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_4.'">'.dol_escape_htmltag(GETPOST('description', 'restricthtml'), 0, 1).'</textarea></td>';
+		echo '</tr>'."\n";
+		echo '</table>'."\n";
+		echo '<div class="center">';
+		echo '<input type="submit" value="'.$langs->trans("Submit").'" id="submitsave" class="button">';
+		echo '</div>';
+		echo '</form>';
+		echo '</td>';
 	} else {
-		print '<td>';
-		print '<table class="centpercent noborder nocellnopadd cal_pannel cal_month">';
-		print ' <tr class="">';
+		echo '<td>';
+		echo '<table class="centpercent noborder nocellnopadd cal_pannel cal_month">';
+		echo ' <tr class="">';
 		// Column title of weeks numbers
-		print '  <td class="center hideonsmartphone">#</td>';
+		echo '  <td class="center hideonsmartphone">#</td>';
 		$i = 0;
 		while ($i < 7) {
 			$numdayinweek = (($i + (isset($conf->global->MAIN_START_WEEK) ? $conf->global->MAIN_START_WEEK : 1)) % 7);
 			if (!empty($conf->dol_optimize_smallscreen)) {
-				print '  <td class="center bold uppercase tdfordaytitle'.($i == 0 ? ' borderleft' : '').'">';
+				echo '  <td class="center bold uppercase tdfordaytitle'.($i == 0 ? ' borderleft' : '').'">';
 				$labelshort = array(0 => 'SundayMin', 1 => 'MondayMin', 2 => 'TuesdayMin', 3 => 'WednesdayMin', 4 => 'ThursdayMin', 5 => 'FridayMin', 6 => 'SaturdayMin');
-				print $langs->trans($labelshort[$numdayinweek]);
-				print '  </td>'."\n";
+				echo $langs->trans($labelshort[$numdayinweek]);
+				echo '  </td>'."\n";
 			} else {
-				print '  <td class="center minwidth75 bold uppercase small tdoverflowmax50 tdfordaytitle'.($i == 0 ? ' borderleft' : '').'">';
+				echo '  <td class="center minwidth75 bold uppercase small tdoverflowmax50 tdfordaytitle'.($i == 0 ? ' borderleft' : '').'">';
 				//$labelshort = array(0=>'SundayMin', 1=>'MondayMin', 2=>'TuesdayMin', 3=>'WednesdayMin', 4=>'ThursdayMin', 5=>'FridayMin', 6=>'SaturdayMin');
 				$labelshort = array(0 => 'Sunday', 1 => 'Monday', 2 => 'Tuesday', 3 => 'Wednesday', 4 => 'Thursday', 5 => 'Friday', 6 => 'Saturday');
-				print $langs->trans($labelshort[$numdayinweek]);
-				print '  </td>'."\n";
+				echo $langs->trans($labelshort[$numdayinweek]);
+				echo '  </td>'."\n";
 			}
 			$i++;
 		}
-		print ' </tr>'."\n";
+		echo ' </tr>'."\n";
 
 		$todayarray = dol_getdate($now, 'fast');
 		$todaytms = dol_mktime(0, 0, 0, $todayarray['mon'], $todayarray['mday'], $todayarray['year']);
@@ -443,7 +443,7 @@ if ($action == 'afteradd') {
 		}
 
 		for ($iter_week = 0; $iter_week < 6; $iter_week++) {
-			echo " <tr>\n";
+			echo  " <tr>\n";
 			// Get date of the current day, format 'yyyy-mm-dd'
 			if ($tmpday <= 0) { // If number of the current day is in previous month
 				$currdate0 = sprintf("%04d", $prev_year).sprintf("%02d", $prev_month).sprintf("%02d", $max_day_in_prev_month + $tmpday);
@@ -455,7 +455,7 @@ if ($action == 'afteradd') {
 			// Get week number for the targeted date '$currdate0'
 			$numweek0 = idate("W", strtotime(date($currdate0)));
 			// Show the week number, and define column width
-			echo ' <td class="center weeknumber opacitymedium hideonsmartphone" style="min-width: 40px">'.$numweek0.'</td>';
+			echo  ' <td class="center weeknumber opacitymedium hideonsmartphone" style="min-width: 40px">'.$numweek0.'</td>';
 
 			for ($iter_day = 0; $iter_day < 7; $iter_day++) {
 				if ($tmpday <= 0) {
@@ -464,9 +464,9 @@ if ($action == 'afteradd') {
 					if ($iter_day == 6) {
 						$style .= ' cal_other_month_right';
 					}
-					echo '  <td class="'.$style.' nowrap tdtop" width="14%">';
+					echo  '  <td class="'.$style.' nowrap tdtop" width="14%">';
 					show_bookcal_day_events($max_day_in_prev_month + $tmpday, $prev_month, $prev_year);
-					echo "  </td>\n";
+					echo  "  </td>\n";
 				} elseif ($tmpday <= $max_day_in_month) {
 					/* Show days of the current month */
 					$curtime = dol_mktime(0, 0, 0, $month, $tmpday, $year);
@@ -486,57 +486,57 @@ if ($action == 'afteradd') {
 						$style .= ' cal_past';
 					}
 					$dateint = sprintf("%04d", $year).'_'.sprintf("%02d", $month).'_'.sprintf("%02d", $tmpday);
-					if (!empty(explode('dayevent_', $datechosen)[1]) && explode('dayevent_', $datechosen)[1] == $dateint) {
+					if (!empty(explode('dayevent_', $datecho sen)[1]) && explode('dayevent_', $datecho sen)[1] == $dateint) {
 						$style .= ' cal_chosen';
-						$isdatechosen = true;
+						$isdatecho sen = true;
 					}
-					echo '  <td class="'.$style.' nowrap tdtop" width="14%">';
+					echo  '  <td class="'.$style.' nowrap tdtop" width="14%">';
 					show_bookcal_day_events($tmpday, $month, $year, $today);
-					echo "</td>\n";
+					echo  "</td>\n";
 				} else {
 					/* Show days after the current month (next month) */
 					$style = 'cal_other_month';
 					if ($iter_day == 6) {
 						$style .= ' cal_other_month_right';
 					}
-					echo '  <td class="'.$style.' nowrap tdtop" width="14%">';
+					echo  '  <td class="'.$style.' nowrap tdtop" width="14%">';
 					show_bookcal_day_events($tmpday - $max_day_in_month, $next_month, $next_year);
-					echo "</td>\n";
+					echo  "</td>\n";
 				}
 				$tmpday++;
 			}
-			echo " </tr>\n";
+			echo  " </tr>\n";
 		}
-		print '</table>';
-		print '</td>';
+		echo '</table>';
+		echo '</td>';
 
-		print '<td>'; // Column visible after selection of a day
-		print '<div class="center bookingtab" style="height:50%">';
-		print '<div style="height:100%">';
-		print '<form id="formbooking" name="formbooking" method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-		print '<input type="hidden" name="id" value="'.$id.'">';
-		print '<input type="hidden" name="token" value="'.newToken().'">';
-		print '<input type="hidden" name="action" value="create">';
-		print '<input type="hidden" id="datechosen" name="datechosen" value="">';
-		print '<input type="hidden" id="datetimechosen" name="datetimechosen" value="">';
-		print '<input type="hidden" id="durationbooking" name="durationbooking" value="">';
+		echo '<td>'; // Column visible after selection of a day
+		echo '<div class="center bookingtab" style="height:50%">';
+		echo '<div style="height:100%">';
+		echo '<form id="formbooking" name="formbooking" method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+		echo '<input type="hidden" name="id" value="'.$id.'">';
+		echo '<input type="hidden" name="token" value="'.newToken().'">';
+		echo '<input type="hidden" name="action" value="create">';
+		echo '<input type="hidden" id="datecho sen" name="datecho sen" value="">';
+		echo '<input type="hidden" id="datetimecho sen" name="datetimecho sen" value="">';
+		echo '<input type="hidden" id="durationbooking" name="durationbooking" value="">';
 
-		print '<div id="bookinghoursection">';
-		print '<br><br><br><br><br><br><div class="opacitymedium center">'.$langs->trans("SelectADay").'</div>';
-		print '</div>';
-		print '</form>';
-		print '</div>';
-		print '</div>';
+		echo '<div id="bookinghoursection">';
+		echo '<br><br><br><br><br><br><div class="opacitymedium center">'.$langs->trans("SelectADay").'</div>';
+		echo '</div>';
+		echo '</form>';
+		echo '</div>';
+		echo '</div>';
 
-		print '</td>';
+		echo '</td>';
 	}
-	print '</tr>';
-	print '</table>';
-	print '</div>';
-	print '</div>';
+	echo '</tr>';
+	echo '</table>';
+	echo '</div>';
+	echo '</div>';
 
-	print '<script>';
-	print '
+	echo '<script>';
+	echo '
 	function generateBookingButtons(timearray, datestring){
 		console.log("We generate all booking buttons of "+datestring);
 		str = "";
@@ -564,7 +564,7 @@ if ($action == 'afteradd') {
 			$("#durationbooking").val(duration);
 		})
 	}';
-	print '$(document).ready(function() {
+	echo '$(document).ready(function() {
 		$(".cal_available").on("click", function(){
 			console.log("We click on cal_available");
 			$(".cal_chosen").removeClass("cal_chosen");
@@ -598,15 +598,15 @@ if ($action == 'afteradd') {
 			});
 			$(".bookingtab").removeClass("hidden");
 			$("#bookingtabspandate").text($(this).children("div").data("date"));
-			$("#datechosen").val($(this).children("div").attr("id"));
-			$("#datetimechosen").val($(this).children("div").data("datetime"));
+			$("#datecho sen").val($(this).children("div").attr("id"));
+			$("#datetimecho sen").val($(this).children("div").data("datetime"));
 		});
 
 		$("btnformbooking")
 
-		'.($datechosen ? '$(".cal_chosen").trigger( "click" )' : '').'
+		'.($datecho sen ? '$(".cal_chosen").trigger( "click" )' : '').'
 	});';
-	print '</script>';
+	echo '</script>';
 }
 
 llxFooter('', 'public');
@@ -630,20 +630,20 @@ function show_bookcal_day_events($day, $month, $year, $today = 0)
 
 	$dateint = sprintf("%04d", $year).'_'.sprintf("%02d", $month).'_'.sprintf("%02d", $day);
 	$eventdatetime = dol_mktime(-1, -1, -1, $month, $day, $year);
-	//print 'show_bookcal_day_events day='.$day.' month='.$month.' year='.$year.' dateint='.$dateint;
+	//echo 'show_bookcal_day_events day='.$day.' month='.$month.' year='.$year.' dateint='.$dateint;
 
-	print "\n";
+	echo "\n";
 
 	$curtime = dol_mktime(0, 0, 0, $month, $day, $year);
 	// Line with title of day
-	print '<div id="dayevent_'.$dateint.'" class="dayevent tagtable centpercent nobordernopadding" data-datetime="'.$eventdatetime.'" data-date="'.dol_print_date($eventdatetime, "daytext").'">'."\n";
-	print dol_print_date($curtime, '%d');
-	print '<br>';
+	echo '<div id="dayevent_'.$dateint.'" class="dayevent tagtable centpercent nobordernopadding" data-datetime="'.$eventdatetime.'" data-date="'.dol_print_date($eventdatetime, "daytext").'">'."\n";
+	echo dol_print_date($curtime, '%d');
+	echo '<br>';
 	if ($today) {
-		print img_picto('today', 'fontawesome_circle_fas_black_7px');
+		echo img_picto('today', 'fontawesome_circle_fas_black_7px');
 	} else {
-		print '<br>';
+		echo '<br>';
 	}
-	print '</div>'; // table
-	print "\n";
+	echo '</div>'; // table
+	echo "\n";
 }

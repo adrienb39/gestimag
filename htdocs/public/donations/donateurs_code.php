@@ -40,7 +40,7 @@ if (!defined('NOIPCHECK')) {
  */
 function llxHeaderVierge()
 {
-	print '<html><title>List of donators</title><body>';
+	echo '<html><title>List of donators</title><body>';
 }
 /**
  * Header function
@@ -49,7 +49,7 @@ function llxHeaderVierge()
  */
 function llxFooterVierge()
 {
-	print '</body></html>';
+	echo '</body></html>';
 }
 
 // Load Gestimag environment
@@ -79,31 +79,31 @@ $resql = $db->query($sql);
 if ($resql) {
 	$num = $db->num_rows($resql);
 	if ($num) {
-		print "<table border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"4\">";
+		echo "<table border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"4\">";
 
-		print '<tr>';
-		print "<td>".$langs->trans("Name")." / ".$langs->trans("Company")."</td>";
-		print "<td>Date</td>";
-		print '<td class="right">'.$langs->trans("Amount").'</td>';
-		print "</tr>\n";
+		echo '<tr>';
+		echo "<td>".$langs->trans("Name")." / ".$langs->trans("Company")."</td>";
+		echo "<td>Date</td>";
+		echo '<td class="right">'.$langs->trans("Amount").'</td>';
+		echo "</tr>\n";
 
 		while ($i < $num) {
 			$objp = $db->fetch_object($resql);
 
-			print '<tr class="oddeven">';
+			echo '<tr class="oddeven">';
 			if ($objp->public) {
-				print "<td>".dolGetFirstLastname($objp->firstname, $objp->lastname)." ".dol_escape_htmltag($objp->societe)."</td>\n";
+				echo "<td>".dolGetFirstLastname($objp->firstname, $objp->lastname)." ".dol_escape_htmltag($objp->societe)."</td>\n";
 			} else {
-				print "<td>".$langs->trans("Anonymous")."</td>\n";
+				echo "<td>".$langs->trans("Anonymous")."</td>\n";
 			}
-			print "<td>".dol_print_date($db->jdate($objp->datedon))."</td>\n";
-			print '<td class="right">'.number_format($objp->amount, 2, '.', ' ').' '.$langs->trans("Currency".$conf->currency).'</td>';
-			print "</tr>";
+			echo "<td>".dol_print_date($db->jdate($objp->datedon))."</td>\n";
+			echo '<td class="right">'.number_format($objp->amount, 2, '.', ' ').' '.$langs->trans("Currency".$conf->currency).'</td>';
+			echo "</tr>";
 			$i++;
 		}
-		print "</table>";
+		echo "</table>";
 	} else {
-		print $langs->trans("Donation");
+		echo $langs->trans("Donation");
 	}
 } else {
 	dol_print_error($db);

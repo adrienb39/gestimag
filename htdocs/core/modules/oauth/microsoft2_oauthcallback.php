@@ -84,7 +84,7 @@ if ($state) {
 	$requestedpermissionsarray = explode(',', $state); // Example: 'user'. 'state' parameter is standard to retrieve some parameters back
 }
 if ($action != 'delete' && empty($requestedpermissionsarray)) {
-	print 'Error, parameter state is not defined';
+	echo 'Error, parameter state is not defined';
 	exit;
 }
 //var_dump($requestedpermissionsarray);exit;
@@ -96,7 +96,7 @@ if ($action != 'delete' && empty($requestedpermissionsarray)) {
 try {
 	$apiService = $serviceFactory->createService(ucfirst(strtolower($genericstring)), $credentials, $storage, $requestedpermissionsarray);
 } catch (Exception $e) {
-	print $e->getMessage();
+	echo $e->getMessage();
 	exit;
 }
 /*
@@ -107,7 +107,7 @@ var_dump($requestedpermissionsarray);
 */
 
 if (empty($apiService)) {
-	print 'Error, failed to create serviceFactory';
+	echo 'Error, failed to create serviceFactory';
 	exit;
 }
 
@@ -158,15 +158,15 @@ if (GETPOST('code') || GETPOST('error')) {     // We are coming from oauth provi
 		if (GETPOST('error')) {
 			setEventMessages(GETPOST('error').' '.GETPOST('error_description'), null, 'errors');
 		} else {
-			//print GETPOST('code');exit;
+			//echo GETPOST('code');exit;
 
 			//$token = $apiService->requestAccessToken(GETPOST('code'), $state);
 			$token = $apiService->requestAccessToken(GETPOST('code'));
 			// Microsoft is a service that does not need state to be stored as second parameter of requestAccessToken
 
-			//print $token->getAccessToken().'<br><br>';
-			//print $token->getExtraParams()['id_token'].'<br>';
-			//print $token->getRefreshToken().'<br>';exit;
+			//echo $token->getAccessToken().'<br><br>';
+			//echo $token->getExtraParams()['id_token'].'<br>';
+			//echo $token->getRefreshToken().'<br>';exit;
 
 			setEventMessages($langs->trans('NewTokenStored'), null, 'mesgs'); // Stored into object managed by class DoliStorage so into table oauth_token
 		}
@@ -177,7 +177,7 @@ if (GETPOST('code') || GETPOST('error')) {     // We are coming from oauth provi
 		header('Location: '.$backtourl);
 		exit();
 	} catch (Exception $e) {
-		print $e->getMessage();
+		echo $e->getMessage();
 	}
 } else {
 	// If we enter this page without 'code' parameter, we arrive here. This is the case when we want to get the redirect

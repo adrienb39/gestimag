@@ -36,7 +36,7 @@
  *    $dolgraph->SetType(array('pie'));
  *    $dolgraph->setHeight('200');
  *    $dolgraph->draw('idofgraph');
- *    print $dolgraph->show($total?0:1);
+ *    echo $dolgraph->show($total?0:1);
  */
 class DolGraph
 {
@@ -134,7 +134,7 @@ class DolGraph
 				$this->bgcolor     = $theme_bgcolor;
 			}
 		}
-		//print 'bgcolor: '.join(',',$this->bgcolor).'<br>';
+		//echo 'bgcolor: '.join(',',$this->bgcolor).'<br>';
 
 		$this->_library = $library;
 		if ($this->_library == 'auto') {
@@ -570,7 +570,7 @@ class DolGraph
 
 		if (!is_array($bg_color)) {
 			if ($bg_color == 'onglet') {
-				//print 'ee'.join(',',$theme_bgcoloronglet);
+				//echo 'ee'.join(',',$theme_bgcoloronglet);
 				$this->bgcolor = $theme_bgcoloronglet;
 			} else {
 				$this->bgcolor = $theme_bgcolor;
@@ -594,7 +594,7 @@ class DolGraph
 
 		if (!is_array($bg_colorgrid)) {
 			if ($bg_colorgrid == 'onglet') {
-				//print 'ee'.join(',',$theme_bgcoloronglet);
+				//echo 'ee'.join(',',$theme_bgcoloronglet);
 				$this->bgcolorgrid = $theme_bgcoloronglet;
 			} else {
 				$this->bgcolorgrid = $theme_bgcolor;
@@ -700,7 +700,7 @@ class DolGraph
 			$res = ceil($max / $factor) * $factor;
 		}
 
-		//print "max=".$max." res=".$res;
+		//echo "max=".$max." res=".$res;
 		return (int) $res;
 	}
 
@@ -728,7 +728,7 @@ class DolGraph
 
 		$res = floor($min / $factor) * $factor;
 
-		//print "min=".$min." res=".$res;
+		//echo "min=".$min." res=".$res;
 		return $res;
 	}
 
@@ -785,7 +785,7 @@ class DolGraph
 		dol_syslog(get_class($this) . "::draw_jflot this->type=" . implode(',', $this->type) . " this->MaxValue=" . $this->MaxValue);
 
 		if (empty($this->width) && empty($this->height)) {
-			print 'Error width or height not set';
+			echo 'Error width or height not set';
 			return;
 		}
 
@@ -1072,7 +1072,7 @@ class DolGraph
 		dol_syslog(get_class($this) . "::draw_chart this->type=" . implode(',', $this->type) . " this->MaxValue=" . $this->MaxValue);
 
 		if (empty($this->width) && empty($this->height)) {
-			print 'Error width or height not set';
+			echo 'Error width or height not set';
 			return;
 		}
 

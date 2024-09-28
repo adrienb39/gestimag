@@ -120,9 +120,9 @@ class Odf
 		$this->file->close();
 
 
-		//print "tmpdir=".$tmpdir;
-		//print "filename=".$filename;
-		//print "tmpfile=".$tmpfile;
+		//echo "tmpdir=".$tmpdir;
+		//echo "filename=".$filename;
+		//echo "tmpfile=".$tmpfile;
 
 		copy($filename, $this->tmpfile);
 
@@ -149,7 +149,7 @@ class Odf
 		// TODO Warning string may be:
 		// <text:span text:style-name="T13">{</text:span><text:span text:style-name="T12">aaa</text:span><text:span text:style-name="T13">}</text:span>
 		// instead of {aaa} so we should enhance this function.
-		//print $key.'-'.$value.'-'.strpos($this->contentXml, $this->config['DELIMITER_LEFT'] . $key . $this->config['DELIMITER_RIGHT']).'<br>';
+		//echo $key.'-'.$value.'-'.strpos($this->contentXml, $this->config['DELIMITER_LEFT'] . $key . $this->config['DELIMITER_RIGHT']).'<br>';
 		if (strpos($this->contentXml, $tag) === false && strpos($this->stylesXml, $tag) === false) {
 			// Add the throw only for development. In most cases, it is normal to not having the key into the document (only few keys are presents).
 			//throw new OdfException("var $key not found in the document");
@@ -722,7 +722,7 @@ IMG;
 		$this->_parse('meta');
 
 		$this->setMetaData();
-		//print $this->metaXml;exit;
+		//echo $this->metaXml;exit;
 
 		if (! $this->file->addFromString('content.xml', $this->contentXml)) {
 			throw new OdfException('Error during file export addFromString content');

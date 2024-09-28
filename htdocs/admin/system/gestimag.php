@@ -76,23 +76,23 @@ $title = $langs->trans("InfoGestimag");
 
 llxHeader('', $title, $help_url, '', 0, 0, '', '', '', 'mod-admin page-system_gestimag');
 
-print load_fiche_titre($title, '', 'title_setup');
+echo load_fiche_titre($title, '', 'title_setup');
 
 // Version
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre"><td class="titlefieldcreate">'.$langs->trans("Version").'</td><td>'.$langs->trans("Value").'</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("CurrentVersion").'<br><span class="opacitymedium">('.$langs->trans("Programs").')</span></td><td>'.DOL_VERSION;
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre"><td class="titlefieldcreate">'.$langs->trans("Version").'</td><td>'.$langs->trans("Value").'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("CurrentVersion").'<br><span class="opacitymedium">('.$langs->trans("Programs").')</span></td><td>'.DOL_VERSION;
 // If current version differs from last upgrade
 if (!getDolGlobalString('MAIN_VERSION_LAST_UPGRADE')) {
 	// Compare version with last install database version (upgrades never occurred)
 	if (DOL_VERSION != $conf->global->MAIN_VERSION_LAST_INSTALL) {
-		print ' '.img_warning($langs->trans("RunningUpdateProcessMayBeRequired", DOL_VERSION, getDolGlobalString('MAIN_VERSION_LAST_INSTALL')));
+		echo ' '.img_warning($langs->trans("RunningUpdateProcessMayBeRequired", DOL_VERSION, getDolGlobalString('MAIN_VERSION_LAST_INSTALL')));
 	}
 } else {
 	// Compare version with last upgrade database version
 	if (DOL_VERSION != $conf->global->MAIN_VERSION_LAST_UPGRADE) {
-		print ' '.img_warning($langs->trans("RunningUpdateProcessMayBeRequired", DOL_VERSION, getDolGlobalString('MAIN_VERSION_LAST_UPGRADE')));
+		echo ' '.img_warning($langs->trans("RunningUpdateProcessMayBeRequired", DOL_VERSION, getDolGlobalString('MAIN_VERSION_LAST_UPGRADE')));
 	}
 }
 
@@ -100,12 +100,12 @@ $version = DOL_VERSION;
 if (preg_match('/[a-z]+/i', $version)) {
 	$version = '1.0-rc1'; // If version contains text, it is not an official tagged version, so we use the full change log.
 }
-print ' &nbsp; <a href="https://raw.githubusercontent.com/adrienb39/gestimag/'.$version.'/ChangeLog" target="_blank" rel="noopener noreferrer external">'.$langs->trans("SeeChangeLog").'</a>';
+echo ' &nbsp; <a href="https://raw.githubusercontent.com/adrienb39/gestimag/'.$version.'/ChangeLog" target="_blank" rel="noopener noreferrer external">'.$langs->trans("SeeChangeLog").'</a>';
 
 $newversion = '';
 if (function_exists('curl_init')) {
 	$conf->global->MAIN_USE_RESPONSE_TIMEOUT = 10;
-	print ' &nbsp; &nbsp; - &nbsp; &nbsp; ';
+	echo ' &nbsp; &nbsp; - &nbsp; &nbsp; ';
 	if ($action == 'getlastversion') {
 		if ($sfurl) {
 			$i = 0;
@@ -125,107 +125,107 @@ if (function_exists('curl_init')) {
 			}
 
 			// Show version
-			print $langs->trans("LastStableVersion").' : <b>'.(($version != '0.0') ? $version : $langs->trans("Unknown")).'</b>';
+			echo $langs->trans("LastStableVersion").' : <b>'.(($version != '0.0') ? $version : $langs->trans("Unknown")).'</b>';
 			if ($version != '0.0') {
-				print ' &nbsp; <a href="https://raw.githubusercontent.com/adrienb39/gestimag/'.$version.'/ChangeLog" target="_blank" rel="noopener noreferrer external">'.$langs->trans("SeeChangeLog").'</a>';
+				echo ' &nbsp; <a href="https://raw.githubusercontent.com/adrienb39/gestimag/'.$version.'/ChangeLog" target="_blank" rel="noopener noreferrer external">'.$langs->trans("SeeChangeLog").'</a>';
 			}
 		} else {
-			print $langs->trans("LastStableVersion").' : <b>'.$langs->trans("UpdateServerOffline").'</b>';
+			echo $langs->trans("LastStableVersion").' : <b>'.$langs->trans("UpdateServerOffline").'</b>';
 		}
 	} else {
-		print $langs->trans("LastStableVersion").' : <a href="'.$_SERVER["PHP_SELF"].'?action=getlastversion" class="butAction smallpaddingimp">'.$langs->trans("Check").'</a>';
+		echo $langs->trans("LastStableVersion").' : <a href="'.$_SERVER["PHP_SELF"].'?action=getlastversion" class="butAction smallpaddingimp">'.$langs->trans("Check").'</a>';
 	}
 }
 
 // Now show link to the changelog
-//print ' &nbsp; &nbsp; - &nbsp; &nbsp; ';
+//echo ' &nbsp; &nbsp; - &nbsp; &nbsp; ';
 
 $version = DOL_VERSION;
 if (preg_match('/[a-z]+/i', $version)) {
 	$version = 'develop'; // If version contains text, it is not an official tagged version, so we use the full change log.
 }
 
-print '</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("VersionLastUpgrade").'<br><span class="opacitymedium">('.$langs->trans("Database").')</span></td><td>'.getDolGlobalString('MAIN_VERSION_LAST_UPGRADE').'</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("VersionLastInstall").'<br><span class="opacitymedium">('.$langs->trans("Database").')</span></td><td>'.getDolGlobalString('MAIN_VERSION_LAST_INSTALL').'</td></tr>'."\n";
-print '</table>';
-print '</div>';
-print '<br>';
+echo '</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("VersionLastUpgrade").'<br><span class="opacitymedium">('.$langs->trans("Database").')</span></td><td>'.getDolGlobalString('MAIN_VERSION_LAST_UPGRADE').'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("VersionLastInstall").'<br><span class="opacitymedium">('.$langs->trans("Database").')</span></td><td>'.getDolGlobalString('MAIN_VERSION_LAST_INSTALL').'</td></tr>'."\n";
+echo '</table>';
+echo '</div>';
+echo '<br>';
 
 // Session
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre"><td class="titlefieldcreate">'.$langs->trans("Session").'</td><td>'.$langs->trans("Value").'</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("SessionSavePath").'</td><td>'.session_save_path().'</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("SessionName").'</td><td>'.session_name().'</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("SessionId").'</td><td>'.session_id().'</td></tr>'."\n";
-print '<tr class="oddeven"><td>';
-print $langs->trans("CurrentSessionTimeOut");
-print '</td>';
-print '<td>';
-print ini_get('session.gc_maxlifetime').' '.$langs->trans("seconds");
-print '<!-- session.gc_maxlifetime = '.ini_get("session.gc_maxlifetime").' -->'."\n";
-print '<!-- session.gc_probability = '.ini_get("session.gc_probability").' -->'."\n";
-print '<!-- session.gc_divisor = '.ini_get("session.gc_divisor").' -->'."\n";
-print $form->textwithpicto('', $langs->trans("Parameter").' <b>php.ini</b>: <b>session.gc_maxlifetime</b><br>'.$langs->trans("SessionExplanation", ini_get("session.gc_probability"), ini_get("session.gc_divisor")));
-print "</td></tr>\n";
-print '<tr class="oddeven"><td>'.$langs->trans("CurrentTheme").'</td><td>'.$conf->theme.'</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("CurrentMenuHandler").'</td><td>';
-print $conf->standard_menu;
-print '</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("Screen").'</td><td>';
-print $_SESSION['dol_screenwidth'].' x '.$_SESSION['dol_screenheight'];
-print '</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("Session").'</td><td class="wordbreak">';
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre"><td class="titlefieldcreate">'.$langs->trans("Session").'</td><td>'.$langs->trans("Value").'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("SessionSavePath").'</td><td>'.session_save_path().'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("SessionName").'</td><td>'.session_name().'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("SessionId").'</td><td>'.session_id().'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>';
+echo $langs->trans("CurrentSessionTimeOut");
+echo '</td>';
+echo '<td>';
+echo ini_get('session.gc_maxlifetime').' '.$langs->trans("seconds");
+echo '<!-- session.gc_maxlifetime = '.ini_get("session.gc_maxlifetime").' -->'."\n";
+echo '<!-- session.gc_probability = '.ini_get("session.gc_probability").' -->'."\n";
+echo '<!-- session.gc_divisor = '.ini_get("session.gc_divisor").' -->'."\n";
+echo $form->textwithpicto('', $langs->trans("Parameter").' <b>php.ini</b>: <b>session.gc_maxlifetime</b><br>'.$langs->trans("SessionExplanation", ini_get("session.gc_probability"), ini_get("session.gc_divisor")));
+echo "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("CurrentTheme").'</td><td>'.$conf->theme.'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("CurrentMenuHandler").'</td><td>';
+echo $conf->standard_menu;
+echo '</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("Screen").'</td><td>';
+echo $_SESSION['dol_screenwidth'].' x '.$_SESSION['dol_screenheight'];
+echo '</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("Session").'</td><td class="wordbreak">';
 $i = 0;
 foreach ($_SESSION as $key => $val) {
 	if ($i > 0) {
-		print ', ';
+		echo ', ';
 	}
 	if (is_array($val)) {
-		print $key.' => array(...)';
+		echo $key.' => array(...)';
 	} else {
-		print $key.' => '.dol_escape_htmltag($val);
+		echo $key.' => '.dol_escape_htmltag($val);
 	}
 	$i++;
 }
-print '</td></tr>'."\n";
-print '</table>';
-print '</div>';
-print '<br>';
+echo '</td></tr>'."\n";
+echo '</table>';
+echo '</div>';
+echo '<br>';
 
 
 // Shmop
 if (getDolGlobalInt('MAIN_OPTIMIZE_SPEED') & 0x02) {
 	$shmoparray = dol_listshmop();
 
-	print '<div class="div-table-responsive-no-min">';
-	print '<table class="noborder centpercent">';
-	print '<tr class="liste_titre">';
-	print '<td class="titlefieldcreate">'.$langs->trans("LanguageFilesCachedIntoShmopSharedMemory").'</td>';
-	print '<td>'.$langs->trans("NbOfEntries").'</td>';
-	print '<td class="right">'.$langs->trans("Address").'</td>';
-	print '</tr>'."\n";
+	echo '<div class="div-table-responsive-no-min">';
+	echo '<table class="noborder centpercent">';
+	echo '<tr class="liste_titre">';
+	echo '<td class="titlefieldcreate">'.$langs->trans("LanguageFilesCachedIntoShmopSharedMemory").'</td>';
+	echo '<td>'.$langs->trans("NbOfEntries").'</td>';
+	echo '<td class="right">'.$langs->trans("Address").'</td>';
+	echo '</tr>'."\n";
 
 	foreach ($shmoparray as $key => $val) {
-		print '<tr class="oddeven"><td>'.$key.'</td>';
-		print '<td>'.count($val).'</td>';
-		print '<td class="right">'.dol_getshmopaddress($key).'</td>';
-		print '</tr>'."\n";
+		echo '<tr class="oddeven"><td>'.$key.'</td>';
+		echo '<td>'.count($val).'</td>';
+		echo '<td class="right">'.dol_getshmopaddress($key).'</td>';
+		echo '</tr>'."\n";
 	}
 
-	print '</table>';
-	print '</div>';
-	print '<br>';
+	echo '</table>';
+	echo '</div>';
+	echo '<br>';
 }
 
 
 // Localisation
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre"><td class="titlefieldcreate">'.$langs->trans("LocalisationGestimagParameters").'</td><td>'.$langs->trans("Value").'</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("LanguageBrowserParameter", "HTTP_ACCEPT_LANGUAGE").'</td><td>'.$_SERVER["HTTP_ACCEPT_LANGUAGE"].'</td></tr>'."\n";
-print '<tr class="oddeven"><td>'.$langs->trans("CurrentUserLanguage").'</td><td>'.$langs->getDefaultLang().'</td></tr>'."\n";
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre"><td class="titlefieldcreate">'.$langs->trans("LocalisationGestimagParameters").'</td><td>'.$langs->trans("Value").'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("LanguageBrowserParameter", "HTTP_ACCEPT_LANGUAGE").'</td><td>'.$_SERVER["HTTP_ACCEPT_LANGUAGE"].'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("CurrentUserLanguage").'</td><td>'.$langs->getDefaultLang().'</td></tr>'."\n";
 // Thousands
 $thousand = $langs->transnoentitiesnoconv("SeparatorThousand");
 if ($thousand == 'SeparatorThousand') {
@@ -234,70 +234,70 @@ if ($thousand == 'SeparatorThousand') {
 if ($thousand == 'None') {
 	$thousand = '';
 }
-print '<tr class="oddeven"><td>'.$langs->trans("CurrentValueSeparatorThousand").'</td><td>'.($thousand == ' ' ? $langs->transnoentitiesnoconv("Space") : $thousand).'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("CurrentValueSeparatorThousand").'</td><td>'.($thousand == ' ' ? $langs->transnoentitiesnoconv("Space") : $thousand).'</td></tr>'."\n";
 // Decimals
 $dec = $langs->transnoentitiesnoconv("SeparatorDecimal");
-print '<tr class="oddeven"><td>'.$langs->trans("CurrentValueSeparatorDecimal").'</td><td>'.$dec.'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("CurrentValueSeparatorDecimal").'</td><td>'.$dec.'</td></tr>'."\n";
 // Show results of functions to see if everything works
-print '<tr class="oddeven"><td>&nbsp; => price2num(1233.56+1)</td><td>'.price2num(1233.56 + 1, '2').'</td></tr>'."\n";
-print '<tr class="oddeven"><td>&nbsp; => price2num('."'1".$thousand."234".$dec."56')</td><td>".price2num("1".$thousand."234".$dec."56", '2')."</td></tr>\n";
+echo '<tr class="oddeven"><td>&nbsp; => price2num(1233.56+1)</td><td>'.price2num(1233.56 + 1, '2').'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>&nbsp; => price2num('."'1".$thousand."234".$dec."56')</td><td>".price2num("1".$thousand."234".$dec."56", '2')."</td></tr>\n";
 if (($thousand != ',' && $thousand != '.') || ($thousand != ' ')) {
-	print '<tr class="oddeven"><td>&nbsp; => price2num('."'1 234.56')</td><td>".price2num("1 234.56", '2')."</td>";
-	print "</tr>\n";
+	echo '<tr class="oddeven"><td>&nbsp; => price2num('."'1 234.56')</td><td>".price2num("1 234.56", '2')."</td>";
+	echo "</tr>\n";
 }
-print '<tr class="oddeven"><td>&nbsp; => price(1234.56)</td><td>'.price(1234.56).'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>&nbsp; => price(1234.56)</td><td>'.price(1234.56).'</td></tr>'."\n";
 
 // Timezones
 
 // Database timezone
 if ($conf->db->type == 'mysql' || $conf->db->type == 'mysqli') {
-	print '<tr class="oddeven"><td>'.$langs->trans("MySQLTimeZone").' (database)</td><td>'; // Timezone server base
+	echo '<tr class="oddeven"><td>'.$langs->trans("MySQLTimeZone").' (database)</td><td>'; // Timezone server base
 	$sql = "SHOW VARIABLES where variable_name = 'system_time_zone'";
 	$resql = $db->query($sql);
 	if ($resql) {
 		$obj = $db->fetch_object($resql);
-		print $form->textwithtooltip($obj->Value, $langs->trans('TZHasNoEffect'), 2, 1, img_info(''));
+		echo $form->textwithtooltip($obj->Value, $langs->trans('TZHasNoEffect'), 2, 1, img_info(''));
 	}
-	print '</td></tr>'."\n";
+	echo '</td></tr>'."\n";
 }
 $txt = $langs->trans("OSTZ").' (variable system TZ): '.(!empty($_ENV["TZ"]) ? $_ENV["TZ"] : $langs->trans("NotDefined")).'<br>'."\n";
 $txt .= $langs->trans("PHPTZ").' (date_default_timezone_get() / php.ini date.timezone): '.(getServerTimeZoneString()." / ".(ini_get("date.timezone") ? ini_get("date.timezone") : $langs->trans("NotDefined")))."<br>\n"; // date.timezone must be in valued defined in http://fr3.php.net/manual/en/timezones.europe.php
 $txt .= $langs->trans("Gestimag constant MAIN_SERVER_TZ").': '.getDolGlobalString('MAIN_SERVER_TZ', $langs->trans("NotDefined"));
-print '<tr class="oddeven"><td>'.$langs->trans("CurrentTimeZone").'</td><td>'; // Timezone server PHP
+echo '<tr class="oddeven"><td>'.$langs->trans("CurrentTimeZone").'</td><td>'; // Timezone server PHP
 $a = getServerTimeZoneInt('now');
 $b = getServerTimeZoneInt('winter');
 $c = getServerTimeZoneInt('summer');
 $daylight = round($c - $b);
-//print $a." ".$b." ".$c." ".$daylight;
+//echo $a." ".$b." ".$c." ".$daylight;
 $val = ($a >= 0 ? '+' : '').$a;
 $val .= ' ('.($a == 'unknown' ? 'unknown' : ($a >= 0 ? '+' : '').($a * 3600)).')';
 $val .= ' &nbsp; &nbsp; &nbsp; '.getServerTimeZoneString();
 $val .= ' &nbsp; &nbsp; &nbsp; '.$langs->trans("DaylingSavingTime").': '.((is_null($b) || is_null($c)) ? 'unknown' : ($a == $c ? yn($daylight) : yn(0).($daylight ? '  &nbsp; &nbsp; ('.$langs->trans('YesInSummer').')' : '')));
-print $form->textwithtooltip($val, $txt, 2, 1, img_info(''));
-print '</td></tr>'."\n"; // value defined in http://fr3.php.net/manual/en/timezones.europe.php
-print '<tr class="oddeven"><td>&nbsp; => '.$langs->trans("CurrentHour").'</td><td>'.dol_print_date(dol_now('gmt'), 'dayhour', 'tzserver').'</td></tr>'."\n";
-print '<tr class="oddeven"><td>&nbsp; => dol_print_date(0,"dayhourtext")</td><td>'.dol_print_date(0, "dayhourtext").'</td>';
-print '<tr class="oddeven"><td>&nbsp; => dol_get_first_day(1970,1,false)</td><td>'.dol_get_first_day(1970, 1, false).' &nbsp; &nbsp; (=> dol_print_date() or idate() of this value = '.dol_print_date(dol_get_first_day(1970, 1, false), 'dayhour').')</td>';
-print '<tr class="oddeven"><td>&nbsp; => dol_get_first_day(1970,1,true)</td><td>'.dol_get_first_day(1970, 1, true).' &nbsp; &nbsp; (=> dol_print_date() or idate() of this value = '.dol_print_date(dol_get_first_day(1970, 1, true), 'dayhour').')</td>';
+echo $form->textwithtooltip($val, $txt, 2, 1, img_info(''));
+echo '</td></tr>'."\n"; // value defined in http://fr3.php.net/manual/en/timezones.europe.php
+echo '<tr class="oddeven"><td>&nbsp; => '.$langs->trans("CurrentHour").'</td><td>'.dol_print_date(dol_now('gmt'), 'dayhour', 'tzserver').'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>&nbsp; => dol_print_date(0,"dayhourtext")</td><td>'.dol_print_date(0, "dayhourtext").'</td>';
+echo '<tr class="oddeven"><td>&nbsp; => dol_get_first_day(1970,1,false)</td><td>'.dol_get_first_day(1970, 1, false).' &nbsp; &nbsp; (=> dol_print_date() or idate() of this value = '.dol_print_date(dol_get_first_day(1970, 1, false), 'dayhour').')</td>';
+echo '<tr class="oddeven"><td>&nbsp; => dol_get_first_day(1970,1,true)</td><td>'.dol_get_first_day(1970, 1, true).' &nbsp; &nbsp; (=> dol_print_date() or idate() of this value = '.dol_print_date(dol_get_first_day(1970, 1, true), 'dayhour').')</td>';
 // Client
 $tz = (int) $_SESSION['dol_tz'] + (int) $_SESSION['dol_dst'];
-print '<tr class="oddeven"><td>'.$langs->trans("ClientTZ").'</td><td>'.($tz ? ($tz >= 0 ? '+' : '').$tz : '').' ('.($tz >= 0 ? '+' : '').($tz * 60 * 60).')';
-print ' &nbsp; &nbsp; &nbsp; '.$_SESSION['dol_tz_string'];
-print ' &nbsp; &nbsp; &nbsp; '.$langs->trans("DaylingSavingTime").': ';
+echo '<tr class="oddeven"><td>'.$langs->trans("ClientTZ").'</td><td>'.($tz ? ($tz >= 0 ? '+' : '').$tz : '').' ('.($tz >= 0 ? '+' : '').($tz * 60 * 60).')';
+echo ' &nbsp; &nbsp; &nbsp; '.$_SESSION['dol_tz_string'];
+echo ' &nbsp; &nbsp; &nbsp; '.$langs->trans("DaylingSavingTime").': ';
 if ($_SESSION['dol_dst'] > 0) {
-	print yn(1);
+	echo yn(1);
 } else {
-	print yn(0);
+	echo yn(0);
 }
 if (!empty($_SESSION['dol_dst_first'])) {
-	print ' &nbsp; &nbsp; ('.dol_print_date(dol_stringtotime($_SESSION['dol_dst_first']), 'dayhour', 'gmt').' - '.dol_print_date(dol_stringtotime($_SESSION['dol_dst_second']), 'dayhour', 'gmt').')';
+	echo ' &nbsp; &nbsp; ('.dol_print_date(dol_stringtotime($_SESSION['dol_dst_first']), 'dayhour', 'gmt').' - '.dol_print_date(dol_stringtotime($_SESSION['dol_dst_second']), 'dayhour', 'gmt').')';
 }
-print '</td></tr>'."\n";
-print '</td></tr>'."\n";
-print '<tr class="oddeven"><td>&nbsp; => '.$langs->trans("ClientHour").'</td><td>'.dol_print_date(dol_now('gmt'), 'dayhour', 'tzuser').'</td></tr>'."\n";
+echo '</td></tr>'."\n";
+echo '</td></tr>'."\n";
+echo '<tr class="oddeven"><td>&nbsp; => '.$langs->trans("ClientHour").'</td><td>'.dol_print_date(dol_now('gmt'), 'dayhour', 'tzuser').'</td></tr>'."\n";
 
 $filesystemencoding = ini_get("unicode.filesystem_encoding"); // Disponible avec PHP 6.0
-print '<tr class="oddeven"><td>'.$langs->trans("File encoding").' (php.ini unicode.filesystem_encoding)</td><td>'.$filesystemencoding.'</td></tr>'."\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("File encoding").' (php.ini unicode.filesystem_encoding)</td><td>'.$filesystemencoding.'</td></tr>'."\n";
 
 $tmp = ini_get("unicode.filesystem_encoding"); // Disponible avec PHP 6.0
 if (empty($tmp) && !empty($_SERVER["WINDIR"])) {
@@ -309,11 +309,11 @@ if (empty($tmp)) {
 if (getDolGlobalString('MAIN_FILESYSTEM_ENCODING')) {
 	$tmp = getDolGlobalString('MAIN_FILESYSTEM_ENCODING');
 }
-print '<tr class="oddeven"><td>&nbsp; => '.$langs->trans("File encoding").'</td><td>'.$tmp.'</td></tr>'."\n"; // date.timezone must be in valued defined in http://fr3.php.net/manual/en/timezones.europe.php
+echo '<tr class="oddeven"><td>&nbsp; => '.$langs->trans("File encoding").'</td><td>'.$tmp.'</td></tr>'."\n"; // date.timezone must be in valued defined in http://fr3.php.net/manual/en/timezones.europe.php
 
-print '</table>';
-print '</div>';
-print '<br>';
+echo '</table>';
+echo '</div>';
+echo '<br>';
 
 
 
@@ -374,15 +374,15 @@ $configfileparameters = array(
 	'?gestimag_nocsrfcheck' => 'Disable CSRF security checks'
 );
 
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre">';
-print '<td class="titlefieldcreate">'.$langs->trans("Parameters").' ';
-print $langs->trans("ConfigurationFile").' ('.$conffiletoshowshort.')';
-print '</td>';
-print '<td>'.$langs->trans("Parameter").'</td>';
-print '<td>'.$langs->trans("Value").'</td>';
-print '</tr>'."\n";
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre">';
+echo '<td class="titlefieldcreate">'.$langs->trans("Parameters").' ';
+echo $langs->trans("ConfigurationFile").' ('.$conffiletoshowshort.')';
+echo '</td>';
+echo '<td>'.$langs->trans("Parameter").'</td>';
+echo '<td>'.$langs->trans("Value").'</td>';
+echo '</tr>'."\n";
 
 foreach ($configfileparameters as $key => $value) {
 	$ignore = 0;
@@ -399,105 +399,105 @@ foreach ($configfileparameters as $key => $value) {
 			continue;
 		}
 
-		print '<tr class="oddeven">';
+		echo '<tr class="oddeven">';
 		if (strpos($newkey, 'separator') !== false) {
-			print '<td colspan="3">&nbsp;</td>';
+			echo '<td colspan="3">&nbsp;</td>';
 		} else {
 			// Label
-			print "<td>".$value.'</td>';
+			echo "<td>".$value.'</td>';
 			// Key
-			print '<td>'.$newkey.'</td>';
+			echo '<td>'.$newkey.'</td>';
 			// Value
-			print "<td>";
+			echo "<td>";
 			if (in_array($newkey, array('gestimag_main_db_pass', 'gestimag_main_auth_ldap_admin_pass'))) {
 				if (empty($gestimag_main_prod)) {
-					print '<!-- '.${$newkey}.' -->';
-					print showValueWithClipboardCPButton(${$newkey}, 0, '********');
+					echo '<!-- '.${$newkey}.' -->';
+					echo showValueWithClipboardCPButton(${$newkey}, 0, '********');
 				} else {
-					print '**********';
+					echo '**********';
 				}
 			} elseif ($newkey == 'gestimag_main_url_root' && preg_match('/__auto__/', ${$newkey})) {
-				print ${$newkey}.' => '.constant('DOL_MAIN_URL_ROOT');
+				echo ${$newkey}.' => '.constant('DOL_MAIN_URL_ROOT');
 			} elseif ($newkey == 'gestimag_main_document_root_alt') {
 				$tmparray = explode(',', $gestimag_main_document_root_alt);
 				$i = 0;
 				foreach ($tmparray as $value2) {
 					if ($i > 0) {
-						print ', ';
+						echo ', ';
 					}
-					print $value2;
+					echo $value2;
 					if (!is_readable($value2)) {
 						$langs->load("errors");
-						print ' '.img_warning($langs->trans("ErrorCantReadDir", $value2));
+						echo ' '.img_warning($langs->trans("ErrorCantReadDir", $value2));
 					}
 					++$i;
 				}
 			} elseif ($newkey == 'gestimag_main_instance_unique_id') {
-				//print $conf->file->instance_unique_id;
+				//echo $conf->file->instance_unique_id;
 				global $gestimag_main_cookie_cryptkey, $gestimag_main_instance_unique_id;
 				$valuetoshow = $gestimag_main_instance_unique_id ? $gestimag_main_instance_unique_id : $gestimag_main_cookie_cryptkey; // Use $gestimag_main_instance_unique_id first then $gestimag_main_cookie_cryptkey
 				if (empty($gestimag_main_prod)) {
-					print '<!-- '.$gestimag_main_instance_unique_id.' (this will not be visible if $gestimag_main_prod = 1 -->';
-					print showValueWithClipboardCPButton($valuetoshow, 0, '********');
-					print ' &nbsp; &nbsp; <span class="opacitymedium">'.$langs->trans("ThisValueCanBeReadBecauseInstanceIsNotInProductionMode").'</span>';
+					echo '<!-- '.$gestimag_main_instance_unique_id.' (this will not be visible if $gestimag_main_prod = 1 -->';
+					echo showValueWithClipboardCPButton($valuetoshow, 0, '********');
+					echo ' &nbsp; &nbsp; <span class="opacitymedium">'.$langs->trans("ThisValueCanBeReadBecauseInstanceIsNotInProductionMode").'</span>';
 				} else {
-					print '**********';
-					print ' &nbsp; &nbsp; <span class="opacitymedium">'.$langs->trans("SeeConfFile").'</span>';
+					echo '**********';
+					echo ' &nbsp; &nbsp; <span class="opacitymedium">'.$langs->trans("SeeConfFile").'</span>';
 				}
 				if (empty($valuetoshow)) {
-					print img_warning("EditConfigFileToAddEntry", 'gestimag_main_instance_unique_id');
+					echo img_warning("EditConfigFileToAddEntry", 'gestimag_main_instance_unique_id');
 				}
-				print '</td></tr>';
-				print '<tr class="oddeven"><td></td><td>&nbsp; => '.$langs->trans("HashForPing").'</td><td>'.md5('gestimag'.$valuetoshow).'</td></tr>'."\n";
+				echo '</td></tr>';
+				echo '<tr class="oddeven"><td></td><td>&nbsp; => '.$langs->trans("HashForPing").'</td><td>'.md5('gestimag'.$valuetoshow).'</td></tr>'."\n";
 			} elseif ($newkey == 'gestimag_main_prod') {
-				print ${$newkey};
+				echo ${$newkey};
 
 				$valuetoshow = ${$newkey};
 				if (empty($valuetoshow)) {
-					print img_warning($langs->trans('SwitchThisForABetterSecurity', 1));
+					echo img_warning($langs->trans('SwitchThisForABetterSecurity', 1));
 				}
 			} elseif ($newkey == 'gestimag_nocsrfcheck') {
-				print ${$newkey};
+				echo ${$newkey};
 
 				$valuetoshow = ${$newkey};
 				if (!empty($valuetoshow)) {
-					print img_warning($langs->trans('SwitchThisForABetterSecurity', 0));
+					echo img_warning($langs->trans('SwitchThisForABetterSecurity', 0));
 				}
 			} elseif ($newkey == 'gestimag_main_db_readonly') {
-				print ${$newkey};
+				echo ${$newkey};
 
 				$valuetoshow = ${$newkey};
 				if (!empty($valuetoshow)) {
-					print img_warning($langs->trans('ReadOnlyMode', 1));
+					echo img_warning($langs->trans('ReadOnlyMode', 1));
 				}
 			} else {
 				print(empty(${$newkey}) ? '' : ${$newkey});
 			}
 			if ($newkey == 'gestimag_main_url_root' && ${$newkey} != DOL_MAIN_URL_ROOT) {
-				print ' (currently overwritten by autodetected value: '.DOL_MAIN_URL_ROOT.')';
+				echo ' (currently overwritten by autodetected value: '.DOL_MAIN_URL_ROOT.')';
 			}
-			print "</td>";
+			echo "</td>";
 		}
-		print "</tr>\n";
+		echo "</tr>\n";
 		$lastkeyshown = $newkey;
 	}
 }
-print '</table>';
-print '</div>';
-print '<br>';
+echo '</table>';
+echo '</div>';
+echo '<br>';
 
 
 
 // Parameters in database
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder">';
-print '<tr class="liste_titre">';
-print '<td class="titlefield">'.$langs->trans("Parameters").' '.$langs->trans("Database").'</td>';
-print '<td>'.$langs->trans("Value").'</td>';
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder">';
+echo '<tr class="liste_titre">';
+echo '<td class="titlefield">'.$langs->trans("Parameters").' '.$langs->trans("Database").'</td>';
+echo '<td>'.$langs->trans("Value").'</td>';
 if (!isModEnabled('multicompany') || !$user->entity) {
-	print '<td class="center width="80px"">'.$langs->trans("Entity").'</td>'; // If superadmin or multicompany disabled
+	echo '<td class="center width="80px"">'.$langs->trans("Entity").'</td>'; // If superadmin or multicompany disabled
 }
-print "</tr>\n";
+echo "</tr>\n";
 
 $sql = "SELECT";
 $sql .= " rowid";
@@ -525,29 +525,29 @@ if ($resql) {
 	while ($i < $num) {
 		$obj = $db->fetch_object($resql);
 
-		print '<tr class="oddeven">';
-		print '<td class="tdoverflowmax600" title="'.dol_escape_htmltag($obj->name).'">'.dol_escape_htmltag($obj->name).'</td>'."\n";
-		print '<td class="tdoverflowmax300">';
+		echo '<tr class="oddeven">';
+		echo '<td class="tdoverflowmax600" title="'.dol_escape_htmltag($obj->name).'">'.dol_escape_htmltag($obj->name).'</td>'."\n";
+		echo '<td class="tdoverflowmax300">';
 		if (isASecretKey($obj->name)) {
 			if (empty($gestimag_main_prod)) {
-				print '<!-- '.$obj->value.' -->';
+				echo '<!-- '.$obj->value.' -->';
 			}
-			print '**********';
+			echo '**********';
 		} else {
-			print dol_escape_htmltag($obj->value);
+			echo dol_escape_htmltag($obj->value);
 		}
-		print '</td>'."\n";
+		echo '</td>'."\n";
 		if (!isModEnabled('multicompany') || !$user->entity) {
-			print '<td class="center" width="80px">'.$obj->entity.'</td>'."\n"; // If superadmin or multicompany disabled
+			echo '<td class="center" width="80px">'.$obj->entity.'</td>'."\n"; // If superadmin or multicompany disabled
 		}
-		print "</tr>\n";
+		echo "</tr>\n";
 
 		$i++;
 	}
 }
 
-print '</table>';
-print '</div>';
+echo '</table>';
+echo '</div>';
 
 // End of page
 llxFooter();

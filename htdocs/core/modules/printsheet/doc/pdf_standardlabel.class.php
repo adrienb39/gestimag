@@ -203,7 +203,7 @@ class pdf_standardlabel extends CommonStickerGenerator
 			$pdf->SetXY($_PosX, $_PosY + $this->_Height - $this->_Line_Height - 1);
 			$pdf->Cell($this->_Width, $this->_Line_Height, $outputlangs->convToOutputCharset($footer), 0, 1, 'C');
 		}
-		//print "$_PosY+$this->_Height-$this->_Line_Height-1<br>\n";
+		//echo "$_PosY+$this->_Height-$this->_Line_Height-1<br>\n";
 
 		$this->_COUNTY++;
 

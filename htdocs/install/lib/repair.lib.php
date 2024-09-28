@@ -141,7 +141,7 @@ function clean_data_ecm_directories()
 			$newlabel = dol_sanitizeFileName($label);
 			if ($label != $newlabel) {
 				$sqlupdate = "UPDATE ".MAIN_DB_PREFIX."ecm_directories set label = '".$db->escape($newlabel)."' WHERE rowid = ".((int) $id);
-				print '<tr><td>'.$sqlupdate."</td></tr>\n";
+				echo '<tr><td>'.$sqlupdate."</td></tr>\n";
 				$resqlupdate = $db->query($sqlupdate);
 				if (!$resqlupdate) {
 					dol_print_error($db, 'Failed to update');

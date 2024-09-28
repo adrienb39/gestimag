@@ -59,7 +59,7 @@ llxHeader('', $langs->trans("MembersStatisticsByProperties"), '', '', 0, 0, arra
 
 $title = $langs->trans("MembersStatisticsByProperties");
 
-print load_fiche_titre($title, '', $memberstatic->picto);
+echo load_fiche_titre($title, '', $memberstatic->picto);
 
 //dol_mkdir($dir);
 
@@ -138,29 +138,29 @@ if ($resql) {
 
 $head = member_stats_prepare_head($memberstatic);
 
-print dol_get_fiche_head($head, 'statsbyproperties', '', -1, '');
+echo dol_get_fiche_head($head, 'statsbyproperties', '', -1, '');
 
 
 // Print title
 if (!count($data)) {
-	print '<span class="opacitymedium">'.$langs->trans("NoValidatedMemberYet").'</span><br>';
-	print '<br>';
+	echo '<span class="opacitymedium">'.$langs->trans("NoValidatedMemberYet").'</span><br>';
+	echo '<br>';
 } else {
-	print '<span class="opacitymedium">'.$langs->trans("MembersByNature").'</span><br>';
-	print '<br>';
+	echo '<span class="opacitymedium">'.$langs->trans("MembersByNature").'</span><br>';
+	echo '<br>';
 }
 
 // Print array
-print '<div class="div-table-responsive">'; // You can use div-table-responsive-no-min if you don't need reserved height for your table
-print '<table class="liste centpercent">';
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("MemberNature").'</td>';
-print '<td class="right">'.$langs->trans("NbOfMembers").' <span class="opacitymedium">('.$langs->trans("AllTime").')</span></td>';
-print '<td class="right">'.$langs->trans("NbOfActiveMembers").'</td>';
-print '<td class="center">'.$langs->trans("LastMemberDate").'</td>';
-print '<td class="right">'.$langs->trans("NbOfSubscriptions").'</td>';
-print '<td class="center">'.$langs->trans("LatestSubscriptionDate").'</td>';
-print '</tr>';
+echo '<div class="div-table-responsive">'; // You can use div-table-responsive-no-min if you don't need reserved height for your table
+echo '<table class="liste centpercent">';
+echo '<tr class="liste_titre">';
+echo '<td>'.$langs->trans("MemberNature").'</td>';
+echo '<td class="right">'.$langs->trans("NbOfMembers").' <span class="opacitymedium">('.$langs->trans("AllTime").')</span></td>';
+echo '<td class="right">'.$langs->trans("NbOfActiveMembers").'</td>';
+echo '<td class="center">'.$langs->trans("LastMemberDate").'</td>';
+echo '<td class="right">'.$langs->trans("NbOfSubscriptions").'</td>';
+echo '<td class="center">'.$langs->trans("LatestSubscriptionDate").'</td>';
+echo '</tr>';
 
 if (!$foundphy) {
 	$data[] = array('label' => 'phy', 'nb' => '0', 'nbactive' => '0', 'lastdate' => '', 'lastsubscriptiondate' => '');
@@ -174,20 +174,20 @@ foreach ($data as $val) {
 	$nbsubscriptions = isset($val['nbsubscriptions']) ? $val['nbsubscriptions'] : 0;
 	$nbactive = $val['nbactive'];
 
-	print '<tr class="oddeven">';
-	print '<td>'.$memberstatic->getmorphylib($val['label']).'</td>';
-	print '<td class="right">'.$nb.'</td>';
-	print '<td class="right">'.$nbactive.'</td>';
-	print '<td class="center">'.dol_print_date($val['lastdate'], 'dayhour').'</td>';
-	print '<td class="right">'.$nbsubscriptions.'</td>';
-	print '<td class="center">'.dol_print_date($val['lastsubscriptiondate'], 'dayhour').'</td>';
-	print '</tr>';
+	echo '<tr class="oddeven">';
+	echo '<td>'.$memberstatic->getmorphylib($val['label']).'</td>';
+	echo '<td class="right">'.$nb.'</td>';
+	echo '<td class="right">'.$nbactive.'</td>';
+	echo '<td class="center">'.dol_print_date($val['lastdate'], 'dayhour').'</td>';
+	echo '<td class="right">'.$nbsubscriptions.'</td>';
+	echo '<td class="center">'.dol_print_date($val['lastsubscriptiondate'], 'dayhour').'</td>';
+	echo '</tr>';
 }
 
-print '</table>';
-print '</div>';
+echo '</table>';
+echo '</div>';
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 // End of page
 llxFooter();

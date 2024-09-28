@@ -71,13 +71,13 @@ $generatedContent = $ai->generateContent($instructions, 'auto', $function, $form
 if (is_array($generatedContent) && $generatedContent['error']) {
 	// Output error
 	if (!empty($generatedContent['code']) && $generatedContent['code'] == 429) {
-		print "Quota or allowed period exceeded. Retry Later !";
+		echo "Quota or allowed period exceeded. Retry Later !";
 	} elseif ($generatedContent['code'] >= 400) {
-		print "Error : " . $generatedContent['message'];
-		print '<br><a href="'.DOL_MAIN_URL_ROOT.'/ai/admin/setup.php">'.$langs->trans('ErrorGoToModuleSetup').'</a>';
+		echo "Error : " . $generatedContent['message'];
+		echo '<br><a href="'.DOL_MAIN_URL_ROOT.'/ai/admin/setup.php">'.$langs->trans('ErrorGoToModuleSetup').'</a>';
 	} else {
-		print "Error returned by API call: " . $generatedContent['message'];
+		echo "Error returned by API call: " . $generatedContent['message'];
 	}
 } else {
-	print $generatedContent;
+	echo $generatedContent;
 }

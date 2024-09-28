@@ -109,7 +109,7 @@ if (!empty($object->photo)) {
 		//$originalfile = get_exdir(0, 0, 0, 0, $object, 'user').'photos/'.$object->photo;
 	}
 }
-//print '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
+//echo '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
 // Define urllogo
 $urllogo = '';
 $urllogofull = '';
@@ -180,7 +180,7 @@ if ($mode == 'vcard') {
 	header("Content-Length: ".dol_strlen($output));
 	header("Connection: close");
 
-	print $output;
+	echo $output;
 
 	$db->close();
 
@@ -197,7 +197,7 @@ $conf->dol_hide_leftmenu = 1;
 
 if (!getDolUserInt('USER_ENABLE_PUBLIC', 0, $object)) {
 	$langs->load("errors");
-	print '<div class="error">'.$langs->trans('ErrorPublicInterfaceNotEnabled').'</div>';
+	echo '<div class="error">'.$langs->trans('ErrorPublicInterfaceNotEnabled').'</div>';
 	$db->close();
 	exit();
 }
@@ -208,7 +208,7 @@ $arrayofcss = array();
 $replacemainarea = (empty($conf->dol_hide_leftmenu) ? '<div>' : '').'<div>';
 llxHeader($head, $object->getFullName($langs).' - '.$langs->trans("PublicVirtualCard"), '', '', 0, 0, '', '', '', 'onlinepaymentbody'.(GETPOST('mode')=='preview' ? ' scalepreview cursorpointer virtualcardpreview' : ''), $replacemainarea, 1, 1);
 
-print '
+echo '
 <style>
 @media (prefers-color-scheme: dark) {
 	form {
@@ -218,47 +218,47 @@ print '
 </style>
 ';
 
-print '<span id="dolpaymentspan"></span>'."\n";
-print '<div class="center">'."\n";
+echo '<span id="dolpaymentspan"></span>'."\n";
+echo '<div class="center">'."\n";
 
-print '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-print '<input type="hidden" name="token" value="'.newToken().'">'."\n";
-print '<input type="hidden" name="action" value="dosubmit">'."\n";
-print '<input type="hidden" name="securekey" value="'.$securekey.'">'."\n";
-print '<input type="hidden" name="entity" value="'.$conf->entity.'" />';
-print "\n";
+echo '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
+echo '<input type="hidden" name="token" value="'.newToken().'">'."\n";
+echo '<input type="hidden" name="action" value="dosubmit">'."\n";
+echo '<input type="hidden" name="securekey" value="'.$securekey.'">'."\n";
+echo '<input type="hidden" name="entity" value="'.$conf->entity.'" />';
+echo "\n";
 
 // Output html code for logo
-print '<div class="backgreypublicpayment">';
-print '<div class="logopublicpayment">';
+echo '<div class="backgreypublicpayment">';
+echo '<div class="logopublicpayment">';
 
 // Name
-print '<div class="double colortext">'.$object->getFullName($langs).'</div>';
+echo '<div class="double colortext">'.$object->getFullName($langs).'</div>';
 // User position
 if ($object->job && !getDolUserInt('USER_PUBLIC_HIDE_JOBPOSITION', 0, $object)) {
-	print '<div class="">';
-	print dol_escape_htmltag($object->job);
-	print '</div>';
+	echo '<div class="">';
+	echo dol_escape_htmltag($object->job);
+	echo '</div>';
 }
 if (!getDolUserInt('USER_PUBLIC_HIDE_COMPANY', 0, $object)) {
-	print '<div class="bold">';
-	print dol_escape_htmltag($mysoc->name);
-	print '</div>';
+	echo '<div class="bold">';
+	echo dol_escape_htmltag($mysoc->name);
+	echo '</div>';
 }
 
 
 
-print '</div>';
+echo '</div>';
 /*if (empty($conf->global->MAIN_HIDE_POWERED_BY)) {
-	print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+	echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 }*/
-print '</div>';
+echo '</div>';
 
 
 if (getDolGlobalString('USER_IMAGE_PUBLIC_INTERFACE')) {
-	print '<div class="backimagepublicrecruitment">';
-	print '<img id="idUSER_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('USER_IMAGE_PUBLIC_INTERFACE').'">';
-	print '</div>';
+	echo '<div class="backimagepublicrecruitment">';
+	echo '<img id="idUSER_IMAGE_PUBLIC_INTERFACE" src="' . getDolGlobalString('USER_IMAGE_PUBLIC_INTERFACE').'">';
+	echo '</div>';
 }
 
 $urlforqrcode = $object->getOnlineVirtualCardUrl('vcard');
@@ -279,11 +279,11 @@ if ($showbarcode) {
 
 	$filename = $v->buildVCardString($object, $company, $langs, '', $outdir);
 
-	print '<br>';
-	print '<div class="floatleft inline-block valignmiddle paddingleft paddingright">';
-	print '<img style="max-width: 100%" src="'.$gestimag_main_url_root.'/viewimage.php?modulepart=barcode&entity='.((int) $conf->entity).'&generator=tcpdfbarcode&encoding=QRCODE&code='.urlencode(basename($filename)).'">';
-	print '</div>';
-	print '<br>';
+	echo '<br>';
+	echo '<div class="floatleft inline-block valignmiddle paddingleft paddingright">';
+	echo '<img style="max-width: 100%" src="'.$gestimag_main_url_root.'/viewimage.php?modulepart=barcode&entity='.((int) $conf->entity).'&generator=tcpdfbarcode&encoding=QRCODE&code='.urlencode(basename($filename)).'">';
+	echo '</div>';
+	echo '<br>';
 }
 
 
@@ -352,28 +352,28 @@ if (!empty($object->socialnetworks) && is_array($object->socialnetworks) && coun
 if ($usersection) {
 	// Show photo
 	if ($urllogo) {
-		print '<img class="userphotopublicvcard" id="dolpaymentlogo" src="'.$urllogofull.'">';
+		echo '<img class="userphotopublicvcard" id="dolpaymentlogo" src="'.$urllogofull.'">';
 	}
 
-	print '<table id="dolpaymenttable" summary="Job position offer" class="center">'."\n";
+	echo '<table id="dolpaymenttable" summary="Job position offer" class="center">'."\n";
 
 	// Output payment summary form
-	print '<tr><td class="left">';
+	echo '<tr><td class="left">';
 
-	print '<div class="nowidthimp nopaddingtoponsmartphone" id="tablepublicpayment">';
+	echo '<div class="nowidthimp nopaddingtoponsmartphone" id="tablepublicpayment">';
 
-	print $usersection;
+	echo $usersection;
 
-	print '</div>'."\n";
-	print "\n";
+	echo '</div>'."\n";
+	echo "\n";
 
-	print '</td></tr>'."\n";
+	echo '</td></tr>'."\n";
 
-	print '</table>'."\n";
+	echo '</table>'."\n";
 } else {
 	// Show photo
 	if ($urllogo) {
-		print '<br><center><img class="userphotopublicvcard" style="position: unset !important;" id="dolpaymentlogo" src="'.$urllogofull.'"></center>';
+		echo '<br><center><img class="userphotopublicvcard" style="position: unset !important;" id="dolpaymentlogo" src="'.$urllogofull.'"></center>';
 	}
 }
 
@@ -427,7 +427,7 @@ if (!getDolUserInt('USER_PUBLIC_HIDE_COMPANY', 0, $object)) {
 	} elseif (getDolGlobalString('ONLINE_USER_LOGO')) {
 		$logosmall = getDolGlobalString('ONLINE_USER_LOGO');
 	}
-	//print '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
+	//echo '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
 	// Define urllogo
 	$urllogo = '';
 	$urllogofull = '';
@@ -440,76 +440,76 @@ if (!getDolUserInt('USER_PUBLIC_HIDE_COMPANY', 0, $object)) {
 	}
 	// Output html code for logo
 	if ($urllogo) {
-		print '<div class="logopublicpayment center">';
+		echo '<div class="logopublicpayment center">';
 		if (!empty($mysoc->url)) {
-			print '<a href="'.$mysoc->url.'" target="_blank" rel="noopener">';
+			echo '<a href="'.$mysoc->url.'" target="_blank" rel="noopener">';
 		}
-		print '<img class="userphotopublicvcard" id="dolpaymentlogo" src="'.$urllogofull.'">';
+		echo '<img class="userphotopublicvcard" id="dolpaymentlogo" src="'.$urllogofull.'">';
 		if (!empty($mysoc->url)) {
-			print '</a>';
+			echo '</a>';
 		}
-		print '</div>';
+		echo '</div>';
 	}
-	print '<table id="dolpaymenttable" summary="Job position offer" class="center">'."\n";
+	echo '<table id="dolpaymenttable" summary="Job position offer" class="center">'."\n";
 
 	// Output payment summary form
-	print '<tr><td class="left">';
+	echo '<tr><td class="left">';
 
-	print '<div class="nowidthimp nopaddingtoponsmartphone" id="tablepublicpayment">';
+	echo '<div class="nowidthimp nopaddingtoponsmartphone" id="tablepublicpayment">';
 
 	// Add company info
 	if ($mysoc->name) {
-		print '<div class="center bold">';
-		print dol_escape_htmltag($mysoc->name);
-		print '</div>';
-		print '<br>';
+		echo '<div class="center bold">';
+		echo dol_escape_htmltag($mysoc->name);
+		echo '</div>';
+		echo '<br>';
 	}
 
-	print $companysection;
+	echo $companysection;
 
-	print '</div>'."\n";
-	print "\n";
+	echo '</div>'."\n";
+	echo "\n";
 
-	print '</td></tr>'."\n";
+	echo '</td></tr>'."\n";
 
-	print '</table>'."\n";
+	echo '</table>'."\n";
 }
 
 
 // Description
 $text = getDolUserString('USER_PUBLIC_MORE', '', $object);
-print $text;
+echo $text;
 
 
-print '</form>'."\n";
-print '</div>'."\n";
-print '<br>';
+echo '</form>'."\n";
+echo '</div>'."\n";
+echo '<br>';
 
 
-print '<div class="backgreypublicpayment">';
-print '<div class="center">';
-print '<a href="'.$urlforqrcode.'">';
+echo '<div class="backgreypublicpayment">';
+echo '<div class="center">';
+echo '<a href="'.$urlforqrcode.'">';
 // Download / AddToContacts
-print img_picto($langs->trans("Download").' VCF', 'add').' ';
-print $langs->trans("Download").' VCF';
-print '</a>';
-print '</div>';
-//print '<div>';
-//print '</div>';
-print '</div>';
+echo img_picto($langs->trans("Download").' VCF', 'add').' ';
+echo $langs->trans("Download").' VCF';
+echo '</a>';
+echo '</div>';
+//echo '<div>';
+//echo '</div>';
+echo '</div>';
 
 $fullexternaleurltovirtualcard = $object->getOnlineVirtualCardUrl('', 'external');
 $fullinternalurltovirtualcard = $object->getOnlineVirtualCardUrl('', 'internal');
 
-print '<script>';
-print 'jQuery(document).ready(function() {
+echo '<script>';
+echo 'jQuery(document).ready(function() {
  	jQuery(".virtualcardpreview").click(function(event) {
  		event.preventDefault();
 		console.log("We click on the card");
 		window.open("'.$fullexternaleurltovirtualcard.'");
  	});
 });';
-print '</script>';
+echo '</script>';
 
 llxFooter('', 'public');
 

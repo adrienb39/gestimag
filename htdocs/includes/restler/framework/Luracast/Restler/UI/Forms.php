@@ -123,7 +123,7 @@ class Forms implements iFilter
                 );
 
         } catch (RestException $e) {
-            //echo $e->getErrorMessage();
+            //echo  $e->getErrorMessage();
             $info = false;
         }
         if (!$info)
@@ -352,9 +352,9 @@ class Forms implements iFilter
         if (isset($p->rules['autofocus']))
             $r['autofocus'] = 'autofocus';
         /*
-        echo "<pre>";
+        echo  "<pre>";
         print_r($r);
-        echo "</pre>";
+        echo  "</pre>";
         */
         if ($dataOnly)
             return $r;

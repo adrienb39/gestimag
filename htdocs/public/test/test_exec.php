@@ -55,7 +55,7 @@ header("Content-type: text/html; charset=UTF8");
 header("X-Content-Type-Options: nosniff"); // With the nosniff option, if the server says the content is text/html, the browser will render it as text/html (note that most browsers now force this option to on)
 header("X-Frame-Options: SAMEORIGIN"); // Frames allowed only if on same domain (stop some XSS attacks)
 
-print "*** TEST READ OF /tmp/test.txt FILE (Example: if file exists and owned by apache process owner + PrivateTmp is false + apparmor rules allows read of owned files in /tmp/, then you should see the file)<br>\n";
+echo "*** TEST READ OF /tmp/test.txt FILE (Example: if file exists and owned by apache process owner + PrivateTmp is false + apparmor rules allows read of owned files in /tmp/, then you should see the file)<br>\n";
 
 $out='';
 $ret=0;
@@ -64,29 +64,29 @@ $file = '/tmp/test.txt';
 $f=fopen($file, 'r');
 if ($f) {
 	$s=fread($f, 4096);
-	print $s;
+	echo $s;
 	fclose($f);
 } else {
-	print "Failed to open file ".$file."<br>\n";
+	echo "Failed to open file ".$file."<br>\n";
 }
 
-print '<br><br>'."\n";
+echo '<br><br>'."\n";
 
 
-print "*** TEST READ OF /test.txt FILE AND LS /dev/std*<br>\n";
+echo "*** TEST READ OF /test.txt FILE AND LS /dev/std*<br>\n";
 
 exec('cat /test.txt; ls /dev/std*; sleep 1;', $out, $ret);
-print "ret=".$ret."<br>\n";
+echo "ret=".$ret."<br>\n";
 print_r($out);
-print '<br>';
+echo '<br>';
 
-print '<br><br>'."\n";
+echo '<br><br>'."\n";
 
 
-print "*** TRY TO RUN CLAMDSCAN<br>\n";
+echo "*** TRY TO RUN CLAMDSCAN<br>\n";
 
 $ret = 0;
 $out = null;
 exec('/usr/bin/clamdscan --fdpass filethatdoesnotexists.php', $out, $ret);
-print "ret=".$ret."<br>\n";
+echo "ret=".$ret."<br>\n";
 print_r($out);

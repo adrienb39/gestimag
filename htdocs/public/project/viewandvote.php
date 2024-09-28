@@ -74,7 +74,7 @@ $securekeyreceived = GETPOST("securekey");
 $securekeytocompare = dol_hash(getDolGlobalString('EVENTORGANIZATION_SECUREKEY') . 'conferenceorbooth'.$id, 'md5');
 
 if ($securekeytocompare != $securekeyreceived) {
-	print $langs->trans('MissingOrBadSecureKey');
+	echo $langs->trans('MissingOrBadSecureKey');
 	exit;
 }
 
@@ -217,18 +217,18 @@ $conf->dol_hide_leftmenu = 1;
 $replacemainarea = (empty($conf->dol_hide_leftmenu) ? '<div>' : '').'<div>';
 llxHeader($head, $langs->trans("SuggestForm"), '', '', 0, 0, '', '', '', 'onlinepaymentbody', $replacemainarea);
 
-print '<span id="dolpaymentspan"></span>'."\n";
-print '<div class="center">'."\n";
-print '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-print '<input type="hidden" name="token" value="'.newToken().'">'."\n";
-print '<input type="hidden" name="action" value="dopayment">'."\n";
-print '<input type="hidden" name="tag" value="'.GETPOST("tag", 'alpha').'">'."\n";
-//print '<input type="hidden" name="suffix" value="'.dol_escape_htmltag($suffix).'">'."\n";
-print '<input type="hidden" name="id" value="'.dol_escape_htmltag($id).'">'."\n";
-print '<input type="hidden" name="securekey" value="'.dol_escape_htmltag($securekeyreceived).'">'."\n";
-print '<input type="hidden" name="e" value="'.$entity.'" />';
-print '<input type="hidden" name="forcesandbox" value="'.GETPOSTINT('forcesandbox').'" />';
-print "\n";
+echo '<span id="dolpaymentspan"></span>'."\n";
+echo '<div class="center">'."\n";
+echo '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
+echo '<input type="hidden" name="token" value="'.newToken().'">'."\n";
+echo '<input type="hidden" name="action" value="dopayment">'."\n";
+echo '<input type="hidden" name="tag" value="'.GETPOST("tag", 'alpha').'">'."\n";
+//echo '<input type="hidden" name="suffix" value="'.dol_escape_htmltag($suffix).'">'."\n";
+echo '<input type="hidden" name="id" value="'.dol_escape_htmltag($id).'">'."\n";
+echo '<input type="hidden" name="securekey" value="'.dol_escape_htmltag($securekeyreceived).'">'."\n";
+echo '<input type="hidden" name="e" value="'.$entity.'" />';
+echo '<input type="hidden" name="forcesandbox" value="'.GETPOSTINT('forcesandbox').'" />';
+echo "\n";
 
 
 // Show logo (search order: logo defined by PAYMENT_LOGO_suffix, then PAYMENT_LOGO, then small company logo, large company logo, theme logo, common logo)
@@ -241,7 +241,7 @@ if (!empty($conf->global->$paramlogo)) {
 } elseif (getDolGlobalString('ONLINE_PAYMENT_LOGO')) {
 	$logosmall = getDolGlobalString('ONLINE_PAYMENT_LOGO');
 }
-//print '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
+//echo '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
 // Define urllogo
 $urllogo = '';
 $urllogofull = '';
@@ -255,43 +255,43 @@ if (!empty($logosmall) && is_readable($conf->mycompany->dir_output.'/logos/thumb
 
 // Output html code for logo
 if ($urllogo) {
-	print '<div class="backgreypublicpayment">';
-	print '<div class="logopublicpayment">';
-	print '<img id="dolpaymentlogo" src="'.$urllogo.'"';
-	print '>';
-	print '</div>';
+	echo '<div class="backgreypublicpayment">';
+	echo '<div class="logopublicpayment">';
+	echo '<img id="dolpaymentlogo" src="'.$urllogo.'"';
+	echo '>';
+	echo '</div>';
 	if (!getDolGlobalString('MAIN_HIDE_POWERED_BY')) {
-		print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+		echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 	}
-	print '</div>';
+	echo '</div>';
 }
 
 if (getDolGlobalString('PROJECT_IMAGE_PUBLIC_SUGGEST_BOOTH')) {
-	print '<div class="backimagepublicsuggestbooth">';
-	print '<img id="idPROJECT_IMAGE_PUBLIC_SUGGEST_BOOTH" src="' . getDolGlobalString('PROJECT_IMAGE_PUBLIC_SUGGEST_BOOTH').'">';
-	print '</div>';
+	echo '<div class="backimagepublicsuggestbooth">';
+	echo '<img id="idPROJECT_IMAGE_PUBLIC_SUGGEST_BOOTH" src="' . getDolGlobalString('PROJECT_IMAGE_PUBLIC_SUGGEST_BOOTH').'">';
+	echo '</div>';
 }
 
-print '<table id="welcome" class="center">'."\n";
+echo '<table id="welcome" class="center">'."\n";
 $text  = '<tr><td class="textpublicpayment"><br><strong>'.$langs->trans("EvntOrgRegistrationWelcomeMessage").'</strong></td></tr>'."\n";
 $text .= '<tr><td class="textpublicpayment">'.$langs->trans("EvntOrgVoteHelpMessage").' : "'.dol_escape_htmltag($project->title).'".<br><br></td></tr>'."\n";
 $text .= '<tr><td class="textpublicpayment">'.dol_htmlentitiesbr($project->note_public).'</td></tr>'."\n";
-print $text;
-print '</table>'."\n";
+echo $text;
+echo '</table>'."\n";
 
 
-print '<table cellpadding="10" id="conferences" border="1" class="center">'."\n";
-print '<th colspan="7">'.$langs->trans("ListOfSuggestedConferences").'</th>';
-print $listOfConferences.'<br>';
-print '</table>'."\n";
+echo '<table cellpadding="10" id="conferences" border="1" class="center">'."\n";
+echo '<th colspan="7">'.$langs->trans("ListOfSuggestedConferences").'</th>';
+echo $listOfConferences.'<br>';
+echo '</table>'."\n";
 
 /*
-print '<br>';
+echo '<br>';
 
-print '<table border=1  cellpadding="10" id="conferences" class="center">'."\n";
-print '<th colspan="7">'.$langs->trans("ListOfSuggestedBooths").'</th>';
-print $listOfBooths.'<br>';
-print '</table>'."\n";
+echo '<table border=1  cellpadding="10" id="conferences" class="center">'."\n";
+echo '<th colspan="7">'.$langs->trans("ListOfSuggestedBooths").'</th>';
+echo $listOfBooths.'<br>';
+echo '</table>'."\n";
 */
 
 $object = null;

@@ -48,15 +48,15 @@ require '../main.inc.php';
  */
 
 if (!GETPOST('transkey', 'alphanohtml') && !GETPOST('transphrase', 'alphanohtml')) {
-	print 'Sorry, it seems your internet connection is off.<br>';
-	print 'You need to be connected to network to use this software.<br>';
+	echo 'Sorry, it seems your internet connection is off.<br>';
+	echo 'You need to be connected to network to use this software.<br>';
 } else {
 	$langs->loadLangs(array("error", "other"));
 
 	if (GETPOST('transphrase', 'alphanohtml')) {
-		print dol_escape_htmltag(GETPOST('transphrase', 'alphanohtml'));
+		echo dol_escape_htmltag(GETPOST('transphrase', 'alphanohtml'));
 	} elseif (GETPOST('transkey', 'alphanohtml')) {
-		print dol_escape_htmltag($langs->trans(GETPOST('transkey', 'alphanohtml')));
+		echo dol_escape_htmltag($langs->trans(GETPOST('transkey', 'alphanohtml')));
 	}
 }
 

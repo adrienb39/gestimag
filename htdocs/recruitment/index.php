@@ -72,9 +72,9 @@ $staticrecruitmentcandidature = new RecruitmentCandidature($db);
 
 llxHeader("", $langs->trans("RecruitmentArea"));
 
-print load_fiche_titre($langs->trans("RecruitmentArea"), '', 'object_recruitmentjobposition');
+echo load_fiche_titre($langs->trans("RecruitmentArea"), '', 'object_recruitmentjobposition');
 
-print '<div class="fichecenter"><div class="fichethirdleft">';
+echo '<div class="fichecenter"><div class="fichethirdleft">';
 
 
 /*
@@ -110,9 +110,9 @@ if ($conf->use_javascript_ajax) {
 		}
 		$db->free($resql);
 
-		print '<div class="div-table-responsive-no-min">';
-		print '<table class="noborder nohover centpercent">';
-		print '<tr class="liste_titre"><th colspan="2">'.$langs->trans("Statistics").' - '.$langs->trans("JobPositions").'</th></tr>'."\n";
+		echo '<div class="div-table-responsive-no-min">';
+		echo '<table class="noborder nohover centpercent">';
+		echo '<tr class="liste_titre"><th colspan="2">'.$langs->trans("Statistics").' - '.$langs->trans("JobPositions").'</th></tr>'."\n";
 		$listofstatus = array(0, 1, 3, 9);
 		foreach ($listofstatus as $status) {
 			$dataseries[] = array(dol_html_entity_decode($staticrecruitmentjobposition->LibStatut($status, 1), ENT_QUOTES | ENT_HTML5), (isset($vals[$status]) ? (int) $vals[$status] : 0));
@@ -130,14 +130,14 @@ if ($conf->use_javascript_ajax) {
 			}
 
 			if (empty($conf->use_javascript_ajax)) {
-				print '<tr class="oddeven">';
-				print '<td>'.$staticrecruitmentjobposition->LibStatut($status, 0).'</td>';
-				print '<td class="right"><a href="list.php?statut='.$status.'">'.(isset($vals[$status]) ? $vals[$status] : 0).'</a></td>';
-				print "</tr>\n";
+				echo '<tr class="oddeven">';
+				echo '<td>'.$staticrecruitmentjobposition->LibStatut($status, 0).'</td>';
+				echo '<td class="right"><a href="list.php?statut='.$status.'">'.(isset($vals[$status]) ? $vals[$status] : 0).'</a></td>';
+				echo "</tr>\n";
 			}
 		}
 		if ($conf->use_javascript_ajax) {
-			print '<tr><td class="center" colspan="2">';
+			echo '<tr><td class="center" colspan="2">';
 
 			include_once DOL_DOCUMENT_ROOT.'/core/class/dolgraph.class.php';
 			$dolgraph = new DolGraph();
@@ -148,14 +148,14 @@ if ($conf->use_javascript_ajax) {
 			$dolgraph->SetType(array('pie'));
 			$dolgraph->SetHeight('200');
 			$dolgraph->draw('idgraphstatus');
-			print $dolgraph->show($totalnb ? 0 : 1);
+			echo $dolgraph->show($totalnb ? 0 : 1);
 
-			print '</td></tr>';
+			echo '</td></tr>';
 		}
-		print "</table>";
-		print "</div>";
+		echo "</table>";
+		echo "</div>";
 
-		print "<br>";
+		echo "<br>";
 	} else {
 		dol_print_error($db);
 	}
@@ -188,9 +188,9 @@ if ($conf->use_javascript_ajax) {
 		}
 		$db->free($resql);
 
-		print '<div class="div-table-responsive-no-min">';
-		print '<table class="noborder nohover centpercent">';
-		print '<tr class="liste_titre"><th colspan="2">'.$langs->trans("Statistics").' - '.$langs->trans("RecruitmentCandidatures").'</th></tr>'."\n";
+		echo '<div class="div-table-responsive-no-min">';
+		echo '<table class="noborder nohover centpercent">';
+		echo '<tr class="liste_titre"><th colspan="2">'.$langs->trans("Statistics").' - '.$langs->trans("RecruitmentCandidatures").'</th></tr>'."\n";
 		$listofstatus = array(0, 1, 3, 5, 8, 9);
 		foreach ($listofstatus as $status) {
 			$dataseries[] = array(dol_html_entity_decode($staticrecruitmentcandidature->LibStatut($status, 1), ENT_QUOTES | ENT_HTML5), (isset($vals[$status]) ? (int) $vals[$status] : 0));
@@ -214,14 +214,14 @@ if ($conf->use_javascript_ajax) {
 			}
 
 			if (empty($conf->use_javascript_ajax)) {
-				print '<tr class="oddeven">';
-				print '<td>'.$staticrecruitmentcandidature->LibStatut($status, 0).'</td>';
-				print '<td class="right"><a href="list.php?statut='.$status.'">'.(isset($vals[$status]) ? $vals[$status] : 0).'</a></td>';
-				print "</tr>\n";
+				echo '<tr class="oddeven">';
+				echo '<td>'.$staticrecruitmentcandidature->LibStatut($status, 0).'</td>';
+				echo '<td class="right"><a href="list.php?statut='.$status.'">'.(isset($vals[$status]) ? $vals[$status] : 0).'</a></td>';
+				echo "</tr>\n";
 			}
 		}
 		if ($conf->use_javascript_ajax) {
-			print '<tr><td class="center" colspan="2">';
+			echo '<tr><td class="center" colspan="2">';
 
 			include_once DOL_DOCUMENT_ROOT.'/core/class/dolgraph.class.php';
 			$dolgraph = new DolGraph();
@@ -232,20 +232,20 @@ if ($conf->use_javascript_ajax) {
 			$dolgraph->SetType(array('pie'));
 			$dolgraph->SetHeight('200');
 			$dolgraph->draw('idgraphstatuscandidature');
-			print $dolgraph->show($totalnb ? 0 : 1);
+			echo $dolgraph->show($totalnb ? 0 : 1);
 
-			print '</td></tr>';
+			echo '</td></tr>';
 		}
-		print "</table>";
-		print "</div>";
+		echo "</table>";
+		echo "</div>";
 
-		print "<br>";
+		echo "<br>";
 	} else {
 		dol_print_error($db);
 	}
 }
 
-print '<br>';
+echo '<br>';
 
 /* BEGIN MODULEBUILDER DRAFT MYOBJECT
 // Draft MyObject
@@ -270,9 +270,9 @@ if (isModEnabled('recruitment') && $user->rights->recruitment->read)
 		$total = 0;
 		$num = $db->num_rows($resql);
 
-		print '<table class="noborder centpercent">';
-		print '<tr class="liste_titre">';
-		print '<th colspan="3">'.$langs->trans("DraftOrders").($num?'<span class="badge marginleftonlyshort">'.$num.'</span>':'').'</th></tr>';
+		echo '<table class="noborder centpercent">';
+		echo '<tr class="liste_titre">';
+		echo '<th colspan="3">'.$langs->trans("DraftOrders").($num?'<span class="badge marginleftonlyshort">'.$num.'</span>':'').'</th></tr>';
 
 		$var = true;
 		if ($num > 0)
@@ -282,40 +282,40 @@ if (isModEnabled('recruitment') && $user->rights->recruitment->read)
 			{
 
 				$obj = $db->fetch_object($resql);
-				print '<tr class="oddeven"><td class="nowrap">';
+				echo '<tr class="oddeven"><td class="nowrap">';
 				$orderstatic->id=$obj->rowid;
 				$orderstatic->ref=$obj->ref;
 				$orderstatic->ref_client=$obj->ref_client;
 				$orderstatic->total_ht = $obj->total_ht;
 				$orderstatic->total_tva = $obj->total_tva;
 				$orderstatic->total_ttc = $obj->total_ttc;
-				print $orderstatic->getNomUrl(1);
-				print '</td>';
-				print '<td class="nowrap">';
+				echo $orderstatic->getNomUrl(1);
+				echo '</td>';
+				echo '<td class="nowrap">';
 				$companystatic->id=$obj->socid;
 				$companystatic->name=$obj->name;
 				$companystatic->client=$obj->client;
 				$companystatic->code_client = $obj->code_client;
 				$companystatic->code_fournisseur = $obj->code_fournisseur;
 				$companystatic->canvas=$obj->canvas;
-				print $companystatic->getNomUrl(1,'customer',16);
-				print '</td>';
-				print '<td class="right" class="nowrap">'.price($obj->total_ttc).'</td></tr>';
+				echo $companystatic->getNomUrl(1,'customer',16);
+				echo '</td>';
+				echo '<td class="right" class="nowrap">'.price($obj->total_ttc).'</td></tr>';
 				$i++;
 				$total += $obj->total_ttc;
 			}
 			if ($total>0)
 			{
 
-				print '<tr class="liste_total"><td>'.$langs->trans("Total").'</td><td colspan="2" class="right">'.price($total)."</td></tr>";
+				echo '<tr class="liste_total"><td>'.$langs->trans("Total").'</td><td colspan="2" class="right">'.price($total)."</td></tr>";
 			}
 		}
 		else
 		{
 
-			print '<tr class="oddeven"><td colspan="3" class="opacitymedium">'.$langs->trans("NoOrder").'</td></tr>';
+			echo '<tr class="oddeven"><td colspan="3" class="opacitymedium">'.$langs->trans("NoOrder").'</td></tr>';
 		}
-		print "</table><br>";
+		echo "</table><br>";
 
 		$db->free($resql);
 	}
@@ -327,7 +327,7 @@ if (isModEnabled('recruitment') && $user->rights->recruitment->read)
 END MODULEBUILDER DRAFT MYOBJECT */
 
 
-print '</div><div class="fichetwothirdright">';
+echo '</div><div class="fichetwothirdright">';
 
 
 // Last modified job position
@@ -354,17 +354,17 @@ if (isModEnabled('recruitment') && $user->hasRight('recruitment', 'recruitmentjo
 		$num = $db->num_rows($resql);
 		$i = 0;
 
-		print '<div class="div-table-responsive-no-min">';
-		print '<table class="noborder centpercent">';
-		print '<tr class="liste_titre">';
-		print '<th colspan="2">';
-		print $langs->trans("BoxTitleLatestModifiedJobPositions", $max);
-		print '</th>';
-		print '<th class="right">';
-		print $langs->trans("Applications");
-		print '</th>';
-		print '<th class="right" colspan="2"><a href="'.DOL_URL_ROOT.'/recruitment/recruitmentjobposition_list.php?sortfield=t.tms&sortorder=DESC">'.$langs->trans("FullList").'</th>';
-		print '</tr>';
+		echo '<div class="div-table-responsive-no-min">';
+		echo '<table class="noborder centpercent">';
+		echo '<tr class="liste_titre">';
+		echo '<th colspan="2">';
+		echo $langs->trans("BoxTitleLatestModifiedJobPositions", $max);
+		echo '</th>';
+		echo '<th class="right">';
+		echo $langs->trans("Applications");
+		echo '</th>';
+		echo '<th class="right" colspan="2"><a href="'.DOL_URL_ROOT.'/recruitment/recruitmentjobposition_list.php?sortfield=t.tms&sortorder=DESC">'.$langs->trans("FullList").'</th>';
+		echo '</tr>';
 		if ($num) {
 			while ($i < $num) {
 				$objp = $db->fetch_object($resql);
@@ -374,28 +374,28 @@ if (isModEnabled('recruitment') && $user->hasRight('recruitment', 'recruitmentjo
 				$staticrecruitmentjobposition->status = $objp->status;
 				$staticrecruitmentjobposition->date_creation = $objp->date_creation;
 
-				print '<tr class="oddeven">';
-				print '<td class="nowrap">'.$staticrecruitmentjobposition->getNomUrl(1, '').'</td>';
-				print '<td class="right nowrap">';
-				print "</td>";
-				print '<td class="right">';
-				print $objp->nbapplications;
-				print '</td>';
-				print '<td class="right nowrap">'.dol_print_date($db->jdate($objp->tms), 'day')."</td>";
-				print '<td class="right nowrap" width="16">';
-				print $staticrecruitmentjobposition->getLibStatut(3);
-				print "</td>";
-				print '</tr>';
+				echo '<tr class="oddeven">';
+				echo '<td class="nowrap">'.$staticrecruitmentjobposition->getNomUrl(1, '').'</td>';
+				echo '<td class="right nowrap">';
+				echo "</td>";
+				echo '<td class="right">';
+				echo $objp->nbapplications;
+				echo '</td>';
+				echo '<td class="right nowrap">'.dol_print_date($db->jdate($objp->tms), 'day')."</td>";
+				echo '<td class="right nowrap" width="16">';
+				echo $staticrecruitmentjobposition->getLibStatut(3);
+				echo "</td>";
+				echo '</tr>';
 				$i++;
 			}
 
 			$db->free($resql);
 		} else {
-			print '<tr class="oddeven"><td colspan="4"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
+			echo '<tr class="oddeven"><td colspan="4"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
 		}
-		print "</table>";
-		print "</div>";
-		print "<br>";
+		echo "</table>";
+		echo "</div>";
+		echo "<br>";
 	} else {
 		dol_print_error($db);
 	}
@@ -424,14 +424,14 @@ if (isModEnabled('recruitment') && $user->hasRight('recruitment', 'recruitmentjo
 		$num = $db->num_rows($resql);
 		$i = 0;
 
-		print '<div class="div-table-responsive-no-min">';
-		print '<table class="noborder centpercent">';
-		print '<tr class="liste_titre">';
-		print '<th colspan="2">';
-		print $langs->trans("BoxTitleLatestModifiedCandidatures", $max);
-		print '</th>';
-		print '<th class="right" colspan="2"><a href="'.DOL_URL_ROOT.'/recruitment/recruitmentcandidature_list.php?sortfield=t.tms&sortorder=DESC">'.$langs->trans("FullList").'</th>';
-		print '</tr>';
+		echo '<div class="div-table-responsive-no-min">';
+		echo '<table class="noborder centpercent">';
+		echo '<tr class="liste_titre">';
+		echo '<th colspan="2">';
+		echo $langs->trans("BoxTitleLatestModifiedCandidatures", $max);
+		echo '</th>';
+		echo '<th class="right" colspan="2"><a href="'.DOL_URL_ROOT.'/recruitment/recruitmentcandidature_list.php?sortfield=t.tms&sortorder=DESC">'.$langs->trans("FullList").'</th>';
+		echo '</tr>';
 		if ($num) {
 			while ($i < $num) {
 				$objp = $db->fetch_object($resql);
@@ -443,31 +443,31 @@ if (isModEnabled('recruitment') && $user->hasRight('recruitment', 'recruitmentjo
 				$staticrecruitmentcandidature->firstname = $objp->firstname;
 				$staticrecruitmentcandidature->lastname = $objp->lastname;
 
-				print '<tr class="oddeven">';
-				print '<td class="nowrap">'.$staticrecruitmentcandidature->getNomUrl(1, '').'</td>';
-				print '<td class="right nowrap">';
-				print "</td>";
-				print '<td class="right nowrap">'.dol_print_date($db->jdate($objp->tms), 'day')."</td>";
-				print '<td class="right nowrap" width="16">';
-				print $staticrecruitmentcandidature->getLibStatut(3);
-				print "</td>";
-				print '</tr>';
+				echo '<tr class="oddeven">';
+				echo '<td class="nowrap">'.$staticrecruitmentcandidature->getNomUrl(1, '').'</td>';
+				echo '<td class="right nowrap">';
+				echo "</td>";
+				echo '<td class="right nowrap">'.dol_print_date($db->jdate($objp->tms), 'day')."</td>";
+				echo '<td class="right nowrap" width="16">';
+				echo $staticrecruitmentcandidature->getLibStatut(3);
+				echo "</td>";
+				echo '</tr>';
 				$i++;
 			}
 
 			$db->free($resql);
 		} else {
-			print '<tr class="oddeven"><td colspan="4"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
+			echo '<tr class="oddeven"><td colspan="4"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
 		}
-		print "</table>";
-		print "</div>";
-		print "<br>";
+		echo "</table>";
+		echo "</div>";
+		echo "<br>";
 	} else {
 		dol_print_error($db);
 	}
 }
 
-print '</div></div>';
+echo '</div></div>';
 
 // End of page
 llxFooter();

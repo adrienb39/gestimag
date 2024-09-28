@@ -72,4 +72,4 @@ if ($product->fetch($id) < 0) {
 
 $prodcomb = new ProductCombination($db);
 
-echo json_encode($prodcomb->getUniqueAttributesAndValuesByFkProductParent($product->id));
+echo  json_encode($prodcomb->getUniqueAttributesAndValuesByFkProductParent($product->id));

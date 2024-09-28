@@ -199,7 +199,7 @@ if ($action == 'set_default') {
 if ($action == 'set') {
 	$result = gestimag_set_const($db, GETPOST('name', 'alpha'), GETPOST('value'), '', 0, '', $conf->entity);
 	if ($result < 0) {
-		print $db->error();
+		echo $db->error();
 	}
 }
 
@@ -207,7 +207,7 @@ if ($action == 'set') {
 if ($action == 'unset') {
 	$result = gestimag_del_const($db, GETPOST('name', 'alpha'), $conf->entity);
 	if ($result < 0) {
-		print $db->error();
+		echo $db->error();
 	}
 }
 
@@ -225,12 +225,12 @@ llxHeader('', $langs->trans("MembersSetup"), $help_url);
 
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?restore_lastsearch_values=1">'.$langs->trans("BackToModuleList").'</a>';
-print load_fiche_titre($langs->trans("MembersSetup"), $linkback, 'title_setup');
+echo load_fiche_titre($langs->trans("MembersSetup"), $linkback, 'title_setup');
 
 
 $head = member_admin_prepare_head();
 
-print dol_get_fiche_head($head, 'general', $langs->trans("Members"), -1, 'user');
+echo dol_get_fiche_head($head, 'general', $langs->trans("Members"), -1, 'user');
 
 $dirModMember = array_merge(array('/core/modules/member/'), $conf->modules_parts['member']);
 foreach ($conf->modules_parts['models'] as $mo) {
@@ -240,17 +240,17 @@ foreach ($conf->modules_parts['models'] as $mo) {
 
 // Module to manage customer/supplier code
 
-print load_fiche_titre($langs->trans("MemberCodeChecker"), '', '');
+echo load_fiche_titre($langs->trans("MemberCodeChecker"), '', '');
 
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">'."\n";
-print '<tr class="liste_titre">'."\n";
-print '  <td>'.$langs->trans("Name").'</td>';
-print '  <td>'.$langs->trans("Description").'</td>';
-print '  <td>'.$langs->trans("Example").'</td>';
-print '  <td class="center" width="80">'.$langs->trans("Status").'</td>';
-print '  <td class="center" width="60">'.$langs->trans("ShortInfo").'</td>';
-print "</tr>\n";
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">'."\n";
+echo '<tr class="liste_titre">'."\n";
+echo '  <td>'.$langs->trans("Name").'</td>';
+echo '  <td>'.$langs->trans("Description").'</td>';
+echo '  <td>'.$langs->trans("Example").'</td>';
+echo '  <td class="center" width="80">'.$langs->trans("Status").'</td>';
+echo '  <td class="center" width="60">'.$langs->trans("ShortInfo").'</td>';
+echo "</tr>\n";
 
 $arrayofmodules = array();
 
@@ -290,41 +290,41 @@ $arrayofmodules = dol_sort_array($arrayofmodules, 'position');
 '@phan-var-force array<string,ModeleNumRefMembers> $arrayofmodules';
 
 foreach ($arrayofmodules as $file => $modCodeMember) {
-	print '<tr class="oddeven">'."\n";
-	print '<td width="140">'.$modCodeMember->name.'</td>'."\n";
-	print '<td>'.$modCodeMember->info($langs).'</td>'."\n";
-	print '<td class="nowrap">'.$modCodeMember->getExample($langs).'</td>'."\n";
+	echo '<tr class="oddeven">'."\n";
+	echo '<td width="140">'.$modCodeMember->name.'</td>'."\n";
+	echo '<td>'.$modCodeMember->info($langs).'</td>'."\n";
+	echo '<td class="nowrap">'.$modCodeMember->getExample($langs).'</td>'."\n";
 
 	if (getDolGlobalString('MEMBER_CODEMEMBER_ADDON') == "$file") {
-		print '<td class="center">'."\n";
-		print img_picto($langs->trans("Activated"), 'switch_on');
-		print "</td>\n";
+		echo '<td class="center">'."\n";
+		echo img_picto($langs->trans("Activated"), 'switch_on');
+		echo "</td>\n";
 	} else {
 		$disabled = (isModEnabled('multicompany') && (is_object($mc) && !empty($mc->sharings['referent']) && $mc->sharings['referent'] != $conf->entity) ? true : false);
-		print '<td class="center">';
+		echo '<td class="center">';
 		if (!$disabled) {
-			print '<a class="reposition" href="'.$_SERVER['PHP_SELF'].'?action=setcodemember&token='.newToken().'&value='.urlencode($file).'">';
+			echo '<a class="reposition" href="'.$_SERVER['PHP_SELF'].'?action=setcodemember&token='.newToken().'&value='.urlencode($file).'">';
 		}
-		print img_picto($langs->trans("Disabled"), 'switch_off');
+		echo img_picto($langs->trans("Disabled"), 'switch_off');
 		if (!$disabled) {
-			print '</a>';
+			echo '</a>';
 		}
-		print '</td>';
+		echo '</td>';
 	}
 
-	print '<td class="center">';
+	echo '<td class="center">';
 	$s = $modCodeMember->getToolTip($langs, null, -1);
-	print $form->textwithpicto('', $s, 1);
-	print '</td>';
+	echo $form->textwithpicto('', $s, 1);
+	echo '</td>';
 
-	print '</tr>';
+	echo '</tr>';
 }
-print '</table>';
-print '</div>';
+echo '</table>';
+echo '</div>';
 
 
 
-print "<br>";
+echo "<br>";
 
 
 
@@ -352,18 +352,18 @@ if ($resql) {
 }
 
 
-print load_fiche_titre($langs->trans("MembersDocModules"), '', '');
+echo load_fiche_titre($langs->trans("MembersDocModules"), '', '');
 
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("Name").'</td>';
-print '<td>'.$langs->trans("Description").'</td>';
-print '<td align="center" width="60">'.$langs->trans("Status")."</td>\n";
-print '<td align="center" width="60">'.$langs->trans("Default")."</td>\n";
-print '<td align="center" width="80">'.$langs->trans("ShortInfo").'</td>';
-print '<td align="center" width="80">'.$langs->trans("Preview").'</td>';
-print "</tr>\n";
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre">';
+echo '<td>'.$langs->trans("Name").'</td>';
+echo '<td>'.$langs->trans("Description").'</td>';
+echo '<td align="center" width="60">'.$langs->trans("Status")."</td>\n";
+echo '<td align="center" width="60">'.$langs->trans("Default")."</td>\n";
+echo '<td align="center" width="80">'.$langs->trans("ShortInfo").'</td>';
+echo '<td align="center" width="80">'.$langs->trans("Preview").'</td>';
+echo "</tr>\n";
 
 clearstatcache();
 
@@ -397,37 +397,37 @@ foreach ($dirmodels as $reldir) {
 							}
 
 							if ($modulequalified) {
-								print '<tr class="oddeven"><td width="100">';
+								echo '<tr class="oddeven"><td width="100">';
 								print(empty($module->name) ? $name : $module->name);
-								print "</td><td>\n";
+								echo "</td><td>\n";
 								if (method_exists($module, 'info')) {
-									print $module->info($langs);
+									echo $module->info($langs);
 								} else {
-									print $module->description;
+									echo $module->description;
 								}
-								print '</td>';
+								echo '</td>';
 
 								// Active
 								if (in_array($name, $def)) {
-									print '<td class="center">'."\n";
-									print '<a href="'.$_SERVER["PHP_SELF"].'?action=del_default&token='.newToken().'&value='.$name.'">';
-									print img_picto($langs->trans("Enabled"), 'switch_on');
-									print '</a>';
-									print '</td>';
+									echo '<td class="center">'."\n";
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=del_default&token='.newToken().'&value='.$name.'">';
+									echo img_picto($langs->trans("Enabled"), 'switch_on');
+									echo '</a>';
+									echo '</td>';
 								} else {
-									print '<td class="center">'."\n";
-									print '<a href="'.$_SERVER["PHP_SELF"].'?action=set_default&token='.newToken().'&value='.$name.'&scandir='.(!empty($module->scandir) ? $module->scandir : '').'&label='.urlencode($module->name).'">'.img_picto($langs->trans("Disabled"), 'switch_off').'</a>';
-									print "</td>";
+									echo '<td class="center">'."\n";
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=set_default&token='.newToken().'&value='.$name.'&scandir='.(!empty($module->scandir) ? $module->scandir : '').'&label='.urlencode($module->name).'">'.img_picto($langs->trans("Disabled"), 'switch_off').'</a>';
+									echo "</td>";
 								}
 
 								// Default
-								print '<td class="center">';
+								echo '<td class="center">';
 								if (getDolGlobalString('MEMBER_ADDON_PDF_ODT') == $name) {
-									print img_picto($langs->trans("Default"), 'on');
+									echo img_picto($langs->trans("Default"), 'on');
 								} else {
-									print '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&token='.newToken().'&value='.$name.'&scandir='.(!empty($module->scandir) ? $module->scandir : '').'&label='.urlencode($module->name).'" alt="'.$langs->trans("Default").'">'.img_picto($langs->trans("Disabled"), 'off').'</a>';
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&token='.newToken().'&value='.$name.'&scandir='.(!empty($module->scandir) ? $module->scandir : '').'&label='.urlencode($module->name).'" alt="'.$langs->trans("Default").'">'.img_picto($langs->trans("Disabled"), 'off').'</a>';
 								}
-								print '</td>';
+								echo '</td>';
 
 								// Info
 								$htmltooltip = ''.$langs->trans("Name").': '.$module->name;
@@ -440,20 +440,20 @@ foreach ($dirmodels as $reldir) {
 								$htmltooltip .= '<br>'.$langs->trans("MultiLanguage").': '.yn(!empty($module->option_multilang) ? $module->option_multilang : 0, 1, 1);
 
 
-								print '<td class="center">';
-								print $form->textwithpicto('', $htmltooltip, 1, 0);
-								print '</td>';
+								echo '<td class="center">';
+								echo $form->textwithpicto('', $htmltooltip, 1, 0);
+								echo '</td>';
 
 								// Preview
-								print '<td class="center">';
+								echo '<td class="center">';
 								if ($module->type == 'pdf') {
-									print '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&module='.$name.'">'.img_object($langs->trans("Preview"), 'contract').'</a>';
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&module='.$name.'">'.img_object($langs->trans("Preview"), 'contract').'</a>';
 								} else {
-									print img_object($langs->trans("PreviewNotAvailable"), 'generic');
+									echo img_object($langs->trans("PreviewNotAvailable"), 'generic');
 								}
-								print '</td>';
+								echo '</td>';
 
-								print "</tr>\n";
+								echo "</tr>\n";
 							}
 						}
 					}
@@ -463,87 +463,87 @@ foreach ($dirmodels as $reldir) {
 	}
 }
 
-print '</table>';
-print '</div>';
+echo '</table>';
+echo '</div>';
 
 
-print '<br>';
+echo '<br>';
 
 
-print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="action" value="updatemainoptions">';
-print '<input type="hidden" name="page_y" value="">';
+echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="action" value="updatemainoptions">';
+echo '<input type="hidden" name="page_y" value="">';
 
 
 // Main options
 
-print load_fiche_titre($langs->trans("MemberMainOptions"), '', '');
+echo load_fiche_titre($langs->trans("MemberMainOptions"), '', '');
 
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("Description").'</td>';
-print '<td class="soixantepercent">'.$langs->trans("Value").'</td>';
-print "</tr>\n";
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre">';
+echo '<td>'.$langs->trans("Description").'</td>';
+echo '<td class="soixantepercent">'.$langs->trans("Value").'</td>';
+echo "</tr>\n";
 
 // Delay to start the new membership ([+/-][0-99][Y/m/d], for instance, with "+4m", the subscription will start in 4 month.)
-print '<tr class="oddeven drag" id="startfirstdayof"><td>';
-print $form->textwithpicto($langs->trans("MemberSubscriptionStartAfter"), $langs->trans("MemberSubscriptionStartAfterDesc").'<br>'.$langs->trans("MemberSubscriptionStartAfterDesc2"));
-print '</td><td>';
-print '<input type="text" class="right width50" id="MEMBER_SUBSCRIPTION_START_AFTER" name="MEMBER_SUBSCRIPTION_START_AFTER" value="'.getDolGlobalString('MEMBER_SUBSCRIPTION_START_AFTER').'">';
-print "</td></tr>\n";
+echo '<tr class="oddeven drag" id="startfirstdayof"><td>';
+echo $form->textwithpicto($langs->trans("MemberSubscriptionStartAfter"), $langs->trans("MemberSubscriptionStartAfterDesc").'<br>'.$langs->trans("MemberSubscriptionStartAfterDesc2"));
+echo '</td><td>';
+echo '<input type="text" class="right width50" id="MEMBER_SUBSCRIPTION_START_AFTER" name="MEMBER_SUBSCRIPTION_START_AFTER" value="'.getDolGlobalString('MEMBER_SUBSCRIPTION_START_AFTER').'">';
+echo "</td></tr>\n";
 
 // Start date of new membership
 $startpoint = array();
 $startpoint[0] = $langs->trans("NoCorrection");
 $startpoint["m"] = $langs->trans("Month");
 $startpoint["Y"] = $langs->trans("Year");
-print '<tr class="oddeven drag" id="startfirstdayof"><td>';
-print $langs->trans("MemberSubscriptionStartFirstDayOf");
-print '</td><td>';
+echo '<tr class="oddeven drag" id="startfirstdayof"><td>';
+echo $langs->trans("MemberSubscriptionStartFirstDayOf");
+echo '</td><td>';
 $startfirstdayof = !getDolGlobalString('MEMBER_SUBSCRIPTION_START_FIRST_DAY_OF') ? 0 : getDolGlobalString('MEMBER_SUBSCRIPTION_START_FIRST_DAY_OF');
-print $form->selectarray("MEMBER_SUBSCRIPTION_START_FIRST_DAY_OF", $startpoint, $startfirstdayof, 0);
-print "</td></tr>\n";
+echo $form->selectarray("MEMBER_SUBSCRIPTION_START_FIRST_DAY_OF", $startpoint, $startfirstdayof, 0);
+echo "</td></tr>\n";
 
 // Mail required for members
-print '<tr class="oddeven"><td>'.$langs->trans("AdherentMailRequired").'</td><td>';
-print $form->selectyesno('ADHERENT_MAIL_REQUIRED', getDolGlobalInt('ADHERENT_MAIL_REQUIRED'), 1, false, 0, 1);
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("AdherentMailRequired").'</td><td>';
+echo $form->selectyesno('ADHERENT_MAIL_REQUIRED', getDolGlobalInt('ADHERENT_MAIL_REQUIRED'), 1, false, 0, 1);
+echo "</td></tr>\n";
 
 // Login/Pass required for members
-print '<tr class="oddeven"><td>';
-print $form->textwithpicto($langs->trans("AdherentLoginRequired"), $langs->trans("AdherentLoginRequiredDesc"));
-print '</td><td>';
-print $form->selectyesno('ADHERENT_LOGIN_NOT_REQUIRED', (getDolGlobalString('ADHERENT_LOGIN_NOT_REQUIRED') ? 0 : 1), 1, false, 0, 1);
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>';
+echo $form->textwithpicto($langs->trans("AdherentLoginRequired"), $langs->trans("AdherentLoginRequiredDesc"));
+echo '</td><td>';
+echo $form->selectyesno('ADHERENT_LOGIN_NOT_REQUIRED', (getDolGlobalString('ADHERENT_LOGIN_NOT_REQUIRED') ? 0 : 1), 1, false, 0, 1);
+echo "</td></tr>\n";
 
 // Create an external user login after an online payment of a membership subscription
 // TODO Move this into the validate() method of the member.
-print '<tr class="oddeven"><td>'.$langs->trans("MemberCreateAnExternalUserForSubscriptionValidated").'</td><td>';
-print $form->selectyesno('ADHERENT_CREATE_EXTERNAL_USER_LOGIN', getDolGlobalInt('ADHERENT_CREATE_EXTERNAL_USER_LOGIN'), 1, false, 0, 1);
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("MemberCreateAnExternalUserForSubscriptionValidated").'</td><td>';
+echo $form->selectyesno('ADHERENT_CREATE_EXTERNAL_USER_LOGIN', getDolGlobalInt('ADHERENT_CREATE_EXTERNAL_USER_LOGIN'), 1, false, 0, 1);
+echo "</td></tr>\n";
 
 // Send mail information is on by default
-print '<tr class="oddeven"><td>'.$langs->trans("MemberSendInformationByMailByDefault").'</td><td>';
-print $form->selectyesno('ADHERENT_DEFAULT_SENDINFOBYMAIL', getDolGlobalInt('ADHERENT_DEFAULT_SENDINFOBYMAIL'), 1, false, 0, 1);
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("MemberSendInformationByMailByDefault").'</td><td>';
+echo $form->selectyesno('ADHERENT_DEFAULT_SENDINFOBYMAIL', getDolGlobalInt('ADHERENT_DEFAULT_SENDINFOBYMAIL'), 1, false, 0, 1);
+echo "</td></tr>\n";
 
 // Publish member information on public annuary
 $linkofpubliclist = DOL_MAIN_URL_ROOT.'/public/members/public_list.php'.((isModEnabled('multicompany')) ? '?entity='.((int) $conf->entity) : '');
-print '<tr class="oddeven"><td>'.$langs->trans("Public", getDolGlobalString('MAIN_INFO_SOCIETE_NOM'), $linkofpubliclist).'</td><td>';
-print $form->selectyesno('MEMBER_PUBLIC_ENABLED', getDolGlobalInt('MEMBER_PUBLIC_ENABLED'), 1, false, 0, 1);
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("Public", getDolGlobalString('MAIN_INFO_SOCIETE_NOM'), $linkofpubliclist).'</td><td>';
+echo $form->selectyesno('MEMBER_PUBLIC_ENABLED', getDolGlobalInt('MEMBER_PUBLIC_ENABLED'), 1, false, 0, 1);
+echo "</td></tr>\n";
 
 // Allow members to change type on renewal forms
 /* To test during next beta
-print '<tr class="oddeven"><td>'.$langs->trans("MemberAllowchangeOfType").'</td><td>';
-print $form->selectyesno('MEMBER_ALLOW_CHANGE_OF_TYPE', (getDolGlobalInt('MEMBER_ALLOW_CHANGE_OF_TYPE') ? 0 : 1), 1);
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("MemberAllowchangeOfType").'</td><td>';
+echo $form->selectyesno('MEMBER_ALLOW_CHANGE_OF_TYPE', (getDolGlobalInt('MEMBER_ALLOW_CHANGE_OF_TYPE') ? 0 : 1), 1);
+echo "</td></tr>\n";
 */
 
 // Insert subscription into bank account
-print '<tr class="oddeven"><td>'.$langs->trans("MoreActionsOnSubscription").'</td>';
+echo '<tr class="oddeven"><td>'.$langs->trans("MoreActionsOnSubscription").'</td>';
 $arraychoices = array('0' => $langs->trans("None"));
 if (isModEnabled("bank")) {
 	$arraychoices['bankdirect'] = $langs->trans("MoreActionBankDirect");
@@ -554,176 +554,176 @@ if (isModEnabled("bank") && isModEnabled("societe") && isModEnabled('invoice')) 
 if (isModEnabled("bank") && isModEnabled("societe") && isModEnabled('invoice')) {
 	$arraychoices['bankviainvoice'] = $langs->trans("MoreActionBankViaInvoice");
 }
-print '<td>';
-print $form->selectarray('ADHERENT_BANK_USE', $arraychoices, getDolGlobalString('ADHERENT_BANK_USE'), 0);
+echo '<td>';
+echo $form->selectarray('ADHERENT_BANK_USE', $arraychoices, getDolGlobalString('ADHERENT_BANK_USE'), 0);
 if (getDolGlobalString('ADHERENT_BANK_USE') == 'bankdirect' || getDolGlobalString('ADHERENT_BANK_USE') == 'bankviainvoice') {
-	print '<br><div style="padding-top: 5px;"><span class="opacitymedium">'.$langs->trans("ABankAccountMustBeDefinedOnPaymentModeSetup").'</span></div>';
+	echo '<br><div style="padding-top: 5px;"><span class="opacitymedium">'.$langs->trans("ABankAccountMustBeDefinedOnPaymentModeSetup").'</span></div>';
 }
-print '</td>';
-print "</tr>\n";
+echo '</td>';
+echo "</tr>\n";
 
 // Use vat for invoice creation
 if (isModEnabled('invoice')) {
-	print '<tr class="oddeven"><td>'.$langs->trans("VATToUseForSubscriptions").'</td>';
+	echo '<tr class="oddeven"><td>'.$langs->trans("VATToUseForSubscriptions").'</td>';
 	if (isModEnabled("bank")) {
-		print '<td>';
-		print $form->selectarray('ADHERENT_VAT_FOR_SUBSCRIPTIONS', array('0' => $langs->trans("NoVatOnSubscription"), 'defaultforfoundationcountry' => $langs->trans("Default")), getDolGlobalString('ADHERENT_VAT_FOR_SUBSCRIPTIONS', '0'), 0);
-		print '</td>';
+		echo '<td>';
+		echo $form->selectarray('ADHERENT_VAT_FOR_SUBSCRIPTIONS', array('0' => $langs->trans("NoVatOnSubscription"), 'defaultforfoundationcountry' => $langs->trans("Default")), getDolGlobalString('ADHERENT_VAT_FOR_SUBSCRIPTIONS', '0'), 0);
+		echo '</td>';
 	} else {
-		print '<td class="right">';
-		print $langs->trans("WarningModuleNotActive", $langs->transnoentities("Module85Name"));
-		print '</td>';
+		echo '<td class="right">';
+		echo $langs->trans("WarningModuleNotActive", $langs->transnoentities("Module85Name"));
+		echo '</td>';
 	}
-	print "</tr>\n";
+	echo "</tr>\n";
 
 	if (isModEnabled("product") || isModEnabled("service")) {
-		print '<tr class="oddeven"><td>'.$langs->trans("ADHERENT_PRODUCT_ID_FOR_SUBSCRIPTIONS").'</td>';
-		print '<td>';
+		echo '<tr class="oddeven"><td>'.$langs->trans("ADHERENT_PRODUCT_ID_FOR_SUBSCRIPTIONS").'</td>';
+		echo '<td>';
 		$selected = getDolGlobalString('ADHERENT_PRODUCT_ID_FOR_SUBSCRIPTIONS');
-		print img_picto('', 'product', 'class="pictofixedwidth"');
+		echo img_picto('', 'product', 'class="pictofixedwidth"');
 		$form->select_produits($selected, 'ADHERENT_PRODUCT_ID_FOR_SUBSCRIPTIONS', '', 0, 0, 1, 2, '', 0, [], 0, 1, 0, 'minwidth100 maxwidth500 widthcentpercentminusx');
-		print '</td>';
+		echo '</td>';
 	}
-	print "</tr>\n";
+	echo "</tr>\n";
 }
 
-print '</table>';
-print '</div>';
+echo '</table>';
+echo '</div>';
 
-print '<div class="center">';
-print '<input type="submit" class="button reposition" value="'.$langs->trans("Update").'" name="Button">';
-print '</div>';
+echo '<div class="center">';
+echo '<input type="submit" class="button reposition" value="'.$langs->trans("Update").'" name="Button">';
+echo '</div>';
 
-print '</form>';
+echo '</form>';
 
 
-print '<br>';
+echo '<br>';
 
 
 
 // Generation of cards for members
 
-print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="action" value="updatememberscards">';
-print '<input type="hidden" name="page_y" value="">';
+echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="action" value="updatememberscards">';
+echo '<input type="hidden" name="page_y" value="">';
 
-print load_fiche_titre($langs->trans("MembersCards"), '', '');
+echo load_fiche_titre($langs->trans("MembersCards"), '', '');
 
 $helptext = '*'.$langs->trans("FollowingConstantsWillBeSubstituted").'<br>';
 $helptext .= '__DOL_MAIN_URL_ROOT__, __ID__, __FIRSTNAME__, __LASTNAME__, __FULLNAME__, __LOGIN__, __PASSWORD__, ';
 $helptext .= '__COMPANY__, __ADDRESS__, __ZIP__, __TOWN__, __COUNTRY__, __EMAIL__, __BIRTH__, __PHOTO__, __TYPE__, ';
 $helptext .= '__YEAR__, __MONTH__, __DAY__';
 
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("Description").'</td>';
-print '<td class="soixantepercent">'.$form->textwithpicto($langs->trans("Value"), $helptext, 1, 'help', '', 0, 2, 'idhelptext').'</td>';
-print "</tr>\n";
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre">';
+echo '<td>'.$langs->trans("Description").'</td>';
+echo '<td class="soixantepercent">'.$form->textwithpicto($langs->trans("Value"), $helptext, 1, 'help', '', 0, 2, 'idhelptext').'</td>';
+echo "</tr>\n";
 
 // Format of cards page
-print '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_CARD_TYPE").'</td><td>';
+echo '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_CARD_TYPE").'</td><td>';
 
 require_once DOL_DOCUMENT_ROOT.'/core/lib/format_cards.lib.php'; // List of possible labels (defined into $_Avery_Labels variable set into format_cards.lib.php)
 $arrayoflabels = array();
 foreach (array_keys($_Avery_Labels) as $codecards) {
 	$arrayoflabels[$codecards] = $_Avery_Labels[$codecards]['name'];
 }
-print $form->selectarray('ADHERENT_CARD_TYPE', $arrayoflabels, getDolGlobalString('ADHERENT_CARD_TYPE') ? getDolGlobalString('ADHERENT_CARD_TYPE') : 'CARD', 1, 0, 0);
+echo $form->selectarray('ADHERENT_CARD_TYPE', $arrayoflabels, getDolGlobalString('ADHERENT_CARD_TYPE') ? getDolGlobalString('ADHERENT_CARD_TYPE') : 'CARD', 1, 0, 0);
 
-print "</td></tr>\n";
+echo "</td></tr>\n";
 
 // Text printed on top of member cards
-print '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_CARD_HEADER_TEXT").'</td><td>';
-print '<input type="text" class="flat minwidth300" name="ADHERENT_CARD_HEADER_TEXT" value="'.dol_escape_htmltag(getDolGlobalString('ADHERENT_CARD_HEADER_TEXT')).'">';
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_CARD_HEADER_TEXT").'</td><td>';
+echo '<input type="text" class="flat minwidth300" name="ADHERENT_CARD_HEADER_TEXT" value="'.dol_escape_htmltag(getDolGlobalString('ADHERENT_CARD_HEADER_TEXT')).'">';
+echo "</td></tr>\n";
 
 // Text printed on member cards (align on left)
-print '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_CARD_TEXT").'</td><td>';
-print '<textarea class="flat" name="ADHERENT_CARD_TEXT" cols="50" rows="5" wrap="soft">'."\n";
-print getDolGlobalString('ADHERENT_CARD_TEXT');
-print '</textarea>';
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_CARD_TEXT").'</td><td>';
+echo '<textarea class="flat" name="ADHERENT_CARD_TEXT" cols="50" rows="5" wrap="soft">'."\n";
+echo getDolGlobalString('ADHERENT_CARD_TEXT');
+echo '</textarea>';
+echo "</td></tr>\n";
 
 // Text printed on member cards (align on right)
-print '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_CARD_TEXT_RIGHT").'</td><td>';
-print '<textarea class="flat" name="ADHERENT_CARD_TEXT_RIGHT" cols="50" rows="5" wrap="soft">'."\n";
-print getDolGlobalString('ADHERENT_CARD_TEXT_RIGHT');
-print '</textarea>';
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_CARD_TEXT_RIGHT").'</td><td>';
+echo '<textarea class="flat" name="ADHERENT_CARD_TEXT_RIGHT" cols="50" rows="5" wrap="soft">'."\n";
+echo getDolGlobalString('ADHERENT_CARD_TEXT_RIGHT');
+echo '</textarea>';
+echo "</td></tr>\n";
 
 // Text printed on bottom of member cards
-print '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_CARD_FOOTER_TEXT").'</td><td>';
-print '<input type="text" class="flat minwidth300" name="ADHERENT_CARD_FOOTER_TEXT" value="'.dol_escape_htmltag(getDolGlobalString('ADHERENT_CARD_FOOTER_TEXT')).'">';
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_CARD_FOOTER_TEXT").'</td><td>';
+echo '<input type="text" class="flat minwidth300" name="ADHERENT_CARD_FOOTER_TEXT" value="'.dol_escape_htmltag(getDolGlobalString('ADHERENT_CARD_FOOTER_TEXT')).'">';
+echo "</td></tr>\n";
 
-print '</table>';
-print '</div>';
+echo '</table>';
+echo '</div>';
 
-print '<div class="center">';
-print '<input type="submit" class="button reposition" value="'.$langs->trans("Update").'" name="Button">';
-print '</div>';
+echo '<div class="center">';
+echo '<input type="submit" class="button reposition" value="'.$langs->trans("Update").'" name="Button">';
+echo '</div>';
 
-print '</form>';
+echo '</form>';
 
-print '<br>';
+echo '<br>';
 
 
 // Membership address sheet
 
-print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="action" value="updatememberstickets">';
-print '<input type="hidden" name="page_y" value="">';
+echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="action" value="updatememberstickets">';
+echo '<input type="hidden" name="page_y" value="">';
 
-print load_fiche_titre($langs->trans("MembersTickets"), '', '');
+echo load_fiche_titre($langs->trans("MembersTickets"), '', '');
 
 $helptext = '*'.$langs->trans("FollowingConstantsWillBeSubstituted").'<br>';
 $helptext .= '__DOL_MAIN_URL_ROOT__, __ID__, __FIRSTNAME__, __LASTNAME__, __FULLNAME__, __LOGIN__, __PASSWORD__, ';
 $helptext .= '__COMPANY__, __ADDRESS__, __ZIP__, __TOWN__, __COUNTRY__, __EMAIL__, __BIRTH__, __PHOTO__, __TYPE__, ';
 $helptext .= '__YEAR__, __MONTH__, __DAY__';
 
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("Description").'</td>';
-print '<td class="soixantepercent">'.$form->textwithpicto($langs->trans("Value"), $helptext, 1, 'help', '', 0, 2, 'idhelptext').'</td>';
-print "</tr>\n";
+echo '<div class="div-table-responsive-no-min">';
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre">';
+echo '<td>'.$langs->trans("Description").'</td>';
+echo '<td class="soixantepercent">'.$form->textwithpicto($langs->trans("Value"), $helptext, 1, 'help', '', 0, 2, 'idhelptext').'</td>';
+echo "</tr>\n";
 
 // Format of labels page
-print '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_ETIQUETTE_TYPE").'</td><td>';
+echo '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_ETIQUETTE_TYPE").'</td><td>';
 
 require_once DOL_DOCUMENT_ROOT.'/core/lib/format_cards.lib.php'; // List of possible labels (defined into $_Avery_Labels variable set into format_cards.lib.php)
 $arrayoflabels = array();
 foreach (array_keys($_Avery_Labels) as $codecards) {
 	$arrayoflabels[$codecards] = $_Avery_Labels[$codecards]['name'];
 }
-print $form->selectarray('ADHERENT_ETIQUETTE_TYPE', $arrayoflabels, getDolGlobalString('ADHERENT_ETIQUETTE_TYPE') ? getDolGlobalString('ADHERENT_ETIQUETTE_TYPE') : 'CARD', 1, 0, 0);
+echo $form->selectarray('ADHERENT_ETIQUETTE_TYPE', $arrayoflabels, getDolGlobalString('ADHERENT_ETIQUETTE_TYPE') ? getDolGlobalString('ADHERENT_ETIQUETTE_TYPE') : 'CARD', 1, 0, 0);
 
-print "</td></tr>\n";
+echo "</td></tr>\n";
 
 // Text printed on member address sheets
-print '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_ETIQUETTE_TEXT").'</td><td>';
-print '<textarea class="flat" name="ADHERENT_ETIQUETTE_TEXT" cols="50" rows="5" wrap="soft">'."\n";
-print getDolGlobalString('ADHERENT_ETIQUETTE_TEXT');
-print '</textarea>';
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td>'.$langs->trans("DescADHERENT_ETIQUETTE_TEXT").'</td><td>';
+echo '<textarea class="flat" name="ADHERENT_ETIQUETTE_TEXT" cols="50" rows="5" wrap="soft">'."\n";
+echo getDolGlobalString('ADHERENT_ETIQUETTE_TEXT');
+echo '</textarea>';
+echo "</td></tr>\n";
 
-print '</table>';
-print '</div>';
+echo '</table>';
+echo '</div>';
 
-print '<div class="center">';
-print '<input type="submit" class="button reposition" value="'.$langs->trans("Update").'" name="Button">';
-print '</div>';
+echo '<div class="center">';
+echo '<input type="submit" class="button reposition" value="'.$langs->trans("Update").'" name="Button">';
+echo '</div>';
 
-print '</form>';
+echo '</form>';
 
-print '<br>';
+echo '<br>';
 
-print "<br>";
+echo "<br>";
 
-print dol_get_fiche_end();
+echo dol_get_fiche_end();
 
 // End of page
 llxFooter();

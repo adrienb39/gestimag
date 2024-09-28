@@ -1,5 +1,5 @@
 <?php
-/* Print-outs using the newer graphics print command */
+/* Print-outs using the newer graphics echo command */
 
 require __DIR__ . '/../vendor/autoload.php';
 use Mike42\Escpos\Printer;

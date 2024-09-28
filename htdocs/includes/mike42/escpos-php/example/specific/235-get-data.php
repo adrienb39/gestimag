@@ -9,7 +9,7 @@ use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\DummyPrintConnector;
 use Mike42\Escpos\CapabilityProfile;
 
-// Make sure you load a Star print connector or you may get gibberish.
+// Make sure you load a Star echo connector or you may get gibberish.
 $connector = new DummyPrintConnector();
 $profile = CapabilityProfile::load("TSP600");
 $printer = new Printer($connector);
@@ -22,7 +22,7 @@ $data = $connector -> getData();
 // Return it, check the manual for specifics.
 header('Content-type: application/octet-stream');
 header('Content-Length: '.strlen($data));
-echo $data;
+echo  $data;
 
 // Close the printer when done.
 $printer -> close();

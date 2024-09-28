@@ -275,7 +275,7 @@ class Website extends CommonObject
 		if (!$error) {
 			$stringtogestimagfile = "# Some properties for Gestimag web site CMS\n";
 			$stringtogestimagfile .= "param=value\n";
-			//print $conf->website->dir_output.'/'.$this->ref.'/.gestimag';exit;
+			//echo $conf->website->dir_output.'/'.$this->ref.'/.gestimag';exit;
 			file_put_contents($conf->website->dir_output.'/'.$this->ref.'/.gestimag', $stringtogestimagfile);
 		}
 
@@ -757,7 +757,7 @@ class Website extends CommonObject
 				// Create new file
 				$objectpagenew = $objectpageold->createFromClone($user, $pageid, $objectpageold->pageurl, '', 0, $object->id, 1);
 
-				//print $pageid.' = '.$objectpageold->pageurl.' -> '.$objectpagenew->id.' = '.$objectpagenew->pageurl.'<br>';
+				//echo $pageid.' = '.$objectpageold->pageurl.' -> '.$objectpagenew->id.' = '.$objectpagenew->pageurl.'<br>';
 				if (is_object($objectpagenew) && $objectpagenew->pageurl) {
 					$filealias = $pathofwebsitenew.'/'.$objectpagenew->pageurl.'.php';
 					$filetplnew = $pathofwebsitenew.'/page'.$objectpagenew->id.'.tpl.php';

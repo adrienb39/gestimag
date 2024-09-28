@@ -195,12 +195,12 @@ function rebuildObjectClass($destdir, $module, $objectname, $newmask, $readdir =
 				}
 
 				$texttoinsert .= "),\n";
-				//print $texttoinsert;
+				//echo $texttoinsert;
 			}
 		}
 
 		$texttoinsert .= "\t".');'."\n";
-		//print ($texttoinsert);exit;
+		//echo ($texttoinsert);exit;
 
 		if (count($object->fields)) {
 			//$typetotypephp=array('integer'=>'integer', 'duration'=>'integer', 'varchar'=>'string');
@@ -222,7 +222,7 @@ function rebuildObjectClass($destdir, $module, $objectname, $newmask, $readdir =
 		//print($texttoinsert);
 
 		$contentclass = preg_replace('/\/\/ BEGIN MODULEBUILDER PROPERTIES.*END MODULEBUILDER PROPERTIES/ims', $texttoinsert, $contentclass);
-		//print $contentclass;
+		//echo $contentclass;
 
 		dol_mkdir(dirname($pathoffiletoedittarget));
 
@@ -237,7 +237,7 @@ function rebuildObjectClass($destdir, $module, $objectname, $newmask, $readdir =
 
 		return $error ? -1 : $object;
 	} catch (Exception $e) {
-		print $e->getMessage();
+		echo $e->getMessage();
 		return -5;
 	}
 }
@@ -316,7 +316,7 @@ function rebuildObjectSql($destdir, $module, $objectname, $newmask, $readdir = '
 			}
 		}
 	} catch (Exception $e) {
-		print $e->getMessage();
+		echo $e->getMessage();
 	}
 
 	// Backup old file

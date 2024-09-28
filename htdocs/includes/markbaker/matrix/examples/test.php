@@ -22,12 +22,12 @@ $decomposition = new QR($matrix);
 
 $X = $decomposition->solve($target);
 
-echo 'X', PHP_EOL;
+echo  'X', PHP_EOL;
 var_export($X->toArray());
-echo PHP_EOL;
+echo  PHP_EOL;
 
 $resolve = $matrix->multiply($X);
 
-echo 'Resolve', PHP_EOL;
+echo  'Resolve', PHP_EOL;
 var_export($resolve->toArray());
-echo PHP_EOL;
+echo  PHP_EOL;

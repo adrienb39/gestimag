@@ -1264,7 +1264,7 @@ abstract class CommonObject
 			$sql .= " WHERE tc.element='".$this->db->escape($this->element)."'";
 			$sql .= " AND tc.source='".$this->db->escape($source)."'";
 			$sql .= " AND tc.code='".$this->db->escape($type_contact)."' AND tc.active=1";
-			//print $sql;
+			//echo $sql;
 			$resql = $this->db->query($sql);
 			if ($resql) {
 				$obj = $this->db->fetch_object($resql);
@@ -1650,7 +1650,7 @@ abstract class CommonObject
 		}
 		$sql .= $this->db->order($order, 'ASC');
 
-		//print "sql=".$sql;
+		//echo "sql=".$sql;
 		$resql = $this->db->query($sql);
 		if ($resql) {
 			$num = $this->db->num_rows($resql);
@@ -2403,7 +2403,7 @@ abstract class CommonObject
 		if ($restrictiononfksoc && $socid && $this->element == 'societe') {
 			$sql .= ' AND te.rowid = '.((int) $socid);
 		}
-		//print 'socid='.$socid.' restrictiononfksoc='.$restrictiononfksoc.' ismultientitymanaged = '.$this->ismultientitymanaged.' filter = '.$filter.' -> '.$sql."<br>";
+		//echo 'socid='.$socid.' restrictiononfksoc='.$restrictiononfksoc.' ismultientitymanaged = '.$this->ismultientitymanaged.' filter = '.$filter.' -> '.$sql."<br>";
 
 		$result = $this->db->query($sql);
 		if (!$result) {
@@ -2489,7 +2489,7 @@ abstract class CommonObject
 		if ($restrictiononfksoc && $socid && $this->element == 'societe') {
 			$sql .= ' AND te.rowid = '.((int) $socid);
 		}
-		//print 'socid='.$socid.' restrictiononfksoc='.$restrictiononfksoc.' ismultientitymanaged = '.$this->ismultientitymanaged.' filter = '.$filter.' -> '.$sql."<br>";
+		//echo 'socid='.$socid.' restrictiononfksoc='.$restrictiononfksoc.' ismultientitymanaged = '.$this->ismultientitymanaged.' filter = '.$filter.' -> '.$sql."<br>";
 		// Rem: Bug in some mysql version: SELECT MIN(rowid) FROM llx_socpeople WHERE rowid > 1 when one row in database with rowid=1, returns 1 instead of null
 
 		$result = $this->db->query($sql);
@@ -3964,7 +3964,7 @@ abstract class CommonObject
 				if ($forcedroundingmode == '1') {	// Check if we need adjustment onto line for vat. TODO This works on the company currency but not on foreign currency
 					$tmpvat = price2num($total_ht_by_vats[$obj->vatrate] * $obj->vatrate / 100, 'MT', 1);
 					$diff = price2num($total_tva_by_vats[$obj->vatrate] - (float) $tmpvat, 'MT', 1);
-					//print 'Line '.$i.' rowid='.$obj->rowid.' vat_rate='.$obj->vatrate.' total_ht='.$obj->total_ht.' total_tva='.$obj->total_tva.' total_ttc='.$obj->total_ttc.' total_ht_by_vats='.$total_ht_by_vats[$obj->vatrate].' total_tva_by_vats='.$total_tva_by_vats[$obj->vatrate].' (new calculation = '.$tmpvat.') total_ttc_by_vats='.$total_ttc_by_vats[$obj->vatrate].($diff?" => DIFF":"")."<br>\n";
+					//echo 'Line '.$i.' rowid='.$obj->rowid.' vat_rate='.$obj->vatrate.' total_ht='.$obj->total_ht.' total_tva='.$obj->total_tva.' total_ttc='.$obj->total_ttc.' total_ht_by_vats='.$total_ht_by_vats[$obj->vatrate].' total_tva_by_vats='.$total_tva_by_vats[$obj->vatrate].' (new calculation = '.$tmpvat.') total_ttc_by_vats='.$total_ttc_by_vats[$obj->vatrate].($diff?" => DIFF":"")."<br>\n";
 					if ($diff) {
 						$maxdiff = (10 * pow(10, -1 * getDolGlobalInt('MAIN_MAX_DECIMALS_TOT', 0)));
 						if (abs((float) $diff) > $maxdiff) {
@@ -4830,7 +4830,7 @@ abstract class CommonObject
 		// Test if child exists
 		$haschild = 0;
 		foreach ($arraytoscan as $table => $element) {
-			//print $id.'-'.$table.'-'.$elementname.'<br>';
+			//echo $id.'-'.$table.'-'.$elementname.'<br>';
 			// Check if element can be deleted
 			$sql = "SELECT COUNT(*) as nb";
 			$sql .= " FROM ".$this->db->prefix().$table." as c";
@@ -4861,7 +4861,7 @@ abstract class CommonObject
 				$obj = $this->db->fetch_object($resql);
 				if ($obj->nb > 0) {
 					$langs->load("errors");
-					//print 'Found into table '.$table.', type '.$langs->transnoentitiesnoconv($elementname).', haschild='.$haschild;
+					//echo 'Found into table '.$table.', type '.$langs->transnoentitiesnoconv($elementname).', haschild='.$haschild;
 					$haschild += $obj->nb;
 					if (is_numeric($element)) {	// very old usage array('table1', 'table2', ...)
 						$this->errors[] = $langs->transnoentitiesnoconv("ErrorRecordHasAtLeastOneChildOfType", method_exists($this, 'getNomUrl') ? $this->getNomUrl() : $this->ref, $table);
@@ -4953,7 +4953,7 @@ abstract class CommonObject
 				}
 			}
 
-			//print $total_discount; exit;
+			//echo $total_discount; exit;
 			return (float) price2num($total_discount);
 		}
 
@@ -5045,9 +5045,9 @@ abstract class CommonObject
 				}
 			}
 			if ($volume_units < 50) {   // >50 means a standard unit (power of 10 of official unit), > 50 means an exotic unit (like inch)
-				//print $line->volume."x".$line->volume_units."x".($line->volume_units < 50)."x".$volumeUnit;
+				//echo $line->volume."x".$line->volume_units."x".($line->volume_units < 50)."x".$volumeUnit;
 				$trueVolumeUnit = pow(10, $volumeUnit);
-				//print $line->volume;
+				//echo $line->volume;
 				$totalVolume += $volume * $qty * $trueVolumeUnit;
 			} else {
 				$totalVolume += $volume * $qty; // This may be wrong if we mix different units
@@ -5203,7 +5203,7 @@ abstract class CommonObject
 
 		$i = 0;
 
-		print "<!-- begin printObjectLines() --><tbody>\n";
+		echo "<!-- begin printObjectLines() --><tbody>\n";
 		foreach ($this->lines as $line) {
 			//Line extrafield
 			$line->fetch_optionals();
@@ -5224,7 +5224,7 @@ abstract class CommonObject
 
 			$i++;
 		}
-		print "</tbody><!-- end printObjectLines() -->\n";
+		echo "</tbody><!-- end printObjectLines() -->\n";
 	}
 
 	/**
@@ -5374,22 +5374,22 @@ abstract class CommonObject
 	{
 		global $langs, $hookmanager, $form, $action;
 
-		print '<tr class="liste_titre">';
-		print '<td class="linecolref">'.$langs->trans('Ref').'</td>';
-		print '<td class="linecoldescription">'.$langs->trans('Description').'</td>';
-		print '<td class="linecolvat right">'.$langs->trans('VATRate').'</td>';
-		print '<td class="linecoluht right">'.$langs->trans('PriceUHT').'</td>';
+		echo '<tr class="liste_titre">';
+		echo '<td class="linecolref">'.$langs->trans('Ref').'</td>';
+		echo '<td class="linecoldescription">'.$langs->trans('Description').'</td>';
+		echo '<td class="linecolvat right">'.$langs->trans('VATRate').'</td>';
+		echo '<td class="linecoluht right">'.$langs->trans('PriceUHT').'</td>';
 		if (isModEnabled("multicurrency")) {
-			print '<td class="linecoluht_currency right">'.$langs->trans('PriceUHTCurrency').'</td>';
+			echo '<td class="linecoluht_currency right">'.$langs->trans('PriceUHTCurrency').'</td>';
 		}
-		print '<td class="linecolqty right">'.$langs->trans('Qty').'</td>';
+		echo '<td class="linecolqty right">'.$langs->trans('Qty').'</td>';
 		if (getDolGlobalInt('PRODUCT_USE_UNITS')) {
-			print '<td class="linecoluseunit left">'.$langs->trans('Unit').'</td>';
+			echo '<td class="linecoluseunit left">'.$langs->trans('Unit').'</td>';
 		}
-		print '<td class="linecoldiscount right">'.$langs->trans('ReductionShort').'</td>';
-		print '<td class="linecolht right">'.$langs->trans('TotalHT').'</td>';
-		print '<td class="center">'.$form->showCheckAddButtons('checkforselect', 1).'</td>';
-		print '</tr>';
+		echo '<td class="linecoldiscount right">'.$langs->trans('ReductionShort').'</td>';
+		echo '<td class="linecolht right">'.$langs->trans('TotalHT').'</td>';
+		echo '<td class="center">'.$form->showCheckAddButtons('checkforselect', 1).'</td>';
+		echo '</tr>';
 		$i = 0;
 
 		if (!empty($this->lines)) {
@@ -7716,7 +7716,7 @@ abstract class CommonObject
 						$sqlwhere .= " AND entity = " . ((int) $conf->entity);
 					}
 					$sql .= $sqlwhere;
-					//print $sql;
+					//echo $sql;
 
 					// Note: $InfoFieldList can be 'sellist:TableName:LabelFieldName[:KeyFieldName[:KeyFieldParent[:Filter[:CategoryIdType[:CategoryIdList[:Sortfield]]]]]]'
 					if (isset($InfoFieldList[7]) && preg_match('/^[a-z0-9_\-,]+$/i', $InfoFieldList[7])) {
@@ -7789,7 +7789,7 @@ abstract class CommonObject
 						}
 						$this->db->free($resql);
 					} else {
-						print 'Error in request ' . $sql . ' ' . $this->db->lasterror() . '. Check setup of extra parameters.<br>';
+						echo 'Error in request ' . $sql . ' ' . $this->db->lasterror() . '. Check setup of extra parameters.<br>';
 					}
 				} else {
 					require_once DOL_DOCUMENT_ROOT.'/categories/class/categorie.class.php';
@@ -7951,7 +7951,7 @@ abstract class CommonObject
 						$sqlwhere .= " AND entity = " . ((int) $conf->entity);
 					}
 					// $sql.=preg_replace('/^ AND /','',$sqlwhere);
-					// print $sql;
+					// echo $sql;
 
 					$sql .= $sqlwhere;
 
@@ -8023,7 +8023,7 @@ abstract class CommonObject
 
 						$out = $form->multiselectarray($keyprefix . $key . $keysuffix, $data, $value_arr, 0, 0, $morecss, 0, '100%');
 					} else {
-						print 'Error in request ' . $sql . ' ' . $this->db->lasterror() . '. Check setup of extra parameters.<br>';
+						echo 'Error in request ' . $sql . ' ' . $this->db->lasterror() . '. Check setup of extra parameters.<br>';
 					}
 				} else {
 					require_once DOL_DOCUMENT_ROOT.'/categories/class/categorie.class.php';
@@ -8382,7 +8382,7 @@ abstract class CommonObject
 				} else {
 					require_once DOL_DOCUMENT_ROOT . '/categories/class/categorie.class.php';
 
-					$toprint = array();
+					$toecho = array();
 					$obj = $this->db->fetch_object($resql);
 					$c = new Categorie($this->db);
 					$c->fetch($obj->rowid);
@@ -8401,7 +8401,7 @@ abstract class CommonObject
 			$value_arr = explode(',', (string) $value);
 			$value = '';
 			if (is_array($value_arr) && count($value_arr) > 0) {
-				$toprint = array();
+				$toecho = array();
 				foreach ($value_arr as $keyval => $valueval) {
 					if (!empty($valueval)) {
 						$toprint[] = '<li class="select2-search-choice-gestimag noborderoncategories" style="background: #bbb">' . $param['options'][$valueval] . '</li>';
@@ -8451,7 +8451,7 @@ abstract class CommonObject
 			if ($resql) {
 				if (!$filter_categorie) {
 					$value = ''; // value was used, so now we reset it to use it to build final output
-					$toprint = array();
+					$toecho = array();
 					while ($obj = $this->db->fetch_object($resql)) {
 						// Several field into label (eq table:code|libelle:rowid)
 						$fields_label = explode('|', $InfoFieldList[1]);
@@ -8484,7 +8484,7 @@ abstract class CommonObject
 				} else {
 					require_once DOL_DOCUMENT_ROOT . '/categories/class/categorie.class.php';
 
-					$toprint = array();
+					$toecho = array();
 					while ($obj = $this->db->fetch_object($resql)) {
 						if (is_array($value_arr) && in_array($obj->rowid, $value_arr)) {
 							$c = new Categorie($this->db);
@@ -8593,7 +8593,7 @@ abstract class CommonObject
 			$value = dol_htmlentitiesbr($value);
 		}
 
-		//print $type.'-'.$size.'-'.$value;
+		//echo $type.'-'.$size.'-'.$value;
 		$out = $value;
 
 		return is_null($out) ? '' : $out;

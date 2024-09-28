@@ -145,9 +145,9 @@ class FormSms
 			$soc->fetch($this->withtosocid);
 		}
 
-		print "\n<!-- Begin form SMS -->\n";
+		echo "\n<!-- Begin form SMS -->\n";
 
-		print '
+		echo '
 <script nonce="'.getNonce().'" type="text/javascript">
 function limitChars(textarea, limit, infodiv)
 {
@@ -161,51 +161,51 @@ function limitChars(textarea, limit, infodiv)
 </script>';
 
 		if ($showform) {
-			print "<form method=\"POST\" name=\"smsform\" enctype=\"multipart/form-data\" action=\"".$this->param["returnurl"]."\">\n";
+			echo "<form method=\"POST\" name=\"smsform\" enctype=\"multipart/form-data\" action=\"".$this->param["returnurl"]."\">\n";
 		}
 
-		print '<input type="hidden" name="token" value="'.newToken().'">';
+		echo '<input type="hidden" name="token" value="'.newToken().'">';
 		foreach ($this->param as $key => $value) {
-			print "<input type=\"hidden\" name=\"$key\" value=\"$value\">\n";
+			echo "<input type=\"hidden\" name=\"$key\" value=\"$value\">\n";
 		}
-		print "<table class=\"border centpercent\">\n";
+		echo "<table class=\"border centpercent\">\n";
 
 		// Substitution array
 		if (!empty($this->withsubstit)) {		// Unset or set ->withsubstit=0 to disable this.
-			print "<tr><td colspan=\"2\">";
+			echo "<tr><td colspan=\"2\">";
 			$help = "";
 			foreach ($this->substit as $key => $val) {
 				$help .= $key.' -> '.$langs->trans($val).'<br>';
 			}
-			print $form->textwithpicto($langs->trans("SmsTestSubstitutionReplacedByGenericValues"), $help);
-			print "</td></tr>\n";
+			echo $form->textwithpicto($langs->trans("SmsTestSubstitutionReplacedByGenericValues"), $help);
+			echo "</td></tr>\n";
 		}
 
 		// From
 		if ($this->withfrom) {
 			if ($this->withfromreadonly) {
-				print '<tr><td class="titlefield '.$morecss.'">'.$langs->trans("SmsFrom");
-				print '<input type="hidden" name="fromsms" value="'.$this->fromsms.'">';
-				print "</td><td>";
+				echo '<tr><td class="titlefield '.$morecss.'">'.$langs->trans("SmsFrom");
+				echo '<input type="hidden" name="fromsms" value="'.$this->fromsms.'">';
+				echo "</td><td>";
 				if ($this->fromtype == 'user') {
 					$langs->load("users");
 					$fuser = new User($this->db);
 					$fuser->fetch($this->fromid);
-					print $fuser->getNomUrl(1);
-					print ' &nbsp; ';
+					echo $fuser->getNomUrl(1);
+					echo ' &nbsp; ';
 				}
 				if ($this->fromsms) {
-					print $this->fromsms;
+					echo $this->fromsms;
 				} else {
 					if ($this->fromtype) {
 						$langs->load("errors");
-						print '<span class="warning"> &lt;'.$langs->trans("ErrorNoPhoneDefinedForThisUser").'&gt; </span>';
+						echo '<span class="warning"> &lt;'.$langs->trans("ErrorNoPhoneDefinedForThisUser").'&gt; </span>';
 					}
 				}
-				print "</td></tr>\n";
-				print "</td></tr>\n";
+				echo "</td></tr>\n";
+				echo "</td></tr>\n";
 			} else {
-				print '<tr><td class="'.$morecss.'">'.$langs->trans("SmsFrom")."</td><td>";
+				echo '<tr><td class="'.$morecss.'">'.$langs->trans("SmsFrom")."</td><td>";
 				if (getDolGlobalString('MAIN_SMS_SENDMODE')) {
 					$sendmode = getDolGlobalString('MAIN_SMS_SENDMODE');	// $conf->global->MAIN_SMS_SENDMODE looks like a value 'module'
 					$classmoduleofsender = getDolGlobalString('MAIN_MODULE_'.strtoupper($sendmode).'_SMS', $sendmode);	// $conf->global->MAIN_MODULE_XXX_SMS looks like a value 'class@module'
@@ -237,46 +237,46 @@ function limitChars(textarea, limit, infodiv)
 				}
 
 				if (is_array($resultsender) && count($resultsender) > 0) {
-					print '<select name="fromsms" id="fromsms" class="flat">';
+					echo '<select name="fromsms" id="fromsms" class="flat">';
 					foreach ($resultsender as $obj) {
-						print '<option value="'.$obj->number.'">'.$obj->number.'</option>';
+						echo '<option value="'.$obj->number.'">'.$obj->number.'</option>';
 					}
-					print '</select>';
+					echo '</select>';
 				} else {
-					print '<span class="error wordbreak">'.$langs->trans("SmsNoPossibleSenderFound");
+					echo '<span class="error wordbreak">'.$langs->trans("SmsNoPossibleSenderFound");
 					if (is_object($sms) && !empty($sms->error)) {
-						print ' '.$sms->error;
+						echo ' '.$sms->error;
 					}
-					print '</span>';
+					echo '</span>';
 				}
-				print '</td>';
-				print "</tr>\n";
+				echo '</td>';
+				echo "</tr>\n";
 			}
 		}
 
 		// To (target)
 		if ($this->withto || is_array($this->withto)) {
-			print '<tr><td>';
+			echo '<tr><td>';
 			//$moretext=$langs->trans("YouCanUseCommaSeparatorForSeveralRecipients");
 			$moretext = '';
-			print $form->textwithpicto($langs->trans("SmsTo"), $moretext);
-			print '</td><td>';
+			echo $form->textwithpicto($langs->trans("SmsTo"), $moretext);
+			echo '</td><td>';
 			if ($this->withtoreadonly) {
-				print (!is_array($this->withto) && !is_numeric($this->withto)) ? $this->withto : "";
+				echo (!is_array($this->withto) && !is_numeric($this->withto)) ? $this->withto : "";
 			} else {
-				print '<input class="width150" id="sendto" name="sendto" value="'.dol_escape_htmltag(!is_array($this->withto) && $this->withto != '1' ? (GETPOSTISSET("sendto") ? GETPOST("sendto") : $this->withto) : "+").'">';
+				echo '<input class="width150" id="sendto" name="sendto" value="'.dol_escape_htmltag(!is_array($this->withto) && $this->withto != '1' ? (GETPOSTISSET("sendto") ? GETPOST("sendto") : $this->withto) : "+").'">';
 				if (!empty($this->withtosocid) && $this->withtosocid > 0) {
 					$liste = array();
 					foreach ($soc->thirdparty_and_contact_phone_array() as $key => $value) {
 						$liste[$key] = $value;
 					}
-					print " ".$langs->trans("or")." ";
+					echo " ".$langs->trans("or")." ";
 					//var_dump($_REQUEST);exit;
-					print $form->selectarray("receiver", $liste, GETPOST("receiver"), 1);
+					echo $form->selectarray("receiver", $liste, GETPOST("receiver"), 1);
 				}
-				print '<span class="opacitymedium hideonsmartphone"> '.$langs->trans("SmsInfoNumero").'</span>';
+				echo '<span class="opacitymedium hideonsmartphone"> '.$langs->trans("SmsInfoNumero").'</span>';
 			}
-			print "</td></tr>\n";
+			echo "</td></tr>\n";
 		}
 
 		// Message
@@ -291,20 +291,20 @@ function limitChars(textarea, limit, infodiv)
 			}
 			$defaultmessage = str_replace('\n', "\n", $defaultmessage);
 
-			print "<tr>";
-			print '<td class="tdtop">'.$langs->trans("SmsText")."</td>";
-			print "<td>";
+			echo "<tr>";
+			echo '<td class="tdtop">'.$langs->trans("SmsText")."</td>";
+			echo "<td>";
 			if ($this->withbodyreadonly) {
-				print nl2br($defaultmessage);
-				print '<input type="hidden" name="message" value="'.dol_escape_htmltag($defaultmessage).'">';
+				echo nl2br($defaultmessage);
+				echo '<input type="hidden" name="message" value="'.dol_escape_htmltag($defaultmessage).'">';
 			} else {
-				print '<textarea class="quatrevingtpercent" name="message" id="message" rows="'.ROWS_4.'" onkeyup="limitChars(this, 160, \'charlimitinfospan\')">'.$defaultmessage.'</textarea>';
-				print '<div id="charlimitinfo" class="opacitymedium">'.$langs->trans("SmsInfoCharRemain").': <span id="charlimitinfospan">'.(160 - dol_strlen($defaultmessage)).'</span></div></td>';
+				echo '<textarea class="quatrevingtpercent" name="message" id="message" rows="'.ROWS_4.'" onkeyup="limitChars(this, 160, \'charlimitinfospan\')">'.$defaultmessage.'</textarea>';
+				echo '<div id="charlimitinfo" class="opacitymedium">'.$langs->trans("SmsInfoCharRemain").': <span id="charlimitinfospan">'.(160 - dol_strlen($defaultmessage)).'</span></div></td>';
 			}
-			print "</td></tr>\n";
+			echo "</td></tr>\n";
 		}
 
-		print '
+		echo '
            <tr>
             <td>'.$langs->trans("DelayBeforeSending").':</td>
             <td> <input name="deferred" id="deferred" size="4" value="0"></td></tr>
@@ -331,21 +331,21 @@ function limitChars(textarea, limit, infodiv)
            <option value="1" selected>Yes</option>
            </select></td></tr>';
 
-		print "</table>\n";
+		echo "</table>\n";
 
 
 		if ($showform) {
-			print '<div class="center">';
-			print '<input type="submit" class="button" name="sendmail" value="'.dol_escape_htmltag($langs->trans("SendSms")).'">';
+			echo '<div class="center">';
+			echo '<input type="submit" class="button" name="sendmail" value="'.dol_escape_htmltag($langs->trans("SendSms")).'">';
 			if ($this->withcancel) {
-				print '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-				print '<input class="button button-cancel" type="submit" name="cancel" value="'.dol_escape_htmltag($langs->trans("Cancel")).'">';
+				echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+				echo '<input class="button button-cancel" type="submit" name="cancel" value="'.dol_escape_htmltag($langs->trans("Cancel")).'">';
 			}
-			print '</div>';
+			echo '</div>';
 
-			print "</form>\n";
+			echo "</form>\n";
 		}
 
-		print "<!-- End form SMS -->\n";
+		echo "<!-- End form SMS -->\n";
 	}
 }

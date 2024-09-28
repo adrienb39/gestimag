@@ -84,11 +84,11 @@ if ($action == 'getlastversion') {
 $wikihelp = 'EN:Installation_-_Upgrade|FR:Installation_-_Mise_à_jour|ES:Instalación_-_Actualización';
 llxHeader('', $langs->trans("Upgrade"), $wikihelp, '', 0, 0, '', '', '', 'mod-admin page-tools_update');
 
-print load_fiche_titre($langs->trans("Upgrade"), '', 'title_setup');
+echo load_fiche_titre($langs->trans("Upgrade"), '', 'title_setup');
 
-print '<br>';
+echo '<br>';
 
-print $langs->trans("CurrentVersion").' : <strong>'.DOL_VERSION.'</strong><br>';
+echo $langs->trans("CurrentVersion").' : <strong>'.DOL_VERSION.'</strong><br>';
 
 if (function_exists('curl_init')) {
 	$conf->global->MAIN_USE_RESPONSE_TIMEOUT = 10;
@@ -96,7 +96,7 @@ if (function_exists('curl_init')) {
 	if ($action == 'getlastversion') {
 		if ($sfurl == 'xml_not_available') {
 			$langs->load("errors");
-			print $langs->trans("LastStableVersion").' : <b class="error">'.$langs->trans("ErrorFunctionNotAvailableInPHP", 'simplexml_load_string').'</b><br>';
+			echo $langs->trans("LastStableVersion").' : <b class="error">'.$langs->trans("ErrorFunctionNotAvailableInPHP", 'simplexml_load_string').'</b><br>';
 		} elseif ($sfurl) {
 			$i = 0;
 			while (!empty($sfurl->channel[0]->item[$i]->title) && $i < 10000) {
@@ -114,47 +114,47 @@ if (function_exists('curl_init')) {
 			}
 
 			// Show version
-			print $langs->trans("LastStableVersion").' : <b>'.(($version != '0.0') ? $version : $langs->trans("Unknown")).'</b><br>';
+			echo $langs->trans("LastStableVersion").' : <b>'.(($version != '0.0') ? $version : $langs->trans("Unknown")).'</b><br>';
 		} else {
-			print $langs->trans("LastStableVersion").' : <b>'.$langs->trans("UpdateServerOffline").'</b><br>';
+			echo $langs->trans("LastStableVersion").' : <b>'.$langs->trans("UpdateServerOffline").'</b><br>';
 		}
 	} else {
-		print $langs->trans("LastStableVersion").' : <a href="'.$_SERVER["PHP_SELF"].'?action=getlastversion&token='.newToken().'" class="button smallpaddingimp">'.$langs->trans("Check").'</a><br>';
+		echo $langs->trans("LastStableVersion").' : <a href="'.$_SERVER["PHP_SELF"].'?action=getlastversion&token='.newToken().'" class="button smallpaddingimp">'.$langs->trans("Check").'</a><br>';
 	}
 }
 
-print '<br>';
-print '<br>';
+echo '<br>';
+echo '<br>';
 
 // Upgrade
-print $langs->trans("Upgrade").'<br>';
-print '<hr>';
-print $langs->trans("ThisIsProcessToFollow").'<br>';
-print '<b>'.$langs->trans("StepNb", 1).'</b>: ';
+echo $langs->trans("Upgrade").'<br>';
+echo '<hr>';
+echo $langs->trans("ThisIsProcessToFollow").'<br>';
+echo '<b>'.$langs->trans("StepNb", 1).'</b>: ';
 $fullurl = '<a href="'.$urlgestimag.'" target="_blank" rel="noopener noreferrer">'.$urlgestimag.'</a>';
-print str_replace('{s}', $fullurl, $langs->trans("DownloadPackageFromWebSite", '{s}')).'<br>';
-print '<b>'.$langs->trans("StepNb", 2).'</b>: ';
-print str_replace('{s}', $gestimagroot, $langs->trans("UnpackPackageInGestimagRoot", '{s}')).'<br>';
-print '<b>'.$langs->trans("StepNb", 3).'</b>: ';
-print $langs->trans("RemoveLock", $gestimagdataroot.'/install.lock').'<br>';
-print '<b>'.$langs->trans("StepNb", 4).'</b>: ';
+echo str_replace('{s}', $fullurl, $langs->trans("DownloadPackageFromWebSite", '{s}')).'<br>';
+echo '<b>'.$langs->trans("StepNb", 2).'</b>: ';
+echo str_replace('{s}', $gestimagroot, $langs->trans("UnpackPackageInGestimagRoot", '{s}')).'<br>';
+echo '<b>'.$langs->trans("StepNb", 3).'</b>: ';
+echo $langs->trans("RemoveLock", $gestimagdataroot.'/install.lock').'<br>';
+echo '<b>'.$langs->trans("StepNb", 4).'</b>: ';
 $fullurl = '<a href="'.DOL_URL_ROOT.'/install/" target="_blank" rel="noopener noreferrer">'.DOL_URL_ROOT.'/install/</a>';
-print str_replace('{s}', $fullurl, $langs->trans("CallUpdatePage", '{s}')).'<br>';
-print '<b>'.$langs->trans("StepNb", 5).'</b>: ';
-print $langs->trans("RestoreLock", $gestimagdataroot.'/install.lock').'<br>';
+echo str_replace('{s}', $fullurl, $langs->trans("CallUpdatePage", '{s}')).'<br>';
+echo '<b>'.$langs->trans("StepNb", 5).'</b>: ';
+echo $langs->trans("RestoreLock", $gestimagdataroot.'/install.lock').'<br>';
 
-print '<br>';
-print '<br>';
-
-
+echo '<br>';
+echo '<br>';
 
 
 
-print $langs->trans("AddExtensionThemeModuleOrOther").'<br>';
-print '<hr>';
+
+
+echo $langs->trans("AddExtensionThemeModuleOrOther").'<br>';
+echo '<hr>';
 $texttoshow = $langs->trans("GoModuleSetupArea", DOL_URL_ROOT.'/admin/modules.php?mode=deploy', '{s2}');
 $texttoshow = str_replace('{s2}', img_picto('', 'tools', 'class="pictofixedwidth"').$langs->transnoentities("Home").' - '.$langs->transnoentities("Setup").' - '.$langs->transnoentities("Modules"), $texttoshow);
-print $texttoshow;
+echo $texttoshow;
 
 // End of page
 llxFooter();

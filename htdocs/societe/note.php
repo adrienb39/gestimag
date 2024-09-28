@@ -96,7 +96,7 @@ if ($object->id > 0) {
 
 	$head = societe_prepare_head($object);
 
-	print dol_get_fiche_head($head, 'note', $langs->trans("ThirdParty"), -1, 'company');
+	echo dol_get_fiche_head($head, 'note', $langs->trans("ThirdParty"), -1, 'company');
 
 	$linkback = '<a href="'.DOL_URL_ROOT.'/societe/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
@@ -106,55 +106,55 @@ if ($object->id > 0) {
 	//if ($action == 'editnote_public') $cssclass='titlefieldcreate';
 	//if ($action == 'editnote_private') $cssclass='titlefieldcreate';
 
-	print '<div class="fichecenter">';
+	echo '<div class="fichecenter">';
 
-	print '<div class="underbanner clearboth"></div>';
-	print '<table class="border centpercent tableforfield">';
+	echo '<div class="underbanner clearboth"></div>';
+	echo '<table class="border centpercent tableforfield">';
 
 	// Type Prospect/Customer/Supplier
-	print '<tr><td class="titlefield">'.$langs->trans('NatureOfThirdParty').'</td><td>';
-	print $object->getTypeUrl(1);
-	print '</td></tr>';
+	echo '<tr><td class="titlefield">'.$langs->trans('NatureOfThirdParty').'</td><td>';
+	echo $object->getTypeUrl(1);
+	echo '</td></tr>';
 
 	if (getDolGlobalString('SOCIETE_USEPREFIX')) {  // Old not used prefix field
-		print '<tr><td class="'.$cssclass.'">'.$langs->trans('Prefix').'</td><td colspan="3">'.$object->prefix_comm.'</td></tr>';
+		echo '<tr><td class="'.$cssclass.'">'.$langs->trans('Prefix').'</td><td colspan="3">'.$object->prefix_comm.'</td></tr>';
 	}
 
 	if ($object->client) {
-		print '<tr><td class="'.$cssclass.'">';
-		print $langs->trans('CustomerCode').'</td><td colspan="3">';
-		print showValueWithClipboardCPButton(dol_escape_htmltag($object->code_client));
+		echo '<tr><td class="'.$cssclass.'">';
+		echo $langs->trans('CustomerCode').'</td><td colspan="3">';
+		echo showValueWithClipboardCPButton(dol_escape_htmltag($object->code_client));
 		$tmpcheck = $object->check_codeclient();
 		if ($tmpcheck != 0 && $tmpcheck != -5) {
-			print ' <span class="error">('.$langs->trans("WrongCustomerCode").')</span>';
+			echo ' <span class="error">('.$langs->trans("WrongCustomerCode").')</span>';
 		}
-		print '</td></tr>';
+		echo '</td></tr>';
 	}
 
 	if ($object->fournisseur) {
-		print '<tr><td class="'.$cssclass.'">';
-		print $langs->trans('SupplierCode').'</td><td colspan="3">';
-		print showValueWithClipboardCPButton(dol_escape_htmltag($object->code_fournisseur));
+		echo '<tr><td class="'.$cssclass.'">';
+		echo $langs->trans('SupplierCode').'</td><td colspan="3">';
+		echo showValueWithClipboardCPButton(dol_escape_htmltag($object->code_fournisseur));
 		$tmpcheck = $object->check_codefournisseur();
 		if ($tmpcheck != 0 && $tmpcheck != -5) {
-			print ' <span class="error">('.$langs->trans("WrongSupplierCode").')</span>';
+			echo ' <span class="error">('.$langs->trans("WrongSupplierCode").')</span>';
 		}
-		print '</td></tr>';
+		echo '</td></tr>';
 	}
 
-	print "</table>";
+	echo "</table>";
 
-	print '</div>';
+	echo '</div>';
 
-	//print '<br>';
+	//echo '<br>';
 
-	//print '<div class="underbanner clearboth"></div>';
+	//echo '<div class="underbanner clearboth"></div>';
 	include DOL_DOCUMENT_ROOT.'/core/tpl/notes.tpl.php';
 
-	print dol_get_fiche_end();
+	echo dol_get_fiche_end();
 } else {
 	$langs->load("errors");
-	print $langs->trans("ErrorRecordNotFound");
+	echo $langs->trans("ErrorRecordNotFound");
 }
 
 // End of page

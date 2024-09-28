@@ -609,8 +609,8 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
     {
         $message = bin2hex($message);
         $messageId = substr($message, 16, 8);
-        echo substr($message, 0, 16)." NTLMSSP Signature<br />\n";
-        echo $messageId." Type Indicator<br />\n";
+        echo  substr($message, 0, 16)." NTLMSSP Signature<br />\n";
+        echo  $messageId." Type Indicator<br />\n";
 
         if ('02000000' == $messageId) {
             $map = [
@@ -629,7 +629,7 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
             $data = $this->parseMessage2(hex2bin($message));
 
             foreach ($map as $key => $value) {
-                echo bin2hex($data[$key]).' - '.$data[$key].' ||| '.$value."<br />\n";
+                echo  bin2hex($data[$key]).' - '.$data[$key].' ||| '.$value."<br />\n";
             }
         } elseif ('03000000' == $messageId) {
             $i = 0;
@@ -672,10 +672,10 @@ class Swift_Transport_Esmtp_Auth_NTLMAuthenticator implements Swift_Transport_Es
             ];
 
             foreach ($map as $key => $value) {
-                echo $data[$key].' - '.hex2bin($data[$key]).' ||| '.$value."<br />\n";
+                echo  $data[$key].' - '.hex2bin($data[$key]).' ||| '.$value."<br />\n";
             }
         }
 
-        echo '<br /><br />';
+        echo  '<br /><br />';
     }
 }

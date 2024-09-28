@@ -83,7 +83,7 @@ $staticmember = new Adherent($db);
 $statictype = new AdherentType($db);
 $subscriptionstatic = new Subscription($db);
 
-print load_fiche_titre($langs->trans("MembersArea"), $resultboxes['selectboxlist'], 'members');
+echo load_fiche_titre($langs->trans("MembersArea"), $resultboxes['selectboxlist'], 'members');
 
 /*
  * Statistics
@@ -146,27 +146,27 @@ if ($conf->use_javascript_ajax) {
 }
 
 // boxes
-print '<div class="clearboth"></div>';
-print '<div class="fichecenter fichecenterbis">';
+echo '<div class="clearboth"></div>';
+echo '<div class="fichecenter fichecenterbis">';
 
-print '<div class="twocolumns">';
+echo '<div class="twocolumns">';
 
-print '<div class="firstcolumn fichehalfleft boxhalfleft" id="boxhalfleft">';
+echo '<div class="firstcolumn fichehalfleft boxhalfleft" id="boxhalfleft">';
 
-print $boxgraph;
+echo $boxgraph;
 
-print $resultboxes['boxlista'];
+echo $resultboxes['boxlista'];
 
-print '</div>'."\n";
+echo '</div>'."\n";
 
-print '<div class="secondcolumn fichehalfright boxhalfright" id="boxhalfright">';
+echo '<div class="secondcolumn fichehalfright boxhalfright" id="boxhalfright">';
 
-print $resultboxes['boxlistb'];
+echo $resultboxes['boxlistb'];
 
-print '</div>'."\n";
+echo '</div>'."\n";
 
-print '</div>';
-print '</div>';
+echo '</div>';
+echo '</div>';
 
 $parameters = array('user' => $user);
 $reshook = $hookmanager->executeHooks('dashboardMembers', $parameters, $object); // Note that $action and $object may have been modified by hook

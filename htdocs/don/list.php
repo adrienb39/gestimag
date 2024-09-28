@@ -255,7 +255,7 @@ if ($num == 1 && getDolGlobalInt('MAIN_SEARCH_DIRECT_OPEN_IF_ONLY_ONE') && $sear
 llxHeader('', $title, $help_url, '', 0, 0, $morejs, $morecss, '', 'mod-donation page-list bodyforlist');	// Can use also classforhorizontalscrolloftabs instead of bodyforlist for no horizontal scroll
 
 // Example : Adding jquery code
-// print '<script type="text/javascript">
+// echo '<script type="text/javascript">
 // jQuery(document).ready(function() {
 // 	function init_myfunc()
 // 	{
@@ -316,20 +316,20 @@ if (GETPOSTINT('nomassaction') || in_array($massaction, array('presend', 'predel
 $massactionbutton = $form->selectMassAction('', $arrayofmassactions);
 
 
-print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">'."\n";
+echo '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">'."\n";
 if ($optioncss != '') {
-	print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
+	echo '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 }
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-print '<input type="hidden" name="action" value="list">';
-print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-print '<input type="hidden" name="page" value="'.$page.'">';
-print '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
-print '<input type="hidden" name="page_y" value="">';
-print '<input type="hidden" name="mode" value="'.$mode.'">';
-print '<input type="hidden" name="type" value="'.$type.'">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+echo '<input type="hidden" name="action" value="list">';
+echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+echo '<input type="hidden" name="page" value="'.$page.'">';
+echo '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
+echo '<input type="hidden" name="page_y" value="">';
+echo '<input type="hidden" name="mode" value="'.$mode.'">';
+echo '<input type="hidden" name="type" value="'.$type.'">';
 
 $newcardbutton = '';
 $newcardbutton .= dolGetButtonTitle($langs->trans('ViewList'), '', 'fa fa-bars imgforviewmode', $_SERVER["PHP_SELF"].'?mode=common'.preg_replace('/(&|\?)*mode=[^&]+/', '', $param), '', ((empty($mode) || $mode == 'common') ? 2 : 1), array('morecss' => 'reposition'));
@@ -348,8 +348,8 @@ if ($search_all) {
 		$fieldstosearchall[$key] = $langs->trans($val);
 		$setupstring .= $key."=".$val.";";
 	}
-	print '<!-- Search done like if DONATION_QUICKSEARCH_ON_FIELDS = '.$setupstring.' -->'."\n";
-	print '<div class="divsearchfieldfilter">'.$langs->trans("FilterOnInto", $search_all).implode(', ', $fieldstosearchall).'</div>';
+	echo '<!-- Search done like if DONATION_QUICKSEARCH_ON_FIELDS = '.$setupstring.' -->'."\n";
+	echo '<div class="divsearchfieldfilter">'.$langs->trans("FilterOnInto", $search_all).implode(', ', $fieldstosearchall).'</div>';
 }
 
 $varpage = empty($contextpage) ? $_SERVER["PHP_SELF"] : $contextpage;
@@ -357,44 +357,44 @@ $htmlofselectarray = $form->multiSelectArrayWithCheckbox('selectedfields', $arra
 $selectedfields = ($mode != 'kanban' ? $htmlofselectarray : '');
 $selectedfields .= (count($arrayofmassactions) ? $form->showCheckAddButtons('checkforselect', 1) : '');
 
-print '<div class="div-table-responsive">';
-print '<table class="tagtable nobottomiftotal liste'.(!empty($moreforfilter) ? " listwithfilterbefore" : "").'">'."\n";
+echo '<div class="div-table-responsive">';
+echo '<table class="tagtable nobottomiftotal liste'.(!empty($moreforfilter) ? " listwithfilterbefore" : "").'">'."\n";
 
 // Fields title search
 // --------------------------------------------------------------------
-print '<tr class="liste_titre_filter">';
+echo '<tr class="liste_titre_filter">';
 // Action column
 if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print '<td class="liste_titre center maxwidthsearch">';
+	echo '<td class="liste_titre center maxwidthsearch">';
 	$searchpicto = $form->showFilterButtons('left');
-	print $searchpicto;
-	print '</td>';
+	echo $searchpicto;
+	echo '</td>';
 }
-print '<td class="liste_titre">';
-print '<input class="flat" size="10" type="text" name="search_ref" value="'.$search_ref.'">';
-print '</td>';
+echo '<td class="liste_titre">';
+echo '<input class="flat" size="10" type="text" name="search_ref" value="'.$search_ref.'">';
+echo '</td>';
 if (getDolGlobalString('DONATION_USE_THIRDPARTIES')) {
-	print '<td class="liste_titre">';
-	print '<input class="flat" size="10" type="text" name="search_thirdparty" value="'.$search_thirdparty.'">';
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo '<input class="flat" size="10" type="text" name="search_thirdparty" value="'.$search_thirdparty.'">';
+	echo '</td>';
 } else {
-	print '<td class="liste_titre">';
-	print '<input class="flat" size="10" type="text" name="search_company" value="'.$search_company.'">';
-	print '</td>';
+	echo '<td class="liste_titre">';
+	echo '<input class="flat" size="10" type="text" name="search_company" value="'.$search_company.'">';
+	echo '</td>';
 }
-print '<td class="liste_titre">';
-print '<input class="flat" size="10" type="text" name="search_name" value="'.$search_name.'">';
-print '</td>';
-print '<td class="liste_titre left">';
-print '&nbsp;';
-print '</td>';
+echo '<td class="liste_titre">';
+echo '<input class="flat" size="10" type="text" name="search_name" value="'.$search_name.'">';
+echo '</td>';
+echo '<td class="liste_titre left">';
+echo '&nbsp;';
+echo '</td>';
 if (isModEnabled('project')) {
-	print '<td class="liste_titre right">';
-	print '&nbsp;';
-	print '</td>';
+	echo '<td class="liste_titre right">';
+	echo '&nbsp;';
+	echo '</td>';
 }
-print '<td class="liste_titre right"><input name="search_amount" class="flat" type="text" size="8" value="'.$search_amount.'"></td>';
-print '<td class="liste_titre center parentonrightofpage">';
+echo '<td class="liste_titre right"><input name="search_amount" class="flat" type="text" size="8" value="'.$search_amount.'"></td>';
+echo '<td class="liste_titre center parentonrightofpage">';
 $liststatus = array(
 	Don::STATUS_DRAFT => $langs->trans("DonationStatusPromiseNotValidated"),
 	Don::STATUS_VALIDATED => $langs->trans("DonationStatusPromiseValidated"),
@@ -402,22 +402,22 @@ $liststatus = array(
 	Don::STATUS_CANCELED => $langs->trans("Canceled")
 );
 // @phan-suppress-next-line PhanPluginSuspiciousParamOrder
-print $form->selectarray('search_status', $liststatus, $search_status, -4, 0, 0, '', 0, 0, 0, '', 'search_status maxwidth100 onrightofpage');
-print '</td>';
+echo $form->selectarray('search_status', $liststatus, $search_status, -4, 0, 0, '', 0, 0, 0, '', 'search_status maxwidth100 onrightofpage');
+echo '</td>';
 if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print '<td class="liste_titre center maxwidthsearch">';
+	echo '<td class="liste_titre center maxwidthsearch">';
 	$searchpicto = $form->showFilterButtons();
-	print $searchpicto;
-	print '</td>';
+	echo $searchpicto;
+	echo '</td>';
 }
-print '</tr>'."\n";
+echo '</tr>'."\n";
 
 $totalarray = array();
 $totalarray['nbfield'] = 0;
 
 // Fields title label
 // --------------------------------------------------------------------
-print '<tr class="liste_titre">';
+echo '<tr class="liste_titre">';
 // Action column
 if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 	print_liste_field_titre('');
@@ -449,7 +449,7 @@ if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 	print_liste_field_titre('');
 	$totalarray['nbfield']++;
 }
-print '</tr>'."\n";
+echo '</tr>'."\n";
 
 $i = 0;
 $savnbfield = $totalarray['nbfield'];
@@ -466,8 +466,8 @@ while ($i < $imaxinloop) {
 
 	if ($mode == 'kanban') {
 		if ($i == 0) {
-			print '<tr class="trkanban"><td colspan="'.$savnbfield.'">';
-			print '<div class="box-flex-container kanban">';
+			echo '<tr class="trkanban"><td colspan="'.$savnbfield.'">';
+			echo '<div class="box-flex-container kanban">';
 		}
 		// Output Kanban
 		$donationstatic->amount = $obj->amount;
@@ -491,60 +491,60 @@ while ($i < $imaxinloop) {
 				$selected = 1;
 			}
 		}
-		print $donationstatic->getKanbanView('', array('selected' => $selected));
+		echo $donationstatic->getKanbanView('', array('selected' => $selected));
 		if ($i == ($imaxinloop - 1)) {
-			print '</div>';
-			print '</td></tr>';
+			echo '</div>';
+			echo '</td></tr>';
 		}
 	} else {
-		print '<tr class="oddeven">';
+		echo '<tr class="oddeven">';
 		if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-			print '<td></td>';
+			echo '<td></td>';
 		}
 		$donationstatic->id = $obj->rowid;
 		$donationstatic->ref = $obj->rowid;
 		$donationstatic->lastname = $obj->lastname;
 		$donationstatic->firstname = $obj->firstname;
-		print "<td>".$donationstatic->getNomUrl(1)."</td>";
+		echo "<td>".$donationstatic->getNomUrl(1)."</td>";
 		if (getDolGlobalString('DONATION_USE_THIRDPARTIES')) {
 			if (!empty($obj->socid) && $company->id > 0) {
-				print "<td>".$company->getNomUrl(1)."</td>";
+				echo "<td>".$company->getNomUrl(1)."</td>";
 			} else {
-				print "<td>".((string) $obj->societe)."</td>";
+				echo "<td>".((string) $obj->societe)."</td>";
 			}
 		} else {
-			print "<td>".((string) $obj->societe)."</td>";
+			echo "<td>".((string) $obj->societe)."</td>";
 		}
-		print "<td>".$donationstatic->getFullName($langs)."</td>";
-		print '<td class="center">'.dol_print_date($db->jdate($obj->datedon), 'day').'</td>';
+		echo "<td>".$donationstatic->getFullName($langs)."</td>";
+		echo '<td class="center">'.dol_print_date($db->jdate($obj->datedon), 'day').'</td>';
 		if (isModEnabled('project')) {
-			print "<td>";
+			echo "<td>";
 			if ($obj->pid) {
 				$projectstatic->id = $obj->pid;
 				$projectstatic->ref = $obj->ref;
 				$projectstatic->id = $obj->pid;
 				$projectstatic->public = $obj->public;
 				$projectstatic->title = $obj->title;
-				print $projectstatic->getNomUrl(1);
+				echo $projectstatic->getNomUrl(1);
 			} else {
-				print '&nbsp;';
+				echo '&nbsp;';
 			}
-			print "</td>\n";
+			echo "</td>\n";
 		}
-		print '<td class="right"><span class="amount">'.price($obj->amount).'</span></td>';
+		echo '<td class="right"><span class="amount">'.price($obj->amount).'</span></td>';
 
 		// Status
-		print '<td class="center">'.$donationstatic->LibStatut($obj->status, 5).'</td>';
+		echo '<td class="center">'.$donationstatic->LibStatut($obj->status, 5).'</td>';
 		if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-			print '<td></td>';
+			echo '<td></td>';
 		}
-		print "</tr>";
+		echo "</tr>";
 	}
 	$i++;
 }
-print "</table>";
-print '</div>';
-print "</form>\n";
+echo "</table>";
+echo '</div>';
+echo "</form>\n";
 $db->free($resql);
 
 

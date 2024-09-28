@@ -73,7 +73,7 @@ restrictedArea($user, 'societe', $object->id, '&societe');
 
 top_httphead('application/json');
 
-//print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+//echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 if (!empty($action) && $action == 'fetch' && !empty($id)) {
 	require_once DOL_DOCUMENT_ROOT.'/societe/class/societe.class.php';
@@ -89,7 +89,7 @@ if (!empty($action) && $action == 'fetch' && !empty($id)) {
 		$outjson = array('ref' => $outref, 'name' => $outname, 'desc' => $outdesc, 'type' => $outtype);
 	}
 
-	echo json_encode($outjson);
+	echo  json_encode($outjson);
 } else {
 	require_once DOL_DOCUMENT_ROOT.'/core/class/html.form.class.php';
 
@@ -128,7 +128,7 @@ if (!empty($action) && $action == 'fetch' && !empty($id)) {
 	$arrayresult = $form->select_thirdparty_list(0, $htmlname, $filter, 1, $showtype, 0, null, $searchkey, $outjson, 0, 'minwidth100', '', false, $excludeids, $showcode);
 
 	if ($outjson) {
-		print json_encode($arrayresult);
+		echo json_encode($arrayresult);
 	}
 }
 

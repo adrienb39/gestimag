@@ -60,7 +60,7 @@ llxHeader('', 'Documentation and examples for theme');
 		$userRight = 1;
 		$params = array();
 
-		print dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
+		echo dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
 
 
 		$html = '<span class="fa fa-clone" ></span> My delete action';
@@ -68,7 +68,7 @@ llxHeader('', 'Documentation and examples for theme');
 		$n++;
 		$id = 'mybuttonid'.$n;
 		$url = $_SERVER['PHP_SELF'] . '?token='.newToken().'#'.$id;
-		print dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
+		echo dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
 
 
 		$html = '<span class="fa fa-clone" ></span> My danger action';
@@ -76,7 +76,7 @@ llxHeader('', 'Documentation and examples for theme');
 		$n++;
 		$id = 'mybuttonid'.$n;
 		$url = $_SERVER['PHP_SELF'] . '?token='.newToken().'#'.$id;
-		print dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
+		echo dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
 
 	?>
 	</div>
@@ -93,7 +93,7 @@ llxHeader('', 'Documentation and examples for theme');
 		$url = '#'.$id;
 		$userRight = 0;
 
-		print dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
+		echo dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
 
 
 		$html = '<span class="fa fa-clone" ></span> My delete action';
@@ -101,7 +101,7 @@ llxHeader('', 'Documentation and examples for theme');
 		$n++;
 		$id = 'mybuttonid'.$n;
 		$url = $_SERVER['PHP_SELF'] . '?token='.newToken().'#'.$id;
-		print dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
+		echo dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
 
 
 		$html = '<span class="fa fa-clone" ></span> My danger action';
@@ -109,7 +109,7 @@ llxHeader('', 'Documentation and examples for theme');
 		$n++;
 		$id = 'mybuttonid'.$n;
 		$url = $_SERVER['PHP_SELF'] . '?token='.newToken().'#'.$id;
-		print dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
+		echo dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight);
 
 	?>
 	</div>
@@ -132,7 +132,7 @@ llxHeader('', 'Documentation and examples for theme');
 			'confirm' => true
 		);
 
-		print dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight, $params);
+		echo dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight, $params);
 
 
 		$html = '<span class="fa fa-clone" ></span> My delete action';
@@ -151,7 +151,7 @@ llxHeader('', 'Documentation and examples for theme');
 			)
 		);
 
-		print dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight, $params);
+		echo dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight, $params);
 
 		?>
 	</div>
@@ -171,7 +171,7 @@ llxHeader('', 'Documentation and examples for theme');
 			'confirm' => true
 		);
 
-		print dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight, $params);
+		echo dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight, $params);
 
 
 		$html = '<span class="fa fa-clone" ></span> My delete action';
@@ -190,7 +190,7 @@ llxHeader('', 'Documentation and examples for theme');
 			)
 		);
 
-		print dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight, $params);
+		echo dolGetButtonAction($label, $html, $actionType, $url, $id, $userRight, $params);
 
 		?>
 	</div>

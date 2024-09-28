@@ -163,7 +163,7 @@ class mailing_xinputfile extends MailingTargets
 						$other = dol_string_nohtmltag(empty($tab[3]) ? '' : $tab[3]);
 
 						if (!empty($buffer)) {
-							//print 'xx'.dol_strlen($buffer).empty($buffer)."<br>\n";
+							//echo 'xx'.dol_strlen($buffer).empty($buffer)."<br>\n";
 							if (isValidEmail($email)) {
 								if ($old != $email) {
 									$cibles[$j] = array(

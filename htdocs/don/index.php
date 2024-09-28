@@ -86,10 +86,10 @@ if ($result) {
 	dol_print_error($db);
 }
 
-print load_fiche_titre($langs->trans("DonationsArea"), '', 'object_donation');
+echo load_fiche_titre($langs->trans("DonationsArea"), '', 'object_donation');
 
 
-print '<div class="fichecenter"><div class="fichethirdleft">';
+echo '<div class="fichecenter"><div class="fichethirdleft">';
 
 if (!isset($listofsearchfields) || !is_array($listofsearchfields)) {
 	// Ensure $listofsearchfields is an array
@@ -101,25 +101,25 @@ if (getDolGlobalString('MAIN_SEARCH_FORM_ON_HOME_AREAS')) {     // TODO Add a se
 	}
 
 	if (count($listofsearchfields)) {
-		print '<form method="post" action="'.DOL_URL_ROOT.'/core/search.php">';
-		print '<input type="hidden" name="token" value="'.newToken().'">';
-		print '<table class="noborder nohover centpercent">';
+		echo '<form method="post" action="'.DOL_URL_ROOT.'/core/search.php">';
+		echo '<input type="hidden" name="token" value="'.newToken().'">';
+		echo '<table class="noborder nohover centpercent">';
 		$i = 0;
 		foreach ($listofsearchfields as $key => $value) {
 			if ($i == 0) {
-				print '<tr class="liste_titre"><td colspan="3">'.$langs->trans("Search").'</td></tr>';
+				echo '<tr class="liste_titre"><td colspan="3">'.$langs->trans("Search").'</td></tr>';
 			}
-			print '<tr>';
-			print '<td class="nowrap"><label for="'.$key.'">'.$langs->trans($value["text"]).'</label></td><td><input type="text" class="flat inputsearch" name="'.$key.'" id="'.$key.'"></td>';
+			echo '<tr>';
+			echo '<td class="nowrap"><label for="'.$key.'">'.$langs->trans($value["text"]).'</label></td><td><input type="text" class="flat inputsearch" name="'.$key.'" id="'.$key.'"></td>';
 			if ($i == 0) {
-				print '<td rowspan="'.count($listofsearchfields).'"><input type="submit" class="button" value="'.$langs->trans("Search").'"></td>';
+				echo '<td rowspan="'.count($listofsearchfields).'"><input type="submit" class="button" value="'.$langs->trans("Search").'"></td>';
 			}
-			print '</tr>';
+			echo '</tr>';
 			$i++;
 		}
-		print '</table>';
-		print '</form>';
-		print '<br>';
+		echo '</table>';
+		echo '</form>';
+		echo '<br>';
 	}
 }
 
@@ -128,10 +128,10 @@ $colorseries = array();
 
 include DOL_DOCUMENT_ROOT.'/theme/'.$conf->theme.'/theme_vars.inc.php';
 
-print '<table class="noborder nohover centpercent">';
-print '<tr class="liste_titre">';
-print '<th colspan="4">'.$langs->trans("Statistics").'</th>';
-print "</tr>\n";
+echo '<table class="noborder nohover centpercent">';
+echo '<tr class="liste_titre">';
+echo '<th colspan="4">'.$langs->trans("Statistics").'</th>';
+echo "</tr>\n";
 
 $listofstatus = array(0, 1, -1, 2);
 foreach ($listofstatus as $status) {
@@ -151,7 +151,7 @@ foreach ($listofstatus as $status) {
 }
 
 if ($conf->use_javascript_ajax) {
-	print '<tr><td class="center" colspan="4">';
+	echo '<tr><td class="center" colspan="4">';
 
 	include_once DOL_DOCUMENT_ROOT.'/core/class/dolgraph.class.php';
 	$dolgraph = new DolGraph();
@@ -162,41 +162,41 @@ if ($conf->use_javascript_ajax) {
 	$dolgraph->SetType(array('pie'));
 	$dolgraph->setHeight('200');
 	$dolgraph->draw('idgraphstatus');
-	print $dolgraph->show($total ? 0 : 1);
+	echo $dolgraph->show($total ? 0 : 1);
 
-	print '</td></tr>';
+	echo '</td></tr>';
 }
 
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("Status").'</td>';
-print '<td class="right">'.$langs->trans("Number").'</td>';
-print '<td class="right">'.$langs->trans("Total").'</td>';
-print '<td class="right">'.$langs->trans("Average").'</td>';
-print '</tr>';
+echo '<tr class="liste_titre">';
+echo '<td>'.$langs->trans("Status").'</td>';
+echo '<td class="right">'.$langs->trans("Number").'</td>';
+echo '<td class="right">'.$langs->trans("Total").'</td>';
+echo '<td class="right">'.$langs->trans("Average").'</td>';
+echo '</tr>';
 
 $total = 0;
 $totalnb = 0;
 foreach ($listofstatus as $status) {
-	print '<tr class="oddeven">';
-	print '<td><a href="list.php?search_status='.$status.'">'.$donstatic->LibStatut($status, 4).'</a></td>';
-	print '<td class="right">'.(!empty($nb[$status]) ? $nb[$status] : '&nbsp;').'</td>';
-	print '<td class="right nowraponall amount">'.(!empty($nb[$status]) ? price($somme[$status], 1, '', 1, -1, 'MT') : '&nbsp;').'</td>';
-	print '<td class="right nowraponall">'.(!empty($nb[$status]) ? price(price2num($somme[$status] / $nb[$status], 'MT')) : '&nbsp;').'</td>';
+	echo '<tr class="oddeven">';
+	echo '<td><a href="list.php?search_status='.$status.'">'.$donstatic->LibStatut($status, 4).'</a></td>';
+	echo '<td class="right">'.(!empty($nb[$status]) ? $nb[$status] : '&nbsp;').'</td>';
+	echo '<td class="right nowraponall amount">'.(!empty($nb[$status]) ? price($somme[$status], 1, '', 1, -1, 'MT') : '&nbsp;').'</td>';
+	echo '<td class="right nowraponall">'.(!empty($nb[$status]) ? price(price2num($somme[$status] / $nb[$status], 'MT')) : '&nbsp;').'</td>';
 	$totalnb += (!empty($nb[$status]) ? $nb[$status] : 0);
 	$total += (!empty($somme[$status]) ? $somme[$status] : 0);
-	print "</tr>";
+	echo "</tr>";
 }
 
-print '<tr class="liste_total">';
-print '<td>'.$langs->trans("Total").'</td>';
-print '<td class="right nowraponall">'.$totalnb.'</td>';
-print '<td class="right nowraponall">'.price($total, 1, "", 1, -1, 'MT').'</td>';
-print '<td class="right nowraponall">'.($totalnb ? price(price2num($total / $totalnb, 'MT')) : '&nbsp;').'</td>';
-print '</tr>';
-print "</table>";
+echo '<tr class="liste_total">';
+echo '<td>'.$langs->trans("Total").'</td>';
+echo '<td class="right nowraponall">'.$totalnb.'</td>';
+echo '<td class="right nowraponall">'.price($total, 1, "", 1, -1, 'MT').'</td>';
+echo '<td class="right nowraponall">'.($totalnb ? price(price2num($total / $totalnb, 'MT')) : '&nbsp;').'</td>';
+echo '</tr>';
+echo "</table>";
 
 
-print '</div><div class="fichetwothirdright">';
+echo '</div><div class="fichetwothirdright">';
 
 
 $max = 10;
@@ -214,9 +214,9 @@ $sql .= $db->plimit($max, 0);
 
 $resql = $db->query($sql);
 if ($resql) {
-	print '<table class="noborder centpercent">';
-	print '<tr class="liste_titre">';
-	print '<th colspan="5">'.$langs->trans("LastModifiedDonations", $max).'</th></tr>';
+	echo '<table class="noborder centpercent">';
+	echo '<tr class="liste_titre">';
+	echo '<th colspan="5">'.$langs->trans("LastModifiedDonations", $max).'</th></tr>';
 
 	$num = $db->num_rows($resql);
 	if ($num) {
@@ -224,41 +224,41 @@ if ($resql) {
 		while ($i < $num) {
 			$obj = $db->fetch_object($resql);
 
-			print '<tr class="oddeven">';
+			echo '<tr class="oddeven">';
 
 			$donation_static->id = $obj->rowid;
 			$donation_static->ref = $obj->ref ? $obj->ref : $obj->rowid;
 
-			print '<td width="96" class="nobordernopadding nowrap">';
-			print $donation_static->getNomUrl(1);
-			print '</td>';
+			echo '<td width="96" class="nobordernopadding nowrap">';
+			echo $donation_static->getNomUrl(1);
+			echo '</td>';
 
-			print '<td class="nobordernopadding">';
-			print $obj->societe;
+			echo '<td class="nobordernopadding">';
+			echo $obj->societe;
 			print($obj->societe && ($obj->lastname || $obj->firstname) ? ' / ' : '');
-			print dolGetFirstLastname($obj->firstname, $obj->lastname);
-			print '</td>';
+			echo dolGetFirstLastname($obj->firstname, $obj->lastname);
+			echo '</td>';
 
-			print '<td class="right nobordernopadding nowraponall amount">';
-			print price($obj->amount, 1);
-			print '</td>';
+			echo '<td class="right nobordernopadding nowraponall amount">';
+			echo price($obj->amount, 1);
+			echo '</td>';
 
 			// Date
-			print '<td class="center">'.dol_print_date($db->jdate($obj->datem), 'day').'</td>';
+			echo '<td class="center">'.dol_print_date($db->jdate($obj->datem), 'day').'</td>';
 
-			print '<td class="right">'.$donation_static->LibStatut($obj->fk_statut, 5).'</td>';
+			echo '<td class="right">'.$donation_static->LibStatut($obj->fk_statut, 5).'</td>';
 
-			print '</tr>';
+			echo '</tr>';
 			$i++;
 		}
 	}
-	print "</table><br>";
+	echo "</table><br>";
 } else {
 	dol_print_error($db);
 }
 
 
-print '</div></div>';
+echo '</div></div>';
 
 $parameters = array('user' => $user);
 $reshook = $hookmanager->executeHooks('dashboardDonation', $parameters, $object); // Note that $action and $object may have been modified by hook

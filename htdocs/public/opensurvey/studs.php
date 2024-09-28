@@ -312,7 +312,7 @@ llxHeaderSurvey($object->title, "", 0, 0, $arrayofjs, $arrayofcss, $numsondage);
 
 if (empty($object->ref)) {     // For survey, id is a hex string
 	$langs->load("errors");
-	print $langs->trans("ErrorRecordNotFound");
+	echo $langs->trans("ErrorRecordNotFound");
 
 	llxFooterSurvey();
 
@@ -330,59 +330,59 @@ foreach ($toutsujet as $value) {
 $toutsujet = str_replace("°", "'", $toutsujet);
 
 
-print '<div class="survey_intro">';
-print '<div class="survey_invitation">'.$langs->trans("YouAreInivitedToVote").'</div>';
-print '<span class="opacitymedium">'.$langs->trans("OpenSurveyHowTo").'</span><br>';
+echo '<div class="survey_intro">';
+echo '<div class="survey_invitation">'.$langs->trans("YouAreInivitedToVote").'</div>';
+echo '<span class="opacitymedium">'.$langs->trans("OpenSurveyHowTo").'</span><br>';
 if (empty($object->allow_spy)) {
-	print '<span class="opacitymedium">'.$langs->trans("YourVoteIsPrivate").'</span><br>';
+	echo '<span class="opacitymedium">'.$langs->trans("YourVoteIsPrivate").'</span><br>';
 } else {
-	print $form->textwithpicto('<span class="opacitymedium">'.$langs->trans("YourVoteIsPublic").'</span>', $langs->trans("CanSeeOthersVote")).'<br>';
+	echo $form->textwithpicto('<span class="opacitymedium">'.$langs->trans("YourVoteIsPublic").'</span>', $langs->trans("CanSeeOthersVote")).'<br>';
 }
-print '</div>';
-print '<br>';
+echo '</div>';
+echo '<br>';
 
 if (empty($object->description)) {
-	print '<div class="corps">'."\n";
+	echo '<div class="corps">'."\n";
 } else {
-	print '<br>'."\n";
+	echo '<br>'."\n";
 }
 
 // show title of survey
 $titre = str_replace("\\", "", $object->title);
-print '<div class="survey_title">'.img_picto('', 'poll', 'class="size15x paddingright"').' <strong>'.dol_htmlentities($titre).'</strong></div>';
+echo '<div class="survey_title">'.img_picto('', 'poll', 'class="size15x paddingright"').' <strong>'.dol_htmlentities($titre).'</strong></div>';
 
 if (!empty($object->description)) {
-	print '<br><div class="corps">'."\n";
+	echo '<br><div class="corps">'."\n";
 }
 
 // show description of survey
 if ($object->description) {
-	print dol_htmlentitiesbr($object->description);
+	echo dol_htmlentitiesbr($object->description);
 }
 
-print '</div>'."\n";
+echo '</div>'."\n";
 
 //The survey has expired, users can't vote or do any action
 if (!$canbemodified) {
-	print '<br><center><div class="quatrevingtpercent center warning">'.$langs->trans('SurveyExpiredInfo').'</div></center>';
+	echo '<br><center><div class="quatrevingtpercent center warning">'.$langs->trans('SurveyExpiredInfo').'</div></center>';
 	llxFooterSurvey();
 
 	$db->close();
 	exit;
 }
 
-print '<div class="cadre"> '."\n";
-print '<br><br>'."\n";
+echo '<div class="cadre"> '."\n";
+echo '<br><br>'."\n";
 
 // Start to show survey result
-print '<div class="div-table-responsive">';
-print '<table class="resultats">'."\n";
+echo '<div class="div-table-responsive">';
+echo '<table class="resultats">'."\n";
 
 // Show choice titles
 if ($object->format == "D") {
 	//display of survey topics
-	print '<tr>'."\n";
-	print '<td></td>'."\n";
+	echo '<tr>'."\n";
+	echo '<td></td>'."\n";
 
 	//display of years
 	$colspan = 1;
@@ -391,14 +391,14 @@ if ($object->format == "D") {
 		if (isset($toutsujet[$i + 1]) && date('Y', intval($toutsujet[$i])) == date('Y', intval($toutsujet[$i + 1]))) {
 			$colspan++;
 		} else {
-			print '<td colspan='.$colspan.' class="annee">'.date('Y', intval($toutsujet[$i])).'</td>'."\n";
+			echo '<td colspan='.$colspan.' class="annee">'.date('Y', intval($toutsujet[$i])).'</td>'."\n";
 			$colspan = 1;
 		}
 	}
 
-	print '</tr>'."\n";
-	print '<tr>'."\n";
-	print '<td></td>'."\n";
+	echo '</tr>'."\n";
+	echo '<tr>'."\n";
+	echo '<td></td>'."\n";
 
 	//display of months
 	$colspan = 1;
@@ -414,14 +414,14 @@ if ($object->format == "D") {
 		if ($next && dol_print_date($cur, "%B") == dol_print_date($next, "%B") && dol_print_date($cur, "%Y") == dol_print_date($next, "%Y")) {
 			$colspan++;
 		} else {
-			print '<td colspan='.$colspan.' class="mois">'.dol_print_date($cur, "%B").'</td>'."\n";
+			echo '<td colspan='.$colspan.' class="mois">'.dol_print_date($cur, "%B").'</td>'."\n";
 			$colspan = 1;
 		}
 	}
 
-	print '</tr>'."\n";
-	print '<tr>'."\n";
-	print '<td></td>'."\n";
+	echo '</tr>'."\n";
+	echo '<tr>'."\n";
+	echo '<td></td>'."\n";
 
 	//display of days
 	$colspan = 1;
@@ -435,40 +435,40 @@ if ($object->format == "D") {
 		if ($next && dol_print_date($cur, "%a %d") == dol_print_date($next, "%a %d") && dol_print_date($cur, "%B") == dol_print_date($next, "%B")) {
 			$colspan++;
 		} else {
-			print '<td colspan="'.$colspan.'" class="jour">'.dol_print_date($cur, "%a %d").'</td>'."\n";
+			echo '<td colspan="'.$colspan.'" class="jour">'.dol_print_date($cur, "%a %d").'</td>'."\n";
 			$colspan = 1;
 		}
 	}
 
-	print '</tr>'."\n";
+	echo '</tr>'."\n";
 
 	//Display schedules
 	if (strpos($object->sujet, '@') !== false) {
-		print '<tr>'."\n";
-		print '<td></td>'."\n";
+		echo '<tr>'."\n";
+		echo '<td></td>'."\n";
 
 		for ($i = 0; isset($toutsujet[$i]); $i++) {
 			$heures = explode('@', $toutsujet[$i]);
 			if (isset($heures[1])) {
-				print '<td class="heure">'.dol_htmlentities($heures[1]).'</td>'."\n";
+				echo '<td class="heure">'.dol_htmlentities($heures[1]).'</td>'."\n";
 			} else {
-				print '<td class="heure"></td>'."\n";
+				echo '<td class="heure"></td>'."\n";
 			}
 		}
 
-		print '</tr>'."\n";
+		echo '</tr>'."\n";
 	}
 } else {
 	//display of survey topics
-	print '<tr>'."\n";
-	print '<td></td>'."\n";
+	echo '<tr>'."\n";
+	echo '<td></td>'."\n";
 
 	for ($i = 0; isset($toutsujet[$i]); $i++) {
 		$tmp = explode('@', $toutsujet[$i]);
-		print '<td class="sujet">'.dol_escape_htmltag($tmp[0]).'</td>'."\n";
+		echo '<td class="sujet">'.dol_escape_htmltag($tmp[0]).'</td>'."\n";
 	}
 
-	print '</tr>'."\n";
+	echo '</tr>'."\n";
 }
 
 
@@ -499,22 +499,22 @@ while ($compteur < $num) {
 		continue;
 	}
 
-	print '<tr>'."\n";
+	echo '<tr>'."\n";
 
 	// Name
-	print '<td class="nom">'.img_picto($obj->name, 'user', 'class="pictofixedwidth"').dol_htmlentities($obj->name).'</td>'."\n";
+	echo '<td class="nom">'.img_picto($obj->name, 'user', 'class="pictofixedwidth"').dol_htmlentities($obj->name).'</td>'."\n";
 
 	// si la ligne n'est pas a changer, on affiche les données
 	if (!$testligneamodifier) {
 		for ($i = 0; $i < $nbcolonnes; $i++) {
 			$car = substr($ensemblereponses, $i, 1);
-			//print 'xx'.$i."-".$car.'-'.$listofanswers[$i]['format'].'zz';
+			//echo 'xx'.$i."-".$car.'-'.$listofanswers[$i]['format'].'zz';
 
 			if (empty($listofanswers[$i]['format']) || !in_array($listofanswers[$i]['format'], array('yesno', 'foragainst'))) {
 				if (((string) $car) == "1") {
-					print '<td class="ok">OK</td>'."\n";
+					echo '<td class="ok">OK</td>'."\n";
 				} else {
-					print '<td class="non">KO</td>'."\n";
+					echo '<td class="non">KO</td>'."\n";
 				}
 				// Total
 				if (!isset($sumfor[$i])) {
@@ -526,11 +526,11 @@ while ($compteur < $num) {
 			}
 			if (!empty($listofanswers[$i]['format']) && $listofanswers[$i]['format'] == 'yesno') {
 				if (((string) $car) == "1") {
-					print '<td class="ok">'.$langs->trans("Yes").'</td>'."\n";
+					echo '<td class="ok">'.$langs->trans("Yes").'</td>'."\n";
 				} elseif (((string) $car) == "0") {
-					print '<td class="non">'.$langs->trans("No").'</td>'."\n";
+					echo '<td class="non">'.$langs->trans("No").'</td>'."\n";
 				} else {
-					print '<td class="vide">&nbsp;</td>'."\n";
+					echo '<td class="vide">&nbsp;</td>'."\n";
 				}
 				// Total
 				if (!isset($sumfor[$i])) {
@@ -548,11 +548,11 @@ while ($compteur < $num) {
 			}
 			if (!empty($listofanswers[$i]['format']) && $listofanswers[$i]['format'] == 'foragainst') {
 				if (((string) $car) == "1") {
-					print '<td class="ok">'.$langs->trans("For").'</td>'."\n";
+					echo '<td class="ok">'.$langs->trans("For").'</td>'."\n";
 				} elseif (((string) $car) == "0") {
-					print '<td class="non">'.$langs->trans("Against").'</td>'."\n";
+					echo '<td class="non">'.$langs->trans("Against").'</td>'."\n";
 				} else {
-					print '<td class="vide">&nbsp;</td>'."\n";
+					echo '<td class="vide">&nbsp;</td>'."\n";
 				}
 				// Total
 				if (!isset($sumfor[$i])) {
@@ -574,32 +574,32 @@ while ($compteur < $num) {
 		if ($compteur == $ligneamodifier) {
 			for ($i = 0; $i < $nbcolonnes; $i++) {
 				$car = substr($ensemblereponses, $i, 1);
-				print '<td class="vide">';
+				echo '<td class="vide">';
 				if (empty($listofanswers[$i]['format']) || !in_array($listofanswers[$i]['format'], array('yesno', 'foragainst'))) {
-					print '<input type="checkbox" name="choix'.$i.'" value="1" ';
+					echo '<input type="checkbox" name="choix'.$i.'" value="1" ';
 					if ($car == '1') {
-						print 'checked';
+						echo 'checked';
 					}
-					print '>';
+					echo '>';
 				}
 				if (!empty($listofanswers[$i]['format']) && $listofanswers[$i]['format'] == 'yesno') {
 					$arraychoice = array('2'=>'&nbsp;', '0'=>$langs->trans("No"), '1'=>$langs->trans("Yes"));
-					print $form->selectarray("choix".$i, $arraychoice, $car);
+					echo $form->selectarray("choix".$i, $arraychoice, $car);
 				}
 				if (!empty($listofanswers[$i]['format']) && $listofanswers[$i]['format'] == 'foragainst') {
 					$arraychoice = array('2'=>'&nbsp;', '0'=>$langs->trans("Against"), '1'=>$langs->trans("For"));
-					print $form->selectarray("choix".$i, $arraychoice, $car);
+					echo $form->selectarray("choix".$i, $arraychoice, $car);
 				}
-				print '</td>'."\n";
+				echo '</td>'."\n";
 			}
 		} else {
 			for ($i = 0; $i < $nbcolonnes; $i++) {
 				$car = substr($ensemblereponses, $i, 1);
 				if (empty($listofanswers[$i]['format']) || !in_array($listofanswers[$i]['format'], array('yesno', 'foragainst'))) {
 					if (((string) $car) == "1") {
-						print '<td class="ok">OK</td>'."\n";
+						echo '<td class="ok">OK</td>'."\n";
 					} else {
-						print '<td class="non">KO</td>'."\n";
+						echo '<td class="non">KO</td>'."\n";
 					}
 					// Total
 					if (!isset($sumfor[$i])) {
@@ -611,11 +611,11 @@ while ($compteur < $num) {
 				}
 				if (!empty($listofanswers[$i]['format']) && $listofanswers[$i]['format'] == 'yesno') {
 					if (((string) $car) == "1") {
-						print '<td class="ok">'.$langs->trans("For").'</td>'."\n";
+						echo '<td class="ok">'.$langs->trans("For").'</td>'."\n";
 					} elseif (((string) $car) == "0") {
-						print '<td class="non">'.$langs->trans("Against").'</td>'."\n";
+						echo '<td class="non">'.$langs->trans("Against").'</td>'."\n";
 					} else {
-						print '<td class="vide">&nbsp;</td>'."\n";
+						echo '<td class="vide">&nbsp;</td>'."\n";
 					}
 					// Total
 					if (!isset($sumfor[$i])) {
@@ -633,11 +633,11 @@ while ($compteur < $num) {
 				}
 				if (!empty($listofanswers[$i]['format']) && $listofanswers[$i]['format'] == 'foragainst') {
 					if (((string) $car) == "1") {
-						print '<td class="ok">'.$langs->trans("For").'</td>'."\n";
+						echo '<td class="ok">'.$langs->trans("For").'</td>'."\n";
 					} elseif (((string) $car) == "0") {
-						print '<td class="non">'.$langs->trans("Against").'</td>'."\n";
+						echo '<td class="non">'.$langs->trans("Against").'</td>'."\n";
 					} else {
-						print '<td class="vide">&nbsp;</td>'."\n";
+						echo '<td class="vide">&nbsp;</td>'."\n";
 					}
 					// Total
 					if (!isset($sumfor[$i])) {
@@ -660,60 +660,60 @@ while ($compteur < $num) {
 	// Button edit at end of line
 	if ($compteur != $ligneamodifier && $mod_ok) {
 		$currentusername = $obj->name;
-		print '<td class="casevide"><input type="submit" class="button small" name="modifierligne'.$compteur.'" value="'.dol_escape_htmltag($langs->trans("Edit")).'"></td>'."\n";
+		echo '<td class="casevide"><input type="submit" class="button small" name="modifierligne'.$compteur.'" value="'.dol_escape_htmltag($langs->trans("Edit")).'"></td>'."\n";
 	}
 
 	//demande de confirmation pour modification de ligne
 	for ($i = 0; $i < $nblines; $i++) {
 		if (GETPOSTISSET("modifierligne".$i)) {
 			if ($compteur == $i) {
-				print '<td class="casevide">';
-				print '<input type="hidden" name="idtomodify'.$compteur.'" value="'.$obj->id_users.'">';
-				print '<input type="submit" class="button button-save small" name="validermodifier'.$compteur.'" value="'.dol_escape_htmltag($langs->trans("Save")).'">';
-				print '</td>'."\n";
+				echo '<td class="casevide">';
+				echo '<input type="hidden" name="idtomodify'.$compteur.'" value="'.$obj->id_users.'">';
+				echo '<input type="submit" class="button button-save small" name="validermodifier'.$compteur.'" value="'.dol_escape_htmltag($langs->trans("Save")).'">';
+				echo '</td>'."\n";
 			}
 		}
 	}
 
 	$compteur++;
-	print '</tr>'."\n";
+	echo '</tr>'."\n";
 }
 
 // Add line to add new record
 if ($ligneamodifier < 0 && (!isset($_SESSION['nom']))) {
-	print '<tr>'."\n";
-	print '<td class="nom">'."\n";
+	echo '<tr>'."\n";
+	echo '<td class="nom">'."\n";
 	if (isset($_SESSION['nom'])) {
-		print '<input type=hidden name="nom" value="'.$_SESSION['nom'].'">'.$_SESSION['nom']."\n";
+		echo '<input type=hidden name="nom" value="'.$_SESSION['nom'].'">'.$_SESSION['nom']."\n";
 	} else {
-		print '<input type="text" name="nom" placeholder="'.dol_escape_htmltag($langs->trans("Name")).'" maxlength="64" class=" minwidth175" value="">'."\n";
+		echo '<input type="text" name="nom" placeholder="'.dol_escape_htmltag($langs->trans("Name")).'" maxlength="64" class=" minwidth175" value="">'."\n";
 	}
-	print '</td>'."\n";
+	echo '</td>'."\n";
 
 	// show cell form checkbox for a new choice
 	for ($i = 0; $i < $nbcolonnes; $i++) {
-		print '<td class="vide">';
+		echo '<td class="vide">';
 		if (empty($listofanswers[$i]['format']) || !in_array($listofanswers[$i]['format'], array('yesno', 'foragainst'))) {
-			print '<input type="checkbox" name="choix'.$i.'" value="1"';
+			echo '<input type="checkbox" name="choix'.$i.'" value="1"';
 			if (GETPOSTISSET('choix'.$i) && GETPOST('choix'.$i) == '1') {
-				print ' checked';
+				echo ' checked';
 			}
-			print '>';
+			echo '>';
 		}
 		if (!empty($listofanswers[$i]['format']) && $listofanswers[$i]['format'] == 'yesno') {
 			$arraychoice = array('2'=>'&nbsp;', '0'=>$langs->trans("No"), '1'=>$langs->trans("Yes"));
-			print $form->selectarray("choix".$i, $arraychoice, GETPOST('choix'.$i));
+			echo $form->selectarray("choix".$i, $arraychoice, GETPOST('choix'.$i));
 		}
 		if (!empty($listofanswers[$i]['format']) && $listofanswers[$i]['format'] == 'foragainst') {
 			$arraychoice = array('2'=>'&nbsp;', '0'=>$langs->trans("Against"), '1'=>$langs->trans("For"));
-			print $form->selectarray("choix".$i, $arraychoice, GETPOST('choix'.$i));
+			echo $form->selectarray("choix".$i, $arraychoice, GETPOST('choix'.$i));
 		}
-		print '</td>'."\n";
+		echo '</td>'."\n";
 	}
 
 	// Show button to add a new line into database
-	print '<td><input type="image" class="borderimp" name="boutonp" value="'.$langs->trans("Vote").'" src="'.img_picto('', 'edit_add', '', false, 1).'"></td>'."\n";
-	print '</tr>'."\n";
+	echo '<td><input type="image" class="borderimp" name="boutonp" value="'.$langs->trans("Vote").'" src="'.img_picto('', 'edit_add', '', false, 1).'"></td>'."\n";
+	echo '</tr>'."\n";
 }
 
 // Select value of best choice (for checkbox columns only)
@@ -734,8 +734,8 @@ for ($i = 0; $i < $nbcolonnes; $i++) {
 
 if ($object->allow_spy) {
 	// Show line total
-	print '<tr>'."\n";
-	print '<td class="center">'.$langs->trans("Total").'</td>'."\n";
+	echo '<tr>'."\n";
+	echo '<td class="center">'.$langs->trans("Total").'</td>'."\n";
 	for ($i = 0; $i < $nbcolonnes; $i++) {
 		$showsumfor = isset($sumfor[$i]) ? $sumfor[$i] : '';
 		$showsumagainst = isset($sumagainst[$i]) ? $sumagainst[$i] : '';
@@ -746,38 +746,38 @@ if ($object->allow_spy) {
 			$showsumagainst = 0;
 		}
 
-		print '<td>';
+		echo '<td>';
 		if (empty($listofanswers[$i]['format']) || !in_array($listofanswers[$i]['format'], array('yesno', 'foragainst'))) {
-			print $showsumfor;
+			echo $showsumfor;
 		}
 		if (!empty($listofanswers[$i]['format']) && $listofanswers[$i]['format'] == 'yesno') {
-			print $langs->trans("Yes").': '.$showsumfor.'<br>'.$langs->trans("No").': '.$showsumagainst;
+			echo $langs->trans("Yes").': '.$showsumfor.'<br>'.$langs->trans("No").': '.$showsumagainst;
 		}
 		if (!empty($listofanswers[$i]['format']) && $listofanswers[$i]['format'] == 'foragainst') {
-			print $langs->trans("For").': '.$showsumfor.'<br>'.$langs->trans("Against").': '.$showsumagainst;
+			echo $langs->trans("For").': '.$showsumfor.'<br>'.$langs->trans("Against").': '.$showsumagainst;
 		}
-		print '</td>'."\n";
+		echo '</td>'."\n";
 	}
-	print '</tr>';
+	echo '</tr>';
 	// Show picto winner
 	if ($nbofcheckbox >= 2) {
-		print '<tr>'."\n";
-		print '<td class="somme"></td>'."\n";
+		echo '<tr>'."\n";
+		echo '<td class="somme"></td>'."\n";
 		for ($i = 0; $i < $nbcolonnes; $i++) {
-			//print 'xx'.(!empty($listofanswers[$i]['format'])).'-'.$sumfor[$i].'-'.$meilleurecolonne;
+			//echo 'xx'.(!empty($listofanswers[$i]['format'])).'-'.$sumfor[$i].'-'.$meilleurecolonne;
 			if (empty($listofanswers[$i]['format']) || !in_array($listofanswers[$i]['format'], array('yesno', 'foragainst')) && isset($sumfor[$i]) && isset($meilleurecolonne) && $sumfor[$i] == $meilleurecolonne) {
-				print '<td class="somme"><img src="'.dol_buildpath('/opensurvey/img/medaille.png', 1).'"></td>'."\n";
+				echo '<td class="somme"><img src="'.dol_buildpath('/opensurvey/img/medaille.png', 1).'"></td>'."\n";
 			} else {
-				print '<td class="somme"></td>'."\n";
+				echo '<td class="somme"></td>'."\n";
 			}
 		}
-		print '</tr>'."\n";
+		echo '</tr>'."\n";
 	}
 }
-print '</table>'."\n";
-print '</div>'."\n";
+echo '</table>'."\n";
+echo '</div>'."\n";
 
-print '</div>'."\n";
+echo '</div>'."\n";
 
 if ($object->allow_spy) {
 	$toutsujet = explode(",", $object->sujet);
@@ -811,56 +811,56 @@ if ($object->allow_spy) {
 	// Show best choice
 	if ($nbofcheckbox >= 2) {
 		$vote_str = $langs->trans('votes');
-		print '<p class="affichageresultats">'."\n";
+		echo '<p class="affichageresultats">'."\n";
 
 		if (isset($meilleurecolonne) && $compteursujet == "1") {
-			print '<img src="'.dol_buildpath('/opensurvey/img/medaille.png', 1).'"> '.$langs->trans('TheBestChoice').": <b>".$meilleursujet."</b> - <b>".$meilleurecolonne."</b> ".$vote_str.".\n";
+			echo '<img src="'.dol_buildpath('/opensurvey/img/medaille.png', 1).'"> '.$langs->trans('TheBestChoice').": <b>".$meilleursujet."</b> - <b>".$meilleurecolonne."</b> ".$vote_str.".\n";
 		} elseif (isset($meilleurecolonne)) {
-			print '<img src="'.dol_buildpath('/opensurvey/img/medaille.png', 1).'"> '.$langs->trans('TheBestChoices').": <b>".$meilleursujet."</b> - <b>".$meilleurecolonne."</b> ".$vote_str.".\n";
+			echo '<img src="'.dol_buildpath('/opensurvey/img/medaille.png', 1).'"> '.$langs->trans('TheBestChoices').": <b>".$meilleursujet."</b> - <b>".$meilleurecolonne."</b> ".$vote_str.".\n";
 		}
 
-		print '</p><br>'."\n";
+		echo '</p><br>'."\n";
 	}
 }
 
-print '<br>';
+echo '<br>';
 
 
 // Comment list
 $comments = $object->getComments();
 
 if ($comments) {
-	print '<br>'.img_picto('', 'note', 'class="pictofixedwidth"').'<span class="bold opacitymedium">'.$langs->trans("CommentsOfVoters").':</span><br>'."\n";
+	echo '<br>'.img_picto('', 'note', 'class="pictofixedwidth"').'<span class="bold opacitymedium">'.$langs->trans("CommentsOfVoters").':</span><br>'."\n";
 
 	foreach ($comments as $obj) {
 		// ligne d'un usager pré-authentifié
 		//$mod_ok = (in_array($obj->name, $listofvoters));
 
-		print '<div class="comment"><span class="usercomment">';
+		echo '<div class="comment"><span class="usercomment">';
 		if (in_array($obj->usercomment, $listofvoters)) {
-			print '<a href="'.$_SERVER["PHP_SELF"].'?deletecomment='.$obj->id_comment.'&sondage='.$numsondage.'"> '.img_picto('', 'delete.png', '', false, 0, 0, '', 'nomarginleft').'</a> ';
+			echo '<a href="'.$_SERVER["PHP_SELF"].'?deletecomment='.$obj->id_comment.'&sondage='.$numsondage.'"> '.img_picto('', 'delete.png', '', false, 0, 0, '', 'nomarginleft').'</a> ';
 		}
-		//else print img_picto('', 'ellipsis-h', '', false, 0, 0, '', 'nomarginleft').' ';
-		print img_picto('', 'user', 'class="pictofixedwidth"').dol_htmlentities($obj->usercomment).':</span> <span class="comment">'.dol_nl2br(dol_htmlentities($obj->comment))."</span></div>";
+		//else echo img_picto('', 'ellipsis-h', '', false, 0, 0, '', 'nomarginleft').' ';
+		echo img_picto('', 'user', 'class="pictofixedwidth"').dol_htmlentities($obj->usercomment).':</span> <span class="comment">'.dol_nl2br(dol_htmlentities($obj->comment))."</span></div>";
 	}
 }
 
 // Form to add comment
 if ($object->allow_comments && $currentusername) {
-	print '<br><div class="addcomment"><span class="opacitymedium">'.$langs->trans("AddACommentForPoll")."</span><br>\n";
+	echo '<br><div class="addcomment"><span class="opacitymedium">'.$langs->trans("AddACommentForPoll")."</span><br>\n";
 
-	print '<textarea name="comment" rows="'.ROWS_2.'" class="quatrevingtpercent">'.dol_escape_htmltag(GETPOST('comment', 'alphanohtml'), 0, 1).'</textarea><br>'."\n";
-	print $langs->trans("Name").': ';
-	print '<input type="text" name="commentuser" maxlength="64" value="'.dol_escape_htmltag(GETPOSTISSET('commentuser') ? GETPOST('commentuser', 'alphanohtml') : (empty($_SESSION['nom']) ? $currentusername : $_SESSION['nom'])).'"> &nbsp; '."\n";
-	print '<input type="submit" class="button smallpaddingimp" name="ajoutcomment" value="'.dol_escape_htmltag($langs->trans("AddComment")).'"><br>'."\n";
-	print '</form>'."\n";
+	echo '<textarea name="comment" rows="'.ROWS_2.'" class="quatrevingtpercent">'.dol_escape_htmltag(GETPOST('comment', 'alphanohtml'), 0, 1).'</textarea><br>'."\n";
+	echo $langs->trans("Name").': ';
+	echo '<input type="text" name="commentuser" maxlength="64" value="'.dol_escape_htmltag(GETPOSTISSET('commentuser') ? GETPOST('commentuser', 'alphanohtml') : (empty($_SESSION['nom']) ? $currentusername : $_SESSION['nom'])).'"> &nbsp; '."\n";
+	echo '<input type="submit" class="button smallpaddingimp" name="ajoutcomment" value="'.dol_escape_htmltag($langs->trans("AddComment")).'"><br>'."\n";
+	echo '</form>'."\n";
 
-	print '</div>'."\n"; // div add comment
+	echo '</div>'."\n"; // div add comment
 }
 
-print '<br><br>';
+echo '<br><br>';
 
-print '<a name="bas"></a>'."\n";
+echo '<a name="bas"></a>'."\n";
 
 llxFooterSurvey();
 

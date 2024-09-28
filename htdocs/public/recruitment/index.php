@@ -107,7 +107,7 @@ $conf->dol_hide_leftmenu = 1;
 
 if (!getDolGlobalString('RECRUITMENT_ENABLE_PUBLIC_INTERFACE')) {
 	$langs->load("errors");
-	print '<div class="error">'.$langs->trans('ErrorPublicInterfaceNotEnabled').'</div>';
+	echo '<div class="error">'.$langs->trans('ErrorPublicInterfaceNotEnabled').'</div>';
 	$db->close();
 	exit();
 }
@@ -119,17 +119,17 @@ $replacemainarea = (empty($conf->dol_hide_leftmenu) ? '<div>' : '').'<div>';
 llxHeader($head, $langs->trans("PositionToBeFilled"), '', '', 0, 0, '', '', '', 'onlinepaymentbody', $replacemainarea, 1, 1);
 
 
-print '<span id="dolpaymentspan"></span>'."\n";
-print '<div class="center">'."\n";
-print '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-print '<input type="hidden" name="token" value="'.newToken().'">'."\n";
-print '<input type="hidden" name="action" value="dosign">'."\n";
-print '<input type="hidden" name="tag" value="'.GETPOST("tag", 'alpha').'">'."\n";
-print '<input type="hidden" name="suffix" value="'.GETPOST("suffix", 'alpha').'">'."\n";
-print '<input type="hidden" name="securekey" value="'.$SECUREKEY.'">'."\n";
-print '<input type="hidden" name="entity" value="'.$entity.'" />';
-print "\n";
-print '<!-- Form to view jobs -->'."\n";
+echo '<span id="dolpaymentspan"></span>'."\n";
+echo '<div class="center">'."\n";
+echo '<form id="dolpaymentform" class="center" name="paymentform" action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
+echo '<input type="hidden" name="token" value="'.newToken().'">'."\n";
+echo '<input type="hidden" name="action" value="dosign">'."\n";
+echo '<input type="hidden" name="tag" value="'.GETPOST("tag", 'alpha').'">'."\n";
+echo '<input type="hidden" name="suffix" value="'.GETPOST("suffix", 'alpha').'">'."\n";
+echo '<input type="hidden" name="securekey" value="'.$SECUREKEY.'">'."\n";
+echo '<input type="hidden" name="entity" value="'.$entity.'" />';
+echo "\n";
+echo '<!-- Form to view jobs -->'."\n";
 
 // Show logo (search order: logo defined by ONLINE_SIGN_LOGO_suffix, then ONLINE_SIGN_LOGO_, then small company logo, large company logo, theme logo, common logo)
 // Define logo and logosmall
@@ -141,7 +141,7 @@ if (!empty($conf->global->$paramlogo)) {
 } elseif (getDolGlobalString('ONLINE_RECRUITMENT_LOGO')) {
 	$logosmall = getDolGlobalString('ONLINE_RECRUITMENT_LOGO_');
 }
-//print '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
+//echo '<!-- Show logo (logosmall='.$logosmall.' logo='.$logo.') -->'."\n";
 // Define urllogo
 $urllogo = '';
 $urllogofull = '';
@@ -154,20 +154,20 @@ if (!empty($logosmall) && is_readable($conf->mycompany->dir_output.'/logos/thumb
 }
 // Output html code for logo
 if ($urllogo) {
-	print '<div class="backgreypublicpayment">';
-	print '<div class="logopublicpayment">';
-	print '<img id="dolpaymentlogo" src="'.$urllogo.'">';
-	print '</div>';
+	echo '<div class="backgreypublicpayment">';
+	echo '<div class="logopublicpayment">';
+	echo '<img id="dolpaymentlogo" src="'.$urllogo.'">';
+	echo '</div>';
 	if (!getDolGlobalString('MAIN_HIDE_POWERED_BY')) {
-		print '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
+		echo '<div class="poweredbypublicpayment opacitymedium right"><a class="poweredbyhref" href="https://www.gestimag.org?utm_medium=website&utm_source=poweredby" target="gestimag" rel="noopener">'.$langs->trans("PoweredBy").'<br><img class="poweredbyimg" src="'.DOL_URL_ROOT.'/theme/gestimag_logo.svg" width="80px"></a></div>';
 	}
-	print '</div>';
+	echo '</div>';
 }
 
 if (getDolGlobalString('RECRUITMENT_IMAGE_PUBLIC_INTERFACE')) {
-	print '<div class="backimagepublicrecruitment">';
-	print '<img id="idPROJECT_IMAGE_PUBLIC_SUGGEST_BOOTH" src="' . getDolGlobalString('RECRUITMENT_IMAGE_PUBLIC_INTERFACE').'">';
-	print '</div>';
+	echo '<div class="backimagepublicrecruitment">';
+	echo '<img id="idPROJECT_IMAGE_PUBLIC_SUGGEST_BOOTH" src="' . getDolGlobalString('RECRUITMENT_IMAGE_PUBLIC_INTERFACE').'">';
+	echo '</div>';
 }
 
 
@@ -176,18 +176,18 @@ $now = dol_now();
 
 if (is_array($results)) {
 	if (empty($results)) {
-		print '<br>';
-		print $langs->trans("NoPositionOpen");
+		echo '<br>';
+		echo $langs->trans("NoPositionOpen");
 	} else {
-		print '<br><br><br>';
-		print '<span class="opacitymedium">'.$langs->trans("WeAreRecruiting").'</span>';
-		print '<br><br><br>';
-		print '<br class="hideonsmartphone">';
+		echo '<br><br><br>';
+		echo '<span class="opacitymedium">'.$langs->trans("WeAreRecruiting").'</span>';
+		echo '<br><br><br>';
+		echo '<br class="hideonsmartphone">';
 
 		foreach ($results as $job) {
 			$object = $job;
 
-			print '<table id="dolpaymenttable" summary="Job position offer" class="center">'."\n";
+			echo '<table id="dolpaymenttable" summary="Job position offer" class="center">'."\n";
 
 			// Output introduction text
 			$text = '';
@@ -207,44 +207,44 @@ if (is_array($results)) {
 				$text .= '</td></tr>'."\n";
 				$text .= '<tr><td class="textpublicpayment"><h1 class="paddingleft paddingright">'.$object->label.'</h1></td></tr>'."\n";
 			}
-			print $text;
+			echo $text;
 
 			// Output payment summary form
-			print '<tr><td class="left">';
+			echo '<tr><td class="left">';
 
-			print '<div class="centpercent" id="tablepublicpayment">';
-			print '<div class="opacitymedium">'.$langs->trans("ThisIsInformationOnJobPosition").' :</div>'."\n";
+			echo '<div class="centpercent" id="tablepublicpayment">';
+			echo '<div class="opacitymedium">'.$langs->trans("ThisIsInformationOnJobPosition").' :</div>'."\n";
 
 			$error = 0;
 			$found = true;
 
-			print '<br>';
+			echo '<br>';
 
 			// Label
-			print $langs->trans("Label").' : ';
-			print '<b>'.dol_escape_htmltag($object->label).'</b><br>';
+			echo $langs->trans("Label").' : ';
+			echo '<b>'.dol_escape_htmltag($object->label).'</b><br>';
 
 			// Date
-			print  $langs->trans("DateExpected").' : ';
-			print '<b>';
+			echo  $langs->trans("DateExpected").' : ';
+			echo '<b>';
 			if ($object->date_planned > $now) {
-				print dol_print_date($object->date_planned, 'day');
+				echo dol_print_date($object->date_planned, 'day');
 			} else {
-				print $langs->trans("ASAP");
+				echo $langs->trans("ASAP");
 			}
-			print '</b><br>';
+			echo '</b><br>';
 
 			// Remuneration
-			print  $langs->trans("Remuneration").' : ';
-			print '<b>';
-			print dol_escape_htmltag($object->remuneration_suggested);
-			print '</b><br>';
+			echo  $langs->trans("Remuneration").' : ';
+			echo '<b>';
+			echo dol_escape_htmltag($object->remuneration_suggested);
+			echo '</b><br>';
 
 			// Contact
 			$tmpuser = new User($db);
 			$tmpuser->fetch($object->fk_user_recruiter);
 
-			print  $langs->trans("ContactForRecruitment").' : ';
+			echo  $langs->trans("ContactForRecruitment").' : ';
 			$emailforcontact = $object->email_recruiter;
 			if (empty($emailforcontact)) {
 				$emailforcontact = $tmpuser->email;
@@ -252,29 +252,29 @@ if (is_array($results)) {
 					$emailforcontact = $mysoc->email;
 				}
 			}
-			print '<b class="wordbreak">';
-			print $tmpuser->getFullName($langs);
-			print ' &nbsp; '.dol_print_email($emailforcontact, 0, 0, 1, 0, 0, 'envelope');
-			print '</b>';
-			print '</b><br>';
+			echo '<b class="wordbreak">';
+			echo $tmpuser->getFullName($langs);
+			echo ' &nbsp; '.dol_print_email($emailforcontact, 0, 0, 1, 0, 0, 'envelope');
+			echo '</b>';
+			echo '</b><br>';
 
 			if ($object->status == RecruitmentJobPosition::STATUS_RECRUITED) {
-				print info_admin($langs->trans("JobClosedTextCandidateFound"), 0, 0, 0, 'warning');
+				echo info_admin($langs->trans("JobClosedTextCandidateFound"), 0, 0, 0, 'warning');
 			}
 			if ($object->status == RecruitmentJobPosition::STATUS_CANCELED) {
-				print info_admin($langs->trans("JobClosedTextCanceled"), 0, 0, 0, 'warning');
+				echo info_admin($langs->trans("JobClosedTextCanceled"), 0, 0, 0, 'warning');
 			}
 
-			print '<br>';
+			echo '<br>';
 
 			// Description
 
 			$text = $object->description;
-			print $text;
-			print '<input type="hidden" name="ref" value="'.$object->ref.'">';
+			echo $text;
+			echo '<input type="hidden" name="ref" value="'.$object->ref.'">';
 
-			print '</div>'."\n";
-			print "\n";
+			echo '</div>'."\n";
+			echo "\n";
 
 
 			if ($action != 'dosubmit') {
@@ -287,20 +287,20 @@ if (is_array($results)) {
 				// Print
 			}
 
-			print '</td></tr>'."\n";
+			echo '</td></tr>'."\n";
 
-			print '</table>'."\n";
+			echo '</table>'."\n";
 
-			print '<br><br class="hideonsmartphone"><br class="hideonsmartphone"><br class="hideonsmartphone">'."\n";
+			echo '<br><br class="hideonsmartphone"><br class="hideonsmartphone"><br class="hideonsmartphone">'."\n";
 		}
 	}
 } else {
 	dol_print_error($db, $object->error, $object->errors);
 }
 
-print '</form>'."\n";
-print '</div>'."\n";
-print '<br>';
+echo '</form>'."\n";
+echo '</div>'."\n";
+echo '<br>';
 
 
 htmlPrintOnlineFooter($mysoc, $langs);

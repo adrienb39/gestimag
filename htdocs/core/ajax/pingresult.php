@@ -63,7 +63,7 @@ $now = dol_now();
 
 top_httphead();
 
-print '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
+echo '<!-- Ajax page called with url '.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.dol_escape_htmltag($_SERVER["QUERY_STRING"]).' -->'."\n";
 
 // If ok
 if ($action == 'firstpingok') {
@@ -72,12 +72,12 @@ if ($action == 'firstpingok') {
 	gestimag_set_const($db, 'MAIN_FIRST_PING_OK_DATE', dol_print_date($now, 'dayhourlog', 'gmt'), 'chaine', 0, '', $conf->entity);
 	gestimag_set_const($db, 'MAIN_FIRST_PING_OK_ID', $hash_unique_id, 'chaine', 0, '', $conf->entity);
 
-	print 'First ping OK saved for entity '.$conf->entity;
+	echo 'First ping OK saved for entity '.$conf->entity;
 } elseif ($action == 'firstpingko') {
 	// If ko
 	// Note: pings are by installation, done on entity 1.
 	gestimag_set_const($db, 'MAIN_LAST_PING_KO_DATE', dol_print_date($now, 'dayhourlog', 'gmt'), 'chaine', 0, '', $conf->entity); // erase last value
-	print 'First ping KO saved for entity '.$conf->entity;
+	echo 'First ping KO saved for entity '.$conf->entity;
 } else {
-	print 'Error action='.$action.' not supported';
+	echo 'Error action='.$action.' not supported';
 }

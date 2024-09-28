@@ -157,7 +157,7 @@ class AntiVir
 		$ret = dol_sanitizePathName($command).' '.dol_string_nospecial($param, '_', $forbidden_chars_to_replace);
 
 		//$ret=$command.' '.$param.' 2>&1';
-		//print "xx".$ret."xx";exit;
+		//echo "xx".$ret."xx";exit;
 
 		return $ret;
 	}

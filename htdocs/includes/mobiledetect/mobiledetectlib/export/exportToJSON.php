@@ -60,8 +60,8 @@ if (file_put_contents(
 	$fileName, 
 	function_exists('json_format') ? json_format($json) : json_encode($json)
 )) {
-	echo 'Done. Check '.realpath($fileName).' file.';
+	echo  'Done. Check '.realpath($fileName).' file.';
 }
 else {
-	echo 'Failed to write '.realpath($fileName).' to disk.';
+	echo  'Failed to write '.realpath($fileName).' to disk.';
 }

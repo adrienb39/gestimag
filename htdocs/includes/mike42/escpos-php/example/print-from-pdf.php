@@ -26,7 +26,7 @@ try {
 	 * loadPdf() throws exceptions if files or not found, or you don't have the
 	 * imagick extension to read PDF's
 	 */
-    echo $e -> getMessage() . "\n";
+    echo  $e -> getMessage() . "\n";
 } finally {
     $printer -> close();
 }
@@ -49,13 +49,13 @@ $printer -> cut();
 $printer -> close();
 
 /*
- * 3: PDF printing still too slow? If you regularly print the same files, serialize & compress your
+ * 3: PDF printing still too slow? If you regularly echo the same files, serialize & compress your
  * EscposImage objects (after printing[1]), instead of throwing them away.
  * 
- * (You can also do this to print logos on computers which don't have an
+ * (You can also do this to echo logos on computers which don't have an
  * image processing library, by preparing a serialized version of your logo on your PC)
  * 
- * [1]After printing, the pixels are loaded and formatted for the print command you used, so even a raspberry pi can print complex PDF's quickly.
+ * [1]After printing, the pixels are loaded and formatted for the echo command you used, so even a raspberry pi can echo complex PDF's quickly.
  */
 $connector = new FilePrintConnector("php://stdout");
 $printer = new Printer($connector);

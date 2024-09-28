@@ -293,11 +293,11 @@ llxHeader('', $langs->trans("SuppliersVentilation"), $help_url, '', 0, 0, '', ''
 $textprevyear = '<a href="'.$_SERVER["PHP_SELF"].'?year='.($year_current - 1).'">'.img_previous().'</a>';
 $textnextyear = '&nbsp;<a href="'.$_SERVER["PHP_SELF"].'?year='.($year_current + 1).'">'.img_next().'</a>';
 
-print load_fiche_titre($langs->trans("SuppliersVentilation")." ".$textprevyear."&nbsp;".$langs->trans("Year")."&nbsp;".$year_start."&nbsp;".$textnextyear, '', 'title_accountancy');
+echoload_fiche_titre($langs->trans("SuppliersVentilation")." ".$textprevyear."&nbsp;".$langs->trans("Year")."&nbsp;".$year_start."&nbsp;".$textnextyear, '', 'title_accountancy');
 
-print '<span class="opacitymedium">'.$langs->trans("DescVentilSupplier").'</span><br>';
-print '<span class="opacitymedium hideonsmartphone">'.$langs->trans("DescVentilMore", $langs->transnoentitiesnoconv("ValidateHistory"), $langs->transnoentitiesnoconv("ToBind")).'<br>';
-print '</span><br>';
+echo'<span class="opacitymedium">'.$langs->trans("DescVentilSupplier").'</span><br>';
+echo'<span class="opacitymedium hideonsmartphone">'.$langs->trans("DescVentilMore", $langs->transnoentitiesnoconv("ValidateHistory"), $langs->transnoentitiesnoconv("ToBind")).'<br>';
+echo'</span><br>';
 
 $y = $year_current;
 
@@ -305,11 +305,11 @@ $buttonbind = '<a class="button small" href="'.$_SERVER['PHP_SELF'].'?action=val
 
 
 print_barre_liste(img_picto('', 'unlink', 'class="paddingright fa-color-unset"').$langs->trans("OverviewOfAmountOfLinesNotBound"), '', '', '', '', '', '', -1, '', '', 0, '', '', 0, 1, 1, 0, $buttonbind);
-//print load_fiche_titre($langs->trans("OverviewOfAmountOfLinesNotBound"), $buttonbind, '');
+//echoload_fiche_titre($langs->trans("OverviewOfAmountOfLinesNotBound"), $buttonbind, '');
 
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre"><td class="minwidth100">'.$langs->trans("Account").'</td>';
+echo'<div class="div-table-responsive-no-min">';
+echo'<table class="noborder centpercent">';
+echo'<tr class="liste_titre"><td class="minwidth100">'.$langs->trans("Account").'</td>';
 for ($i = 1; $i <= 12; $i++) {
 	$j = $i + getDolGlobalInt('SOCIETE_FISCAL_MONTH_START', 1) - 1;
 	if ($j > 12) {
@@ -322,19 +322,19 @@ for ($i = 1; $i <= 12; $i++) {
 	$cursoryear = ($cursormonth < getDolGlobalInt('SOCIETE_FISCAL_MONTH_START', 1)) ? $y + 1 : $y;
 	$tmp = dol_getdate(dol_get_last_day($cursoryear, $cursormonth, 'gmt'), false, 'gmt');
 
-	print '<td width="60" class="right">';
+	echo'<td width="60" class="right">';
 	if (!empty($tmp['mday'])) {
 		$param = 'search_date_startday=1&search_date_startmonth='.$cursormonth.'&search_date_startyear='.$cursoryear;
 		$param .= '&search_date_endday='.$tmp['mday'].'&search_date_endmonth='.$tmp['mon'].'&search_date_endyear='.$tmp['year'];
-		print '<a href="'.DOL_URL_ROOT.'/accountancy/supplier/list.php?'.$param.'">';
+		echo'<a href="'.DOL_URL_ROOT.'/accountancy/supplier/list.php?'.$param.'">';
 	}
-	print $langs->trans('MonthShort'.str_pad((string) $j, 2, '0', STR_PAD_LEFT));
+	echo$langs->trans('MonthShort'.str_pad((string) $j, 2, '0', STR_PAD_LEFT));
 	if (!empty($tmp['mday'])) {
-		print '</a>';
+		echo'</a>';
 	}
-	print '</td>';
+	echo'</td>';
 }
-print '<td width="60" class="right"><b>'.$langs->trans("Total").'</b></td></tr>';
+echo'<td width="60" class="right"><b>'.$langs->trans("Total").'</b></td></tr>';
 
 $sql = "SELECT ".$db->ifsql('aa.account_number IS NULL', "'tobind'", 'aa.account_number')." AS codecomptable,";
 $sql .= "  ".$db->ifsql('aa.label IS NULL', "'tobind'", 'aa.label')." AS intitule,";
@@ -373,15 +373,15 @@ if ($resql) {
 	$num = $db->num_rows($resql);
 
 	while ($row = $db->fetch_row($resql)) {
-		print '<tr class="oddeven">';
-		print '<td>';
+		echo'<tr class="oddeven">';
+		echo'<td>';
 		if ($row[0] == 'tobind') {
-			//print '<span class="opacitymedium">'.$langs->trans("Unknown").'</span>';
+			//echo'<span class="opacitymedium">'.$langs->trans("Unknown").'</span>';
 		} else {
-			print length_accountg($row[0]).' - ';
+			echolength_accountg($row[0]).' - ';
 		}
-		//print '</td>';
-		//print '<td>';
+		//echo'</td>';
+		//echo'<td>';
 		if ($row[0] == 'tobind') {
 			$startmonth = getDolGlobalInt('SOCIETE_FISCAL_MONTH_START', 1);
 			if ($startmonth > 12) {
@@ -393,11 +393,11 @@ if ($resql) {
 				$endmonth -= 12;
 			}
 			$endyear = ($endmonth < getDolGlobalInt('SOCIETE_FISCAL_MONTH_START', 1)) ? $y + 1 : $y;
-			print $langs->trans("UseMenuToSetBindindManualy", DOL_URL_ROOT.'/accountancy/supplier/list.php?search_date_startday=1&search_date_startmonth='.((int) $startmonth).'&search_date_startyear='.((int) $startyear).'&search_date_endday=&search_date_endmonth='.((int) $endmonth).'&search_date_endyear='.((int) $endyear), $langs->transnoentitiesnoconv("ToBind"));
+			echo$langs->trans("UseMenuToSetBindindManualy", DOL_URL_ROOT.'/accountancy/supplier/list.php?search_date_startday=1&search_date_startmonth='.((int) $startmonth).'&search_date_startyear='.((int) $startyear).'&search_date_endday=&search_date_endmonth='.((int) $endmonth).'&search_date_endyear='.((int) $endyear), $langs->transnoentitiesnoconv("ToBind"));
 		} else {
-			print $row[1];
+			echo$row[1];
 		}
-		print '</td>';
+		echo'</td>';
 		for ($i = 2; $i <= 13; $i++) {
 			$cursormonth = (getDolGlobalInt('SOCIETE_FISCAL_MONTH_START', 1) + $i - 2);
 			if ($cursormonth > 12) {
@@ -406,42 +406,42 @@ if ($resql) {
 			$cursoryear = ($cursormonth < getDolGlobalInt('SOCIETE_FISCAL_MONTH_START', 1)) ? $y + 1 : $y;
 			$tmp = dol_getdate(dol_get_last_day($cursoryear, $cursormonth, 'gmt'), false, 'gmt');
 
-			print '<td class="right nowraponall amount" title="'.price($row[2*$i - 2]).' - '.$row[2*$i - 1].' lines">';
-			print price($row[2*$i - 2]);
+			echo'<td class="right nowraponall amount" title="'.price($row[2*$i - 2]).' - '.$row[2*$i - 1].' lines">';
+			echoprice($row[2*$i - 2]);
 			// Add link to make binding
 			if (!empty(price2num($row[2*$i - 2])) || !empty($row[2*$i - 1])) {
-				print '<a href="'.$_SERVER['PHP_SELF'].'?action=validatehistory&year='.$y.'&validatemonth='.((int) $cursormonth).'&validateyear='.((int) $cursoryear).'&token='.newToken().'">';
-				print img_picto($langs->trans("ValidateHistory").' ('.$langs->trans('Month'.str_pad((string) $cursormonth, 2, '0', STR_PAD_LEFT)).' '.$cursoryear.')', 'link', 'class="marginleft2"');
-				print '</a>';
+				echo'<a href="'.$_SERVER['PHP_SELF'].'?action=validatehistory&year='.$y.'&validatemonth='.((int) $cursormonth).'&validateyear='.((int) $cursoryear).'&token='.newToken().'">';
+				echoimg_picto($langs->trans("ValidateHistory").' ('.$langs->trans('Month'.str_pad((string) $cursormonth, 2, '0', STR_PAD_LEFT)).' '.$cursoryear.')', 'link', 'class="marginleft2"');
+				echo'</a>';
 			}
-			print '</td>';
+			echo'</td>';
 		}
-		print '<td class="right nowraponall amount"><b>'.price($row[26]).'</b></td>';
-		print '</tr>';
+		echo'<td class="right nowraponall amount"><b>'.price($row[26]).'</b></td>';
+		echo'</tr>';
 	}
 	$db->free($resql);
 
 	if ($num == 0) {
-		print '<tr class="oddeven"><td colspan="15">';
-		print '<span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span>';
-		print '</td></tr>';
+		echo'<tr class="oddeven"><td colspan="15">';
+		echo'<span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span>';
+		echo'</td></tr>';
 	}
 } else {
-	print $db->lasterror(); // Show last sql error
+	echo$db->lasterror(); // Show last sql error
 }
-print "</table>\n";
-print '</div>';
+echo"</table>\n";
+echo'</div>';
 
 
-print '<br>';
+echo'<br>';
 
 
 print_barre_liste(img_picto('', 'link', 'class="paddingright fa-color-unset"').$langs->trans("OverviewOfAmountOfLinesBound"), '', '', '', '', '', '', -1, '', '', 0, '', '', 0, 1, 1);
-//print load_fiche_titre($langs->trans("OverviewOfAmountOfLinesBound"), '', '');
+//echoload_fiche_titre($langs->trans("OverviewOfAmountOfLinesBound"), '', '');
 
-print '<div class="div-table-responsive-no-min">';
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre"><td class="minwidth100">'.$langs->trans("Account").'</td>';
+echo'<div class="div-table-responsive-no-min">';
+echo'<table class="noborder centpercent">';
+echo'<tr class="liste_titre"><td class="minwidth100">'.$langs->trans("Account").'</td>';
 for ($i = 1; $i <= 12; $i++) {
 	$j = $i + getDolGlobalInt('SOCIETE_FISCAL_MONTH_START', 1) - 1;
 	if ($j > 12) {
@@ -454,19 +454,19 @@ for ($i = 1; $i <= 12; $i++) {
 	$cursoryear = ($cursormonth < getDolGlobalInt('SOCIETE_FISCAL_MONTH_START', 1)) ? $y + 1 : $y;
 	$tmp = dol_getdate(dol_get_last_day($cursoryear, $cursormonth, 'gmt'), false, 'gmt');
 
-	print '<td width="60" class="right">';
+	echo'<td width="60" class="right">';
 	if (!empty($tmp['mday'])) {
 		$param = 'search_date_startday=1&search_date_startmonth='.$cursormonth.'&search_date_startyear='.$cursoryear;
 		$param .= '&search_date_endday='.$tmp['mday'].'&search_date_endmonth='.$tmp['mon'].'&search_date_endyear='.$tmp['year'];
-		print '<a href="'.DOL_URL_ROOT.'/accountancy/supplier/lines.php?'.$param.'">';
+		echo'<a href="'.DOL_URL_ROOT.'/accountancy/supplier/lines.php?'.$param.'">';
 	}
-	print $langs->trans('MonthShort'.str_pad((string) $j, 2, '0', STR_PAD_LEFT));
+	echo$langs->trans('MonthShort'.str_pad((string) $j, 2, '0', STR_PAD_LEFT));
 	if (!empty($tmp['mday'])) {
-		print '</a>';
+		echo'</a>';
 	}
-	print '</td>';
+	echo'</td>';
 }
-print '<td width="60" class="right"><b>'.$langs->trans("Total").'</b></td></tr>';
+echo'<td width="60" class="right"><b>'.$langs->trans("Total").'</b></td></tr>';
 
 $sql = "SELECT ".$db->ifsql('aa.account_number IS NULL', "'tobind'", 'aa.account_number')." AS codecomptable,";
 $sql .= "  ".$db->ifsql('aa.label IS NULL', "'tobind'", 'aa.label')." AS intitule,";
@@ -505,63 +505,63 @@ if ($resql) {
 	$num = $db->num_rows($resql);
 
 	while ($row = $db->fetch_row($resql)) {
-		print '<tr class="oddeven">';
-		print '<td class="tdoverflowmax300"'.(empty($row[1]) ? '' : ' title="'.dol_escape_htmltag($row[1]).'"').'>';
+		echo'<tr class="oddeven">';
+		echo'<td class="tdoverflowmax300"'.(empty($row[1]) ? '' : ' title="'.dol_escape_htmltag($row[1]).'"').'>';
 		if ($row[0] == 'tobind') {
-			//print $langs->trans("Unknown");
+			//echo$langs->trans("Unknown");
 		} else {
-			print length_accountg($row[0]).' - ';
+			echolength_accountg($row[0]).' - ';
 		}
-		//print '</td>';
+		//echo'</td>';
 
-		//print '<td class="tdoverflowmax300"'.(empty($row[1]) ? '' : ' title="'.dol_escape_htmltag($row[1]).'"').'>';
+		//echo'<td class="tdoverflowmax300"'.(empty($row[1]) ? '' : ' title="'.dol_escape_htmltag($row[1]).'"').'>';
 		if ($row[0] == 'tobind') {
-			print $langs->trans("UseMenuToSetBindindManualy", DOL_URL_ROOT.'/accountancy/supplier/list.php?search_year='.((int) $y), $langs->transnoentitiesnoconv("ToBind"));
+			echo$langs->trans("UseMenuToSetBindindManualy", DOL_URL_ROOT.'/accountancy/supplier/list.php?search_year='.((int) $y), $langs->transnoentitiesnoconv("ToBind"));
 		} else {
-			print dol_escape_htmltag($row[1]);
+			echodol_escape_htmltag($row[1]);
 		}
-		print '</td>';
+		echo'</td>';
 
 		for ($i = 2; $i <= 13; $i++) {
-			print '<td class="right nowraponall amount">';
-			print price($row[$i]);
-			print '</td>';
+			echo'<td class="right nowraponall amount">';
+			echoprice($row[$i]);
+			echo'</td>';
 		}
-		print '<td class="right nowraponall amount"><b>'.price($row[14]).'</b></td>';
-		print '</tr>';
+		echo'<td class="right nowraponall amount"><b>'.price($row[14]).'</b></td>';
+		echo'</tr>';
 	}
 	$db->free($resql);
 
 	if ($num == 0) {
-		print '<tr class="oddeven"><td colspan="15">';
-		print '<span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span>';
-		print '</td></tr>';
+		echo'<tr class="oddeven"><td colspan="15">';
+		echo'<span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span>';
+		echo'</td></tr>';
 	}
 } else {
-	print $db->lasterror(); // Show last sql error
+	echo$db->lasterror(); // Show last sql error
 }
-print "</table>\n";
-print '</div>';
+echo"</table>\n";
+echo'</div>';
 
 
 if (getDolGlobalString('SHOW_TOTAL_OF_PREVIOUS_LISTS_IN_LIN_PAGE')) { // This part of code looks strange. Why showing a report that should rely on result of this step ?
-	print '<br>';
-	print '<br>';
+	echo'<br>';
+	echo'<br>';
 
 	print_barre_liste($langs->trans("OtherInfo"), '', '', '', '', '', '', -1, '', '', 0, '', '', 0, 1, 1);
-	//print load_fiche_titre($langs->trans("OtherInfo"), '', '');
+	//echoload_fiche_titre($langs->trans("OtherInfo"), '', '');
 
-	print '<div class="div-table-responsive-no-min">';
-	print '<table class="noborder centpercent">';
-	print '<tr class="liste_titre"><td>'.$langs->trans("Total").'</td>';
+	echo'<div class="div-table-responsive-no-min">';
+	echo'<table class="noborder centpercent">';
+	echo'<tr class="liste_titre"><td>'.$langs->trans("Total").'</td>';
 	for ($i = 1; $i <= 12; $i++) {
 		$j = $i + getDolGlobalInt('SOCIETE_FISCAL_MONTH_START', 1) - 1;
 		if ($j > 12) {
 			$j -= 12;
 		}
-		print '<td width="60" class="right">'.$langs->trans('MonthShort'.str_pad((string) $j, 2, '0', STR_PAD_LEFT)).'</td>';
+		echo'<td width="60" class="right">'.$langs->trans('MonthShort'.str_pad((string) $j, 2, '0', STR_PAD_LEFT)).'</td>';
 	}
-	print '<td width="60" class="right"><b>'.$langs->trans("Total").'</b></td></tr>';
+	echo'<td width="60" class="right"><b>'.$langs->trans("Total").'</b></td></tr>';
 
 	$sql = "SELECT '".$db->escape($langs->trans("CAHTF"))."' AS label,";
 	for ($i = 1; $i <= 12; $i++) {
@@ -595,19 +595,19 @@ if (getDolGlobalString('SHOW_TOTAL_OF_PREVIOUS_LISTS_IN_LIN_PAGE')) { // This pa
 		$num = $db->num_rows($resql);
 
 		while ($row = $db->fetch_row($resql)) {
-			print '<tr><td>'.$row[0].'</td>';
+			echo'<tr><td>'.$row[0].'</td>';
 			for ($i = 1; $i <= 12; $i++) {
-				print '<td class="right nowraponall amount">'.price($row[$i]).'</td>';
+				echo'<td class="right nowraponall amount">'.price($row[$i]).'</td>';
 			}
-			print '<td class="right nowraponall amount"><b>'.price($row[13]).'</b></td>';
-			print '</tr>';
+			echo'<td class="right nowraponall amount"><b>'.price($row[13]).'</b></td>';
+			echo'</tr>';
 		}
 		$db->free($resql);
 	} else {
-		print $db->lasterror(); // Show last sql error
+		echo$db->lasterror(); // Show last sql error
 	}
-	print "</table>\n";
-	print '</div>';
+	echo"</table>\n";
+	echo'</div>';
 }
 
 // End of page

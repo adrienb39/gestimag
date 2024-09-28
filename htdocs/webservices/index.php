@@ -41,15 +41,15 @@ dol_syslog("Call Gestimag webservices interfaces");
 if (!getDolGlobalString('MAIN_MODULE_WEBSERVICES')) {
 	$langs->load("admin");
 	dol_syslog("Call Gestimag webservices interfaces with module webservices disabled");
-	print $langs->trans("WarningModuleNotActive", 'WebServices').'.<br><br>';
-	print $langs->trans("ToActivateModule");
+	echo $langs->trans("WarningModuleNotActive", 'WebServices').'.<br><br>';
+	echo $langs->trans("ToActivateModule");
 	exit;
 }
 
 
 
 // WSDL
-print 'List of available SOAP Web services is visible on the setup area, setup page of module WebService SOAP.';
+echo 'List of available SOAP Web services is visible on the setup area, setup page of module WebService SOAP.';
 
 
 $db->close();

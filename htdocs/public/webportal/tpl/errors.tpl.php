@@ -2,11 +2,11 @@
 <?php
 // Protection to avoid direct call of template
 if (empty($context) || !is_object($context)) {
-	print "Error, template page can't be called as URL";
+	echo "Error, template page can't be called as URL";
 	exit(1);
 }
 
-print '
+echo '
 	<div class="modal fade" id="webportal_errors" tabindex="-1" role="dialog" aria-labelledby="webportal_errors_title" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
@@ -21,10 +21,10 @@ print '
 					';
 
 foreach ($context->errors as $err) {
-	print '<blockquote class="blockquote m-0">' . $err . '</blockquote>';
+	echo '<blockquote class="blockquote m-0">' . $err . '</blockquote>';
 }
 
-print '
+echo '
 				</div>
 			</div>
 		</div>

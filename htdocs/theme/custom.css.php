@@ -53,5 +53,5 @@ if (empty($gestimag_nocache)) {
 }
 
 
-print '/* Here, the content of the common custom CSS defined into Home - Setup - Display - CSS'."*/\n";
-print getDolGlobalString('MAIN_IHM_CUSTOM_CSS');
+echo '/* Here, the content of the common custom CSS defined into Home - Setup - Display - CSS'."*/\n";
+echo getDolGlobalString('MAIN_IHM_CUSTOM_CSS');

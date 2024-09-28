@@ -80,7 +80,7 @@ $form = new Form($db);
 
 if ($id > 0 || !empty($ref)) {
 	if ($mesg) {
-		print $mesg;
+		echo $mesg;
 	}
 
 	$now = dol_now();
@@ -95,7 +95,7 @@ if ($id > 0 || !empty($ref)) {
 		$societe = new Societe($db);
 		if ($societe->fetch($object->socid)) {
 			$head = supplier_proposal_prepare_head($object);
-			print dol_get_fiche_head($head, 'note', $langs->trans('CommRequest'), -1, 'supplier_proposal');
+			echo dol_get_fiche_head($head, 'note', $langs->trans('CommRequest'), -1, 'supplier_proposal');
 
 
 			// Supplier proposal card
@@ -135,15 +135,15 @@ if ($id > 0 || !empty($ref)) {
 			dol_banner_tab($object, 'ref', $linkback, 1, 'ref', 'ref', $morehtmlref);
 
 
-			print '<div class="fichecenter">';
-			print '<div class="underbanner clearboth"></div>';
+			echo '<div class="fichecenter">';
+			echo '<div class="underbanner clearboth"></div>';
 
 			$cssclass = "titlefield";
 			include DOL_DOCUMENT_ROOT.'/core/tpl/notes.tpl.php';
 
-			print '</div>';
+			echo '</div>';
 
-			print dol_get_fiche_end();
+			echo dol_get_fiche_end();
 		}
 	}
 }

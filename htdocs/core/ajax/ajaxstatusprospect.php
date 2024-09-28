@@ -89,5 +89,5 @@ if ($action === "updatestatusprospect" && $permisstiontoupdate) {
 		$response = img_action('', $prospectstatic->cacheprospectstatus[$idstatus]['code'], $prospectstatic->cacheprospectstatus[$idstatus]['picto'], 'class="inline-block valignmiddle paddingright pictoprospectstatus"');
 	}
 
-	echo json_encode(array('img' => $response));
+	echo  json_encode(array('img' => $response));
 }

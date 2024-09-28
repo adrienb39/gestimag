@@ -178,15 +178,15 @@ $help_url = '';
 llxHeader('', $langs->trans("DonationsSetup"), $help_url, '', 0, 0, '', '', '', 'mod-donation page-admin');
 
 $linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?restore_lastsearch_values=1">'.$langs->trans("BackToModuleList").'</a>';
-print load_fiche_titre($langs->trans("DonationsSetup"), $linkback, 'title_setup');
+echo load_fiche_titre($langs->trans("DonationsSetup"), $linkback, 'title_setup');
 
 $head = donation_admin_prepare_head();
 
-print dol_get_fiche_head($head, 'general', $langs->trans("Donations"), -1, 'payment');
+echo dol_get_fiche_head($head, 'general', $langs->trans("Donations"), -1, 'payment');
 
 
 // Document templates
-print load_fiche_titre($langs->trans("DonationsModels"), '', '');
+echo load_fiche_titre($langs->trans("DonationsModels"), '', '');
 
 // Defined the template definition table
 $type = 'donation';
@@ -209,15 +209,15 @@ if ($resql) {
 	dol_print_error($db);
 }
 
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("Name").'</td>';
-print '<td>'.$langs->trans("Description").'</td>';
-print '<td class="center" width="60">'.$langs->trans("Activated").'</td>';
-print '<td class="center" width="60">'.$langs->trans("Default").'</td>';
-print '<td class="center" width="80">'.$langs->trans("ShortInfo").'</td>';
-print '<td class="center" width="80">'.$langs->trans("Preview").'</td>';
-print "</tr>\n";
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre">';
+echo '<td>'.$langs->trans("Name").'</td>';
+echo '<td>'.$langs->trans("Description").'</td>';
+echo '<td class="center" width="60">'.$langs->trans("Activated").'</td>';
+echo '<td class="center" width="60">'.$langs->trans("Default").'</td>';
+echo '<td class="center" width="80">'.$langs->trans("ShortInfo").'</td>';
+echo '<td class="center" width="80">'.$langs->trans("Preview").'</td>';
+echo "</tr>\n";
 
 clearstatcache();
 
@@ -241,39 +241,39 @@ if (is_resource($handle)) {
 			}
 
 			if ($module->isEnabled()) {
-				print '<tr class="oddeven"><td width=\"100\">';
-				echo $module->name;
-				print '</td>';
-				print '<td>';
-				print $module->description;
-				print '</td>';
+				echo '<tr class="oddeven"><td width=\"100\">';
+				echo  $module->name;
+				echo '</td>';
+				echo '<td>';
+				echo $module->description;
+				echo '</td>';
 
 				// Active
 				if (in_array($name, $def)) {
 					if ($conf->global->DON_ADDON_MODEL == $name) {
-						print "<td class=\"center\">\n";
-						print img_picto($langs->trans("Enabled"), 'switch_on');
-						print '</td>';
+						echo "<td class=\"center\">\n";
+						echo img_picto($langs->trans("Enabled"), 'switch_on');
+						echo '</td>';
 					} else {
-						print "<td class=\"center\">\n";
-						print '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&token='.newToken().'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'">'.img_picto($langs->trans("Enabled"), 'switch_on').'</a>';
-						print '</td>';
+						echo "<td class=\"center\">\n";
+						echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&token='.newToken().'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'">'.img_picto($langs->trans("Enabled"), 'switch_on').'</a>';
+						echo '</td>';
 					}
 				} else {
-					print "<td class=\"center\">\n";
-					print '<a href="'.$_SERVER["PHP_SELF"].'?action=set&token='.newToken().'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'">'.img_picto($langs->trans("Disabled"), 'switch_off').'</a>';
-					print "</td>";
+					echo "<td class=\"center\">\n";
+					echo '<a href="'.$_SERVER["PHP_SELF"].'?action=set&token='.newToken().'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'">'.img_picto($langs->trans("Disabled"), 'switch_off').'</a>';
+					echo "</td>";
 				}
 
 				// Default
 				if ($conf->global->DON_ADDON_MODEL == "$name") {
-					print "<td class=\"center\">";
-					print img_picto($langs->trans("Default"), 'on');
-					print '</td>';
+					echo "<td class=\"center\">";
+					echo img_picto($langs->trans("Default"), 'on');
+					echo '</td>';
 				} else {
-					print "<td class=\"center\">";
-					print '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&token='.newToken().'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'" alt="'.$langs->trans("Default").'">'.img_picto($langs->trans("Disabled"), 'off').'</a>';
-					print '</td>';
+					echo "<td class=\"center\">";
+					echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&token='.newToken().'&value='.urlencode($name).'&scan_dir='.urlencode($module->scandir).'&label='.urlencode($module->name).'" alt="'.$langs->trans("Default").'">'.img_picto($langs->trans("Disabled"), 'off').'</a>';
+					echo '</td>';
 				}
 
 				// Info
@@ -285,131 +285,131 @@ if (is_resource($handle)) {
 				$htmltooltip .= '<br><br><u>'.$langs->trans("FeaturesSupported").':</u>';
 				$htmltooltip .= '<br>'.$langs->trans("Logo").': '.yn($module->option_logo, 1, 1);
 				$htmltooltip .= '<br>'.$langs->trans("MultiLanguage").': '.yn($module->option_multilang, 1, 1);
-				print '<td class="center">';
-				print $form->textwithpicto('', $htmltooltip, -1, 0);
-				print '</td>';
+				echo '<td class="center">';
+				echo $form->textwithpicto('', $htmltooltip, -1, 0);
+				echo '</td>';
 
 				// Preview
-				print '<td class="center">';
-				print '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&module='.$name.'" target="specimen">'.img_object($langs->trans("Preview"), 'generic').'</a>';
-				print '</td>';
+				echo '<td class="center">';
+				echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&module='.$name.'" target="specimen">'.img_object($langs->trans("Preview"), 'generic').'</a>';
+				echo '</td>';
 
-				print "</tr>\n";
+				echo "</tr>\n";
 			}
 		}
 	}
 	closedir($handle);
 }
 
-print '</table><br>';
+echo '</table><br>';
 
 /*
  *  Params
  */
-print load_fiche_titre($langs->trans("Options"), '', '');
+echo load_fiche_titre($langs->trans("Options"), '', '');
 
-print '<table class="noborder centpercent">';
-print '<tr class="liste_titre">';
-print '<td>'.$langs->trans("Parameters").'</td>';
-print '<td width="60" class="center">'.$langs->trans("Value")."</td>\n";
-print '<td></td>';
-print "</tr>\n";
+echo '<table class="noborder centpercent">';
+echo '<tr class="liste_titre">';
+echo '<td>'.$langs->trans("Parameters").'</td>';
+echo '<td width="60" class="center">'.$langs->trans("Value")."</td>\n";
+echo '<td></td>';
+echo "</tr>\n";
 
 if (isModEnabled("societe")) {
-	print '<tr class="oddeven">';
-	print '<td colspan="2">';
-	print $langs->trans("DonationUseThirdparties");
-	print '</td>';
-	print '<td class="center">';
+	echo '<tr class="oddeven">';
+	echo '<td colspan="2">';
+	echo $langs->trans("DonationUseThirdparties");
+	echo '</td>';
+	echo '<td class="center">';
 	if ($conf->use_javascript_ajax) {
-		print ajax_constantonoff('DONATION_USE_THIRDPARTIES');
+		echo ajax_constantonoff('DONATION_USE_THIRDPARTIES');
 	} else {
 		$arrval = array('0' => $langs->trans("No"), '1' => $langs->trans("Yes"));
-		print $form->selectarray("DONATION_USE_THIRDPARTIES", $arrval, $conf->global->DONATION_USE_THIRDPARTIES);
+		echo $form->selectarray("DONATION_USE_THIRDPARTIES", $arrval, $conf->global->DONATION_USE_THIRDPARTIES);
 	}
-	print "</td>\n";
-	print "</tr>\n";
+	echo "</td>\n";
+	echo "</tr>\n";
 }
 
-print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-print '<input type="hidden" name="token" value="'.newToken().'" />';
-print '<input type="hidden" name="action" value="set_DONATION_ACCOUNTINGACCOUNT" />';
+echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+echo '<input type="hidden" name="token" value="'.newToken().'" />';
+echo '<input type="hidden" name="action" value="set_DONATION_ACCOUNTINGACCOUNT" />';
 
-print '<tr class="oddeven">';
-print '<td>';
+echo '<tr class="oddeven">';
+echo '<td>';
 $label = $langs->trans("AccountAccounting");
-print '<label for="DONATION_ACCOUNTINGACCOUNT">'.$label.'</label></td>';
-print '<td class="center">';
+echo '<label for="DONATION_ACCOUNTINGACCOUNT">'.$label.'</label></td>';
+echo '<td class="center">';
 if (isModEnabled('accounting')) {
-	print $formaccounting->select_account($conf->global->DONATION_ACCOUNTINGACCOUNT, 'DONATION_ACCOUNTINGACCOUNT', 1, '', 1, 1);
+	echo $formaccounting->select_account($conf->global->DONATION_ACCOUNTINGACCOUNT, 'DONATION_ACCOUNTINGACCOUNT', 1, '', 1, 1);
 } else {
-	print '<input type="text" size="10" id="DONATION_ACCOUNTINGACCOUNT" name="DONATION_ACCOUNTINGACCOUNT" value="' . getDolGlobalString('DONATION_ACCOUNTINGACCOUNT').'">';
+	echo '<input type="text" size="10" id="DONATION_ACCOUNTINGACCOUNT" name="DONATION_ACCOUNTINGACCOUNT" value="' . getDolGlobalString('DONATION_ACCOUNTINGACCOUNT').'">';
 }
-print '</td><td class="center">';
-print '<input type="submit" class="button button-edit" value="'.$langs->trans("Modify").'" />';
-print "</td></tr>\n";
-print '</form>';
+echo '</td><td class="center">';
+echo '<input type="submit" class="button button-edit" value="'.$langs->trans("Modify").'" />';
+echo "</td></tr>\n";
+echo '</form>';
 
-print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-print '<input type="hidden" name="token" value="'.newToken().'" />';
-print '<input type="hidden" name="action" value="set_DONATION_MESSAGE" />';
+echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+echo '<input type="hidden" name="token" value="'.newToken().'" />';
+echo '<input type="hidden" name="action" value="set_DONATION_MESSAGE" />';
 
-print '<tr class="oddeven"><td colspan="2">';
-print $langs->trans("FreeTextOnDonations").' '.img_info($langs->trans("AddCRIfTooLong")).'<br>';
-print '<textarea name="DONATION_MESSAGE" class="flat" cols="80">' . getDolGlobalString('DONATION_MESSAGE').'</textarea>';
-print '</td><td class="center">';
-print '<input type="submit" class="button button-edit" value="'.$langs->trans("Modify").'" />';
-print "</td></tr>\n";
+echo '<tr class="oddeven"><td colspan="2">';
+echo $langs->trans("FreeTextOnDonations").' '.img_info($langs->trans("AddCRIfTooLong")).'<br>';
+echo '<textarea name="DONATION_MESSAGE" class="flat" cols="80">' . getDolGlobalString('DONATION_MESSAGE').'</textarea>';
+echo '</td><td class="center">';
+echo '<input type="submit" class="button button-edit" value="'.$langs->trans("Modify").'" />';
+echo "</td></tr>\n";
 
-print "</table>\n";
-print '</form>';
+echo "</table>\n";
+echo '</form>';
 
 /*
  *  French params
  */
 if (preg_match('/fr/i', $conf->global->MAIN_INFO_SOCIETE_COUNTRY)) {
-	print '<br>';
-	print load_fiche_titre($langs->trans("FrenchOptions"), '', '');
+	echo '<br>';
+	echo load_fiche_titre($langs->trans("FrenchOptions"), '', '');
 
-	print '<table class="noborder centpercent">';
-	print '<tr class="liste_titre">';
-	print '<td>'.$langs->trans("Parameters").'</td>'."\n";
-	print '<td class="center">'.$langs->trans("Status").'</td>'."\n";
-	print "</tr>\n";
+	echo '<table class="noborder centpercent">';
+	echo '<tr class="liste_titre">';
+	echo '<td>'.$langs->trans("Parameters").'</td>'."\n";
+	echo '<td class="center">'.$langs->trans("Status").'</td>'."\n";
+	echo "</tr>\n";
 
-	print '<tr class="oddeven">';
-	print '<td width="80%">'.$langs->trans("DONATION_ART200").'</td>';
-	print '<td class="center">';
+	echo '<tr class="oddeven">';
+	echo '<td width="80%">'.$langs->trans("DONATION_ART200").'</td>';
+	echo '<td class="center">';
 	if ($conf->use_javascript_ajax) {
-		print ajax_constantonoff('DONATION_ART200');
+		echo ajax_constantonoff('DONATION_ART200');
 	} else {
 		$arrval = array('0' => $langs->trans("No"), '1' => $langs->trans("Yes"));
-		print $form->selectarray("DONATION_ART200", $arrval, $conf->global->DONATION_ART200);
+		echo $form->selectarray("DONATION_ART200", $arrval, $conf->global->DONATION_ART200);
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 
-	print '<tr class="oddeven">';
-	print '<td width="80%">'.$langs->trans("DONATION_ART238").'</td>';
-	print '<td class="center">';
+	echo '<tr class="oddeven">';
+	echo '<td width="80%">'.$langs->trans("DONATION_ART238").'</td>';
+	echo '<td class="center">';
 	if ($conf->use_javascript_ajax) {
-		print ajax_constantonoff('DONATION_ART238');
+		echo ajax_constantonoff('DONATION_ART238');
 	} else {
 		$arrval = array('0' => $langs->trans("No"), '1' => $langs->trans("Yes"));
-		print $form->selectarray("DONATION_ART238", $arrval, $conf->global->DONATION_ART238);
+		echo $form->selectarray("DONATION_ART238", $arrval, $conf->global->DONATION_ART238);
 	}
-	print '</td></tr>';
+	echo '</td></tr>';
 
-	print '<tr class="oddeven">';
-	print '<td width="80%">'.$langs->trans("DONATION_ART978").'</td>';
-	print '<td class="center">';
+	echo '<tr class="oddeven">';
+	echo '<td width="80%">'.$langs->trans("DONATION_ART978").'</td>';
+	echo '<td class="center">';
 	if ($conf->use_javascript_ajax) {
-		print ajax_constantonoff('DONATION_ART978');
+		echo ajax_constantonoff('DONATION_ART978');
 	} else {
 		$arrval = array('0' => $langs->trans("No"), '1' => $langs->trans("Yes"));
-		print $form->selectarray("DONATION_ART978", $arrval, $conf->global->DONATION_ART978);
+		echo $form->selectarray("DONATION_ART978", $arrval, $conf->global->DONATION_ART978);
 	}
-	print '</td></tr>';
-	print "</table>\n";
+	echo '</td></tr>';
+	echo "</table>\n";
 }
 
 llxFooter();

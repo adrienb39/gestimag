@@ -325,7 +325,7 @@ if (!$error && $massaction == 'confirm_presend') {
 						$objectobj->thirdparty = $objectobj; // Hack so following code is compatible when objectobj is a thirdparty
 					}
 
-					//print "No recipient for thirdparty ".$objectobj->thirdparty->name;
+					//echo "No recipient for thirdparty ".$objectobj->thirdparty->name;
 					$nbignored++;
 					if (empty($thirdpartywithoutemail[$objectobj->thirdparty->id])) {
 						$resaction .= '<div class="error">'.$langs->trans('NoRecipientEmail', $objectobj->thirdparty->name).'</div><br>';

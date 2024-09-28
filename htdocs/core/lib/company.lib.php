@@ -852,7 +852,7 @@ function isInEEC($object)
 
 	$country_code_in_EEC = getCountriesInEEC();		// This make a database call but there is a cache done into $conf->cache['country_code_in_EEC']
 
-	//print "dd".$object->country_code;
+	//echo"dd".$object->country_code;
 	return in_array($object->country_code, $country_code_in_EEC);
 }
 
@@ -883,11 +883,11 @@ function show_projects($conf, $langs, $db, $object, $backtopage = '', $nocreatel
 			$newcardbutton .= dolGetButtonTitle($langs->trans('AddProject'), '', 'fa fa-plus-circle', DOL_URL_ROOT.'/projet/card.php?socid='.$object->id.'&amp;action=create&amp;backtopage='.urlencode($backtopage));
 		}
 
-		print "\n";
-		print load_fiche_titre($langs->trans("ProjectsDedicatedToThisThirdParty"), $newcardbutton.$morehtmlright, '');
+		echo"\n";
+		echoload_fiche_titre($langs->trans("ProjectsDedicatedToThisThirdParty"), $newcardbutton.$morehtmlright, '');
 
-		print '<div class="div-table-responsive">'."\n";
-		print '<table class="noborder centpercent">';
+		echo'<div class="div-table-responsive">'."\n";
+		echo'<table class="noborder centpercent">';
 
 		$sql  = "SELECT p.rowid as id, p.entity, p.title, p.ref, p.public, p.dateo as do, p.datee as de, p.fk_statut as status, p.fk_opp_status, p.opp_amount, p.opp_percent, p.tms as date_modification, p.budget_amount";
 		$sql .= ", cls.code as opp_status_code";
@@ -901,28 +901,28 @@ function show_projects($conf, $langs, $db, $object, $backtopage = '', $nocreatel
 		if ($result) {
 			$num = $db->num_rows($result);
 
-			print '<tr class="liste_titre">';
+			echo'<tr class="liste_titre">';
 			if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-				print '<td class="center">';
+				echo'<td class="center">';
 				$selectedfields = (is_array($arrayofmassactions) && count($arrayofmassactions) ? $form->showCheckAddButtons('checkforselect', 1) : '');
-				print $selectedfields;
-				print '</td>';
+				echo$selectedfields;
+				echo'</td>';
 			}
-			print '<td>'.$langs->trans("Ref").'</td>';
-			print '<td>'.$langs->trans("Name").'</td>';
-			print '<td class="center">'.$langs->trans("DateStart").'</td>';
-			print '<td class="center">'.$langs->trans("DateEnd").'</td>';
-			print '<td class="right">'.$langs->trans("OpportunityAmountShort").'</td>';
-			print '<td class="center">'.$langs->trans("OpportunityStatusShort").'</td>';
-			print '<td class="right">'.$langs->trans("OpportunityProbabilityShort").'</td>';
-			print '<td class="right">'.$langs->trans("Status").'</td>';
+			echo'<td>'.$langs->trans("Ref").'</td>';
+			echo'<td>'.$langs->trans("Name").'</td>';
+			echo'<td class="center">'.$langs->trans("DateStart").'</td>';
+			echo'<td class="center">'.$langs->trans("DateEnd").'</td>';
+			echo'<td class="right">'.$langs->trans("OpportunityAmountShort").'</td>';
+			echo'<td class="center">'.$langs->trans("OpportunityStatusShort").'</td>';
+			echo'<td class="right">'.$langs->trans("OpportunityProbabilityShort").'</td>';
+			echo'<td class="right">'.$langs->trans("Status").'</td>';
 			if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-				print '<td class="center">';
+				echo'<td class="center">';
 				$selectedfields = (is_array($arrayofmassactions) && count($arrayofmassactions) ? $form->showCheckAddButtons('checkforselect', 1) : '');
-				print $selectedfields;
-				print '</td>';
+				echo$selectedfields;
+				echo'</td>';
 			}
-			print '</tr>';
+			echo'</tr>';
 
 			if ($num > 0) {
 				require_once DOL_DOCUMENT_ROOT.'/projet/class/project.class.php';
@@ -939,69 +939,69 @@ function show_projects($conf, $langs, $db, $object, $backtopage = '', $nocreatel
 					$userAccess = $projecttmp->restrictedProjectArea($user);
 
 					if ($user->hasRight('projet', 'lire') && $userAccess > 0) {
-						print '<tr class="oddeven">';
+						echo'<tr class="oddeven">';
 
 						if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-							print '<td class="nowrap center actioncolumn">';
+							echo'<td class="nowrap center actioncolumn">';
 							if ($massactionbutton || $massaction) {
 								$selected = 0;
 								if (in_array($obj->id, $arrayofselected)) {
 									$selected = 1;
 								}
-								print '<input id="cb'.$obj->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$obj->id.'"'.($selected ? ' checked="checked"' : '').'>';
+								echo'<input id="cb'.$obj->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$obj->id.'"'.($selected ? ' checked="checked"' : '').'>';
 							}
-							print '</td>';
+							echo'</td>';
 						}
 						// Ref
-						print '<td class="nowraponall">';
-						print $projecttmp->getNomUrl(1, '', 0, '', '-', 0, 1, '', 'project:'.$_SERVER["PHP_SELF"].'?socid=__SOCID__');
-						print '</td>';
+						echo'<td class="nowraponall">';
+						echo$projecttmp->getNomUrl(1, '', 0, '', '-', 0, 1, '', 'project:'.$_SERVER["PHP_SELF"].'?socid=__SOCID__');
+						echo'</td>';
 
 						// Label
-						print '<td class="tdoverflowmax200" title="'.dol_escape_htmltag($obj->title).'">'.dol_escape_htmltag($obj->title).'</td>';
+						echo'<td class="tdoverflowmax200" title="'.dol_escape_htmltag($obj->title).'">'.dol_escape_htmltag($obj->title).'</td>';
 						// Date start
-						print '<td class="center">'.dol_print_date($db->jdate($obj->do), "day").'</td>';
+						echo'<td class="center">'.dol_print_date($db->jdate($obj->do), "day").'</td>';
 						// Date end
-						print '<td class="center">'.dol_print_date($db->jdate($obj->de), "day").'</td>';
+						echo'<td class="center">'.dol_print_date($db->jdate($obj->de), "day").'</td>';
 						// Opp amount
-						print '<td class="right">';
+						echo'<td class="right">';
 						if ($obj->opp_status_code) {
-							print '<span class="amount">'.price($obj->opp_amount, 1, '', 1, -1, -1, '').'</span>';
+							echo'<span class="amount">'.price($obj->opp_amount, 1, '', 1, -1, -1, '').'</span>';
 						}
-						print '</td>';
+						echo'</td>';
 						// Opp status
-						print '<td class="center">';
+						echo'<td class="center">';
 						if ($obj->opp_status_code) {
-							print $langs->trans("OppStatus".$obj->opp_status_code);
+							echo$langs->trans("OppStatus".$obj->opp_status_code);
 						}
-						print '</td>';
+						echo'</td>';
 						// Opp percent
-						print '<td class="right">';
+						echo'<td class="right">';
 						if ($obj->opp_percent) {
-							print price($obj->opp_percent, 1, '', 1, 0).'%';
+							echoprice($obj->opp_percent, 1, '', 1, 0).'%';
 						}
-						print '</td>';
+						echo'</td>';
 						// Status
-						print '<td class="right">'.$projecttmp->getLibStatut(5).'</td>';
+						echo'<td class="right">'.$projecttmp->getLibStatut(5).'</td>';
 
 						// Action column
 						if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-							print '<td class="nowrap center actioncolumn">';
+							echo'<td class="nowrap center actioncolumn">';
 							if ($massactionbutton || $massaction) {
 								$selected = 0;
 								if (in_array($obj->id, $arrayofselected)) {
 									$selected = 1;
 								}
-								print '<input id="cb'.$obj->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$obj->id.'"'.($selected ? ' checked="checked"' : '').'>';
+								echo'<input id="cb'.$obj->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$obj->id.'"'.($selected ? ' checked="checked"' : '').'>';
 							}
-							print '</td>';
+							echo'</td>';
 						}
-						print '</tr>';
+						echo'</tr>';
 					}
 					$i++;
 				}
 			} else {
-				print '<tr class="oddeven"><td colspan="9"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
+				echo'<tr class="oddeven"><td colspan="9"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
 			}
 			$db->free($result);
 		} else {
@@ -1010,12 +1010,12 @@ function show_projects($conf, $langs, $db, $object, $backtopage = '', $nocreatel
 
 		//projects linked to that thirdpart because of a people of that company is linked to a project
 		if (getDolGlobalString('PROJECT_DISPLAY_LINKED_BY_CONTACT')) {
-			print "\n";
-			print load_fiche_titre($langs->trans("ProjectsLinkedToThisThirdParty"), '', '');
+			echo"\n";
+			echoload_fiche_titre($langs->trans("ProjectsLinkedToThisThirdParty"), '', '');
 
 
-			print '<div class="div-table-responsive">'."\n";
-			print '<table class="noborder centpercent">';
+			echo'<div class="div-table-responsive">'."\n";
+			echo'<table class="noborder centpercent">';
 
 			$sql  = "SELECT p.rowid as id, p.entity, p.title, p.ref, p.public, p.dateo as do, p.datee as de, p.fk_statut as status, p.fk_opp_status, p.opp_amount, p.opp_percent, p.tms as date_update, p.budget_amount";
 			$sql .= ", cls.code as opp_status_code";
@@ -1033,16 +1033,16 @@ function show_projects($conf, $langs, $db, $object, $backtopage = '', $nocreatel
 			if ($result) {
 				$num = $db->num_rows($result);
 
-				print '<tr class="liste_titre">';
-				print '<td>'.$langs->trans("Ref").'</td>';
-				print '<td>'.$langs->trans("Name").'</td>';
-				print '<td class="center">'.$langs->trans("DateStart").'</td>';
-				print '<td class="center">'.$langs->trans("DateEnd").'</td>';
-				print '<td class="right">'.$langs->trans("OpportunityAmountShort").'</td>';
-				print '<td class="center">'.$langs->trans("OpportunityStatusShort").'</td>';
-				print '<td class="right">'.$langs->trans("OpportunityProbabilityShort").'</td>';
-				print '<td class="right">'.$langs->trans("Status").'</td>';
-				print '</tr>';
+				echo'<tr class="liste_titre">';
+				echo'<td>'.$langs->trans("Ref").'</td>';
+				echo'<td>'.$langs->trans("Name").'</td>';
+				echo'<td class="center">'.$langs->trans("DateStart").'</td>';
+				echo'<td class="center">'.$langs->trans("DateEnd").'</td>';
+				echo'<td class="right">'.$langs->trans("OpportunityAmountShort").'</td>';
+				echo'<td class="center">'.$langs->trans("OpportunityStatusShort").'</td>';
+				echo'<td class="right">'.$langs->trans("OpportunityProbabilityShort").'</td>';
+				echo'<td class="right">'.$langs->trans("Status").'</td>';
+				echo'</tr>';
 
 				if ($num > 0) {
 					require_once DOL_DOCUMENT_ROOT.'/projet/class/project.class.php';
@@ -1059,46 +1059,46 @@ function show_projects($conf, $langs, $db, $object, $backtopage = '', $nocreatel
 						$userAccess = $projecttmp->restrictedProjectArea($user);
 
 						if ($user->rights->projet->lire && $userAccess > 0) {
-							print '<tr class="oddeven">';
+							echo'<tr class="oddeven">';
 
 							// Ref
-							print '<td class="nowraponall">';
-							print $projecttmp->getNomUrl(1, '', 0, '', '-', 0, 1, '', 'project:'.$_SERVER["PHP_SELF"].'?socid=__SOCID__');
-							print '</td>';
+							echo'<td class="nowraponall">';
+							echo$projecttmp->getNomUrl(1, '', 0, '', '-', 0, 1, '', 'project:'.$_SERVER["PHP_SELF"].'?socid=__SOCID__');
+							echo'</td>';
 
 							// Label
-							print '<td class="tdoverflowmax200" title="'.dol_escape_htmltag($obj->title).'">'.dol_escape_htmltag($obj->title).'</td>';
+							echo'<td class="tdoverflowmax200" title="'.dol_escape_htmltag($obj->title).'">'.dol_escape_htmltag($obj->title).'</td>';
 							// Date start
-							print '<td class="center">'.dol_print_date($db->jdate($obj->do), "day").'</td>';
+							echo'<td class="center">'.dol_print_date($db->jdate($obj->do), "day").'</td>';
 							// Date end
-							print '<td class="center">'.dol_print_date($db->jdate($obj->de), "day").'</td>';
+							echo'<td class="center">'.dol_print_date($db->jdate($obj->de), "day").'</td>';
 							// Opp amount
-							print '<td class="right">';
+							echo'<td class="right">';
 							if ($obj->opp_status_code) {
-								print '<span class="amount">'.price($obj->opp_amount, 1, '', 1, -1, -1, '').'</span>';
+								echo'<span class="amount">'.price($obj->opp_amount, 1, '', 1, -1, -1, '').'</span>';
 							}
-							print '</td>';
+							echo'</td>';
 							// Opp status
-							print '<td class="center">';
+							echo'<td class="center">';
 							if ($obj->opp_status_code) {
-								print $langs->trans("OppStatus".$obj->opp_status_code);
+								echo$langs->trans("OppStatus".$obj->opp_status_code);
 							}
-							print '</td>';
+							echo'</td>';
 							// Opp percent
-							print '<td class="right">';
+							echo'<td class="right">';
 							if ($obj->opp_percent) {
-								print price($obj->opp_percent, 1, '', 1, 0).'%';
+								echoprice($obj->opp_percent, 1, '', 1, 0).'%';
 							}
-							print '</td>';
+							echo'</td>';
 							// Status
-							print '<td class="right">'.$projecttmp->getLibStatut(5).'</td>';
+							echo'<td class="right">'.$projecttmp->getLibStatut(5).'</td>';
 
-							print '</tr>';
+							echo'</tr>';
 						}
 						$i++;
 					}
 				} else {
-					print '<tr class="oddeven"><td colspan="8"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
+					echo'<tr class="oddeven"><td colspan="8"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
 				}
 				$db->free($result);
 			} else {
@@ -1108,12 +1108,12 @@ function show_projects($conf, $langs, $db, $object, $backtopage = '', $nocreatel
 
 		$parameters = array('sql' => $sql, 'function' => 'show_projects');
 		$reshook = $hookmanager->executeHooks('printFieldListFooter', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
-		print $hookmanager->resPrint;
+		echo$hookmanager->resPrint;
 
-		print "</table>";
-		print '</div>';
+		echo"</table>";
+		echo'</div>';
 
-		print "<br>\n";
+		echo"<br>\n";
 	}
 
 	return $i;
@@ -1279,18 +1279,18 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 		$newcardbutton .= dolGetButtonTitle($addcontact, '', 'fa fa-plus-circle', DOL_URL_ROOT.'/contact/card.php?socid='.$object->id.'&amp;action=create&amp;backtopage='.urlencode($backtopage));
 	}
 
-	print "\n";
+	echo"\n";
 
 	$title = (getDolGlobalString('SOCIETE_ADDRESSES_MANAGEMENT') ? $langs->trans("ContactsForCompany") : $langs->trans("ContactsAddressesForCompany"));
-	print load_fiche_titre($title, $newcardbutton, '');
+	echoload_fiche_titre($title, $newcardbutton, '');
 
-	print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'" name="formfilter">';
-	print '<input type="hidden" name="token" value="'.newToken().'">';
-	print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-	print '<input type="hidden" name="socid" value="'.$object->id.'">';
-	print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-	print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-	print '<input type="hidden" name="page" value="'.$page.'">';
+	echo'<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'" name="formfilter">';
+	echo'<input type="hidden" name="token" value="'.newToken().'">';
+	echo'<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+	echo'<input type="hidden" name="socid" value="'.$object->id.'">';
+	echo'<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+	echo'<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+	echo'<input type="hidden" name="page" value="'.$page.'">';
 
 	$arrayofmassactions = array();
 	$mode = 'view';
@@ -1300,8 +1300,8 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 	$selectedfields = ($mode != 'kanban' ? $htmlofselectarray : '');
 	$selectedfields .= (count($arrayofmassactions) ? $form->showCheckAddButtons('checkforselect', 1) : '');
 
-	print '<div class="div-table-responsive">'; // You can use div-table-responsive-no-min if you don't need reserved height for your table
-	print "\n".'<table class="tagtable liste">'."\n";
+	echo'<div class="div-table-responsive">'; // You can use div-table-responsive-no-min if you don't need reserved height for your table
+	echo"\n".'<table class="tagtable liste">'."\n";
 
 	$param = "socid=".urlencode((string) ($object->id));
 	if ($search_rowid != '') {
@@ -1398,12 +1398,12 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 
 	// Fields title search
 	// --------------------------------------------------------------------
-	print '<tr class="liste_titre">';
+	echo'<tr class="liste_titre">';
 	// Action column
 	if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-		print '<td class="liste_titre" align="right">';
-		print $form->showFilterButtons();
-		print '</td>';
+		echo'<td class="liste_titre" align="right">';
+		echo$form->showFilterButtons();
+		echo'</td>';
 	}
 	foreach ($contactstatic->fields as $key => $val) {
 		$align = '';
@@ -1417,26 +1417,26 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 			$align .= ($align ? ' ' : '').'center';
 		}
 		if (!empty($arrayfields['t.'.$key]['checked']) || !empty($arrayfields['sc.'.$key]['checked'])) {
-			print '<td class="liste_titre'.($align ? ' '.$align : '').'">';
+			echo'<td class="liste_titre'.($align ? ' '.$align : '').'">';
 			if (in_array($key, array('statut'))) {
-				print $form->selectarray('search_status', array('-1' => '', '0' => $contactstatic->LibStatut(0, 1), '1' => $contactstatic->LibStatut(1, 1)), $search_status, 0, 0, 0, '', 0, 0, 0, '', 'onrightofpage');
+				echo$form->selectarray('search_status', array('-1' => '', '0' => $contactstatic->LibStatut(0, 1), '1' => $contactstatic->LibStatut(1, 1)), $search_status, 0, 0, 0, '', 0, 0, 0, '', 'onrightofpage');
 			} elseif (in_array($key, array('role'))) {
-				print $formcompany->showRoles("search_roles", $contactstatic, 'edit', $search_roles, 'minwidth200 maxwidth300');
+				echo$formcompany->showRoles("search_roles", $contactstatic, 'edit', $search_roles, 'minwidth200 maxwidth300');
 			} elseif (in_array($key, array('birthday'))) {
-				print '<div class="nowrap">';
-				print $form->selectDate($search_birthday_dtstart ? $search_birthday_dtstart : '', "search_birthday_dtstart", 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('From'));
-				print '</div>';
-				print '<div class="nowrap">';
-				print $form->selectDate($search_birthday_dtend ? $search_birthday_dtend : '', "search_birthday_dtend", 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('to'));
-				print '</div>';
+				echo'<div class="nowrap">';
+				echo$form->selectDate($search_birthday_dtstart ? $search_birthday_dtstart : '', "search_birthday_dtstart", 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('From'));
+				echo'</div>';
+				echo'<div class="nowrap">';
+				echo$form->selectDate($search_birthday_dtend ? $search_birthday_dtend : '', "search_birthday_dtend", 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans('to'));
+				echo'</div>';
 			} else {
-				print '<input type="text" class="flat maxwidth75" name="search_'.$key.'" value="'.(!empty($search[$key]) ? dol_escape_htmltag($search[$key]) : '').'">';
+				echo'<input type="text" class="flat maxwidth75" name="search_'.$key.'" value="'.(!empty($search[$key]) ? dol_escape_htmltag($search[$key]) : '').'">';
 			}
-			print '</td>';
+			echo'</td>';
 		}
 	}
 	if ($showuserlogin) {
-		print '<td class="liste_titre"></td>';
+		echo'<td class="liste_titre"></td>';
 	}
 	// Extra fields
 	$extrafieldsobjectkey = $contactstatic->table_element;
@@ -1445,22 +1445,22 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 	// Fields from hook
 	$parameters = array('arrayfields' => $arrayfields);
 	$reshook = $hookmanager->executeHooks('printFieldListOption', $parameters, $contactstatic); // Note that $action and $object may have been modified by hook
-	print $hookmanager->resPrint;
+	echo$hookmanager->resPrint;
 	// Action column
 	if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-		print '<td class="liste_titre" align="right">';
-		print $form->showFilterButtons();
-		print '</td>';
+		echo'<td class="liste_titre" align="right">';
+		echo$form->showFilterButtons();
+		echo'</td>';
 	}
-	print '</tr>'."\n";
+	echo'</tr>'."\n";
 
 
 	// Fields title label
 	// --------------------------------------------------------------------
-	print '<tr class="liste_titre">';
+	echo'<tr class="liste_titre">';
 	// Action column
 	if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-		print getTitleFieldOfList($selectedfields, 0, $_SERVER["PHP_SELF"], '', '', '', '', $sortfield, $sortorder, 'maxwidthsearch center ')."\n";
+		echogetTitleFieldOfList($selectedfields, 0, $_SERVER["PHP_SELF"], '', '', '', '', $sortfield, $sortorder, 'maxwidthsearch center ')."\n";
 	}
 	foreach ($contactstatic->fields as $key => $val) {
 		$align = '';
@@ -1474,17 +1474,17 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 			$align .= ($align ? ' ' : '').'center';
 		}
 		if (!empty($arrayfields['t.'.$key]['checked'])) {
-			print getTitleFieldOfList($val['label'], 0, $_SERVER['PHP_SELF'], 't.'.$key, '', $param, ($align ? 'class="'.$align.'"' : ''), $sortfield, $sortorder, $align.' ')."\n";
+			echogetTitleFieldOfList($val['label'], 0, $_SERVER['PHP_SELF'], 't.'.$key, '', $param, ($align ? 'class="'.$align.'"' : ''), $sortfield, $sortorder, $align.' ')."\n";
 		}
 		if ($key == 'role') {
 			$align .= ($align ? ' ' : '').'left';
 		}
 		if (!empty($arrayfields['sc.'.$key]['checked'])) {
-			print getTitleFieldOfList($arrayfields['sc.'.$key]['label'], 0, $_SERVER['PHP_SELF'], '', '', $param, ($align ? 'class="'.$align.'"' : ''), $sortfield, $sortorder, $align.' ')."\n";
+			echogetTitleFieldOfList($arrayfields['sc.'.$key]['label'], 0, $_SERVER['PHP_SELF'], '', '', $param, ($align ? 'class="'.$align.'"' : ''), $sortfield, $sortorder, $align.' ')."\n";
 		}
 	}
 	if ($showuserlogin) {
-		print '<th class="wrapcolumntitle liste_titre">'.$langs->trans("GestimagLogin").'</th>';
+		echo'<th class="wrapcolumntitle liste_titre">'.$langs->trans("GestimagLogin").'</th>';
 	}
 	// Extra fields
 	$extrafieldsobjectkey = $contactstatic->table_element;
@@ -1492,12 +1492,12 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 	// Hook fields
 	$parameters = array('arrayfields' => $arrayfields, 'param' => $param, 'sortfield' => $sortfield, 'sortorder' => $sortorder);
 	$reshook = $hookmanager->executeHooks('printFieldListTitle', $parameters, $object); // Note that $action and $object may have been modified by hook
-	print $hookmanager->resPrint;
+	echo$hookmanager->resPrint;
 	// Action column
 	if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-		print getTitleFieldOfList($selectedfields, 0, $_SERVER["PHP_SELF"], '', '', '', '', $sortfield, $sortorder, 'maxwidthsearch center ')."\n";
+		echogetTitleFieldOfList($selectedfields, 0, $_SERVER["PHP_SELF"], '', '', '', '', $sortfield, $sortorder, 'maxwidthsearch center ')."\n";
 	}
-	print '</tr>'."\n";
+	echo'</tr>'."\n";
 
 	$i = -1;
 
@@ -1544,103 +1544,103 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 				}
 			}
 
-			print '<tr class="oddeven">';
+			echo'<tr class="oddeven">';
 
 			// Actions
 			if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-				print '<td class="nowrap center">';
+				echo'<td class="nowrap center">';
 
 				// Add to agenda
 				if (isModEnabled('agenda') && $user->hasRight('agenda', 'myactions', 'create')) {
-					print '<a href="'.DOL_URL_ROOT.'/comm/action/card.php?action=create&actioncode=&contactid='.$obj->rowid.'&socid='.$object->id.'&backtopage='.urlencode($backtopage).'">';
-					print img_object($langs->trans("Event"), "action");
-					print '</a> &nbsp; ';
+					echo'<a href="'.DOL_URL_ROOT.'/comm/action/card.php?action=create&actioncode=&contactid='.$obj->rowid.'&socid='.$object->id.'&backtopage='.urlencode($backtopage).'">';
+					echoimg_object($langs->trans("Event"), "action");
+					echo'</a> &nbsp; ';
 				}
 
 				// Edit
 				if ($user->hasRight('societe', 'contact', 'creer')) {
-					print '<a class="editfielda paddingleft" href="'.DOL_URL_ROOT.'/contact/card.php?action=edit&token='.newToken().'&id='.$obj->rowid.'&backtopage='.urlencode($backtopage).'">';
-					print img_edit();
-					print '</a>';
+					echo'<a class="editfielda paddingleft" href="'.DOL_URL_ROOT.'/contact/card.php?action=edit&token='.newToken().'&id='.$obj->rowid.'&backtopage='.urlencode($backtopage).'">';
+					echoimg_edit();
+					echo'</a>';
 				}
 
 				// Delete
 				if ($user->hasRight('societe', 'contact', 'delete')) {
-					print '<a class="marginleftonly right" href="'.DOL_URL_ROOT.'/societe/contact.php?action=delete&token='.newToken().'&id='.$obj->rowid.'&backtopage='.urlencode($backtopage).'">';
-					print img_delete();
-					print '</a>';
+					echo'<a class="marginleftonly right" href="'.DOL_URL_ROOT.'/societe/contact.php?action=delete&token='.newToken().'&id='.$obj->rowid.'&backtopage='.urlencode($backtopage).'">';
+					echoimg_delete();
+					echo'</a>';
 				}
 
-				print '</td>';
+				echo'</td>';
 			}
 
 			// ID
 			if (!empty($arrayfields['t.rowid']['checked'])) {
-				print '<td>';
-				print $contactstatic->id;
-				print '</td>';
+				echo'<td>';
+				echo$contactstatic->id;
+				echo'</td>';
 			}
 
 			// Photo - Name
 			if (!empty($arrayfields['t.name']['checked'])) {
-				print '<td class="tdoverflowmax150">';
-				print $form->showphoto('contact', $contactstatic, 0, 0, 0, 'photorefnoborder valignmiddle marginrightonly', 'small', 1, 0, 1);
-				print $contactstatic->getNomUrl(0, '', 0, '&backtopage='.urlencode($backtopage));
-				print '</td>';
+				echo'<td class="tdoverflowmax150">';
+				echo$form->showphoto('contact', $contactstatic, 0, 0, 0, 'photorefnoborder valignmiddle marginrightonly', 'small', 1, 0, 1);
+				echo$contactstatic->getNomUrl(0, '', 0, '&backtopage='.urlencode($backtopage));
+				echo'</td>';
 			}
 
 			// Job position
 			if (!empty($arrayfields['t.poste']['checked'])) {
-				print '<td class="tdoverflowmax100" title="'.dol_escape_htmltag($obj->poste).'">';
+				echo'<td class="tdoverflowmax100" title="'.dol_escape_htmltag($obj->poste).'">';
 				if ($obj->poste) {
-					print dol_escape_htmltag($obj->poste);
+					echodol_escape_htmltag($obj->poste);
 				}
-				print '</td>';
+				echo'</td>';
 			}
 
 			// Address - Phone - Email
 			if (!empty($arrayfields['t.address']['checked'])) {
 				$addresstoshow = $contactstatic->getBannerAddress('contact', $object);
-				print '<td class="tdoverflowmax150" title="'.dolPrintHTMLForAttribute($addresstoshow).'">';
-				print $addresstoshow;
-				print '</td>';
+				echo'<td class="tdoverflowmax150" title="'.dolPrintHTMLForAttribute($addresstoshow).'">';
+				echo$addresstoshow;
+				echo'</td>';
 			}
 
 			// Note private
 			if (!empty($arrayfields['t.note_private']['checked'])) {
-				print '<td class="center">';
-				print dolPrintHTML($obj->note_private);
-				print '</td>';
+				echo'<td class="center">';
+				echodolPrintHTML($obj->note_private);
+				echo'</td>';
 			}
 
 			// Role
 			if (!empty($arrayfields['sc.role']['checked'])) {
-				print '<td class="tdoverflowmax150">';
-				print $formcompany->showRoles("roles", $contactstatic, 'view');
-				print '</td>';
+				echo'<td class="tdoverflowmax150">';
+				echo$formcompany->showRoles("roles", $contactstatic, 'view');
+				echo'</td>';
 			}
 
 			// Birthday
 			if (!empty($arrayfields['t.birthday']['checked'])) {
-				print '<td class="nowraponall">';
-				print dol_print_date($db->jdate($obj->birthday));
-				print '</td>';
+				echo'<td class="nowraponall">';
+				echodol_print_date($db->jdate($obj->birthday));
+				echo'</td>';
 			}
 
 			// Status
 			if (!empty($arrayfields['t.statut']['checked'])) {
-				print '<td class="center">'.$contactstatic->getLibStatut(5).'</td>';
+				echo'<td class="center">'.$contactstatic->getLibStatut(5).'</td>';
 			}
 
 			if ($showuserlogin) {
-				print '<td class="tdoverflowmax125">';
+				echo'<td class="tdoverflowmax125">';
 				$tmpuser = new User($db);
 				// @phan-suppress-next-line PhanPluginSuspiciousParamPosition
 				$resfetch = $tmpuser->fetch(0, '', '', 0, -1, '', $contactstatic->id);
 				if ($resfetch > 0) {
-					print $tmpuser->getNomUrl(-1, '', 0, 0, 24, 1);
+					echo$tmpuser->getNomUrl(-1, '', 0, 0, 24, 1);
 				}
-				print '</td>';
+				echo'</td>';
 			}
 
 			// Extra fields
@@ -1649,33 +1649,33 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 
 			// Actions
 			if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-				print '<td class="nowrap center">';
+				echo'<td class="nowrap center">';
 
 				// Add to agenda
 				if (isModEnabled('agenda') && $user->hasRight('agenda', 'myactions', 'create')) {
-					print '<a href="'.DOL_URL_ROOT.'/comm/action/card.php?action=create&actioncode=&contactid='.$obj->rowid.'&socid='.$object->id.'&backtopage='.urlencode($backtopage).'">';
-					print img_object($langs->trans("Event"), "action");
-					print '</a> &nbsp; ';
+					echo'<a href="'.DOL_URL_ROOT.'/comm/action/card.php?action=create&actioncode=&contactid='.$obj->rowid.'&socid='.$object->id.'&backtopage='.urlencode($backtopage).'">';
+					echoimg_object($langs->trans("Event"), "action");
+					echo'</a> &nbsp; ';
 				}
 
 				// Edit
 				if ($user->hasRight('societe', 'contact', 'creer')) {
-					print '<a class="editfielda paddingleft" href="'.DOL_URL_ROOT.'/contact/card.php?action=edit&token='.newToken().'&id='.$obj->rowid.'&backtopage='.urlencode($backtopage).'">';
-					print img_edit();
-					print '</a>';
+					echo'<a class="editfielda paddingleft" href="'.DOL_URL_ROOT.'/contact/card.php?action=edit&token='.newToken().'&id='.$obj->rowid.'&backtopage='.urlencode($backtopage).'">';
+					echoimg_edit();
+					echo'</a>';
 				}
 
 				// Delete
 				if ($user->hasRight('societe', 'contact', 'delete')) {
-					print '<a class="marginleftonly right" href="'.DOL_URL_ROOT.'/societe/contact.php?action=delete&token='.newToken().'&id='.$obj->rowid.'&socid='.urlencode($obj->fk_soc).'">';
-					print img_delete();
-					print '</a>';
+					echo'<a class="marginleftonly right" href="'.DOL_URL_ROOT.'/societe/contact.php?action=delete&token='.newToken().'&id='.$obj->rowid.'&socid='.urlencode($obj->fk_soc).'">';
+					echoimg_delete();
+					echo'</a>';
 				}
 
-				print '</td>';
+				echo'</td>';
 			}
 
-			print "</tr>\n";
+			echo"</tr>\n";
 			$i++;
 		}
 
@@ -1686,7 +1686,7 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 					$colspan++;
 				}
 			}
-			print '<tr><td colspan="'.$colspan.'"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
+			echo'<tr><td colspan="'.$colspan.'"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
 		}
 	} else {
 		$colspan = 1 + ($showuserlogin ? 1 : 0);
@@ -1695,12 +1695,12 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
 				$colspan++;
 			}
 		}
-		print '<tr><td colspan="'.$colspan.'"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
+		echo'<tr><td colspan="'.$colspan.'"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
 	}
-	print "\n</table>\n";
-	print '</div>';
+	echo"\n</table>\n";
+	echo'</div>';
 
-	print '</form>'."\n";
+	echo'</form>'."\n";
 
 	return $i;
 }
@@ -1716,9 +1716,9 @@ function show_contacts($conf, $langs, $db, $object, $backtopage = '', $showuserl
  * 		@param	Contact				$objcon	        Object contact
  *      @param  int					$noprint	    Return string but does not output it
  *      @param  string|string[]		$actioncode 	Filter on actioncode
- *      @return	string|void					    	Return html part or void if noprint is 1
+ *      @return	string|void					    	Return html part or void if noechois 1
  */
-function show_actions_todo($conf, $langs, $db, $filterobj, $objcon = null, $noprint = 0, $actioncode = '')
+function show_actions_todo($conf, $langs, $db, $filterobj, $objcon = null, $noecho= 0, $actioncode = '')
 {
 	global $user, $conf;
 
@@ -1727,7 +1727,7 @@ function show_actions_todo($conf, $langs, $db, $filterobj, $objcon = null, $nopr
 	if ($noprint) {
 		return $out;
 	} else {
-		print $out;
+		echo$out;
 	}
 }
 
@@ -1740,16 +1740,16 @@ function show_actions_todo($conf, $langs, $db, $filterobj, $objcon = null, $nopr
  * 		@param	DoliDB		       $db			   Object db
  * 		@param	mixed			   $filterobj	   Filter on object Adherent|Societe|Project|Product|CommandeFournisseur|Dolresource|Ticket... to list events linked to an object
  * 		@param	Contact		       $objcon		   Filter on object contact to filter events on a contact
- *      @param  int			       $noprint        Return string but does not output it
+ *      @param  int			       $noecho       Return string but does not output it
  *      @param  string|string[]    $actioncode     Filter on actioncode
  *      @param  string             $donetodo       Filter on event 'done' or 'todo' or ''=nofilter (all).
  *      @param  array              $filters        Filter on other fields
  *      @param  string             $sortfield      Sort field
  *      @param  string             $sortorder      Sort order
  *      @param	string			   $module		   You can add module name here if elementtype in table llx_actioncomm is objectkey@module
- *      @return	string|void				           Return html part or void if noprint is 1
+ *      @return	string|void				           Return html part or void if noechois 1
  */
-function show_actions_done($conf, $langs, $db, $filterobj, $objcon = null, $noprint = 0, $actioncode = '', $donetodo = 'done', $filters = array(), $sortfield = 'a.datep,a.id', $sortorder = 'DESC', $module = '')
+function show_actions_done($conf, $langs, $db, $filterobj, $objcon = null, $noecho= 0, $actioncode = '', $donetodo = 'done', $filters = array(), $sortfield = 'a.datep,a.id', $sortorder = 'DESC', $module = '')
 {
 	global $user, $conf, $hookmanager;
 	global $form;
@@ -2417,7 +2417,7 @@ function show_actions_done($conf, $langs, $db, $filterobj, $objcon = null, $nopr
 	if ($noprint) {
 		return $out;
 	} else {
-		print $out;
+		echo$out;
 	}
 }
 
@@ -2448,16 +2448,16 @@ function show_subsidiaries($conf, $langs, $db, $object)
 	if ($num) {
 		$socstatic = new Societe($db);
 
-		print load_fiche_titre($langs->trans("Subsidiaries"), '', '');
+		echoload_fiche_titre($langs->trans("Subsidiaries"), '', '');
 
-		print "\n".'<div class="div-table-responsive-no-min">'."\n";
-		print '<table class="noborder centpercent">'."\n";
+		echo"\n".'<div class="div-table-responsive-no-min">'."\n";
+		echo'<table class="noborder centpercent">'."\n";
 
-		print '<tr class="liste_titre"><td>'.$langs->trans("Company").'</td>';
-		print '<td>'.$langs->trans("Address").'</td><td>'.$langs->trans("Zip").'</td>';
-		print '<td>'.$langs->trans("Town").'</td><td>'.$langs->trans("CustomerCode").'</td>';
-		print "<td>&nbsp;</td>";
-		print "</tr>";
+		echo'<tr class="liste_titre"><td>'.$langs->trans("Company").'</td>';
+		echo'<td>'.$langs->trans("Address").'</td><td>'.$langs->trans("Zip").'</td>';
+		echo'<td>'.$langs->trans("Town").'</td><td>'.$langs->trans("CustomerCode").'</td>';
+		echo"<td>&nbsp;</td>";
+		echo"</tr>";
 
 		$i = 0;
 
@@ -2477,30 +2477,30 @@ function show_subsidiaries($conf, $langs, $db, $object)
 			$socstatic->client = $obj->client;
 			$socstatic->fournisseur = $obj->fournisseur;
 
-			print '<tr class="oddeven">';
+			echo'<tr class="oddeven">';
 
-			print '<td class="tdoverflowmax150">';
-			print $socstatic->getNomUrl(1);
-			print '</td>';
+			echo'<td class="tdoverflowmax150">';
+			echo$socstatic->getNomUrl(1);
+			echo'</td>';
 
-			print '<td class="tdoverflowmax400" title="'.dol_escape_htmltag($obj->address).'">'.dol_escape_htmltag($obj->address).'</td>';
-			print '<td class="tdoverflowmax100" title="'.dol_escape_htmltag($obj->zip).'">'.$obj->zip.'</td>';
-			print '<td class="tdoverflowmax200" title="'.dol_escape_htmltag($obj->town).'">'.$obj->town.'</td>';
-			print '<td class="tdoverflowmax200" title="'.dol_escape_htmltag($obj->code_client).'">'.$obj->code_client.'</td>';
+			echo'<td class="tdoverflowmax400" title="'.dol_escape_htmltag($obj->address).'">'.dol_escape_htmltag($obj->address).'</td>';
+			echo'<td class="tdoverflowmax100" title="'.dol_escape_htmltag($obj->zip).'">'.$obj->zip.'</td>';
+			echo'<td class="tdoverflowmax200" title="'.dol_escape_htmltag($obj->town).'">'.$obj->town.'</td>';
+			echo'<td class="tdoverflowmax200" title="'.dol_escape_htmltag($obj->code_client).'">'.$obj->code_client.'</td>';
 
-			print '<td class="center">';
-			print '<a class="editfielda" href="'.DOL_URL_ROOT.'/societe/card.php?socid='.((int) $obj->rowid).'&action=edit&token='.newToken().'">';
-			print img_edit();
-			print '</a></td>';
+			echo'<td class="center">';
+			echo'<a class="editfielda" href="'.DOL_URL_ROOT.'/societe/card.php?socid='.((int) $obj->rowid).'&action=edit&token='.newToken().'">';
+			echoimg_edit();
+			echo'</a></td>';
 
-			print "</tr>\n";
+			echo"</tr>\n";
 			$i++;
 		}
-		print "\n</table>\n";
-		print '</div>'."\n";
+		echo"\n</table>\n";
+		echo'</div>'."\n";
 	}
 
-	print "<br>\n";
+	echo"<br>\n";
 
 	return $i;
 }
@@ -2678,42 +2678,42 @@ function htmlPrintOnlineFooter($fromcompany, $langs, $addformmessage = 0, $suffi
 		$line2 .= ($line2 ? " - " : "").$langs->transnoentities("VATIntraShort").": ".$fromcompany->tva_intra;
 	}
 
-	print '<!-- htmlPrintOnlineFooter -->'."\n";
+	echo'<!-- htmlPrintOnlineFooter -->'."\n";
 
 	// css centpercent has been removed from class="..." because not compatible with paddingleft/right and there is an horizontal scroll appearring on payment page for example.
-	print '<footer class="center centpercent opacitymedium">'."\n";
-	print '<br>';
+	echo'<footer class="center centpercent opacitymedium">'."\n";
+	echo'<br>';
 	if ($addformmessage) {
-		print '<!-- object = '.(empty($object) ? 'undefined' : $object->element).' -->';
-		print '<br>';
+		echo'<!-- object = '.(empty($object) ? 'undefined' : $object->element).' -->';
+		echo'<br>';
 
 		$parammessageform = 'ONLINE_PAYMENT_MESSAGE_FORM_'.$suffix;
 		if (getDolGlobalString($parammessageform) !== '') {
-			print $langs->transnoentities(getDolGlobalString($parammessageform));
+			echo$langs->transnoentities(getDolGlobalString($parammessageform));
 		} elseif (getDolGlobalString('ONLINE_PAYMENT_MESSAGE_FORM')  !== '') {
-			print $langs->transnoentities(getDolGlobalString('ONLINE_PAYMENT_MESSAGE_FORM'));
+			echo$langs->transnoentities(getDolGlobalString('ONLINE_PAYMENT_MESSAGE_FORM'));
 		}
 
 		// Add other message if VAT exists
 		if (!empty($object->total_vat) || !empty($object->total_tva)) {
 			$parammessageform = 'ONLINE_PAYMENT_MESSAGE_FORMIFVAT_'.$suffix;
 			if (getDolGlobalString($parammessageform)  !== '') {
-				print $langs->transnoentities(getDolGlobalString($parammessageform));
+				echo$langs->transnoentities(getDolGlobalString($parammessageform));
 			} elseif (getDolGlobalString('ONLINE_PAYMENT_MESSAGE_FORMIFVAT') !== '') {
-				print $langs->transnoentities(getDolGlobalString('ONLINE_PAYMENT_MESSAGE_FORMIFVAT'));
+				echo$langs->transnoentities(getDolGlobalString('ONLINE_PAYMENT_MESSAGE_FORMIFVAT'));
 			}
 		}
 	}
 
-	print '<span style="font-size: 10px;"><br><hr>'."\n";
-	print $fromcompany->name.'<br>';
-	print $line1;
+	echo'<span style="font-size: 10px;"><br><hr>'."\n";
+	echo$fromcompany->name.'<br>';
+	echo$line1;
 	if (strlen($line1.$line2) > 50) {
-		print '<br>';
+		echo'<br>';
 	} else {
-		print ' - ';
+		echo' - ';
 	}
-	print $line2;
-	print '</span>';
-	print '</footer>'."\n";
+	echo$line2;
+	echo'</span>';
+	echo'</footer>'."\n";
 }

@@ -85,7 +85,7 @@ $pdf->setRTL(false);
 
 $pdf->SetFontSize(10);
 
-// print newline
+// echo newline
 $pdf->Ln();
 
 // Persian and English content
@@ -98,7 +98,7 @@ $pdf->setRTL(true);
 // set font
 $pdf->SetFont('aefurat', '', 18);
 
-// print newline
+// echo newline
 $pdf->Ln();
 
 // Arabic and English content
@@ -109,7 +109,7 @@ $pdf->WriteHTML($htmlcontent, true, 0, true, 0);
 // set LTR direction for english translation
 $pdf->setRTL(false);
 
-// print newline
+// echo newline
 $pdf->Ln();
 
 $pdf->SetFont('aealarabiya', '', 18);

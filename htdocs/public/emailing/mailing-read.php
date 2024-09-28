@@ -86,7 +86,7 @@ $securitykey = GETPOST('securitykey');
 dol_syslog("public/emailing/mailing-read.php : tag=".$tag." securitykey=".$securitykey, LOG_DEBUG);
 
 if ($securitykey != dol_hash(getDolGlobalString('MAILING_EMAIL_UNSUBSCRIBE_KEY')."-".$tag."-".$email."-".$mtid, 'md5')) {
-	print 'Bad security key value.';
+	echo 'Bad security key value.';
 	exit;
 }
 
@@ -105,22 +105,22 @@ if (!empty($tag) && $tag != 'undefined') {
 	$obj = $db->fetch_object($resql);
 
 	if (empty($obj)) {
-		print 'Email target not valid. Operation canceled.';
+		echo 'Email target not valid. Operation canceled.';
 		exit;
 	}
 	if (empty($obj->email)) {
-		print 'Email target not valid. Operation canceled.';
+		echo 'Email target not valid. Operation canceled.';
 		exit;
 	}
 	if ($obj->statut == 2 || $obj->statut == 3) {
-		print 'Email target already set to read or unsubscribe. Operation canceled.';
+		echo 'Email target already set to read or unsubscribe. Operation canceled.';
 		exit;
 	}
 	// TODO Test that mtid and email match also with the one found from $tag
 	/*
 	 if ($obj->email != $email)
 	 {
-	 print 'Email does not match tagnot found. No need to unsubscribe.';
+	 echo 'Email does not match tagnot found. No need to unsubscribe.';
 	 exit;
 	 }
 	 */

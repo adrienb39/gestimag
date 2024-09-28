@@ -371,7 +371,7 @@ class FormMail extends Form
 	public function show_form($addfileaction = 'addfile', $removefileaction = 'removefile')
 	{
 		// phpcs:enable
-		print $this->get_form($addfileaction, $removefileaction);
+		echo $this->get_form($addfileaction, $removefileaction);
 	}
 
 	// phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
@@ -1634,7 +1634,7 @@ class FormMail extends Form
 			$sql .= $dbs->order("position,lang,label", "ASC,ASC,ASC"); // If no language provided, we give priority to lang not defined
 		}
 		//$sql .= $dbs->plimit(1);
-		//print $sql;
+		//echo $sql;
 
 		$resql = $dbs->query($sql);
 		if (!$resql) {
@@ -1740,7 +1740,7 @@ class FormMail extends Form
 			$sql .= " AND (lang = '".$this->db->escape($outputlangs->defaultlang)."' OR lang IS NULL OR lang = '')";
 		}
 		$sql .= $this->db->order("lang,label", "ASC");
-		//print $sql;
+		//echo $sql;
 
 		$resql = $this->db->query($sql);
 		if ($resql) {
@@ -1777,7 +1777,7 @@ class FormMail extends Form
 		}
 		//if (is_object($outputlangs)) $sql.= " AND (lang = '".$this->db->escape($outputlangs->defaultlang)."' OR lang IS NULL OR lang = '')";	// Return all languages
 		$sql .= $this->db->order("position,lang,label", "ASC");
-		//print $sql;
+		//echo $sql;
 
 		$resql = $this->db->query($sql);
 		if ($resql) {

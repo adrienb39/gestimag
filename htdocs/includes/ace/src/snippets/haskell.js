@@ -36,7 +36,7 @@ snippet class\n\
 snippet module\n\
 	module `substitute(substitute(expand('%:r'), '[/\\\\]','.','g'),'^\\%(\\l*\\.\\)\\?','','')` (\n\
 	)	where\n\
-	`expand('%') =~ 'Main' ? \"\\n\\nmain = do\\n  print \\\"hello world\\\"\" : \"\"`\n\
+	`expand('%') =~ 'Main' ? \"\\n\\nmain = do\\n  echo \\\"hello world\\\"\" : \"\"`\n\
 \n\
 snippet const\n\
 	${1:name} :: ${2:a}\n\

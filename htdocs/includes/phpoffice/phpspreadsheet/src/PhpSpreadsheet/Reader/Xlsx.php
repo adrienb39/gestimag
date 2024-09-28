@@ -1680,7 +1680,7 @@ class Xlsx extends BaseReader
                                                 // Split $extractedRange
                                                 $extractedRange = explode(',', $extractedRange);
 
-                                                // Set print titles
+                                                // Set echo titles
                                                 foreach ($extractedRange as $range) {
                                                     $matches = [];
                                                     $range = str_replace('$', '', $range);

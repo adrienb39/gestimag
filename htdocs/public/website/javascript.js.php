@@ -86,7 +86,7 @@ if (getDolGlobalString('MAIN_APPLICATION_TITLE')) {
 	$appli = getDolGlobalString('MAIN_APPLICATION_TITLE');
 }
 
-//print 'Directory with '.$appli.' websites.<br>';
+//echo 'Directory with '.$appli.' websites.<br>';
 
 if (empty($pageid)) {
 	require_once DOL_DOCUMENT_ROOT.'/website/class/website.class.php';
@@ -115,7 +115,7 @@ if (empty($pageid)) {
 if (empty($pageid))
 {
 	$langs->load("website");
-	print $langs->trans("PreviewOfSiteNotYetAvailable");
+	echo $langs->trans("PreviewOfSiteNotYetAvailable");
 	exit;
 }
 */
@@ -155,7 +155,7 @@ $original_file_osencoded = dol_osencode($original_file); // New file name encode
 // This test if file exists should be useless. We keep it to find bug more easily
 if (!file_exists($original_file_osencoded)) {
 	$langs->load("website");
-	print $langs->trans("RequestedPageHasNoContentYet", $pageid);
+	echo $langs->trans("RequestedPageHasNoContentYet", $pageid);
 	//dol_print_error(null,$langs->trans("ErrorFileDoesNotExists",$original_file));
 	exit;
 }
@@ -163,7 +163,7 @@ if (!file_exists($original_file_osencoded)) {
 
 // Output page content
 define('USEDOLIBARRSERVER', 1);
-print '/* Page content '.$original_file.' : JS content that was saved into tpl dir */'."\n";
+echo '/* Page content '.$original_file.' : JS content that was saved into tpl dir */'."\n";
 require_once $original_file_osencoded;
 
 

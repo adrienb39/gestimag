@@ -140,61 +140,61 @@ $userstatic = new User($db);
 if ($id > 0 || !empty($ref)) {
 	if ($object->fetch($id, $ref) > 0) {
 		$head = societe_prepare_head($object);
-		print dol_get_fiche_head($head, 'contactext', $langs->trans("ThirdParty"), -1, 'company');
+		echo dol_get_fiche_head($head, 'contactext', $langs->trans("ThirdParty"), -1, 'company');
 
-		print '<form method="POST" action="'.$_SERVER['PHP_SELF'].'">';
-		print '<input type="hidden" name="token" value="'.newToken().'">';
+		echo '<form method="POST" action="'.$_SERVER['PHP_SELF'].'">';
+		echo '<input type="hidden" name="token" value="'.newToken().'">';
 
 		$linkback = '<a href="'.DOL_URL_ROOT.'/societe/list.php?restore_lastsearch_values=1">'.$langs->trans("BackToList").'</a>';
 
 		dol_banner_tab($object, 'socid', $linkback, ($user->socid ? 0 : 1), 'rowid', 'nom');
 
-		print '<div class="fichecenter">';
+		echo '<div class="fichecenter">';
 
-		print '<div class="underbanner clearboth"></div>';
-		print '<table class="border centpercent">';
+		echo '<div class="underbanner clearboth"></div>';
+		echo '<table class="border centpercent">';
 
 		// Prospect/Customer
-		/*print '<tr><td class="titlefield">'.$langs->trans('ProspectCustomer').'</td><td>';
-		print $object->getLibCustProspStatut();
-		print '</td></tr>';
+		/*echo '<tr><td class="titlefield">'.$langs->trans('ProspectCustomer').'</td><td>';
+		echo $object->getLibCustProspStatut();
+		echo '</td></tr>';
 
 		// Supplier
-		print '<tr><td>'.$langs->trans('Supplier').'</td><td>';
-		print yn($object->fournisseur);
-		print '</td></tr>';*/
+		echo '<tr><td>'.$langs->trans('Supplier').'</td><td>';
+		echo yn($object->fournisseur);
+		echo '</td></tr>';*/
 
 		if (getDolGlobalString('SOCIETE_USEPREFIX')) {  // Old not used prefix field
-			print '<tr><td>'.$langs->trans('Prefix').'</td><td colspan="3">'.$object->prefix_comm.'</td></tr>';
+			echo '<tr><td>'.$langs->trans('Prefix').'</td><td colspan="3">'.$object->prefix_comm.'</td></tr>';
 		}
 
 		if ($object->client) {
-			print '<tr><td class="titlefield">';
-			print $langs->trans('CustomerCode').'</td><td colspan="3">';
-			print $object->code_client;
+			echo '<tr><td class="titlefield">';
+			echo $langs->trans('CustomerCode').'</td><td colspan="3">';
+			echo $object->code_client;
 			$tmpcheck = $object->check_codeclient();
 			if ($tmpcheck != 0 && $tmpcheck != -5) {
-				print ' <span class="error">('.$langs->trans("WrongCustomerCode").')</span>';
+				echo ' <span class="error">('.$langs->trans("WrongCustomerCode").')</span>';
 			}
-			print '</td></tr>';
+			echo '</td></tr>';
 		}
 
 		if ($object->fournisseur) {
-			print '<tr><td class="titlefield">';
-			print $langs->trans('SupplierCode').'</td><td colspan="3">';
-			print $object->code_fournisseur;
+			echo '<tr><td class="titlefield">';
+			echo $langs->trans('SupplierCode').'</td><td colspan="3">';
+			echo $object->code_fournisseur;
 			$tmpcheck = $object->check_codefournisseur();
 			if ($tmpcheck != 0 && $tmpcheck != -5) {
-				print ' <span class="error">('.$langs->trans("WrongSupplierCode").')</span>';
+				echo ' <span class="error">('.$langs->trans("WrongSupplierCode").')</span>';
 			}
-			print '</td></tr>';
+			echo '</td></tr>';
 		}
-		print '</table>';
+		echo '</table>';
 
-		print '</div>';
+		echo '</div>';
 
-		print '</form>';
-		print '<br>';
+		echo '</form>';
+		echo '<br>';
 
 		// Contacts lines (modules that overwrite templates must declare this into descriptor)
 		$dirtpls = array_merge($conf->modules_parts['tpl'], array('/core/tpl'));
@@ -232,12 +232,12 @@ if ($id > 0 || !empty($ref)) {
 					$param = '';
 
 					$titre = $langs->trans("MembersListOfTiers");
-					print '<br>';
+					echo '<br>';
 
 					print_barre_liste($titre, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $num, 0, '');
 
-					print "<table class=\"noborder\" width=\"100%\">";
-					print '<tr class="liste_titre">';
+					echo "<table class=\"noborder\" width=\"100%\">";
+					echo '<tr class="liste_titre">';
 					print_liste_field_titre("Ref", $_SERVER["PHP_SELF"], "d.rowid", $param, "", "", $sortfield, $sortorder);
 					print_liste_field_titre("NameSlashCompany", $_SERVER["PHP_SELF"], "d.lastname", $param, "", "", $sortfield, $sortorder);
 					print_liste_field_titre("Login", $_SERVER["PHP_SELF"], "d.login", $param, "", "", $sortfield, $sortorder);
@@ -246,7 +246,7 @@ if ($id > 0 || !empty($ref)) {
 					print_liste_field_titre("EMail", $_SERVER["PHP_SELF"], "d.email", $param, "", "", $sortfield, $sortorder);
 					print_liste_field_titre("Status", $_SERVER["PHP_SELF"], "d.statut,d.datefin", $param, "", "", $sortfield, $sortorder);
 					print_liste_field_titre("EndSubscription", $_SERVER["PHP_SELF"], "d.datefin", $param, "", '', $sortfield, $sortorder, 'center ');
-					print "</tr>\n";
+					echo "</tr>\n";
 
 					$i = 0;
 					while ($i < $num && $i < $conf->liste_limit) {
@@ -262,74 +262,74 @@ if ($id > 0 || !empty($ref)) {
 
 						$companyname = $objp->company;
 
-						print '<tr class="oddeven">';
+						echo '<tr class="oddeven">';
 
 						// Ref
-						print "<td>";
-						print $memberstatic->getNomUrl(1);
-						print "</td>\n";
+						echo "<td>";
+						echo $memberstatic->getNomUrl(1);
+						echo "</td>\n";
 
 						// Lastname
-						print "<td><a href=\"card.php?rowid=$objp->rowid\">";
+						echo "<td><a href=\"card.php?rowid=$objp->rowid\">";
 						print((!empty($objp->lastname) || !empty($objp->firstname)) ? dol_trunc($memberstatic->getFullName($langs)) : '');
 						print(((!empty($objp->lastname) || !empty($objp->firstname)) && !empty($companyname)) ? ' / ' : '');
 						print(!empty($companyname) ? dol_trunc($companyname, 32) : '');
-						print "</a></td>\n";
+						echo "</a></td>\n";
 
 						// Login
-						print "<td>".$objp->login."</td>\n";
+						echo "<td>".$objp->login."</td>\n";
 
 						// Type
 						$membertypestatic->id = $objp->type_id;
 						$membertypestatic->libelle = $objp->type_label;	// deprecated
 						$membertypestatic->label = $objp->type_label;
 
-						print '<td class="nowrap">';
-						print $membertypestatic->getNomUrl(1, 32);
-						print '</td>';
+						echo '<td class="nowrap">';
+						echo $membertypestatic->getNomUrl(1, 32);
+						echo '</td>';
 
 						// Moral/Physique
-						print "<td>".$memberstatic->getmorphylib($objp->morphy)."</td>\n";
+						echo "<td>".$memberstatic->getmorphylib($objp->morphy)."</td>\n";
 
 						// EMail
-						print "<td>".dol_print_email($objp->email, 0, 0, 1)."</td>\n";
+						echo "<td>".dol_print_email($objp->email, 0, 0, 1)."</td>\n";
 
 						// Statut
-						print '<td class="nowrap">';
-						print $memberstatic->LibStatut($objp->statut, $objp->subscription, $datefin, 2);
-						print "</td>";
+						echo '<td class="nowrap">';
+						echo $memberstatic->LibStatut($objp->statut, $objp->subscription, $datefin, 2);
+						echo "</td>";
 
 						// End of subscription date
 						if ($datefin) {
-							print '<td class="center nowrap">';
-							print dol_print_date($datefin, 'day');
+							echo '<td class="center nowrap">';
+							echo dol_print_date($datefin, 'day');
 							if ($memberstatic->hasDelay()) {
-								print " ".img_warning($langs->trans("SubscriptionLate"));
+								echo " ".img_warning($langs->trans("SubscriptionLate"));
 							}
-							print '</td>';
+							echo '</td>';
 						} else {
-							print '<td class="left nowrap">';
+							echo '<td class="left nowrap">';
 							if (!empty($objp->subscription)) {
-								print $langs->trans("SubscriptionNotReceived");
+								echo $langs->trans("SubscriptionNotReceived");
 								if ($objp->statut > 0) {
-									print " ".img_warning();
+									echo " ".img_warning();
 								}
 							} else {
-								print '&nbsp;';
+								echo '&nbsp;';
 							}
-							print '</td>';
+							echo '</td>';
 						}
 
-						print "</tr>\n";
+						echo "</tr>\n";
 						$i++;
 					}
-					print "</table>\n";
+					echo "</table>\n";
 				}
 			}
 		}
 	} else {
 		// Contrat non trouve
-		print "ErrorRecordNotFound";
+		echo "ErrorRecordNotFound";
 	}
 }
 

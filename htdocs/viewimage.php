@@ -181,7 +181,7 @@ if (GETPOST("cache", 'alpha')) {
 		// If any cache on files were disable by config file (for test purpose)
 		header('Cache-Control: no-cache');
 	}
-	//print $gestimag_nocache; exit;
+	//echo $gestimag_nocache; exit;
 }
 
 // If we have a hash public (hashp), we guess the original_file.
@@ -305,7 +305,7 @@ if (!$accessallowed) {
 // On interdit les remontees de repertoire ainsi que les pipe dans les noms de fichiers.
 if (preg_match('/\.\./', $fullpath_original_file) || preg_match('/[<>|]/', $fullpath_original_file)) {
 	dol_syslog("Refused to deliver file ".$fullpath_original_file);
-	print "ErrorFileNameInvalid: ".dol_escape_htmltag($original_file);
+	echo "ErrorFileNameInvalid: ".dol_escape_htmltag($original_file);
 	exit;
 }
 
@@ -338,7 +338,7 @@ if ($modulepart == 'barcode') {
 
 
 	if (empty($generator) || empty($encoding)) {
-		print 'Error: Parameter "generator" or "encoding" not defined';
+		echo 'Error: Parameter "generator" or "encoding" not defined';
 		exit;
 	}
 
@@ -381,7 +381,7 @@ if ($modulepart == 'barcode') {
 		// This test is to replace error images with a nice "notfound image" when image is not available (for example when thumbs not yet generated).
 		$fullpath_original_file = DOL_DOCUMENT_ROOT.'/public/theme/common/nophoto.png';
 		/*$error='Error: File '.$_GET["file"].' does not exists or filesystems permissions are not allowed';
-		print $error;
+		echo $error;
 		exit;*/
 	}
 

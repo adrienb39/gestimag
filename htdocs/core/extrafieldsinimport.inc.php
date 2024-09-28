@@ -6,7 +6,7 @@
 // $keyforaliasextra = a key to avoid conflict with extrafields of other objects
 
 if (empty($keyforselect) || empty($keyforelement) || empty($keyforaliasextra)) {
-	//print $keyforselet.' - '.$keyforelement.' - '.$keyforaliasextra;
+	//echo$keyforselet.' - '.$keyforelement.' - '.$keyforaliasextra;
 	dol_print_error(null, 'include of file extrafieldsinimport.inc.php was done but var $keyforselect or $keyforelement or $keyforaliasextra was not set');
 	exit;
 }
@@ -14,7 +14,7 @@ if (empty($keyforselect) || empty($keyforelement) || empty($keyforaliasextra)) {
 // Add extra fields
 $sql = "SELECT name, label, type, param, fieldcomputed, fielddefault, fieldrequired FROM ".MAIN_DB_PREFIX."extrafields";
 $sql .= " WHERE elementtype = '".$this->db->escape($keyforselect)."' AND type <> 'separate' AND entity IN (0, ".((int) $conf->entity).') ORDER BY pos ASC';
-//print $sql;
+//echo$sql;
 $resql = $this->db->query($sql);
 if ($resql) {    // This can fail when class is used on old database (during migration for example)
 	while ($obj = $this->db->fetch_object($resql)) {

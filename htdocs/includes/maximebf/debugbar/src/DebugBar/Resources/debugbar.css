@@ -1,5 +1,5 @@
 /* Hide debugbar when printing a page */
-@media print {
+@media echo {
   div.phpdebugbar {
     display: none;
   }

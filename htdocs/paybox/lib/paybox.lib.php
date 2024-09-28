@@ -179,50 +179,50 @@ function print_paybox_redirect($PRICE, $CURRENCY, $EMAIL, $urlok, $urlko, $TAG)
 
 	top_httphead();
 
-	print '<html>'."\n";
-	print '<head>'."\n";
-	print '</head>'."\n";
-	print '<body>'."\n";
-	print "\n";
+	echo'<html>'."\n";
+	echo'<head>'."\n";
+	echo'</head>'."\n";
+	echo'<body>'."\n";
+	echo"\n";
 
 	// Formulaire pour module Paybox
-	print '<form action="'.$URLPAYBOX.'" NAME="Submit" method="POST">'."\n";
+	echo'<form action="'.$URLPAYBOX.'" NAME="Submit" method="POST">'."\n";
 
 	// For Paybox V2 (PBX_xxx)
-	print '<!-- Param for Paybox v2 -->'."\n";
-	print '<input type="hidden" name="PBX_IDENTIFIANT" value="'.$PBX_IDENTIFIANT.'">'."\n";
-	print '<input type="hidden" name="PBX_MODE" value="'.$IBS_MODE.'">'."\n";
-	print '<input type="hidden" name="PBX_SITE" value="'.$IBS_SITE.'">'."\n";
-	print '<input type="hidden" name="PBX_RANG" value="'.$IBS_RANG.'">'."\n";
-	print '<input type="hidden" name="PBX_TOTAL" value="'.$IBS_TOTAL.'">'."\n";
-	print '<input type="hidden" name="PBX_DEVISE" value="'.$IBS_DEVISE.'">'."\n";
-	print '<input type="hidden" name="PBX_CMD" value="'.$IBS_CMD.'">'."\n";
-	print '<input type="hidden" name="PBX_PORTEUR" value="'.$IBS_PORTEUR.'">'."\n";
-	print '<input type="hidden" name="PBX_RETOUR" value="'.$IBS_RETOUR.'">'."\n";
-	print '<input type="hidden" name="PBX_EFFECTUE" value="'.$IBS_EFFECTUE.'">'."\n";
-	print '<input type="hidden" name="PBX_ANNULE" value="'.$IBS_ANNULE.'">'."\n";
-	print '<input type="hidden" name="PBX_REFUSE" value="'.$IBS_REFUSE.'">'."\n";
-	print '<input type="hidden" name="PBX_TXT" value="'.$IBS_TXT.'">'."\n";
-	print '<input type="hidden" name="PBX_BKGD" value="'.$IBS_BKGD.'">'."\n";
-	print '<input type="hidden" name="PBX_WAIT" value="'.$IBS_WAIT.'">'."\n";
-	print '<input type="hidden" name="PBX_LANGUE" value="'.$IBS_LANG.'">'."\n";
-	print '<input type="hidden" name="PBX_OUTPUT" value="'.$IBS_OUTPUT.'">'."\n";
-	print '<input type="hidden" name="PBX_SOURCE" value="'.$PBX_SOURCE.'">'."\n";
-	print '<input type="hidden" name="PBX_TYPEPAIEMENT" value="'.$PBX_TYPEPAIEMENT.'">'."\n";
-	print '<input type="hidden" name="PBX_HASH" value="'.$PBX_HASH.'">'."\n";
-	print '<input type="hidden" name="PBX_TIME" value="'.$PBX_TIME.'">'."\n";
-	// Footprint of parameters
-	print '<input type="hidden" name="PBX_HMAC" value="'.$hmac.'">'."\n";
-	print '</form>'."\n";
+	echo'<!-- Param for Paybox v2 -->'."\n";
+	echo'<input type="hidden" name="PBX_IDENTIFIANT" value="'.$PBX_IDENTIFIANT.'">'."\n";
+	echo'<input type="hidden" name="PBX_MODE" value="'.$IBS_MODE.'">'."\n";
+	echo'<input type="hidden" name="PBX_SITE" value="'.$IBS_SITE.'">'."\n";
+	echo'<input type="hidden" name="PBX_RANG" value="'.$IBS_RANG.'">'."\n";
+	echo'<input type="hidden" name="PBX_TOTAL" value="'.$IBS_TOTAL.'">'."\n";
+	echo'<input type="hidden" name="PBX_DEVISE" value="'.$IBS_DEVISE.'">'."\n";
+	echo'<input type="hidden" name="PBX_CMD" value="'.$IBS_CMD.'">'."\n";
+	echo'<input type="hidden" name="PBX_PORTEUR" value="'.$IBS_PORTEUR.'">'."\n";
+	echo'<input type="hidden" name="PBX_RETOUR" value="'.$IBS_RETOUR.'">'."\n";
+	echo'<input type="hidden" name="PBX_EFFECTUE" value="'.$IBS_EFFECTUE.'">'."\n";
+	echo'<input type="hidden" name="PBX_ANNULE" value="'.$IBS_ANNULE.'">'."\n";
+	echo'<input type="hidden" name="PBX_REFUSE" value="'.$IBS_REFUSE.'">'."\n";
+	echo'<input type="hidden" name="PBX_TXT" value="'.$IBS_TXT.'">'."\n";
+	echo'<input type="hidden" name="PBX_BKGD" value="'.$IBS_BKGD.'">'."\n";
+	echo'<input type="hidden" name="PBX_WAIT" value="'.$IBS_WAIT.'">'."\n";
+	echo'<input type="hidden" name="PBX_LANGUE" value="'.$IBS_LANG.'">'."\n";
+	echo'<input type="hidden" name="PBX_OUTPUT" value="'.$IBS_OUTPUT.'">'."\n";
+	echo'<input type="hidden" name="PBX_SOURCE" value="'.$PBX_SOURCE.'">'."\n";
+	echo'<input type="hidden" name="PBX_TYPEPAIEMENT" value="'.$PBX_TYPEPAIEMENT.'">'."\n";
+	echo'<input type="hidden" name="PBX_HASH" value="'.$PBX_HASH.'">'."\n";
+	echo'<input type="hidden" name="PBX_TIME" value="'.$PBX_TIME.'">'."\n";
+	// Footechoof parameters
+	echo'<input type="hidden" name="PBX_HMAC" value="'.$hmac.'">'."\n";
+	echo'</form>'."\n";
 
 
-	print "\n";
-	print '<script type="text/javascript">'."\n";
-	print '	document.Submit.submit();'."\n";
-	print '</script>'."\n";
-	print "\n";
-	print '</body></html>'."\n";
-	print "\n";
+	echo"\n";
+	echo'<script type="text/javascript">'."\n";
+	echo'	document.Submit.submit();'."\n";
+	echo'</script>'."\n";
+	echo"\n";
+	echo'</body></html>'."\n";
+	echo"\n";
 
 	return 1;
 }

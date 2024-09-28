@@ -77,9 +77,9 @@ top_htmlhead($head, $title, 0, 0, $arrayofjs, $arrayofcss);
 
 
 
-print '<body>'."\n";
-print '<div>';
-//print '<br>';
+echo'<body>'."\n";
+echo'<div>';
+//echo'<br>';
 
 // Instantiate hooks of thirdparty module
 $hookmanager->initHooks(array('bookmarks'));
@@ -144,17 +144,17 @@ if (empty($reshook)) {
 }
 
 
-print "\n";
-print "<!-- Begin Bookmarks list -->\n";
-print '<div class="center"><div class="center" style="padding: 30px;">';
-print '<style>.menu_titre { padding-top: 7px; }</style>';
-print '<div id="blockvmenusearch" class="tagtable center searchpage">'."\n";
-print $bookmarkList;
-print '</div>'."\n";
-print '</div></div>';
-print "\n<!-- End SearchForm -->\n";
+echo"\n";
+echo"<!-- Begin Bookmarks list -->\n";
+echo'<div class="center"><div class="center" style="padding: 30px;">';
+echo'<style>.menu_titre { padding-top: 7px; }</style>';
+echo'<div id="blockvmenusearch" class="tagtable center searchpage">'."\n";
+echo$bookmarkList;
+echo'</div>'."\n";
+echo'</div></div>';
+echo"\n<!-- End SearchForm -->\n";
 
-print '</div>';
-print '</body></html>'."\n";
+echo'</div>';
+echo'</body></html>'."\n";
 
 $db->close();

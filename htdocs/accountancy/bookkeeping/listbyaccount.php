@@ -640,7 +640,7 @@ $num = count($object->lines);
 
 // Print form confirm
 $formconfirm = '';
-print $formconfirm;
+echo$formconfirm;
 
 // List of mass actions available
 $arrayofmassactions = array();
@@ -658,17 +658,17 @@ if (GETPOSTINT('nomassaction') || in_array($massaction, array('preunletteringaut
 }
 $massactionbutton = $form->selectMassAction($massaction, $arrayofmassactions);
 
-print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="action" value="list">';
+echo'<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">';
+echo'<input type="hidden" name="token" value="'.newToken().'">';
+echo'<input type="hidden" name="action" value="list">';
 if ($optioncss != '') {
-	print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
+	echo'<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 }
-print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-print '<input type="hidden" name="type" value="'.$type.'">';
-print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-print '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
+echo'<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+echo'<input type="hidden" name="type" value="'.$type.'">';
+echo'<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+echo'<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+echo'<input type="hidden" name="contextpage" value="'.$contextpage.'">';
 
 $parameters = array('param' => $param);
 $reshook = $hookmanager->executeHooks('addMoreActionsButtonsList', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
@@ -701,11 +701,11 @@ if ($limit > 0 && $limit != $conf->liste_limit) {
 print_barre_liste($title_page, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, $massactionbutton, $result, $nbtotalofrecords, 'title_accountancy', 0, $newcardbutton, '', $limit, 0, 0, 1);
 
 if ($massaction == 'preunletteringauto') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassUnletteringAuto"), $langs->trans("ConfirmMassUnletteringQuestion", count($toselect)), "unletteringauto", null, '', 0, 200, 500, 1);
+	echo$form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassUnletteringAuto"), $langs->trans("ConfirmMassUnletteringQuestion", count($toselect)), "unletteringauto", null, '', 0, 200, 500, 1);
 } elseif ($massaction == 'preunletteringmanual') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassUnletteringManual"), $langs->trans("ConfirmMassUnletteringQuestion", count($toselect)), "unletteringmanual", null, '', 0, 200, 500, 1);
+	echo$form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassUnletteringManual"), $langs->trans("ConfirmMassUnletteringQuestion", count($toselect)), "unletteringmanual", null, '', 0, 200, 500, 1);
 } elseif ($massaction == 'predeletebookkeepingwriting') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassDeleteBookkeepingWriting"), $langs->trans("ConfirmMassDeleteBookkeepingWritingQuestion", count($toselect)), "deletebookkeepingwriting", null, '', 0, 200, 500, 1);
+	echo$form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassDeleteBookkeepingWriting"), $langs->trans("ConfirmMassDeleteBookkeepingWritingQuestion", count($toselect)), "deletebookkeepingwriting", null, '', 0, 200, 500, 1);
 }
 //DeleteMvt=Supprimer des lignes d'opérations de la comptabilité
 //DelMonth=Mois à effacer
@@ -735,7 +735,7 @@ if (preg_match('/^asc/i', $sortorder)) {
 
 // Warning to explain why list of record is not consistent with the other list view (missing a lot of lines)
 if ($type == 'sub') {
-	print info_admin($langs->trans("WarningRecordWithoutSubledgerAreExcluded"));
+	echoinfo_admin($langs->trans("WarningRecordWithoutSubledgerAreExcluded"));
 }
 
 $moreforfilter = '';
@@ -807,20 +807,20 @@ if (empty($reshook)) {
 	$moreforfilter = $hookmanager->resPrint;
 }
 
-print '<div class="liste_titre liste_titre_bydiv centpercent">';
-print $moreforfilter;
-print '</div>';
+echo'<div class="liste_titre liste_titre_bydiv centpercent">';
+echo$moreforfilter;
+echo'</div>';
 
-print '<div class="div-table-responsive">';
-print '<table class="tagtable liste centpercent">';
+echo'<div class="div-table-responsive">';
+echo'<table class="tagtable liste centpercent">';
 
 // Filters lines
-print '<tr class="liste_titre_filter">';
+echo'<tr class="liste_titre_filter">';
 // Action column
 if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print '<td class="liste_titre center">';
+	echo'<td class="liste_titre center">';
 	$searchpicto = $form->showFilterButtons('left');
-	print $searchpicto;
+	echo$searchpicto;
 	print '</td>';
 }
 // Movement number

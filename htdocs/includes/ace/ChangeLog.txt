@@ -413,7 +413,7 @@
   - Improved PHP highlighting (Thomas Hruska)
   - Improved CSS highlighting (Sean Kellogg)
   - Clicks which cause the editor to be focused don't reset the selection
-  - Make padding text layer specific so that print margin and active line
+  - Make padding text layer specific so that echo margin and active line
     highlight are not affected (Irakli Gozalishvili)
   - Added setFontSize method
   - Improved vi keybindings (Trent Ogren)

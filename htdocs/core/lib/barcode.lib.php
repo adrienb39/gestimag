@@ -82,7 +82,7 @@ if (defined('PHP-BARCODE_PATH_COMMAND')) {
  */
 function barcode_print($code, $encoding = "ANY", $scale = 2, $mode = "png", $filebarcode = '')
 {
-	dol_syslog("barcode.lib.php::barcode_print $code $encoding $scale $mode");
+	dol_syslog("barcode.lib.php::barcode_echo $code $encoding $scale $mode");
 
 	$bars = barcode_encode($code, $encoding);
 	if (!$bars || !empty($bars['error'])) {
@@ -92,14 +92,14 @@ function barcode_print($code, $encoding = "ANY", $scale = 2, $mode = "png", $fil
 		} else {
 			$error = $bars['error'];
 		}
-		dol_syslog('barcode.lib.php::barcode_print '.$error, LOG_ERR);
+		dol_syslog('barcode.lib.php::barcode_echo '.$error, LOG_ERR);
 		return $error;
 	}
 	if (!$mode) {
 		$mode = "png";
 	}
-	//if (preg_match("/^(text|txt|plain)$/i",$mode)) print barcode_outtext($bars['text'],$bars['bars']);
-	//elseif (preg_match("/^(html|htm)$/i",$mode)) print barcode_outhtml($bars['text'],$bars['bars'], $scale,0, 0);
+	//if (preg_match("/^(text|txt|plain)$/i",$mode)) echo barcode_outtext($bars['text'],$bars['bars']);
+	//elseif (preg_match("/^(html|htm)$/i",$mode)) echo barcode_outhtml($bars['text'],$bars['bars'], $scale,0, 0);
 	//else
 
 	barcode_outimage($bars['text'], $bars['bars'], $scale, $mode, 0, [], $filebarcode);
@@ -157,13 +157,13 @@ function barcode_encode($code, $encoding)
 		dol_syslog("barcode.lib.php::barcode_encode Use genbarcode ".$genbarcode_loc." code=".$code." encoding=".$encoding);
 		$bars = barcode_encode_genbarcode($code, $encoding);
 	} else {
-		print "barcode_encode needs an external program for encodings other then EAN/ISBN (code=".dol_escape_htmltag($code).", encoding=".dol_escape_htmltag($encoding).")<BR>\n";
-		print "<UL>\n";
-		print "<LI>download gnu-barcode from <A href=\"https://www.gnu.org/software/barcode/\">www.gnu.org/software/barcode/</A>\n";
-		print "<LI>compile and install them\n";
-		print "<LI>specify path the genbarcode in barcode module setup\n";
-		print "</UL>\n";
-		print "<BR>\n";
+		echo "barcode_encode needs an external program for encodings other then EAN/ISBN (code=".dol_escape_htmltag($code).", encoding=".dol_escape_htmltag($encoding).")<BR>\n";
+		echo "<UL>\n";
+		echo "<LI>download gnu-barcode from <A href=\"https://www.gnu.org/software/barcode/\">www.gnu.org/software/barcode/</A>\n";
+		echo "<LI>compile and install them\n";
+		echo "<LI>specify path the genbarcode in barcode module setup\n";
+		echo "</UL>\n";
+		echo "<BR>\n";
 		return false;
 	}
 
@@ -355,7 +355,7 @@ function barcode_encode_genbarcode($code, $encoding)
 	$paramclear = " ".escapeshellarg($code)." ".escapeshellarg(strtoupper($encoding));
 
 	$fullcommandclear = $command." ".$paramclear." 2>&1";
-	//print $fullcommandclear."<br>\n";exit;
+	//echo $fullcommandclear."<br>\n";exit;
 
 	dol_syslog("Run command ".$fullcommandclear);
 
@@ -417,7 +417,7 @@ function barcode_outimage($text, $bars, $scale = 1, $mode = "png", $total_y = 0,
 {
 	global $bar_color, $bg_color, $text_color, $font_loc;
 
-	//print "$text, $bars, $scale, $mode, $total_y, $space, $font_loc, $filebarcode<br>";
+	//echo "$text, $bars, $scale, $mode, $total_y, $space, $font_loc, $filebarcode<br>";
 
 	/* set defaults */
 	if ($scale < 1) {
@@ -454,7 +454,7 @@ function barcode_outimage($text, $bars, $scale = 1, $mode = "png", $total_y = 0,
 	$total_x = ($xpos) + $space['right'] + $space['right'];
 	$xpos = $space['left'];
 	if (!function_exists("imagecreate")) {
-		print "You don't have the gd2 extension enabled<br>\n";
+		echo "You don't have the gd2 extension enabled<br>\n";
 		return;
 	}
 	$im = imagecreate($total_x, $total_y);

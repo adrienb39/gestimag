@@ -685,7 +685,7 @@ $sql .= ' WHERE t.entity IN ('.getEntity('accountancy').')';
 if (count($sqlwhere) > 0) {
 	$sql .= ' AND '.implode(' AND ', $sqlwhere);
 }
-//print $sql;
+//echo$sql;
 
 /*
  * View
@@ -741,7 +741,7 @@ llxHeader('', $title_page, $help_url, '', 0, 0, '', '', '', 'mod-accountancy acc
 $formconfirm = '';
 
 // Print form confirm
-print $formconfirm;
+echo$formconfirm;
 
 //$param='';	param started before
 if (!empty($contextpage) && $contextpage != $_SERVER["PHP_SELF"]) {
@@ -767,16 +767,16 @@ if (GETPOSTINT('nomassaction') || in_array($massaction, array('preunletteringaut
 }
 $massactionbutton = $form->selectMassAction($massaction, $arrayofmassactions);
 
-print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="action" value="list">';
+echo'<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'">';
+echo'<input type="hidden" name="token" value="'.newToken().'">';
+echo'<input type="hidden" name="action" value="list">';
 if ($optioncss != '') {
-	print '<input type="hidden" name="optioncss" value="'.urlencode($optioncss).'">';
+	echo'<input type="hidden" name="optioncss" value="'.urlencode($optioncss).'">';
 }
-print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
-print '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
+echo'<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+echo'<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+echo'<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+echo'<input type="hidden" name="contextpage" value="'.$contextpage.'">';
 
 if (count($filter)) {
 	$buttonLabel = $langs->trans("ExportFilteredList");
@@ -808,11 +808,11 @@ if (empty($reshook)) {
 print_barre_liste($title_page, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, $massactionbutton, $num, $nbtotalofrecords, 'title_accountancy', 0, $newcardbutton, '', $limit, 0, 0, 1);
 
 if ($massaction == 'preunletteringauto') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassUnletteringAuto"), $langs->trans("ConfirmMassUnletteringQuestion", count($toselect)), "unletteringauto", null, '', 0, 200, 500, 1);
+	echo$form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassUnletteringAuto"), $langs->trans("ConfirmMassUnletteringQuestion", count($toselect)), "unletteringauto", null, '', 0, 200, 500, 1);
 } elseif ($massaction == 'preunletteringmanual') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassUnletteringManual"), $langs->trans("ConfirmMassUnletteringQuestion", count($toselect)), "unletteringmanual", null, '', 0, 200, 500, 1);
+	echo$form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassUnletteringManual"), $langs->trans("ConfirmMassUnletteringQuestion", count($toselect)), "unletteringmanual", null, '', 0, 200, 500, 1);
 } elseif ($massaction == 'predeletebookkeepingwriting') {
-	print $form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassDeleteBookkeepingWriting"), $langs->trans("ConfirmMassDeleteBookkeepingWritingQuestion", count($toselect)), "deletebookkeepingwriting", null, '', 0, 200, 500, 1);
+	echo$form->formconfirm($_SERVER["PHP_SELF"], $langs->trans("ConfirmMassDeleteBookkeepingWriting"), $langs->trans("ConfirmMassDeleteBookkeepingWritingQuestion", count($toselect)), "deletebookkeepingwriting", null, '', 0, 200, 500, 1);
 }
 
 //$topicmail = "Information";
@@ -843,166 +843,166 @@ if (empty($reshook)) {
 	$moreforfilter = $hookmanager->resPrint;
 }
 
-print '<div class="liste_titre liste_titre_bydiv centpercent">';
-print $moreforfilter;
-print '</div>';
+echo'<div class="liste_titre liste_titre_bydiv centpercent">';
+echo$moreforfilter;
+echo'</div>';
 
-print '<div class="div-table-responsive">';
-print '<table class="tagtable liste'.($moreforfilter ? " listwithfilterbefore" : "").'">';
+echo'<div class="div-table-responsive">';
+echo'<table class="tagtable liste'.($moreforfilter ? " listwithfilterbefore" : "").'">';
 
 // Filters lines
-print '<tr class="liste_titre_filter">';
+echo'<tr class="liste_titre_filter">';
 // Action column
 if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print '<td class="liste_titre center">';
+	echo'<td class="liste_titre center">';
 	$searchpicto = $form->showFilterButtons('left');
-	print $searchpicto;
-	print '</td>';
+	echo$searchpicto;
+	echo'</td>';
 }
 // Movement number
 if (!empty($arrayfields['t.piece_num']['checked'])) {
-	print '<td class="liste_titre"><input type="text" name="search_mvt_num" size="6" value="'.dol_escape_htmltag($search_mvt_num).'"></td>';
+	echo'<td class="liste_titre"><input type="text" name="search_mvt_num" size="6" value="'.dol_escape_htmltag($search_mvt_num).'"></td>';
 }
 // Code journal
 if (!empty($arrayfields['t.code_journal']['checked'])) {
-	print '<td class="liste_titre center">';
-	print $formaccounting->multi_select_journal($search_ledger_code, 'search_ledger_code', 0, 1, 1, 1, 'small maxwidth75');
-	print '</td>';
+	echo'<td class="liste_titre center">';
+	echo$formaccounting->multi_select_journal($search_ledger_code, 'search_ledger_code', 0, 1, 1, 1, 'small maxwidth75');
+	echo'</td>';
 }
 // Date document
 if (!empty($arrayfields['t.doc_date']['checked'])) {
-	print '<td class="liste_titre center">';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_start ? $search_date_start : -1, 'search_date_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("From"));
-	print '</div>';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_end ? $search_date_end : -1, 'search_date_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("to"));
-	print '</div>';
-	print '</td>';
+	echo'<td class="liste_titre center">';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_start ? $search_date_start : -1, 'search_date_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("From"));
+	echo'</div>';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_end ? $search_date_end : -1, 'search_date_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("to"));
+	echo'</div>';
+	echo'</td>';
 }
 // Ref document
 if (!empty($arrayfields['t.doc_ref']['checked'])) {
-	print '<td class="liste_titre"><input type="text" name="search_doc_ref" size="8" value="'.dol_escape_htmltag($search_doc_ref).'"></td>';
+	echo'<td class="liste_titre"><input type="text" name="search_doc_ref" size="8" value="'.dol_escape_htmltag($search_doc_ref).'"></td>';
 }
 // Accountancy account
 if (!empty($arrayfields['t.numero_compte']['checked'])) {
-	print '<td class="liste_titre">';
-	print '<div class="nowrap">';
-	print $formaccounting->select_account($search_accountancy_code_start, 'search_accountancy_code_start', $langs->trans('From'), array(), 1, 1, 'maxwidth150', 'account');
-	print '</div>';
-	print '<div class="nowrap">';
-	print $formaccounting->select_account($search_accountancy_code_end, 'search_accountancy_code_end', $langs->trans('to'), array(), 1, 1, 'maxwidth150', 'account');
-	print '</div>';
-	print '</td>';
+	echo'<td class="liste_titre">';
+	echo'<div class="nowrap">';
+	echo$formaccounting->select_account($search_accountancy_code_start, 'search_accountancy_code_start', $langs->trans('From'), array(), 1, 1, 'maxwidth150', 'account');
+	echo'</div>';
+	echo'<div class="nowrap">';
+	echo$formaccounting->select_account($search_accountancy_code_end, 'search_accountancy_code_end', $langs->trans('to'), array(), 1, 1, 'maxwidth150', 'account');
+	echo'</div>';
+	echo'</td>';
 }
 // Subledger account
 if (!empty($arrayfields['t.subledger_account']['checked'])) {
-	print '<td class="liste_titre">';
+	echo'<td class="liste_titre">';
 	// TODO For the moment we keep a free input text instead of a combo. The select_auxaccount has problem because it does not
 	// use setup of keypress to select thirdparty and this hang browser on large database.
 	if (getDolGlobalString('ACCOUNTANCY_COMBO_FOR_AUX')) {
-		print '<div class="nowrap">';
-		//print $langs->trans('From').' ';
-		print $formaccounting->select_auxaccount($search_accountancy_aux_code_start, 'search_accountancy_aux_code_start', $langs->trans('From'), 'maxwidth250', 'subledgeraccount');
-		print '</div>';
-		print '<div class="nowrap">';
-		print $formaccounting->select_auxaccount($search_accountancy_aux_code_end, 'search_accountancy_aux_code_end', $langs->trans('to'), 'maxwidth250', 'subledgeraccount');
-		print '</div>';
+		echo'<div class="nowrap">';
+		//echo$langs->trans('From').' ';
+		echo$formaccounting->select_auxaccount($search_accountancy_aux_code_start, 'search_accountancy_aux_code_start', $langs->trans('From'), 'maxwidth250', 'subledgeraccount');
+		echo'</div>';
+		echo'<div class="nowrap">';
+		echo$formaccounting->select_auxaccount($search_accountancy_aux_code_end, 'search_accountancy_aux_code_end', $langs->trans('to'), 'maxwidth250', 'subledgeraccount');
+		echo'</div>';
 	} else {
-		print '<input type="text" class="maxwidth75" name="search_accountancy_aux_code" value="'.dol_escape_htmltag($search_accountancy_aux_code).'">';
+		echo'<input type="text" class="maxwidth75" name="search_accountancy_aux_code" value="'.dol_escape_htmltag($search_accountancy_aux_code).'">';
 	}
-	print '</td>';
+	echo'</td>';
 }
 // Label operation
 if (!empty($arrayfields['t.label_operation']['checked'])) {
-	print '<td class="liste_titre">';
-	print '<input type="text" size="7" class="flat" name="search_mvt_label" value="'.dol_escape_htmltag($search_mvt_label).'"/>';
-	print '</td>';
+	echo'<td class="liste_titre">';
+	echo'<input type="text" size="7" class="flat" name="search_mvt_label" value="'.dol_escape_htmltag($search_mvt_label).'"/>';
+	echo'</td>';
 }
 // Debit
 if (!empty($arrayfields['t.debit']['checked'])) {
-	print '<td class="liste_titre right">';
-	print '<input type="text" class="flat" name="search_debit" size="4" value="'.dol_escape_htmltag($search_debit).'">';
-	print '</td>';
+	echo'<td class="liste_titre right">';
+	echo'<input type="text" class="flat" name="search_debit" size="4" value="'.dol_escape_htmltag($search_debit).'">';
+	echo'</td>';
 }
 // Credit
 if (!empty($arrayfields['t.credit']['checked'])) {
-	print '<td class="liste_titre right">';
-	print '<input type="text" class="flat" name="search_credit" size="4" value="'.dol_escape_htmltag($search_credit).'">';
-	print '</td>';
+	echo'<td class="liste_titre right">';
+	echo'<input type="text" class="flat" name="search_credit" size="4" value="'.dol_escape_htmltag($search_credit).'">';
+	echo'</td>';
 }
 // Lettering code
 if (!empty($arrayfields['t.lettering_code']['checked'])) {
-	print '<td class="liste_titre center">';
-	print '<input type="text" size="3" class="flat" name="search_lettering_code" value="'.dol_escape_htmltag($search_lettering_code).'"/>';
-	print '<br><span class="nowrap"><input type="checkbox" name="search_not_reconciled" value="notreconciled"'.($search_not_reconciled == 'notreconciled' ? ' checked' : '').'>'.$langs->trans("NotReconciled").'</span>';
-	print '</td>';
+	echo'<td class="liste_titre center">';
+	echo'<input type="text" size="3" class="flat" name="search_lettering_code" value="'.dol_escape_htmltag($search_lettering_code).'"/>';
+	echo'<br><span class="nowrap"><input type="checkbox" name="search_not_reconciled" value="notreconciled"'.($search_not_reconciled == 'notreconciled' ? ' checked' : '').'>'.$langs->trans("NotReconciled").'</span>';
+	echo'</td>';
 }
 
 // Fields from hook
 $parameters = array('arrayfields' => $arrayfields);
 $reshook = $hookmanager->executeHooks('printFieldListOption', $parameters); // Note that $action and $object may have been modified by hook
-print $hookmanager->resPrint;
+echo$hookmanager->resPrint;
 
 // Date creation
 if (!empty($arrayfields['t.date_creation']['checked'])) {
-	print '<td class="liste_titre center">';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_creation_start, 'search_date_creation_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("From"));
-	print '</div>';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_creation_end, 'search_date_creation_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("to"));
-	print '</div>';
-	print '</td>';
+	echo'<td class="liste_titre center">';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_creation_start, 'search_date_creation_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("From"));
+	echo'</div>';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_creation_end, 'search_date_creation_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("to"));
+	echo'</div>';
+	echo'</td>';
 }
 // Date modification
 if (!empty($arrayfields['t.tms']['checked'])) {
-	print '<td class="liste_titre center">';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_modification_start, 'search_date_modification_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("From"));
-	print '</div>';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_modification_end, 'search_date_modification_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("to"));
-	print '</div>';
-	print '</td>';
+	echo'<td class="liste_titre center">';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_modification_start, 'search_date_modification_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("From"));
+	echo'</div>';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_modification_end, 'search_date_modification_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("to"));
+	echo'</div>';
+	echo'</td>';
 }
 // Date export
 if (!empty($arrayfields['t.date_export']['checked'])) {
-	print '<td class="liste_titre center">';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_export_start, 'search_date_export_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("From"));
-	print '</div>';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_export_end, 'search_date_export_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("to"));
-	print '</div>';
-	print '</td>';
+	echo'<td class="liste_titre center">';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_export_start, 'search_date_export_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("From"));
+	echo'</div>';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_export_end, 'search_date_export_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("to"));
+	echo'</div>';
+	echo'</td>';
 }
 // Date validation
 if (!empty($arrayfields['t.date_validated']['checked'])) {
-	print '<td class="liste_titre center">';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_validation_start, 'search_date_validation_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("From"));
-	print '</div>';
-	print '<div class="nowrapfordate">';
-	print $form->selectDate($search_date_validation_end, 'search_date_validation_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("to"));
-	print '</div>';
-	print '</td>';
+	echo'<td class="liste_titre center">';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_validation_start, 'search_date_validation_start', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("From"));
+	echo'</div>';
+	echo'<div class="nowrapfordate">';
+	echo$form->selectDate($search_date_validation_end, 'search_date_validation_end', 0, 0, 1, '', 1, 0, 0, '', '', '', '', 1, '', $langs->trans("to"));
+	echo'</div>';
+	echo'</td>';
 }
 if (!empty($arrayfields['t.import_key']['checked'])) {
-	print '<td class="liste_titre center">';
-	print '<input class="flat searchstring maxwidth50" type="text" name="search_import_key" value="'.dol_escape_htmltag($search_import_key).'">';
-	print '</td>';
+	echo'<td class="liste_titre center">';
+	echo'<input class="flat searchstring maxwidth50" type="text" name="search_import_key" value="'.dol_escape_htmltag($search_import_key).'">';
+	echo'</td>';
 }
 // Action column
 if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-	print '<td class="liste_titre center">';
+	echo'<td class="liste_titre center">';
 	$searchpicto = $form->showFilterButtons();
-	print $searchpicto;
-	print '</td>';
+	echo$searchpicto;
+	echo'</td>';
 }
-print "</tr>\n";
+echo"</tr>\n";
 
-print '<tr class="liste_titre">';
+echo'<tr class="liste_titre">';
 if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 	print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], "", '', '', '', $sortfield, $sortorder, 'center maxwidthsearch actioncolumn ');
 }
@@ -1039,7 +1039,7 @@ if (!empty($arrayfields['t.lettering_code']['checked'])) {
 // Hook fields
 $parameters = array('arrayfields' => $arrayfields, 'param' => $param, 'sortfield' => $sortfield, 'sortorder' => $sortorder);
 $reshook = $hookmanager->executeHooks('printFieldListTitle', $parameters); // Note that $action and $object may have been modified by hook
-print $hookmanager->resPrint;
+echo$hookmanager->resPrint;
 if (!empty($arrayfields['t.date_creation']['checked'])) {
 	print_liste_field_titre($arrayfields['t.date_creation']['label'], $_SERVER['PHP_SELF'], "t.date_creation", "", $param, '', $sortfield, $sortorder, 'center ');
 }
@@ -1058,7 +1058,7 @@ if (!empty($arrayfields['t.import_key']['checked'])) {
 if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
 	print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], "", '', '', '', $sortfield, $sortorder, 'center maxwidthsearch ');
 }
-print "</tr>\n";
+echo"</tr>\n";
 
 
 $line = new BookKeepingLine($db);
@@ -1106,18 +1106,18 @@ while ($i < min($num, $limit)) {
 	$line->date_export = $db->jdate($obj->date_export);
 	$line->date_validation = $db->jdate($obj->date_validation);
 
-	print '<tr class="oddeven">';
+	echo'<tr class="oddeven">';
 	// Action column
 	if (getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-		print '<td class="nowraponall center">';
+		echo'<td class="nowraponall center">';
 		if (($massactionbutton || $massaction) && $contextpage != 'poslist') {   // If we are in select mode (massactionbutton defined) or if we have already selected and sent an action ($massaction) defined
 			$selected = 0;
 			if (in_array($line->id, $arrayofselected)) {
 				$selected = 1;
 			}
-			print '<input id="cb'.$line->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$line->id.'"'.($selected ? ' checked="checked"' : '').' />';
+			echo'<input id="cb'.$line->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$line->id.'"'.($selected ? ' checked="checked"' : '').' />';
 		}
-		print '</td>';
+		echo'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1125,11 +1125,11 @@ while ($i < min($num, $limit)) {
 
 	// Piece number
 	if (!empty($arrayfields['t.piece_num']['checked'])) {
-		print '<td>';
+		echo'<td>';
 		$object->id = $line->id;
 		$object->piece_num = $line->piece_num;
-		print $object->getNomUrl(1, '', 0, '', 1);
-		print '</td>';
+		echo$object->getNomUrl(1, '', 0, '', 1);
+		echo'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1146,7 +1146,7 @@ while ($i < min($num, $limit)) {
 		}
 
 		$journaltoshow = (($accountingjournal->id > 0) ? $accountingjournal->getNomUrl(0, 0, 0, '', 0) : $line->code_journal);
-		print '<td class="center tdoverflowmax150">'.$journaltoshow.'</td>';
+		echo'<td class="center tdoverflowmax150">'.$journaltoshow.'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1154,7 +1154,7 @@ while ($i < min($num, $limit)) {
 
 	// Document date
 	if (!empty($arrayfields['t.doc_date']['checked'])) {
-		print '<td class="center">'.dol_print_date($line->doc_date, 'day').'</td>';
+		echo'<td class="center">'.dol_print_date($line->doc_date, 'day').'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1235,9 +1235,9 @@ while ($i < min($num, $limit)) {
 			$classforlabel = 'tdoverflowmax250';
 		}
 
-		print '<td class="nowraponall'.($classforlabel ? ' '.$classforlabel : '').'" title="'.dol_escape_htmltag($labeltoshowalt).'">';
-		print $labeltoshow;
-		print "</td>\n";
+		echo'<td class="nowraponall'.($classforlabel ? ' '.$classforlabel : '').'" title="'.dol_escape_htmltag($labeltoshowalt).'">';
+		echo$labeltoshow;
+		echo"</td>\n";
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1245,7 +1245,7 @@ while ($i < min($num, $limit)) {
 
 	// Account number
 	if (!empty($arrayfields['t.numero_compte']['checked'])) {
-		print '<td>'.length_accountg($line->numero_compte).'</td>';
+		echo'<td>'.length_accountg($line->numero_compte).'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1253,7 +1253,7 @@ while ($i < min($num, $limit)) {
 
 	// Subledger account
 	if (!empty($arrayfields['t.subledger_account']['checked'])) {
-		print '<td>'.length_accounta($line->subledger_account).'</td>';
+		echo'<td>'.length_accounta($line->subledger_account).'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1261,7 +1261,7 @@ while ($i < min($num, $limit)) {
 
 	// Label operation
 	if (!empty($arrayfields['t.label_operation']['checked'])) {
-		print '<td class="small tdoverflowmax200" title="'.dol_escape_htmltag($line->label_operation).'">'.dol_escape_htmltag($line->label_operation).'</td>';
+		echo'<td class="small tdoverflowmax200" title="'.dol_escape_htmltag($line->label_operation).'">'.dol_escape_htmltag($line->label_operation).'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1269,7 +1269,7 @@ while ($i < min($num, $limit)) {
 
 	// Amount debit
 	if (!empty($arrayfields['t.debit']['checked'])) {
-		print '<td class="right nowraponall amount">'.($line->debit != 0 ? price($line->debit) : '').'</td>';
+		echo'<td class="right nowraponall amount">'.($line->debit != 0 ? price($line->debit) : '').'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1281,7 +1281,7 @@ while ($i < min($num, $limit)) {
 
 	// Amount credit
 	if (!empty($arrayfields['t.credit']['checked'])) {
-		print '<td class="right nowraponall amount">'.($line->credit != 0 ? price($line->credit) : '').'</td>';
+		echo'<td class="right nowraponall amount">'.($line->credit != 0 ? price($line->credit) : '').'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1293,7 +1293,7 @@ while ($i < min($num, $limit)) {
 
 	// Lettering code
 	if (!empty($arrayfields['t.lettering_code']['checked'])) {
-		print '<td class="center">'.$line->lettering_code.'</td>';
+		echo'<td class="center">'.$line->lettering_code.'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1302,11 +1302,11 @@ while ($i < min($num, $limit)) {
 	// Fields from hook
 	$parameters = array('arrayfields' => $arrayfields, 'obj' => $obj, 'i' => $i, 'totalarray' => &$totalarray);
 	$reshook = $hookmanager->executeHooks('printFieldListValue', $parameters); // Note that $action and $object may have been modified by hook
-	print $hookmanager->resPrint;
+	echo$hookmanager->resPrint;
 
 	// Creation operation date
 	if (!empty($arrayfields['t.date_creation']['checked'])) {
-		print '<td class="center">'.dol_print_date($line->date_creation, 'dayhour', 'tzuserrel').'</td>';
+		echo'<td class="center">'.dol_print_date($line->date_creation, 'dayhour', 'tzuserrel').'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1314,7 +1314,7 @@ while ($i < min($num, $limit)) {
 
 	// Modification operation date
 	if (!empty($arrayfields['t.tms']['checked'])) {
-		print '<td class="center">'.dol_print_date($line->date_modification, 'dayhour', 'tzuserrel').'</td>';
+		echo'<td class="center">'.dol_print_date($line->date_modification, 'dayhour', 'tzuserrel').'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1322,7 +1322,7 @@ while ($i < min($num, $limit)) {
 
 	// Exported operation date
 	if (!empty($arrayfields['t.date_export']['checked'])) {
-		print '<td class="center nowraponall">'.dol_print_date($line->date_export, 'dayhour', 'tzuserrel').'</td>';
+		echo'<td class="center nowraponall">'.dol_print_date($line->date_export, 'dayhour', 'tzuserrel').'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1330,14 +1330,14 @@ while ($i < min($num, $limit)) {
 
 	// Validated operation date
 	if (!empty($arrayfields['t.date_validated']['checked'])) {
-		print '<td class="center nowraponall">'.dol_print_date($line->date_validation, 'dayhour', 'tzuserrel').'</td>';
+		echo'<td class="center nowraponall">'.dol_print_date($line->date_validation, 'dayhour', 'tzuserrel').'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
 	}
 
 	if (!empty($arrayfields['t.import_key']['checked'])) {
-		print '<td class="tdoverflowmax125" title="'.dol_escape_htmltag($obj->import_key).'">'.dol_escape_htmltag($obj->import_key)."</td>\n";
+		echo'<td class="tdoverflowmax125" title="'.dol_escape_htmltag($obj->import_key).'">'.dol_escape_htmltag($obj->import_key)."</td>\n";
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
@@ -1345,22 +1345,22 @@ while ($i < min($num, $limit)) {
 
 	// Action column
 	if (!getDolGlobalString('MAIN_CHECKBOX_LEFT_COLUMN')) {
-		print '<td class="nowraponall center">';
+		echo'<td class="nowraponall center">';
 		if (($massactionbutton || $massaction) && $contextpage != 'poslist') {   // If we are in select mode (massactionbutton defined) or if we have already selected and sent an action ($massaction) defined
 			$selected = 0;
 			if (in_array($line->id, $arrayofselected)) {
 				$selected = 1;
 			}
-			print '<input id="cb'.$line->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$line->id.'"'.($selected ? ' checked="checked"' : '').' />';
+			echo'<input id="cb'.$line->id.'" class="flat checkforselect" type="checkbox" name="toselect[]" value="'.$line->id.'"'.($selected ? ' checked="checked"' : '').' />';
 		}
-		print '</td>';
+		echo'</td>';
 		if (!$i) {
 			$totalarray['nbfield']++;
 		}
 	}
 
 
-	print "</tr>\n";
+	echo"</tr>\n";
 
 	$i++;
 }
@@ -1376,17 +1376,17 @@ if ($num == 0) {
 			$colspan++;
 		}
 	}
-	print '<tr><td colspan="'.$colspan.'"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
+	echo'<tr><td colspan="'.$colspan.'"><span class="opacitymedium">'.$langs->trans("NoRecordFound").'</span></td></tr>';
 }
 
 $parameters = array('arrayfields' => $arrayfields, 'sql' => $sql);
 $reshook = $hookmanager->executeHooks('printFieldListFooter', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
-print $hookmanager->resPrint;
+echo$hookmanager->resPrint;
 
-print "</table>";
-print '</div>';
+echo"</table>";
+echo'</div>';
 
-print '</form>';
+echo'</form>';
 
 // End of page
 llxFooter();

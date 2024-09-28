@@ -281,7 +281,7 @@ if ($modulepart == 'produit' || $modulepart == 'product' || $modulepart == 'serv
 } elseif ($modulepart == 'medias') {
 	$dir = $gestimag_main_data_root.'/'.$modulepart;
 } else {
-	print 'Bug: Action crop for modulepart = '.$modulepart.' is not supported yet by photos_resize.php.';
+	echo 'Bug: Action crop for modulepart = '.$modulepart.' is not supported yet by photos_resize.php.';
 }
 
 if (empty($backtourl)) {
@@ -412,7 +412,7 @@ if ($action == 'confirm_resize' && GETPOSTISSET("file") && GETPOSTISSET("sizex")
 // Crop d'une image
 if ($action == 'confirm_crop') {
 	if (empty($dir)) {
-		print 'Bug: Value for $dir could not be defined.';
+		echo 'Bug: Value for $dir could not be defined.';
 	}
 
 	$fullpath = $dir."/".$original_file;
@@ -484,54 +484,54 @@ $morecss = array('/includes/jquery/plugins/jcrop/css/jquery.Jcrop.css');
 llxHeader($head, $title, '', '', 0, 0, $morejs, $morecss);
 
 
-print load_fiche_titre($title);
+echo load_fiche_titre($title);
 
 $infoarray = dol_getImageSize($dir."/".GETPOST("file", 'alpha'));
 $height = $infoarray['height'];
 $width = $infoarray['width'];
-print '<span class="opacitymedium hideonsmartphone">'.$langs->trans("CurrentInformationOnImage").': </span>';
-print '<span class="opacitymedium">';
-print $langs->trans("Width").': <strong>'.$width.'</strong> x '.$langs->trans("Height").': <strong>'.$height.'</strong>';
-print '</span><br>';
+echo '<span class="opacitymedium hideonsmartphone">'.$langs->trans("CurrentInformationOnImage").': </span>';
+echo '<span class="opacitymedium">';
+echo $langs->trans("Width").': <strong>'.$width.'</strong> x '.$langs->trans("Height").': <strong>'.$height.'</strong>';
+echo '</span><br>';
 
-print '<br>'."\n";
+echo '<br>'."\n";
 
 
 /*
  * Resize image
  */
 
-print '<!-- Form to resize -->'."\n";
-print '<form name="redim_file" action="'.$_SERVER["PHP_SELF"].'?id='.((int) $id).($num ? '&num='.urlencode($num) : '').'" method="POST">';
-print '<input type="hidden" name="token" value="'.newToken().'">';
-print '<input type="hidden" name="backtourl" value="'.$backtourl.'">';
+echo '<!-- Form to resize -->'."\n";
+echo '<form name="redim_file" action="'.$_SERVER["PHP_SELF"].'?id='.((int) $id).($num ? '&num='.urlencode($num) : '').'" method="POST">';
+echo '<input type="hidden" name="token" value="'.newToken().'">';
+echo '<input type="hidden" name="backtourl" value="'.$backtourl.'">';
 
-print '<fieldset id="redim_file">';
-print '<legend>'.$langs->trans("Resize").'</legend>';
-print $langs->trans("ResizeDesc").'<br>';
-print $langs->trans("NewLength").': <input name="sizex" type="number" class="flat maxwidth50 right"> px  &nbsp; <span class="opacitymedium">'.$langs->trans("or").'</span> &nbsp; ';
-print $langs->trans("NewHeight").': <input name="sizey" type="number" class="flat maxwidth50 right"> px &nbsp; <br>';
+echo '<fieldset id="redim_file">';
+echo '<legend>'.$langs->trans("Resize").'</legend>';
+echo $langs->trans("ResizeDesc").'<br>';
+echo $langs->trans("NewLength").': <input name="sizex" type="number" class="flat maxwidth50 right"> px  &nbsp; <span class="opacitymedium">'.$langs->trans("or").'</span> &nbsp; ';
+echo $langs->trans("NewHeight").': <input name="sizey" type="number" class="flat maxwidth50 right"> px &nbsp; <br>';
 
-print '<input type="hidden" name="file" value="'.dol_escape_htmltag($file).'" />';
-print '<input type="hidden" name="action" value="confirm_resize" />';
-print '<input type="hidden" name="product" value="'.$id.'" />';
-print '<input type="hidden" name="modulepart" value="'.dol_escape_htmltag($modulepart).'" />';
-print '<input type="hidden" name="id" value="'.$id.'" />';
-print '<br>';
-print '<input class="button" id="submitresize" name="sendit" value="'.dol_escape_htmltag($langs->trans("Resize")).'" type="submit" />';
-print '&nbsp;';
-print '<input type="submit" id="cancelresize" name="cancel" class="button button-cancel" value="'.dol_escape_htmltag($langs->trans("Cancel")).'" />';
-print '</fieldset>'."\n";
-print '</form>';
+echo '<input type="hidden" name="file" value="'.dol_escape_htmltag($file).'" />';
+echo '<input type="hidden" name="action" value="confirm_resize" />';
+echo '<input type="hidden" name="product" value="'.$id.'" />';
+echo '<input type="hidden" name="modulepart" value="'.dol_escape_htmltag($modulepart).'" />';
+echo '<input type="hidden" name="id" value="'.$id.'" />';
+echo '<br>';
+echo '<input class="button" id="submitresize" name="sendit" value="'.dol_escape_htmltag($langs->trans("Resize")).'" type="submit" />';
+echo '&nbsp;';
+echo '<input type="submit" id="cancelresize" name="cancel" class="button button-cancel" value="'.dol_escape_htmltag($langs->trans("Cancel")).'" />';
+echo '</fieldset>'."\n";
+echo '</form>';
 
-print '<br>'."\n";
+echo '<br>'."\n";
 
 
 /*
  * Crop image
  */
 
-print '<br>'."\n";
+echo '<br>'."\n";
 
 if (!empty($conf->use_javascript_ajax)) {
 	$infoarray = dol_getImageSize($dir."/".GETPOST("file"));
@@ -552,22 +552,22 @@ if (!empty($conf->use_javascript_ajax)) {
 		}
 	}
 
-	print '<!-- Form to crop -->'."\n";
-	print '<fieldset id="redim_file">';
-	print '<legend>'.$langs->trans("Crop").'</legend>';
-	print $langs->trans("DefineNewAreaToPick").'...<br>';
-	print '<br><div class="center">';
+	echo '<!-- Form to crop -->'."\n";
+	echo '<fieldset id="redim_file">';
+	echo '<legend>'.$langs->trans("Crop").'</legend>';
+	echo $langs->trans("DefineNewAreaToPick").'...<br>';
+	echo '<br><div class="center">';
 
 	if (empty($conf->dol_no_mouse_hover)) {
-		print '<div style="border: 1px solid #888888; width: '.$widthforcrop.'px;">';
-		print '<img src="'.DOL_URL_ROOT.'/viewimage.php?modulepart='.urlencode($modulepart).'&entity='.((int) $object->entity).'&file='.urlencode($original_file).'" alt="" id="cropbox" width="'.$widthforcrop.'px"/>';
-		print '</div>';
-		print '</div><br>';
+		echo '<div style="border: 1px solid #888888; width: '.$widthforcrop.'px;">';
+		echo '<img src="'.DOL_URL_ROOT.'/viewimage.php?modulepart='.urlencode($modulepart).'&entity='.((int) $object->entity).'&file='.urlencode($original_file).'" alt="" id="cropbox" width="'.$widthforcrop.'px"/>';
+		echo '</div>';
+		echo '</div><br>';
 
-		print '<form action="'.$_SERVER["PHP_SELF"].'?id='.((int) $id).($num ? '&num='.urlencode($num) : '').'" method="POST">';
-		print '<input type="hidden" name="token" value="'.newToken().'">';
-		print '<input type="hidden" name="backtourl" value="'.$backtourl.'">';
-		print '
+		echo '<form action="'.$_SERVER["PHP_SELF"].'?id='.((int) $id).($num ? '&num='.urlencode($num) : '').'" method="POST">';
+		echo '<input type="hidden" name="token" value="'.newToken().'">';
+		echo '<input type="hidden" name="backtourl" value="'.$backtourl.'">';
+		echo '
 		      <div class="jc_coords">
 		         '.$langs->trans("NewSizeAfterCropping").':
 		         &nbsp; <label>X1=<input type="number" class="flat maxwidth50" id="x" name="x" /></label>
@@ -595,14 +595,14 @@ if (!empty($conf->use_javascript_ajax)) {
 		   </form>'."\n";
 	} else {
 		$langs->load("other");
-		print '<div class="opacitymedium">'.$langs->trans("FeatureNotAvailableOnDevicesWithoutMouse").'</div>';
+		echo '<div class="opacitymedium">'.$langs->trans("FeatureNotAvailableOnDevicesWithoutMouse").'</div>';
 	}
-	print '</fieldset>'."\n";
-	print '<br>';
+	echo '</fieldset>'."\n";
+	echo '<br>';
 }
 
 /* Check that mandatory fields are filled */
-print '<script nonce="'.getNonce().'" type="text/javascript">
+echo '<script nonce="'.getNonce().'" type="text/javascript">
 jQuery(document).ready(function() {
 	$("#submitcrop").click(function(e) {
         console.log("We click on submitcrop");

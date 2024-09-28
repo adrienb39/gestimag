@@ -2,7 +2,7 @@
 namespace Mike42\Escpos\PrintConnectors;
 
 /**
- * Wrap multiple connectors up, to print to several printers at the same time.
+ * Wrap multiple connectors up, to echo to several printers at the same time.
  */
 class MultiplePrintConnector implements PrintConnector
 {

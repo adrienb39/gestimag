@@ -268,7 +268,7 @@ class box_actions_future extends ModeleBoxes
 		if ($nooutput) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 
 		return '';

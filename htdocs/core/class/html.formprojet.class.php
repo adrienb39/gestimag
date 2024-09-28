@@ -75,7 +75,7 @@ class FormProjets extends Form
 	 * @param int 		$disabled 		Disabled
 	 * @param int 		$mode 			0 for HTML mode and 1 for JSON mode
 	 * @param string 	$filterkey 		Key to filter on ref or title
-	 * @param int 		$nooutput 		No print output. Return it only.
+	 * @param int 		$nooutput 		No echo output. Return it only.
 	 * @param int 		$forceaddid 	Force to add project id in list, event if not qualified
 	 * @param string 	$morecss 		More css
 	 * @param string	$htmlid 		Html id to use instead of htmlname, by example id="htmlid"
@@ -121,7 +121,7 @@ class FormProjets extends Form
 		}
 
 		if (empty($nooutput)) {
-			print $out;
+			echo $out;
 			return '';
 		} else {
 			return $out;
@@ -144,7 +144,7 @@ class FormProjets extends Form
 	 * @param int 		$disabled 		Disabled
 	 * @param int 		$mode 			0 for HTML mode and 1 for array return (to be used by json_encode for example)
 	 * @param string 	$filterkey 		Key to filter on title or ref
-	 * @param int 		$nooutput 		No print output. Return it only.
+	 * @param int 		$nooutput 		No echo output. Return it only.
 	 * @param int 		$forceaddid 	Force to add project id in list, event if not qualified
 	 * @param string	$htmlid 		Html id to use instead of htmlname
 	 * @param string 	$morecss 		More CSS
@@ -308,7 +308,7 @@ class FormProjets extends Form
 				}
 
 				if (empty($nooutput)) {
-					print $out;
+					echo $out;
 					return '';
 				} else {
 					return $out;
@@ -514,7 +514,7 @@ class FormProjets extends Form
 
 			// Output or return
 			if (empty($nooutput)) {
-				print $out;
+				echo $out;
 			} else {
 				return $out;
 			}
@@ -568,7 +568,7 @@ class FormProjets extends Form
 
 		$sqlfilter = '';
 
-		//print $table_element;
+		//echo $table_element;
 		switch ($table_element) {
 			case "loan":
 				$sql = "SELECT t.rowid, t.label as ref";
@@ -807,7 +807,7 @@ class FormProjets extends Form
 			$selectedarray = explode(',', $selected);
 		}
 
-		print Form::multiselectarray($hmlname, $options, $selectedarray, 0, 0, 'minwidth100');
+		echo Form::multiselectarray($hmlname, $options, $selectedarray, 0, 0, 'minwidth100');
 	}
 
 	/**
@@ -945,7 +945,7 @@ class FormProjets extends Form
 	 *  @param	string $htmlname_status	name of HTML element for status select
 	 *  @param	string $htmlname_percent	name of HTML element for percent input
 	 *  @param  string $filter         	optional filters criteras
-	 *  @param  int    $nooutput       	No print output. Return it only.
+	 *  @param  int    $nooutput       	No echo output. Return it only.
 	 *  @return	void|string
 	 */
 	public function formOpportunityStatus($page, $selected = '', $percent_value = 0, $htmlname_status = 'none', $htmlname_percent = 'none', $filter = '', $nooutput = 0)
@@ -981,7 +981,7 @@ class FormProjets extends Form
 		if ($nooutput) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 	}
 }

@@ -58,7 +58,7 @@ if (is_numeric($entity)) {
 
 // Error if CLI mode
 if (php_sapi_name() == "cli") {
-	echo "Error: This page can't be used as a CLI script. For the CLI version of script, launch cron_run_job.php available into scripts/cron/ directory.\n";
+	echo  "Error: This page can't be used as a CLI script. For the CLI version of script, launch cron_run_job.php available into scripts/cron/ directory.\n";
 	exit(-1);
 }
 
@@ -91,29 +91,29 @@ $now = dol_now();
 // Check the key, avoid that a stranger starts cron
 $key = GETPOST('securitykey', 'alpha');
 if (empty($key)) {
-	echo 'Securitykey is required. Check setup of cron jobs module.';
+	echo  'Securitykey is required. Check setup of cron jobs module.';
 	exit;
 }
 if ($key != getDolGlobalString('CRON_KEY')) {
-	echo 'Securitykey is wrong.';
+	echo  'Securitykey is wrong.';
 	exit;
 }
 // Check the key, avoid that a stranger starts cron
 $userlogin = GETPOST('userlogin', 'alpha');
 if (empty($userlogin)) {
-	echo 'Userlogin is required.';
+	echo  'Userlogin is required.';
 	exit;
 }
 require_once DOL_DOCUMENT_ROOT.'/user/class/user.class.php';
 $user = new User($db);
 $result = $user->fetch('', $userlogin);
 if ($result < 0) {
-	echo "User Error:".$user->error;
+	echo  "User Error:".$user->error;
 	dol_syslog("cron_run_jobs.php:: User Error:".$user->error, LOG_ERR);
 	exit;
 } else {
 	if (empty($user->id)) {
-		echo " User login:".$userlogin." do not exists";
+		echo  " User login:".$userlogin." do not exists";
 		dol_syslog(" User login:".$userlogin." do not exists", LOG_ERR);
 		exit;
 	}
@@ -129,7 +129,7 @@ $object = new Cronjob($db);
 $filter = array();
 if (!empty($id)) {
 	if (!is_numeric($id)) {
-		echo "Error: Bad value for parameter job id";
+		echo  "Error: Bad value for parameter job id";
 		dol_syslog("cron_run_jobs.php Bad value for parameter job id", LOG_WARNING);
 		exit;
 	}
@@ -138,7 +138,7 @@ if (!empty($id)) {
 
 $result = $object->fetchAll('ASC,ASC,ASC', 't.priority,t.entity,t.rowid', 0, 0, 1, $filter, 0);
 if ($result < 0) {
-	echo "Error: ".$object->error;
+	echo  "Error: ".$object->error;
 	dol_syslog("cron_run_jobs.php fetch Error".$object->error, LOG_ERR);
 	exit;
 }
@@ -156,12 +156,12 @@ if (is_array($object->lines) && (count($object->lines) > 0)) {
 	// Loop over job
 	foreach ($object->lines as $line) {
 		dol_syslog("cron_run_jobs.php cronjobid: ".$line->id." priority=".$line->priority." entity=".$line->entity." label=".$line->label, LOG_DEBUG);
-		echo "cron_run_jobs.php cronjobid: ".$line->id." priority=".$line->priority." entity=".$line->entity." label=".$line->label;
+		echo  "cron_run_jobs.php cronjobid: ".$line->id." priority=".$line->priority." entity=".$line->entity." label=".$line->label;
 
 		// Force reload of setup for the current entity
 		if ($line->entity != $conf->entity) {
 			dol_syslog("cron_run_jobs.php we work on another entity so we reload user and conf", LOG_DEBUG);
-			echo " -> we change entity so we reload user and conf";
+			echo  " -> we change entity so we reload user and conf";
 
 			$conf->entity = (empty($line->entity) ? 1 : $line->entity);
 			$conf->setValues($db); // This make also the $mc->setValues($conf); that reload $mc->sharings
@@ -170,12 +170,12 @@ if (is_array($object->lines) && (count($object->lines) > 0)) {
 			if ($conf->entity != $user->entity && $user->entity != 0) {
 				$result = $user->fetch('', $userlogin, '', 0, $conf->entity);
 				if ($result < 0) {
-					echo "\nUser Error: ".$user->error."\n";
+					echo  "\nUser Error: ".$user->error."\n";
 					dol_syslog("cron_run_jobs.php:: User Error:".$user->error, LOG_ERR);
 					exit(-1);
 				} else {
 					if ($result == 0) {
-						echo "\nUser login: ".$userlogin." does not exists for entity ".$conf->entity."\n";
+						echo  "\nUser login: ".$userlogin." does not exists for entity ".$conf->entity."\n";
 						dol_syslog("User login:".$userlogin." does not exists", LOG_ERR);
 						exit(-1);
 					}
@@ -193,24 +193,24 @@ if (is_array($object->lines) && (count($object->lines) > 0)) {
 		$datestartok = (empty($line->datestart) || $line->datestart <= $now);
 		$dateendok = (empty($line->dateend) || $line->dateend >= $now);
 		if ($datenextrunok && $datestartok && $dateendok) {
-			echo " - qualified";
+			echo  " - qualified";
 
 			dol_syslog("cron_run_jobs.php line->datenextrun:".dol_print_date($line->datenextrun, 'dayhourrfc')." line->datestart:".dol_print_date($line->datestart, 'dayhourrfc')." line->dateend:".dol_print_date($line->dateend, 'dayhourrfc')." now:".dol_print_date($now, 'dayhourrfc'));
 
 			$cronjob = new Cronjob($db);
 			$result = $cronjob->fetch($line->id);
 			if ($result < 0) {
-				echo "Error cronjobid: ".$line->id." cronjob->fetch: ".$cronjob->error."\n";
-				echo "Failed to fetch job ".$line->id."\n";
+				echo  "Error cronjobid: ".$line->id." cronjob->fetch: ".$cronjob->error."\n";
+				echo  "Failed to fetch job ".$line->id."\n";
 				dol_syslog("cron_run_jobs.php::fetch Error".$cronjob->error, LOG_ERR);
 				exit;
 			}
 			// Execute job
 			$result = $cronjob->run_jobs($userlogin);
 			if ($result < 0) {
-				echo "Error cronjobid: ".$line->id." cronjob->run_job: ".$cronjob->error."\n";
-				echo "At least one job failed. Go on menu Home-Setup-Admin tools to see result for each job.\n";
-				echo "You can also enable module Log if not yet enabled, run again and take a look into gestimag.log file\n";
+				echo  "Error cronjobid: ".$line->id." cronjob->run_job: ".$cronjob->error."\n";
+				echo  "At least one job failed. Go on menu Home-Setup-Admin tools to see result for each job.\n";
+				echo  "You can also enable module Log if not yet enabled, run again and take a look into gestimag.log file\n";
 				dol_syslog("cron_run_jobs.php::run_jobs Error".$cronjob->error, LOG_ERR);
 				$nbofjobslaunchedko++;
 				$resultstring = 'KO';
@@ -219,20 +219,20 @@ if (is_array($object->lines) && (count($object->lines) > 0)) {
 				$resultstring = 'OK';
 			}
 
-			echo "Result of run_jobs = ".$resultstring." result = ".$result;
+			echo  "Result of run_jobs = ".$resultstring." result = ".$result;
 
 			// We re-program the next execution and stores the last execution time for this job
 			$result = $cronjob->reprogram_jobs($userlogin, $now);
 			if ($result < 0) {
-				echo "Error cronjobid: ".$line->id." cronjob->reprogram_job: ".$cronjob->error."\n";
-				echo "Enable module Log if not yet enabled, run again and take a look into gestimag.log file\n";
+				echo  "Error cronjobid: ".$line->id." cronjob->reprogram_job: ".$cronjob->error."\n";
+				echo  "Enable module Log if not yet enabled, run again and take a look into gestimag.log file\n";
 				dol_syslog("cron_run_jobs.php::reprogram_jobs Error".$cronjob->error, LOG_ERR);
 				exit;
 			}
 
-			echo "Job re-scheduled\n";
+			echo  "Job re-scheduled\n";
 		} else {
-			echo " - not qualified (datenextrunok=".($datenextrunok ?: 0).", datestartok=".($datestartok ?: 0).", dateendok=".($dateendok ?: 0).")\n";
+			echo  " - not qualified (datenextrunok=".($datenextrunok ?: 0).", datestartok=".($datestartok ?: 0).", dateendok=".($dateendok ?: 0).")\n";
 
 			dol_syslog("cron_run_jobs.php job ".$line->id." not qualified line->datenextrun:".dol_print_date($line->datenextrun, 'dayhourrfc')." line->datestart:".dol_print_date($line->datestart, 'dayhourrfc')." line->dateend:".dol_print_date($line->dateend, 'dayhourrfc')." now:".dol_print_date($now, 'dayhourrfc'));
 		}
@@ -240,9 +240,9 @@ if (is_array($object->lines) && (count($object->lines) > 0)) {
 
 	$conf = $savconf;
 
-	echo "Result: ".($nbofjobs)." jobs - ".($nbofjobslaunchedok + $nbofjobslaunchedko)." launched = ".$nbofjobslaunchedok." OK + ".$nbofjobslaunchedko." KO";
+	echo  "Result: ".($nbofjobs)." jobs - ".($nbofjobslaunchedok + $nbofjobslaunchedko)." launched = ".$nbofjobslaunchedok." OK + ".$nbofjobslaunchedko." KO";
 } else {
-	echo "Result: No active jobs found.";
+	echo  "Result: No active jobs found.";
 }
 
 $db->close();

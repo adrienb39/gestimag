@@ -181,10 +181,10 @@ function show_contacts_projects($conf, $langs, $db, $object, $backtopage = '', $
 			$newcardbutton .= dolGetButtonTitle($langs->trans('AddProject'), '', 'fa fa-plus-circle', DOL_URL_ROOT.'/projet/card.php?socid='.$object->id.'&amp;action=create&amp;backtopage='.urlencode($backtopage));
 		}
 
-		print "\n";
-		print load_fiche_titre($langs->trans("ProjectsHavingThisContact"), $newcardbutton.$morehtmlright, '');
-		print '<div class="div-table-responsive">';
-		print "\n".'<table class="noborder" width=100%>';
+		echo"\n";
+		echoload_fiche_titre($langs->trans("ProjectsHavingThisContact"), $newcardbutton.$morehtmlright, '');
+		echo'<div class="div-table-responsive">';
+		echo"\n".'<table class="noborder" width=100%>';
 
 		$sql  = 'SELECT p.rowid as id, p.entity, p.title, p.ref, p.public, p.dateo as do, p.datee as de, p.fk_statut as status, p.fk_opp_status, p.opp_amount, p.opp_percent, p.tms as date_modification, p.budget_amount';
 		$sql .= ', cls.code as opp_status_code, ctc.libelle as type_label';
@@ -201,17 +201,17 @@ function show_contacts_projects($conf, $langs, $db, $object, $backtopage = '', $
 		if ($result) {
 			$num = $db->num_rows($result);
 
-			print '<tr class="liste_titre">';
-			print '<td>'.$langs->trans("Ref").'</td>';
-			print '<td>'.$langs->trans("Name").'</td>';
-			print '<td>'.$langs->trans("ContactType").'</td>';
-			print '<td class="center">'.$langs->trans("DateStart").'</td>';
-			print '<td class="center">'.$langs->trans("DateEnd").'</td>';
-			print '<td class="right">'.$langs->trans("OpportunityAmountShort").'</td>';
-			print '<td class="center">'.$langs->trans("OpportunityStatusShort").'</td>';
-			print '<td class="right">'.$langs->trans("OpportunityProbabilityShort").'</td>';
-			print '<td class="right">'.$langs->trans("Status").'</td>';
-			print '</tr>';
+			echo'<tr class="liste_titre">';
+			echo'<td>'.$langs->trans("Ref").'</td>';
+			echo'<td>'.$langs->trans("Name").'</td>';
+			echo'<td>'.$langs->trans("ContactType").'</td>';
+			echo'<td class="center">'.$langs->trans("DateStart").'</td>';
+			echo'<td class="center">'.$langs->trans("DateEnd").'</td>';
+			echo'<td class="right">'.$langs->trans("OpportunityAmountShort").'</td>';
+			echo'<td class="center">'.$langs->trans("OpportunityStatusShort").'</td>';
+			echo'<td class="right">'.$langs->trans("OpportunityProbabilityShort").'</td>';
+			echo'<td class="right">'.$langs->trans("Status").'</td>';
+			echo'</tr>';
 
 			if ($num > 0) {
 				require_once DOL_DOCUMENT_ROOT.'/projet/class/project.class.php';
@@ -228,56 +228,56 @@ function show_contacts_projects($conf, $langs, $db, $object, $backtopage = '', $
 					$userAccess = $projecttmp->restrictedProjectArea($user);
 
 					if ($user->hasRight('projet', 'lire') && $userAccess > 0) {
-						print '<tr class="oddeven">';
+						echo'<tr class="oddeven">';
 
 						// Ref
-						print '<td>';
-						print $projecttmp->getNomUrl(1);
-						print '</td>';
+						echo'<td>';
+						echo$projecttmp->getNomUrl(1);
+						echo'</td>';
 
 						// Label
-						print '<td>'.dol_escape_htmltag($obj->title).'</td>';
-						print '<td>'.dol_escape_htmltag($obj->type_label).'</td>';
+						echo'<td>'.dol_escape_htmltag($obj->title).'</td>';
+						echo'<td>'.dol_escape_htmltag($obj->type_label).'</td>';
 						// Date start
-						print '<td class="center">'.dol_print_date($db->jdate($obj->do), "day").'</td>';
+						echo'<td class="center">'.dol_print_date($db->jdate($obj->do), "day").'</td>';
 						// Date end
-						print '<td class="center">'.dol_print_date($db->jdate($obj->de), "day").'</td>';
+						echo'<td class="center">'.dol_print_date($db->jdate($obj->de), "day").'</td>';
 						// Opp amount
-						print '<td class="right">';
+						echo'<td class="right">';
 						if ($obj->opp_status_code) {
-							print price($obj->opp_amount, 1, '', 1, -1, -1, '');
+							echoprice($obj->opp_amount, 1, '', 1, -1, -1, '');
 						}
-						print '</td>';
+						echo'</td>';
 						// Opp status
-						print '<td class="center">';
+						echo'<td class="center">';
 						if ($obj->opp_status_code) {
-							print $langs->trans("OppStatus".$obj->opp_status_code);
+							echo$langs->trans("OppStatus".$obj->opp_status_code);
 						}
-						print '</td>';
+						echo'</td>';
 						// Opp percent
-						print '<td class="right">';
+						echo'<td class="right">';
 						if ($obj->opp_percent) {
-							print price($obj->opp_percent, 1, '', 1, 0).'%';
+							echoprice($obj->opp_percent, 1, '', 1, 0).'%';
 						}
-						print '</td>';
+						echo'</td>';
 						// Status
-						print '<td class="right">'.$projecttmp->getLibStatut(5).'</td>';
+						echo'<td class="right">'.$projecttmp->getLibStatut(5).'</td>';
 
-						print '</tr>';
+						echo'</tr>';
 					}
 					$i++;
 				}
 			} else {
-				print '<tr class="oddeven"><td colspan="8"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
+				echo'<tr class="oddeven"><td colspan="8"><span class="opacitymedium">'.$langs->trans("None").'</span></td></tr>';
 			}
 			$db->free($result);
 		} else {
 			dol_print_error($db);
 		}
-		print "</table>";
-		print '</div>';
+		echo"</table>";
+		echo'</div>';
 
-		print "<br>\n";
+		echo"<br>\n";
 	}
 
 	return $i;

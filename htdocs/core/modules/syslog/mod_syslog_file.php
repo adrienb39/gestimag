@@ -156,7 +156,7 @@ class mod_syslog_file extends LogHandler
 				global $gestimag_main_prod;
 				// Do not break gestimag usage if log fails
 				//throw new Exception('Failed to open log file '.basename($logfile));
-				print 'Failed to open log file '.($gestimag_main_prod ? basename($logfile) : $logfile);
+				echo 'Failed to open log file '.($gestimag_main_prod ? basename($logfile) : $logfile);
 			}
 		} else {
 			$logLevels = array(

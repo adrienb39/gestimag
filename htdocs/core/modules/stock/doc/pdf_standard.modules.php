@@ -304,7 +304,7 @@ class pdf_standard extends ModelePDFStock
 						if ($pageposafter > $pageposbefore) {	// There is a pagebreak
 							$pdf->rollbackTransaction(true);
 							$pageposafter = $pageposbefore;
-							//print $pageposafter.'-'.$pageposbefore;exit;
+							//echo $pageposafter.'-'.$pageposbefore;exit;
 							$pdf->setPageOrientation('', 1, $heightforfooter); // The only function to edit the bottom margin of current page to set it.
 							$pdf->writeHTMLCell($this->wref, 4, $curX, $curY, $outputlangs->convToOutputCharset($objp->ref), 0, 1, false, true, 'J', true);
 							//pdf_writelinedesc($pdf, $object, $i, $outputlangs, $this->posxtva - $curX, 4, $curX, $curY, $hideref, $hidedesc);

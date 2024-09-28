@@ -146,7 +146,7 @@ class InterfaceNotification extends GestimagTriggers
 				}
 				// Check if module for this event is active
 				if ($qualified) {
-					//print 'xx'.$obj->code.' '.$obj->elementtype.'<br>';
+					//echo 'xx'.$obj->code.' '.$obj->elementtype.'<br>';
 					$element = $obj->elementtype;
 
 					// Exclude events if related module is disabled

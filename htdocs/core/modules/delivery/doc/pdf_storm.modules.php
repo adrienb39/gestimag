@@ -421,7 +421,7 @@ class pdf_storm extends ModelePDFDeliveryOrder
 						if ($pageposafter > $pageposbefore) {    // There is a pagebreak
 							$pdf->rollbackTransaction(true);
 							$pageposafter = $pageposbefore;
-							//print $pageposafter.'-'.$pageposbefore;exit;
+							//echo $pageposafter.'-'.$pageposbefore;exit;
 							$pdf->setPageOrientation('', 1, $heightforfooter); // The only function to edit the bottom margin of current page to set it.
 							pdf_writelinedesc($pdf, $object, $i, $outputlangs, $this->getColumnContentWidth('desc'), 4, $this->getColumnContentXStart('desc'), $curY, $hideref, $hidedesc);
 							$posyafter = $pdf->GetY();

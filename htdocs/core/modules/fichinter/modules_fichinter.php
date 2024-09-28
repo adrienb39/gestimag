@@ -152,7 +152,7 @@ function fichinter_create($db, $object, $modele, $outputlangs, $hidedetails = 0,
 			return 0;
 		}
 	} else {
-		print $langs->trans("Error")." ".$langs->trans("ErrorFileDoesNotExists", $file);
+		echo $langs->trans("Error")." ".$langs->trans("ErrorFileDoesNotExists", $file);
 		return 0;
 	}
 }

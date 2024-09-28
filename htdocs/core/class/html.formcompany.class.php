@@ -151,9 +151,9 @@ class FormCompany extends Form
 		// phpcs:enable
 		global $user, $langs;
 
-		print '<form method="post" action="' . $page . '">';
-		print '<input type="hidden" name="action" value="setprospectlevel">';
-		print '<input type="hidden" name="token" value="' . newToken() . '">';
+		echo '<form method="post" action="' . $page . '">';
+		echo '<input type="hidden" name="action" value="setprospectlevel">';
+		echo '<input type="hidden" name="token" value="' . newToken() . '">';
 
 		dol_syslog(get_class($this) . '::form_prospect_level', LOG_DEBUG);
 		$sql = "SELECT code, label";
@@ -178,15 +178,15 @@ class FormCompany extends Form
 				$options[$obj->code] = $level;
 			}
 
-			print Form::selectarray($htmlname, $options, $selected);
+			echo Form::selectarray($htmlname, $options, $selected);
 		} else {
 			dol_print_error($this->db);
 		}
 		if (!empty($htmlname) && $user->admin) {
-			print ' ' . info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
+			echo ' ' . info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
 		}
-		print '<input type="submit" class="button button-save valignmiddle small" value="' . $langs->trans("Modify") . '">';
-		print '</form>';
+		echo '<input type="submit" class="button button-save valignmiddle small" value="' . $langs->trans("Modify") . '">';
+		echo '</form>';
 	}
 
 	/**
@@ -202,9 +202,9 @@ class FormCompany extends Form
 	{
 		global $user, $langs;
 
-		print '<form method="post" action="' . $page . '">';
-		print '<input type="hidden" name="action" value="setprospectcontactlevel">';
-		print '<input type="hidden" name="token" value="' . newToken() . '">';
+		echo '<form method="post" action="' . $page . '">';
+		echo '<input type="hidden" name="action" value="setprospectcontactlevel">';
+		echo '<input type="hidden" name="token" value="' . newToken() . '">';
 
 		dol_syslog(__METHOD__, LOG_DEBUG);
 		$sql = "SELECT code, label";
@@ -229,15 +229,15 @@ class FormCompany extends Form
 				$options[$obj->code] = $level;
 			}
 
-			print Form::selectarray($htmlname, $options, $selected);
+			echo Form::selectarray($htmlname, $options, $selected);
 		} else {
 			dol_print_error($this->db);
 		}
 		if (!empty($htmlname) && $user->admin) {
-			print ' ' . info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
+			echo ' ' . info_admin($langs->trans("YouCanChangeValuesForThisListFromDictionarySetup"), 1);
 		}
-		print '<input type="submit" class="button button-save valignmiddle small" value="' . $langs->trans("Modify") . '">';
-		print '</form>';
+		echo '<input type="submit" class="button button-save valignmiddle small" value="' . $langs->trans("Modify") . '">';
+		echo '</form>';
 	}
 
 	// phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
@@ -255,7 +255,7 @@ class FormCompany extends Form
 	public function select_departement($selected = '', $country_codeid = 0, $htmlname = 'state_id')
 	{
 		// phpcs:enable
-		print $this->select_state($selected, $country_codeid, $htmlname);
+		echo $this->select_state($selected, $country_codeid, $htmlname);
 	}
 
 	// phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
@@ -422,7 +422,7 @@ class FormCompany extends Form
 		dol_syslog(get_class($this) . "::select_region", LOG_DEBUG);
 		$resql = $this->db->query($sql);
 		if ($resql) {
-			print '<select class="flat" id="' . $htmlname . '" name="' . $htmlname . '">';
+			echo '<select class="flat" id="' . $htmlname . '" name="' . $htmlname . '">';
 			$num = $this->db->num_rows($resql);
 			$i = 0;
 			if ($num) {
@@ -430,27 +430,27 @@ class FormCompany extends Form
 				while ($i < $num) {
 					$obj = $this->db->fetch_object($resql);
 					if ($obj->code == 0) {
-						print '<option value="0">&nbsp;</option>';
+						echo '<option value="0">&nbsp;</option>';
 					} else {
 						if ($country == '' || $country != $obj->country) {
 							// Show break
 							$key = $langs->trans("Country" . strtoupper($obj->country_code));
 							$valuetoshow = ($key != "Country" . strtoupper($obj->country_code)) ? $obj->country_code . " - " . $key : $obj->country;
-							print '<option value="-2" disabled>----- ' . $valuetoshow . " -----</option>\n";
+							echo '<option value="-2" disabled>----- ' . $valuetoshow . " -----</option>\n";
 							$country = $obj->country;
 						}
 
 						if ($selected > 0 && $selected == $obj->code) {
-							print '<option value="' . $obj->code . '" selected>' . $obj->label . '</option>';
+							echo '<option value="' . $obj->code . '" selected>' . $obj->label . '</option>';
 						} else {
-							print '<option value="' . $obj->code . '">' . $obj->label . '</option>';
+							echo '<option value="' . $obj->code . '">' . $obj->label . '</option>';
 						}
 					}
 					$i++;
 				}
 			}
-			print '</select>';
-			print ajax_combobox($htmlname);
+			echo '</select>';
+			echo ajax_combobox($htmlname);
 		} else {
 			dol_print_error($this->db);
 		}
@@ -524,13 +524,13 @@ class FormCompany extends Form
 	 *    @param    mixed		$country_codeid		0=All countries, else the code of the country to display
 	 *    @param    string		$filter          	Add a SQL filter on list
 	 *    @return	void
-	 *    @deprecated Use print xxx->select_juridicalstatus instead
+	 *    @deprecated Use echo xxx->select_juridicalstatus instead
 	 *    @see select_juridicalstatus()
 	 */
 	public function select_forme_juridique($selected = '', $country_codeid = 0, $filter = '')
 	{
 		// phpcs:enable
-		print $this->select_juridicalstatus($selected, $country_codeid, $filter);
+		echo $this->select_juridicalstatus($selected, $country_codeid, $filter);
 	}
 
 	// phpcs:disable PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
@@ -675,7 +675,7 @@ class FormCompany extends Form
 			$events[] = array('method' => 'getContacts', 'url' => dol_buildpath('/core/ajax/contacts.php', 1), 'htmlname' => 'contactid', 'params' => array('add-customer-contact' => 'disabled'));
 
 			if (count($events)) {	// If there is some ajax events to run once selection is done, we add code here to run events
-				print '<script nonce="' . getNonce() . '" type="text/javascript">
+				echo '<script nonce="' . getNonce() . '" type="text/javascript">
 				jQuery(document).ready(function() {
 					$("#search_' . $htmlname . '").change(function() {
 						var obj = ' . json_encode($events) . ';
@@ -725,9 +725,9 @@ class FormCompany extends Form
 				</script>';
 			}
 
-			print "\n" . '<!-- Input text for third party with Ajax.Autocompleter (selectCompaniesForNewContact) -->' . "\n";
-			print '<input type="text" size="30" id="search_' . $htmlname . '" name="search_' . $htmlname . '" value="' . $name . '" />';
-			print ajax_autocompleter(($socid ? $socid : -1), $htmlname, DOL_URL_ROOT . '/societe/ajax/ajaxcompanies.php', '', $minLength, 0);
+			echo "\n" . '<!-- Input text for third party with Ajax.Autocompleter (selectCompaniesForNewContact) -->' . "\n";
+			echo '<input type="text" size="30" id="search_' . $htmlname . '" name="search_' . $htmlname . '" value="' . $name . '" />';
+			echo ajax_autocompleter(($socid ? $socid : -1), $htmlname, DOL_URL_ROOT . '/societe/ajax/ajaxcompanies.php', '', $minLength, 0);
 			return $socid;
 		} else {
 			// Search to list thirdparties
@@ -756,13 +756,13 @@ class FormCompany extends Form
 
 			$resql = $this->db->query($sql);
 			if ($resql) {
-				print '<select class="flat' . ($morecss ? ' ' . $morecss : '') . '" id="' . $htmlname . '" name="' . $htmlname . '"';
+				echo '<select class="flat' . ($morecss ? ' ' . $morecss : '') . '" id="' . $htmlname . '" name="' . $htmlname . '"';
 				if ($conf->use_javascript_ajax) {
 					$javaScript = "window.location='" . dol_escape_js($_SERVER['PHP_SELF']) . "?" . $var_id . "=" . ($forceid > 0 ? $forceid : $object->id) . $moreparam . "&" . $htmlname . "=' + form." . $htmlname . ".options[form." . $htmlname . ".selectedIndex].value;";
-					print ' onChange="' . $javaScript . '"';
+					echo ' onChange="' . $javaScript . '"';
 				}
-				print '>';
-				print '<option value="-1">&nbsp;</option>';
+				echo '>';
+				echo '<option value="-1">&nbsp;</option>';
 
 				$num = $this->db->num_rows($resql);
 				$i = 0;
@@ -777,24 +777,24 @@ class FormCompany extends Form
 							$disabled = 1;
 						}
 						if ($selected > 0 && $selected == $obj->rowid) {
-							print '<option value="' . $obj->rowid . '"';
+							echo '<option value="' . $obj->rowid . '"';
 							if ($disabled) {
-								print ' disabled';
+								echo ' disabled';
 							}
-							print ' selected>' . dol_escape_htmltag($obj->name, 0, 0, '', 0, 1) . '</option>';
+							echo ' selected>' . dol_escape_htmltag($obj->name, 0, 0, '', 0, 1) . '</option>';
 							$firstCompany = $obj->rowid;
 						} else {
-							print '<option value="' . $obj->rowid . '"';
+							echo '<option value="' . $obj->rowid . '"';
 							if ($disabled) {
-								print ' disabled';
+								echo ' disabled';
 							}
-							print '>' . dol_escape_htmltag($obj->name, 0, 0, '', 0, 1) . '</option>';
+							echo '>' . dol_escape_htmltag($obj->name, 0, 0, '', 0, 1) . '</option>';
 						}
 						$i++;
 					}
 				}
-				print "</select>\n";
-				print ajax_combobox($htmlname);
+				echo "</select>\n";
+				echo ajax_combobox($htmlname);
 				return $firstCompany;
 			} else {
 				dol_print_error($this->db);
@@ -848,7 +848,7 @@ class FormCompany extends Form
 		if (empty($output)) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 	}
 
@@ -865,7 +865,7 @@ class FormCompany extends Form
 	public function showRoles($htmlname, Contact $contact, $rendermode = 'view', $selected = array(), $morecss = 'minwidth500')
 	{
 		if ($rendermode === 'view') {
-			$toprint = array();
+			$toecho = array();
 			foreach ($contact->roles as $key => $val) {
 				$toprint[] = '<li class="select2-search-choice-gestimag noborderoncategories" style="background: #bbb;">' . $val['label'] . '</li>';
 			}
@@ -1025,19 +1025,19 @@ class FormCompany extends Form
 
 			if ($nbvalues > 1) {
 				//montar select
-				print '<select class="flat" name="'.$htmlname.'" id="'.$htmlname.'">';
+				echo '<select class="flat" name="'.$htmlname.'" id="'.$htmlname.'">';
 				$i = 0;
 				while ($i < $nbvalues) {
 					if ($selected == $valors[$i]) {
-						print '<option value="' . $valors[$i] . '" selected>';
+						echo '<option value="' . $valors[$i] . '" selected>';
 					} else {
-						print '<option value="' . $valors[$i] . '">';
+						echo '<option value="' . $valors[$i] . '">';
 					}
-					print $valors[$i];
-					print '</option>';
+					echo $valors[$i];
+					echo '</option>';
 					$i++;
 				}
-				print '</select>';
+				echo '</select>';
 			}
 		}
 	}
@@ -1114,7 +1114,7 @@ class FormCompany extends Form
 	 *  @param  string	$selected   	Id preselected
 	 *  @param  string	$htmlname		Name of HTML select
 	 *  @param  string	$filter         optional filters criteras
-	 *  @param  int     $nooutput       No print output. Return it only.
+	 *  @param  int     $nooutput       No echo output. Return it only.
 	 *  @return	void|string
 	 */
 	public function formThirdpartyType($page, $selected = '', $htmlname = 'socid', $filter = '', $nooutput = 0)
@@ -1144,7 +1144,7 @@ class FormCompany extends Form
 		if ($nooutput) {
 			return $out;
 		} else {
-			print $out;
+			echo $out;
 		}
 	}
 
@@ -1166,13 +1166,13 @@ class FormCompany extends Form
 			$actioncode = empty($prospectstatic->cacheprospectstatus[$statusprospect]) ? '' : $prospectstatic->cacheprospectstatus[$statusprospect]['code'];
 			$actionpicto = empty($prospectstatic->cacheprospectstatus[$statusprospect]['picto']) ? '' : $prospectstatic->cacheprospectstatus[$statusprospect]['picto'];
 
-			//print $prospectstatic->LibProspCommStatut($statusprospect, 2, $prospectstatic->cacheprospectstatus[$statusprospect]['label'], $prospectstatic->cacheprospectstatus[$statusprospect]['picto']);
-			print img_action('', $actioncode, $actionpicto, 'class="inline-block valignmiddle paddingright pictoprospectstatus"');
-			print '<select class="flat selectprospectstatus maxwidth150" id="'. $htmlname.$idprospect .'" data-socid="'.$idprospect.'" name="' . $htmlname .'"';
+			//echo $prospectstatic->LibProspCommStatut($statusprospect, 2, $prospectstatic->cacheprospectstatus[$statusprospect]['label'], $prospectstatic->cacheprospectstatus[$statusprospect]['picto']);
+			echo img_action('', $actioncode, $actionpicto, 'class="inline-block valignmiddle paddingright pictoprospectstatus"');
+			echo '<select class="flat selectprospectstatus maxwidth150" id="'. $htmlname.$idprospect .'" data-socid="'.$idprospect.'" name="' . $htmlname .'"';
 			if (!$user->hasRight('societe', 'creer')) {
-				print ' disabled';
+				echo ' disabled';
 			}
-			print '>';
+			echo '>';
 			foreach ($prospectstatic->cacheprospectstatus as $key => $val) {
 				//$titlealt = (empty($val['label']) ? 'default' : $val['label']);
 				$label = $val['label'];
@@ -1182,14 +1182,14 @@ class FormCompany extends Form
 				} else {
 					$label = (($langs->trans("StatusProspect".$val['id']) != "StatusProspect".$val['id']) ? $langs->trans("StatusProspect".$val['id']) : $label);
 				}
-				print '<option value="'.$val['id'].'" data-html="'.dol_escape_htmltag(img_action('', $val['code'], $val['picto']).' '.$label).'" title="'.dol_escape_htmltag($label).'"'.($statusprospect == $val['id'] ? ' selected' : '').'>';
-				print dol_escape_htmltag($label);
-				print '</option>';
+				echo '<option value="'.$val['id'].'" data-html="'.dol_escape_htmltag(img_action('', $val['code'], $val['picto']).' '.$label).'" title="'.dol_escape_htmltag($label).'"'.($statusprospect == $val['id'] ? ' selected' : '').'>';
+				echo dol_escape_htmltag($label);
+				echo '</option>';
 			}
-			print '</select>';
-			print ajax_combobox($htmlname.$idprospect);
+			echo '</select>';
+			echo ajax_combobox($htmlname.$idprospect);
 		} elseif ($mode === "js") {
-			print '<script>
+			echo '<script>
 				jQuery(document).ready(function() {
 					$(".selectprospectstatus").on("change", function() {
 						console.log("We change a value into a field selectprospectstatus");

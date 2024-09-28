@@ -80,7 +80,7 @@ $pdf->AddPage();
  */
 
 $txt = 'You can limit the visibility of PDF objects to screen or printer by using the setVisibility() method.
-Check the print preview of this document to display the alternative text.';
+Check the echo preview of this document to display the alternative text.';
 
 $pdf->Write(0, $txt, '', 0, '', true, 0, false, false, 0);
 
