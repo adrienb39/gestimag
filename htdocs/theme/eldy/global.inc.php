@@ -703,13 +703,12 @@ table.tableforfield .buttonDelete:not(.bordertransp):not(.buttonpayment) {
 	margin-top: 2px;
 }
 
-.button:not(.bordertransp):not(.buttonpayment),
-.buttonDelete:not(.bordertransp):not(.buttonpayment) {
+.button:not(.bordertransp):not(.buttonpayment), .buttonDelete:not(.bordertransp):not(.buttonpayment) {
 	margin-bottom: 3px;
 	margin-top: 3px;
 	margin-left: 5px;
 	margin-right: 5px;
-	font-family: <?php print $fontlist ?>;
+	font-family: arial,tahoma,verdana,helvetica;
 	display: inline-block;
 	padding: 8px 15px;
 	min-width: 90px;
@@ -717,17 +716,16 @@ table.tableforfield .buttonDelete:not(.bordertransp):not(.buttonpayment) {
 	cursor: pointer;
 	text-decoration: none !important;
 	background-color: #f5f5f5;
-	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+	/* background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6); */
+	/* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6)); */
+	/* background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6); */
+	/* background-image: -o-linear-gradient(top, #ffffff, #e6e6e6); */
+	background-image: linear-gradient(to bottom, #ffffff, #fff);
 	background-repeat: repeat-x;
 	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 	border: 1px solid #aaa;
 	-webkit-border-radius: 2px;
-	border-radius: 1px;
-
+	border-radius: 5px;
 	font-weight: bold;
 	text-transform: uppercase;
 	color: #444;
@@ -2385,7 +2383,7 @@ div.vmenu, td.vmenu {
 
 	.menuhider { display: block !important; }
 	.dropdown-user-image { display: none; }
-	.user-header { height: auto !important; color: var(--colortextbackhmenu); }
+	.user-header { height: auto !important; color: rgb(4, 98, 128); }
 
 	#id-container {
 		width: 100%;
@@ -2777,7 +2775,7 @@ img.photorefnoborder {
 <?php if (GETPOST('optioncss', 'aZ09') == 'print') {  ?>
 	display:none;
 <?php } else { ?>
-	background: var(--colorbackhmenu1);
+	background: rgb(4, 98, 128);
 	/* background-image: linear-gradient(-45deg, <?php echo colorAdjustBrightness(colorArrayToHex(colorStringToArray($colorbackhmenu1)), '5'); ?>, var(--colorbackhmenu1)); */
 	<?php if ($colorbackhmenu1 == '255,255,255') { ?>
 	box-shadow: 0px 0px 4px #ddd;

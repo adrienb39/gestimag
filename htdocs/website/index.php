@@ -5562,10 +5562,8 @@ if ((empty($action) || $action == 'preview' || $action == 'createfromclone' || $
 	} else {
 		if (empty($websitekey) || $websitekey == '-1') {
 			print '<br><br><div class="center previewnotyetavailable"><span class="">'.$langs->trans("NoWebSiteCreateOneFirst").'</span></div><br><br><br>';
-			print '<div class="center"><div class="logo_setup"></div></div>';
 		} else {
 			print '<br><br><div class="center previewnotyetavailable"><span class="">'.$langs->trans("PreviewOfSiteNotYetAvailable", $object->ref).'</span></div><br><br><br>';
-			print '<div class="center"><div class="logo_setup"></div></div>';
 		}
 	}
 }

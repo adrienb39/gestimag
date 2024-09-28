@@ -53,7 +53,6 @@ print '<div class="justify opacitymedium">'.$langs->trans("ToolsDesc").'</div><b
 
 
 // Show logo
-print '<div class="center"><div class="logo_setup"></div></div>';
 
 
 llxFooter();

@@ -140,7 +140,6 @@ if (empty($reshook)) {
 	print '<br class="hideonsmartphone">';
 
 	// Show logo
-	print '<div class="center"><div class="logo_setup"></div></div>';
 }
 
 // End of page
