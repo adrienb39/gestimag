@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:files="https://sourceforge.net/api/files.rdf#" xmlns:media="http://video.search.yahoo.com/mrss/" xmlns:doap="http://usefulinc.com/ns/doap#" xmlns:sf="https://sourceforge.net/api/sfelements.rdf#" version="2.0">
+  <channel xmlns:files="https://sourceforge.net/api/files.rdf#" xmlns:media="http://video.search.yahoo.com/mrss/" xmlns:doap="http://usefulinc.com/ns/doap#" xmlns:sf="https://sourceforge.net/api/sfelements.rdf#">
+    <title>Dolibarr ERP - CRM</title>
+    <link>https://sourceforge.net</link>
+    <description><![CDATA[Files from Dolibarr ERP - CRM Dolibarr ERP - CRM is an easy to use ERP and CRM open source software package (run with a web php server or as standalone software) for businesses, foundations or freelancers (prospect, invoicing, inventory, warehouse, order, shipment, POS, members for foundations, bank accounts...).
+
+Dolibarr is also available with auto-installers for users with no technical knowledge to install Dolibarr and all its prerequisites (Apache, Mysql, PHP) with just one package. Available platforms for such packages are: Windows, Debian, Ubuntu, Mint, Redhat, Fedora, OpenSuse, Mandriva, Mageia. Other platform can use the generic distribution.
+
+This is a modular product, than can be enhanced with tons of external modules (to provide you features not available by default) from https://www.dolistore.com
+
+Download Dolibarr ERP - CRM here or sign up for 15-day free trial of the cloud-based application with free updates and support at one of the Cloud providers https://saas.dolibarr.org/
+]]></description>
+    <pubDate>Sat, 28 Sep 2024 09:46:24 UT</pubDate>
+    <managingEditor>noreply@sourceforge.net (SourceForge.net)</managingEditor>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/20.0.0/dolibarr-20.0.0.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/20.0.0/dolibarr-20.0.0.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/20.0.0/dolibarr-20.0.0.zip/download</guid>
+      <pubDate>Mon, 16 Sep 2024 10:21:52 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/20.0.0/dolibarr-20.0.0.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">53640328</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/20.0.0/dolibarr-20.0.0.zip/download" filesize="86445356"><media:hash algo="md5">7159e11f03c07d138278d314157f900f</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/20.0.0/dolibarr-20.0.0.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/20.0.0/dolibarr-20.0.0.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/20.0.0/dolibarr-20.0.0.tgz/download</guid>
+      <pubDate>Mon, 16 Sep 2024 10:21:32 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/20.0.0/dolibarr-20.0.0.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">53640325</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/20.0.0/dolibarr-20.0.0.tgz/download" filesize="80333964"><media:hash algo="md5">c5bb012cc94f97175b30b6c4a50e1a5b</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/20.0.0/dolibarr-20.0.0-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/20.0.0/dolibarr-20.0.0-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/20.0.0/dolibarr-20.0.0-0.4.noarch.rpm/download</guid>
+      <pubDate>Mon, 16 Sep 2024 10:21:11 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/20.0.0/dolibarr-20.0.0-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">53640323</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/20.0.0/dolibarr-20.0.0-0.4.noarch.rpm/download" filesize="74382011"><media:hash algo="md5">d799d73e5c8c075b7fa74f83bf683a43</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/20.0.0/dolibarr_20.0.0-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/20.0.0/dolibarr_20.0.0-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/20.0.0/dolibarr_20.0.0-4_all.deb/download</guid>
+      <pubDate>Mon, 16 Sep 2024 10:20:50 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/20.0.0/dolibarr_20.0.0-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">53640321</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/20.0.0/dolibarr_20.0.0-4_all.deb/download" filesize="46211168"><media:hash algo="md5">e8de9a74f67315375fcbed6473bc572a</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/19.0.3/DoliWamp-19.0.3.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.3/DoliWamp-19.0.3.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.3/DoliWamp-19.0.3.exe/download</guid>
+      <pubDate>Tue, 10 Sep 2024 19:58:23 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/19.0.3/DoliWamp-19.0.3.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">53541486</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.3/DoliWamp-19.0.3.exe/download" filesize="120999596"><media:hash algo="md5">a44403a6e77437b1dfd71e4cb6f2a1aa</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/19.0.3/dolibarr-19.0.3.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.3/dolibarr-19.0.3.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.3/dolibarr-19.0.3.zip/download</guid>
+      <pubDate>Thu, 15 Aug 2024 20:23:40 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/19.0.3/dolibarr-19.0.3.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">53285897</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.3/dolibarr-19.0.3.zip/download" filesize="80791506"><media:hash algo="md5">c1c97f930adebed0dcf4cfb8a9bdb577</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/19.0.3/dolibarr-19.0.3.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.3/dolibarr-19.0.3.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.3/dolibarr-19.0.3.tgz/download</guid>
+      <pubDate>Thu, 15 Aug 2024 20:23:18 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/19.0.3/dolibarr-19.0.3.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">53285896</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.3/dolibarr-19.0.3.tgz/download" filesize="74513876"><media:hash algo="md5">43e73e7028c8f1310b95f59b31fc43a2</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/19.0.3/dolibarr-19.0.3-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.3/dolibarr-19.0.3-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.3/dolibarr-19.0.3-0.4.noarch.rpm/download</guid>
+      <pubDate>Thu, 15 Aug 2024 20:22:54 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/19.0.3/dolibarr-19.0.3-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">53285894</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.3/dolibarr-19.0.3-0.4.noarch.rpm/download" filesize="72361694"><media:hash algo="md5">f0d837df75d713526f7d2f9c62b26ee4</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/19.0.3/dolibarr_19.0.3-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.3/dolibarr_19.0.3-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.3/dolibarr_19.0.3-4_all.deb/download</guid>
+      <pubDate>Thu, 15 Aug 2024 20:22:29 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/19.0.3/dolibarr_19.0.3-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">53285887</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.3/dolibarr_19.0.3-4_all.deb/download" filesize="45977096"><media:hash algo="md5">7fc183cbd263af4faf9fb0ca8d067321</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/19.0.2/DoliWamp-19.0.2.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.2/DoliWamp-19.0.2.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.2/DoliWamp-19.0.2.exe/download</guid>
+      <pubDate>Fri, 31 May 2024 21:16:12 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/19.0.2/DoliWamp-19.0.2.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">52308945</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.2/DoliWamp-19.0.2.exe/download" filesize="120977405"><media:hash algo="md5">91f1a40afb8dff16a07e5001110d214b</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/README.md]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/README.md/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/README.md/download</guid>
+      <pubDate>Thu, 30 May 2024 11:12:52 UT</pubDate>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">52299861</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="text/plain; charset=utf-8" url="https://sourceforge.net/projects/dolibarr/files/README.md/download" filesize="10503"><media:hash algo="md5">4229c3a9ee0c77bdd303427674881ac7</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/External modules/README.md]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/External%20modules/README.md/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/External%20modules/README.md/download</guid>
+      <pubDate>Thu, 30 May 2024 11:09:24 UT</pubDate>
+      <description><![CDATA[/External modules/README.md]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">52299854</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="text/plain; charset=us-ascii" url="https://sourceforge.net/projects/dolibarr/files/External%20modules/README.md/download" filesize="98"><media:hash algo="md5">24e89e057f16f171d7979363f4e70d34</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/19.0.2/dolibarr-19.0.2.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.2/dolibarr-19.0.2.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.2/dolibarr-19.0.2.zip/download</guid>
+      <pubDate>Sun, 05 May 2024 01:14:44 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/19.0.2/dolibarr-19.0.2.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">51977080</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.2/dolibarr-19.0.2.zip/download" filesize="80698750"><media:hash algo="md5">4d46f216f9606c8e3a5316568e10a771</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/19.0.2/dolibarr-19.0.2.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.2/dolibarr-19.0.2.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.2/dolibarr-19.0.2.tgz/download</guid>
+      <pubDate>Sun, 05 May 2024 01:14:27 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/19.0.2/dolibarr-19.0.2.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">51977079</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.2/dolibarr-19.0.2.tgz/download" filesize="74436543"><media:hash algo="md5">b43cf376b243efa8dda9322668212991</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/19.0.2/dolibarr-19.0.2-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.2/dolibarr-19.0.2-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.2/dolibarr-19.0.2-0.4.noarch.rpm/download</guid>
+      <pubDate>Sun, 05 May 2024 01:14:01 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/19.0.2/dolibarr-19.0.2-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">51977077</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.2/dolibarr-19.0.2-0.4.noarch.rpm/download" filesize="72284828"><media:hash algo="md5">b321183c1bf2dca2704597d1aaf03e19</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/19.0.2/dolibarr_19.0.2-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.2/dolibarr_19.0.2-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.2/dolibarr_19.0.2-4_all.deb/download</guid>
+      <pubDate>Sun, 05 May 2024 01:13:36 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/19.0.2/dolibarr_19.0.2-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">51977075</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.2/dolibarr_19.0.2-4_all.deb/download" filesize="46043336"><media:hash algo="md5">caa8f027aea83568a478a815be91b447</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/19.0.1/DoliWamp-19.0.1.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.1/DoliWamp-19.0.1.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.1/DoliWamp-19.0.1.exe/download</guid>
+      <pubDate>Sun, 17 Mar 2024 22:22:42 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/19.0.1/DoliWamp-19.0.1.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">51591216</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.1/DoliWamp-19.0.1.exe/download" filesize="120971208"><media:hash algo="md5">a3e94f9c28677e878b70f6222f7a4077</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/19.0.1/dolibarr-19.0.1.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.1/dolibarr-19.0.1.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.1/dolibarr-19.0.1.zip/download</guid>
+      <pubDate>Sat, 16 Mar 2024 23:53:54 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/19.0.1/dolibarr-19.0.1.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">51567933</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.1/dolibarr-19.0.1.zip/download" filesize="80689201"><media:hash algo="md5">2a66a6dca965b28c349c6a9f16d8a93a</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/19.0.1/dolibarr-19.0.1.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.1/dolibarr-19.0.1.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.1/dolibarr-19.0.1.tgz/download</guid>
+      <pubDate>Sat, 16 Mar 2024 23:53:33 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/19.0.1/dolibarr-19.0.1.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">51567932</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.1/dolibarr-19.0.1.tgz/download" filesize="74432423"><media:hash algo="md5">5db6cbdc3a306b8053a268794d113cb5</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/19.0.1/dolibarr-19.0.1-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.1/dolibarr-19.0.1-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.1/dolibarr-19.0.1-0.4.noarch.rpm/download</guid>
+      <pubDate>Sat, 16 Mar 2024 23:53:12 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/19.0.1/dolibarr-19.0.1-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">51567930</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.1/dolibarr-19.0.1-0.4.noarch.rpm/download" filesize="72291343"><media:hash algo="md5">6a9be78f71836fda0a32e6eb6bd1f630</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/19.0.1/dolibarr_19.0.1-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.1/dolibarr_19.0.1-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.1/dolibarr_19.0.1-4_all.deb/download</guid>
+      <pubDate>Sat, 16 Mar 2024 23:52:54 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/19.0.1/dolibarr_19.0.1-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">51567927</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.1/dolibarr_19.0.1-4_all.deb/download" filesize="46042976"><media:hash algo="md5">ddadae0f3b119554e984b73eeac74339</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/19.0.0/DoliWamp-19.0.0.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.0/DoliWamp-19.0.0.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.0/DoliWamp-19.0.0.exe/download</guid>
+      <pubDate>Sat, 16 Mar 2024 21:57:50 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/19.0.0/DoliWamp-19.0.0.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">51567755</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/19.0.0/DoliWamp-19.0.0.exe/download" filesize="120964358"><media:hash algo="md5">c9c1953fc77b6fb87595de9f7da3f52b</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/17.0.4/DoliWamp-17.0.4.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.4/DoliWamp-17.0.4.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.4/DoliWamp-17.0.4.exe/download</guid>
+      <pubDate>Tue, 13 Feb 2024 12:11:26 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/17.0.4/DoliWamp-17.0.4.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50753182</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.4/DoliWamp-17.0.4.exe/download" filesize="117722284"><media:hash algo="md5">5859ab55a5cc51f22bcd21cfd014562a</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.5/DoliWamp-18.0.5.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.5/DoliWamp-18.0.5.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.5/DoliWamp-18.0.5.exe/download</guid>
+      <pubDate>Tue, 13 Feb 2024 11:48:16 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.5/DoliWamp-18.0.5.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50753036</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.5/DoliWamp-18.0.5.exe/download" filesize="118537885"><media:hash algo="md5">dcc712b2323da50d4ef1169770add854</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/19.0.0/dolibarr-19.0.0.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.0/dolibarr-19.0.0.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.0/dolibarr-19.0.0.zip/download</guid>
+      <pubDate>Mon, 12 Feb 2024 18:10:58 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/19.0.0/dolibarr-19.0.0.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50732568</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.0/dolibarr-19.0.0.zip/download" filesize="80682083"><media:hash algo="md5">512f74e7072d8536b9e704957915b368</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/19.0.0/dolibarr-19.0.0.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.0/dolibarr-19.0.0.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.0/dolibarr-19.0.0.tgz/download</guid>
+      <pubDate>Mon, 12 Feb 2024 18:10:37 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/19.0.0/dolibarr-19.0.0.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50732567</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/19.0.0/dolibarr-19.0.0.tgz/download" filesize="74418671"><media:hash algo="md5">cf7d33a9909e19c6184219eb523f0d75</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/19.0.0/dolibarr-19.0.0-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.0/dolibarr-19.0.0-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.0/dolibarr-19.0.0-0.4.noarch.rpm/download</guid>
+      <pubDate>Mon, 12 Feb 2024 18:10:13 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/19.0.0/dolibarr-19.0.0-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50732565</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/19.0.0/dolibarr-19.0.0-0.4.noarch.rpm/download" filesize="72275705"><media:hash algo="md5">5d107f60c7d464e391fa7643d9a67627</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/19.0.0/dolibarr_19.0.0-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.0/dolibarr_19.0.0-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.0/dolibarr_19.0.0-4_all.deb/download</guid>
+      <pubDate>Mon, 12 Feb 2024 18:09:53 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/19.0.0/dolibarr_19.0.0-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50732563</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/19.0.0/dolibarr_19.0.0-4_all.deb/download" filesize="46046048"><media:hash algo="md5">07efef792496cae3f9264dbf3c3cbe09</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.5/dolibarr-18.0.5.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.5/dolibarr-18.0.5.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.5/dolibarr-18.0.5.zip/download</guid>
+      <pubDate>Mon, 12 Feb 2024 12:31:10 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.5/dolibarr-18.0.5.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50717605</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.5/dolibarr-18.0.5.zip/download" filesize="80731285"><media:hash algo="md5">d1d9b5e68c4106fe2611e49f753b6844</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.5/dolibarr-18.0.5.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.5/dolibarr-18.0.5.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.5/dolibarr-18.0.5.tgz/download</guid>
+      <pubDate>Mon, 12 Feb 2024 12:30:54 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.5/dolibarr-18.0.5.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50717604</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.5/dolibarr-18.0.5.tgz/download" filesize="74383867"><media:hash algo="md5">9d5fac0f9178f2c4a5977312efd6a4d8</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.5/dolibarr-18.0.5-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.5/dolibarr-18.0.5-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.5/dolibarr-18.0.5-0.4.noarch.rpm/download</guid>
+      <pubDate>Mon, 12 Feb 2024 12:30:32 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.5/dolibarr-18.0.5-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50717602</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.5/dolibarr-18.0.5-0.4.noarch.rpm/download" filesize="72332427"><media:hash algo="md5">4d777a8e19166c64a11ea19809a55d0a</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.5/dolibarr_18.0.5-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.5/dolibarr_18.0.5-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.5/dolibarr_18.0.5-4_all.deb/download</guid>
+      <pubDate>Mon, 12 Feb 2024 12:30:17 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.5/dolibarr_18.0.5-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50717599</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.5/dolibarr_18.0.5-4_all.deb/download" filesize="45019132"><media:hash algo="md5">1810a5d8eb85b1b3196bce02635debc4</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/17.0.4/dolibarr-17.0.4.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.4/dolibarr-17.0.4.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.4/dolibarr-17.0.4.zip/download</guid>
+      <pubDate>Mon, 12 Feb 2024 11:49:12 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/17.0.4/dolibarr-17.0.4.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50717469</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.4/dolibarr-17.0.4.zip/download" filesize="80306853"><media:hash algo="md5">a907a38ffc6face37c78d95768369887</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/17.0.4/dolibarr-17.0.4.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.4/dolibarr-17.0.4.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.4/dolibarr-17.0.4.tgz/download</guid>
+      <pubDate>Mon, 12 Feb 2024 11:48:52 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/17.0.4/dolibarr-17.0.4.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50717468</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.4/dolibarr-17.0.4.tgz/download" filesize="74032655"><media:hash algo="md5">539d4d002108d4fd9da5326e5dadb2cd</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/17.0.4/dolibarr-17.0.4-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.4/dolibarr-17.0.4-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.4/dolibarr-17.0.4-0.4.noarch.rpm/download</guid>
+      <pubDate>Mon, 12 Feb 2024 11:48:32 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/17.0.4/dolibarr-17.0.4-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50717466</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.4/dolibarr-17.0.4-0.4.noarch.rpm/download" filesize="71068592"><media:hash algo="md5">ae293cf8fcea71b4b40ac10c9707f1d8</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/17.0.4/dolibarr_17.0.4-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.4/dolibarr_17.0.4-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.4/dolibarr_17.0.4-4_all.deb/download</guid>
+      <pubDate>Mon, 12 Feb 2024 11:48:11 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/17.0.4/dolibarr_17.0.4-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">50717463</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.4/dolibarr_17.0.4-4_all.deb/download" filesize="44576816"><media:hash algo="md5">096e1f1e2421b501bcdc4bf1ae75cf1a</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.4/DoliWamp-18.0.4.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.4/DoliWamp-18.0.4.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.4/DoliWamp-18.0.4.exe/download</guid>
+      <pubDate>Sun, 17 Dec 2023 16:01:15 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.4/DoliWamp-18.0.4.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49841769</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.4/DoliWamp-18.0.4.exe/download" filesize="118491447"><media:hash algo="md5">cbc59cd66e8e53e1def211eba543c7af</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.4/dolibarr-18.0.4.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.4/dolibarr-18.0.4.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.4/dolibarr-18.0.4.zip/download</guid>
+      <pubDate>Fri, 15 Dec 2023 13:04:14 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.4/dolibarr-18.0.4.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49815242</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.4/dolibarr-18.0.4.zip/download" filesize="80661751"><media:hash algo="md5">520c4dee61fb6608b3561f5bce130cfb</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.4/dolibarr-18.0.4.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.4/dolibarr-18.0.4.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.4/dolibarr-18.0.4.tgz/download</guid>
+      <pubDate>Fri, 15 Dec 2023 13:03:55 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.4/dolibarr-18.0.4.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49815241</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.4/dolibarr-18.0.4.tgz/download" filesize="74296427"><media:hash algo="md5">f8972c6770b41e4b0edc5a3ec3ae5d5f</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.4/dolibarr-18.0.4-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.4/dolibarr-18.0.4-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.4/dolibarr-18.0.4-0.4.noarch.rpm/download</guid>
+      <pubDate>Fri, 15 Dec 2023 13:03:34 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.4/dolibarr-18.0.4-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49815239</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.4/dolibarr-18.0.4-0.4.noarch.rpm/download" filesize="72322879"><media:hash algo="md5">4db46a08f69a3d2e2ce01737bf956112</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.4/dolibarr_18.0.4-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.4/dolibarr_18.0.4-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.4/dolibarr_18.0.4-4_all.deb/download</guid>
+      <pubDate>Fri, 15 Dec 2023 13:03:16 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.4/dolibarr_18.0.4-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49815237</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.4/dolibarr_18.0.4-4_all.deb/download" filesize="45011604"><media:hash algo="md5">f6c64f863cb052849f8cb6b5f829bc5c</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.3/DoliWamp-18.0.3.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.3/DoliWamp-18.0.3.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.3/DoliWamp-18.0.3.exe/download</guid>
+      <pubDate>Wed, 08 Nov 2023 20:46:26 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.3/DoliWamp-18.0.3.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49473647</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.3/DoliWamp-18.0.3.exe/download" filesize="118489838"><media:hash algo="md5">4d7b317d001daff96dd108726ab1e534</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.3/dolibarr-18.0.3.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.3/dolibarr-18.0.3.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.3/dolibarr-18.0.3.zip/download</guid>
+      <pubDate>Tue, 07 Nov 2023 22:36:56 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.3/dolibarr-18.0.3.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49450752</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.3/dolibarr-18.0.3.zip/download" filesize="80658586"><media:hash algo="md5">57bf52001f1106b81688456a4e745001</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.3/dolibarr-18.0.3.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.3/dolibarr-18.0.3.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.3/dolibarr-18.0.3.tgz/download</guid>
+      <pubDate>Tue, 07 Nov 2023 22:36:37 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.3/dolibarr-18.0.3.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49450751</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.3/dolibarr-18.0.3.tgz/download" filesize="74298476"><media:hash algo="md5">d12c69e74c8bd1ef14950bc446650547</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.3/dolibarr-18.0.3-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.3/dolibarr-18.0.3-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.3/dolibarr-18.0.3-0.4.noarch.rpm/download</guid>
+      <pubDate>Tue, 07 Nov 2023 22:36:11 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.3/dolibarr-18.0.3-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49450749</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.3/dolibarr-18.0.3-0.4.noarch.rpm/download" filesize="72314835"><media:hash algo="md5">45e529a540e488dd8e47c243fdf9a04b</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.3/dolibarr_18.0.3-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.3/dolibarr_18.0.3-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.3/dolibarr_18.0.3-4_all.deb/download</guid>
+      <pubDate>Tue, 07 Nov 2023 22:35:58 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.3/dolibarr_18.0.3-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49450747</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.3/dolibarr_18.0.3-4_all.deb/download" filesize="45008084"><media:hash algo="md5">161cfd0cef07bf2db6fb4eaf3160d9d3</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.2/DoliWamp-18.0.2.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.2/DoliWamp-18.0.2.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.2/DoliWamp-18.0.2.exe/download</guid>
+      <pubDate>Wed, 11 Oct 2023 17:33:25 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.2/DoliWamp-18.0.2.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49199246</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.2/DoliWamp-18.0.2.exe/download" filesize="118482994"><media:hash algo="md5">e9008339d2853bf9bbd4eb81b0e36a5a</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.2/dolibarr-18.0.2.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.2/dolibarr-18.0.2.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.2/dolibarr-18.0.2.zip/download</guid>
+      <pubDate>Fri, 06 Oct 2023 22:18:02 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.2/dolibarr-18.0.2.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49140667</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.2/dolibarr-18.0.2.zip/download" filesize="80652587"><media:hash algo="md5">45889d2f123b3f12abc8d25e9868849f</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.2/dolibarr-18.0.2.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.2/dolibarr-18.0.2.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.2/dolibarr-18.0.2.tgz/download</guid>
+      <pubDate>Fri, 06 Oct 2023 22:17:49 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.2/dolibarr-18.0.2.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49140665</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.2/dolibarr-18.0.2.tgz/download" filesize="74286854"><media:hash algo="md5">74b327c0d859480b8aabf7b292cb0edb</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.2/dolibarr-18.0.2-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.2/dolibarr-18.0.2-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.2/dolibarr-18.0.2-0.4.noarch.rpm/download</guid>
+      <pubDate>Fri, 06 Oct 2023 22:17:36 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.2/dolibarr-18.0.2-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49140662</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.2/dolibarr-18.0.2-0.4.noarch.rpm/download" filesize="72312169"><media:hash algo="md5">d8a144cfd585c8a84472349c4173899e</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.2/dolibarr_18.0.2-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.2/dolibarr_18.0.2-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.2/dolibarr_18.0.2-4_all.deb/download</guid>
+      <pubDate>Fri, 06 Oct 2023 22:17:22 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.2/dolibarr_18.0.2-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49140660</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.2/dolibarr_18.0.2-4_all.deb/download" filesize="45007912"><media:hash algo="md5">bfceac49b007ba927569e27016275c21</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.1/DoliWamp-18.0.1.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.1/DoliWamp-18.0.1.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.1/DoliWamp-18.0.1.exe/download</guid>
+      <pubDate>Wed, 27 Sep 2023 15:33:08 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.1/DoliWamp-18.0.1.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">49009676</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.1/DoliWamp-18.0.1.exe/download" filesize="118477919"><media:hash algo="md5">7de7a97c91d6cfa817d808a78a09c886</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.1/dolibarr-18.0.1.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.1/dolibarr-18.0.1.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.1/dolibarr-18.0.1.zip/download</guid>
+      <pubDate>Sat, 02 Sep 2023 23:49:37 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.1/dolibarr-18.0.1.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48630779</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.1/dolibarr-18.0.1.zip/download" filesize="80643592"><media:hash algo="md5">887d21d17bbbb2b1ec8c22e664569c2c</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.1/dolibarr-18.0.1.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.1/dolibarr-18.0.1.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.1/dolibarr-18.0.1.tgz/download</guid>
+      <pubDate>Sat, 02 Sep 2023 23:49:04 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.1/dolibarr-18.0.1.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48630778</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.1/dolibarr-18.0.1.tgz/download" filesize="74280138"><media:hash algo="md5">1d9acf76fa1dd3efd91a068d29a77cff</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.1/dolibarr-18.0.1-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.1/dolibarr-18.0.1-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.1/dolibarr-18.0.1-0.4.noarch.rpm/download</guid>
+      <pubDate>Sat, 02 Sep 2023 23:48:31 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.1/dolibarr-18.0.1-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48630776</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.1/dolibarr-18.0.1-0.4.noarch.rpm/download" filesize="72302857"><media:hash algo="md5">c9e6347692db2d4d25ca4a68c45f4ef2</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.1/dolibarr_18.0.1-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.1/dolibarr_18.0.1-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.1/dolibarr_18.0.1-4_all.deb/download</guid>
+      <pubDate>Sat, 02 Sep 2023 23:47:47 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.1/dolibarr_18.0.1-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48630773</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.1/dolibarr_18.0.1-4_all.deb/download" filesize="45011840"><media:hash algo="md5">47df18c908137dd11a3a00c7bd8207a2</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.0/DoliWamp-18.0.0.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.0/DoliWamp-18.0.0.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.0/DoliWamp-18.0.0.exe/download</guid>
+      <pubDate>Wed, 23 Aug 2023 22:52:33 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/18.0.0/DoliWamp-18.0.0.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48304165</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/18.0.0/DoliWamp-18.0.0.exe/download" filesize="118460918"><media:hash algo="md5">b3f02e2b86d83fd36c68d8a5abe7b947</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/17.0.3/DoliWamp-17.0.3.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.3/DoliWamp-17.0.3.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.3/DoliWamp-17.0.3.exe/download</guid>
+      <pubDate>Wed, 23 Aug 2023 22:41:42 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/17.0.3/DoliWamp-17.0.3.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48304160</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.3/DoliWamp-17.0.3.exe/download" filesize="117674682"><media:hash algo="md5">ef445a4f4d3cb38aaad9d30216b6e93a</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.0/dolibarr-18.0.0.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.0/dolibarr-18.0.0.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.0/dolibarr-18.0.0.zip/download</guid>
+      <pubDate>Thu, 17 Aug 2023 22:57:54 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.0/dolibarr-18.0.0.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48201506</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.0/dolibarr-18.0.0.zip/download" filesize="80604216"><media:hash algo="md5">a8814791cf9eeb41b3b4c60f9c452f3f</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/18.0.0/dolibarr-18.0.0.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.0/dolibarr-18.0.0.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.0/dolibarr-18.0.0.tgz/download</guid>
+      <pubDate>Thu, 17 Aug 2023 22:57:37 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/18.0.0/dolibarr-18.0.0.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48201504</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/18.0.0/dolibarr-18.0.0.tgz/download" filesize="74252735"><media:hash algo="md5">28973b33ba7e07e2983ee9078384aabf</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.0/dolibarr-18.0.0-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.0/dolibarr-18.0.0-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.0/dolibarr-18.0.0-0.4.noarch.rpm/download</guid>
+      <pubDate>Thu, 17 Aug 2023 22:57:14 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/18.0.0/dolibarr-18.0.0-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48201503</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/18.0.0/dolibarr-18.0.0-0.4.noarch.rpm/download" filesize="72269897"><media:hash algo="md5">ccdd99b9190cf7f9621a1404efb450ef</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.0/dolibarr_18.0.0-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.0/dolibarr_18.0.0-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.0/dolibarr_18.0.0-4_all.deb/download</guid>
+      <pubDate>Thu, 17 Aug 2023 22:57:00 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/18.0.0/dolibarr_18.0.0-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48201501</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/18.0.0/dolibarr_18.0.0-4_all.deb/download" filesize="44979312"><media:hash algo="md5">eefaef6e968dcba13163174309f4063e</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/17.0.3/dolibarr_17.0.3-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.3/dolibarr_17.0.3-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.3/dolibarr_17.0.3-4_all.deb/download</guid>
+      <pubDate>Sun, 06 Aug 2023 13:04:36 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/17.0.3/dolibarr_17.0.3-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48056231</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.3/dolibarr_17.0.3-4_all.deb/download" filesize="44568280"><media:hash algo="md5">f3662468c770ac6b825c4e3539f879d7</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/17.0.3/dolibarr-17.0.3-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.3/dolibarr-17.0.3-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.3/dolibarr-17.0.3-0.4.noarch.rpm/download</guid>
+      <pubDate>Sun, 06 Aug 2023 13:02:30 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/17.0.3/dolibarr-17.0.3-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48056224</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.3/dolibarr-17.0.3-0.4.noarch.rpm/download" filesize="71075182"><media:hash algo="md5">473b2a8548e992b85b166ed657f7ab8e</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/17.0.3/dolibarr-17.0.3.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.3/dolibarr-17.0.3.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.3/dolibarr-17.0.3.zip/download</guid>
+      <pubDate>Sun, 06 Aug 2023 12:56:22 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/17.0.3/dolibarr-17.0.3.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48056221</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.3/dolibarr-17.0.3.zip/download" filesize="80236081"><media:hash algo="md5">8e44761982d066242a3295c488c6f2dd</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/17.0.3/dolibarr-17.0.3.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.3/dolibarr-17.0.3.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.3/dolibarr-17.0.3.tgz/download</guid>
+      <pubDate>Sun, 06 Aug 2023 12:56:06 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/17.0.3/dolibarr-17.0.3.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">48056220</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.3/dolibarr-17.0.3.tgz/download" filesize="73960354"><media:hash algo="md5">dfedd68b52cf1cd37661ad12b0d667a4</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/17.0.2/DoliWamp-17.0.2.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.2/DoliWamp-17.0.2.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.2/DoliWamp-17.0.2.exe/download</guid>
+      <pubDate>Tue, 30 May 2023 09:31:07 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/17.0.2/DoliWamp-17.0.2.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47485771</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.2/DoliWamp-17.0.2.exe/download" filesize="117675709"><media:hash algo="md5">6577c1f3e1e16e30893da1bcc0931fce</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/17.0.2/dolibarr-17.0.2.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.2/dolibarr-17.0.2.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.2/dolibarr-17.0.2.zip/download</guid>
+      <pubDate>Tue, 23 May 2023 09:45:40 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/17.0.2/dolibarr-17.0.2.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47434932</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.2/dolibarr-17.0.2.zip/download" filesize="80232587"><media:hash algo="md5">78ed1e48266249dff08297730706fb0e</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/17.0.2/dolibarr-17.0.2.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.2/dolibarr-17.0.2.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.2/dolibarr-17.0.2.tgz/download</guid>
+      <pubDate>Tue, 23 May 2023 09:45:13 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/17.0.2/dolibarr-17.0.2.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47434930</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.2/dolibarr-17.0.2.tgz/download" filesize="73949835"><media:hash algo="md5">9016ec53e7bcc8e635ec29fd7e4ac9fa</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/17.0.2/dolibarr-17.0.2-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.2/dolibarr-17.0.2-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.2/dolibarr-17.0.2-0.4.noarch.rpm/download</guid>
+      <pubDate>Tue, 23 May 2023 09:44:25 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/17.0.2/dolibarr-17.0.2-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47434927</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.2/dolibarr-17.0.2-0.4.noarch.rpm/download" filesize="71072307"><media:hash algo="md5">9e57e1703db2e34c6c67dff5a82f940c</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/17.0.2/dolibarr_17.0.2-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.2/dolibarr_17.0.2-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.2/dolibarr_17.0.2-4_all.deb/download</guid>
+      <pubDate>Tue, 23 May 2023 09:44:10 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/17.0.2/dolibarr_17.0.2-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47434921</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.2/dolibarr_17.0.2-4_all.deb/download" filesize="44564636"><media:hash algo="md5">13efd60cf6211678ee97f603f5c01bcc</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/17.0.1/DoliWamp-17.0.1.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.1/DoliWamp-17.0.1.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.1/DoliWamp-17.0.1.exe/download</guid>
+      <pubDate>Sun, 23 Apr 2023 20:21:24 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/17.0.1/DoliWamp-17.0.1.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47210939</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/17.0.1/DoliWamp-17.0.1.exe/download" filesize="117592903"><media:hash algo="md5">c14ed71578e063c42e2263ae56be5df0</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/16.0.5/DoliWamp-16.0.5.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/16.0.5/DoliWamp-16.0.5.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/16.0.5/DoliWamp-16.0.5.exe/download</guid>
+      <pubDate>Sun, 23 Apr 2023 20:17:33 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/16.0.5/DoliWamp-16.0.5.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47210925</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/16.0.5/DoliWamp-16.0.5.exe/download" filesize="112040814"><media:hash algo="md5">f7ece800bbe94c67c57cbf1a07f44d55</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/17.0.1/dolibarr-17.0.1.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.1/dolibarr-17.0.1.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.1/dolibarr-17.0.1.zip/download</guid>
+      <pubDate>Mon, 03 Apr 2023 11:43:28 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/17.0.1/dolibarr-17.0.1.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47043999</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.1/dolibarr-17.0.1.zip/download" filesize="80220103"><media:hash algo="md5">700c95ba85bba3c7537e02c4b1939421</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/17.0.1/dolibarr-17.0.1.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.1/dolibarr-17.0.1.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.1/dolibarr-17.0.1.tgz/download</guid>
+      <pubDate>Mon, 03 Apr 2023 11:43:03 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/17.0.1/dolibarr-17.0.1.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47043998</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.1/dolibarr-17.0.1.tgz/download" filesize="73945756"><media:hash algo="md5">a8e943c04cd55721ec841c74625ab8ac</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/17.0.1/dolibarr-17.0.1-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.1/dolibarr-17.0.1-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.1/dolibarr-17.0.1-0.4.noarch.rpm/download</guid>
+      <pubDate>Mon, 03 Apr 2023 11:42:28 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/17.0.1/dolibarr-17.0.1-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47043995</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.1/dolibarr-17.0.1-0.4.noarch.rpm/download" filesize="71053997"><media:hash algo="md5">1c5d31fe802b6cc3dbd69926323dc783</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/17.0.1/dolibarr_17.0.1-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.1/dolibarr_17.0.1-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.1/dolibarr_17.0.1-4_all.deb/download</guid>
+      <pubDate>Mon, 03 Apr 2023 11:42:08 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/17.0.1/dolibarr_17.0.1-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">47043993</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.1/dolibarr_17.0.1-4_all.deb/download" filesize="44812962"><media:hash algo="md5">76f7b098044cdab7fa4ff4a652a5358e</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/16.0.5/dolibarr-16.0.5.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.5/dolibarr-16.0.5.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.5/dolibarr-16.0.5.zip/download</guid>
+      <pubDate>Mon, 20 Mar 2023 14:10:27 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/16.0.5/dolibarr-16.0.5.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46896820</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.5/dolibarr-16.0.5.zip/download" filesize="77603584"><media:hash algo="md5">fe867c8c752ee12ec46f49f169a6833e</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/16.0.5/dolibarr-16.0.5.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.5/dolibarr-16.0.5.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.5/dolibarr-16.0.5.tgz/download</guid>
+      <pubDate>Mon, 20 Mar 2023 14:09:45 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/16.0.5/dolibarr-16.0.5.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46896818</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.5/dolibarr-16.0.5.tgz/download" filesize="69724390"><media:hash algo="md5">dcdfba5bb37e349c2f794f1f7ed67ffd</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/16.0.5/dolibarr-16.0.5-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.5/dolibarr-16.0.5-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.5/dolibarr-16.0.5-0.4.noarch.rpm/download</guid>
+      <pubDate>Mon, 20 Mar 2023 14:08:30 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/16.0.5/dolibarr-16.0.5-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46896815</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.5/dolibarr-16.0.5-0.4.noarch.rpm/download" filesize="62802879"><media:hash algo="md5">04f58983b1059c355025958907b9be14</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/16.0.5/dolibarr_16.0.5-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.5/dolibarr_16.0.5-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.5/dolibarr_16.0.5-4_all.deb/download</guid>
+      <pubDate>Mon, 20 Mar 2023 14:07:56 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/16.0.5/dolibarr_16.0.5-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46896813</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.5/dolibarr_16.0.5-4_all.deb/download" filesize="39225508"><media:hash algo="md5">16e6410ec56ea70086c54a1b699ce47a</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/17.0.0/dolibarr-17.0.0.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.0/dolibarr-17.0.0.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.0/dolibarr-17.0.0.zip/download</guid>
+      <pubDate>Sat, 04 Mar 2023 17:34:40 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/17.0.0/dolibarr-17.0.0.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46736358</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.0/dolibarr-17.0.0.zip/download" filesize="83584794"><media:hash algo="md5">d086673657b14e187db3972a2dcc86b2</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/17.0.0/dolibarr-17.0.0.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.0/dolibarr-17.0.0.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.0/dolibarr-17.0.0.tgz/download</guid>
+      <pubDate>Sat, 04 Mar 2023 17:33:56 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/17.0.0/dolibarr-17.0.0.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46736357</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/17.0.0/dolibarr-17.0.0.tgz/download" filesize="77304161"><media:hash algo="md5">d42f3c0317644e60b78bc035353bb265</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/17.0.0/dolibarr-17.0.0-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.0/dolibarr-17.0.0-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.0/dolibarr-17.0.0-0.4.noarch.rpm/download</guid>
+      <pubDate>Sat, 04 Mar 2023 17:33:21 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/17.0.0/dolibarr-17.0.0-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46736354</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/17.0.0/dolibarr-17.0.0-0.4.noarch.rpm/download" filesize="74413976"><media:hash algo="md5">939b6b9ae59fd438288080e73fbac1b0</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/17.0.0/dolibarr_17.0.0-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.0/dolibarr_17.0.0-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.0/dolibarr_17.0.0-4_all.deb/download</guid>
+      <pubDate>Sat, 04 Mar 2023 17:32:43 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/17.0.0/dolibarr_17.0.0-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46736340</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/17.0.0/dolibarr_17.0.0-4_all.deb/download" filesize="48169106"><media:hash algo="md5">0d5606a15c537bd09ac1489d663bffa4</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/16.0.4/dolibarr-16.0.4.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.4/dolibarr-16.0.4.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.4/dolibarr-16.0.4.zip/download</guid>
+      <pubDate>Fri, 03 Feb 2023 18:24:07 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/16.0.4/dolibarr-16.0.4.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46260409</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.4/dolibarr-16.0.4.zip/download" filesize="80973216"><media:hash algo="md5">69b7fd90d4f38467899bb2f6464205e2</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/16.0.4/dolibarr-16.0.4.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.4/dolibarr-16.0.4.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.4/dolibarr-16.0.4.tgz/download</guid>
+      <pubDate>Fri, 03 Feb 2023 18:23:42 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/16.0.4/dolibarr-16.0.4.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46260408</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.4/dolibarr-16.0.4.tgz/download" filesize="73102389"><media:hash algo="md5">deb6c8816ee2c2c5445d73a420b53c4f</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/16.0.4/dolibarr-16.0.4-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.4/dolibarr-16.0.4-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.4/dolibarr-16.0.4-0.4.noarch.rpm/download</guid>
+      <pubDate>Fri, 03 Feb 2023 18:23:20 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/16.0.4/dolibarr-16.0.4-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46260403</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.4/dolibarr-16.0.4-0.4.noarch.rpm/download" filesize="66176178"><media:hash algo="md5">ce3fd0ee73728d1aa922170884915ac9</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/16.0.4/dolibarr_16.0.4-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.4/dolibarr_16.0.4-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.4/dolibarr_16.0.4-4_all.deb/download</guid>
+      <pubDate>Fri, 03 Feb 2023 18:22:46 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/16.0.4/dolibarr_16.0.4-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">46260401</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.4/dolibarr_16.0.4-4_all.deb/download" filesize="42580886"><media:hash algo="md5">d7fc1bd3bf1221992131d06e7f10ccae</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/16.0.3/dolibarr-16.0.3.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.3/dolibarr-16.0.3.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.3/dolibarr-16.0.3.zip/download</guid>
+      <pubDate>Tue, 29 Nov 2022 22:34:05 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/16.0.3/dolibarr-16.0.3.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">45507648</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.3/dolibarr-16.0.3.zip/download" filesize="79094612"><media:hash algo="md5">56c9a2e3322febfcc49f7ad725626150</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/16.0.3/dolibarr-16.0.3.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.3/dolibarr-16.0.3.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.3/dolibarr-16.0.3.tgz/download</guid>
+      <pubDate>Tue, 29 Nov 2022 22:33:47 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/16.0.3/dolibarr-16.0.3.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">45507645</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.3/dolibarr-16.0.3.tgz/download" filesize="71179644"><media:hash algo="md5">40402d4adff439a6e4eefb918381af8d</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/16.0.3/dolibarr-16.0.3-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.3/dolibarr-16.0.3-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.3/dolibarr-16.0.3-0.4.noarch.rpm/download</guid>
+      <pubDate>Tue, 29 Nov 2022 22:33:29 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/16.0.3/dolibarr-16.0.3-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">45507643</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.3/dolibarr-16.0.3-0.4.noarch.rpm/download" filesize="66173622"><media:hash algo="md5">f20fea7086df18d2961aa4392175f18c</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/16.0.3/dolibarr_16.0.3-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.3/dolibarr_16.0.3-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.3/dolibarr_16.0.3-4_all.deb/download</guid>
+      <pubDate>Tue, 29 Nov 2022 22:32:20 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/16.0.3/dolibarr_16.0.3-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">45507637</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.3/dolibarr_16.0.3-4_all.deb/download" filesize="42577986"><media:hash algo="md5">ffdf52604bfcd86c3ab729f87f59251e</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/16.0.2/dolibarr-16.0.2.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.2/dolibarr-16.0.2.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.2/dolibarr-16.0.2.zip/download</guid>
+      <pubDate>Fri, 11 Nov 2022 15:35:21 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/16.0.2/dolibarr-16.0.2.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">45213610</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.2/dolibarr-16.0.2.zip/download" filesize="79072624"><media:hash algo="md5">8684f5421b157b76d0089368758c6f29</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/16.0.2/dolibarr-16.0.2.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.2/dolibarr-16.0.2.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.2/dolibarr-16.0.2.tgz/download</guid>
+      <pubDate>Fri, 11 Nov 2022 15:34:38 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/16.0.2/dolibarr-16.0.2.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">45213601</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.2/dolibarr-16.0.2.tgz/download" filesize="71160558"><media:hash algo="md5">ed1b50bc447483eabb2cdbba7af4ca99</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/16.0.2/dolibarr-16.0.2-0.4.noarch.rpm]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.2/dolibarr-16.0.2-0.4.noarch.rpm/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.2/dolibarr-16.0.2-0.4.noarch.rpm/download</guid>
+      <pubDate>Fri, 11 Nov 2022 15:34:18 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Fedora-Redhat-Mandriva-Opensuse (DoliRpm)/16.0.2/dolibarr-16.0.2-0.4.noarch.rpm]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">45213597</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-rpm; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Fedora-Redhat-Mandriva-Opensuse%20%28DoliRpm%29/16.0.2/dolibarr-16.0.2-0.4.noarch.rpm/download" filesize="66146607"><media:hash algo="md5">6e07db792565b61dfc9ac4ce166d0303</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/16.0.2/dolibarr_16.0.2-4_all.deb]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.2/dolibarr_16.0.2-4_all.deb/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.2/dolibarr_16.0.2-4_all.deb/download</guid>
+      <pubDate>Fri, 11 Nov 2022 15:33:54 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Debian-Ubuntu (DoliDeb)/16.0.2/dolibarr_16.0.2-4_all.deb]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">45213589</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">Debian binary package (format 2.0)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-debian-package; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Debian-Ubuntu%20%28DoliDeb%29/16.0.2/dolibarr_16.0.2-4_all.deb/download" filesize="42554446"><media:hash algo="md5">2bfb253492ec12d57b9a030bd5af9b32</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr installer for Windows (DoliWamp)/16.0.1/DoliWamp-16.0.1.exe]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/16.0.1/DoliWamp-16.0.1.exe/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/16.0.1/DoliWamp-16.0.1.exe/download</guid>
+      <pubDate>Sun, 09 Oct 2022 23:23:38 UT</pubDate>
+      <description><![CDATA[/Dolibarr installer for Windows (DoliWamp)/16.0.1/DoliWamp-16.0.1.exe]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">44948420</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">PE32 executable</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-dosexec; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20installer%20for%20Windows%20%28DoliWamp%29/16.0.1/DoliWamp-16.0.1.exe/download" filesize="115713867"><media:hash algo="md5">40db0549afd5eb553a1c697f05f87b67</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/16.0.1/dolibarr-16.0.1.zip]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.1/dolibarr-16.0.1.zip/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.1/dolibarr-16.0.1.zip/download</guid>
+      <pubDate>Sat, 08 Oct 2022 09:37:18 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/16.0.1/dolibarr-16.0.1.zip]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">44892272</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">text (Zip archive data)</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.1/dolibarr-16.0.1.zip/download" filesize="79067371"><media:hash algo="md5">b84b9008cef0fd79dbccf7b1c80ed68c</media:hash></media:content>
+    </item>
+    <item>
+      <title><![CDATA[/Dolibarr ERP-CRM/16.0.1/dolibarr-16.0.1.tgz]]></title>
+      <link>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.1/dolibarr-16.0.1.tgz/download</link>
+      <guid>https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.1/dolibarr-16.0.1.tgz/download</guid>
+      <pubDate>Sat, 08 Oct 2022 09:36:42 UT</pubDate>
+      <description><![CDATA[/Dolibarr ERP-CRM/16.0.1/dolibarr-16.0.1.tgz]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">44892271</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">POSIX tar archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/x-gzip; charset=binary" url="https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/16.0.1/dolibarr-16.0.1.tgz/download" filesize="71155714"><media:hash algo="md5">0189ae9d11d69c24799b6caca45097e7</media:hash></media:content>
+    </item>
+  </channel>
+</rss>
