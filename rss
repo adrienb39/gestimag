@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:files="https://sourceforge.net/api/files.rdf#" xmlns:media="http://video.search.yahoo.com/mrss/" xmlns:doap="http://usefulinc.com/ns/doap#" xmlns:sf="https://sourceforge.net/api/sfelements.rdf#" version="2.0">
+  <channel xmlns:files="https://sourceforge.net/api/files.rdf#" xmlns:media="http://video.search.yahoo.com/mrss/" xmlns:doap="http://usefulinc.com/ns/doap#" xmlns:sf="https://sourceforge.net/api/sfelements.rdf#">
+    <title>Gestimag ERP - CRM</title>
+    <link>https://sourceforge.net</link>
+    <description><![CDATA[Files from Gestimag ERP - CRM Gestimag ERP - CRM is an easy to use ERP and CRM open source software package (run with a web php server or as standalone software) for businesses, foundations or freelancers (prospect, invoicing, inventory, warehouse, order, shipment, POS, members for foundations, bank accounts...).
+
+Gestimag is also available with auto-installers for users with no technical knowledge to install Gestimag and all its prerequisites (Apache, Mysql, PHP) with just one package. Available platforms for such packages are: Windows, Debian, Ubuntu, Mint, Redhat, Fedora, OpenSuse, Mandriva, Mageia. Other platform can use the generic distribution.
+
+This is a modular product, than can be enhanced with tons of external modules (to provide you features not available by default) from https://www.dolistore.com
+
+Download Gestimag ERP - CRM here or sign up for 15-day free trial of the cloud-based application with free updates and support at one of the Cloud providers https://saas.gestimag.org/
+]]></description>
+    <pubDate>Sat, 28 Sep 2024 09:46:24 UT</pubDate>
+    <managingEditor>noreply@sourceforge.net (SourceForge.net)</managingEditor>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <item>
+      <title><![CDATA[Gestimag v1.0-rc1 Release]]></title>
+      <link>https://github.com/adrienb39/gestimag/archive/refs/tags/v1.0-rc1.zip</link>
+      <guid>https://github.com/adrienb39/gestimag/archive/refs/tags/v1.0-rc1.zip</guid>
+      <pubDate>Sat, 28 Sep 2024 09:46:24 UT</pubDate>
+      <description><![CDATA[Download the release of Gestimag v1.0-rc1 from GitHub.]]></description>
+      <files:sf-file-id xmlns:files="https://sourceforge.net/api/files.rdf#">unknown</files:sf-file-id>
+      <files:extra-info xmlns:files="https://sourceforge.net/api/files.rdf#">ZIP archive</files:extra-info>
+      <media:content xmlns:media="http://video.search.yahoo.com/mrss/" type="application/zip" url="https://github.com/adrienb39/gestimag/archive/refs/tags/v1.0-rc1.zip" filesize="unknown">
+        <media:hash algo="md5">unknown</media:hash>
+      </media:content>
+    </item>
+  </channel>
+</rss>
