@@ -1,0 +1,23 @@
+# Gestimag language file - Source file is en_US - help
+CommunitySupport=Mbështetje për forum/Wiki
+EMailSupport=Mbështetje për emailet
+RemoteControlSupport=Mbështetje në internet në kohë reale / në distancë
+OtherSupport=Mbështetje tjetër
+ToSeeListOfAvailableRessources=Për të kontaktuar/shih burimet në dispozicion:
+HelpCenter=Qendra e ndihmes
+GestimagHelpCenter=Qendra e Ndihmës dhe Mbështetjes Gestimag
+ToGoBackToGestimag=Përndryshe, <a href="%s">kliko këtu për të vazhduar përdorimin e Gestimag</a>.
+TypeOfSupport=Lloji i mbështetjes
+TypeSupportCommunauty=Komunitet (falas)
+TypeSupportCommercial=Komerciale
+TypeOfHelp=Lloji
+NeedHelpCenter=Keni nevojë për mbështetje?
+Efficiency=Efikasiteti
+TypeHelpOnly=Vetëm ndihmë
+TypeHelpDev=Ndihmë + Zhvillim
+TypeHelpDevForm=Ndihmë+Zhvillim+Trajnim
+BackToHelpCenter=Përndryshe, <a href="%s">kthehu në faqen kryesore të qendrës së ndihmës</a>.
+LinkToGoldMember=Ju mund të telefononi një nga trajnerët e parazgjedhur nga Gestimag për gjuhën tuaj (%s) duke klikuar Widget-in e tyre (statusi dhe çmimi maksimal përditësohen automatikisht):
+PossibleLanguages=Gjuhët e mbështetura
+SubscribeToFoundation=Ndihmoni projektin Gestimag, regjistrohuni në fondacion
+SeeOfficalSupport=For official Gestimag support in your language: <br><b><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></b>

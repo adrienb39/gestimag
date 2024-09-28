@@ -1,0 +1,5 @@
+# Gestimag language file - Source file is en_US - agenda
+PropalClosedSignedInGestimag=Quotation %s signed
+PropalClosedRefusedInGestimag=Quotation %s refused
+PropalValidatedInGestimag=Quotation %s validated
+PropalClassifiedBilledInGestimag=Quotation %s classified billed

@@ -1,0 +1,40 @@
+# Gestimag language file - Source file is en_US - agenda
+EventReports=Gebeurtenisrapporten
+ViewPerType=Overzicht per type
+AgendaAutoActionDesc=Hier kunt u gebeurtenissen definiëren die u Gestimag automatisch in Agenda wilt laten maken. Als er niets wordt gecontroleerd, worden alleen handmatige acties opgenomen in logboeken en weergegeven in Agenda. Automatisch bijhouden van zakelijke acties die worden uitgevoerd op objecten (validatie, statuswijziging), wordt niet opgeslagen.
+AgendaSetupOtherDesc=Deze pagina biedt opties voor het exporteren van uw Gestimag-evenementen naar een externe agenda (Thunderbird, Google Agenda, enz.)
+EventRemindersByEmailNotEnabled=Herinneringen via email was niet ingeschakeld in %s van module setup.
+NewCompanyToGestimag=Derde %s aangemaakt
+COMPANY_DELETEInGestimag=Derden (externen) %s verwijderd
+ContractValidatedInGestimag=Contract %s goedgekeurd
+CONTRACT_DELETEInGestimag=Contract %s geannuleerd
+MemberModifiedInGestimag=Lid %s werd aangepast
+MemberResiliatedInGestimag=Lid %s verwijderd
+MemberSubscriptionModifiedInGestimag=Abonnement %s voor lid %s aangepast
+ShipmentValidatedInGestimag=Shipment %s goedgekeurd
+ShipmentBackToDraftInGestimag=Verzending %s zet om naar conceptstatus
+ShipmentDeletedInGestimag=Shipment %s gewist
+ProposalSentByEMail=Commercieel voorstel %s verzonden per e-mail
+InvoiceSentByEMail=Klantfactuur %s per e-mail verzonden
+SupplierOrderSentByEMail=Bestelling %s per e-mail verzonden
+ORDER_SUPPLIER_DELETEInGestimag=Aankooporder %s verwijderd
+ShippingSentByEMail=Verzending %s verzonden per e-mail
+ProposalDeleted=Offerte verwijderd
+HOLIDAY_CREATEInGestimag=Verzoek om verlof %s gemaakt
+HOLIDAY_MODIFYInGestimag=Verzoek om verlof %s gewijzigd
+HOLIDAY_APPROVEInGestimag=Verzoek om verlof %s goedgekeurd
+HOLIDAY_DELETEInGestimag=Verzoek om verlof %s verwijderd
+EXPENSE_REPORT_CREATEInGestimag=Onkostenrapport %s aangemaakt
+EXPENSE_REPORT_VALIDATEInGestimag=Onkostenrapport %s gevalideerd
+EXPENSE_REPORT_APPROVEInGestimag=Onkostenrapport %s goedgekeurd
+EXPENSE_REPORT_DELETEInGestimag=Onkostenrapport %s verwijderd
+EXPENSE_REPORT_REFUSEDInGestimag=Onkostenrapport %s geweigerd
+PROJECT_MODIFYInGestimag=Project %s gewijzigd
+TICKET_CREATEInGestimag=Ticket %s aangemaakt
+TICKET_MODIFYInGestimag=Ticket %s aangepast
+AgendaModelModule=Document sjablonen voor een gebeurtenis
+AgendaUrlOptions4=<b>logint=%s</b> om de uitvoer van acties te beperken die aan de gebruiker <b>%s</b> is toegewezen. (eigenaar en anderen).
+AgendaUrlOptionsProject=<b>project=__PROJECT_ID__</b> om de uitvoer te beperken tot acties die zijn gekoppeld aan project <b>__PROJECT_ID__</b>.
+AgendaHideBirthdayEvents=Verberg verjaardagen van contacten
+ConfirmCloneEvent=Weet u zeker als u event <b>%s</b> wilt klonen?
+BOOKCAL_PUBLIC_INTERFACE_TOPIC =Interface titel

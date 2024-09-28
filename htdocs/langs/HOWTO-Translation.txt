@@ -1,0 +1,10 @@
+--- Translation How to --- 
+
+An instruction guide for translating Gestimag in a new language is
+available on Gestimag wiki:
+
+English:  https://wiki.gestimag.org/index.php/Translator_documentation
+French:   https://wiki.gestimag.org/index.php/Documentation_traducteur
+Spanish:  https://wiki.gestimag.org/index.php/Documentaci%C3%B3n_traductores
+German:   https://wiki.gestimag.org/index.php/Dokumentation_Uebersetzung
+Chinese:  https://wiki.gestimag.org/index.php/%E7%BF%BB%E8%AF%91%E6%96%87%E6%A1%A3

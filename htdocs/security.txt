@@ -1,0 +1,5 @@
+# Security policies of Gestimag ERP CRM project
+Contact: mailto:security@gestimag.org
+Preferred-Languages: en
+Policy: https://github.com/Gestimag/gestimag/security/policy
+Expires: Sat, 31 Dec 2050 00:00:00 GMT

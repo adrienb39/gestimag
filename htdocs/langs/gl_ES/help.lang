@@ -1,0 +1,23 @@
+# Gestimag language file - Source file is en_US - help
+CommunitySupport=Asistencia Forums e Wiki
+EMailSupport=Asistencia E-Mail
+RemoteControlSupport=Asistencia por soporte externo
+OtherSupport=Outros tipos de asistencia
+ToSeeListOfAvailableRessources=Contactar/ver recursos dispoñibles:
+HelpCenter=Centro de soporte
+GestimagHelpCenter=Centro de soporte e axuda Gestimag
+ToGoBackToGestimag=Do contrario, <a href="%s">faga clic aquí para continuar usando Gestimag</a>.
+TypeOfSupport=Tipo de soporte
+TypeSupportCommunauty=Comunitario (gratuito)
+TypeSupportCommercial=Comercial
+TypeOfHelp=Tipo
+NeedHelpCenter=Precisa soporte?
+Efficiency=Eficacia
+TypeHelpOnly=Só axuda
+TypeHelpDev=Axuda+Desenvolvemento
+TypeHelpDevForm=Axuda+Desenvolvemento+Formación
+BackToHelpCenter=Do contrario, <a href="%s">volte á páxina de inicio do Centro de axuda</a>.
+LinkToGoldMember=Pode chamar a un dos formadores preseleccionados por Gestimag para o seu idioma (%s) facendo clic no seu Widget (o estado e o prezo máximo actualízanse automáticamente):
+PossibleLanguages=Idiomas dispoñibles
+SubscribeToFoundation=Axude ao proxecto Gestimag, subscríbase á asociación Gestimag
+SeeOfficalSupport=Para obter soporte oficial de Gestimag no seu idioma: <br><b><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></b>

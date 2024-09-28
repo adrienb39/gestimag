@@ -1,0 +1,23 @@
+# Gestimag language file - Source file is en_US - help
+CommunitySupport=Forum/Wiki support
+EMailSupport=Emails support
+RemoteControlSupport=Online real-time / remote support
+OtherSupport=Other support
+ToSeeListOfAvailableRessources=To contact/see available resources:
+HelpCenter=Help Center
+GestimagHelpCenter=Gestimag Help and Support Center
+ToGoBackToGestimag=Otherwise, <a href="%s">click here to continue to use Gestimag</a>.
+TypeOfSupport=Type of support
+TypeSupportCommunauty=Community (free)
+TypeSupportCommercial=Commercial
+TypeOfHelp=Type
+NeedHelpCenter=Need support?
+Efficiency=Efficiency
+TypeHelpOnly=Help only
+TypeHelpDev=Help+Development
+TypeHelpDevForm=Help+Development+Training
+BackToHelpCenter=Otherwise, <a href="%s">go back to Help center home page</a>.
+LinkToGoldMember=You can call one of the trainers preselected by Gestimag for your language (%s) by clicking their Widget (status and maximum price are automatically updated):
+PossibleLanguages=Supported languages
+SubscribeToFoundation=Help the Gestimag project, subscribe to the foundation
+SeeOfficalSupport=For official Gestimag support in your language: <br><b><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></b>

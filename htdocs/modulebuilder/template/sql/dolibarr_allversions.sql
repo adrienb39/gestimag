@@ -1,0 +1,3 @@
+--
+-- Script run when an upgrade of Gestimag is done. Whatever is the Gestimag version.
+--

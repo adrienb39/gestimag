@@ -1,0 +1,4 @@
+# Robot file. Generated with Gestimag
+User-agent: *
+Allow: /public/
+Disallow: /administrator/
