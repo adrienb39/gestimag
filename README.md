@@ -8,6 +8,6 @@ The web interface is made to make install easier for you.
 
 Once the software is installed, the web insterface will show you your shops, your stock of goods, your profit, your employees and a lot more.
 
-The V2 of the projct will come soon (before 2150)
+The V2 of the projct will come soon
 
-This is made by **Adrien Bruyère** and with *Linus Torvalds*
+This is made by **Adrien Bruyère**
